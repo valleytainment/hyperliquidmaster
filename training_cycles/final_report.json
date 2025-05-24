@@ -1,0 +1,17 @@
+{
+  "timestamp": "2025-05-23T16:54:49.575934",
+  "total_cycles": 3,
+  "success": false,
+  "final_evaluation": {
+    "timestamp": "2025-05-23T16:54:49.575344",
+    "success": false,
+    "metrics": {
+      "BTC-USD-PERP": {},
+      "ETH-USD-PERP": {},
+      "SOL-USD-PERP": {}
+    },
+    "issues": [],
+    "recommendations": []
+  },
+  "training_complete": true
+}

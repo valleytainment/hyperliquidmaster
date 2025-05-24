@@ -1,0 +1,32 @@
+{
+  "symbols": [
+    "BTC-USD-PERP",
+    "ETH-USD-PERP",
+    "SOL-USD-PERP"
+  ],
+  "intervals": [
+    "1h",
+    "4h"
+  ],
+  "timestamp": "2025-05-23T17:37:09.489041",
+  "results": {
+    "BTC-USD-PERP": {
+      "processed_data": {
+        "1h": true,
+        "4h": true
+      }
+    },
+    "ETH-USD-PERP": {
+      "processed_data": {
+        "1h": true,
+        "4h": true
+      }
+    },
+    "SOL-USD-PERP": {
+      "processed_data": {
+        "1h": true,
+        "4h": true
+      }
+    }
+  }
+}

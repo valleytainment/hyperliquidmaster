@@ -1,0 +1,122 @@
+2025-05-23 19:03:08,391 [INFO] Websocket connected
+2025-05-23 19:03:08,768 [INFO] Hyperliquid adapter initialized
+2025-05-23 19:03:08,768 [INFO] Testing BTC market data...
+2025-05-23 19:03:08,768 [ERROR] Error getting market data for BTC: name 'requests' is not defined
+2025-05-23 19:03:08,768 [ERROR] Traceback (most recent call last):
+  File "/home/ubuntu/enhanced_bot/core/hyperliquid_adapter.py", line 98, in get_market_data
+    response = requests.post(
+               ^^^^^^^^
+NameError: name 'requests' is not defined
+
+2025-05-23 19:03:08,769 [INFO] BTC market data: {}
+2025-05-23 19:03:08,769 [INFO] Testing ETH market data...
+2025-05-23 19:03:08,769 [ERROR] Error getting market data for ETH: name 'requests' is not defined
+2025-05-23 19:03:08,769 [ERROR] Traceback (most recent call last):
+  File "/home/ubuntu/enhanced_bot/core/hyperliquid_adapter.py", line 98, in get_market_data
+    response = requests.post(
+               ^^^^^^^^
+NameError: name 'requests' is not defined
+
+2025-05-23 19:03:08,769 [INFO] ETH market data: {}
+2025-05-23 19:03:08,769 [INFO] Testing SOL market data...
+2025-05-23 19:03:08,769 [ERROR] Error getting market data for SOL: name 'requests' is not defined
+2025-05-23 19:03:08,769 [ERROR] Traceback (most recent call last):
+  File "/home/ubuntu/enhanced_bot/core/hyperliquid_adapter.py", line 98, in get_market_data
+    response = requests.post(
+               ^^^^^^^^
+NameError: name 'requests' is not defined
+
+2025-05-23 19:03:08,769 [INFO] SOL market data: {}
+2025-05-23 19:03:08,769 [INFO] Testing BTC order book...
+2025-05-23 19:03:09,118 [ERROR] Error getting order book for asset index 0: name 'requests' is not defined
+2025-05-23 19:03:09,119 [ERROR] Traceback (most recent call last):
+  File "/home/ubuntu/enhanced_bot/core/hyperliquid_adapter.py", line 518, in _get_order_book
+    response = requests.post(
+               ^^^^^^^^
+NameError: name 'requests' is not defined
+
+2025-05-23 19:03:09,119 [ERROR] Error testing market data: object dict can't be used in 'await' expression
+2025-05-23 19:04:01,035 [INFO] Websocket connected
+2025-05-23 19:04:01,423 [INFO] Hyperliquid adapter initialized
+2025-05-23 19:04:01,423 [INFO] Testing BTC market data...
+2025-05-23 19:04:01,587 [WARNING] Failed to get market data for BTC: 422
+2025-05-23 19:04:01,587 [INFO] BTC market data: {}
+2025-05-23 19:04:01,587 [INFO] Testing ETH market data...
+2025-05-23 19:04:01,760 [WARNING] Failed to get market data for ETH: 422
+2025-05-23 19:04:01,761 [INFO] ETH market data: {}
+2025-05-23 19:04:01,761 [INFO] Testing SOL market data...
+2025-05-23 19:04:01,964 [WARNING] Failed to get market data for SOL: 422
+2025-05-23 19:04:01,964 [INFO] SOL market data: {}
+2025-05-23 19:04:01,965 [INFO] Testing BTC order book...
+2025-05-23 19:04:02,470 [INFO] BTC order book sample: {"coin": "BTC", "time": 1748041442096, "levels": [[{"px": "107808.0", "sz": "5.06239", "n": 13}, {"px": "107807.0", "sz": "0.55664", "n": 4}, {"px": "107806.0", "sz": "0.00011", "n": 1}, {"px": "10780...
+2025-05-23 19:04:02,470 [INFO] Testing funding rates...
+2025-05-23 19:04:02,646 [WARNING] Failed to get funding info: 422
+2025-05-23 19:04:02,647 [INFO] Funding rates sample: {}...
+2025-05-23 19:05:50,924 [INFO] Websocket connected
+2025-05-23 19:05:51,574 [INFO] Hyperliquid adapter initialized
+2025-05-23 19:05:51,575 [INFO] Testing BTC market data...
+2025-05-23 19:05:52,034 [WARNING] Price not found for BTC (index 0, key @0)
+2025-05-23 19:05:52,034 [INFO] BTC market data: {}
+2025-05-23 19:05:52,034 [INFO] Testing ETH market data...
+2025-05-23 19:05:52,352 [INFO] Retrieved market data for ETH: price=68.0845, funding_rate=0.0
+2025-05-23 19:05:52,353 [INFO] ETH market data: {
+  "symbol": "ETH",
+  "last_price": 68.0845,
+  "bid_price": 68.01641550000001,
+  "ask_price": 68.1525845,
+  "funding_rate": 0.0,
+  "timestamp": 1748041552.352614
+}
+2025-05-23 19:05:52,353 [INFO] Testing SOL market data...
+2025-05-23 19:05:52,756 [INFO] Retrieved market data for SOL: price=0.68792, funding_rate=0.0
+2025-05-23 19:05:52,756 [INFO] SOL market data: {
+  "symbol": "SOL",
+  "last_price": 0.68792,
+  "bid_price": 0.68723208,
+  "ask_price": 0.6886079199999999,
+  "funding_rate": 0.0,
+  "timestamp": 1748041552.756099
+}
+2025-05-23 19:05:52,756 [INFO] Testing BTC order book...
+2025-05-23 19:05:53,247 [INFO] BTC order book sample: {"coin": "BTC", "time": 1748041552463, "levels": [[{"px": "107850.0", "sz": "3.08859", "n": 12}, {"px": "107849.0", "sz": "0.55628", "n": 3}, {"px": "107848.0", "sz": "0.18555", "n": 2}, {"px": "10784...
+2025-05-23 19:07:01,090 [INFO] Websocket connected
+2025-05-23 19:07:01,431 [INFO] Hyperliquid adapter initialized
+2025-05-23 19:07:01,431 [INFO] Testing BTC market data...
+2025-05-23 19:07:02,107 [INFO] Retrieved market data for BTC: price=107874.5, funding_rate=0.0
+2025-05-23 19:07:02,108 [INFO] BTC market data: {
+  "symbol": "BTC",
+  "last_price": 107874.5,
+  "bid_price": 107766.6255,
+  "ask_price": 107982.37449999999,
+  "funding_rate": 0.0,
+  "timestamp": 1748041622.107761
+}
+2025-05-23 19:07:02,108 [INFO] Testing ETH market data...
+2025-05-23 19:07:02,479 [INFO] Retrieved market data for ETH: price=2542.15, funding_rate=0.0
+2025-05-23 19:07:02,479 [INFO] ETH market data: {
+  "symbol": "ETH",
+  "last_price": 2542.15,
+  "bid_price": 2539.60785,
+  "ask_price": 2544.69215,
+  "funding_rate": 0.0,
+  "timestamp": 1748041622.479036
+}
+2025-05-23 19:07:02,479 [INFO] Testing SOL market data...
+2025-05-23 19:07:02,814 [INFO] Retrieved market data for SOL: price=175.775, funding_rate=0.0
+2025-05-23 19:07:02,815 [INFO] SOL market data: {
+  "symbol": "SOL",
+  "last_price": 175.775,
+  "bid_price": 175.59922500000002,
+  "ask_price": 175.950775,
+  "funding_rate": 0.0,
+  "timestamp": 1748041622.814583
+}
+2025-05-23 19:07:02,815 [INFO] Testing BTC order book...
+2025-05-23 19:07:03,393 [INFO] BTC order book sample: {"coin": "BTC", "time": 1748041622873, "levels": [[{"px": "107874.0", "sz": "9.14892", "n": 23}, {"px": "107873.0", "sz": "6.63877", "n": 10}, {"px": "107872.0", "sz": "0.71422", "n": 3}, {"px": "1078...
+2025-05-23 19:12:32,988 [ERROR] Error in main: (429, None, 'null', None, {'Content-Type': 'application/json', 'Content-Length': '4', 'Connection': 'keep-alive', 'Server': 'nginx/1.22.1', 'Date': 'Fri, 23 May 2025 23:12:32 GMT', 'access-control-expose-headers': '*', 'access-control-allow-origin': '*', 'vary': 'origin, access-control-request-method, access-control-request-headers', 'X-Cache': 'Error from cloudfront', 'Via': '1.1 64de29cb6a7b7bcab60fef77017140a4.cloudfront.net (CloudFront)', 'X-Amz-Cf-Pop': 'IAD61-P5', 'X-Amz-Cf-Id': 'un6HbWd4a78F11e7mqR6DIAH2KkYQKPQC46FWdRGntmkJqT5nfOUFQ=='})
+2025-05-23 19:12:33,133 [INFO] Websocket connected
+2025-05-23 21:35:40,689 [ERROR] Connection to remote host was lost. - goodbye
+2025-05-23 21:35:59,117 [ERROR] Connection to remote host was lost. - goodbye
+2025-05-23 21:36:01,163 [ERROR] Connection to remote host was lost. - goodbye
+2025-05-23 21:36:11,404 [ERROR] Connection to remote host was lost. - goodbye
+2025-05-23 21:36:13,442 [ERROR] Connection to remote host was lost. - goodbye

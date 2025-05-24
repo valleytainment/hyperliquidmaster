@@ -1,0 +1,11 @@
+{
+  "timestamp": "2025-05-23T16:49:28.863361",
+  "success": false,
+  "metrics": {
+    "BTC-USD-PERP": {},
+    "ETH-USD-PERP": {},
+    "SOL-USD-PERP": {}
+  },
+  "issues": [],
+  "recommendations": []
+}
