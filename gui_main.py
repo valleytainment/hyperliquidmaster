@@ -35,9 +35,9 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 
 # Import core components from enhanced bot
-from core.hyperliquid_adapter import HyperliquidExchangeAdapter
+from core.hyperliquid_adapter import HyperliquidAdapter
 from core.error_handler import ErrorHandler
-from strategies.master_omni_overlord_robust import MasterOmniOverlordStrategy
+from strategies.master_omni_overlord_robust import MasterOmniOverlordRobustStrategy
 from strategies.robust_signal_generator import RobustSignalGenerator
 from historical_data_accumulator import HistoricalDataAccumulator
 from config_compatibility import ConfigManager
