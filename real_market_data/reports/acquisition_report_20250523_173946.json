@@ -1,0 +1,105 @@
+{
+  "timestamp": "2025-05-23T17:39:46.884969",
+  "duration_seconds": 0.001048,
+  "metrics": {
+    "start_time": "2025-05-23 17:39:46.883918",
+    "end_time": "2025-05-23 17:39:46.884966",
+    "total_symbols": 3,
+    "total_intervals": 2,
+    "successful_acquisitions": 6,
+    "failed_acquisitions": 8,
+    "synthetic_fallbacks": 1,
+    "real_data_ratio": 0.6666666666666666,
+    "symbols_with_real_data": [
+      "BTC-USD-PERP",
+      "ETH-USD-PERP"
+    ],
+    "symbols_with_synthetic_data": [
+      "SOL-USD-PERP"
+    ],
+    "api_errors": {
+      "hyperliquid": 4,
+      "binance": 2,
+      "coingecko": 2
+    },
+    "data_quality": {
+      "BTC-USD-PERP": {
+        "1h": {
+          "source": "hyperliquid",
+          "is_synthetic": false,
+          "synthetic_ratio": 0.0,
+          "alternative_sources": [],
+          "missing_values": 0.05,
+          "data_points": 720,
+          "start_date": "2025-04-23",
+          "end_date": "2025-05-23"
+        },
+        "4h": {
+          "source": "hyperliquid",
+          "is_synthetic": false,
+          "synthetic_ratio": 0.0,
+          "alternative_sources": [],
+          "missing_values": 0.05,
+          "data_points": 720,
+          "start_date": "2025-04-23",
+          "end_date": "2025-05-23"
+        }
+      },
+      "ETH-USD-PERP": {
+        "1h": {
+          "source": "binance",
+          "is_synthetic": false,
+          "synthetic_ratio": 0.0,
+          "alternative_sources": [
+            "binance"
+          ],
+          "missing_values": 0.02,
+          "data_points": 720,
+          "start_date": "2025-04-23",
+          "end_date": "2025-05-23"
+        },
+        "4h": {
+          "source": "binance",
+          "is_synthetic": false,
+          "synthetic_ratio": 0.0,
+          "alternative_sources": [
+            "binance"
+          ],
+          "missing_values": 0.02,
+          "data_points": 720,
+          "start_date": "2025-04-23",
+          "end_date": "2025-05-23"
+        }
+      },
+      "SOL-USD-PERP": {
+        "1h": {
+          "source": "synthetic",
+          "is_synthetic": true,
+          "synthetic_ratio": 1.0,
+          "alternative_sources": [],
+          "missing_values": 0.0,
+          "data_points": 720,
+          "start_date": "2025-04-23",
+          "end_date": "2025-05-23"
+        },
+        "4h": {
+          "source": "synthetic",
+          "is_synthetic": true,
+          "synthetic_ratio": 1.0,
+          "alternative_sources": [],
+          "missing_values": 0.0,
+          "data_points": 720,
+          "start_date": "2025-04-23",
+          "end_date": "2025-05-23"
+        }
+      }
+    }
+  },
+  "recommendations": [
+    "NOTICE: Some data is synthetic. Monitor API access and connectivity.",
+    "NOTICE: Some hyperliquid API errors (4).",
+    "NOTICE: Some binance API errors (2).",
+    "NOTICE: Some coingecko API errors (2).",
+    "NOTICE: Some synthetic fallbacks (1)."
+  ]
+}

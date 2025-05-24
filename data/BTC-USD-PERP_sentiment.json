@@ -1,0 +1,50 @@
+{
+  "symbol": "BTC",
+  "data": [
+    {
+      "timestamp": "2025-05-16T16:52:40.898018",
+      "sentiment_score": 35.36775442181354,
+      "social_volume": 1136.1361957960214
+    },
+    {
+      "timestamp": "2025-05-17T16:52:40.898018",
+      "sentiment_score": 56.614350092355664,
+      "social_volume": 783.6754187631797
+    },
+    {
+      "timestamp": "2025-05-18T16:52:40.898018",
+      "sentiment_score": 54.60215636679115,
+      "social_volume": 966.7547948540158
+    },
+    {
+      "timestamp": "2025-05-19T16:52:40.898018",
+      "sentiment_score": 56.481816811943645,
+      "social_volume": 1527.120968568433
+    },
+    {
+      "timestamp": "2025-05-20T16:52:40.898018",
+      "sentiment_score": 58.16933222961776,
+      "social_volume": 960.0393537005984
+    },
+    {
+      "timestamp": "2025-05-21T16:52:40.898018",
+      "sentiment_score": 58.74590146132895,
+      "social_volume": 823.2654805544
+    },
+    {
+      "timestamp": "2025-05-22T16:52:40.898018",
+      "sentiment_score": 58.74682884738446,
+      "social_volume": 1121.7475845600652
+    },
+    {
+      "timestamp": "2025-05-23T16:52:40.898018",
+      "sentiment_score": 50.91803111082924,
+      "social_volume": 1008.4108901717926
+    }
+  ],
+  "current_sentiment": {
+    "score": 50.91803111082924,
+    "label": "Neutral",
+    "social_volume": 1008.4108901717926
+  }
+}

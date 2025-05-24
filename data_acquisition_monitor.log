@@ -1,0 +1,33 @@
+2025-05-23 17:39:46,883 [INFO] Data Acquisition Monitor initialized
+2025-05-23 17:39:46,883 [INFO] Starting acquisition session for 3 symbols and 2 intervals
+2025-05-23 17:39:46,883 [INFO] Attempting to acquire data for BTC-USD-PERP, interval 1h from hyperliquid
+2025-05-23 17:39:46,884 [INFO] Successfully acquired data for BTC-USD-PERP, interval 1h from hyperliquid
+2025-05-23 17:39:46,884 [INFO] Attempting to acquire data for BTC-USD-PERP, interval 4h from hyperliquid
+2025-05-23 17:39:46,884 [INFO] Successfully acquired data for BTC-USD-PERP, interval 4h from hyperliquid
+2025-05-23 17:39:46,884 [INFO] Attempting to acquire data for ETH-USD-PERP, interval 1h from hyperliquid
+2025-05-23 17:39:46,884 [ERROR] Failed to acquire data for ETH-USD-PERP, interval 1h from hyperliquid: API error: 404 Not Found
+2025-05-23 17:39:46,884 [INFO] Attempting to acquire data for ETH-USD-PERP, interval 1h from binance
+2025-05-23 17:39:46,884 [INFO] Successfully acquired data for ETH-USD-PERP, interval 1h from binance
+2025-05-23 17:39:46,884 [INFO] Attempting to acquire data for ETH-USD-PERP, interval 4h from hyperliquid
+2025-05-23 17:39:46,884 [ERROR] Failed to acquire data for ETH-USD-PERP, interval 4h from hyperliquid: API error: 404 Not Found
+2025-05-23 17:39:46,884 [INFO] Attempting to acquire data for ETH-USD-PERP, interval 4h from binance
+2025-05-23 17:39:46,884 [INFO] Successfully acquired data for ETH-USD-PERP, interval 4h from binance
+2025-05-23 17:39:46,884 [INFO] Attempting to acquire data for SOL-USD-PERP, interval 1h from hyperliquid
+2025-05-23 17:39:46,884 [ERROR] Failed to acquire data for SOL-USD-PERP, interval 1h from hyperliquid: API error: 404 Not Found
+2025-05-23 17:39:46,884 [INFO] Attempting to acquire data for SOL-USD-PERP, interval 1h from binance
+2025-05-23 17:39:46,884 [ERROR] Failed to acquire data for SOL-USD-PERP, interval 1h from binance: API error: 429 Too Many Requests
+2025-05-23 17:39:46,884 [INFO] Attempting to acquire data for SOL-USD-PERP, interval 1h from coingecko
+2025-05-23 17:39:46,884 [ERROR] Failed to acquire data for SOL-USD-PERP, interval 1h from coingecko: API error: 403 Forbidden
+2025-05-23 17:39:46,884 [WARNING] Falling back to synthetic data for SOL-USD-PERP, interval 1h
+2025-05-23 17:39:46,884 [INFO] Successfully acquired data for SOL-USD-PERP, interval 1h from synthetic
+2025-05-23 17:39:46,884 [WARNING] Data quality issues for SOL-USD-PERP, interval 1h: Data is synthetic, Synthetic ratio: 1.00
+2025-05-23 17:39:46,884 [INFO] Attempting to acquire data for SOL-USD-PERP, interval 4h from hyperliquid
+2025-05-23 17:39:46,884 [ERROR] Failed to acquire data for SOL-USD-PERP, interval 4h from hyperliquid: API error: 404 Not Found
+2025-05-23 17:39:46,884 [INFO] Attempting to acquire data for SOL-USD-PERP, interval 4h from binance
+2025-05-23 17:39:46,884 [ERROR] Failed to acquire data for SOL-USD-PERP, interval 4h from binance: API error: 429 Too Many Requests
+2025-05-23 17:39:46,884 [INFO] Attempting to acquire data for SOL-USD-PERP, interval 4h from coingecko
+2025-05-23 17:39:46,884 [ERROR] Failed to acquire data for SOL-USD-PERP, interval 4h from coingecko: API error: 403 Forbidden
+2025-05-23 17:39:46,884 [WARNING] Falling back to synthetic data for SOL-USD-PERP, interval 4h
+2025-05-23 17:39:46,884 [INFO] Successfully acquired data for SOL-USD-PERP, interval 4h from synthetic
+2025-05-23 17:39:46,884 [WARNING] Data quality issues for SOL-USD-PERP, interval 4h: Data is synthetic, Synthetic ratio: 1.00
+2025-05-23 17:39:46,884 [INFO] Ending acquisition session

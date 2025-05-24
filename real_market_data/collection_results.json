@@ -1,0 +1,63 @@
+{
+  "symbols": [
+    "BTC-USD-PERP",
+    "ETH-USD-PERP",
+    "SOL-USD-PERP"
+  ],
+  "intervals": [
+    "1h",
+    "4h"
+  ],
+  "days": 30,
+  "timestamp": "2025-05-23T17:20:41.094947",
+  "results": {
+    "BTC-USD-PERP": {
+      "historical_data": {
+        "1h": true,
+        "4h": true
+      },
+      "funding_rates": true,
+      "order_book": true,
+      "oracle_prices": true,
+      "streamed_data": true,
+      "alternative_data": {
+        "binance": false,
+        "coinmarketcap": false,
+        "coingecko": true,
+        "deribit": false
+      }
+    },
+    "ETH-USD-PERP": {
+      "historical_data": {
+        "1h": true,
+        "4h": true
+      },
+      "funding_rates": true,
+      "order_book": true,
+      "oracle_prices": true,
+      "streamed_data": true,
+      "alternative_data": {
+        "binance": false,
+        "coinmarketcap": false,
+        "coingecko": true,
+        "deribit": false
+      }
+    },
+    "SOL-USD-PERP": {
+      "historical_data": {
+        "1h": true,
+        "4h": true
+      },
+      "funding_rates": true,
+      "order_book": true,
+      "oracle_prices": true,
+      "streamed_data": true,
+      "alternative_data": {
+        "binance": false,
+        "coinmarketcap": false,
+        "coingecko": false,
+        "deribit": false
+      }
+    }
+  }
+}

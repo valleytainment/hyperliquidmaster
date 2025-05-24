@@ -1,0 +1,50 @@
+{
+  "symbol": "SOL",
+  "data": [
+    {
+      "timestamp": "2025-05-16T16:52:41.187383",
+      "sentiment_score": 55.87594026435052,
+      "social_volume": 1043.056748602907
+    },
+    {
+      "timestamp": "2025-05-17T16:52:41.187383",
+      "sentiment_score": 62.72001052780118,
+      "social_volume": 1327.812896406494
+    },
+    {
+      "timestamp": "2025-05-18T16:52:41.187383",
+      "sentiment_score": 74.35911438208421,
+      "social_volume": 746.1467472117414
+    },
+    {
+      "timestamp": "2025-05-19T16:52:41.187383",
+      "sentiment_score": 47.51799967832623,
+      "social_volume": 767.1644511757495
+    },
+    {
+      "timestamp": "2025-05-20T16:52:41.187383",
+      "sentiment_score": 44.61088203708901,
+      "social_volume": 1116.4917086170026
+    },
+    {
+      "timestamp": "2025-05-21T16:52:41.187383",
+      "sentiment_score": 44.400207380119895,
+      "social_volume": 644.1381199985051
+    },
+    {
+      "timestamp": "2025-05-22T16:52:41.187383",
+      "sentiment_score": 59.53339804763583,
+      "social_volume": 797.280383719509
+    },
+    {
+      "timestamp": "2025-05-23T16:52:41.187383",
+      "sentiment_score": 69.56999611627799,
+      "social_volume": 1263.0757901646784
+    }
+  ],
+  "current_sentiment": {
+    "score": 69.56999611627799,
+    "label": "Bullish",
+    "social_volume": 1263.0757901646784
+  }
+}

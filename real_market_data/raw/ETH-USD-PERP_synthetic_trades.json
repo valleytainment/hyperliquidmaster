@@ -1,0 +1,7202 @@
+[
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.345132654762,
+    "size": 0.0016376597357195919,
+    "side": "buy",
+    "timestamp": 1748035902133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.5425054284747,
+    "size": 0.06656802980607461,
+    "side": "sell",
+    "timestamp": 1748035902467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.1813324807913,
+    "size": 0.01190909465436902,
+    "side": "sell",
+    "timestamp": 1748035902800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.4131403366882,
+    "size": 0.07163042605342197,
+    "side": "buy",
+    "timestamp": 1748035903133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2803.1005717462685,
+    "size": 0.0823418429442175,
+    "side": "sell",
+    "timestamp": 1748035903467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2803.2067370643936,
+    "size": 0.02662772756127356,
+    "side": "buy",
+    "timestamp": 1748035903800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2803.2426233517444,
+    "size": 0.032613005550466,
+    "side": "buy",
+    "timestamp": 1748035904133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.9269703160226,
+    "size": 0.08073178991440993,
+    "side": "buy",
+    "timestamp": 1748035904467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2803.0546827673584,
+    "size": 0.054614925213376714,
+    "side": "sell",
+    "timestamp": 1748035904800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.858314677083,
+    "size": 0.05193153315040802,
+    "side": "sell",
+    "timestamp": 1748035905133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.55082404173,
+    "size": 0.08997468563040689,
+    "side": "buy",
+    "timestamp": 1748035905467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.6721634159912,
+    "size": 0.029224391584460142,
+    "side": "sell",
+    "timestamp": 1748035905800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.791766342301,
+    "size": 0.02036879788374544,
+    "side": "sell",
+    "timestamp": 1748035906133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.7538732946814,
+    "size": 0.039586412435275775,
+    "side": "buy",
+    "timestamp": 1748035906467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.3007258416214,
+    "size": 0.029528102899684314,
+    "side": "buy",
+    "timestamp": 1748035906800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.2734820907685,
+    "size": 0.05148530563272255,
+    "side": "sell",
+    "timestamp": 1748035907133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.566458431231,
+    "size": 0.0013231299231058003,
+    "side": "sell",
+    "timestamp": 1748035907467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.609811134011,
+    "size": 0.14583389408315112,
+    "side": "buy",
+    "timestamp": 1748035907800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.5834410185935,
+    "size": 0.1514374960789651,
+    "side": "sell",
+    "timestamp": 1748035908133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.4452338167557,
+    "size": 0.00493488669391396,
+    "side": "buy",
+    "timestamp": 1748035908467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.6015282615726,
+    "size": 0.01826547183808767,
+    "side": "buy",
+    "timestamp": 1748035908800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.1512585238183,
+    "size": 0.0037966175044829003,
+    "side": "buy",
+    "timestamp": 1748035909133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.835436240324,
+    "size": 0.0661331993309288,
+    "side": "buy",
+    "timestamp": 1748035909467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.780183403573,
+    "size": 0.10407718416945369,
+    "side": "buy",
+    "timestamp": 1748035909800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.8722612889273,
+    "size": 0.06527993264908982,
+    "side": "buy",
+    "timestamp": 1748035910133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.978408339215,
+    "size": 0.0663548314206945,
+    "side": "sell",
+    "timestamp": 1748035910467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.066292123174,
+    "size": 0.2930690526331423,
+    "side": "sell",
+    "timestamp": 1748035910800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.365717477514,
+    "size": 0.048509052482156007,
+    "side": "buy",
+    "timestamp": 1748035911133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.1684160342284,
+    "size": 0.11126415845655069,
+    "side": "sell",
+    "timestamp": 1748035911467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.338933583182,
+    "size": 0.138126720964328,
+    "side": "buy",
+    "timestamp": 1748035911800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.794271670528,
+    "size": 0.04383049716609593,
+    "side": "buy",
+    "timestamp": 1748035912133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.5438886687284,
+    "size": 0.43292616237483844,
+    "side": "buy",
+    "timestamp": 1748035912467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.59247893518,
+    "size": 0.08819279299808165,
+    "side": "sell",
+    "timestamp": 1748035912800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.7757732266773,
+    "size": 0.07532407823563152,
+    "side": "sell",
+    "timestamp": 1748035913133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.5108850477827,
+    "size": 0.04161152935149978,
+    "side": "buy",
+    "timestamp": 1748035913467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.6531647430493,
+    "size": 0.049739534076060944,
+    "side": "sell",
+    "timestamp": 1748035913800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.182135741984,
+    "size": 0.21366483409641446,
+    "side": "sell",
+    "timestamp": 1748035914133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.4967313737193,
+    "size": 0.04693621150875693,
+    "side": "buy",
+    "timestamp": 1748035914467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.449215067915,
+    "size": 0.011795150341867865,
+    "side": "buy",
+    "timestamp": 1748035914800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.568453462649,
+    "size": 0.28502520173110807,
+    "side": "sell",
+    "timestamp": 1748035915133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.5787925099735,
+    "size": 0.09912438664141451,
+    "side": "sell",
+    "timestamp": 1748035915467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.384314109986,
+    "size": 0.14580725271048203,
+    "side": "sell",
+    "timestamp": 1748035915800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.249395069659,
+    "size": 0.05514194207139994,
+    "side": "sell",
+    "timestamp": 1748035916133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.8104229510177,
+    "size": 0.06548634018647924,
+    "side": "sell",
+    "timestamp": 1748035916467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.7307805055193,
+    "size": 0.023171728499308163,
+    "side": "buy",
+    "timestamp": 1748035916800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.4164191319005,
+    "size": 0.04402619016636062,
+    "side": "buy",
+    "timestamp": 1748035917133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.9330970635465,
+    "size": 0.04083703647517809,
+    "side": "buy",
+    "timestamp": 1748035917467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.851152492445,
+    "size": 0.08616633151476764,
+    "side": "sell",
+    "timestamp": 1748035917800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.7480662586086,
+    "size": 0.0010245125326837346,
+    "side": "sell",
+    "timestamp": 1748035918133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.040282743129,
+    "size": 0.08189064330603833,
+    "side": "buy",
+    "timestamp": 1748035918467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.838679973547,
+    "size": 0.03933048559054551,
+    "side": "sell",
+    "timestamp": 1748035918800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.4590226373575,
+    "size": 0.07743716944339754,
+    "side": "sell",
+    "timestamp": 1748035919133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.419957775625,
+    "size": 0.007261980975527035,
+    "side": "sell",
+    "timestamp": 1748035919467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.750963149697,
+    "size": 0.2918921650154537,
+    "side": "buy",
+    "timestamp": 1748035919800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.9203292615007,
+    "size": 0.02109329546346013,
+    "side": "buy",
+    "timestamp": 1748035920133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.595300709918,
+    "size": 0.05897071749683891,
+    "side": "buy",
+    "timestamp": 1748035920467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.264637616071,
+    "size": 0.39764805968195127,
+    "side": "sell",
+    "timestamp": 1748035920800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2799.9345072362175,
+    "size": 0.031588330718920005,
+    "side": "sell",
+    "timestamp": 1748035921133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.159801196339,
+    "size": 0.1453354788981985,
+    "side": "buy",
+    "timestamp": 1748035921467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2799.628529127155,
+    "size": 0.03727876186533446,
+    "side": "buy",
+    "timestamp": 1748035921800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2799.311764011991,
+    "size": 0.018996118192658697,
+    "side": "buy",
+    "timestamp": 1748035922133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2799.5627743277196,
+    "size": 0.0856532453007885,
+    "side": "buy",
+    "timestamp": 1748035922467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2799.6844339926265,
+    "size": 0.13081865414578622,
+    "side": "sell",
+    "timestamp": 1748035922800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2799.451981352005,
+    "size": 0.0651930685936397,
+    "side": "sell",
+    "timestamp": 1748035923133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2799.8886536100827,
+    "size": 0.055577487710376385,
+    "side": "sell",
+    "timestamp": 1748035923467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2799.897736640316,
+    "size": 0.04764001657912923,
+    "side": "sell",
+    "timestamp": 1748035923800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.2610570044226,
+    "size": 0.050976196705278434,
+    "side": "buy",
+    "timestamp": 1748035924133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.2360246302205,
+    "size": 0.01960562412755619,
+    "side": "sell",
+    "timestamp": 1748035924467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.6809836347106,
+    "size": 0.08759165750564514,
+    "side": "buy",
+    "timestamp": 1748035924800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.384245186042,
+    "size": 0.03553367822770553,
+    "side": "buy",
+    "timestamp": 1748035925133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.721561077445,
+    "size": 0.04684844113925875,
+    "side": "buy",
+    "timestamp": 1748035925467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.4326634970307,
+    "size": 0.13400136778164493,
+    "side": "sell",
+    "timestamp": 1748035925800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.479615561617,
+    "size": 0.18823144726716615,
+    "side": "buy",
+    "timestamp": 1748035926133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.762293219939,
+    "size": 0.11861995632974034,
+    "side": "sell",
+    "timestamp": 1748035926467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.8449558485936,
+    "size": 0.5508053810711612,
+    "side": "sell",
+    "timestamp": 1748035926800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.7457382370426,
+    "size": 0.42429539222190266,
+    "side": "sell",
+    "timestamp": 1748035927133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.3282875865384,
+    "size": 0.02937608646331806,
+    "side": "buy",
+    "timestamp": 1748035927467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.604470234494,
+    "size": 0.07531803138031501,
+    "side": "buy",
+    "timestamp": 1748035927800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.5598917765533,
+    "size": 0.06612298541901865,
+    "side": "buy",
+    "timestamp": 1748035928133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.5780185916874,
+    "size": 0.28276514826457794,
+    "side": "buy",
+    "timestamp": 1748035928467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.5537275555102,
+    "size": 0.0849213555166658,
+    "side": "buy",
+    "timestamp": 1748035928800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.4336026605974,
+    "size": 0.022937545411921167,
+    "side": "sell",
+    "timestamp": 1748035929133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.473759855654,
+    "size": 0.14815514780541977,
+    "side": "sell",
+    "timestamp": 1748035929467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.446343604774,
+    "size": 0.36565192713028694,
+    "side": "sell",
+    "timestamp": 1748035929800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.5110365682012,
+    "size": 0.046614503675899616,
+    "side": "buy",
+    "timestamp": 1748035930133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.648555428692,
+    "size": 0.033543600715212916,
+    "side": "sell",
+    "timestamp": 1748035930467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.019133567709,
+    "size": 0.028098622616301562,
+    "side": "buy",
+    "timestamp": 1748035930800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.1850798951837,
+    "size": 0.39961820487337335,
+    "side": "buy",
+    "timestamp": 1748035931133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.0826512372073,
+    "size": 0.17089497021501748,
+    "side": "buy",
+    "timestamp": 1748035931467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.051908160061,
+    "size": 0.06343976458879572,
+    "side": "buy",
+    "timestamp": 1748035931800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.6261684013493,
+    "size": 0.003512609810157312,
+    "side": "sell",
+    "timestamp": 1748035932133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.367262578617,
+    "size": 0.04720894776296069,
+    "side": "sell",
+    "timestamp": 1748035932467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2799.850340213028,
+    "size": 0.060134435527878276,
+    "side": "sell",
+    "timestamp": 1748035932800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2799.7614856888295,
+    "size": 0.002064969109525114,
+    "side": "sell",
+    "timestamp": 1748035933133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.2818812443884,
+    "size": 0.01843900699832744,
+    "side": "buy",
+    "timestamp": 1748035933467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.2766406683813,
+    "size": 0.132439706139317,
+    "side": "buy",
+    "timestamp": 1748035933800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.1616619656124,
+    "size": 0.4183961442607947,
+    "side": "sell",
+    "timestamp": 1748035934133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2799.592186513494,
+    "size": 0.04531042050052386,
+    "side": "sell",
+    "timestamp": 1748035934467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.193491823795,
+    "size": 0.2961847757759673,
+    "side": "buy",
+    "timestamp": 1748035934800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.7069964734533,
+    "size": 0.0362048375356774,
+    "side": "sell",
+    "timestamp": 1748035935133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.8583006014987,
+    "size": 0.051299855417896514,
+    "side": "buy",
+    "timestamp": 1748035935467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.7457927688233,
+    "size": 0.08642810588096389,
+    "side": "buy",
+    "timestamp": 1748035935800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2800.9976310594593,
+    "size": 0.1326163259974644,
+    "side": "buy",
+    "timestamp": 1748035936133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.2536662122952,
+    "size": 0.0885770970988988,
+    "side": "buy",
+    "timestamp": 1748035936467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.180636029834,
+    "size": 0.07764795300998804,
+    "side": "buy",
+    "timestamp": 1748035936800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.1967825535976,
+    "size": 0.3101331803780692,
+    "side": "sell",
+    "timestamp": 1748035937133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.7994816463447,
+    "size": 0.17027384479209712,
+    "side": "buy",
+    "timestamp": 1748035937467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.5830892663403,
+    "size": 0.06443896346070063,
+    "side": "sell",
+    "timestamp": 1748035937800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.8608710908525,
+    "size": 0.010440330929140582,
+    "side": "buy",
+    "timestamp": 1748035938133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.8528711587637,
+    "size": 0.12004941405135344,
+    "side": "buy",
+    "timestamp": 1748035938467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.6002452518087,
+    "size": 0.034572685350998826,
+    "side": "buy",
+    "timestamp": 1748035938800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.5965714906933,
+    "size": 0.11197266029052189,
+    "side": "sell",
+    "timestamp": 1748035939133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.504712826892,
+    "size": 0.4943868668086457,
+    "side": "buy",
+    "timestamp": 1748035939467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.478378305403,
+    "size": 0.007743127096877083,
+    "side": "buy",
+    "timestamp": 1748035939800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.7675444713122,
+    "size": 0.1250843152146616,
+    "side": "sell",
+    "timestamp": 1748035940133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.8426797760403,
+    "size": 0.4200919765329556,
+    "side": "buy",
+    "timestamp": 1748035940467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.1995769296846,
+    "size": 0.009630751807781144,
+    "side": "buy",
+    "timestamp": 1748035940800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.116046767385,
+    "size": 0.08219643219645703,
+    "side": "buy",
+    "timestamp": 1748035941133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.917281381601,
+    "size": 0.20350160342645227,
+    "side": "buy",
+    "timestamp": 1748035941467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.9319791271487,
+    "size": 0.020825983169663706,
+    "side": "buy",
+    "timestamp": 1748035941800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.662793778181,
+    "size": 0.0936761884869906,
+    "side": "sell",
+    "timestamp": 1748035942133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.727531194508,
+    "size": 0.0037104877871032963,
+    "side": "buy",
+    "timestamp": 1748035942467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.822952334922,
+    "size": 0.13262874478861963,
+    "side": "buy",
+    "timestamp": 1748035942800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.2345464762057,
+    "size": 0.06442065850944155,
+    "side": "sell",
+    "timestamp": 1748035943133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.2961724240736,
+    "size": 0.03624354528267054,
+    "side": "sell",
+    "timestamp": 1748035943467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.6765532143636,
+    "size": 0.23745564176257417,
+    "side": "sell",
+    "timestamp": 1748035943800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.6453962641067,
+    "size": 0.12050937026725071,
+    "side": "buy",
+    "timestamp": 1748035944133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.8627583915745,
+    "size": 0.02232027523221685,
+    "side": "buy",
+    "timestamp": 1748035944467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.666498006216,
+    "size": 0.16331743177814625,
+    "side": "buy",
+    "timestamp": 1748035944800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.7714911663265,
+    "size": 0.05008342027721734,
+    "side": "sell",
+    "timestamp": 1748035945133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.4075781250276,
+    "size": 0.04256755998259424,
+    "side": "buy",
+    "timestamp": 1748035945467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.259650421626,
+    "size": 0.20289838993867004,
+    "side": "buy",
+    "timestamp": 1748035945800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.3694947964354,
+    "size": 0.21628384378463067,
+    "side": "buy",
+    "timestamp": 1748035946133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.5650781311765,
+    "size": 0.11168455659989121,
+    "side": "buy",
+    "timestamp": 1748035946467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.648463716752,
+    "size": 0.02487391348925266,
+    "side": "buy",
+    "timestamp": 1748035946800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.0979398167055,
+    "size": 0.1484682822611176,
+    "side": "sell",
+    "timestamp": 1748035947133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2801.957902547497,
+    "size": 0.016808863738427188,
+    "side": "sell",
+    "timestamp": 1748035947467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.1596844334667,
+    "size": 0.030715273273767447,
+    "side": "buy",
+    "timestamp": 1748035947800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.3940329607053,
+    "size": 0.04532160938433952,
+    "side": "sell",
+    "timestamp": 1748035948133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.7179156418565,
+    "size": 0.21289885698847388,
+    "side": "buy",
+    "timestamp": 1748035948467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.303408121723,
+    "size": 0.15191174378555208,
+    "side": "buy",
+    "timestamp": 1748035948800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.331995988808,
+    "size": 0.12637954911579538,
+    "side": "buy",
+    "timestamp": 1748035949133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.5832022556906,
+    "size": 0.0726203186318582,
+    "side": "sell",
+    "timestamp": 1748035949467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.645096760717,
+    "size": 0.1993498191958019,
+    "side": "sell",
+    "timestamp": 1748035949800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.991503353975,
+    "size": 0.14324771568748404,
+    "side": "buy",
+    "timestamp": 1748035950133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.8834610159106,
+    "size": 0.0308415719095684,
+    "side": "buy",
+    "timestamp": 1748035950467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2803.043142815816,
+    "size": 0.0008494226186959216,
+    "side": "sell",
+    "timestamp": 1748035950800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.6988776379335,
+    "size": 0.2382644000741778,
+    "side": "buy",
+    "timestamp": 1748035951133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2803.0363174733307,
+    "size": 0.023908806993583165,
+    "side": "buy",
+    "timestamp": 1748035951467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2803.480912357327,
+    "size": 0.008869677413917995,
+    "side": "buy",
+    "timestamp": 1748035951800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2803.5711820423485,
+    "size": 0.11357282934160087,
+    "side": "buy",
+    "timestamp": 1748035952133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2803.880500176205,
+    "size": 0.02798915242626442,
+    "side": "buy",
+    "timestamp": 1748035952467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2803.7734296379276,
+    "size": 0.06830362571891449,
+    "side": "sell",
+    "timestamp": 1748035952800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2803.6013358568193,
+    "size": 0.0306123665113036,
+    "side": "buy",
+    "timestamp": 1748035953133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2803.316968919584,
+    "size": 0.0811899420834703,
+    "side": "sell",
+    "timestamp": 1748035953467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2803.146046009307,
+    "size": 0.06383075736721089,
+    "side": "sell",
+    "timestamp": 1748035953800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2803.398211682451,
+    "size": 0.06887411964614507,
+    "side": "buy",
+    "timestamp": 1748035954133,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2803.1732155832287,
+    "size": 0.06374729358154906,
+    "side": "sell",
+    "timestamp": 1748035954467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.4803903968345,
+    "size": 0.04000084932131392,
+    "side": "sell",
+    "timestamp": 1748035954800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.7216468964325,
+    "size": 0.09278441608382636,
+    "side": "sell",
+    "timestamp": 1748035955134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.2614406076,
+    "size": 0.17052946545979153,
+    "side": "sell",
+    "timestamp": 1748035955467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.4059869906805,
+    "size": 0.08767256145323023,
+    "side": "buy",
+    "timestamp": 1748035955800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.3353609531946,
+    "size": 0.00866320684104259,
+    "side": "sell",
+    "timestamp": 1748035956134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.5068617560364,
+    "size": 0.18562296903470943,
+    "side": "buy",
+    "timestamp": 1748035956467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.3473318766137,
+    "size": 0.08507156577912485,
+    "side": "buy",
+    "timestamp": 1748035956800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.153429262619,
+    "size": 0.021015348138073046,
+    "side": "sell",
+    "timestamp": 1748035957134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.044590163506,
+    "size": 0.01882712034752606,
+    "side": "sell",
+    "timestamp": 1748035957467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.4842838535783,
+    "size": 0.009624636982533234,
+    "side": "sell",
+    "timestamp": 1748035957800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2802.7583212682457,
+    "size": 0.17337115401197,
+    "side": "sell",
+    "timestamp": 1748035958134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2803.4036473116,
+    "size": 0.09864042095768932,
+    "side": "sell",
+    "timestamp": 1748035958467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2803.5555314014946,
+    "size": 0.15462773281144337,
+    "side": "buy",
+    "timestamp": 1748035958800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2803.3905265361727,
+    "size": 0.005873180899060087,
+    "side": "sell",
+    "timestamp": 1748035959134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2803.4301230668425,
+    "size": 0.007126715474270852,
+    "side": "sell",
+    "timestamp": 1748035959467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2803.103285590881,
+    "size": 0.16475984634423857,
+    "side": "buy",
+    "timestamp": 1748035959800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2803.248687287233,
+    "size": 0.08979308006294294,
+    "side": "sell",
+    "timestamp": 1748035960134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2803.606778442601,
+    "size": 0.03790499802899266,
+    "side": "buy",
+    "timestamp": 1748035960467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2803.5539821623097,
+    "size": 0.04707079957771581,
+    "side": "sell",
+    "timestamp": 1748035960800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2803.801937969222,
+    "size": 0.04571435726324795,
+    "side": "buy",
+    "timestamp": 1748035961134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.0667460681734,
+    "size": 0.010055822739091658,
+    "side": "buy",
+    "timestamp": 1748035961467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.1900104466577,
+    "size": 0.022063424588126653,
+    "side": "buy",
+    "timestamp": 1748035961800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.938497522116,
+    "size": 0.023307441769599428,
+    "side": "sell",
+    "timestamp": 1748035962134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.780266185955,
+    "size": 0.3035076561475502,
+    "side": "buy",
+    "timestamp": 1748035962467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.641934850222,
+    "size": 0.008538970931107578,
+    "side": "sell",
+    "timestamp": 1748035962800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.7758958176546,
+    "size": 0.09857594757471379,
+    "side": "buy",
+    "timestamp": 1748035963134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.0678205727186,
+    "size": 0.05147307333287973,
+    "side": "buy",
+    "timestamp": 1748035963467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.4185024374015,
+    "size": 0.03320029093157624,
+    "side": "buy",
+    "timestamp": 1748035963800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.275704899923,
+    "size": 0.2078887929065777,
+    "side": "sell",
+    "timestamp": 1748035964134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.023706818658,
+    "size": 0.009188093310455501,
+    "side": "buy",
+    "timestamp": 1748035964467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.9229172177156,
+    "size": 0.11063403813531106,
+    "side": "sell",
+    "timestamp": 1748035964800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.9752767625105,
+    "size": 0.042407180841859904,
+    "side": "sell",
+    "timestamp": 1748035965134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.502435232812,
+    "size": 0.06401843116897525,
+    "side": "buy",
+    "timestamp": 1748035965467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.9899059977065,
+    "size": 0.017546435533368546,
+    "side": "sell",
+    "timestamp": 1748035965800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.0743762760744,
+    "size": 0.06966561782012844,
+    "side": "sell",
+    "timestamp": 1748035966134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.212911443243,
+    "size": 0.3962338811175519,
+    "side": "sell",
+    "timestamp": 1748035966467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.130642251921,
+    "size": 0.010011563286395773,
+    "side": "sell",
+    "timestamp": 1748035966800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.15489414402,
+    "size": 0.0011855675937162925,
+    "side": "sell",
+    "timestamp": 1748035967134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.2441915998684,
+    "size": 0.07202317071012147,
+    "side": "sell",
+    "timestamp": 1748035967467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.1776384769037,
+    "size": 0.11670474583814848,
+    "side": "buy",
+    "timestamp": 1748035967800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.021607508807,
+    "size": 0.01729259424703972,
+    "side": "sell",
+    "timestamp": 1748035968134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.2082067490583,
+    "size": 0.018673268734477343,
+    "side": "buy",
+    "timestamp": 1748035968467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.9801955060198,
+    "size": 0.04431257136452615,
+    "side": "buy",
+    "timestamp": 1748035968800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.269000347312,
+    "size": 0.06933315718142018,
+    "side": "sell",
+    "timestamp": 1748035969134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.1482968539094,
+    "size": 0.022407486249502603,
+    "side": "buy",
+    "timestamp": 1748035969467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.981052215795,
+    "size": 0.0511779989845024,
+    "side": "sell",
+    "timestamp": 1748035969800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.2975199754433,
+    "size": 0.027674867032631324,
+    "side": "sell",
+    "timestamp": 1748035970134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.1815976675666,
+    "size": 0.07550073499947714,
+    "side": "sell",
+    "timestamp": 1748035970467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.413644312197,
+    "size": 0.03032580571213374,
+    "side": "sell",
+    "timestamp": 1748035970800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.927791893275,
+    "size": 0.049801555853643036,
+    "side": "sell",
+    "timestamp": 1748035971134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.8064588469074,
+    "size": 0.08137412194187144,
+    "side": "buy",
+    "timestamp": 1748035971467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.8090594157825,
+    "size": 0.05451050382495557,
+    "side": "buy",
+    "timestamp": 1748035971800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.074581282535,
+    "size": 0.3470741426055103,
+    "side": "buy",
+    "timestamp": 1748035972134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.416280660791,
+    "size": 0.1914244717376596,
+    "side": "sell",
+    "timestamp": 1748035972467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.455484196637,
+    "size": 0.03230445440524274,
+    "side": "buy",
+    "timestamp": 1748035972800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.7458085486123,
+    "size": 0.12236383415173252,
+    "side": "sell",
+    "timestamp": 1748035973134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.6080501992474,
+    "size": 0.03258262571212232,
+    "side": "buy",
+    "timestamp": 1748035973467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.3931224174958,
+    "size": 0.017627710509712957,
+    "side": "sell",
+    "timestamp": 1748035973800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.0817019399037,
+    "size": 0.02418886630609121,
+    "side": "sell",
+    "timestamp": 1748035974134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.223121242943,
+    "size": 0.016124754051241055,
+    "side": "sell",
+    "timestamp": 1748035974467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.948649814197,
+    "size": 0.010153253596069086,
+    "side": "buy",
+    "timestamp": 1748035974800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.0472718349074,
+    "size": 0.17122342698222237,
+    "side": "buy",
+    "timestamp": 1748035975134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.7750251048683,
+    "size": 0.03423850059311132,
+    "side": "sell",
+    "timestamp": 1748035975467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.329770419387,
+    "size": 0.156648740233292,
+    "side": "sell",
+    "timestamp": 1748035975800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.625698795152,
+    "size": 0.006136542600455051,
+    "side": "buy",
+    "timestamp": 1748035976134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.797435082971,
+    "size": 0.03140844701284925,
+    "side": "sell",
+    "timestamp": 1748035976467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.6001280482014,
+    "size": 0.013475998544016966,
+    "side": "sell",
+    "timestamp": 1748035976800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.4904629362572,
+    "size": 0.24718707201672285,
+    "side": "buy",
+    "timestamp": 1748035977134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.0654107470345,
+    "size": 0.1292121471891363,
+    "side": "sell",
+    "timestamp": 1748035977467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.936625831748,
+    "size": 0.10471858588274319,
+    "side": "sell",
+    "timestamp": 1748035977800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.8748068303753,
+    "size": 0.0557734170676406,
+    "side": "sell",
+    "timestamp": 1748035978134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.7369046012846,
+    "size": 0.24122963944474587,
+    "side": "sell",
+    "timestamp": 1748035978467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.6296231229953,
+    "size": 0.22976556349824434,
+    "side": "sell",
+    "timestamp": 1748035978800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.565886096169,
+    "size": 0.014371809248362087,
+    "side": "buy",
+    "timestamp": 1748035979134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.470074844981,
+    "size": 0.022882527305180148,
+    "side": "buy",
+    "timestamp": 1748035979467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.235726633767,
+    "size": 0.15208284657139437,
+    "side": "sell",
+    "timestamp": 1748035979800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.5336763894347,
+    "size": 0.13771390267194444,
+    "side": "buy",
+    "timestamp": 1748035980134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.601930495356,
+    "size": 0.1331785406222755,
+    "side": "sell",
+    "timestamp": 1748035980467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.810328759537,
+    "size": 0.02589457486458054,
+    "side": "sell",
+    "timestamp": 1748035980800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2804.911546206318,
+    "size": 0.016740762329223145,
+    "side": "sell",
+    "timestamp": 1748035981134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.384713753329,
+    "size": 0.0786375300857934,
+    "side": "sell",
+    "timestamp": 1748035981467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.2159250701097,
+    "size": 0.020801830579793686,
+    "side": "sell",
+    "timestamp": 1748035981800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.274140966397,
+    "size": 0.07458810022825535,
+    "side": "sell",
+    "timestamp": 1748035982134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.6873181527944,
+    "size": 0.01698066389499302,
+    "side": "buy",
+    "timestamp": 1748035982467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.0998477200237,
+    "size": 0.00422463138132177,
+    "side": "buy",
+    "timestamp": 1748035982800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.8147736365495,
+    "size": 0.06888247387578461,
+    "side": "sell",
+    "timestamp": 1748035983134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.9534886723736,
+    "size": 0.1577022238697116,
+    "side": "sell",
+    "timestamp": 1748035983467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.952761345882,
+    "size": 0.10559584491670525,
+    "side": "buy",
+    "timestamp": 1748035983800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.2807275448345,
+    "size": 0.0837344718235074,
+    "side": "sell",
+    "timestamp": 1748035984134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.946056819008,
+    "size": 0.056142437927772175,
+    "side": "sell",
+    "timestamp": 1748035984467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.0616306827947,
+    "size": 0.11719530654197413,
+    "side": "buy",
+    "timestamp": 1748035984800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.0172131282006,
+    "size": 0.035960138539095875,
+    "side": "sell",
+    "timestamp": 1748035985134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.5002384905283,
+    "size": 0.020353820682116476,
+    "side": "buy",
+    "timestamp": 1748035985467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.4980435420052,
+    "size": 0.0672513414952562,
+    "side": "sell",
+    "timestamp": 1748035985800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.392682956381,
+    "size": 0.04626951897810587,
+    "side": "buy",
+    "timestamp": 1748035986134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.3892162271245,
+    "size": 0.06860594562695525,
+    "side": "buy",
+    "timestamp": 1748035986467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.396173070731,
+    "size": 0.13520897642388816,
+    "side": "sell",
+    "timestamp": 1748035986800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.7664361937477,
+    "size": 0.11590098731221249,
+    "side": "buy",
+    "timestamp": 1748035987134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.9230213715355,
+    "size": 0.21767586460096366,
+    "side": "buy",
+    "timestamp": 1748035987467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.9769456236286,
+    "size": 0.20739987192156883,
+    "side": "sell",
+    "timestamp": 1748035987800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.9630743828843,
+    "size": 0.13299920691543865,
+    "side": "sell",
+    "timestamp": 1748035988134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.7887489851823,
+    "size": 0.05116265320757745,
+    "side": "buy",
+    "timestamp": 1748035988467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.0400667254976,
+    "size": 0.005371741163537806,
+    "side": "buy",
+    "timestamp": 1748035988800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.824604119826,
+    "size": 0.11462539217218826,
+    "side": "sell",
+    "timestamp": 1748035989134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.8986571086593,
+    "size": 0.050405836631760716,
+    "side": "sell",
+    "timestamp": 1748035989467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.188404652219,
+    "size": 0.0394975272667478,
+    "side": "sell",
+    "timestamp": 1748035989800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.871008853577,
+    "size": 0.021724848357024557,
+    "side": "buy",
+    "timestamp": 1748035990134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.9417537191325,
+    "size": 0.11212420316096912,
+    "side": "buy",
+    "timestamp": 1748035990467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.027302077209,
+    "size": 0.5543228038196965,
+    "side": "sell",
+    "timestamp": 1748035990800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.8148662592034,
+    "size": 0.0530791144593315,
+    "side": "buy",
+    "timestamp": 1748035991134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.1488468599355,
+    "size": 0.025606721506533116,
+    "side": "sell",
+    "timestamp": 1748035991467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.1897446894463,
+    "size": 0.001446775790904412,
+    "side": "sell",
+    "timestamp": 1748035991800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.1231506758345,
+    "size": 0.061703628021645945,
+    "side": "buy",
+    "timestamp": 1748035992134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.0412016663045,
+    "size": 0.15441845220405756,
+    "side": "buy",
+    "timestamp": 1748035992467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.093383169864,
+    "size": 0.09479895112360537,
+    "side": "buy",
+    "timestamp": 1748035992800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.981211199045,
+    "size": 0.009309974509988403,
+    "side": "sell",
+    "timestamp": 1748035993134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.800452819329,
+    "size": 0.17136714422493513,
+    "side": "buy",
+    "timestamp": 1748035993467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.2276417259563,
+    "size": 0.05371556496110459,
+    "side": "sell",
+    "timestamp": 1748035993800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.2012568440155,
+    "size": 0.12872746584966693,
+    "side": "buy",
+    "timestamp": 1748035994134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.0976488873907,
+    "size": 0.0288066693534508,
+    "side": "buy",
+    "timestamp": 1748035994467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.6095387177734,
+    "size": 0.17483433600605147,
+    "side": "sell",
+    "timestamp": 1748035994800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.365540523005,
+    "size": 0.14855880386928494,
+    "side": "sell",
+    "timestamp": 1748035995134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.6053642538664,
+    "size": 0.10063255019305617,
+    "side": "buy",
+    "timestamp": 1748035995467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.9736546459217,
+    "size": 0.17305679424637135,
+    "side": "sell",
+    "timestamp": 1748035995800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.0586865660257,
+    "size": 0.06202185333124715,
+    "side": "buy",
+    "timestamp": 1748035996134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.9920650416057,
+    "size": 0.2243341886563493,
+    "side": "sell",
+    "timestamp": 1748035996467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.2918285190326,
+    "size": 0.2278701781172975,
+    "side": "buy",
+    "timestamp": 1748035996800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.264163612588,
+    "size": 0.027221297128117345,
+    "side": "sell",
+    "timestamp": 1748035997134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.945787236701,
+    "size": 0.008963884921748063,
+    "side": "buy",
+    "timestamp": 1748035997467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2807.2179680157783,
+    "size": 0.007100592272138721,
+    "side": "buy",
+    "timestamp": 1748035997800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2807.5449995611752,
+    "size": 0.026558631999462047,
+    "side": "buy",
+    "timestamp": 1748035998134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2808.285497726117,
+    "size": 0.02968958364832601,
+    "side": "buy",
+    "timestamp": 1748035998467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2808.6028044925815,
+    "size": 0.10944169254063736,
+    "side": "sell",
+    "timestamp": 1748035998800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2808.8680094375704,
+    "size": 0.05248192854602514,
+    "side": "sell",
+    "timestamp": 1748035999134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2808.8501862314615,
+    "size": 0.00302026327544724,
+    "side": "sell",
+    "timestamp": 1748035999467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.0758486555487,
+    "size": 0.001899659883053765,
+    "side": "sell",
+    "timestamp": 1748035999800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2808.956344185806,
+    "size": 0.27238085733474154,
+    "side": "sell",
+    "timestamp": 1748036000134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2808.7193806230484,
+    "size": 0.03439246277152958,
+    "side": "buy",
+    "timestamp": 1748036000467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2808.5423456159074,
+    "size": 0.011237284225798212,
+    "side": "sell",
+    "timestamp": 1748036000800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2808.9833325986187,
+    "size": 0.05169418776103057,
+    "side": "buy",
+    "timestamp": 1748036001134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.334671683358,
+    "size": 0.007845762000744348,
+    "side": "buy",
+    "timestamp": 1748036001467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.7541830858218,
+    "size": 0.4443304733604097,
+    "side": "sell",
+    "timestamp": 1748036001800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.989022375325,
+    "size": 0.05410240596043562,
+    "side": "sell",
+    "timestamp": 1748036002134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.9770602937533,
+    "size": 0.12459269519858047,
+    "side": "buy",
+    "timestamp": 1748036002467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.156165758234,
+    "size": 0.0035039443431586653,
+    "side": "sell",
+    "timestamp": 1748036002800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.6722772528587,
+    "size": 0.07631055775004009,
+    "side": "sell",
+    "timestamp": 1748036003134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.89026859887,
+    "size": 0.050240246756454415,
+    "side": "sell",
+    "timestamp": 1748036003467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.1174280145033,
+    "size": 0.03826190488774911,
+    "side": "sell",
+    "timestamp": 1748036003800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.979863016284,
+    "size": 0.11526532528635053,
+    "side": "buy",
+    "timestamp": 1748036004134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.06316676027,
+    "size": 0.11374375948456579,
+    "side": "buy",
+    "timestamp": 1748036004467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.547248091853,
+    "size": 0.1528028539664119,
+    "side": "buy",
+    "timestamp": 1748036004800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.607488746803,
+    "size": 0.11055628392663802,
+    "side": "buy",
+    "timestamp": 1748036005134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.0672960087945,
+    "size": 0.00748623758533326,
+    "side": "sell",
+    "timestamp": 1748036005467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.1190955655466,
+    "size": 0.083364857823645,
+    "side": "buy",
+    "timestamp": 1748036005800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.204784145458,
+    "size": 0.2504104169994541,
+    "side": "buy",
+    "timestamp": 1748036006134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.3371113085013,
+    "size": 0.029637155715898086,
+    "side": "sell",
+    "timestamp": 1748036006467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.536665648976,
+    "size": 0.04055433066828761,
+    "side": "sell",
+    "timestamp": 1748036006800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.3748620088422,
+    "size": 0.08978387404047317,
+    "side": "buy",
+    "timestamp": 1748036007134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.10499923444,
+    "size": 0.03307782134973368,
+    "side": "buy",
+    "timestamp": 1748036007467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.3206824267295,
+    "size": 0.03655303713634663,
+    "side": "buy",
+    "timestamp": 1748036007800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.6554504244045,
+    "size": 0.06146219637717329,
+    "side": "buy",
+    "timestamp": 1748036008134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.4896009173617,
+    "size": 0.06163890485884467,
+    "side": "sell",
+    "timestamp": 1748036008467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.5390564916925,
+    "size": 0.2284075404155908,
+    "side": "buy",
+    "timestamp": 1748036008800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.954547314486,
+    "size": 0.07958564626219312,
+    "side": "buy",
+    "timestamp": 1748036009134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.1173438614537,
+    "size": 0.15047821279973647,
+    "side": "buy",
+    "timestamp": 1748036009467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.068130660708,
+    "size": 0.13390022383925723,
+    "side": "sell",
+    "timestamp": 1748036009800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.992584271067,
+    "size": 0.016957697969031682,
+    "side": "sell",
+    "timestamp": 1748036010134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.120059119853,
+    "size": 0.1900035514308932,
+    "side": "sell",
+    "timestamp": 1748036010467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.6918131246716,
+    "size": 0.020031114046722868,
+    "side": "sell",
+    "timestamp": 1748036010800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.0829629288405,
+    "size": 0.017999223691315524,
+    "side": "sell",
+    "timestamp": 1748036011134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.1389353170493,
+    "size": 0.044929448817201206,
+    "side": "sell",
+    "timestamp": 1748036011467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.0103533693577,
+    "size": 0.31802227564588803,
+    "side": "buy",
+    "timestamp": 1748036011800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.0569585009475,
+    "size": 0.051541133657406674,
+    "side": "buy",
+    "timestamp": 1748036012134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.2019594246826,
+    "size": 0.03232471527498302,
+    "side": "buy",
+    "timestamp": 1748036012467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.813336013261,
+    "size": 0.12631378281820946,
+    "side": "buy",
+    "timestamp": 1748036012800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.4446436227527,
+    "size": 0.009453295001047237,
+    "side": "sell",
+    "timestamp": 1748036013134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.288306036973,
+    "size": 0.13633861627510466,
+    "side": "sell",
+    "timestamp": 1748036013467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.4802443999006,
+    "size": 0.10465453134585533,
+    "side": "sell",
+    "timestamp": 1748036013800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.7165901592084,
+    "size": 0.04246263243506779,
+    "side": "buy",
+    "timestamp": 1748036014134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.7000675170552,
+    "size": 0.02881415591763131,
+    "side": "buy",
+    "timestamp": 1748036014467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.535566544193,
+    "size": 0.03103911573341609,
+    "side": "buy",
+    "timestamp": 1748036014800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.4475381594857,
+    "size": 0.0034158256760317748,
+    "side": "buy",
+    "timestamp": 1748036015134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.5605030494735,
+    "size": 0.015527937392411852,
+    "side": "buy",
+    "timestamp": 1748036015467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.440012537712,
+    "size": 0.052413694803963955,
+    "side": "buy",
+    "timestamp": 1748036015800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.686291583653,
+    "size": 0.12742164977991535,
+    "side": "sell",
+    "timestamp": 1748036016134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.951263864189,
+    "size": 0.0048930641009783706,
+    "side": "buy",
+    "timestamp": 1748036016467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.9111717110122,
+    "size": 0.03983130381980333,
+    "side": "sell",
+    "timestamp": 1748036016800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.8290081109276,
+    "size": 0.07843740083225628,
+    "side": "sell",
+    "timestamp": 1748036017134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.2894563888126,
+    "size": 0.07679379714539682,
+    "side": "buy",
+    "timestamp": 1748036017467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.474504386305,
+    "size": 0.09656573072495007,
+    "side": "sell",
+    "timestamp": 1748036017800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.449752154182,
+    "size": 0.05013208257341456,
+    "side": "buy",
+    "timestamp": 1748036018134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.619801047008,
+    "size": 0.005967909284347763,
+    "side": "buy",
+    "timestamp": 1748036018467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.814775150783,
+    "size": 0.018385728766720563,
+    "side": "buy",
+    "timestamp": 1748036018800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.997438206534,
+    "size": 0.011590683755474895,
+    "side": "sell",
+    "timestamp": 1748036019134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.746585590548,
+    "size": 0.19288595145816992,
+    "side": "sell",
+    "timestamp": 1748036019467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.535159059817,
+    "size": 0.08542112729282987,
+    "side": "buy",
+    "timestamp": 1748036019800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.7846629312735,
+    "size": 0.11443462718551003,
+    "side": "sell",
+    "timestamp": 1748036020134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.6699367870992,
+    "size": 0.23522992371538282,
+    "side": "sell",
+    "timestamp": 1748036020467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.835856869956,
+    "size": 0.21717242716644997,
+    "side": "sell",
+    "timestamp": 1748036020800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.9143694231343,
+    "size": 0.015714311880635844,
+    "side": "buy",
+    "timestamp": 1748036021134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.6708886543406,
+    "size": 0.07448183035045262,
+    "side": "sell",
+    "timestamp": 1748036021467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.8471631518455,
+    "size": 0.2701290303525152,
+    "side": "buy",
+    "timestamp": 1748036021800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.3251860904306,
+    "size": 0.04593777408859509,
+    "side": "sell",
+    "timestamp": 1748036022134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.463899076579,
+    "size": 0.0008484548478925578,
+    "side": "sell",
+    "timestamp": 1748036022467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.9571790289306,
+    "size": 0.08869140625390765,
+    "side": "sell",
+    "timestamp": 1748036022800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.2599998518454,
+    "size": 0.056925384856486086,
+    "side": "sell",
+    "timestamp": 1748036023134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.956731530185,
+    "size": 0.06464664398725477,
+    "side": "sell",
+    "timestamp": 1748036023467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.5978666771825,
+    "size": 0.2206804868751902,
+    "side": "buy",
+    "timestamp": 1748036023800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.0028347449347,
+    "size": 0.24730568801376487,
+    "side": "sell",
+    "timestamp": 1748036024134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.5931842143796,
+    "size": 0.0077926754195895495,
+    "side": "buy",
+    "timestamp": 1748036024467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.299488177327,
+    "size": 0.00887319088166407,
+    "side": "sell",
+    "timestamp": 1748036024800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.4866826437737,
+    "size": 0.08998628450873764,
+    "side": "buy",
+    "timestamp": 1748036025134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.516083596926,
+    "size": 0.09612423024668598,
+    "side": "buy",
+    "timestamp": 1748036025467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.9043337090416,
+    "size": 0.007017208490174325,
+    "side": "sell",
+    "timestamp": 1748036025800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.083372527702,
+    "size": 0.02994275670855505,
+    "side": "sell",
+    "timestamp": 1748036026134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.182641010713,
+    "size": 0.028074705717923656,
+    "side": "buy",
+    "timestamp": 1748036026467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.2854981038513,
+    "size": 0.29672750528144454,
+    "side": "sell",
+    "timestamp": 1748036026800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.999605818315,
+    "size": 0.0670937406510093,
+    "side": "buy",
+    "timestamp": 1748036027134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.038963584552,
+    "size": 0.4183644061044127,
+    "side": "sell",
+    "timestamp": 1748036027467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.1650978305615,
+    "size": 0.09055890617749507,
+    "side": "sell",
+    "timestamp": 1748036027800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.9987268130517,
+    "size": 0.2080710481483321,
+    "side": "buy",
+    "timestamp": 1748036028134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.576392035571,
+    "size": 0.10400422704441122,
+    "side": "sell",
+    "timestamp": 1748036028467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.606015917218,
+    "size": 0.1910504851899062,
+    "side": "buy",
+    "timestamp": 1748036028800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.3938355557448,
+    "size": 0.1607115401025191,
+    "side": "buy",
+    "timestamp": 1748036029134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.4040446358194,
+    "size": 0.07550459269878983,
+    "side": "sell",
+    "timestamp": 1748036029467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.5785139897666,
+    "size": 0.006830292266379739,
+    "side": "buy",
+    "timestamp": 1748036029800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.6063405395234,
+    "size": 0.11721431067066578,
+    "side": "sell",
+    "timestamp": 1748036030134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.957139078026,
+    "size": 0.004992891569121439,
+    "side": "sell",
+    "timestamp": 1748036030467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.966000721038,
+    "size": 0.05108182964042706,
+    "side": "buy",
+    "timestamp": 1748036030800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.961043033663,
+    "size": 0.1386267473018223,
+    "side": "buy",
+    "timestamp": 1748036031134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.895823217865,
+    "size": 0.18558429920581637,
+    "side": "buy",
+    "timestamp": 1748036031467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.994772459963,
+    "size": 0.11486642378021013,
+    "side": "buy",
+    "timestamp": 1748036031800,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.803067180801,
+    "size": 0.014307679868800459,
+    "side": "sell",
+    "timestamp": 1748036032134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.53036585109,
+    "size": 0.0035030867384762687,
+    "side": "sell",
+    "timestamp": 1748036032467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.80652895045,
+    "size": 0.06872981714320903,
+    "side": "sell",
+    "timestamp": 1748036032801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.9216168235607,
+    "size": 0.4486155702538921,
+    "side": "sell",
+    "timestamp": 1748036033134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.163670265323,
+    "size": 0.022608480371880242,
+    "side": "buy",
+    "timestamp": 1748036033467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.6951971510794,
+    "size": 0.10645649756342618,
+    "side": "sell",
+    "timestamp": 1748036033801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.648287114806,
+    "size": 0.12331114153950765,
+    "side": "sell",
+    "timestamp": 1748036034134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.021320465077,
+    "size": 0.0358871665406743,
+    "side": "sell",
+    "timestamp": 1748036034467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.285558271034,
+    "size": 0.13063309060005693,
+    "side": "buy",
+    "timestamp": 1748036034801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.369149575436,
+    "size": 0.042196672331940834,
+    "side": "sell",
+    "timestamp": 1748036035134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.824971594547,
+    "size": 0.08296955522820879,
+    "side": "buy",
+    "timestamp": 1748036035467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.101478206991,
+    "size": 0.09715598154082328,
+    "side": "sell",
+    "timestamp": 1748036035801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.048307236573,
+    "size": 0.0006007059282089457,
+    "side": "sell",
+    "timestamp": 1748036036134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.611796267765,
+    "size": 0.12834510582201922,
+    "side": "sell",
+    "timestamp": 1748036036467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.445822729518,
+    "size": 0.06688594338155059,
+    "side": "sell",
+    "timestamp": 1748036036801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.177834039998,
+    "size": 0.13434223780305715,
+    "side": "buy",
+    "timestamp": 1748036037134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.6900175932697,
+    "size": 0.34805969585791474,
+    "side": "sell",
+    "timestamp": 1748036037467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.580211627049,
+    "size": 0.0968488572806833,
+    "side": "sell",
+    "timestamp": 1748036037801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.8316805741615,
+    "size": 0.026081982969406094,
+    "side": "buy",
+    "timestamp": 1748036038134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.7979530291514,
+    "size": 0.04353027221747407,
+    "side": "buy",
+    "timestamp": 1748036038467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.7594062946678,
+    "size": 0.08398631034228375,
+    "side": "sell",
+    "timestamp": 1748036038801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.690012648219,
+    "size": 0.06403925574414009,
+    "side": "sell",
+    "timestamp": 1748036039134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.6893991651464,
+    "size": 0.151476539908527,
+    "side": "sell",
+    "timestamp": 1748036039467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.5992265329864,
+    "size": 0.0021267282556643586,
+    "side": "sell",
+    "timestamp": 1748036039801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.6548920177597,
+    "size": 0.11048671175726009,
+    "side": "sell",
+    "timestamp": 1748036040134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.9589948166135,
+    "size": 0.08128500479773317,
+    "side": "sell",
+    "timestamp": 1748036040467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.1226279545212,
+    "size": 0.01826480565534899,
+    "side": "buy",
+    "timestamp": 1748036040801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.357358987034,
+    "size": 0.09797819831014201,
+    "side": "sell",
+    "timestamp": 1748036041134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.3714433219634,
+    "size": 0.0725630384899109,
+    "side": "buy",
+    "timestamp": 1748036041467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.089087263681,
+    "size": 0.0013846630018306372,
+    "side": "sell",
+    "timestamp": 1748036041801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.5627279788378,
+    "size": 0.13285303111106792,
+    "side": "buy",
+    "timestamp": 1748036042134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.14940475107,
+    "size": 0.01718038421157463,
+    "side": "sell",
+    "timestamp": 1748036042467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.08707668483,
+    "size": 0.04921430452404407,
+    "side": "sell",
+    "timestamp": 1748036042801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.2922071478874,
+    "size": 0.2907461617988147,
+    "side": "sell",
+    "timestamp": 1748036043134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.130284756028,
+    "size": 0.0031702867248694987,
+    "side": "buy",
+    "timestamp": 1748036043467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.3288580079084,
+    "size": 0.021958586256491164,
+    "side": "sell",
+    "timestamp": 1748036043801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.485992727409,
+    "size": 0.008520163061952078,
+    "side": "buy",
+    "timestamp": 1748036044134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.4645974568066,
+    "size": 0.025913131700492583,
+    "side": "sell",
+    "timestamp": 1748036044467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.469739660174,
+    "size": 0.1476202043694635,
+    "side": "buy",
+    "timestamp": 1748036044801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.5813041129118,
+    "size": 0.021389203258374335,
+    "side": "sell",
+    "timestamp": 1748036045134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.1702474458957,
+    "size": 0.3569612207112065,
+    "side": "buy",
+    "timestamp": 1748036045467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.290422498579,
+    "size": 0.016451784484501155,
+    "side": "buy",
+    "timestamp": 1748036045801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.364099421884,
+    "size": 0.156376930487521,
+    "side": "sell",
+    "timestamp": 1748036046134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.057504165471,
+    "size": 0.13168554634114749,
+    "side": "buy",
+    "timestamp": 1748036046467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.1133960881357,
+    "size": 0.09194393775166831,
+    "side": "buy",
+    "timestamp": 1748036046801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.8870393516604,
+    "size": 0.049684174103767374,
+    "side": "buy",
+    "timestamp": 1748036047134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.7521308550026,
+    "size": 0.0017658884680055173,
+    "side": "sell",
+    "timestamp": 1748036047467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.873387801027,
+    "size": 0.12973716337544677,
+    "side": "buy",
+    "timestamp": 1748036047801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.7638566974865,
+    "size": 0.00943852590464669,
+    "side": "buy",
+    "timestamp": 1748036048134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.697203874029,
+    "size": 0.2561960285613783,
+    "side": "buy",
+    "timestamp": 1748036048467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.123135095291,
+    "size": 0.1646479287183218,
+    "side": "buy",
+    "timestamp": 1748036048801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.357350893864,
+    "size": 0.2123524108014868,
+    "side": "buy",
+    "timestamp": 1748036049134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.1442475728054,
+    "size": 0.015547744308951004,
+    "side": "sell",
+    "timestamp": 1748036049467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.1013098710996,
+    "size": 0.2516518254209688,
+    "side": "buy",
+    "timestamp": 1748036049801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.198169785582,
+    "size": 0.21327056397569322,
+    "side": "buy",
+    "timestamp": 1748036050134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.9524674739305,
+    "size": 0.019043875477521854,
+    "side": "buy",
+    "timestamp": 1748036050467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.9602001628914,
+    "size": 0.3410111543696732,
+    "side": "buy",
+    "timestamp": 1748036050801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.341564451807,
+    "size": 0.09796245970891676,
+    "side": "buy",
+    "timestamp": 1748036051134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.2344479772696,
+    "size": 0.10141064683275697,
+    "side": "sell",
+    "timestamp": 1748036051467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.6179764218145,
+    "size": 0.16495240190064409,
+    "side": "buy",
+    "timestamp": 1748036051801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.2730557557575,
+    "size": 0.19284218292364996,
+    "side": "buy",
+    "timestamp": 1748036052134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.1594949797127,
+    "size": 0.10758882622320745,
+    "side": "sell",
+    "timestamp": 1748036052467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.964059975014,
+    "size": 0.17839655013365247,
+    "side": "sell",
+    "timestamp": 1748036052801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.463586433888,
+    "size": 0.025405861514960156,
+    "side": "sell",
+    "timestamp": 1748036053134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.6826561791545,
+    "size": 0.09174414745243771,
+    "side": "buy",
+    "timestamp": 1748036053467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.86001579268,
+    "size": 0.1425531012478771,
+    "side": "sell",
+    "timestamp": 1748036053801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.907762149154,
+    "size": 0.009357304573456729,
+    "side": "buy",
+    "timestamp": 1748036054134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.454474164846,
+    "size": 0.1359648091909544,
+    "side": "buy",
+    "timestamp": 1748036054467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.758750301146,
+    "size": 0.07821107721764103,
+    "side": "sell",
+    "timestamp": 1748036054801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.693655174159,
+    "size": 0.2587385295203673,
+    "side": "sell",
+    "timestamp": 1748036055134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.084298517183,
+    "size": 0.005707138866788659,
+    "side": "sell",
+    "timestamp": 1748036055467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.6731621228137,
+    "size": 0.0009157721558251802,
+    "side": "sell",
+    "timestamp": 1748036055801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.2403723839648,
+    "size": 0.0824039314301119,
+    "side": "buy",
+    "timestamp": 1748036056134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.7879581889706,
+    "size": 0.3070280741591347,
+    "side": "buy",
+    "timestamp": 1748036056467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.893640893698,
+    "size": 0.0984564722866212,
+    "side": "buy",
+    "timestamp": 1748036056801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.996370036165,
+    "size": 0.10455032990144777,
+    "side": "buy",
+    "timestamp": 1748036057134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.4450558292315,
+    "size": 0.19914428923760796,
+    "side": "buy",
+    "timestamp": 1748036057467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.2350955476927,
+    "size": 0.10732263231430238,
+    "side": "sell",
+    "timestamp": 1748036057801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.3038617227576,
+    "size": 0.06356439648515881,
+    "side": "sell",
+    "timestamp": 1748036058134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.842900450866,
+    "size": 0.0019557836894934016,
+    "side": "sell",
+    "timestamp": 1748036058467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.678604245397,
+    "size": 0.05196999754916393,
+    "side": "sell",
+    "timestamp": 1748036058801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.647560623307,
+    "size": 0.12636894346691976,
+    "side": "sell",
+    "timestamp": 1748036059134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.809176978156,
+    "size": 0.2886518763338138,
+    "side": "buy",
+    "timestamp": 1748036059467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.83259900518,
+    "size": 0.1512252581500698,
+    "side": "buy",
+    "timestamp": 1748036059801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.8357239276925,
+    "size": 0.08810785756411071,
+    "side": "buy",
+    "timestamp": 1748036060134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.722628985791,
+    "size": 0.03443172582329609,
+    "side": "buy",
+    "timestamp": 1748036060467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.6569149071784,
+    "size": 0.12076240785249646,
+    "side": "sell",
+    "timestamp": 1748036060801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.0198746685965,
+    "size": 0.14843066604645402,
+    "side": "buy",
+    "timestamp": 1748036061134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.112305663093,
+    "size": 0.012959226263302148,
+    "side": "buy",
+    "timestamp": 1748036061467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.2569601145437,
+    "size": 0.0075580174935748565,
+    "side": "buy",
+    "timestamp": 1748036061801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.415829267408,
+    "size": 0.061084354866648406,
+    "side": "buy",
+    "timestamp": 1748036062134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.046394933219,
+    "size": 0.08225799648190375,
+    "side": "sell",
+    "timestamp": 1748036062467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.701147855544,
+    "size": 0.008010034283367577,
+    "side": "sell",
+    "timestamp": 1748036062801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.150171448241,
+    "size": 0.15879687588723118,
+    "side": "buy",
+    "timestamp": 1748036063134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.950752073656,
+    "size": 0.0554757524273667,
+    "side": "sell",
+    "timestamp": 1748036063467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.069695473854,
+    "size": 0.2544734064137081,
+    "side": "sell",
+    "timestamp": 1748036063801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.117443961919,
+    "size": 0.10544983104579403,
+    "side": "buy",
+    "timestamp": 1748036064134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.33260605204,
+    "size": 0.15516670093003115,
+    "side": "buy",
+    "timestamp": 1748036064467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.727367846289,
+    "size": 0.023522285350994022,
+    "side": "buy",
+    "timestamp": 1748036064801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.8542444912496,
+    "size": 0.2099952612093218,
+    "side": "buy",
+    "timestamp": 1748036065134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.2332416881377,
+    "size": 0.005734773501445358,
+    "side": "buy",
+    "timestamp": 1748036065467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.103056908494,
+    "size": 0.19274429142784189,
+    "side": "buy",
+    "timestamp": 1748036065801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.802694185934,
+    "size": 0.003464815949114277,
+    "side": "sell",
+    "timestamp": 1748036066134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.0671842509682,
+    "size": 0.16262062015892964,
+    "side": "sell",
+    "timestamp": 1748036066467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.944863209518,
+    "size": 0.12514037109888962,
+    "side": "buy",
+    "timestamp": 1748036066801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.0749615599266,
+    "size": 0.13878174397434004,
+    "side": "buy",
+    "timestamp": 1748036067134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.8548655036598,
+    "size": 0.06952063802388375,
+    "side": "sell",
+    "timestamp": 1748036067467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.1127599146985,
+    "size": 0.05759315571135022,
+    "side": "buy",
+    "timestamp": 1748036067801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.913026040832,
+    "size": 0.1247956839303106,
+    "side": "buy",
+    "timestamp": 1748036068134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.990272289207,
+    "size": 0.11237680433642457,
+    "side": "sell",
+    "timestamp": 1748036068467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.669764543803,
+    "size": 0.04422260685486111,
+    "side": "buy",
+    "timestamp": 1748036068801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.759300041279,
+    "size": 0.09977005585854615,
+    "side": "buy",
+    "timestamp": 1748036069134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.9626948734813,
+    "size": 0.06752193460583562,
+    "side": "buy",
+    "timestamp": 1748036069467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.9069284388397,
+    "size": 0.026913486766687828,
+    "side": "sell",
+    "timestamp": 1748036069801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.3002553392885,
+    "size": 0.03565331307741077,
+    "side": "buy",
+    "timestamp": 1748036070134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.934783123208,
+    "size": 0.05998554019066898,
+    "side": "buy",
+    "timestamp": 1748036070467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.7709390422688,
+    "size": 0.04660324363768309,
+    "side": "buy",
+    "timestamp": 1748036070801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.8653327481497,
+    "size": 0.04189604012150985,
+    "side": "sell",
+    "timestamp": 1748036071134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.5823292509117,
+    "size": 0.11372609844023725,
+    "side": "sell",
+    "timestamp": 1748036071467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.523627140417,
+    "size": 0.45632921589138475,
+    "side": "sell",
+    "timestamp": 1748036071801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.7900576286725,
+    "size": 0.2447794742466583,
+    "side": "sell",
+    "timestamp": 1748036072134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.9330738214326,
+    "size": 0.1694748453282045,
+    "side": "sell",
+    "timestamp": 1748036072467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.394404630988,
+    "size": 0.0323514841582553,
+    "side": "buy",
+    "timestamp": 1748036072801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.3917903432734,
+    "size": 0.25433399317882327,
+    "side": "buy",
+    "timestamp": 1748036073134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.4045812623995,
+    "size": 0.2733966062199835,
+    "side": "buy",
+    "timestamp": 1748036073467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.1756404101593,
+    "size": 0.16143725282486457,
+    "side": "buy",
+    "timestamp": 1748036073801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.4313069904833,
+    "size": 0.16243771344713967,
+    "side": "sell",
+    "timestamp": 1748036074134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.9416665707013,
+    "size": 0.5896947006828606,
+    "side": "buy",
+    "timestamp": 1748036074467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.268748015368,
+    "size": 0.01141367649968788,
+    "side": "buy",
+    "timestamp": 1748036074801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.332361797347,
+    "size": 0.000487497663079754,
+    "side": "sell",
+    "timestamp": 1748036075134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.6191372339867,
+    "size": 0.29070665793813993,
+    "side": "buy",
+    "timestamp": 1748036075467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.7525979888273,
+    "size": 0.01968935129749881,
+    "side": "sell",
+    "timestamp": 1748036075801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.40988986687,
+    "size": 0.05559287442695702,
+    "side": "sell",
+    "timestamp": 1748036076134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.655598139785,
+    "size": 0.04918286322741702,
+    "side": "sell",
+    "timestamp": 1748036076467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.676493756122,
+    "size": 0.04724977526405206,
+    "side": "buy",
+    "timestamp": 1748036076801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.296827124507,
+    "size": 0.015590957382150146,
+    "side": "sell",
+    "timestamp": 1748036077134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.134425826798,
+    "size": 0.03363537891086661,
+    "side": "buy",
+    "timestamp": 1748036077467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.314408005537,
+    "size": 0.1712086759567026,
+    "side": "sell",
+    "timestamp": 1748036077801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.205683840441,
+    "size": 0.36258889680240264,
+    "side": "buy",
+    "timestamp": 1748036078134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.0669255654507,
+    "size": 0.13921416425899352,
+    "side": "buy",
+    "timestamp": 1748036078467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.6361978544555,
+    "size": 0.15707600327677582,
+    "side": "sell",
+    "timestamp": 1748036078801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.6961957005633,
+    "size": 0.057101589065405634,
+    "side": "sell",
+    "timestamp": 1748036079134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.7369873744215,
+    "size": 0.05640355441029357,
+    "side": "sell",
+    "timestamp": 1748036079467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.551880372011,
+    "size": 0.06577915376947485,
+    "side": "sell",
+    "timestamp": 1748036079801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.49431606577,
+    "size": 0.24389818700343843,
+    "side": "buy",
+    "timestamp": 1748036080134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.818540212378,
+    "size": 0.024680733952149432,
+    "side": "sell",
+    "timestamp": 1748036080467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.1249606844995,
+    "size": 0.03234772289453946,
+    "side": "sell",
+    "timestamp": 1748036080801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.2081457321647,
+    "size": 0.027773182097111045,
+    "side": "buy",
+    "timestamp": 1748036081134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.2164036318086,
+    "size": 0.017808533969110536,
+    "side": "buy",
+    "timestamp": 1748036081467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.3386273357582,
+    "size": 0.055194749650197134,
+    "side": "buy",
+    "timestamp": 1748036081801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.631761079632,
+    "size": 0.038884828999814235,
+    "side": "sell",
+    "timestamp": 1748036082134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.4122474452033,
+    "size": 0.023274784322407135,
+    "side": "buy",
+    "timestamp": 1748036082467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.9082934786966,
+    "size": 0.0001778267205462278,
+    "side": "sell",
+    "timestamp": 1748036082801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.9267437900344,
+    "size": 0.010435537976662815,
+    "side": "buy",
+    "timestamp": 1748036083134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.9789128311922,
+    "size": 0.0026167756171440676,
+    "side": "sell",
+    "timestamp": 1748036083467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.0412837985955,
+    "size": 0.014756622285027275,
+    "side": "sell",
+    "timestamp": 1748036083801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.149371669518,
+    "size": 0.04897615366558088,
+    "side": "buy",
+    "timestamp": 1748036084134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.0616752548494,
+    "size": 0.16098293165268554,
+    "side": "sell",
+    "timestamp": 1748036084467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.8911549283416,
+    "size": 0.10151498367960049,
+    "side": "sell",
+    "timestamp": 1748036084801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.075076580859,
+    "size": 0.0071264459678722775,
+    "side": "sell",
+    "timestamp": 1748036085134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.6111597845984,
+    "size": 0.13287671436072704,
+    "side": "buy",
+    "timestamp": 1748036085467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.213125916564,
+    "size": 0.2869128989925269,
+    "side": "sell",
+    "timestamp": 1748036085801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.3037270091795,
+    "size": 0.000380491113221754,
+    "side": "buy",
+    "timestamp": 1748036086134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.103827265095,
+    "size": 0.4200015438401227,
+    "side": "sell",
+    "timestamp": 1748036086467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.333401558009,
+    "size": 0.14878796926951496,
+    "side": "sell",
+    "timestamp": 1748036086801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.531765897221,
+    "size": 0.033525608090845115,
+    "side": "sell",
+    "timestamp": 1748036087134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.2956283028816,
+    "size": 0.0373589769302121,
+    "side": "sell",
+    "timestamp": 1748036087467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.8791461264614,
+    "size": 0.02206619135284099,
+    "side": "sell",
+    "timestamp": 1748036087801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.5601795224215,
+    "size": 0.1279830712210013,
+    "side": "buy",
+    "timestamp": 1748036088134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.6417844175753,
+    "size": 0.09202214252133978,
+    "side": "sell",
+    "timestamp": 1748036088467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.661589013332,
+    "size": 0.3327917830153643,
+    "side": "buy",
+    "timestamp": 1748036088801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.7858186802605,
+    "size": 0.012048578604929867,
+    "side": "sell",
+    "timestamp": 1748036089134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.8444968146523,
+    "size": 0.056997570257020104,
+    "side": "sell",
+    "timestamp": 1748036089467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.098794256289,
+    "size": 0.06639229316527281,
+    "side": "sell",
+    "timestamp": 1748036089801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.1182527801757,
+    "size": 0.07179505349203541,
+    "side": "buy",
+    "timestamp": 1748036090134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.495101652988,
+    "size": 0.23773137236137135,
+    "side": "buy",
+    "timestamp": 1748036090467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.286858398177,
+    "size": 0.040678537501555465,
+    "side": "sell",
+    "timestamp": 1748036090801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.0147024614143,
+    "size": 0.05222033654256253,
+    "side": "sell",
+    "timestamp": 1748036091134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.707960018298,
+    "size": 0.09999271399653152,
+    "side": "buy",
+    "timestamp": 1748036091467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.6415627401825,
+    "size": 0.12448624264685229,
+    "side": "buy",
+    "timestamp": 1748036091801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.478346051805,
+    "size": 0.115047337215396,
+    "side": "buy",
+    "timestamp": 1748036092134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.225129138455,
+    "size": 0.019707196259878358,
+    "side": "buy",
+    "timestamp": 1748036092467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.1402714058718,
+    "size": 0.05988123886996047,
+    "side": "sell",
+    "timestamp": 1748036092801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.1867985315753,
+    "size": 0.05119831691324381,
+    "side": "buy",
+    "timestamp": 1748036093134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.1894676387947,
+    "size": 0.09175168734940514,
+    "side": "sell",
+    "timestamp": 1748036093467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.713812217104,
+    "size": 0.030738688816770124,
+    "side": "buy",
+    "timestamp": 1748036093801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.183784029991,
+    "size": 0.028968954808594374,
+    "side": "buy",
+    "timestamp": 1748036094134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.202471668371,
+    "size": 0.14206107768462717,
+    "side": "buy",
+    "timestamp": 1748036094467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.6369729854614,
+    "size": 0.1410945372400935,
+    "side": "buy",
+    "timestamp": 1748036094801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.7320337351243,
+    "size": 0.02953220635911326,
+    "side": "sell",
+    "timestamp": 1748036095134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.5514537345116,
+    "size": 0.13484583506141218,
+    "side": "buy",
+    "timestamp": 1748036095467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.460336985743,
+    "size": 0.02563806536937521,
+    "side": "sell",
+    "timestamp": 1748036095801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.5367312508592,
+    "size": 0.20142934431043083,
+    "side": "sell",
+    "timestamp": 1748036096134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.495552158417,
+    "size": 0.023786685932891946,
+    "side": "sell",
+    "timestamp": 1748036096467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.6021643082263,
+    "size": 0.03170989155844996,
+    "side": "buy",
+    "timestamp": 1748036096801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.774473914907,
+    "size": 0.03227003960719735,
+    "side": "sell",
+    "timestamp": 1748036097134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.5726976692863,
+    "size": 0.002975586955929828,
+    "side": "buy",
+    "timestamp": 1748036097467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.654820612954,
+    "size": 0.0345849794184464,
+    "side": "buy",
+    "timestamp": 1748036097801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.1456177455043,
+    "size": 0.012508729285759338,
+    "side": "buy",
+    "timestamp": 1748036098134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.5070835571287,
+    "size": 0.11718622159096218,
+    "side": "buy",
+    "timestamp": 1748036098467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.719059612156,
+    "size": 0.011289148240503278,
+    "side": "buy",
+    "timestamp": 1748036098801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.7773027402222,
+    "size": 0.07962771380027966,
+    "side": "buy",
+    "timestamp": 1748036099134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.1257044224644,
+    "size": 0.09548937857539212,
+    "side": "sell",
+    "timestamp": 1748036099467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.2952981908297,
+    "size": 0.016162755691529227,
+    "side": "buy",
+    "timestamp": 1748036099801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.437847601532,
+    "size": 0.17254408278331282,
+    "side": "buy",
+    "timestamp": 1748036100134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.212520776718,
+    "size": 0.1493851314158051,
+    "side": "buy",
+    "timestamp": 1748036100467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.102962951586,
+    "size": 0.034539198262117606,
+    "side": "sell",
+    "timestamp": 1748036100801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.1512645194425,
+    "size": 0.0298239999454262,
+    "side": "sell",
+    "timestamp": 1748036101134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.04354941756,
+    "size": 0.07654263270329334,
+    "side": "sell",
+    "timestamp": 1748036101467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.361013851853,
+    "size": 0.04822654627147964,
+    "side": "buy",
+    "timestamp": 1748036101801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.3838684523616,
+    "size": 0.005680607218143201,
+    "side": "buy",
+    "timestamp": 1748036102134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.8413757693256,
+    "size": 0.02117147795539423,
+    "side": "sell",
+    "timestamp": 1748036102467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.167199600302,
+    "size": 0.08856671851056115,
+    "side": "buy",
+    "timestamp": 1748036102801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.471264672787,
+    "size": 0.3054260626979255,
+    "side": "buy",
+    "timestamp": 1748036103134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.001746835529,
+    "size": 0.027076647488236006,
+    "side": "sell",
+    "timestamp": 1748036103467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.2545294418237,
+    "size": 0.01770295836601219,
+    "side": "buy",
+    "timestamp": 1748036103801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.391289952082,
+    "size": 0.03598331989832599,
+    "side": "sell",
+    "timestamp": 1748036104134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.519715034174,
+    "size": 0.05636703548267792,
+    "side": "sell",
+    "timestamp": 1748036104467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.5866785224966,
+    "size": 0.01709484235025929,
+    "side": "sell",
+    "timestamp": 1748036104801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.4764096714025,
+    "size": 0.04196058122439966,
+    "side": "buy",
+    "timestamp": 1748036105134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.7325489704,
+    "size": 0.16976023448136188,
+    "side": "sell",
+    "timestamp": 1748036105467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.9942059959612,
+    "size": 0.0024589970335054494,
+    "side": "sell",
+    "timestamp": 1748036105801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.986171303257,
+    "size": 0.0819509073119196,
+    "side": "sell",
+    "timestamp": 1748036106134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.0165842037964,
+    "size": 0.21629660627206435,
+    "side": "sell",
+    "timestamp": 1748036106467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.034903676301,
+    "size": 0.19899104687782448,
+    "side": "sell",
+    "timestamp": 1748036106801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.9043946775423,
+    "size": 0.07104327047720911,
+    "side": "sell",
+    "timestamp": 1748036107134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.7263504070756,
+    "size": 0.08787125990077954,
+    "side": "buy",
+    "timestamp": 1748036107467,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.08320766426,
+    "size": 0.038375468114891814,
+    "side": "sell",
+    "timestamp": 1748036107801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.1177680633027,
+    "size": 0.043195029483479114,
+    "side": "sell",
+    "timestamp": 1748036108134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.3743094768683,
+    "size": 0.0733201523990511,
+    "side": "sell",
+    "timestamp": 1748036108468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.3182121772074,
+    "size": 0.36519983196250844,
+    "side": "sell",
+    "timestamp": 1748036108801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.211273764931,
+    "size": 0.10753254218888593,
+    "side": "buy",
+    "timestamp": 1748036109134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.123668713588,
+    "size": 0.0017877069774803328,
+    "side": "buy",
+    "timestamp": 1748036109468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.3887325629057,
+    "size": 0.004082403799637669,
+    "side": "sell",
+    "timestamp": 1748036109801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.254319965964,
+    "size": 0.26021401192489596,
+    "side": "buy",
+    "timestamp": 1748036110134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.562184314519,
+    "size": 0.0004888201589471126,
+    "side": "buy",
+    "timestamp": 1748036110468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.5468644746575,
+    "size": 0.03830441658436232,
+    "side": "sell",
+    "timestamp": 1748036110801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.79309557201,
+    "size": 0.1806673035515809,
+    "side": "sell",
+    "timestamp": 1748036111134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.1475322602473,
+    "size": 0.18397664251976664,
+    "side": "buy",
+    "timestamp": 1748036111468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.116751249445,
+    "size": 0.12249654345717978,
+    "side": "buy",
+    "timestamp": 1748036111801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.0388238450755,
+    "size": 0.0718968465327806,
+    "side": "sell",
+    "timestamp": 1748036112134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.276600786068,
+    "size": 0.1140356988068037,
+    "side": "buy",
+    "timestamp": 1748036112468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.3239098196864,
+    "size": 0.11370270582737235,
+    "side": "buy",
+    "timestamp": 1748036112801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.3068280615776,
+    "size": 0.015009640331149602,
+    "side": "sell",
+    "timestamp": 1748036113134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.2728489384544,
+    "size": 0.15230535118123031,
+    "side": "sell",
+    "timestamp": 1748036113468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.092332682743,
+    "size": 0.1826060296633167,
+    "side": "sell",
+    "timestamp": 1748036113801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.7313019359167,
+    "size": 0.16347105770296438,
+    "side": "sell",
+    "timestamp": 1748036114134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2815.021205353165,
+    "size": 0.06752163225431877,
+    "side": "sell",
+    "timestamp": 1748036114468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2815.2331477204475,
+    "size": 0.016803693407928744,
+    "side": "sell",
+    "timestamp": 1748036114801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2815.154919186587,
+    "size": 0.001963440064710555,
+    "side": "buy",
+    "timestamp": 1748036115134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.8556648770314,
+    "size": 0.05933102183061039,
+    "side": "buy",
+    "timestamp": 1748036115468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.808555664477,
+    "size": 0.041771351103739696,
+    "side": "sell",
+    "timestamp": 1748036115801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.8157808820765,
+    "size": 0.09262786910129928,
+    "side": "buy",
+    "timestamp": 1748036116134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2815.058690212453,
+    "size": 0.08993226978915857,
+    "side": "buy",
+    "timestamp": 1748036116468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2815.190133732008,
+    "size": 0.03742163731554823,
+    "side": "buy",
+    "timestamp": 1748036116801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2815.092939712941,
+    "size": 0.14785530828571242,
+    "side": "buy",
+    "timestamp": 1748036117134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.2045958759227,
+    "size": 0.13999675286620003,
+    "side": "buy",
+    "timestamp": 1748036117468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.8404848709038,
+    "size": 0.0732520756673332,
+    "side": "sell",
+    "timestamp": 1748036117801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.919376012116,
+    "size": 0.054449573443523296,
+    "side": "sell",
+    "timestamp": 1748036118134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.768007683613,
+    "size": 0.09821168145103748,
+    "side": "sell",
+    "timestamp": 1748036118468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.2904678584882,
+    "size": 0.02146496928650228,
+    "side": "buy",
+    "timestamp": 1748036118801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.7195081918785,
+    "size": 0.10389811229529644,
+    "side": "buy",
+    "timestamp": 1748036119134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.564161326731,
+    "size": 0.024467099693366603,
+    "side": "buy",
+    "timestamp": 1748036119468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.163601171732,
+    "size": 0.03748760790233691,
+    "side": "sell",
+    "timestamp": 1748036119801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.3978210604478,
+    "size": 0.1469545793804907,
+    "side": "sell",
+    "timestamp": 1748036120134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.073039762492,
+    "size": 0.02112605520962003,
+    "side": "buy",
+    "timestamp": 1748036120468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.193692866748,
+    "size": 0.13050099991340205,
+    "side": "sell",
+    "timestamp": 1748036120801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.9089059625394,
+    "size": 0.0628464748659712,
+    "side": "buy",
+    "timestamp": 1748036121134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.3632326783268,
+    "size": 0.06339631263949932,
+    "side": "sell",
+    "timestamp": 1748036121468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.3493257194827,
+    "size": 0.11665300956253884,
+    "side": "buy",
+    "timestamp": 1748036121801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.1523114638376,
+    "size": 0.06031634662700815,
+    "side": "sell",
+    "timestamp": 1748036122134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.0609593703934,
+    "size": 0.07367948173315117,
+    "side": "sell",
+    "timestamp": 1748036122468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.144802302578,
+    "size": 0.04869052590313926,
+    "side": "sell",
+    "timestamp": 1748036122801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.960933793935,
+    "size": 0.08053325669178411,
+    "side": "sell",
+    "timestamp": 1748036123134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.7429192468812,
+    "size": 0.08223440388565292,
+    "side": "sell",
+    "timestamp": 1748036123468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.7646672799124,
+    "size": 0.18889728534706057,
+    "side": "sell",
+    "timestamp": 1748036123801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.0416771355503,
+    "size": 0.06644212426646277,
+    "side": "buy",
+    "timestamp": 1748036124134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.9503090512044,
+    "size": 0.18741672910122692,
+    "side": "buy",
+    "timestamp": 1748036124468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.2776917630204,
+    "size": 0.0402286643824881,
+    "side": "buy",
+    "timestamp": 1748036124801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.3971754891536,
+    "size": 0.15426090503041734,
+    "side": "sell",
+    "timestamp": 1748036125134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.988618036789,
+    "size": 0.012222566260483916,
+    "side": "sell",
+    "timestamp": 1748036125468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.8844141642735,
+    "size": 0.04758062789635057,
+    "side": "sell",
+    "timestamp": 1748036125801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.7379092087854,
+    "size": 0.05399208851810577,
+    "side": "sell",
+    "timestamp": 1748036126134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.2697924202093,
+    "size": 0.05885208562375174,
+    "side": "sell",
+    "timestamp": 1748036126468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.752196038783,
+    "size": 0.03614999824922622,
+    "side": "buy",
+    "timestamp": 1748036126801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2815.047445513769,
+    "size": 0.19193147561766688,
+    "side": "sell",
+    "timestamp": 1748036127134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.53623492771,
+    "size": 0.011855114590125459,
+    "side": "buy",
+    "timestamp": 1748036127468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.158642606463,
+    "size": 0.05789227221181945,
+    "side": "sell",
+    "timestamp": 1748036127801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.8432479086123,
+    "size": 0.021348930620699886,
+    "side": "buy",
+    "timestamp": 1748036128134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.6353966667875,
+    "size": 0.04465910955711577,
+    "side": "sell",
+    "timestamp": 1748036128468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.78978793396,
+    "size": 0.004406704539203403,
+    "side": "sell",
+    "timestamp": 1748036128801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.0042877857236,
+    "size": 0.009168909839307638,
+    "side": "buy",
+    "timestamp": 1748036129134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.9114887331257,
+    "size": 0.03656860289924985,
+    "side": "sell",
+    "timestamp": 1748036129468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.895276046562,
+    "size": 0.12247770238275053,
+    "side": "buy",
+    "timestamp": 1748036129801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.841566570038,
+    "size": 0.12952245287715078,
+    "side": "sell",
+    "timestamp": 1748036130134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.862494952818,
+    "size": 0.0029369155712735957,
+    "side": "sell",
+    "timestamp": 1748036130468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.138174504492,
+    "size": 0.38941348057303404,
+    "side": "buy",
+    "timestamp": 1748036130801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.177406543001,
+    "size": 0.08486945757101991,
+    "side": "sell",
+    "timestamp": 1748036131134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.221093601395,
+    "size": 0.22284793654586005,
+    "side": "sell",
+    "timestamp": 1748036131468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.1512393779976,
+    "size": 0.13154604041880066,
+    "side": "buy",
+    "timestamp": 1748036131801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.0461851526725,
+    "size": 0.04757471507929273,
+    "side": "buy",
+    "timestamp": 1748036132134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.8551977605453,
+    "size": 0.045559880062349845,
+    "side": "buy",
+    "timestamp": 1748036132468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.85591897469,
+    "size": 0.02561747951111561,
+    "side": "sell",
+    "timestamp": 1748036132801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.443715394192,
+    "size": 0.03065299546390758,
+    "side": "buy",
+    "timestamp": 1748036133134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.6556688577066,
+    "size": 0.018695935694542462,
+    "side": "sell",
+    "timestamp": 1748036133468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.768699911415,
+    "size": 0.27143989160419907,
+    "side": "buy",
+    "timestamp": 1748036133801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.9123948217166,
+    "size": 0.19565471636779125,
+    "side": "buy",
+    "timestamp": 1748036134134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.8380971116567,
+    "size": 0.022990596106788122,
+    "side": "sell",
+    "timestamp": 1748036134468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.052632176646,
+    "size": 0.09280987080078679,
+    "side": "buy",
+    "timestamp": 1748036134801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.018130633009,
+    "size": 0.0324733214929727,
+    "side": "buy",
+    "timestamp": 1748036135134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.658903690085,
+    "size": 0.03852350737417996,
+    "side": "sell",
+    "timestamp": 1748036135468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.7365497974406,
+    "size": 0.07581177523391464,
+    "side": "sell",
+    "timestamp": 1748036135801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.5043061626757,
+    "size": 0.0153554928025826,
+    "side": "sell",
+    "timestamp": 1748036136134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.639599384334,
+    "size": 0.04949477592726405,
+    "side": "buy",
+    "timestamp": 1748036136468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.139635506534,
+    "size": 0.09184871096545594,
+    "side": "buy",
+    "timestamp": 1748036136801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.7449865904573,
+    "size": 0.16796069637289543,
+    "side": "sell",
+    "timestamp": 1748036137134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2814.0090497010888,
+    "size": 0.12686408881717304,
+    "side": "buy",
+    "timestamp": 1748036137468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.6239649858444,
+    "size": 0.012731346814958598,
+    "side": "sell",
+    "timestamp": 1748036137801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.538255368492,
+    "size": 0.14846101583811463,
+    "side": "sell",
+    "timestamp": 1748036138134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2813.1917607410965,
+    "size": 0.20033102156467564,
+    "side": "buy",
+    "timestamp": 1748036138468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.9073735060447,
+    "size": 0.09733614257021722,
+    "side": "sell",
+    "timestamp": 1748036138801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.8849737579417,
+    "size": 0.09756375514551853,
+    "side": "buy",
+    "timestamp": 1748036139134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.556626627401,
+    "size": 0.006226947471891331,
+    "side": "sell",
+    "timestamp": 1748036139468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.27504202638,
+    "size": 0.14714469207966044,
+    "side": "sell",
+    "timestamp": 1748036139801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.7236560156825,
+    "size": 0.1251958746882916,
+    "side": "sell",
+    "timestamp": 1748036140134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.462235317059,
+    "size": 0.1401315702088863,
+    "side": "buy",
+    "timestamp": 1748036140468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.5284497413313,
+    "size": 0.020968265625686145,
+    "side": "buy",
+    "timestamp": 1748036140801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.770636605619,
+    "size": 0.1838328466051511,
+    "side": "sell",
+    "timestamp": 1748036141134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.7684338540885,
+    "size": 0.10657830092210169,
+    "side": "sell",
+    "timestamp": 1748036141468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.852611006347,
+    "size": 0.2064591569288997,
+    "side": "buy",
+    "timestamp": 1748036141801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.9294314448953,
+    "size": 0.0016147649495554949,
+    "side": "sell",
+    "timestamp": 1748036142134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.6310193602862,
+    "size": 0.014751067521908953,
+    "side": "sell",
+    "timestamp": 1748036142468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.721458471395,
+    "size": 0.03192042871607907,
+    "side": "buy",
+    "timestamp": 1748036142801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.486208528031,
+    "size": 0.09454945164721633,
+    "side": "sell",
+    "timestamp": 1748036143134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2812.052665220285,
+    "size": 0.053237985516622545,
+    "side": "sell",
+    "timestamp": 1748036143468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.8892042467496,
+    "size": 0.020543965063395234,
+    "side": "buy",
+    "timestamp": 1748036143801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.926007421975,
+    "size": 0.07641292108482593,
+    "side": "sell",
+    "timestamp": 1748036144134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.9904565459215,
+    "size": 0.13528519146706486,
+    "side": "sell",
+    "timestamp": 1748036144468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.3833022120943,
+    "size": 0.01866116456026625,
+    "side": "buy",
+    "timestamp": 1748036144801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.4789977831333,
+    "size": 0.2663480956216693,
+    "side": "buy",
+    "timestamp": 1748036145134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.7110324597143,
+    "size": 0.08821454020742142,
+    "side": "buy",
+    "timestamp": 1748036145468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.5956156067336,
+    "size": 0.1250721641496739,
+    "side": "sell",
+    "timestamp": 1748036145801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.43889813277,
+    "size": 0.028037123715774034,
+    "side": "sell",
+    "timestamp": 1748036146134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.3295427364187,
+    "size": 0.07372031023882337,
+    "side": "sell",
+    "timestamp": 1748036146468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.184660525057,
+    "size": 0.05800193759581593,
+    "side": "sell",
+    "timestamp": 1748036146801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.0938534498164,
+    "size": 0.00815409903502872,
+    "side": "sell",
+    "timestamp": 1748036147134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2811.017640045341,
+    "size": 0.03478176308240379,
+    "side": "buy",
+    "timestamp": 1748036147468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.9080723802554,
+    "size": 0.15591417623357615,
+    "side": "buy",
+    "timestamp": 1748036147801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.8215723317967,
+    "size": 0.03783829264141495,
+    "side": "buy",
+    "timestamp": 1748036148134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.7066047493645,
+    "size": 0.09822506292181832,
+    "side": "buy",
+    "timestamp": 1748036148468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.918730640107,
+    "size": 0.15966654813835254,
+    "side": "buy",
+    "timestamp": 1748036148801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.5205302137706,
+    "size": 0.21319513315922928,
+    "side": "sell",
+    "timestamp": 1748036149134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.2100280318696,
+    "size": 0.16628180479302357,
+    "side": "sell",
+    "timestamp": 1748036149468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.2458135734914,
+    "size": 0.02275780064017806,
+    "side": "sell",
+    "timestamp": 1748036149801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.4138216530473,
+    "size": 0.013502970305677629,
+    "side": "buy",
+    "timestamp": 1748036150134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.9555863815353,
+    "size": 0.1818155827037224,
+    "side": "sell",
+    "timestamp": 1748036150468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.212959381678,
+    "size": 0.18293520298312077,
+    "side": "buy",
+    "timestamp": 1748036150801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.4312160154946,
+    "size": 0.2661270620354163,
+    "side": "sell",
+    "timestamp": 1748036151134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.785028764693,
+    "size": 0.22087286818864876,
+    "side": "buy",
+    "timestamp": 1748036151468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.404769926121,
+    "size": 0.04527475678014375,
+    "side": "sell",
+    "timestamp": 1748036151801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.6322622235944,
+    "size": 0.07213729254133783,
+    "side": "sell",
+    "timestamp": 1748036152134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.2770662362686,
+    "size": 0.013915864125069635,
+    "side": "buy",
+    "timestamp": 1748036152468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.1621976986025,
+    "size": 0.0803392708783327,
+    "side": "buy",
+    "timestamp": 1748036152801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.6717084912475,
+    "size": 0.14750597522914574,
+    "side": "sell",
+    "timestamp": 1748036153134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.7591602640273,
+    "size": 0.023831511950070026,
+    "side": "buy",
+    "timestamp": 1748036153468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.5391059232443,
+    "size": 0.031611183943961216,
+    "side": "sell",
+    "timestamp": 1748036153801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.4148143646985,
+    "size": 0.08677977084205714,
+    "side": "buy",
+    "timestamp": 1748036154134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.8281955714783,
+    "size": 0.003920885270529697,
+    "side": "sell",
+    "timestamp": 1748036154468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.1785473146256,
+    "size": 0.09001261421765995,
+    "side": "buy",
+    "timestamp": 1748036154801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.0010609651385,
+    "size": 0.052626762380477005,
+    "side": "sell",
+    "timestamp": 1748036155134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.8766427643623,
+    "size": 0.09084854308577871,
+    "side": "sell",
+    "timestamp": 1748036155468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.301094114675,
+    "size": 0.005219735268752274,
+    "side": "buy",
+    "timestamp": 1748036155801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.09141900478,
+    "size": 0.14829377227160526,
+    "side": "buy",
+    "timestamp": 1748036156134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.959656896238,
+    "size": 0.003044099616236278,
+    "side": "sell",
+    "timestamp": 1748036156468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.4669504832455,
+    "size": 0.04616611939105882,
+    "side": "sell",
+    "timestamp": 1748036156801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.275819352824,
+    "size": 0.3226200726420359,
+    "side": "buy",
+    "timestamp": 1748036157134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.864460537189,
+    "size": 0.05167497942711083,
+    "side": "buy",
+    "timestamp": 1748036157468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.0565244817462,
+    "size": 0.05437577574904086,
+    "side": "sell",
+    "timestamp": 1748036157801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.905163937146,
+    "size": 0.000252357410392044,
+    "side": "sell",
+    "timestamp": 1748036158134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.923449164337,
+    "size": 0.03658029346645434,
+    "side": "sell",
+    "timestamp": 1748036158468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.511142641007,
+    "size": 0.006741903886574508,
+    "side": "buy",
+    "timestamp": 1748036158801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.502168918411,
+    "size": 0.058858137846419745,
+    "side": "buy",
+    "timestamp": 1748036159134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.5675570477324,
+    "size": 0.02122919574385689,
+    "side": "sell",
+    "timestamp": 1748036159468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.5612241341023,
+    "size": 0.062060712995378034,
+    "side": "buy",
+    "timestamp": 1748036159801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.368338524933,
+    "size": 0.03988972501923289,
+    "side": "buy",
+    "timestamp": 1748036160134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.253668459721,
+    "size": 0.045361207818162115,
+    "side": "sell",
+    "timestamp": 1748036160468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.4308479789424,
+    "size": 0.09491489734562358,
+    "side": "buy",
+    "timestamp": 1748036160801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.297800426969,
+    "size": 0.04964909176160557,
+    "side": "sell",
+    "timestamp": 1748036161134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.7481643324923,
+    "size": 0.10513024593298506,
+    "side": "sell",
+    "timestamp": 1748036161468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.028748157058,
+    "size": 0.3185604581555168,
+    "side": "buy",
+    "timestamp": 1748036161801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.8698540594155,
+    "size": 0.0055660065996420765,
+    "side": "sell",
+    "timestamp": 1748036162134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.5983230973934,
+    "size": 0.04597787103444828,
+    "side": "sell",
+    "timestamp": 1748036162468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.4510517316044,
+    "size": 0.028825087307905558,
+    "side": "sell",
+    "timestamp": 1748036162801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.3867187103083,
+    "size": 0.1431324504172985,
+    "side": "sell",
+    "timestamp": 1748036163134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.4665066929992,
+    "size": 0.043182127627531944,
+    "side": "buy",
+    "timestamp": 1748036163468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.1275958793562,
+    "size": 0.05313161860937907,
+    "side": "buy",
+    "timestamp": 1748036163801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.075699321699,
+    "size": 0.3840589570521804,
+    "side": "sell",
+    "timestamp": 1748036164134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.2976684080427,
+    "size": 0.2473535679611929,
+    "side": "sell",
+    "timestamp": 1748036164468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.486362550346,
+    "size": 0.005867592793844042,
+    "side": "sell",
+    "timestamp": 1748036164801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.3580522282227,
+    "size": 0.02469277428828951,
+    "side": "buy",
+    "timestamp": 1748036165134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.9646733671334,
+    "size": 0.010089011565370475,
+    "side": "sell",
+    "timestamp": 1748036165468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.7494453374743,
+    "size": 0.29247627540264265,
+    "side": "sell",
+    "timestamp": 1748036165801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.254510443155,
+    "size": 0.018337748139093193,
+    "side": "buy",
+    "timestamp": 1748036166134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.1763785774338,
+    "size": 0.06734435034594859,
+    "side": "sell",
+    "timestamp": 1748036166468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.8968543999517,
+    "size": 0.3418832460191204,
+    "side": "buy",
+    "timestamp": 1748036166801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.993359357778,
+    "size": 0.07007437801450464,
+    "side": "buy",
+    "timestamp": 1748036167134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.317310528781,
+    "size": 0.045667518312556624,
+    "side": "buy",
+    "timestamp": 1748036167468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.55197269445,
+    "size": 0.008773273553416262,
+    "side": "buy",
+    "timestamp": 1748036167801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.5359648331423,
+    "size": 0.05380745131167165,
+    "side": "buy",
+    "timestamp": 1748036168134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.647551589563,
+    "size": 0.08044015947871969,
+    "side": "sell",
+    "timestamp": 1748036168468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.5578368114343,
+    "size": 0.11607714435584296,
+    "side": "buy",
+    "timestamp": 1748036168801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.5823951463485,
+    "size": 0.11626526603324083,
+    "side": "sell",
+    "timestamp": 1748036169134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.095118915311,
+    "size": 0.03806315095877731,
+    "side": "sell",
+    "timestamp": 1748036169468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.0413007542634,
+    "size": 0.08288597039990717,
+    "side": "buy",
+    "timestamp": 1748036169801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.5577381000867,
+    "size": 0.12916880028624309,
+    "side": "buy",
+    "timestamp": 1748036170134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.2995209853357,
+    "size": 0.04007811167299617,
+    "side": "sell",
+    "timestamp": 1748036170468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.4518374623535,
+    "size": 0.12294802720311271,
+    "side": "buy",
+    "timestamp": 1748036170801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.939117955554,
+    "size": 0.022829196223869766,
+    "side": "sell",
+    "timestamp": 1748036171134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.8518783726518,
+    "size": 0.015538099423490074,
+    "side": "buy",
+    "timestamp": 1748036171468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.822862489703,
+    "size": 0.09608486684318523,
+    "side": "sell",
+    "timestamp": 1748036171801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.761265086413,
+    "size": 0.05312789470409213,
+    "side": "buy",
+    "timestamp": 1748036172134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.559013458637,
+    "size": 0.006459538491909909,
+    "side": "buy",
+    "timestamp": 1748036172468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.8130057157864,
+    "size": 0.32803819151067826,
+    "side": "sell",
+    "timestamp": 1748036172801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.741983391189,
+    "size": 0.10025498941463346,
+    "side": "buy",
+    "timestamp": 1748036173134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.468651219344,
+    "size": 0.21260915744306305,
+    "side": "sell",
+    "timestamp": 1748036173468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.3812301277685,
+    "size": 0.06501049585661837,
+    "side": "sell",
+    "timestamp": 1748036173801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.4273322995796,
+    "size": 0.1445400391334671,
+    "side": "buy",
+    "timestamp": 1748036174134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.2247504248585,
+    "size": 0.2682935898918436,
+    "side": "sell",
+    "timestamp": 1748036174468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.1626607677304,
+    "size": 0.05908330365550998,
+    "side": "sell",
+    "timestamp": 1748036174801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.6789760054444,
+    "size": 0.08462928378363713,
+    "side": "buy",
+    "timestamp": 1748036175134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.2988732776425,
+    "size": 0.08760291777985571,
+    "side": "buy",
+    "timestamp": 1748036175468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.473633903215,
+    "size": 0.01199185062452888,
+    "side": "sell",
+    "timestamp": 1748036175801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.346293158033,
+    "size": 0.06476929472052183,
+    "side": "buy",
+    "timestamp": 1748036176134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.4169080354527,
+    "size": 0.033597065153137096,
+    "side": "buy",
+    "timestamp": 1748036176468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.179141334821,
+    "size": 0.0040838340008480245,
+    "side": "sell",
+    "timestamp": 1748036176801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.3085288906996,
+    "size": 0.07783591652838462,
+    "side": "buy",
+    "timestamp": 1748036177134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.6995420366543,
+    "size": 0.009483104269386942,
+    "side": "buy",
+    "timestamp": 1748036177468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.2776734937665,
+    "size": 0.1201796070143786,
+    "side": "buy",
+    "timestamp": 1748036177801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.4668876586998,
+    "size": 0.26144665824452934,
+    "side": "sell",
+    "timestamp": 1748036178134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.3514348729695,
+    "size": 0.062351533880860635,
+    "side": "sell",
+    "timestamp": 1748036178468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.5611847592886,
+    "size": 0.013954147735440008,
+    "side": "sell",
+    "timestamp": 1748036178801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.535219118625,
+    "size": 0.001339211645614117,
+    "side": "buy",
+    "timestamp": 1748036179134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.702630663456,
+    "size": 0.0706087231311019,
+    "side": "buy",
+    "timestamp": 1748036179468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.431245188177,
+    "size": 0.021099701894255557,
+    "side": "buy",
+    "timestamp": 1748036179801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.5347743005127,
+    "size": 0.009286757724619931,
+    "side": "sell",
+    "timestamp": 1748036180134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.3447505221266,
+    "size": 0.03797966185551694,
+    "side": "sell",
+    "timestamp": 1748036180468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.1203681151246,
+    "size": 0.014544804467944372,
+    "side": "buy",
+    "timestamp": 1748036180801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.2081421392686,
+    "size": 0.06184248803825481,
+    "side": "buy",
+    "timestamp": 1748036181134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.877981464623,
+    "size": 0.03276401004502209,
+    "side": "buy",
+    "timestamp": 1748036181468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.913520959622,
+    "size": 0.04082856486523305,
+    "side": "sell",
+    "timestamp": 1748036181801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2810.000366751915,
+    "size": 0.1323391727371752,
+    "side": "sell",
+    "timestamp": 1748036182134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.118219184841,
+    "size": 0.04127471126954124,
+    "side": "sell",
+    "timestamp": 1748036182468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.115877116171,
+    "size": 0.1204477580973187,
+    "side": "sell",
+    "timestamp": 1748036182801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2809.1013043659054,
+    "size": 0.01608661753706476,
+    "side": "buy",
+    "timestamp": 1748036183134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2808.372014397528,
+    "size": 0.09641217653011991,
+    "side": "buy",
+    "timestamp": 1748036183468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2808.2341879509513,
+    "size": 0.022866015010351792,
+    "side": "sell",
+    "timestamp": 1748036183801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2808.4075865717587,
+    "size": 0.12052923826383809,
+    "side": "buy",
+    "timestamp": 1748036184134,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2808.111479755338,
+    "size": 0.08190699628076603,
+    "side": "sell",
+    "timestamp": 1748036184468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2807.7984485799725,
+    "size": 0.0381381960672789,
+    "side": "buy",
+    "timestamp": 1748036184801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2807.388739588641,
+    "size": 0.13316913132893457,
+    "side": "buy",
+    "timestamp": 1748036185135,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2807.505288477667,
+    "size": 0.18277158674631744,
+    "side": "buy",
+    "timestamp": 1748036185468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2807.8204910393015,
+    "size": 0.18871731974236633,
+    "side": "sell",
+    "timestamp": 1748036185801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2807.4552417802583,
+    "size": 0.04850284740889177,
+    "side": "sell",
+    "timestamp": 1748036186135,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2807.110214992117,
+    "size": 0.013763324087047024,
+    "side": "sell",
+    "timestamp": 1748036186468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.9696535711046,
+    "size": 0.06709019991898016,
+    "side": "buy",
+    "timestamp": 1748036186801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2807.6622316275693,
+    "size": 0.13344162943665436,
+    "side": "sell",
+    "timestamp": 1748036187135,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2807.4423068375027,
+    "size": 0.016539017983881243,
+    "side": "buy",
+    "timestamp": 1748036187468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2807.683104689889,
+    "size": 0.01776915578971872,
+    "side": "buy",
+    "timestamp": 1748036187801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2807.9751230645684,
+    "size": 0.08327575347583595,
+    "side": "buy",
+    "timestamp": 1748036188135,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2807.8400875181137,
+    "size": 0.09237620375363902,
+    "side": "sell",
+    "timestamp": 1748036188468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2807.6967774773807,
+    "size": 0.23247305801780016,
+    "side": "sell",
+    "timestamp": 1748036188801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2807.372445648318,
+    "size": 0.07339566132921853,
+    "side": "buy",
+    "timestamp": 1748036189135,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2807.345132430389,
+    "size": 0.040325856118921366,
+    "side": "sell",
+    "timestamp": 1748036189468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2807.289154852427,
+    "size": 0.016662750846781486,
+    "side": "buy",
+    "timestamp": 1748036189801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2807.009662745998,
+    "size": 0.19568096887874883,
+    "side": "sell",
+    "timestamp": 1748036190135,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2807.1541479423513,
+    "size": 0.09118971232600186,
+    "side": "sell",
+    "timestamp": 1748036190468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2807.169927699945,
+    "size": 0.024316399603949303,
+    "side": "buy",
+    "timestamp": 1748036190801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2807.2633268869236,
+    "size": 0.015007831895466853,
+    "side": "sell",
+    "timestamp": 1748036191135,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2807.080849929285,
+    "size": 0.147538054316668,
+    "side": "buy",
+    "timestamp": 1748036191468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2807.238603452484,
+    "size": 0.2055456419668653,
+    "side": "buy",
+    "timestamp": 1748036191801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2807.232920582373,
+    "size": 0.00035453892180315247,
+    "side": "buy",
+    "timestamp": 1748036192135,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2807.0855575632854,
+    "size": 0.026888649165704256,
+    "side": "sell",
+    "timestamp": 1748036192468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.820392490181,
+    "size": 0.02350594686200891,
+    "side": "sell",
+    "timestamp": 1748036192801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.839568690845,
+    "size": 0.1725913462241219,
+    "side": "sell",
+    "timestamp": 1748036193135,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.881481559229,
+    "size": 0.14788582273905818,
+    "side": "sell",
+    "timestamp": 1748036193468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2807.3411288485695,
+    "size": 0.05199925181574825,
+    "side": "sell",
+    "timestamp": 1748036193801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2807.3784284701496,
+    "size": 0.09572815759442664,
+    "side": "sell",
+    "timestamp": 1748036194135,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2807.066228904179,
+    "size": 0.0459688243866506,
+    "side": "buy",
+    "timestamp": 1748036194468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.9359804574956,
+    "size": 0.17658582872552545,
+    "side": "buy",
+    "timestamp": 1748036194801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.4757294183387,
+    "size": 0.029081894986148445,
+    "side": "sell",
+    "timestamp": 1748036195135,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.257202436582,
+    "size": 0.02925183203822281,
+    "side": "buy",
+    "timestamp": 1748036195468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.0869459352643,
+    "size": 0.06945238005945435,
+    "side": "buy",
+    "timestamp": 1748036195801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.311900096189,
+    "size": 0.2257280828425192,
+    "side": "sell",
+    "timestamp": 1748036196135,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.275761952975,
+    "size": 0.008194261623870203,
+    "side": "buy",
+    "timestamp": 1748036196468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.018761929011,
+    "size": 0.01626372121161539,
+    "side": "sell",
+    "timestamp": 1748036196801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.705131135296,
+    "size": 0.04272565001964425,
+    "side": "buy",
+    "timestamp": 1748036197135,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.750616645226,
+    "size": 0.04699571675954254,
+    "side": "sell",
+    "timestamp": 1748036197468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.623094896828,
+    "size": 0.03778648701909035,
+    "side": "sell",
+    "timestamp": 1748036197801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.6381889475033,
+    "size": 0.055960785615451786,
+    "side": "sell",
+    "timestamp": 1748036198135,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.6555101919316,
+    "size": 0.12303325123238062,
+    "side": "sell",
+    "timestamp": 1748036198468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.840599969083,
+    "size": 0.10111236670370732,
+    "side": "sell",
+    "timestamp": 1748036198801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.499298470765,
+    "size": 0.07212764374853779,
+    "side": "sell",
+    "timestamp": 1748036199135,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.4637407034247,
+    "size": 0.019821473051947924,
+    "side": "buy",
+    "timestamp": 1748036199468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.6326461692943,
+    "size": 0.02503655742836271,
+    "side": "sell",
+    "timestamp": 1748036199801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.4906006009146,
+    "size": 0.1360619261354933,
+    "side": "sell",
+    "timestamp": 1748036200135,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2805.719044911373,
+    "size": 0.17814043060879817,
+    "side": "sell",
+    "timestamp": 1748036200468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.2431375463148,
+    "size": 0.2473508653997717,
+    "side": "buy",
+    "timestamp": 1748036200801,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.673899938392,
+    "size": 0.023640942205166358,
+    "side": "sell",
+    "timestamp": 1748036201135,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.896849733737,
+    "size": 0.22487628400362225,
+    "side": "sell",
+    "timestamp": 1748036201468,
+    "synthetic": true
+  },
+  {
+    "symbol": "ETH-USD-PERP",
+    "price": 2806.972684812515,
+    "size": 0.05867749561492863,
+    "side": "buy",
+    "timestamp": 1748036201801,
+    "synthetic": true
+  }
+]

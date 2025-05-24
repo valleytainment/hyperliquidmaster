@@ -1,0 +1,820 @@
+2025-05-23 19:03:08,391 [INFO] Websocket connected
+2025-05-23 19:03:08,768 [INFO] Hyperliquid adapter initialized
+2025-05-23 19:03:08,768 [INFO] Testing BTC market data...
+2025-05-23 19:03:08,768 [ERROR] Error getting market data for BTC: name 'requests' is not defined
+2025-05-23 19:03:08,768 [ERROR] Traceback (most recent call last):
+  File "/home/ubuntu/enhanced_bot/core/hyperliquid_adapter.py", line 98, in get_market_data
+    response = requests.post(
+               ^^^^^^^^
+NameError: name 'requests' is not defined
+
+2025-05-23 19:03:08,769 [INFO] BTC market data: {}
+2025-05-23 19:03:08,769 [INFO] Testing ETH market data...
+2025-05-23 19:03:08,769 [ERROR] Error getting market data for ETH: name 'requests' is not defined
+2025-05-23 19:03:08,769 [ERROR] Traceback (most recent call last):
+  File "/home/ubuntu/enhanced_bot/core/hyperliquid_adapter.py", line 98, in get_market_data
+    response = requests.post(
+               ^^^^^^^^
+NameError: name 'requests' is not defined
+
+2025-05-23 19:03:08,769 [INFO] ETH market data: {}
+2025-05-23 19:03:08,769 [INFO] Testing SOL market data...
+2025-05-23 19:03:08,769 [ERROR] Error getting market data for SOL: name 'requests' is not defined
+2025-05-23 19:03:08,769 [ERROR] Traceback (most recent call last):
+  File "/home/ubuntu/enhanced_bot/core/hyperliquid_adapter.py", line 98, in get_market_data
+    response = requests.post(
+               ^^^^^^^^
+NameError: name 'requests' is not defined
+
+2025-05-23 19:03:08,769 [INFO] SOL market data: {}
+2025-05-23 19:03:08,769 [INFO] Testing BTC order book...
+2025-05-23 19:03:09,118 [ERROR] Error getting order book for asset index 0: name 'requests' is not defined
+2025-05-23 19:03:09,119 [ERROR] Traceback (most recent call last):
+  File "/home/ubuntu/enhanced_bot/core/hyperliquid_adapter.py", line 518, in _get_order_book
+    response = requests.post(
+               ^^^^^^^^
+NameError: name 'requests' is not defined
+
+2025-05-23 19:03:09,119 [ERROR] Error testing market data: object dict can't be used in 'await' expression
+2025-05-23 19:04:01,035 [INFO] Websocket connected
+2025-05-23 19:04:01,423 [INFO] Hyperliquid adapter initialized
+2025-05-23 19:04:01,423 [INFO] Testing BTC market data...
+2025-05-23 19:04:01,587 [WARNING] Failed to get market data for BTC: 422
+2025-05-23 19:04:01,587 [INFO] BTC market data: {}
+2025-05-23 19:04:01,587 [INFO] Testing ETH market data...
+2025-05-23 19:04:01,760 [WARNING] Failed to get market data for ETH: 422
+2025-05-23 19:04:01,761 [INFO] ETH market data: {}
+2025-05-23 19:04:01,761 [INFO] Testing SOL market data...
+2025-05-23 19:04:01,964 [WARNING] Failed to get market data for SOL: 422
+2025-05-23 19:04:01,964 [INFO] SOL market data: {}
+2025-05-23 19:04:01,965 [INFO] Testing BTC order book...
+2025-05-23 19:04:02,470 [INFO] BTC order book sample: {"coin": "BTC", "time": 1748041442096, "levels": [[{"px": "107808.0", "sz": "5.06239", "n": 13}, {"px": "107807.0", "sz": "0.55664", "n": 4}, {"px": "107806.0", "sz": "0.00011", "n": 1}, {"px": "10780...
+2025-05-23 19:04:02,470 [INFO] Testing funding rates...
+2025-05-23 19:04:02,646 [WARNING] Failed to get funding info: 422
+2025-05-23 19:04:02,647 [INFO] Funding rates sample: {}...
+2025-05-23 19:05:50,924 [INFO] Websocket connected
+2025-05-23 19:05:51,574 [INFO] Hyperliquid adapter initialized
+2025-05-23 19:05:51,575 [INFO] Testing BTC market data...
+2025-05-23 19:05:52,034 [WARNING] Price not found for BTC (index 0, key @0)
+2025-05-23 19:05:52,034 [INFO] BTC market data: {}
+2025-05-23 19:05:52,034 [INFO] Testing ETH market data...
+2025-05-23 19:05:52,352 [INFO] Retrieved market data for ETH: price=68.0845, funding_rate=0.0
+2025-05-23 19:05:52,353 [INFO] ETH market data: {
+  "symbol": "ETH",
+  "last_price": 68.0845,
+  "bid_price": 68.01641550000001,
+  "ask_price": 68.1525845,
+  "funding_rate": 0.0,
+  "timestamp": 1748041552.352614
+}
+2025-05-23 19:05:52,353 [INFO] Testing SOL market data...
+2025-05-23 19:05:52,756 [INFO] Retrieved market data for SOL: price=0.68792, funding_rate=0.0
+2025-05-23 19:05:52,756 [INFO] SOL market data: {
+  "symbol": "SOL",
+  "last_price": 0.68792,
+  "bid_price": 0.68723208,
+  "ask_price": 0.6886079199999999,
+  "funding_rate": 0.0,
+  "timestamp": 1748041552.756099
+}
+2025-05-23 19:05:52,756 [INFO] Testing BTC order book...
+2025-05-23 19:05:53,247 [INFO] BTC order book sample: {"coin": "BTC", "time": 1748041552463, "levels": [[{"px": "107850.0", "sz": "3.08859", "n": 12}, {"px": "107849.0", "sz": "0.55628", "n": 3}, {"px": "107848.0", "sz": "0.18555", "n": 2}, {"px": "10784...
+2025-05-23 19:07:01,090 [INFO] Websocket connected
+2025-05-23 19:07:01,431 [INFO] Hyperliquid adapter initialized
+2025-05-23 19:07:01,431 [INFO] Testing BTC market data...
+2025-05-23 19:07:02,107 [INFO] Retrieved market data for BTC: price=107874.5, funding_rate=0.0
+2025-05-23 19:07:02,108 [INFO] BTC market data: {
+  "symbol": "BTC",
+  "last_price": 107874.5,
+  "bid_price": 107766.6255,
+  "ask_price": 107982.37449999999,
+  "funding_rate": 0.0,
+  "timestamp": 1748041622.107761
+}
+2025-05-23 19:07:02,108 [INFO] Testing ETH market data...
+2025-05-23 19:07:02,479 [INFO] Retrieved market data for ETH: price=2542.15, funding_rate=0.0
+2025-05-23 19:07:02,479 [INFO] ETH market data: {
+  "symbol": "ETH",
+  "last_price": 2542.15,
+  "bid_price": 2539.60785,
+  "ask_price": 2544.69215,
+  "funding_rate": 0.0,
+  "timestamp": 1748041622.479036
+}
+2025-05-23 19:07:02,479 [INFO] Testing SOL market data...
+2025-05-23 19:07:02,814 [INFO] Retrieved market data for SOL: price=175.775, funding_rate=0.0
+2025-05-23 19:07:02,815 [INFO] SOL market data: {
+  "symbol": "SOL",
+  "last_price": 175.775,
+  "bid_price": 175.59922500000002,
+  "ask_price": 175.950775,
+  "funding_rate": 0.0,
+  "timestamp": 1748041622.814583
+}
+2025-05-23 19:07:02,815 [INFO] Testing BTC order book...
+2025-05-23 19:07:03,393 [INFO] BTC order book sample: {"coin": "BTC", "time": 1748041622873, "levels": [[{"px": "107874.0", "sz": "9.14892", "n": 23}, {"px": "107873.0", "sz": "6.63877", "n": 10}, {"px": "107872.0", "sz": "0.71422", "n": 3}, {"px": "1078...
+2025-05-23 19:12:32,988 [ERROR] Error in main: (429, None, 'null', None, {'Content-Type': 'application/json', 'Content-Length': '4', 'Connection': 'keep-alive', 'Server': 'nginx/1.22.1', 'Date': 'Fri, 23 May 2025 23:12:32 GMT', 'access-control-expose-headers': '*', 'access-control-allow-origin': '*', 'vary': 'origin, access-control-request-method, access-control-request-headers', 'X-Cache': 'Error from cloudfront', 'Via': '1.1 64de29cb6a7b7bcab60fef77017140a4.cloudfront.net (CloudFront)', 'X-Amz-Cf-Pop': 'IAD61-P5', 'X-Amz-Cf-Id': 'un6HbWd4a78F11e7mqR6DIAH2KkYQKPQC46FWdRGntmkJqT5nfOUFQ=='})
+2025-05-23 19:12:33,133 [INFO] Websocket connected
+2025-05-23 21:35:40,689 [ERROR] Connection to remote host was lost. - goodbye
+2025-05-23 21:35:59,117 [ERROR] Connection to remote host was lost. - goodbye
+2025-05-23 21:36:01,163 [ERROR] Connection to remote host was lost. - goodbye
+2025-05-23 21:36:11,404 [ERROR] Connection to remote host was lost. - goodbye
+2025-05-23 21:36:13,442 [ERROR] Connection to remote host was lost. - goodbye
+2025-05-23 23:32:23,365 [INFO] Initializing Master Omni Overlord Robust Strategy...
+2025-05-23 23:32:23,366 [INFO] Loaded 358 historical data points for BTC
+2025-05-23 23:32:23,366 [INFO] Loaded 358 historical data points for ETH
+2025-05-23 23:32:23,367 [INFO] Loaded 349 historical data points for SOL
+2025-05-23 23:32:23,687 [INFO] Websocket connected
+2025-05-23 23:32:23,991 [INFO] Hyperliquid adapter initialized
+2025-05-23 23:32:23,991 [INFO] Starting headless tests
+2025-05-23 23:32:23,991 [INFO] Testing market data retrieval
+2025-05-23 23:32:24,461 [INFO] Retrieved market data for BTC: price=108279.5, funding_rate=0.0
+2025-05-23 23:32:24,462 [INFO] Successfully retrieved market data for BTC: price=108279.5
+2025-05-23 23:32:25,782 [INFO] Retrieved market data for ETH: price=2551.05, funding_rate=0.0
+2025-05-23 23:32:25,783 [INFO] Successfully retrieved market data for ETH: price=2551.05
+2025-05-23 23:32:27,193 [INFO] Retrieved market data for SOL: price=175.745, funding_rate=0.0
+2025-05-23 23:32:27,194 [INFO] Successfully retrieved market data for SOL: price=175.745
+2025-05-23 23:32:28,194 [INFO] Testing order book retrieval
+2025-05-23 23:32:28,372 [WARNING] Generating synthetic order book for BTC
+2025-05-23 23:32:28,532 [INFO] Successfully retrieved order book for BTC: 10 bids, 10 asks
+2025-05-23 23:32:29,695 [WARNING] Generating synthetic order book for ETH
+2025-05-23 23:32:30,022 [INFO] Successfully retrieved order book for ETH: 10 bids, 10 asks
+2025-05-23 23:32:31,245 [WARNING] Generating synthetic order book for SOL
+2025-05-23 23:32:31,417 [INFO] Successfully retrieved order book for SOL: 10 bids, 10 asks
+2025-05-23 23:32:32,417 [INFO] Testing historical data accumulation
+2025-05-23 23:32:32,768 [INFO] Retrieved market data for BTC: price=108279.5, funding_rate=0.0
+2025-05-23 23:32:32,773 [INFO] Saved 359 historical data points for BTC
+2025-05-23 23:32:32,773 [INFO] Added data point for BTC: price=108279.5
+2025-05-23 23:32:32,776 [INFO] Successfully accumulated data for BTC: 359 data points
+2025-05-23 23:32:34,141 [INFO] Retrieved market data for ETH: price=2551.05, funding_rate=0.0
+2025-05-23 23:32:34,145 [INFO] Saved 359 historical data points for ETH
+2025-05-23 23:32:34,145 [INFO] Added data point for ETH: price=2551.05
+2025-05-23 23:32:34,147 [INFO] Successfully accumulated data for ETH: 359 data points
+2025-05-23 23:32:35,549 [INFO] Retrieved market data for SOL: price=175.745, funding_rate=0.0
+2025-05-23 23:32:35,554 [INFO] Saved 350 historical data points for SOL
+2025-05-23 23:32:35,554 [INFO] Added data point for SOL: price=175.745
+2025-05-23 23:32:35,556 [INFO] Successfully accumulated data for SOL: 350 data points
+2025-05-23 23:32:36,556 [INFO] Testing signal generation
+2025-05-23 23:32:36,870 [INFO] Retrieved market data for BTC: price=108279.5, funding_rate=0.0
+2025-05-23 23:32:37,032 [WARNING] Using stale cached order book for BTC
+2025-05-23 23:32:37,035 [ERROR] Error generating signal for BTC: MasterOmniOverlordRobustStrategy.generate_signal() missing 1 required positional argument: 'order_book'
+2025-05-23 23:32:38,542 [INFO] Retrieved market data for ETH: price=2551.05, funding_rate=0.0
+2025-05-23 23:32:38,712 [WARNING] Using stale cached order book for ETH
+2025-05-23 23:32:38,716 [ERROR] Error generating signal for ETH: MasterOmniOverlordRobustStrategy.generate_signal() missing 1 required positional argument: 'order_book'
+2025-05-23 23:32:40,049 [INFO] Retrieved market data for SOL: price=175.745, funding_rate=0.0
+2025-05-23 23:32:40,203 [WARNING] Using stale cached order book for SOL
+2025-05-23 23:32:40,205 [ERROR] Error generating signal for SOL: MasterOmniOverlordRobustStrategy.generate_signal() missing 1 required positional argument: 'order_book'
+2025-05-23 23:32:41,205 [INFO] Testing continuous operation
+2025-05-23 23:32:41,205 [INFO] Running continuous operation test for 60 seconds
+2025-05-23 23:32:41,571 [INFO] Retrieved market data for BTC: price=108279.5, funding_rate=0.0
+2025-05-23 23:32:41,575 [INFO] Saved 360 historical data points for BTC
+2025-05-23 23:32:41,575 [INFO] Added data point for BTC: price=108279.5
+2025-05-23 23:32:41,576 [INFO] Collected data for BTC: price=108279.5
+2025-05-23 23:32:42,397 [INFO] Retrieved market data for ETH: price=2551.05, funding_rate=0.0
+2025-05-23 23:32:42,401 [INFO] Saved 360 historical data points for ETH
+2025-05-23 23:32:42,402 [INFO] Added data point for ETH: price=2551.05
+2025-05-23 23:32:42,402 [INFO] Collected data for ETH: price=2551.05
+2025-05-23 23:32:43,523 [INFO] Retrieved market data for SOL: price=175.745, funding_rate=0.0
+2025-05-23 23:32:43,527 [INFO] Saved 351 historical data points for SOL
+2025-05-23 23:32:43,527 [INFO] Added data point for SOL: price=175.745
+2025-05-23 23:32:43,527 [INFO] Collected data for SOL: price=175.745
+2025-05-23 23:32:44,467 [INFO] Retrieved market data for BTC: price=108279.5, funding_rate=0.0
+2025-05-23 23:32:44,630 [WARNING] Using stale cached order book for BTC
+2025-05-23 23:32:44,634 [ERROR] Error generating signal for BTC: MasterOmniOverlordRobustStrategy.generate_signal() missing 1 required positional argument: 'order_book'
+2025-05-23 23:32:45,528 [INFO] Retrieved market data for ETH: price=2551.05, funding_rate=0.0
+2025-05-23 23:32:45,688 [WARNING] Using stale cached order book for ETH
+2025-05-23 23:32:45,690 [ERROR] Error generating signal for ETH: MasterOmniOverlordRobustStrategy.generate_signal() missing 1 required positional argument: 'order_book'
+2025-05-23 23:32:46,586 [INFO] Retrieved market data for SOL: price=175.745, funding_rate=0.0
+2025-05-23 23:32:46,759 [WARNING] Using stale cached order book for SOL
+2025-05-23 23:32:46,762 [ERROR] Error generating signal for SOL: MasterOmniOverlordRobustStrategy.generate_signal() missing 1 required positional argument: 'order_book'
+2025-05-23 23:32:47,679 [INFO] Retrieved market data for BTC: price=108279.5, funding_rate=0.0
+2025-05-23 23:32:47,683 [INFO] Saved 361 historical data points for BTC
+2025-05-23 23:32:47,683 [INFO] Added data point for BTC: price=108279.5
+2025-05-23 23:32:47,683 [INFO] Collected data for BTC: price=108279.5
+2025-05-23 23:32:49,004 [INFO] Retrieved market data for ETH: price=2551.05, funding_rate=0.0
+2025-05-23 23:32:49,008 [INFO] Saved 361 historical data points for ETH
+2025-05-23 23:32:49,009 [INFO] Added data point for ETH: price=2551.05
+2025-05-23 23:32:49,009 [INFO] Collected data for ETH: price=2551.05
+2025-05-23 23:32:49,826 [INFO] Retrieved market data for SOL: price=175.755, funding_rate=0.0
+2025-05-23 23:32:49,830 [INFO] Saved 352 historical data points for SOL
+2025-05-23 23:32:49,830 [INFO] Added data point for SOL: price=175.755
+2025-05-23 23:32:49,830 [INFO] Collected data for SOL: price=175.755
+2025-05-23 23:32:51,563 [INFO] Retrieved market data for BTC: price=108279.5, funding_rate=0.0
+2025-05-23 23:32:51,783 [WARNING] Using stale cached order book for BTC
+2025-05-23 23:32:51,785 [ERROR] Error generating signal for BTC: MasterOmniOverlordRobustStrategy.generate_signal() missing 1 required positional argument: 'order_book'
+2025-05-23 23:32:52,601 [INFO] Retrieved market data for ETH: price=2551.05, funding_rate=0.0
+2025-05-23 23:32:52,761 [WARNING] Using stale cached order book for ETH
+2025-05-23 23:32:52,764 [ERROR] Error generating signal for ETH: MasterOmniOverlordRobustStrategy.generate_signal() missing 1 required positional argument: 'order_book'
+2025-05-23 23:32:53,690 [INFO] Retrieved market data for SOL: price=175.755, funding_rate=0.0
+2025-05-23 23:32:53,856 [WARNING] Using stale cached order book for SOL
+2025-05-23 23:32:53,858 [ERROR] Error generating signal for SOL: MasterOmniOverlordRobustStrategy.generate_signal() missing 1 required positional argument: 'order_book'
+2025-05-23 23:32:54,777 [INFO] Retrieved market data for BTC: price=108279.5, funding_rate=0.0
+2025-05-23 23:32:54,781 [INFO] Saved 362 historical data points for BTC
+2025-05-23 23:32:54,782 [INFO] Added data point for BTC: price=108279.5
+2025-05-23 23:32:54,782 [INFO] Collected data for BTC: price=108279.5
+2025-05-23 23:32:55,677 [INFO] Retrieved market data for ETH: price=2550.75, funding_rate=0.0
+2025-05-23 23:32:55,682 [INFO] Saved 362 historical data points for ETH
+2025-05-23 23:32:55,682 [INFO] Added data point for ETH: price=2550.75
+2025-05-23 23:32:55,682 [INFO] Collected data for ETH: price=2550.75
+2025-05-23 23:32:56,609 [INFO] Retrieved market data for SOL: price=175.755, funding_rate=0.0
+2025-05-23 23:32:56,614 [INFO] Saved 353 historical data points for SOL
+2025-05-23 23:32:56,614 [INFO] Added data point for SOL: price=175.755
+2025-05-23 23:32:56,614 [INFO] Collected data for SOL: price=175.755
+2025-05-23 23:32:59,844 [INFO] Retrieved market data for BTC: price=108279.5, funding_rate=0.0
+2025-05-23 23:32:59,848 [INFO] Saved 363 historical data points for BTC
+2025-05-23 23:32:59,849 [INFO] Added data point for BTC: price=108279.5
+2025-05-23 23:32:59,849 [INFO] Collected data for BTC: price=108279.5
+2025-05-23 23:33:00,727 [INFO] Retrieved market data for ETH: price=2550.75, funding_rate=0.0
+2025-05-23 23:33:00,732 [INFO] Saved 363 historical data points for ETH
+2025-05-23 23:33:00,732 [INFO] Added data point for ETH: price=2550.75
+2025-05-23 23:33:00,732 [INFO] Collected data for ETH: price=2550.75
+2025-05-23 23:33:01,563 [INFO] Retrieved market data for SOL: price=175.765, funding_rate=0.0
+2025-05-23 23:33:01,567 [INFO] Saved 354 historical data points for SOL
+2025-05-23 23:33:01,567 [INFO] Added data point for SOL: price=175.765
+2025-05-23 23:33:01,567 [INFO] Collected data for SOL: price=175.765
+2025-05-23 23:33:02,508 [INFO] Retrieved market data for BTC: price=108279.5, funding_rate=0.0
+2025-05-23 23:33:02,675 [WARNING] Using stale cached order book for BTC
+2025-05-23 23:33:02,677 [ERROR] Error generating signal for BTC: MasterOmniOverlordRobustStrategy.generate_signal() missing 1 required positional argument: 'order_book'
+2025-05-23 23:33:03,638 [INFO] Retrieved market data for ETH: price=2550.75, funding_rate=0.0
+2025-05-23 23:33:03,795 [WARNING] Using stale cached order book for ETH
+2025-05-23 23:33:03,797 [ERROR] Error generating signal for ETH: MasterOmniOverlordRobustStrategy.generate_signal() missing 1 required positional argument: 'order_book'
+2025-05-23 23:33:04,680 [INFO] Retrieved market data for SOL: price=175.765, funding_rate=0.0
+2025-05-23 23:33:04,841 [WARNING] Using stale cached order book for SOL
+2025-05-23 23:33:04,843 [ERROR] Error generating signal for SOL: MasterOmniOverlordRobustStrategy.generate_signal() missing 1 required positional argument: 'order_book'
+2025-05-23 23:33:05,850 [INFO] Retrieved market data for BTC: price=108279.5, funding_rate=0.0
+2025-05-23 23:33:05,855 [INFO] Saved 364 historical data points for BTC
+2025-05-23 23:33:05,855 [INFO] Added data point for BTC: price=108279.5
+2025-05-23 23:33:05,855 [INFO] Collected data for BTC: price=108279.5
+2025-05-23 23:33:06,741 [INFO] Retrieved market data for ETH: price=2550.75, funding_rate=0.0
+2025-05-23 23:33:06,746 [INFO] Saved 364 historical data points for ETH
+2025-05-23 23:33:06,746 [INFO] Added data point for ETH: price=2550.75
+2025-05-23 23:33:06,746 [INFO] Collected data for ETH: price=2550.75
+2025-05-23 23:33:07,565 [INFO] Retrieved market data for SOL: price=175.745, funding_rate=0.0
+2025-05-23 23:33:07,569 [INFO] Saved 355 historical data points for SOL
+2025-05-23 23:33:07,569 [INFO] Added data point for SOL: price=175.745
+2025-05-23 23:33:07,569 [INFO] Collected data for SOL: price=175.745
+2025-05-23 23:33:10,784 [INFO] Retrieved market data for BTC: price=108273.5, funding_rate=0.0
+2025-05-23 23:33:10,788 [INFO] Saved 365 historical data points for BTC
+2025-05-23 23:33:10,788 [INFO] Added data point for BTC: price=108273.5
+2025-05-23 23:33:10,788 [INFO] Collected data for BTC: price=108273.5
+2025-05-23 23:33:11,683 [INFO] Retrieved market data for ETH: price=2550.65, funding_rate=0.0
+2025-05-23 23:33:11,688 [INFO] Saved 365 historical data points for ETH
+2025-05-23 23:33:11,688 [INFO] Added data point for ETH: price=2550.65
+2025-05-23 23:33:11,688 [INFO] Collected data for ETH: price=2550.65
+2025-05-23 23:33:12,495 [INFO] Retrieved market data for SOL: price=175.775, funding_rate=0.0
+2025-05-23 23:33:12,500 [INFO] Saved 356 historical data points for SOL
+2025-05-23 23:33:12,500 [INFO] Added data point for SOL: price=175.775
+2025-05-23 23:33:12,500 [INFO] Collected data for SOL: price=175.775
+2025-05-23 23:33:13,663 [INFO] Retrieved market data for BTC: price=108273.5, funding_rate=0.0
+2025-05-23 23:33:13,832 [WARNING] Using stale cached order book for BTC
+2025-05-23 23:33:13,834 [ERROR] Error generating signal for BTC: MasterOmniOverlordRobustStrategy.generate_signal() missing 1 required positional argument: 'order_book'
+2025-05-23 23:33:14,646 [INFO] Retrieved market data for ETH: price=2550.75, funding_rate=0.0
+2025-05-23 23:33:14,810 [WARNING] Using stale cached order book for ETH
+2025-05-23 23:33:14,812 [ERROR] Error generating signal for ETH: MasterOmniOverlordRobustStrategy.generate_signal() missing 1 required positional argument: 'order_book'
+2025-05-23 23:33:15,733 [INFO] Retrieved market data for SOL: price=175.785, funding_rate=0.0
+2025-05-23 23:33:15,900 [WARNING] Using stale cached order book for SOL
+2025-05-23 23:33:15,902 [ERROR] Error generating signal for SOL: MasterOmniOverlordRobustStrategy.generate_signal() missing 1 required positional argument: 'order_book'
+2025-05-23 23:33:16,812 [INFO] Retrieved market data for BTC: price=108273.5, funding_rate=0.0
+2025-05-23 23:33:16,817 [INFO] Saved 366 historical data points for BTC
+2025-05-23 23:33:16,817 [INFO] Added data point for BTC: price=108273.5
+2025-05-23 23:33:16,817 [INFO] Collected data for BTC: price=108273.5
+2025-05-23 23:33:17,697 [INFO] Retrieved market data for ETH: price=2550.75, funding_rate=0.0
+2025-05-23 23:33:17,701 [INFO] Saved 366 historical data points for ETH
+2025-05-23 23:33:17,702 [INFO] Added data point for ETH: price=2550.75
+2025-05-23 23:33:17,702 [INFO] Collected data for ETH: price=2550.75
+2025-05-23 23:33:18,546 [INFO] Retrieved market data for SOL: price=175.765, funding_rate=0.0
+2025-05-23 23:33:18,550 [INFO] Saved 357 historical data points for SOL
+2025-05-23 23:33:18,550 [INFO] Added data point for SOL: price=175.765
+2025-05-23 23:33:18,550 [INFO] Collected data for SOL: price=175.765
+2025-05-23 23:33:21,891 [INFO] Retrieved market data for BTC: price=108273.5, funding_rate=0.0
+2025-05-23 23:33:21,896 [INFO] Saved 367 historical data points for BTC
+2025-05-23 23:33:21,896 [INFO] Added data point for BTC: price=108273.5
+2025-05-23 23:33:21,896 [INFO] Collected data for BTC: price=108273.5
+2025-05-23 23:33:22,845 [INFO] Retrieved market data for ETH: price=2550.65, funding_rate=0.0
+2025-05-23 23:33:22,850 [INFO] Saved 367 historical data points for ETH
+2025-05-23 23:33:22,850 [INFO] Added data point for ETH: price=2550.65
+2025-05-23 23:33:22,850 [INFO] Collected data for ETH: price=2550.65
+2025-05-23 23:33:23,705 [INFO] Retrieved market data for SOL: price=175.765, funding_rate=0.0
+2025-05-23 23:33:23,709 [INFO] Saved 358 historical data points for SOL
+2025-05-23 23:33:23,710 [INFO] Added data point for SOL: price=175.765
+2025-05-23 23:33:23,710 [INFO] Collected data for SOL: price=175.765
+2025-05-23 23:33:24,650 [INFO] Retrieved market data for BTC: price=108273.5, funding_rate=0.0
+2025-05-23 23:33:24,819 [WARNING] Using stale cached order book for BTC
+2025-05-23 23:33:24,821 [ERROR] Error generating signal for BTC: MasterOmniOverlordRobustStrategy.generate_signal() missing 1 required positional argument: 'order_book'
+2025-05-23 23:33:25,634 [INFO] Retrieved market data for ETH: price=2550.65, funding_rate=0.0
+2025-05-23 23:33:25,802 [WARNING] Using stale cached order book for ETH
+2025-05-23 23:33:25,804 [ERROR] Error generating signal for ETH: MasterOmniOverlordRobustStrategy.generate_signal() missing 1 required positional argument: 'order_book'
+2025-05-23 23:33:26,618 [INFO] Retrieved market data for SOL: price=175.765, funding_rate=0.0
+2025-05-23 23:33:26,826 [WARNING] Using stale cached order book for SOL
+2025-05-23 23:33:26,828 [ERROR] Error generating signal for SOL: MasterOmniOverlordRobustStrategy.generate_signal() missing 1 required positional argument: 'order_book'
+2025-05-23 23:33:27,815 [INFO] Retrieved market data for BTC: price=108273.5, funding_rate=0.0
+2025-05-23 23:33:27,820 [INFO] Saved 368 historical data points for BTC
+2025-05-23 23:33:27,820 [INFO] Added data point for BTC: price=108273.5
+2025-05-23 23:33:27,820 [INFO] Collected data for BTC: price=108273.5
+2025-05-23 23:33:28,631 [INFO] Retrieved market data for ETH: price=2550.65, funding_rate=0.0
+2025-05-23 23:33:28,635 [INFO] Saved 368 historical data points for ETH
+2025-05-23 23:33:28,635 [INFO] Added data point for ETH: price=2550.65
+2025-05-23 23:33:28,635 [INFO] Collected data for ETH: price=2550.65
+2025-05-23 23:33:29,447 [INFO] Retrieved market data for SOL: price=175.765, funding_rate=0.0
+2025-05-23 23:33:29,451 [INFO] Saved 359 historical data points for SOL
+2025-05-23 23:33:29,451 [INFO] Added data point for SOL: price=175.765
+2025-05-23 23:33:29,451 [INFO] Collected data for SOL: price=175.765
+2025-05-23 23:33:32,773 [INFO] Retrieved market data for BTC: price=108273.5, funding_rate=0.0
+2025-05-23 23:33:32,778 [INFO] Saved 369 historical data points for BTC
+2025-05-23 23:33:32,778 [INFO] Added data point for BTC: price=108273.5
+2025-05-23 23:33:32,778 [INFO] Collected data for BTC: price=108273.5
+2025-05-23 23:33:33,715 [INFO] Retrieved market data for ETH: price=2550.65, funding_rate=0.0
+2025-05-23 23:33:33,720 [INFO] Saved 369 historical data points for ETH
+2025-05-23 23:33:33,720 [INFO] Added data point for ETH: price=2550.65
+2025-05-23 23:33:33,720 [INFO] Collected data for ETH: price=2550.65
+2025-05-23 23:33:34,557 [INFO] Retrieved market data for SOL: price=175.725, funding_rate=0.0
+2025-05-23 23:33:34,561 [INFO] Saved 360 historical data points for SOL
+2025-05-23 23:33:34,561 [INFO] Added data point for SOL: price=175.725
+2025-05-23 23:33:34,561 [INFO] Collected data for SOL: price=175.725
+2025-05-23 23:33:35,487 [INFO] Retrieved market data for BTC: price=108271.5, funding_rate=0.0
+2025-05-23 23:33:35,680 [WARNING] Using stale cached order book for BTC
+2025-05-23 23:33:35,682 [ERROR] Error generating signal for BTC: MasterOmniOverlordRobustStrategy.generate_signal() missing 1 required positional argument: 'order_book'
+2025-05-23 23:33:36,489 [INFO] Retrieved market data for ETH: price=2550.45, funding_rate=0.0
+2025-05-23 23:33:36,652 [WARNING] Using stale cached order book for ETH
+2025-05-23 23:33:36,654 [ERROR] Error generating signal for ETH: MasterOmniOverlordRobustStrategy.generate_signal() missing 1 required positional argument: 'order_book'
+2025-05-23 23:33:37,562 [INFO] Retrieved market data for SOL: price=175.705, funding_rate=0.0
+2025-05-23 23:33:37,723 [WARNING] Using stale cached order book for SOL
+2025-05-23 23:33:37,725 [ERROR] Error generating signal for SOL: MasterOmniOverlordRobustStrategy.generate_signal() missing 1 required positional argument: 'order_book'
+2025-05-23 23:33:38,889 [INFO] Retrieved market data for BTC: price=108271.5, funding_rate=0.0
+2025-05-23 23:33:38,894 [INFO] Saved 370 historical data points for BTC
+2025-05-23 23:33:38,894 [INFO] Added data point for BTC: price=108271.5
+2025-05-23 23:33:38,894 [INFO] Collected data for BTC: price=108271.5
+2025-05-23 23:33:40,080 [INFO] Retrieved market data for ETH: price=2550.45, funding_rate=0.0
+2025-05-23 23:33:40,085 [INFO] Saved 370 historical data points for ETH
+2025-05-23 23:33:40,085 [INFO] Added data point for ETH: price=2550.45
+2025-05-23 23:33:40,085 [INFO] Collected data for ETH: price=2550.45
+2025-05-23 23:33:40,929 [INFO] Retrieved market data for SOL: price=175.695, funding_rate=0.0
+2025-05-23 23:33:40,933 [INFO] Saved 361 historical data points for SOL
+2025-05-23 23:33:40,933 [INFO] Added data point for SOL: price=175.695
+2025-05-23 23:33:40,933 [INFO] Collected data for SOL: price=175.695
+2025-05-23 23:33:41,534 [INFO] Continuous operation test completed: 33 data collections, 0 signal generations, 18 errors
+2025-05-23 23:33:41,534 [INFO] Test results saved to headless_test_results.json
+2025-05-23 23:33:41,534 [INFO] Headless tests completed
+2025-05-24 07:18:00,094 [INFO] Initializing Master Omni Overlord Robust Strategy...
+2025-05-24 07:18:00,104 [INFO] Loaded 370 historical data points for BTC
+2025-05-24 07:18:00,115 [INFO] Loaded 370 historical data points for ETH
+2025-05-24 07:18:00,116 [INFO] Loaded 361 historical data points for SOL
+2025-05-24 07:18:00,794 [INFO] Websocket connected
+2025-05-24 07:18:01,012 [INFO] Hyperliquid adapter initialized
+2025-05-24 07:18:01,012 [INFO] Running all tests
+2025-05-24 07:18:01,012 [INFO] Testing market data retrieval
+2025-05-24 07:18:01,328 [INFO] Retrieved market data for BTC: price=109313.5, funding_rate=0.0
+2025-05-24 07:18:01,329 [INFO] Successfully retrieved market data for BTC: price=109313.5
+2025-05-24 07:18:02,693 [INFO] Retrieved market data for ETH: price=2566.45, funding_rate=0.0
+2025-05-24 07:18:02,694 [INFO] Successfully retrieved market data for ETH: price=2566.45
+2025-05-24 07:18:04,075 [INFO] Retrieved market data for SOL: price=177.19, funding_rate=0.0
+2025-05-24 07:18:04,076 [INFO] Successfully retrieved market data for SOL: price=177.19
+2025-05-24 07:18:05,077 [INFO] Testing order book retrieval
+2025-05-24 07:18:05,257 [WARNING] Generating synthetic order book for BTC
+2025-05-24 07:18:05,452 [INFO] Successfully retrieved order book for BTC: 10 bids, 10 asks
+2025-05-24 07:18:06,748 [WARNING] Generating synthetic order book for ETH
+2025-05-24 07:18:06,913 [INFO] Successfully retrieved order book for ETH: 10 bids, 10 asks
+2025-05-24 07:18:08,077 [WARNING] Generating synthetic order book for SOL
+2025-05-24 07:18:08,290 [INFO] Successfully retrieved order book for SOL: 10 bids, 10 asks
+2025-05-24 07:18:09,290 [INFO] Testing historical data accumulation
+2025-05-24 07:18:09,624 [INFO] Retrieved market data for BTC: price=109295.5, funding_rate=0.0
+2025-05-24 07:18:09,629 [INFO] Saved 371 historical data points for BTC
+2025-05-24 07:18:09,629 [INFO] Added data point for BTC: price=109295.5
+2025-05-24 07:18:09,629 [ERROR] Error accumulating historical data for BTC: 'HistoricalDataAccumulator' object has no attribute 'get_historical_data'
+2025-05-24 07:18:10,956 [INFO] Retrieved market data for ETH: price=2565.65, funding_rate=0.0
+2025-05-24 07:18:10,961 [INFO] Saved 371 historical data points for ETH
+2025-05-24 07:18:10,961 [INFO] Added data point for ETH: price=2565.65
+2025-05-24 07:18:10,961 [ERROR] Error accumulating historical data for ETH: 'HistoricalDataAccumulator' object has no attribute 'get_historical_data'
+2025-05-24 07:18:12,400 [INFO] Retrieved market data for SOL: price=177.165, funding_rate=0.0
+2025-05-24 07:18:12,405 [INFO] Saved 362 historical data points for SOL
+2025-05-24 07:18:12,405 [INFO] Added data point for SOL: price=177.165
+2025-05-24 07:18:12,405 [ERROR] Error accumulating historical data for SOL: 'HistoricalDataAccumulator' object has no attribute 'get_historical_data'
+2025-05-24 07:18:13,405 [INFO] Testing signal generation
+2025-05-24 07:18:13,790 [INFO] Retrieved market data for BTC: price=109276.5, funding_rate=0.0
+2025-05-24 07:18:13,952 [WARNING] Using stale cached order book for BTC
+2025-05-24 07:18:13,952 [INFO] Generating signal for BTC using Master Omni Overlord Strategy
+2025-05-24 07:18:13,952 [WARNING] No historical data for market regime detection
+2025-05-24 07:18:13,952 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:18:13,952 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:18:13,952 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:18:13,952 [INFO] Successfully generated signal for BTC: action=none, strength=0.0
+2025-05-24 07:18:15,264 [INFO] Retrieved market data for ETH: price=2564.95, funding_rate=0.0
+2025-05-24 07:18:15,444 [WARNING] Using stale cached order book for ETH
+2025-05-24 07:18:15,444 [INFO] Generating signal for ETH using Master Omni Overlord Strategy
+2025-05-24 07:18:15,444 [WARNING] No historical data for market regime detection
+2025-05-24 07:18:15,444 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:18:15,444 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:18:15,444 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:18:15,444 [INFO] Successfully generated signal for ETH: action=none, strength=0.0
+2025-05-24 07:18:16,763 [INFO] Retrieved market data for SOL: price=177.125, funding_rate=0.0
+2025-05-24 07:18:16,927 [WARNING] Using stale cached order book for SOL
+2025-05-24 07:18:16,927 [INFO] Generating signal for SOL using Master Omni Overlord Strategy
+2025-05-24 07:18:16,927 [WARNING] No historical data for market regime detection
+2025-05-24 07:18:16,927 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:18:16,927 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:18:16,927 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:18:16,927 [INFO] Successfully generated signal for SOL: action=none, strength=0.0
+2025-05-24 07:18:17,928 [INFO] Testing continuous operation
+2025-05-24 07:18:17,928 [INFO] Running continuous operation test for 60 seconds
+2025-05-24 07:18:18,359 [INFO] Retrieved market data for BTC: price=109276.5, funding_rate=0.0
+2025-05-24 07:18:18,363 [INFO] Saved 372 historical data points for BTC
+2025-05-24 07:18:18,363 [INFO] Added data point for BTC: price=109276.5
+2025-05-24 07:18:18,364 [INFO] Collected data for BTC: price=109276.5
+2025-05-24 07:18:19,190 [INFO] Retrieved market data for ETH: price=2565.35, funding_rate=0.0
+2025-05-24 07:18:19,195 [INFO] Saved 372 historical data points for ETH
+2025-05-24 07:18:19,196 [INFO] Added data point for ETH: price=2565.35
+2025-05-24 07:18:19,196 [INFO] Collected data for ETH: price=2565.35
+2025-05-24 07:18:20,040 [INFO] Retrieved market data for SOL: price=177.115, funding_rate=0.0
+2025-05-24 07:18:20,045 [INFO] Saved 363 historical data points for SOL
+2025-05-24 07:18:20,045 [INFO] Added data point for SOL: price=177.115
+2025-05-24 07:18:20,045 [INFO] Collected data for SOL: price=177.115
+2025-05-24 07:18:20,927 [INFO] Retrieved market data for BTC: price=109283.5, funding_rate=0.0
+2025-05-24 07:18:21,109 [WARNING] Using stale cached order book for BTC
+2025-05-24 07:18:21,110 [INFO] Generating signal for BTC using Master Omni Overlord Strategy
+2025-05-24 07:18:21,110 [WARNING] No historical data for market regime detection
+2025-05-24 07:18:21,110 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:18:21,110 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:18:21,110 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:18:21,110 [INFO] Generated signal for BTC: action=none, strength=0.0
+2025-05-24 07:18:21,933 [INFO] Retrieved market data for ETH: price=2565.85, funding_rate=0.0
+2025-05-24 07:18:22,114 [WARNING] Using stale cached order book for ETH
+2025-05-24 07:18:22,114 [INFO] Generating signal for ETH using Master Omni Overlord Strategy
+2025-05-24 07:18:22,115 [WARNING] No historical data for market regime detection
+2025-05-24 07:18:22,115 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:18:22,115 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:18:22,115 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:18:22,115 [INFO] Generated signal for ETH: action=none, strength=0.0
+2025-05-24 07:18:22,934 [INFO] Retrieved market data for SOL: price=177.125, funding_rate=0.0
+2025-05-24 07:18:23,139 [WARNING] Using stale cached order book for SOL
+2025-05-24 07:18:23,139 [INFO] Generating signal for SOL using Master Omni Overlord Strategy
+2025-05-24 07:18:23,139 [WARNING] No historical data for market regime detection
+2025-05-24 07:18:23,139 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:18:23,140 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:18:23,140 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:18:23,140 [INFO] Generated signal for SOL: action=none, strength=0.0
+2025-05-24 07:18:24,065 [INFO] Retrieved market data for BTC: price=109301.5, funding_rate=0.0
+2025-05-24 07:18:24,070 [INFO] Saved 373 historical data points for BTC
+2025-05-24 07:18:24,070 [INFO] Added data point for BTC: price=109301.5
+2025-05-24 07:18:24,070 [INFO] Collected data for BTC: price=109301.5
+2025-05-24 07:18:24,936 [INFO] Retrieved market data for ETH: price=2566.15, funding_rate=0.0
+2025-05-24 07:18:24,941 [INFO] Saved 373 historical data points for ETH
+2025-05-24 07:18:24,941 [INFO] Added data point for ETH: price=2566.15
+2025-05-24 07:18:24,941 [INFO] Collected data for ETH: price=2566.15
+2025-05-24 07:18:25,781 [INFO] Retrieved market data for SOL: price=177.195, funding_rate=0.0
+2025-05-24 07:18:25,785 [INFO] Saved 364 historical data points for SOL
+2025-05-24 07:18:25,785 [INFO] Added data point for SOL: price=177.195
+2025-05-24 07:18:25,786 [INFO] Collected data for SOL: price=177.195
+2025-05-24 07:18:26,620 [INFO] Retrieved market data for BTC: price=109301.5, funding_rate=0.0
+2025-05-24 07:18:26,819 [WARNING] Using stale cached order book for BTC
+2025-05-24 07:18:26,819 [INFO] Generating signal for BTC using Master Omni Overlord Strategy
+2025-05-24 07:18:26,819 [WARNING] No historical data for market regime detection
+2025-05-24 07:18:26,819 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:18:26,819 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:18:26,819 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:18:26,819 [INFO] Generated signal for BTC: action=none, strength=0.0
+2025-05-24 07:18:27,694 [INFO] Retrieved market data for ETH: price=2566.15, funding_rate=0.0
+2025-05-24 07:18:27,897 [WARNING] Using stale cached order book for ETH
+2025-05-24 07:18:27,897 [INFO] Generating signal for ETH using Master Omni Overlord Strategy
+2025-05-24 07:18:27,898 [WARNING] No historical data for market regime detection
+2025-05-24 07:18:27,898 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:18:27,898 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:18:27,898 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:18:27,898 [INFO] Generated signal for ETH: action=none, strength=0.0
+2025-05-24 07:18:28,747 [INFO] Retrieved market data for SOL: price=177.195, funding_rate=0.0
+2025-05-24 07:18:28,934 [WARNING] Using stale cached order book for SOL
+2025-05-24 07:18:28,934 [INFO] Generating signal for SOL using Master Omni Overlord Strategy
+2025-05-24 07:18:28,935 [WARNING] No historical data for market regime detection
+2025-05-24 07:18:28,935 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:18:28,935 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:18:28,935 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:18:28,935 [INFO] Generated signal for SOL: action=none, strength=0.0
+2025-05-24 07:18:29,856 [INFO] Retrieved market data for BTC: price=109303.5, funding_rate=0.0
+2025-05-24 07:18:29,861 [INFO] Saved 374 historical data points for BTC
+2025-05-24 07:18:29,861 [INFO] Added data point for BTC: price=109303.5
+2025-05-24 07:18:29,861 [INFO] Collected data for BTC: price=109303.5
+2025-05-24 07:18:30,884 [INFO] Retrieved market data for ETH: price=2566.75, funding_rate=0.0
+2025-05-24 07:18:30,889 [INFO] Saved 374 historical data points for ETH
+2025-05-24 07:18:30,889 [INFO] Added data point for ETH: price=2566.75
+2025-05-24 07:18:30,889 [INFO] Collected data for ETH: price=2566.75
+2025-05-24 07:18:31,707 [INFO] Retrieved market data for SOL: price=177.225, funding_rate=0.0
+2025-05-24 07:18:31,712 [INFO] Saved 365 historical data points for SOL
+2025-05-24 07:18:31,712 [INFO] Added data point for SOL: price=177.225
+2025-05-24 07:18:31,712 [INFO] Collected data for SOL: price=177.225
+2025-05-24 07:18:32,542 [INFO] Retrieved market data for BTC: price=109325.5, funding_rate=0.0
+2025-05-24 07:18:32,705 [WARNING] Using stale cached order book for BTC
+2025-05-24 07:18:32,705 [INFO] Generating signal for BTC using Master Omni Overlord Strategy
+2025-05-24 07:18:32,705 [WARNING] No historical data for market regime detection
+2025-05-24 07:18:32,706 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:18:32,706 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:18:32,706 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:18:32,706 [INFO] Generated signal for BTC: action=none, strength=0.0
+2025-05-24 07:18:33,531 [INFO] Retrieved market data for ETH: price=2567.0, funding_rate=0.0
+2025-05-24 07:18:33,813 [WARNING] Using stale cached order book for ETH
+2025-05-24 07:18:33,813 [INFO] Generating signal for ETH using Master Omni Overlord Strategy
+2025-05-24 07:18:33,813 [WARNING] No historical data for market regime detection
+2025-05-24 07:18:33,813 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:18:33,813 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:18:33,813 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:18:33,813 [INFO] Generated signal for ETH: action=none, strength=0.0
+2025-05-24 07:18:34,774 [INFO] Retrieved market data for SOL: price=177.235, funding_rate=0.0
+2025-05-24 07:18:34,935 [WARNING] Using stale cached order book for SOL
+2025-05-24 07:18:34,935 [INFO] Generating signal for SOL using Master Omni Overlord Strategy
+2025-05-24 07:18:34,935 [WARNING] No historical data for market regime detection
+2025-05-24 07:18:34,935 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:18:34,935 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:18:34,935 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:18:34,935 [INFO] Generated signal for SOL: action=none, strength=0.0
+2025-05-24 07:18:35,855 [INFO] Retrieved market data for BTC: price=109325.5, funding_rate=0.0
+2025-05-24 07:18:35,860 [INFO] Saved 375 historical data points for BTC
+2025-05-24 07:18:35,860 [INFO] Added data point for BTC: price=109325.5
+2025-05-24 07:18:35,860 [INFO] Collected data for BTC: price=109325.5
+2025-05-24 07:18:36,719 [INFO] Retrieved market data for ETH: price=2567.05, funding_rate=0.0
+2025-05-24 07:18:36,725 [INFO] Saved 375 historical data points for ETH
+2025-05-24 07:18:36,725 [INFO] Added data point for ETH: price=2567.05
+2025-05-24 07:18:36,725 [INFO] Collected data for ETH: price=2567.05
+2025-05-24 07:18:37,538 [INFO] Retrieved market data for SOL: price=177.225, funding_rate=0.0
+2025-05-24 07:18:37,543 [INFO] Saved 366 historical data points for SOL
+2025-05-24 07:18:37,543 [INFO] Added data point for SOL: price=177.225
+2025-05-24 07:18:37,543 [INFO] Collected data for SOL: price=177.225
+2025-05-24 07:18:38,390 [INFO] Retrieved market data for BTC: price=109325.5, funding_rate=0.0
+2025-05-24 07:18:38,554 [WARNING] Using stale cached order book for BTC
+2025-05-24 07:18:38,554 [INFO] Generating signal for BTC using Master Omni Overlord Strategy
+2025-05-24 07:18:38,554 [WARNING] No historical data for market regime detection
+2025-05-24 07:18:38,554 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:18:38,554 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:18:38,554 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:18:38,554 [INFO] Generated signal for BTC: action=none, strength=0.0
+2025-05-24 07:18:39,482 [INFO] Retrieved market data for ETH: price=2567.05, funding_rate=0.0
+2025-05-24 07:18:39,689 [WARNING] Using stale cached order book for ETH
+2025-05-24 07:18:39,689 [INFO] Generating signal for ETH using Master Omni Overlord Strategy
+2025-05-24 07:18:39,689 [WARNING] No historical data for market regime detection
+2025-05-24 07:18:39,689 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:18:39,689 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:18:39,689 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:18:39,689 [INFO] Generated signal for ETH: action=none, strength=0.0
+2025-05-24 07:18:40,629 [INFO] Retrieved market data for SOL: price=177.235, funding_rate=0.0
+2025-05-24 07:18:40,787 [WARNING] Using stale cached order book for SOL
+2025-05-24 07:18:40,787 [INFO] Generating signal for SOL using Master Omni Overlord Strategy
+2025-05-24 07:18:40,787 [WARNING] No historical data for market regime detection
+2025-05-24 07:18:40,787 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:18:40,787 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:18:40,787 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:18:40,787 [INFO] Generated signal for SOL: action=none, strength=0.0
+2025-05-24 07:18:41,697 [INFO] Retrieved market data for BTC: price=109325.5, funding_rate=0.0
+2025-05-24 07:18:41,702 [INFO] Saved 376 historical data points for BTC
+2025-05-24 07:18:41,703 [INFO] Added data point for BTC: price=109325.5
+2025-05-24 07:18:41,703 [INFO] Collected data for BTC: price=109325.5
+2025-05-24 07:18:42,661 [INFO] Retrieved market data for ETH: price=2566.85, funding_rate=0.0
+2025-05-24 07:18:42,666 [INFO] Saved 376 historical data points for ETH
+2025-05-24 07:18:42,666 [INFO] Added data point for ETH: price=2566.85
+2025-05-24 07:18:42,666 [INFO] Collected data for ETH: price=2566.85
+2025-05-24 07:18:43,512 [INFO] Retrieved market data for SOL: price=177.165, funding_rate=0.0
+2025-05-24 07:18:43,517 [INFO] Saved 367 historical data points for SOL
+2025-05-24 07:18:43,517 [INFO] Added data point for SOL: price=177.165
+2025-05-24 07:18:43,517 [INFO] Collected data for SOL: price=177.165
+2025-05-24 07:18:44,333 [INFO] Retrieved market data for BTC: price=109323.5, funding_rate=0.0
+2025-05-24 07:18:44,494 [WARNING] Using stale cached order book for BTC
+2025-05-24 07:18:44,494 [INFO] Generating signal for BTC using Master Omni Overlord Strategy
+2025-05-24 07:18:44,494 [WARNING] No historical data for market regime detection
+2025-05-24 07:18:44,494 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:18:44,494 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:18:44,494 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:18:44,494 [INFO] Generated signal for BTC: action=none, strength=0.0
+2025-05-24 07:18:45,894 [INFO] Retrieved market data for ETH: price=2566.85, funding_rate=0.0
+2025-05-24 07:18:46,057 [WARNING] Using stale cached order book for ETH
+2025-05-24 07:18:46,058 [INFO] Generating signal for ETH using Master Omni Overlord Strategy
+2025-05-24 07:18:46,058 [WARNING] No historical data for market regime detection
+2025-05-24 07:18:46,058 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:18:46,058 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:18:46,058 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:18:46,058 [INFO] Generated signal for ETH: action=none, strength=0.0
+2025-05-24 07:18:46,971 [INFO] Retrieved market data for SOL: price=177.215, funding_rate=0.0
+2025-05-24 07:18:47,127 [WARNING] Using stale cached order book for SOL
+2025-05-24 07:18:47,128 [INFO] Generating signal for SOL using Master Omni Overlord Strategy
+2025-05-24 07:18:47,128 [WARNING] No historical data for market regime detection
+2025-05-24 07:18:47,128 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:18:47,128 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:18:47,128 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:18:47,128 [INFO] Generated signal for SOL: action=none, strength=0.0
+2025-05-24 07:18:48,062 [INFO] Retrieved market data for BTC: price=109337.5, funding_rate=0.0
+2025-05-24 07:18:48,067 [INFO] Saved 377 historical data points for BTC
+2025-05-24 07:18:48,067 [INFO] Added data point for BTC: price=109337.5
+2025-05-24 07:18:48,067 [INFO] Collected data for BTC: price=109337.5
+2025-05-24 07:18:48,895 [INFO] Retrieved market data for ETH: price=2567.75, funding_rate=0.0
+2025-05-24 07:18:48,900 [INFO] Saved 377 historical data points for ETH
+2025-05-24 07:18:48,900 [INFO] Added data point for ETH: price=2567.75
+2025-05-24 07:18:48,900 [INFO] Collected data for ETH: price=2567.75
+2025-05-24 07:18:49,714 [INFO] Retrieved market data for SOL: price=177.225, funding_rate=0.0
+2025-05-24 07:18:49,718 [INFO] Saved 368 historical data points for SOL
+2025-05-24 07:18:49,718 [INFO] Added data point for SOL: price=177.225
+2025-05-24 07:18:49,718 [INFO] Collected data for SOL: price=177.225
+2025-05-24 07:18:50,573 [INFO] Retrieved market data for BTC: price=109339.0, funding_rate=0.0
+2025-05-24 07:18:50,735 [WARNING] Using stale cached order book for BTC
+2025-05-24 07:18:50,735 [INFO] Generating signal for BTC using Master Omni Overlord Strategy
+2025-05-24 07:18:50,735 [WARNING] No historical data for market regime detection
+2025-05-24 07:18:50,735 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:18:50,735 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:18:50,735 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:18:50,735 [INFO] Generated signal for BTC: action=none, strength=0.0
+2025-05-24 07:18:51,554 [INFO] Retrieved market data for ETH: price=2567.75, funding_rate=0.0
+2025-05-24 07:18:51,715 [WARNING] Using stale cached order book for ETH
+2025-05-24 07:18:51,715 [INFO] Generating signal for ETH using Master Omni Overlord Strategy
+2025-05-24 07:18:51,715 [WARNING] No historical data for market regime detection
+2025-05-24 07:18:51,715 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:18:51,715 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:18:51,715 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:18:51,715 [INFO] Generated signal for ETH: action=none, strength=0.0
+2025-05-24 07:18:52,536 [INFO] Retrieved market data for SOL: price=177.225, funding_rate=0.0
+2025-05-24 07:18:52,694 [WARNING] Using stale cached order book for SOL
+2025-05-24 07:18:52,695 [INFO] Generating signal for SOL using Master Omni Overlord Strategy
+2025-05-24 07:18:52,695 [WARNING] No historical data for market regime detection
+2025-05-24 07:18:52,695 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:18:52,695 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:18:52,695 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:18:52,695 [INFO] Generated signal for SOL: action=none, strength=0.0
+2025-05-24 07:18:53,603 [INFO] Retrieved market data for BTC: price=109348.5, funding_rate=0.0
+2025-05-24 07:18:53,608 [INFO] Saved 378 historical data points for BTC
+2025-05-24 07:18:53,608 [INFO] Added data point for BTC: price=109348.5
+2025-05-24 07:18:53,608 [INFO] Collected data for BTC: price=109348.5
+2025-05-24 07:18:54,438 [INFO] Retrieved market data for ETH: price=2567.75, funding_rate=0.0
+2025-05-24 07:18:54,443 [INFO] Saved 378 historical data points for ETH
+2025-05-24 07:18:54,443 [INFO] Added data point for ETH: price=2567.75
+2025-05-24 07:18:54,443 [INFO] Collected data for ETH: price=2567.75
+2025-05-24 07:18:55,433 [INFO] Retrieved market data for SOL: price=177.205, funding_rate=0.0
+2025-05-24 07:18:55,437 [INFO] Saved 369 historical data points for SOL
+2025-05-24 07:18:55,438 [INFO] Added data point for SOL: price=177.205
+2025-05-24 07:18:55,438 [INFO] Collected data for SOL: price=177.205
+2025-05-24 07:18:56,333 [INFO] Retrieved market data for BTC: price=109347.5, funding_rate=0.0
+2025-05-24 07:18:56,496 [WARNING] Using stale cached order book for BTC
+2025-05-24 07:18:56,496 [INFO] Generating signal for BTC using Master Omni Overlord Strategy
+2025-05-24 07:18:56,496 [WARNING] No historical data for market regime detection
+2025-05-24 07:18:56,496 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:18:56,496 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:18:56,496 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:18:56,496 [INFO] Generated signal for BTC: action=none, strength=0.0
+2025-05-24 07:18:57,303 [INFO] Retrieved market data for ETH: price=2567.95, funding_rate=0.0
+2025-05-24 07:18:57,500 [WARNING] Using stale cached order book for ETH
+2025-05-24 07:18:57,500 [INFO] Generating signal for ETH using Master Omni Overlord Strategy
+2025-05-24 07:18:57,500 [WARNING] No historical data for market regime detection
+2025-05-24 07:18:57,500 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:18:57,500 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:18:57,500 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:18:57,501 [INFO] Generated signal for ETH: action=none, strength=0.0
+2025-05-24 07:18:58,310 [INFO] Retrieved market data for SOL: price=177.205, funding_rate=0.0
+2025-05-24 07:18:58,470 [WARNING] Using stale cached order book for SOL
+2025-05-24 07:18:58,470 [INFO] Generating signal for SOL using Master Omni Overlord Strategy
+2025-05-24 07:18:58,470 [WARNING] No historical data for market regime detection
+2025-05-24 07:18:58,470 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:18:58,470 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:18:58,470 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:18:58,470 [INFO] Generated signal for SOL: action=none, strength=0.0
+2025-05-24 07:18:59,381 [INFO] Retrieved market data for BTC: price=109337.5, funding_rate=0.0
+2025-05-24 07:18:59,386 [INFO] Saved 379 historical data points for BTC
+2025-05-24 07:18:59,386 [INFO] Added data point for BTC: price=109337.5
+2025-05-24 07:18:59,386 [INFO] Collected data for BTC: price=109337.5
+2025-05-24 07:19:00,218 [INFO] Retrieved market data for ETH: price=2567.7, funding_rate=0.0
+2025-05-24 07:19:00,226 [INFO] Saved 379 historical data points for ETH
+2025-05-24 07:19:00,226 [INFO] Added data point for ETH: price=2567.7
+2025-05-24 07:19:00,227 [INFO] Collected data for ETH: price=2567.7
+2025-05-24 07:19:01,116 [INFO] Retrieved market data for SOL: price=177.225, funding_rate=0.0
+2025-05-24 07:19:01,121 [INFO] Saved 370 historical data points for SOL
+2025-05-24 07:19:01,121 [INFO] Added data point for SOL: price=177.225
+2025-05-24 07:19:01,121 [INFO] Collected data for SOL: price=177.225
+2025-05-24 07:19:01,960 [INFO] Retrieved market data for BTC: price=109338.5, funding_rate=0.0
+2025-05-24 07:19:02,122 [WARNING] Using stale cached order book for BTC
+2025-05-24 07:19:02,122 [INFO] Generating signal for BTC using Master Omni Overlord Strategy
+2025-05-24 07:19:02,122 [WARNING] No historical data for market regime detection
+2025-05-24 07:19:02,122 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:19:02,122 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:19:02,122 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:19:02,122 [INFO] Generated signal for BTC: action=none, strength=0.0
+2025-05-24 07:19:02,941 [INFO] Retrieved market data for ETH: price=2567.85, funding_rate=0.0
+2025-05-24 07:19:03,101 [WARNING] Using stale cached order book for ETH
+2025-05-24 07:19:03,101 [INFO] Generating signal for ETH using Master Omni Overlord Strategy
+2025-05-24 07:19:03,101 [WARNING] No historical data for market regime detection
+2025-05-24 07:19:03,102 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:19:03,102 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:19:03,102 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:19:03,102 [INFO] Generated signal for ETH: action=none, strength=0.0
+2025-05-24 07:19:03,924 [INFO] Retrieved market data for SOL: price=177.265, funding_rate=0.0
+2025-05-24 07:19:04,094 [WARNING] Using stale cached order book for SOL
+2025-05-24 07:19:04,094 [INFO] Generating signal for SOL using Master Omni Overlord Strategy
+2025-05-24 07:19:04,094 [WARNING] No historical data for market regime detection
+2025-05-24 07:19:04,094 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:19:04,094 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:19:04,094 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:19:04,094 [INFO] Generated signal for SOL: action=none, strength=0.0
+2025-05-24 07:19:05,045 [INFO] Retrieved market data for BTC: price=109342.5, funding_rate=0.0
+2025-05-24 07:19:05,050 [INFO] Saved 380 historical data points for BTC
+2025-05-24 07:19:05,050 [INFO] Added data point for BTC: price=109342.5
+2025-05-24 07:19:05,050 [INFO] Collected data for BTC: price=109342.5
+2025-05-24 07:19:05,902 [INFO] Retrieved market data for ETH: price=2567.65, funding_rate=0.0
+2025-05-24 07:19:05,907 [INFO] Saved 380 historical data points for ETH
+2025-05-24 07:19:05,907 [INFO] Added data point for ETH: price=2567.65
+2025-05-24 07:19:05,907 [INFO] Collected data for ETH: price=2567.65
+2025-05-24 07:19:06,834 [INFO] Retrieved market data for SOL: price=177.245, funding_rate=0.0
+2025-05-24 07:19:06,839 [INFO] Saved 371 historical data points for SOL
+2025-05-24 07:19:06,839 [INFO] Added data point for SOL: price=177.245
+2025-05-24 07:19:06,839 [INFO] Collected data for SOL: price=177.245
+2025-05-24 07:19:07,641 [INFO] Retrieved market data for BTC: price=109343.5, funding_rate=0.0
+2025-05-24 07:19:07,803 [WARNING] Using stale cached order book for BTC
+2025-05-24 07:19:07,803 [INFO] Generating signal for BTC using Master Omni Overlord Strategy
+2025-05-24 07:19:07,803 [WARNING] No historical data for market regime detection
+2025-05-24 07:19:07,803 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:19:07,803 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:19:07,803 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:19:07,803 [INFO] Generated signal for BTC: action=none, strength=0.0
+2025-05-24 07:19:08,632 [INFO] Retrieved market data for ETH: price=2567.65, funding_rate=0.0
+2025-05-24 07:19:08,794 [WARNING] Using stale cached order book for ETH
+2025-05-24 07:19:08,794 [INFO] Generating signal for ETH using Master Omni Overlord Strategy
+2025-05-24 07:19:08,794 [WARNING] No historical data for market regime detection
+2025-05-24 07:19:08,794 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:19:08,795 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:19:08,795 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:19:08,795 [INFO] Generated signal for ETH: action=none, strength=0.0
+2025-05-24 07:19:09,608 [INFO] Retrieved market data for SOL: price=177.275, funding_rate=0.0
+2025-05-24 07:19:09,775 [WARNING] Using stale cached order book for SOL
+2025-05-24 07:19:09,775 [INFO] Generating signal for SOL using Master Omni Overlord Strategy
+2025-05-24 07:19:09,775 [WARNING] No historical data for market regime detection
+2025-05-24 07:19:09,775 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:19:09,775 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:19:09,775 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:19:09,775 [INFO] Generated signal for SOL: action=none, strength=0.0
+2025-05-24 07:19:11,667 [INFO] Retrieved market data for BTC: price=109349.0, funding_rate=0.0
+2025-05-24 07:19:11,672 [INFO] Saved 381 historical data points for BTC
+2025-05-24 07:19:11,672 [INFO] Added data point for BTC: price=109349.0
+2025-05-24 07:19:11,672 [INFO] Collected data for BTC: price=109349.0
+2025-05-24 07:19:12,485 [INFO] Retrieved market data for ETH: price=2567.55, funding_rate=0.0
+2025-05-24 07:19:12,490 [INFO] Saved 381 historical data points for ETH
+2025-05-24 07:19:12,490 [INFO] Added data point for ETH: price=2567.55
+2025-05-24 07:19:12,490 [INFO] Collected data for ETH: price=2567.55
+2025-05-24 07:19:13,448 [INFO] Retrieved market data for SOL: price=177.245, funding_rate=0.0
+2025-05-24 07:19:13,453 [INFO] Saved 372 historical data points for SOL
+2025-05-24 07:19:13,453 [INFO] Added data point for SOL: price=177.245
+2025-05-24 07:19:13,453 [INFO] Collected data for SOL: price=177.245
+2025-05-24 07:19:14,274 [INFO] Retrieved market data for BTC: price=109349.5, funding_rate=0.0
+2025-05-24 07:19:14,437 [WARNING] Using stale cached order book for BTC
+2025-05-24 07:19:14,438 [INFO] Generating signal for BTC using Master Omni Overlord Strategy
+2025-05-24 07:19:14,438 [WARNING] No historical data for market regime detection
+2025-05-24 07:19:14,438 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:19:14,438 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:19:14,438 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:19:14,438 [INFO] Generated signal for BTC: action=none, strength=0.0
+2025-05-24 07:19:15,387 [INFO] Retrieved market data for ETH: price=2567.15, funding_rate=0.0
+2025-05-24 07:19:15,651 [WARNING] Using stale cached order book for ETH
+2025-05-24 07:19:15,651 [INFO] Generating signal for ETH using Master Omni Overlord Strategy
+2025-05-24 07:19:15,651 [WARNING] No historical data for market regime detection
+2025-05-24 07:19:15,651 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:19:15,652 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:19:15,652 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:19:15,652 [INFO] Generated signal for ETH: action=none, strength=0.0
+2025-05-24 07:19:16,769 [INFO] Retrieved market data for SOL: price=177.235, funding_rate=0.0
+2025-05-24 07:19:16,931 [WARNING] Using stale cached order book for SOL
+2025-05-24 07:19:16,931 [INFO] Generating signal for SOL using Master Omni Overlord Strategy
+2025-05-24 07:19:16,931 [WARNING] No historical data for market regime detection
+2025-05-24 07:19:16,931 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:19:16,931 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:19:16,931 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:19:16,931 [INFO] Generated signal for SOL: action=none, strength=0.0
+2025-05-24 07:19:18,289 [INFO] Retrieved market data for BTC: price=109349.5, funding_rate=0.0
+2025-05-24 07:19:18,294 [INFO] Saved 382 historical data points for BTC
+2025-05-24 07:19:18,294 [INFO] Added data point for BTC: price=109349.5
+2025-05-24 07:19:18,294 [INFO] Collected data for BTC: price=109349.5
+2025-05-24 07:19:19,206 [INFO] Retrieved market data for ETH: price=2566.95, funding_rate=0.0
+2025-05-24 07:19:19,211 [INFO] Saved 382 historical data points for ETH
+2025-05-24 07:19:19,211 [INFO] Added data point for ETH: price=2566.95
+2025-05-24 07:19:19,211 [INFO] Collected data for ETH: price=2566.95
+2025-05-24 07:19:20,046 [INFO] Retrieved market data for SOL: price=177.225, funding_rate=0.0
+2025-05-24 07:19:20,051 [INFO] Saved 373 historical data points for SOL
+2025-05-24 07:19:20,051 [INFO] Added data point for SOL: price=177.225
+2025-05-24 07:19:20,051 [INFO] Collected data for SOL: price=177.225
+2025-05-24 07:19:21,428 [INFO] Retrieved market data for BTC: price=109349.5, funding_rate=0.0
+2025-05-24 07:19:21,588 [WARNING] Using stale cached order book for BTC
+2025-05-24 07:19:21,588 [INFO] Generating signal for BTC using Master Omni Overlord Strategy
+2025-05-24 07:19:21,588 [WARNING] No historical data for market regime detection
+2025-05-24 07:19:21,588 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:19:21,588 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:19:21,588 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:19:21,589 [INFO] Generated signal for BTC: action=none, strength=0.0
+2025-05-24 07:19:22,435 [INFO] Retrieved market data for ETH: price=2566.95, funding_rate=0.0
+2025-05-24 07:19:22,607 [WARNING] Using stale cached order book for ETH
+2025-05-24 07:19:22,608 [INFO] Generating signal for ETH using Master Omni Overlord Strategy
+2025-05-24 07:19:22,608 [WARNING] No historical data for market regime detection
+2025-05-24 07:19:22,608 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:19:22,608 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:19:22,608 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:19:22,608 [INFO] Generated signal for ETH: action=none, strength=0.0
+2025-05-24 07:19:23,508 [INFO] Retrieved market data for SOL: price=177.215, funding_rate=0.0
+2025-05-24 07:19:23,669 [WARNING] Using stale cached order book for SOL
+2025-05-24 07:19:23,669 [INFO] Generating signal for SOL using Master Omni Overlord Strategy
+2025-05-24 07:19:23,669 [WARNING] No historical data for market regime detection
+2025-05-24 07:19:23,669 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-24 07:19:23,669 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.7, 'trend_filter_strength': 0.5, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-24 07:19:23,669 [ERROR] Error generating signal: type object 'RobustSignalGenerator' has no attribute 'generate_master_signal'
+2025-05-24 07:19:23,669 [INFO] Generated signal for SOL: action=none, strength=0.0
+2025-05-24 07:19:24,270 [INFO] Continuous operation test completed in 66.34 seconds
+2025-05-24 07:19:24,270 [INFO] Data collection count: 33
+2025-05-24 07:19:24,270 [INFO] Signal generation count: 33
+2025-05-24 07:19:24,270 [INFO] Errors: 0
+2025-05-24 07:19:24,270 [INFO] Test results saved to test_results.json
+2025-05-24 07:19:24,270 [ERROR] Some tests failed!

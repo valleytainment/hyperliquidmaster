@@ -1,0 +1,492 @@
+2025-05-23 17:43:36,906 [INFO] SOL Data Resolver initialized
+2025-05-23 17:43:36,906 [INFO] Fetching data for SOL-USD-PERP, interval 1h
+2025-05-23 17:43:36,906 [INFO] Fetching SOL-USD-PERP data for interval 1h, days 30
+2025-05-23 17:43:36,916 [INFO] Using existing processed data for SOL-USD-PERP, interval 1h
+2025-05-23 17:43:36,917 [INFO] Data quality for SOL-USD-PERP, interval 1h: {'source': 'hyperliquid', 'is_synthetic': False, 'alternative_sources': [], 'synthetic_ratio': 0.0, 'missing_values': np.float64(0.057055555555555554), 'data_points': 720, 'start_date': '2025-04-23', 'end_date': '2025-05-23'}
+2025-05-23 17:43:36,917 [INFO] Data shape: (720, 25)
+2025-05-23 17:43:36,936 [INFO] First few rows:
+                   timestamp        open  ...          obv  rate
+0 2025-04-23 18:20:47.027742  148.977425  ...     0.000000   NaN
+1 2025-04-23 19:20:47.027742  148.812667  ...  1158.460990   NaN
+2 2025-04-23 20:20:47.027742  152.640942  ...  2319.543821   NaN
+3 2025-04-23 21:20:47.027742  157.289721  ...  3086.037564   NaN
+4 2025-04-23 22:20:47.027742  159.110467  ...  4736.812854   NaN
+
+[5 rows x 25 columns]
+2025-05-23 17:43:36,951 [INFO] Last few rows:
+                     timestamp        open  ...          obv      rate
+715 2025-05-23 13:20:47.027742   98.052748  ... -2021.788355       NaN
+716 2025-05-23 14:20:47.027742  100.132643  ... -1010.174454       NaN
+717 2025-05-23 15:20:47.027742  100.681919  ...   350.873832       NaN
+718 2025-05-23 16:20:47.027742   98.883507  ...  2393.371159       NaN
+719 2025-05-23 17:20:47.027742   97.941024  ...  3787.881205  0.000291
+
+[5 rows x 25 columns]
+2025-05-23 17:43:36,998 [INFO] Summary statistics:
+                           timestamp        open  ...           obv       rate
+count                            720  720.000000  ...    720.000000  90.000000
+mean   2025-05-08 17:50:47.027742208  129.791716  ...   -121.763936   0.000129
+min       2025-04-23 18:20:47.027742   89.595296  ... -29223.963069  -0.000518
+25%    2025-05-01 06:05:47.027741952  103.491033  ...  -7029.716976  -0.000101
+50%    2025-05-08 17:50:47.027741952  121.264974  ...  -1905.604142   0.000145
+75%    2025-05-16 05:35:47.027741952  151.862259  ...   5490.262528   0.000339
+max       2025-05-23 17:20:47.027742  232.598453  ...  36134.649835   0.000798
+std                              NaN   30.234984  ...  13174.478686   0.000318
+
+[8 rows x 25 columns]
+2025-05-23 17:43:37,019 [INFO] Correlation matrix:
+             timestamp      open      high  ...   stoch_d       obv      rate
+timestamp     1.000000  0.006603  0.006877  ...  0.012368  0.320363  0.063408
+open          0.006603  1.000000  0.999071  ...  0.187062  0.843173 -0.089070
+high          0.006877  0.999071  1.000000  ...  0.188237  0.844232 -0.093563
+low           0.006139  0.999026  0.998949  ...  0.189239  0.844267 -0.088746
+close         0.005992  0.997509  0.998994  ...  0.191474  0.845443 -0.091680
+volume       -0.062943  0.034157  0.033192  ...  0.034594  0.006594  0.093545
+sma_20        0.058461  0.931884  0.932651  ... -0.124639  0.814750 -0.031500
+sma_50        0.120408  0.848501  0.849203  ... -0.179941  0.778955  0.068398
+sma_200       0.265169  0.271754  0.275095  ... -0.222238  0.398939  0.358598
+ema_12        0.011758  0.972738  0.973512  ...  0.004627  0.836065 -0.041581
+ema_26        0.019655  0.936958  0.937849  ... -0.102713  0.821345  0.014909
+macd         -0.043036  0.451914  0.451424  ...  0.625023  0.295071 -0.343880
+macd_signal  -0.044522  0.466641  0.465839  ...  0.392024  0.305701 -0.349234
+macd_hist    -0.004745  0.052338  0.053134  ...  0.800439  0.031252 -0.043458
+rsi          -0.010493  0.242625  0.243884  ...  0.881499  0.166986 -0.217603
+bb_middle     0.058461  0.931884  0.932651  ... -0.124639  0.814750 -0.031500
+bb_std        0.058629  0.619878  0.617638  ... -0.075650  0.548197  0.103031
+bb_upper      0.062370  0.923038  0.923175  ... -0.121815  0.808425 -0.003429
+bb_lower      0.050026  0.896670  0.898276  ... -0.122219  0.781995 -0.069124
+atr           0.066890  0.892121  0.893593  ... -0.050096  0.811297  0.021890
+vwap          0.347515  0.209628  0.211391  ... -0.284843  0.375376  0.556191
+stoch_k       0.015589  0.160796  0.164997  ...  0.934335  0.133334 -0.222125
+stoch_d       0.012368  0.187062  0.188237  ...  1.000000  0.146200 -0.217040
+obv           0.320363  0.843173  0.844232  ...  0.146200  1.000000  0.105879
+rate          0.063408 -0.089070 -0.093563  ... -0.217040  0.105879  1.000000
+
+[25 rows x 25 columns]
+2025-05-23 17:43:37,020 [INFO] Missing values:
+timestamp        0
+open             0
+high             0
+low              0
+close            0
+volume           0
+sma_20          19
+sma_50          49
+sma_200        199
+ema_12           0
+ema_26           0
+macd             0
+macd_signal      0
+macd_hist        0
+rsi             13
+bb_middle       19
+bb_std          19
+bb_upper        19
+bb_lower        19
+atr             13
+vwap             0
+stoch_k         13
+stoch_d         15
+obv              0
+rate           630
+dtype: int64
+2025-05-23 17:43:37,021 [INFO] Data types:
+timestamp      datetime64[ns]
+open                  float64
+high                  float64
+low                   float64
+close                 float64
+volume                float64
+sma_20                float64
+sma_50                float64
+sma_200               float64
+ema_12                float64
+ema_26                float64
+macd                  float64
+macd_signal           float64
+macd_hist             float64
+rsi                   float64
+bb_middle             float64
+bb_std                float64
+bb_upper              float64
+bb_lower              float64
+atr                   float64
+vwap                  float64
+stoch_k               float64
+stoch_d               float64
+obv                   float64
+rate                  float64
+dtype: object
+2025-05-23 17:43:37,022 [INFO] Memory usage:
+Index           128
+timestamp      5760
+open           5760
+high           5760
+low            5760
+close          5760
+volume         5760
+sma_20         5760
+sma_50         5760
+sma_200        5760
+ema_12         5760
+ema_26         5760
+macd           5760
+macd_signal    5760
+macd_hist      5760
+rsi            5760
+bb_middle      5760
+bb_std         5760
+bb_upper       5760
+bb_lower       5760
+atr            5760
+vwap           5760
+stoch_k        5760
+stoch_d        5760
+obv            5760
+rate           5760
+dtype: int64
+2025-05-23 17:43:37,022 [INFO] Data quality:
+{'source': 'hyperliquid', 'is_synthetic': False, 'alternative_sources': [], 'synthetic_ratio': 0.0, 'missing_values': np.float64(0.057055555555555554), 'data_points': 720, 'start_date': '2025-04-23', 'end_date': '2025-05-23'}
+2025-05-23 17:43:37,023 [INFO] Data source: hyperliquid
+2025-05-23 17:43:37,023 [INFO] Synthetic ratio: 0.0
+2025-05-23 17:43:37,023 [INFO] Missing values: 0.057055555555555554
+2025-05-23 17:43:37,023 [INFO] Data points: 720
+2025-05-23 17:43:37,023 [INFO] Start date: 2025-04-23
+2025-05-23 17:43:37,023 [INFO] End date: 2025-05-23
+2025-05-23 17:43:37,023 [INFO] Alternative sources: []
+2025-05-23 17:43:37,023 [INFO] Is synthetic: False
+2025-05-23 17:43:37,023 [INFO] --------------------------------------------------------------------------------
+2025-05-23 17:43:37,023 [INFO] Fetching data for SOL-USD-PERP, interval 4h
+2025-05-23 17:43:37,023 [INFO] Fetching SOL-USD-PERP data for interval 4h, days 30
+2025-05-23 17:43:37,027 [INFO] Using existing processed data for SOL-USD-PERP, interval 4h
+2025-05-23 17:43:37,028 [INFO] Data quality for SOL-USD-PERP, interval 4h: {'source': 'hyperliquid', 'is_synthetic': False, 'alternative_sources': [], 'synthetic_ratio': 0.0, 'missing_values': np.float64(0.104), 'data_points': 180, 'start_date': '2025-04-23', 'end_date': '2025-05-23'}
+2025-05-23 17:43:37,028 [INFO] Data shape: (180, 25)
+2025-05-23 17:43:37,043 [INFO] First few rows:
+                   timestamp        open  ...          obv      rate
+0 2025-04-23 21:20:47.674020  149.590069  ...     0.000000       NaN
+1 2025-04-24 01:20:47.674020  148.930166  ...  1305.238050  0.000597
+2 2025-04-24 05:20:47.674020  152.299441  ...  3500.668016       NaN
+3 2025-04-24 09:20:47.674020  160.401315  ...  4726.051024  0.000445
+4 2025-04-24 13:20:47.674020  158.952908  ...  6331.142779       NaN
+
+[5 rows x 25 columns]
+2025-05-23 17:43:37,058 [INFO] Last few rows:
+                     timestamp        open  ...          obv      rate
+175 2025-05-23 01:20:47.674020  107.962274  ...  2306.259540  0.000315
+176 2025-05-23 05:20:47.674020  108.816460  ...  3454.659604       NaN
+177 2025-05-23 09:20:47.674020  112.141708  ...  5418.933716  0.000153
+178 2025-05-23 13:20:47.674020  113.493354  ...  6727.966491       NaN
+179 2025-05-23 17:20:47.674020  120.763729  ...  7808.241294  0.000291
+
+[5 rows x 25 columns]
+2025-05-23 17:43:37,101 [INFO] Summary statistics:
+                           timestamp        open  ...           obv       rate
+count                            180  180.000000  ...    180.000000  90.000000
+mean   2025-05-08 19:20:47.674020352  111.156129  ...  -4591.222977   0.000129
+min       2025-04-23 21:20:47.674020   90.770227  ... -16420.967162  -0.000518
+25%    2025-05-01 08:20:47.674020096   99.604655  ...  -9192.401525  -0.000101
+50%    2025-05-08 19:20:47.674020096  105.264499  ...  -4883.516521   0.000145
+75%    2025-05-16 06:20:47.674020096  112.232366  ...   -498.269961   0.000339
+max       2025-05-23 17:20:47.674020  172.478024  ...   8212.745856   0.000798
+std                              NaN   18.762420  ...   5861.733331   0.000318
+
+[8 rows x 25 columns]
+2025-05-23 17:43:37,121 [INFO] Correlation matrix:
+             timestamp      open      high  ...   stoch_d       obv      rate
+timestamp     1.000000 -0.674751 -0.675238  ...  0.437756  0.069048  0.063408
+open         -0.674751  1.000000  0.998419  ... -0.113450  0.598520  0.290845
+high         -0.675238  0.998419  1.000000  ... -0.104811  0.600163  0.295958
+low          -0.676225  0.998215  0.998017  ... -0.112053  0.599692  0.302049
+close        -0.676366  0.996002  0.998357  ... -0.101801  0.600834  0.306019
+volume       -0.059832 -0.008815 -0.006816  ... -0.135782 -0.013368 -0.029126
+sma_20       -0.730187  0.839516  0.837475  ... -0.509015  0.098578 -0.239701
+sma_50       -0.822327  0.048506  0.074862  ... -0.129480 -0.500085 -0.374409
+sma_200            NaN       NaN       NaN  ...       NaN       NaN       NaN
+ema_12       -0.768483  0.958566  0.957859  ... -0.391898  0.496219  0.255978
+ema_26       -0.842749  0.904751  0.903742  ... -0.488095  0.403715  0.166464
+macd          0.391236  0.265908  0.267466  ...  0.593494  0.470442  0.452327
+macd_signal   0.353536  0.296445  0.295029  ...  0.335657  0.477778  0.507394
+macd_hist     0.207495 -0.012834 -0.004273  ...  0.804378  0.105208 -0.028415
+rsi           0.531278 -0.092014 -0.082401  ...  0.862020  0.337387  0.125749
+bb_middle    -0.730187  0.839516  0.837475  ... -0.509015  0.098578 -0.239701
+bb_std       -0.607987  0.740458  0.737322  ... -0.453570  0.170943 -0.234407
+bb_upper     -0.708055  0.827454  0.825011  ... -0.503192  0.124291 -0.243742
+bb_lower     -0.721932  0.799379  0.798425  ... -0.481265  0.031747 -0.211740
+atr          -0.688758  0.873358  0.876879  ... -0.266849  0.260624  0.014246
+vwap         -0.919986  0.846994  0.846857  ... -0.502735  0.266356  0.098899
+stoch_k       0.417803 -0.116572 -0.102178  ...  0.923159  0.268325 -0.010384
+stoch_d       0.437756 -0.113450 -0.104811  ...  1.000000  0.265721 -0.023304
+obv           0.069048  0.598520  0.600163  ...  0.265721  1.000000  0.401142
+rate          0.063408  0.290845  0.295958  ... -0.023304  0.401142  1.000000
+
+[25 rows x 25 columns]
+2025-05-23 17:43:37,122 [INFO] Missing values:
+timestamp        0
+open             0
+high             0
+low              0
+close            0
+volume           0
+sma_20          19
+sma_50          49
+sma_200        180
+ema_12           0
+ema_26           0
+macd             0
+macd_signal      0
+macd_hist        0
+rsi             13
+bb_middle       19
+bb_std          19
+bb_upper        19
+bb_lower        19
+atr             13
+vwap             0
+stoch_k         13
+stoch_d         15
+obv              0
+rate            90
+dtype: int64
+2025-05-23 17:43:37,123 [INFO] Data types:
+timestamp      datetime64[ns]
+open                  float64
+high                  float64
+low                   float64
+close                 float64
+volume                float64
+sma_20                float64
+sma_50                float64
+sma_200               float64
+ema_12                float64
+ema_26                float64
+macd                  float64
+macd_signal           float64
+macd_hist             float64
+rsi                   float64
+bb_middle             float64
+bb_std                float64
+bb_upper              float64
+bb_lower              float64
+atr                   float64
+vwap                  float64
+stoch_k               float64
+stoch_d               float64
+obv                   float64
+rate                  float64
+dtype: object
+2025-05-23 17:43:37,124 [INFO] Memory usage:
+Index           128
+timestamp      1440
+open           1440
+high           1440
+low            1440
+close          1440
+volume         1440
+sma_20         1440
+sma_50         1440
+sma_200        1440
+ema_12         1440
+ema_26         1440
+macd           1440
+macd_signal    1440
+macd_hist      1440
+rsi            1440
+bb_middle      1440
+bb_std         1440
+bb_upper       1440
+bb_lower       1440
+atr            1440
+vwap           1440
+stoch_k        1440
+stoch_d        1440
+obv            1440
+rate           1440
+dtype: int64
+2025-05-23 17:43:37,124 [INFO] Data quality:
+{'source': 'hyperliquid', 'is_synthetic': False, 'alternative_sources': [], 'synthetic_ratio': 0.0, 'missing_values': np.float64(0.104), 'data_points': 180, 'start_date': '2025-04-23', 'end_date': '2025-05-23'}
+2025-05-23 17:43:37,124 [INFO] Data source: hyperliquid
+2025-05-23 17:43:37,124 [INFO] Synthetic ratio: 0.0
+2025-05-23 17:43:37,124 [INFO] Missing values: 0.104
+2025-05-23 17:43:37,124 [INFO] Data points: 180
+2025-05-23 17:43:37,124 [INFO] Start date: 2025-04-23
+2025-05-23 17:43:37,124 [INFO] End date: 2025-05-23
+2025-05-23 17:43:37,124 [INFO] Alternative sources: []
+2025-05-23 17:43:37,124 [INFO] Is synthetic: False
+2025-05-23 17:43:37,124 [INFO] --------------------------------------------------------------------------------
+2025-05-23 17:44:41,371 [INFO] SOL Data Resolver initialized
+2025-05-23 17:44:41,371 [INFO] Main data pipeline initialized
+2025-05-23 17:44:41,371 [INFO] Fetching data for symbols ['SOL-USD-PERP', 'BTC-USD-PERP', 'ETH-USD-PERP'], intervals ['1h', '4h']
+2025-05-23 17:44:41,371 [INFO] Fetching data for SOL-USD-PERP, interval 1h
+2025-05-23 17:44:41,371 [INFO] Fetching data for SOL-USD-PERP, interval 1h
+2025-05-23 17:44:41,371 [INFO] Using specialized SOL resolver for SOL-USD-PERP, interval 1h
+2025-05-23 17:44:41,372 [INFO] Fetching SOL-USD-PERP data for interval 1h, days 30
+2025-05-23 17:44:41,381 [INFO] Using existing processed data for SOL-USD-PERP, interval 1h
+2025-05-23 17:44:41,382 [INFO] Fetching data for SOL-USD-PERP, interval 4h
+2025-05-23 17:44:41,382 [INFO] Fetching data for SOL-USD-PERP, interval 4h
+2025-05-23 17:44:41,382 [INFO] Using specialized SOL resolver for SOL-USD-PERP, interval 4h
+2025-05-23 17:44:41,382 [INFO] Fetching SOL-USD-PERP data for interval 4h, days 30
+2025-05-23 17:44:41,386 [INFO] Using existing processed data for SOL-USD-PERP, interval 4h
+2025-05-23 17:44:41,387 [INFO] Fetching data for BTC-USD-PERP, interval 1h
+2025-05-23 17:44:41,387 [INFO] Fetching data for BTC-USD-PERP, interval 1h
+2025-05-23 17:44:41,387 [WARNING] No specialized resolver available for BTC-USD-PERP, using generic resolver
+2025-05-23 17:44:41,387 [INFO] Fetching data for BTC-USD-PERP, interval 4h
+2025-05-23 17:44:41,387 [INFO] Fetching data for BTC-USD-PERP, interval 4h
+2025-05-23 17:44:41,387 [WARNING] No specialized resolver available for BTC-USD-PERP, using generic resolver
+2025-05-23 17:44:41,387 [INFO] Fetching data for ETH-USD-PERP, interval 1h
+2025-05-23 17:44:41,387 [INFO] Fetching data for ETH-USD-PERP, interval 1h
+2025-05-23 17:44:41,387 [WARNING] No specialized resolver available for ETH-USD-PERP, using generic resolver
+2025-05-23 17:44:41,387 [INFO] Fetching data for ETH-USD-PERP, interval 4h
+2025-05-23 17:44:41,387 [INFO] Fetching data for ETH-USD-PERP, interval 4h
+2025-05-23 17:44:41,387 [WARNING] No specialized resolver available for ETH-USD-PERP, using generic resolver
+2025-05-23 17:44:41,387 [INFO] Data quality summary:
+{
+    "SOL-USD-PERP": {
+        "1h": {
+            "status": "success",
+            "source": "hyperliquid",
+            "is_synthetic": false,
+            "synthetic_ratio": 0.0,
+            "data_points": 720
+        },
+        "4h": {
+            "status": "success",
+            "source": "hyperliquid",
+            "is_synthetic": false,
+            "synthetic_ratio": 0.0,
+            "data_points": 180
+        }
+    },
+    "BTC-USD-PERP": {
+        "1h": {
+            "status": "error",
+            "error": "No specialized resolver available for this symbol"
+        },
+        "4h": {
+            "status": "error",
+            "error": "No specialized resolver available for this symbol"
+        }
+    },
+    "ETH-USD-PERP": {
+        "1h": {
+            "status": "error",
+            "error": "No specialized resolver available for this symbol"
+        },
+        "4h": {
+            "status": "error",
+            "error": "No specialized resolver available for this symbol"
+        }
+    }
+}
+2025-05-23 17:44:41,388 [INFO] Data quality summary saved to data_quality_summary.json
+2025-05-23 17:44:41,388 [INFO] Data shape for SOL-USD-PERP, interval 1h: (720, 25)
+2025-05-23 17:44:41,437 [INFO] Data saved to real_market_data/processed/SOL-USD-PERP_1h_processed.csv
+2025-05-23 17:44:41,437 [INFO] Data shape for SOL-USD-PERP, interval 4h: (180, 25)
+2025-05-23 17:44:41,449 [INFO] Data saved to real_market_data/processed/SOL-USD-PERP_4h_processed.csv
+2025-05-23 17:49:23,403 [INFO] SOL Data Resolver initialized
+2025-05-23 17:49:23,403 [INFO] BTC/ETH Data Resolver initialized
+2025-05-23 17:49:23,403 [INFO] Main data pipeline initialized with SOL, BTC, and ETH resolvers
+2025-05-23 17:49:23,403 [INFO] Fetching data for symbols ['SOL-USD-PERP', 'BTC-USD-PERP', 'ETH-USD-PERP'], intervals ['1h', '4h']
+2025-05-23 17:49:23,403 [INFO] Fetching data for SOL-USD-PERP, interval 1h
+2025-05-23 17:49:23,403 [INFO] Fetching data for SOL-USD-PERP, interval 1h
+2025-05-23 17:49:23,403 [INFO] Using specialized SOL resolver for SOL-USD-PERP, interval 1h
+2025-05-23 17:49:23,403 [INFO] Fetching SOL-USD-PERP data for interval 1h, days 30
+2025-05-23 17:49:23,413 [INFO] Using existing processed data for SOL-USD-PERP, interval 1h
+2025-05-23 17:49:23,414 [INFO] Fetching data for SOL-USD-PERP, interval 4h
+2025-05-23 17:49:23,414 [INFO] Fetching data for SOL-USD-PERP, interval 4h
+2025-05-23 17:49:23,414 [INFO] Using specialized SOL resolver for SOL-USD-PERP, interval 4h
+2025-05-23 17:49:23,414 [INFO] Fetching SOL-USD-PERP data for interval 4h, days 30
+2025-05-23 17:49:23,418 [INFO] Using existing processed data for SOL-USD-PERP, interval 4h
+2025-05-23 17:49:23,418 [INFO] Fetching data for BTC-USD-PERP, interval 1h
+2025-05-23 17:49:23,418 [INFO] Fetching data for BTC-USD-PERP, interval 1h
+2025-05-23 17:49:23,418 [INFO] Using specialized BTC/ETH resolver for BTC-USD-PERP, interval 1h
+2025-05-23 17:49:23,418 [INFO] Fetching BTC-USD-PERP data for interval 1h, days 30
+2025-05-23 17:49:23,424 [INFO] Using existing processed data for BTC-USD-PERP, interval 1h
+2025-05-23 17:49:23,425 [INFO] Fetching data for BTC-USD-PERP, interval 4h
+2025-05-23 17:49:23,425 [INFO] Fetching data for BTC-USD-PERP, interval 4h
+2025-05-23 17:49:23,425 [INFO] Using specialized BTC/ETH resolver for BTC-USD-PERP, interval 4h
+2025-05-23 17:49:23,425 [INFO] Fetching BTC-USD-PERP data for interval 4h, days 30
+2025-05-23 17:49:23,429 [INFO] Using existing processed data for BTC-USD-PERP, interval 4h
+2025-05-23 17:49:23,429 [INFO] Fetching data for ETH-USD-PERP, interval 1h
+2025-05-23 17:49:23,429 [INFO] Fetching data for ETH-USD-PERP, interval 1h
+2025-05-23 17:49:23,430 [INFO] Using specialized BTC/ETH resolver for ETH-USD-PERP, interval 1h
+2025-05-23 17:49:23,430 [INFO] Fetching ETH-USD-PERP data for interval 1h, days 30
+2025-05-23 17:49:23,435 [INFO] Using existing processed data for ETH-USD-PERP, interval 1h
+2025-05-23 17:49:23,436 [INFO] Fetching data for ETH-USD-PERP, interval 4h
+2025-05-23 17:49:23,436 [INFO] Fetching data for ETH-USD-PERP, interval 4h
+2025-05-23 17:49:23,436 [INFO] Using specialized BTC/ETH resolver for ETH-USD-PERP, interval 4h
+2025-05-23 17:49:23,436 [INFO] Fetching ETH-USD-PERP data for interval 4h, days 30
+2025-05-23 17:49:23,439 [INFO] Using existing processed data for ETH-USD-PERP, interval 4h
+2025-05-23 17:49:23,440 [INFO] Data quality summary:
+{
+    "SOL-USD-PERP": {
+        "1h": {
+            "status": "success",
+            "source": "hyperliquid",
+            "is_synthetic": false,
+            "synthetic_ratio": 0.0,
+            "data_points": 720
+        },
+        "4h": {
+            "status": "success",
+            "source": "hyperliquid",
+            "is_synthetic": false,
+            "synthetic_ratio": 0.0,
+            "data_points": 180
+        }
+    },
+    "BTC-USD-PERP": {
+        "1h": {
+            "status": "success",
+            "source": "hyperliquid",
+            "is_synthetic": false,
+            "synthetic_ratio": 0.0,
+            "data_points": 720
+        },
+        "4h": {
+            "status": "success",
+            "source": "hyperliquid",
+            "is_synthetic": false,
+            "synthetic_ratio": 0.0,
+            "data_points": 180
+        }
+    },
+    "ETH-USD-PERP": {
+        "1h": {
+            "status": "success",
+            "source": "hyperliquid",
+            "is_synthetic": false,
+            "synthetic_ratio": 0.0,
+            "data_points": 720
+        },
+        "4h": {
+            "status": "success",
+            "source": "hyperliquid",
+            "is_synthetic": false,
+            "synthetic_ratio": 0.0,
+            "data_points": 180
+        }
+    }
+}
+2025-05-23 17:49:23,440 [INFO] Data quality summary saved to data_quality_summary.json
+2025-05-23 17:49:23,440 [INFO] Data quality analysis:
+{
+    "overall_status": "success",
+    "synthetic_data_count": 0,
+    "real_data_count": 6,
+    "error_count": 0,
+    "symbols_with_issues": [],
+    "recommendations": []
+}
+2025-05-23 17:49:23,441 [INFO] Data shape for SOL-USD-PERP, interval 1h: (720, 25)
+2025-05-23 17:49:23,491 [INFO] Data saved to real_market_data/processed/SOL-USD-PERP_1h_processed.csv
+2025-05-23 17:49:23,491 [INFO] Data shape for SOL-USD-PERP, interval 4h: (180, 25)
+2025-05-23 17:49:23,503 [INFO] Data saved to real_market_data/processed/SOL-USD-PERP_4h_processed.csv
+2025-05-23 17:49:23,503 [INFO] Data shape for BTC-USD-PERP, interval 1h: (720, 25)
+2025-05-23 17:49:23,551 [INFO] Data saved to real_market_data/processed/BTC-USD-PERP_1h_processed.csv
+2025-05-23 17:49:23,551 [INFO] Data shape for BTC-USD-PERP, interval 4h: (180, 25)
+2025-05-23 17:49:23,563 [INFO] Data saved to real_market_data/processed/BTC-USD-PERP_4h_processed.csv
+2025-05-23 17:49:23,563 [INFO] Data shape for ETH-USD-PERP, interval 1h: (720, 25)
+2025-05-23 17:49:23,611 [INFO] Data saved to real_market_data/processed/ETH-USD-PERP_1h_processed.csv
+2025-05-23 17:49:23,611 [INFO] Data shape for ETH-USD-PERP, interval 4h: (180, 25)
+2025-05-23 17:49:23,623 [INFO] Data saved to real_market_data/processed/ETH-USD-PERP_4h_processed.csv
+2025-05-23 17:49:23,623 [INFO] All data acquisition successful! Ready for backtesting.

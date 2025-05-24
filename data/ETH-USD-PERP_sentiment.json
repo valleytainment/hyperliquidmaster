@@ -1,0 +1,50 @@
+{
+  "symbol": "ETH",
+  "data": [
+    {
+      "timestamp": "2025-05-16T16:52:41.040846",
+      "sentiment_score": 53.01670466760048,
+      "social_volume": 1050.9419005604095
+    },
+    {
+      "timestamp": "2025-05-17T16:52:41.040846",
+      "sentiment_score": 59.81237131992868,
+      "social_volume": 949.3337729345337
+    },
+    {
+      "timestamp": "2025-05-18T16:52:41.040846",
+      "sentiment_score": 67.39327368859131,
+      "social_volume": 941.2989442153058
+    },
+    {
+      "timestamp": "2025-05-19T16:52:41.040846",
+      "sentiment_score": 43.42182221376701,
+      "social_volume": 550.3699101809977
+    },
+    {
+      "timestamp": "2025-05-20T16:52:41.040846",
+      "sentiment_score": 64.86391319064458,
+      "social_volume": 1167.6529881317306
+    },
+    {
+      "timestamp": "2025-05-21T16:52:41.040846",
+      "sentiment_score": 68.53744330420076,
+      "social_volume": 733.6300797832
+    },
+    {
+      "timestamp": "2025-05-22T16:52:41.040846",
+      "sentiment_score": 56.24265192607961,
+      "social_volume": 1107.6270922409594
+    },
+    {
+      "timestamp": "2025-05-23T16:52:41.040846",
+      "sentiment_score": 78.54332136790887,
+      "social_volume": 1102.234191905107
+    }
+  ],
+  "current_sentiment": {
+    "score": 78.54332136790887,
+    "label": "Bullish",
+    "social_volume": 1102.234191905107
+  }
+}

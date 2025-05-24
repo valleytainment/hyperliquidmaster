@@ -1,0 +1,39 @@
+2025-05-23 17:59:20,009 [INFO] Testing backtesting data for SOL-USD-PERP, interval 1h
+2025-05-23 17:59:20,017 [INFO] Loaded 720 rows of real data for SOL-USD-PERP, interval 1h
+2025-05-23 17:59:20,022 [INFO] Loaded 720 rows of backtest data for SOL-USD-PERP, interval 1h
+2025-05-23 17:59:20,023 [INFO] Backtesting is using real data for SOL-USD-PERP, interval 1h
+2025-05-23 17:59:20,023 [INFO] Testing backtesting data for SOL-USD-PERP, interval 4h
+2025-05-23 17:59:20,025 [INFO] Loaded 180 rows of real data for SOL-USD-PERP, interval 4h
+2025-05-23 17:59:20,028 [INFO] Loaded 180 rows of backtest data for SOL-USD-PERP, interval 4h
+2025-05-23 17:59:20,028 [INFO] Backtesting is using real data for SOL-USD-PERP, interval 4h
+2025-05-23 17:59:20,028 [INFO] Testing backtesting data for BTC-USD-PERP, interval 1h
+2025-05-23 17:59:20,033 [INFO] Loaded 720 rows of real data for BTC-USD-PERP, interval 1h
+2025-05-23 17:59:20,038 [INFO] Loaded 720 rows of backtest data for BTC-USD-PERP, interval 1h
+2025-05-23 17:59:20,038 [INFO] Backtesting is using real data for BTC-USD-PERP, interval 1h
+2025-05-23 17:59:20,039 [INFO] Testing backtesting data for BTC-USD-PERP, interval 4h
+2025-05-23 17:59:20,041 [INFO] Loaded 180 rows of real data for BTC-USD-PERP, interval 4h
+2025-05-23 17:59:20,043 [INFO] Loaded 180 rows of backtest data for BTC-USD-PERP, interval 4h
+2025-05-23 17:59:20,044 [INFO] Backtesting is using real data for BTC-USD-PERP, interval 4h
+2025-05-23 17:59:20,044 [INFO] Testing backtesting data for ETH-USD-PERP, interval 1h
+2025-05-23 17:59:20,048 [INFO] Loaded 720 rows of real data for ETH-USD-PERP, interval 1h
+2025-05-23 17:59:20,053 [INFO] Loaded 720 rows of backtest data for ETH-USD-PERP, interval 1h
+2025-05-23 17:59:20,054 [INFO] Backtesting is using real data for ETH-USD-PERP, interval 1h
+2025-05-23 17:59:20,054 [INFO] Testing backtesting data for ETH-USD-PERP, interval 4h
+2025-05-23 17:59:20,056 [INFO] Loaded 180 rows of real data for ETH-USD-PERP, interval 4h
+2025-05-23 17:59:20,058 [INFO] Loaded 180 rows of backtest data for ETH-USD-PERP, interval 4h
+2025-05-23 17:59:20,059 [INFO] Backtesting is using real data for ETH-USD-PERP, interval 4h
+2025-05-23 17:59:20,059 [INFO] Test results: {
+    "SOL-USD-PERP": {
+        "1h": true,
+        "4h": true
+    },
+    "BTC-USD-PERP": {
+        "1h": true,
+        "4h": true
+    },
+    "ETH-USD-PERP": {
+        "1h": true,
+        "4h": true
+    }
+}
+2025-05-23 17:59:20,059 [INFO] All tests passed! Backtesting is using real data for all symbols and intervals.

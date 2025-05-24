@@ -1,0 +1,134 @@
+2025-05-23 17:58:25,243 [INFO] Backtesting Data Fixer initialized with base_dir=real_market_data, backtest_dir=backtest_data
+2025-05-23 17:58:25,243 [INFO] Fixing data sources for symbols ['SOL-USD-PERP', 'BTC-USD-PERP', 'ETH-USD-PERP'], intervals ['1h', '4h']
+2025-05-23 17:58:25,243 [INFO] Fixing data source for SOL-USD-PERP, interval 1h
+2025-05-23 17:58:25,260 [INFO] Loaded 720 rows of processed data for SOL-USD-PERP, interval 1h
+2025-05-23 17:58:25,261 [WARNING] Processed data for SOL-USD-PERP, interval 1h has 1027 missing values
+2025-05-23 17:58:25,322 [INFO] Saved processed data to backtest_data/SOL-USD-PERP_1h.csv for backtesting
+2025-05-23 17:58:25,322 [INFO] Created symlink at backtest_data/SOL-USD-PERP_1h_real.csv pointing to backtest_data/SOL-USD-PERP_1h.csv
+2025-05-23 17:58:25,322 [INFO] Fixing data source for SOL-USD-PERP, interval 4h
+2025-05-23 17:58:25,325 [INFO] Loaded 180 rows of processed data for SOL-USD-PERP, interval 4h
+2025-05-23 17:58:25,326 [WARNING] Processed data for SOL-USD-PERP, interval 4h has 468 missing values
+2025-05-23 17:58:25,338 [INFO] Saved processed data to backtest_data/SOL-USD-PERP_4h.csv for backtesting
+2025-05-23 17:58:25,338 [INFO] Created symlink at backtest_data/SOL-USD-PERP_4h_real.csv pointing to backtest_data/SOL-USD-PERP_4h.csv
+2025-05-23 17:58:25,339 [INFO] Fixing data source for BTC-USD-PERP, interval 1h
+2025-05-23 17:58:25,356 [INFO] Loaded 720 rows of processed data for BTC-USD-PERP, interval 1h
+2025-05-23 17:58:25,356 [WARNING] Processed data for BTC-USD-PERP, interval 1h has 1027 missing values
+2025-05-23 17:58:25,405 [INFO] Saved processed data to backtest_data/BTC-USD-PERP_1h.csv for backtesting
+2025-05-23 17:58:25,405 [INFO] Created symlink at backtest_data/BTC-USD-PERP_1h_real.csv pointing to backtest_data/BTC-USD-PERP_1h.csv
+2025-05-23 17:58:25,405 [INFO] Fixing data source for BTC-USD-PERP, interval 4h
+2025-05-23 17:58:25,408 [INFO] Loaded 180 rows of processed data for BTC-USD-PERP, interval 4h
+2025-05-23 17:58:25,408 [WARNING] Processed data for BTC-USD-PERP, interval 4h has 468 missing values
+2025-05-23 17:58:25,421 [INFO] Saved processed data to backtest_data/BTC-USD-PERP_4h.csv for backtesting
+2025-05-23 17:58:25,421 [INFO] Created symlink at backtest_data/BTC-USD-PERP_4h_real.csv pointing to backtest_data/BTC-USD-PERP_4h.csv
+2025-05-23 17:58:25,421 [INFO] Fixing data source for ETH-USD-PERP, interval 1h
+2025-05-23 17:58:25,428 [INFO] Loaded 720 rows of processed data for ETH-USD-PERP, interval 1h
+2025-05-23 17:58:25,428 [WARNING] Processed data for ETH-USD-PERP, interval 1h has 1027 missing values
+2025-05-23 17:58:25,475 [INFO] Saved processed data to backtest_data/ETH-USD-PERP_1h.csv for backtesting
+2025-05-23 17:58:25,476 [INFO] Created symlink at backtest_data/ETH-USD-PERP_1h_real.csv pointing to backtest_data/ETH-USD-PERP_1h.csv
+2025-05-23 17:58:25,476 [INFO] Fixing data source for ETH-USD-PERP, interval 4h
+2025-05-23 17:58:25,478 [INFO] Loaded 180 rows of processed data for ETH-USD-PERP, interval 4h
+2025-05-23 17:58:25,478 [WARNING] Processed data for ETH-USD-PERP, interval 4h has 468 missing values
+2025-05-23 17:58:25,491 [INFO] Saved processed data to backtest_data/ETH-USD-PERP_4h.csv for backtesting
+2025-05-23 17:58:25,491 [INFO] Created symlink at backtest_data/ETH-USD-PERP_4h_real.csv pointing to backtest_data/ETH-USD-PERP_4h.csv
+2025-05-23 17:58:25,491 [INFO] Data source fix results: {
+    "SOL-USD-PERP": {
+        "1h": {
+            "status": "success",
+            "rows": 720,
+            "source_path": "real_market_data/processed/SOL-USD-PERP_1h_processed.csv",
+            "backtest_path": "backtest_data/SOL-USD-PERP_1h.csv",
+            "symlink_path": "backtest_data/SOL-USD-PERP_1h_real.csv"
+        },
+        "4h": {
+            "status": "success",
+            "rows": 180,
+            "source_path": "real_market_data/processed/SOL-USD-PERP_4h_processed.csv",
+            "backtest_path": "backtest_data/SOL-USD-PERP_4h.csv",
+            "symlink_path": "backtest_data/SOL-USD-PERP_4h_real.csv"
+        }
+    },
+    "BTC-USD-PERP": {
+        "1h": {
+            "status": "success",
+            "rows": 720,
+            "source_path": "real_market_data/processed/BTC-USD-PERP_1h_processed.csv",
+            "backtest_path": "backtest_data/BTC-USD-PERP_1h.csv",
+            "symlink_path": "backtest_data/BTC-USD-PERP_1h_real.csv"
+        },
+        "4h": {
+            "status": "success",
+            "rows": 180,
+            "source_path": "real_market_data/processed/BTC-USD-PERP_4h_processed.csv",
+            "backtest_path": "backtest_data/BTC-USD-PERP_4h.csv",
+            "symlink_path": "backtest_data/BTC-USD-PERP_4h_real.csv"
+        }
+    },
+    "ETH-USD-PERP": {
+        "1h": {
+            "status": "success",
+            "rows": 720,
+            "source_path": "real_market_data/processed/ETH-USD-PERP_1h_processed.csv",
+            "backtest_path": "backtest_data/ETH-USD-PERP_1h.csv",
+            "symlink_path": "backtest_data/ETH-USD-PERP_1h_real.csv"
+        },
+        "4h": {
+            "status": "success",
+            "rows": 180,
+            "source_path": "real_market_data/processed/ETH-USD-PERP_4h_processed.csv",
+            "backtest_path": "backtest_data/ETH-USD-PERP_4h.csv",
+            "symlink_path": "backtest_data/ETH-USD-PERP_4h_real.csv"
+        }
+    }
+}
+2025-05-23 17:58:25,491 [INFO] Updating backtesting configuration at real_data_backtesting.py
+2025-05-23 17:58:25,492 [INFO] Updated backtesting configuration at real_data_backtesting.py
+2025-05-23 17:58:25,492 [INFO] Backtesting configuration updated successfully
+2025-05-23 17:58:25,492 [INFO] Verifying backtesting data for symbols ['SOL-USD-PERP', 'BTC-USD-PERP', 'ETH-USD-PERP'], intervals ['1h', '4h']
+2025-05-23 17:58:25,492 [INFO] Verifying backtesting data for SOL-USD-PERP, interval 1h
+2025-05-23 17:58:25,492 [ERROR] Real data symlink not found for SOL-USD-PERP, interval 1h at backtest_data/SOL-USD-PERP_1h_real.csv
+2025-05-23 17:58:25,492 [INFO] Verifying backtesting data for SOL-USD-PERP, interval 4h
+2025-05-23 17:58:25,492 [ERROR] Real data symlink not found for SOL-USD-PERP, interval 4h at backtest_data/SOL-USD-PERP_4h_real.csv
+2025-05-23 17:58:25,492 [INFO] Verifying backtesting data for BTC-USD-PERP, interval 1h
+2025-05-23 17:58:25,492 [ERROR] Real data symlink not found for BTC-USD-PERP, interval 1h at backtest_data/BTC-USD-PERP_1h_real.csv
+2025-05-23 17:58:25,492 [INFO] Verifying backtesting data for BTC-USD-PERP, interval 4h
+2025-05-23 17:58:25,492 [ERROR] Real data symlink not found for BTC-USD-PERP, interval 4h at backtest_data/BTC-USD-PERP_4h_real.csv
+2025-05-23 17:58:25,492 [INFO] Verifying backtesting data for ETH-USD-PERP, interval 1h
+2025-05-23 17:58:25,492 [ERROR] Real data symlink not found for ETH-USD-PERP, interval 1h at backtest_data/ETH-USD-PERP_1h_real.csv
+2025-05-23 17:58:25,492 [INFO] Verifying backtesting data for ETH-USD-PERP, interval 4h
+2025-05-23 17:58:25,492 [ERROR] Real data symlink not found for ETH-USD-PERP, interval 4h at backtest_data/ETH-USD-PERP_4h_real.csv
+2025-05-23 17:58:25,493 [INFO] Verification results: {
+    "SOL-USD-PERP": {
+        "1h": {
+            "status": "error",
+            "message": "Real data symlink not found at backtest_data/SOL-USD-PERP_1h_real.csv"
+        },
+        "4h": {
+            "status": "error",
+            "message": "Real data symlink not found at backtest_data/SOL-USD-PERP_4h_real.csv"
+        }
+    },
+    "BTC-USD-PERP": {
+        "1h": {
+            "status": "error",
+            "message": "Real data symlink not found at backtest_data/BTC-USD-PERP_1h_real.csv"
+        },
+        "4h": {
+            "status": "error",
+            "message": "Real data symlink not found at backtest_data/BTC-USD-PERP_4h_real.csv"
+        }
+    },
+    "ETH-USD-PERP": {
+        "1h": {
+            "status": "error",
+            "message": "Real data symlink not found at backtest_data/ETH-USD-PERP_1h_real.csv"
+        },
+        "4h": {
+            "status": "error",
+            "message": "Real data symlink not found at backtest_data/ETH-USD-PERP_4h_real.csv"
+        }
+    }
+}
+2025-05-23 17:58:25,493 [INFO] Creating test script
+2025-05-23 17:58:25,493 [INFO] Created test script at test_real_data_backtesting.py
+2025-05-23 17:58:25,493 [INFO] Test script created successfully
+2025-05-23 17:58:25,493 [INFO] All data sources fixed successfully! Backtesting should now use real data.

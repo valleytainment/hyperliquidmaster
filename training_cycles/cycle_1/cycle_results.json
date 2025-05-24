@@ -1,0 +1,116 @@
+{
+  "cycle_num": 1,
+  "timestamp": "2025-05-23T16:49:28.863508",
+  "symbols": [
+    "BTC-USD-PERP",
+    "ETH-USD-PERP",
+    "SOL-USD-PERP"
+  ],
+  "days": 30,
+  "interval": "1h",
+  "optimize": true,
+  "collection_results": {
+    "symbols": [
+      "BTC-USD-PERP",
+      "ETH-USD-PERP",
+      "SOL-USD-PERP"
+    ],
+    "days": 30,
+    "interval": "1h",
+    "timestamp": "2025-05-23T16:47:44.466097",
+    "results": {
+      "BTC-USD-PERP": {
+        "historical_data": true,
+        "funding_rates": true,
+        "order_book": true,
+        "sentiment": true
+      },
+      "ETH-USD-PERP": {
+        "historical_data": true,
+        "funding_rates": true,
+        "order_book": true,
+        "sentiment": true
+      },
+      "SOL-USD-PERP": {
+        "historical_data": true,
+        "funding_rates": true,
+        "order_book": true,
+        "sentiment": true
+      }
+    }
+  },
+  "training_results": {
+    "symbols": [
+      "BTC-USD-PERP",
+      "ETH-USD-PERP",
+      "SOL-USD-PERP"
+    ],
+    "days": 30,
+    "interval": "1h",
+    "optimize": true,
+    "results": {
+      "BTC-USD-PERP": {
+        "triple_confluence_optimization": {
+          "best_params": null,
+          "best_score": -Infinity,
+          "param_combinations": 135
+        },
+        "oracle_update_optimization": {
+          "best_params": {
+            "min_price_deviation": 0.0005,
+            "max_price_deviation": 0.005,
+            "oracle_update_interval": 2,
+            "max_trade_duration": 10
+          },
+          "best_score": -1.0,
+          "param_combinations": 375
+        }
+      },
+      "ETH-USD-PERP": {
+        "triple_confluence_optimization": {
+          "best_params": null,
+          "best_score": -Infinity,
+          "param_combinations": 135
+        },
+        "oracle_update_optimization": {
+          "best_params": {
+            "min_price_deviation": 0.0005,
+            "max_price_deviation": 0.005,
+            "oracle_update_interval": 2,
+            "max_trade_duration": 10
+          },
+          "best_score": -1.0,
+          "param_combinations": 375
+        }
+      },
+      "SOL-USD-PERP": {
+        "triple_confluence_optimization": {
+          "best_params": null,
+          "best_score": -Infinity,
+          "param_combinations": 135
+        },
+        "oracle_update_optimization": {
+          "best_params": {
+            "min_price_deviation": 0.0005,
+            "max_price_deviation": 0.005,
+            "oracle_update_interval": 2,
+            "max_trade_duration": 10
+          },
+          "best_score": -1.0,
+          "param_combinations": 375
+        }
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-23T16:49:28.863361",
+    "success": false,
+    "metrics": {
+      "BTC-USD-PERP": {},
+      "ETH-USD-PERP": {},
+      "SOL-USD-PERP": {}
+    },
+    "issues": [],
+    "recommendations": []
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "symbols": [
+    "BTC-USD-PERP",
+    "ETH-USD-PERP",
+    "SOL-USD-PERP"
+  ],
+  "days": 45,
+  "interval": "1h",
+  "timestamp": "2025-05-23T16:52:40.773387",
+  "results": {
+    "BTC-USD-PERP": {
+      "historical_data": true,
+      "funding_rates": true,
+      "order_book": true,
+      "sentiment": true
+    },
+    "ETH-USD-PERP": {
+      "historical_data": true,
+      "funding_rates": true,
+      "order_book": true,
+      "sentiment": true
+    },
+    "SOL-USD-PERP": {
+      "historical_data": true,
+      "funding_rates": true,
+      "order_book": true,
+      "sentiment": true
+    }
+  }
+}
