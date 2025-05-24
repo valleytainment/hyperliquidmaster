@@ -97,6 +97,64 @@ class RobustSignalGenerator:
         except Exception as e:
             logger.error(f"Error in safe_rolling: {str(e)}")
             return pd.Series(index=series.index if series is not None else [])
+    
+    @staticmethod
+    def detect_market_regime(df: pd.DataFrame) -> str:
+        """
+        Detect market regime (trending, ranging, volatile) based on price action.
+        
+        Args:
+            df: DataFrame with price data
+            
+        Returns:
+            Market regime as string: 'trending_up', 'trending_down', 'ranging', 'volatile', or 'unknown'
+        """
+        try:
+            if df is None or df.empty or len(df) < 10:
+                logger.warning("Insufficient data for market regime detection")
+                return "unknown"
+                
+            # Calculate metrics for regime detection
+            close = df['close']
+            
+            # Use adjusted periods based on available data
+            atr_period = min(14, len(df) - 1)
+            volatility_period = min(20, len(df) - 1)
+            trend_period = min(50, len(df) - 1)
+            
+            # Calculate ATR (Average True Range) for volatility
+            high = df['high'] if 'high' in df.columns else close
+            low = df['low'] if 'low' in df.columns else close
+            
+            tr1 = high - low
+            tr2 = abs(high - close.shift(1))
+            tr3 = abs(low - close.shift(1))
+            
+            tr = pd.concat([tr1, tr2, tr3], axis=1).max(axis=1)
+            atr = tr.rolling(window=atr_period, min_periods=1).mean()
+            
+            # Calculate volatility as percentage of price
+            volatility = atr.iloc[-1] / close.iloc[-1] * 100
+            
+            # Calculate directional movement
+            direction = (close.iloc[-1] - close.iloc[-trend_period]) / close.iloc[-trend_period] * 100
+            
+            # Calculate price range as percentage of average price
+            price_range = (high.iloc[-volatility_period:].max() - low.iloc[-volatility_period:].min()) / close.mean() * 100
+            
+            # Determine regime based on metrics
+            if volatility > 5:  # High volatility threshold
+                return "volatile"
+            elif abs(direction) > 10:  # Strong trend threshold
+                return "trending_up" if direction > 0 else "trending_down"
+            elif price_range < 10:  # Tight range threshold
+                return "ranging"
+            else:
+                # Default to ranging if no clear pattern
+                return "ranging"
+        except Exception as e:
+            logger.error(f"Error detecting market regime: {str(e)}")
+            return "unknown"
             
     @staticmethod
     def check_vwma_crossover(df: pd.DataFrame, fast_period: int = 20, slow_period: int = 50) -> Tuple[bool, bool, float]:
@@ -387,7 +445,7 @@ class RobustSignalGenerator:
     @staticmethod
     def _generate_order_book_signal(market_data: Dict) -> Dict:
         """
-        Generate signal based on order book data.
+        Generate signal based on order book imbalance.
         
         Args:
             market_data: Market data dictionary
@@ -404,31 +462,27 @@ class RobustSignalGenerator:
                 return {"action": "none", "signal": 0.0, "strength": 0.0}
                 
             # Get bid-ask imbalance
-            bid_ask_imbalance = order_book_metrics.get("bid_ask_imbalance", 0.0)
-            depth_imbalance = order_book_metrics.get("depth_imbalance", 0.0)
+            bid_volume = order_book_metrics.get("bid_volume", 0)
+            ask_volume = order_book_metrics.get("ask_volume", 0)
             
-            # Combine imbalances with more weight to depth imbalance
-            combined_imbalance = (bid_ask_imbalance * 0.4) + (depth_imbalance * 0.6)
+            if bid_volume == 0 or ask_volume == 0:
+                logger.warning("Invalid order book volumes")
+                return {"action": "none", "signal": 0.0, "strength": 0.0}
+                
+            # Calculate imbalance ratio
+            imbalance = (bid_volume - ask_volume) / (bid_volume + ask_volume)
             
-            # Generate signal
-            if combined_imbalance > 0.2:
+            # Generate signal based on imbalance
+            action = "none"
+            if imbalance > 0.2:
                 action = "long"
-                signal = combined_imbalance
-            elif combined_imbalance < -0.2:
+            elif imbalance < -0.2:
                 action = "short"
-                signal = combined_imbalance
-            else:
-                action = "none"
-                signal = 0.0
                 
             return {
                 "action": action,
-                "signal": signal,
-                "strength": abs(signal),
-                "components": {
-                    "bid_ask_imbalance": bid_ask_imbalance,
-                    "depth_imbalance": depth_imbalance
-                }
+                "signal": imbalance,
+                "strength": abs(imbalance)
             }
         except Exception as e:
             logger.error(f"Error generating order book signal: {str(e)}")
@@ -447,123 +501,143 @@ class RobustSignalGenerator:
         """
         try:
             # Get funding rate
-            funding_rate = market_data.get("funding_rate", 0.0)
+            funding_rate = market_data.get("funding_rate", 0)
             
-            if funding_rate == 0.0:
+            if funding_rate == 0:
                 logger.warning("No funding rate available")
                 return {"action": "none", "signal": 0.0, "strength": 0.0}
                 
-            # Generate signal
-            if funding_rate < -0.01:  # Negative funding rate (shorts pay longs)
-                action = "long"
-                signal = min(-funding_rate * 10, 1.0)  # Scale signal
-            elif funding_rate > 0.01:  # Positive funding rate (longs pay shorts)
-                action = "short"
-                signal = -min(funding_rate * 10, 1.0)  # Scale signal
-            else:
-                action = "none"
-                signal = 0.0
+            # Generate signal based on funding rate
+            action = "none"
+            signal = 0.0
+            
+            # Negative funding rate means longs pay shorts, indicating bearish sentiment
+            # Positive funding rate means shorts pay longs, indicating bullish sentiment
+            if funding_rate < -0.01:
+                action = "long"  # Contrarian approach
+                signal = -funding_rate * 10  # Scale for signal strength
+            elif funding_rate > 0.01:
+                action = "short"  # Contrarian approach
+                signal = -funding_rate * 10  # Scale for signal strength
                 
             return {
                 "action": action,
                 "signal": signal,
-                "strength": abs(signal),
-                "components": {
-                    "funding_rate": funding_rate
-                }
+                "strength": abs(signal)
             }
         except Exception as e:
             logger.error(f"Error generating funding rate signal: {str(e)}")
             return {"action": "none", "signal": 0.0, "strength": 0.0}
             
     @staticmethod
-    def generate_master_signal(market_data: Dict, order_book: Dict, strategy_weights: Dict = None) -> Dict:
+    def generate_combined_signal(symbol: str, market_data: Dict, order_book: Dict = None) -> Dict:
         """
-        Generate master signal by combining multiple signal sources.
+        Generate combined signal from multiple sources.
         
         Args:
+            symbol: Trading symbol
             market_data: Market data dictionary
             order_book: Order book dictionary
-            strategy_weights: Strategy weights dictionary
             
         Returns:
-            Master signal dictionary
+            Combined signal dictionary
         """
         try:
-            # Set default weights if not provided
-            if strategy_weights is None:
-                strategy_weights = {
-                    "technical": 0.5,
-                    "order_book": 0.3,
-                    "funding_rate": 0.2
-                }
-                
-            # Ensure market data has order book
-            if order_book is not None and "order_book" not in market_data:
-                market_data["order_book"] = order_book
-                
             # Generate signals from different sources
             technical_signal = RobustSignalGenerator._generate_technical_signal(market_data)
             order_book_signal = RobustSignalGenerator._generate_order_book_signal(market_data)
             funding_rate_signal = RobustSignalGenerator._generate_funding_rate_signal(market_data)
             
-            # Combine signals using weights
+            # Get historical data for market regime detection
+            df = market_data.get("historical_data")
+            market_regime = "unknown"
+            
+            if df is not None and len(df) > 10:
+                market_regime = RobustSignalGenerator.detect_market_regime(df)
+                
+            # Adjust weights based on market regime
+            technical_weight = 0.6
+            order_book_weight = 0.3
+            funding_rate_weight = 0.1
+            
+            if market_regime == "trending_up" or market_regime == "trending_down":
+                technical_weight = 0.7
+                order_book_weight = 0.2
+                funding_rate_weight = 0.1
+            elif market_regime == "ranging":
+                technical_weight = 0.5
+                order_book_weight = 0.3
+                funding_rate_weight = 0.2
+            elif market_regime == "volatile":
+                technical_weight = 0.4
+                order_book_weight = 0.4
+                funding_rate_weight = 0.2
+                
+            # Calculate combined signal
             combined_signal = (
-                technical_signal["signal"] * strategy_weights.get("technical", 0.5) +
-                order_book_signal["signal"] * strategy_weights.get("order_book", 0.3) +
-                funding_rate_signal["signal"] * strategy_weights.get("funding_rate", 0.2)
+                technical_signal["signal"] * technical_weight +
+                order_book_signal["signal"] * order_book_weight +
+                funding_rate_signal["signal"] * funding_rate_weight
             )
             
             # Determine action based on combined signal
+            action = "none"
             if combined_signal > 0.3:
                 action = "long"
             elif combined_signal < -0.3:
                 action = "short"
-            else:
-                action = "none"
+                
+            # Calculate position size based on signal strength
+            position_size = 0.0
+            if action != "none":
+                position_size = min(1.0, abs(combined_signal))
                 
             # Get current price
-            current_price = market_data.get("last_price", 0.0)
+            current_price = market_data.get("last_price", 0)
             
-            # Calculate stop loss and take profit
-            if action == "long":
-                # Stop loss 2% below entry
-                stop_loss = current_price * 0.98
-                # Take profit 4% above entry
-                take_profit = current_price * 1.04
-            elif action == "short":
-                # Stop loss 2% above entry
-                stop_loss = current_price * 1.02
-                # Take profit 4% below entry
-                take_profit = current_price * 0.96
-            else:
-                stop_loss = 0.0
-                take_profit = 0.0
+            # Calculate stop loss and take profit levels
+            stop_loss = 0.0
+            take_profit = 0.0
+            
+            if action == "long" and current_price > 0:
+                stop_loss = current_price * 0.95  # 5% stop loss
+                take_profit = current_price * 1.15  # 15% take profit
+            elif action == "short" and current_price > 0:
+                stop_loss = current_price * 1.05  # 5% stop loss
+                take_profit = current_price * 0.85  # 15% take profit
                 
-            # Create master signal
-            master_signal = {
+            # Create combined signal dictionary
+            return {
+                "timestamp": datetime.now().isoformat(),
+                "symbol": symbol,
                 "action": action,
-                "signal": combined_signal,
-                "strength": abs(combined_signal),
+                "quantity": position_size,
                 "entry_price": current_price,
                 "stop_loss": stop_loss,
                 "take_profit": take_profit,
+                "signal_strength": abs(combined_signal),
+                "market_regime": market_regime,
                 "components": {
                     "technical": technical_signal,
                     "order_book": order_book_signal,
                     "funding_rate": funding_rate_signal
                 }
             }
-            
-            return master_signal
         except Exception as e:
-            logger.error(f"Error generating master signal: {str(e)}")
+            logger.error(f"Error generating combined signal: {str(e)}")
             return {
+                "timestamp": datetime.now().isoformat(),
+                "symbol": symbol,
                 "action": "none",
-                "signal": 0.0,
-                "strength": 0.0,
-                "entry_price": market_data.get("last_price", 0.0),
+                "quantity": 0.0,
+                "entry_price": market_data.get("last_price", 0),
                 "stop_loss": 0.0,
                 "take_profit": 0.0,
-                "components": {}
+                "signal_strength": 0.0,
+                "market_regime": "unknown",
+                "components": {
+                    "technical": {"action": "none", "signal": 0.0, "strength": 0.0},
+                    "order_book": {"action": "none", "signal": 0.0, "strength": 0.0},
+                    "funding_rate": {"action": "none", "signal": 0.0, "strength": 0.0}
+                }
             }

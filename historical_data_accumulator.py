@@ -82,28 +82,50 @@ class HistoricalDataAccumulator:
         except Exception as e:
             logger.error(f"Error saving historical data for {symbol}: {str(e)}")
             
-    def add_data_point(self, symbol: str, market_data: Dict):
+    def add_data_point(self, symbol: str, timestamp=None, price=None, volume=None, funding_rate=None, market_data: Dict = None):
         """
         Add a new data point for a symbol.
         
         Args:
             symbol: Symbol to add data for
-            market_data: Market data dictionary
+            timestamp: Optional timestamp (will use current time if None)
+            price: Optional price (will use market_data if None)
+            volume: Optional volume (will use 0 if None)
+            funding_rate: Optional funding rate (will use market_data if None)
+            market_data: Optional market data dictionary
         """
         try:
             if symbol not in self.data:
                 self.data[symbol] = []
                 
-            # Create a new data point
-            data_point = {
-                "timestamp": market_data.get("timestamp", datetime.now().timestamp()),
-                "open": market_data.get("last_price", 0),
-                "high": market_data.get("last_price", 0),
-                "low": market_data.get("last_price", 0),
-                "close": market_data.get("last_price", 0),
-                "volume": 0,  # Not available in market_data
-                "funding_rate": market_data.get("funding_rate", 0)
-            }
+            # Use market_data if provided, otherwise use individual parameters
+            if market_data is not None:
+                # Create a new data point from market_data
+                data_point = {
+                    "timestamp": market_data.get("timestamp", datetime.now().timestamp()),
+                    "open": market_data.get("last_price", 0),
+                    "high": market_data.get("last_price", 0),
+                    "low": market_data.get("last_price", 0),
+                    "close": market_data.get("last_price", 0),
+                    "volume": market_data.get("volume", 0),
+                    "funding_rate": market_data.get("funding_rate", 0)
+                }
+            else:
+                # Create a new data point from individual parameters
+                current_timestamp = timestamp if timestamp is not None else datetime.now().timestamp()
+                current_price = price if price is not None else 0
+                current_volume = volume if volume is not None else 0
+                current_funding_rate = funding_rate if funding_rate is not None else 0
+                
+                data_point = {
+                    "timestamp": current_timestamp,
+                    "open": current_price,
+                    "high": current_price,
+                    "low": current_price,
+                    "close": current_price,
+                    "volume": current_volume,
+                    "funding_rate": current_funding_rate
+                }
             
             # Add the data point
             self.data[symbol].append(data_point)

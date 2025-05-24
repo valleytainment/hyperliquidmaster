@@ -9,6 +9,7 @@ import time
 import logging
 import threading
 import json
+import asyncio
 from datetime import datetime, timedelta
 from typing import Dict, Any, Callable, Optional, Tuple
 
@@ -176,6 +177,63 @@ class APIRateLimiter:
                     sleep_time = self.retry_delay * (2 ** attempt)
                     logger.warning(f"Rate limit hit, retrying in {sleep_time:.2f} seconds (attempt {attempt+1}/{self.max_retries})")
                     time.sleep(sleep_time)
+                else:
+                    # If it's the last attempt or not a rate limit error, re-raise
+                    if attempt == self.max_retries - 1:
+                        logger.error(f"All retry attempts failed for {endpoint}")
+                    raise
+                    
+        # This should not be reached due to the re-raise above
+        return None
+
+    async def execute(self, func, *args, **kwargs):
+        """
+        Execute a function with rate limiting, caching, and retries.
+        This is a simplified wrapper for async functions that handles both async and sync functions.
+        
+        Args:
+            func: Function to execute (can be async or sync)
+            *args: Positional arguments to pass to the function
+            **kwargs: Keyword arguments to pass to the function
+            
+        Returns:
+            Function response
+        """
+        # Generate a simple cache key based on function name and args
+        endpoint = func.__name__
+        params = {"args": str(args), "kwargs": str(kwargs)}
+        
+        # Check cache first
+        cache_hit, cached_response = self._get_from_cache(endpoint, params)
+        if cache_hit:
+            logger.debug(f"Cache hit for {endpoint}")
+            return cached_response
+            
+        # Wait for rate limit if needed
+        self._wait_for_rate_limit()
+        
+        # Record the request
+        self._record_request()
+        
+        # Execute with retries
+        for attempt in range(self.max_retries):
+            try:
+                # Handle both async and sync functions
+                if asyncio.iscoroutinefunction(func):
+                    response = await func(*args, **kwargs)
+                else:
+                    response = func(*args, **kwargs)
+                
+                # Cache the successful response
+                self._store_in_cache(endpoint, params, response)
+                
+                return response
+            except Exception as e:
+                if "429" in str(e) and attempt < self.max_retries - 1:
+                    # Rate limit hit, apply exponential backoff
+                    sleep_time = self.retry_delay * (2 ** attempt)
+                    logger.warning(f"Rate limit hit, retrying in {sleep_time:.2f} seconds (attempt {attempt+1}/{self.max_retries})")
+                    await asyncio.sleep(sleep_time)
                 else:
                     # If it's the last attempt or not a rate limit error, re-raise
                     if attempt == self.max_retries - 1:

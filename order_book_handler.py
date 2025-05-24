@@ -91,6 +91,121 @@ class OrderBookHandler:
             # If no cache, generate synthetic order book
             logger.warning(f"Generating synthetic order book for {symbol} after error")
             return self._generate_synthetic_order_book(symbol)
+    
+    def process_order_book(self, symbol: str, order_book: Dict = None) -> Dict:
+        """
+        Process order book data to extract metrics and enhance with additional information.
+        
+        Args:
+            symbol: Symbol to process order book for
+            order_book: Order book dictionary (optional, will be fetched if not provided)
+            
+        Returns:
+            Enhanced order book with metrics
+        """
+        try:
+            # Get order book if not provided
+            if order_book is None:
+                order_book = self.get_order_book(symbol)
+                
+            # Validate order book
+            if not self._is_valid_order_book(order_book):
+                logger.warning(f"Invalid order book for {symbol}, generating synthetic data")
+                order_book = self._generate_synthetic_order_book(symbol)
+                
+            # Extract bids and asks
+            bids = order_book.get('bids', [])
+            asks = order_book.get('asks', [])
+            
+            # Calculate basic metrics
+            best_bid = float(bids[0][0]) if bids else 0
+            best_ask = float(asks[0][0]) if asks else 0
+            mid_price = (best_bid + best_ask) / 2 if best_bid > 0 and best_ask > 0 else 0
+            
+            # Calculate volumes
+            bid_volume = sum(float(bid[1]) for bid in bids[:5]) if len(bids) >= 5 else sum(float(bid[1]) for bid in bids)
+            ask_volume = sum(float(ask[1]) for ask in asks[:5]) if len(asks) >= 5 else sum(float(ask[1]) for ask in asks)
+            
+            # Calculate imbalance
+            total_volume = bid_volume + ask_volume
+            bid_ask_imbalance = (bid_volume - ask_volume) / total_volume if total_volume > 0 else 0.0
+            
+            # Calculate spread
+            spread = best_ask - best_bid if best_bid > 0 and best_ask > 0 else 0
+            spread_pct = spread / mid_price if mid_price > 0 else 0.001
+            
+            # Calculate depth
+            depth_levels = min(10, len(bids), len(asks))
+            bid_depth = sum(float(bid[1]) for bid in bids[:depth_levels])
+            ask_depth = sum(float(ask[1]) for ask in asks[:depth_levels])
+            
+            # Calculate weighted depth (closer to mid price has higher weight)
+            weighted_bid_depth = 0
+            weighted_ask_depth = 0
+            
+            for i, bid in enumerate(bids[:depth_levels]):
+                price = float(bid[0])
+                size = float(bid[1])
+                weight = 1.0 / (1.0 + i * 0.2)  # Higher weight for levels closer to mid
+                weighted_bid_depth += size * weight
+                
+            for i, ask in enumerate(asks[:depth_levels]):
+                price = float(ask[0])
+                size = float(ask[1])
+                weight = 1.0 / (1.0 + i * 0.2)  # Higher weight for levels closer to mid
+                weighted_ask_depth += size * weight
+                
+            # Calculate depth imbalance
+            total_weighted_depth = weighted_bid_depth + weighted_ask_depth
+            depth_imbalance = (weighted_bid_depth - weighted_ask_depth) / total_weighted_depth if total_weighted_depth > 0 else 0.0
+            
+            # Create enhanced order book with metrics
+            enhanced_order_book = {
+                "raw_data": order_book,
+                "metrics": {
+                    "best_bid": best_bid,
+                    "best_ask": best_ask,
+                    "mid_price": mid_price,
+                    "spread": spread,
+                    "spread_pct": spread_pct,
+                    "bid_volume": bid_volume,
+                    "ask_volume": ask_volume,
+                    "bid_ask_imbalance": bid_ask_imbalance,
+                    "bid_depth": bid_depth,
+                    "ask_depth": ask_depth,
+                    "weighted_bid_depth": weighted_bid_depth,
+                    "weighted_ask_depth": weighted_ask_depth,
+                    "depth_imbalance": depth_imbalance
+                },
+                "is_synthetic": order_book.get('synthetic', False),
+                "timestamp": datetime.now().isoformat()
+            }
+            
+            return enhanced_order_book
+        except Exception as e:
+            logger.error(f"Error processing order book for {symbol}: {str(e)}")
+            
+            # Return minimal valid enhanced order book
+            return {
+                "raw_data": order_book if order_book else {"bids": [["100.0", "1.0"]], "asks": [["101.0", "1.0"]], "synthetic": True},
+                "metrics": {
+                    "best_bid": 100.0,
+                    "best_ask": 101.0,
+                    "mid_price": 100.5,
+                    "spread": 1.0,
+                    "spread_pct": 0.01,
+                    "bid_volume": 1.0,
+                    "ask_volume": 1.0,
+                    "bid_ask_imbalance": 0.0,
+                    "bid_depth": 1.0,
+                    "ask_depth": 1.0,
+                    "weighted_bid_depth": 1.0,
+                    "weighted_ask_depth": 1.0,
+                    "depth_imbalance": 0.0
+                },
+                "is_synthetic": True,
+                "timestamp": datetime.now().isoformat()
+            }
             
     def _fetch_order_book(self, symbol: str, retries: int = 3) -> Dict:
         """
@@ -341,3 +456,16 @@ def analyze_order_book(order_book: Dict, price: float = None) -> Dict:
         Dictionary of order book metrics
     """
     return order_book_handler.analyze_order_book(order_book, price)
+
+def process_order_book(symbol: str, order_book: Dict = None) -> Dict:
+    """
+    Process order book using the singleton handler.
+    
+    Args:
+        symbol: Symbol to process order book for
+        order_book: Order book dictionary (optional)
+        
+    Returns:
+        Enhanced order book with metrics
+    """
+    return order_book_handler.process_order_book(symbol, order_book)
