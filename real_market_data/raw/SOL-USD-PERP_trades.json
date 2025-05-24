@@ -1,0 +1,4802 @@
+[
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04958674565042,
+    "size": 0.0425415014821914,
+    "side": "sell",
+    "timestamp": 1748036229476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03235062840449,
+    "size": 0.3153785786428536,
+    "side": "sell",
+    "timestamp": 1748036229976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03451573287698,
+    "size": 0.1346996531419346,
+    "side": "sell",
+    "timestamp": 1748036230476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03107103201661,
+    "size": 0.23064248804106346,
+    "side": "sell",
+    "timestamp": 1748036230976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.02930999873932,
+    "size": 0.07828831462700463,
+    "side": "sell",
+    "timestamp": 1748036231476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.02794451480145,
+    "size": 0.06568056357196728,
+    "side": "buy",
+    "timestamp": 1748036231976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.00962020607497,
+    "size": 0.02722758455531217,
+    "side": "buy",
+    "timestamp": 1748036232476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 99.99719095233203,
+    "size": 0.045514602164023095,
+    "side": "sell",
+    "timestamp": 1748036232976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.00243567366489,
+    "size": 0.28219216903114125,
+    "side": "buy",
+    "timestamp": 1748036233476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.00787553040308,
+    "size": 0.05799859688165482,
+    "side": "sell",
+    "timestamp": 1748036233976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.01209217121324,
+    "size": 0.03476942703100628,
+    "side": "buy",
+    "timestamp": 1748036234476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03012886470529,
+    "size": 0.14250276810514736,
+    "side": "sell",
+    "timestamp": 1748036234976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04382127895394,
+    "size": 0.019530628088107932,
+    "side": "sell",
+    "timestamp": 1748036235476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04589328732104,
+    "size": 0.17324586930666352,
+    "side": "buy",
+    "timestamp": 1748036235976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0514519615758,
+    "size": 0.1409817361417593,
+    "side": "sell",
+    "timestamp": 1748036236476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04363892638936,
+    "size": 0.00910669655785266,
+    "side": "buy",
+    "timestamp": 1748036236976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03453117942863,
+    "size": 0.2684951992395805,
+    "side": "sell",
+    "timestamp": 1748036237476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04182599635007,
+    "size": 0.02172796002613525,
+    "side": "sell",
+    "timestamp": 1748036237976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04161473935791,
+    "size": 0.056857737376411394,
+    "side": "sell",
+    "timestamp": 1748036238476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05250663786705,
+    "size": 0.1600965346160459,
+    "side": "buy",
+    "timestamp": 1748036238976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04503818347801,
+    "size": 0.02470088280517377,
+    "side": "sell",
+    "timestamp": 1748036239476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04717903991623,
+    "size": 0.12960388411457888,
+    "side": "sell",
+    "timestamp": 1748036239976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04472658983866,
+    "size": 0.09140690445060198,
+    "side": "buy",
+    "timestamp": 1748036240476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05384160518105,
+    "size": 0.05540318437720274,
+    "side": "sell",
+    "timestamp": 1748036240976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04684422161495,
+    "size": 0.0527040254309377,
+    "side": "buy",
+    "timestamp": 1748036241476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03961479874427,
+    "size": 0.029300311287517755,
+    "side": "buy",
+    "timestamp": 1748036241976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.02316573988199,
+    "size": 0.054645440363655595,
+    "side": "sell",
+    "timestamp": 1748036242476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03858723996503,
+    "size": 0.009918787681833656,
+    "side": "sell",
+    "timestamp": 1748036242976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05842670773458,
+    "size": 0.2550079208726793,
+    "side": "buy",
+    "timestamp": 1748036243476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05253563392696,
+    "size": 0.003016856362557184,
+    "side": "buy",
+    "timestamp": 1748036243976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0688213576478,
+    "size": 0.05360431008009853,
+    "side": "sell",
+    "timestamp": 1748036244476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04269913039705,
+    "size": 0.06674008717195239,
+    "side": "sell",
+    "timestamp": 1748036244976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04845696828629,
+    "size": 0.01183895755377301,
+    "side": "sell",
+    "timestamp": 1748036245476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03413986086072,
+    "size": 0.00014336047337570418,
+    "side": "sell",
+    "timestamp": 1748036245976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03622530834687,
+    "size": 0.021653791591773257,
+    "side": "sell",
+    "timestamp": 1748036246476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03643428259736,
+    "size": 0.20333509284778417,
+    "side": "sell",
+    "timestamp": 1748036246976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0365526010386,
+    "size": 0.22369533332908245,
+    "side": "sell",
+    "timestamp": 1748036247476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.02077122093077,
+    "size": 0.08771681298314095,
+    "side": "buy",
+    "timestamp": 1748036247976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.01185295053341,
+    "size": 0.02311416816913235,
+    "side": "buy",
+    "timestamp": 1748036248476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0157227228549,
+    "size": 0.08891981243630588,
+    "side": "sell",
+    "timestamp": 1748036248976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04675423889482,
+    "size": 0.017504090420489667,
+    "side": "buy",
+    "timestamp": 1748036249476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04386873020287,
+    "size": 0.15173097959716786,
+    "side": "sell",
+    "timestamp": 1748036249976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03213197681181,
+    "size": 0.14856988085295322,
+    "side": "sell",
+    "timestamp": 1748036250476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.02657949537155,
+    "size": 0.03684357394760523,
+    "side": "sell",
+    "timestamp": 1748036250976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03362530501452,
+    "size": 0.42511481294641795,
+    "side": "sell",
+    "timestamp": 1748036251476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03488857438715,
+    "size": 0.19510449163379295,
+    "side": "sell",
+    "timestamp": 1748036251976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.044104650312,
+    "size": 0.40252157403280453,
+    "side": "buy",
+    "timestamp": 1748036252476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05069235272263,
+    "size": 0.11226524790013133,
+    "side": "sell",
+    "timestamp": 1748036252976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04189146678809,
+    "size": 0.035865286180333626,
+    "side": "sell",
+    "timestamp": 1748036253476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04812089374104,
+    "size": 0.013318826311590135,
+    "side": "buy",
+    "timestamp": 1748036253976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.06299445101415,
+    "size": 0.1650797944816657,
+    "side": "sell",
+    "timestamp": 1748036254476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05824935810769,
+    "size": 0.0006425332251084949,
+    "side": "buy",
+    "timestamp": 1748036254976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05182625778345,
+    "size": 0.03620543557642029,
+    "side": "buy",
+    "timestamp": 1748036255476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04366833131067,
+    "size": 0.3226821857348269,
+    "side": "buy",
+    "timestamp": 1748036255976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04393969193777,
+    "size": 0.12739029669989851,
+    "side": "buy",
+    "timestamp": 1748036256476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.02988134270454,
+    "size": 0.0774059595101094,
+    "side": "buy",
+    "timestamp": 1748036256976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.01243758299421,
+    "size": 0.024339338888545902,
+    "side": "buy",
+    "timestamp": 1748036257476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.01867889730157,
+    "size": 0.06867871545960706,
+    "side": "sell",
+    "timestamp": 1748036257976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03098253767484,
+    "size": 0.08707963865823802,
+    "side": "sell",
+    "timestamp": 1748036258476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.02961253211214,
+    "size": 0.1071934692345379,
+    "side": "sell",
+    "timestamp": 1748036258976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.02258361787531,
+    "size": 0.2828641354210117,
+    "side": "sell",
+    "timestamp": 1748036259476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.01779971482763,
+    "size": 0.05216975599679074,
+    "side": "sell",
+    "timestamp": 1748036259976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.02683632842138,
+    "size": 0.09239392626236768,
+    "side": "sell",
+    "timestamp": 1748036260476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03430191896058,
+    "size": 0.03481119227488509,
+    "side": "buy",
+    "timestamp": 1748036260976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03519905360686,
+    "size": 0.057414058838293036,
+    "side": "sell",
+    "timestamp": 1748036261476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05457473298922,
+    "size": 0.1136265056437513,
+    "side": "sell",
+    "timestamp": 1748036261976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05950545320486,
+    "size": 0.04699348594410047,
+    "side": "buy",
+    "timestamp": 1748036262476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07395512871271,
+    "size": 0.21142954547726367,
+    "side": "buy",
+    "timestamp": 1748036262976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07050985701731,
+    "size": 0.13870533657788736,
+    "side": "sell",
+    "timestamp": 1748036263476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.06594702872036,
+    "size": 0.017878337854763057,
+    "side": "sell",
+    "timestamp": 1748036263976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04855320033799,
+    "size": 0.2583031258784309,
+    "side": "sell",
+    "timestamp": 1748036264476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.02738371815714,
+    "size": 0.058582451297665976,
+    "side": "sell",
+    "timestamp": 1748036264976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0185121118918,
+    "size": 0.008622590333757098,
+    "side": "sell",
+    "timestamp": 1748036265476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.01397221711849,
+    "size": 0.3930575482816296,
+    "side": "buy",
+    "timestamp": 1748036265976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0071013114975,
+    "size": 0.2491565501347268,
+    "side": "buy",
+    "timestamp": 1748036266476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.00729691746554,
+    "size": 0.04324225800575637,
+    "side": "buy",
+    "timestamp": 1748036266976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.01519481073166,
+    "size": 0.0662526534235453,
+    "side": "buy",
+    "timestamp": 1748036267476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 99.99811446604437,
+    "size": 0.23897966999652356,
+    "side": "buy",
+    "timestamp": 1748036267976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0018974284226,
+    "size": 0.03043850603246244,
+    "side": "buy",
+    "timestamp": 1748036268476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.00794732111055,
+    "size": 0.06771187074523631,
+    "side": "buy",
+    "timestamp": 1748036268976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.01032723805328,
+    "size": 0.011781837296948613,
+    "side": "sell",
+    "timestamp": 1748036269476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.01769775291966,
+    "size": 0.15831974369687615,
+    "side": "sell",
+    "timestamp": 1748036269976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.02566302625499,
+    "size": 0.032487487792641524,
+    "side": "buy",
+    "timestamp": 1748036270476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.02697685095843,
+    "size": 0.060264686636901134,
+    "side": "sell",
+    "timestamp": 1748036270976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03074853745194,
+    "size": 0.11798077270150086,
+    "side": "buy",
+    "timestamp": 1748036271476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0378846542948,
+    "size": 0.20657315374285623,
+    "side": "buy",
+    "timestamp": 1748036271976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04762018057254,
+    "size": 0.10474198741749402,
+    "side": "buy",
+    "timestamp": 1748036272476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.06073377822236,
+    "size": 0.16706810216143886,
+    "side": "sell",
+    "timestamp": 1748036272976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.06095876281067,
+    "size": 0.23346627566682351,
+    "side": "buy",
+    "timestamp": 1748036273476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07588574469133,
+    "size": 0.13449867202310356,
+    "side": "buy",
+    "timestamp": 1748036273976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0705832516759,
+    "size": 0.18442923510825432,
+    "side": "buy",
+    "timestamp": 1748036274476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07183699509295,
+    "size": 0.017755913494178825,
+    "side": "buy",
+    "timestamp": 1748036274976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07678560002326,
+    "size": 0.13007385063986535,
+    "side": "buy",
+    "timestamp": 1748036275476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07875879088847,
+    "size": 0.25172344977833294,
+    "side": "sell",
+    "timestamp": 1748036275976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05904362902093,
+    "size": 0.16787805613264484,
+    "side": "buy",
+    "timestamp": 1748036276476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05223998855273,
+    "size": 0.007550825336842615,
+    "side": "buy",
+    "timestamp": 1748036276976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0547693084291,
+    "size": 0.07192197437665501,
+    "side": "sell",
+    "timestamp": 1748036277476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0567728473262,
+    "size": 0.0285264391671061,
+    "side": "buy",
+    "timestamp": 1748036277976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04688728264662,
+    "size": 0.16756175178969804,
+    "side": "sell",
+    "timestamp": 1748036278476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05654015763102,
+    "size": 0.2134797484096509,
+    "side": "buy",
+    "timestamp": 1748036278976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0602772601683,
+    "size": 0.018722622156025322,
+    "side": "sell",
+    "timestamp": 1748036279476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05290279863468,
+    "size": 0.04004471304968551,
+    "side": "buy",
+    "timestamp": 1748036279976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03667692189394,
+    "size": 0.0841912431049527,
+    "side": "sell",
+    "timestamp": 1748036280476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04978841775963,
+    "size": 0.046389390621748496,
+    "side": "buy",
+    "timestamp": 1748036280976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04664916600767,
+    "size": 0.061865116268392084,
+    "side": "buy",
+    "timestamp": 1748036281476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03615578110579,
+    "size": 0.024242246269800656,
+    "side": "buy",
+    "timestamp": 1748036281976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05219333836747,
+    "size": 0.19997256759182558,
+    "side": "sell",
+    "timestamp": 1748036282476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05997100625748,
+    "size": 0.005268138064363496,
+    "side": "sell",
+    "timestamp": 1748036282976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.06294352302822,
+    "size": 0.1139719874904863,
+    "side": "buy",
+    "timestamp": 1748036283476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07020989906471,
+    "size": 0.02205361390657469,
+    "side": "buy",
+    "timestamp": 1748036283976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0654103269888,
+    "size": 0.03253284519722365,
+    "side": "sell",
+    "timestamp": 1748036284476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.06191489983887,
+    "size": 0.2760053754687747,
+    "side": "sell",
+    "timestamp": 1748036284976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07071572737331,
+    "size": 0.033994361127827104,
+    "side": "buy",
+    "timestamp": 1748036285476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.06766251159272,
+    "size": 0.1844861387990897,
+    "side": "sell",
+    "timestamp": 1748036285976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05451746125743,
+    "size": 0.18042292398357418,
+    "side": "buy",
+    "timestamp": 1748036286476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.06207603132152,
+    "size": 0.031273651713928034,
+    "side": "buy",
+    "timestamp": 1748036286976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05067152217201,
+    "size": 0.17968337430724104,
+    "side": "buy",
+    "timestamp": 1748036287476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04246205005136,
+    "size": 0.11839348623832863,
+    "side": "buy",
+    "timestamp": 1748036287976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05286242172602,
+    "size": 0.07356640575607691,
+    "side": "sell",
+    "timestamp": 1748036288476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05949612945672,
+    "size": 0.047569977153444284,
+    "side": "buy",
+    "timestamp": 1748036288976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05237199123121,
+    "size": 0.19948729430170972,
+    "side": "sell",
+    "timestamp": 1748036289476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.06245153034675,
+    "size": 0.12013145951675566,
+    "side": "sell",
+    "timestamp": 1748036289976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05897232361076,
+    "size": 0.046744151777722474,
+    "side": "buy",
+    "timestamp": 1748036290476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.06914780313201,
+    "size": 0.14658378865486352,
+    "side": "sell",
+    "timestamp": 1748036290976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05703771609114,
+    "size": 0.11994105519082031,
+    "side": "sell",
+    "timestamp": 1748036291476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05999251023255,
+    "size": 0.06889463436487271,
+    "side": "buy",
+    "timestamp": 1748036291976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05349995303477,
+    "size": 0.0717442197317492,
+    "side": "sell",
+    "timestamp": 1748036292476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04691836621447,
+    "size": 0.05639160066386816,
+    "side": "sell",
+    "timestamp": 1748036292976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04703320106545,
+    "size": 0.04320606490683046,
+    "side": "sell",
+    "timestamp": 1748036293476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05658048834087,
+    "size": 0.015091626953567229,
+    "side": "sell",
+    "timestamp": 1748036293976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05837417503254,
+    "size": 0.018641983532919782,
+    "side": "buy",
+    "timestamp": 1748036294476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04912530271366,
+    "size": 0.012139577593288764,
+    "side": "sell",
+    "timestamp": 1748036294976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05225476046067,
+    "size": 0.3334328107515485,
+    "side": "buy",
+    "timestamp": 1748036295476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0644500577291,
+    "size": 0.14730282325179325,
+    "side": "buy",
+    "timestamp": 1748036295976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04309590519294,
+    "size": 0.04853751600923883,
+    "side": "buy",
+    "timestamp": 1748036296476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04124329648387,
+    "size": 0.07628132268493992,
+    "side": "sell",
+    "timestamp": 1748036296976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04133404888746,
+    "size": 0.04646886999208215,
+    "side": "sell",
+    "timestamp": 1748036297476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.02650805959465,
+    "size": 0.047893354410785176,
+    "side": "buy",
+    "timestamp": 1748036297976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.025301344523,
+    "size": 0.002006243734516386,
+    "side": "sell",
+    "timestamp": 1748036298476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.01997617470369,
+    "size": 0.03867749757121995,
+    "side": "sell",
+    "timestamp": 1748036298976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0215041286134,
+    "size": 0.01770244122676828,
+    "side": "buy",
+    "timestamp": 1748036299476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03162165099066,
+    "size": 0.023999932707826806,
+    "side": "sell",
+    "timestamp": 1748036299976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.02890903280051,
+    "size": 0.03423096873983132,
+    "side": "buy",
+    "timestamp": 1748036300476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.02924085201262,
+    "size": 0.1226443249125723,
+    "side": "buy",
+    "timestamp": 1748036300976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03420563823838,
+    "size": 0.024986067256403722,
+    "side": "sell",
+    "timestamp": 1748036301476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04130202273511,
+    "size": 0.06238632315544506,
+    "side": "sell",
+    "timestamp": 1748036301976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04891293127808,
+    "size": 0.055595319527266644,
+    "side": "sell",
+    "timestamp": 1748036302476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03548968592877,
+    "size": 0.015052680762326801,
+    "side": "buy",
+    "timestamp": 1748036302976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04867222615039,
+    "size": 0.04695122742706276,
+    "side": "sell",
+    "timestamp": 1748036303476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04337276838035,
+    "size": 0.09844698412656586,
+    "side": "buy",
+    "timestamp": 1748036303976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.02703670524456,
+    "size": 0.06903181351651992,
+    "side": "sell",
+    "timestamp": 1748036304476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04652109861746,
+    "size": 0.07257193404752925,
+    "side": "sell",
+    "timestamp": 1748036304976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03254312756052,
+    "size": 0.09951786045064398,
+    "side": "buy",
+    "timestamp": 1748036305476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03996629892583,
+    "size": 0.04440694126793972,
+    "side": "sell",
+    "timestamp": 1748036305976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0205206940079,
+    "size": 0.02889589598177361,
+    "side": "buy",
+    "timestamp": 1748036306476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.022679357414,
+    "size": 0.04554648084408258,
+    "side": "sell",
+    "timestamp": 1748036306976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.02121794096882,
+    "size": 0.20489989575314232,
+    "side": "buy",
+    "timestamp": 1748036307476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.02544700499705,
+    "size": 0.06825890876298243,
+    "side": "buy",
+    "timestamp": 1748036307976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0317072529358,
+    "size": 0.3721518240635233,
+    "side": "buy",
+    "timestamp": 1748036308476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0345978220007,
+    "size": 0.12738445924406588,
+    "side": "sell",
+    "timestamp": 1748036308976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04065526961705,
+    "size": 0.056562780247363054,
+    "side": "sell",
+    "timestamp": 1748036309476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03473877235999,
+    "size": 0.06746735602766034,
+    "side": "sell",
+    "timestamp": 1748036309976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03376824828781,
+    "size": 0.13055717290997246,
+    "side": "sell",
+    "timestamp": 1748036310476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.02405418070119,
+    "size": 0.04989110217696202,
+    "side": "sell",
+    "timestamp": 1748036310976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.02927329459293,
+    "size": 0.049810885129458374,
+    "side": "sell",
+    "timestamp": 1748036311476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.02833541877581,
+    "size": 0.03741431030698744,
+    "side": "sell",
+    "timestamp": 1748036311976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0289607570215,
+    "size": 0.030030204341179423,
+    "side": "buy",
+    "timestamp": 1748036312476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03584968612401,
+    "size": 0.0026239495862550514,
+    "side": "buy",
+    "timestamp": 1748036312976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.02862638219858,
+    "size": 0.0028426115192451127,
+    "side": "sell",
+    "timestamp": 1748036313476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03701694501132,
+    "size": 0.14264905014073725,
+    "side": "sell",
+    "timestamp": 1748036313976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04667049406963,
+    "size": 0.019875996794039702,
+    "side": "buy",
+    "timestamp": 1748036314476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0515169214575,
+    "size": 0.14189047706251706,
+    "side": "buy",
+    "timestamp": 1748036314976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05066698188787,
+    "size": 0.03508050759260064,
+    "side": "sell",
+    "timestamp": 1748036315476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05307158142038,
+    "size": 0.05659339862428745,
+    "side": "sell",
+    "timestamp": 1748036315976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04021630014131,
+    "size": 0.2479761714444539,
+    "side": "sell",
+    "timestamp": 1748036316476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05162145997893,
+    "size": 0.043566745406802304,
+    "side": "buy",
+    "timestamp": 1748036316976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0687295431718,
+    "size": 0.48403749544607416,
+    "side": "buy",
+    "timestamp": 1748036317476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.085719523875,
+    "size": 0.08566175892898151,
+    "side": "sell",
+    "timestamp": 1748036317976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08919053154878,
+    "size": 0.031178716046294304,
+    "side": "sell",
+    "timestamp": 1748036318476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.10326130734683,
+    "size": 0.017324869548150136,
+    "side": "sell",
+    "timestamp": 1748036318976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12306732807883,
+    "size": 0.2913412772077538,
+    "side": "buy",
+    "timestamp": 1748036319476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.13005337323366,
+    "size": 0.07336077139922641,
+    "side": "sell",
+    "timestamp": 1748036319976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12705852718102,
+    "size": 0.00926400277904002,
+    "side": "buy",
+    "timestamp": 1748036320476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.11861037246462,
+    "size": 0.6430907481789887,
+    "side": "buy",
+    "timestamp": 1748036320976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.11648973284606,
+    "size": 0.018872023610735048,
+    "side": "buy",
+    "timestamp": 1748036321476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12462000138763,
+    "size": 0.25882672663195017,
+    "side": "sell",
+    "timestamp": 1748036321976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1139448499312,
+    "size": 0.01543733313192006,
+    "side": "sell",
+    "timestamp": 1748036322476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.11998820787808,
+    "size": 0.03734090520221605,
+    "side": "sell",
+    "timestamp": 1748036322976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1043410808698,
+    "size": 0.007247035735344691,
+    "side": "buy",
+    "timestamp": 1748036323476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.10448386537435,
+    "size": 0.04000419560459509,
+    "side": "sell",
+    "timestamp": 1748036323976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0884902415297,
+    "size": 0.29453520539899974,
+    "side": "buy",
+    "timestamp": 1748036324476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08760942923983,
+    "size": 0.04984269941260168,
+    "side": "buy",
+    "timestamp": 1748036324976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07434499735955,
+    "size": 0.08622859518938844,
+    "side": "sell",
+    "timestamp": 1748036325476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07773962427419,
+    "size": 0.08958360833566753,
+    "side": "sell",
+    "timestamp": 1748036325976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07984691005785,
+    "size": 0.013962453104185858,
+    "side": "sell",
+    "timestamp": 1748036326476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08027161992884,
+    "size": 0.32481830402804346,
+    "side": "sell",
+    "timestamp": 1748036326976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09405324422461,
+    "size": 0.09211245728189686,
+    "side": "sell",
+    "timestamp": 1748036327476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09378797861663,
+    "size": 0.0337706606148919,
+    "side": "buy",
+    "timestamp": 1748036327976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0883035205744,
+    "size": 0.04073012657171835,
+    "side": "buy",
+    "timestamp": 1748036328476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08468935890551,
+    "size": 0.07065000349585901,
+    "side": "buy",
+    "timestamp": 1748036328976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08649060344571,
+    "size": 0.01843241496849879,
+    "side": "sell",
+    "timestamp": 1748036329476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.06852700519377,
+    "size": 0.1523396018325176,
+    "side": "buy",
+    "timestamp": 1748036329976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.06250338606235,
+    "size": 0.10294971607393553,
+    "side": "buy",
+    "timestamp": 1748036330476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0699080686415,
+    "size": 0.06828188011329932,
+    "side": "sell",
+    "timestamp": 1748036330976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.06575769634223,
+    "size": 0.01375684393251351,
+    "side": "sell",
+    "timestamp": 1748036331476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08446057453486,
+    "size": 0.06109512525700557,
+    "side": "buy",
+    "timestamp": 1748036331976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08020749510305,
+    "size": 0.03786581653748605,
+    "side": "sell",
+    "timestamp": 1748036332476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07378927383594,
+    "size": 0.027508726915360306,
+    "side": "buy",
+    "timestamp": 1748036332976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0743449421747,
+    "size": 0.01281242892421829,
+    "side": "sell",
+    "timestamp": 1748036333476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08076013855242,
+    "size": 0.014606694140021066,
+    "side": "buy",
+    "timestamp": 1748036333976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08908600556632,
+    "size": 0.02138571904420566,
+    "side": "sell",
+    "timestamp": 1748036334476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09171521875388,
+    "size": 0.09416532611197738,
+    "side": "sell",
+    "timestamp": 1748036334976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09879252761937,
+    "size": 0.06506138535740243,
+    "side": "buy",
+    "timestamp": 1748036335476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09486104143747,
+    "size": 0.021433609423734776,
+    "side": "sell",
+    "timestamp": 1748036335976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09642032633683,
+    "size": 0.06839522382671952,
+    "side": "sell",
+    "timestamp": 1748036336476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1018463755356,
+    "size": 0.3178889047961728,
+    "side": "buy",
+    "timestamp": 1748036336976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09903585215503,
+    "size": 0.046399198275994674,
+    "side": "buy",
+    "timestamp": 1748036337476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09225552604305,
+    "size": 0.28395686611992343,
+    "side": "buy",
+    "timestamp": 1748036337976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09774828509438,
+    "size": 0.016194639488982396,
+    "side": "sell",
+    "timestamp": 1748036338476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.10138864099459,
+    "size": 0.2631239025338045,
+    "side": "buy",
+    "timestamp": 1748036338976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12757616408174,
+    "size": 0.049389645330435876,
+    "side": "sell",
+    "timestamp": 1748036339476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.15530826123417,
+    "size": 0.1276837262725531,
+    "side": "buy",
+    "timestamp": 1748036339976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.15146725705475,
+    "size": 0.20789532969850005,
+    "side": "buy",
+    "timestamp": 1748036340476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.15028956920364,
+    "size": 0.007777522285416246,
+    "side": "buy",
+    "timestamp": 1748036340976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.14312902537246,
+    "size": 0.05244779314553658,
+    "side": "sell",
+    "timestamp": 1748036341476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1453727644843,
+    "size": 0.18180242110378547,
+    "side": "buy",
+    "timestamp": 1748036341976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1495058770231,
+    "size": 0.01766782664477738,
+    "side": "sell",
+    "timestamp": 1748036342476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1454703025111,
+    "size": 0.05443340395122993,
+    "side": "sell",
+    "timestamp": 1748036342976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1242794882531,
+    "size": 0.08350375601492488,
+    "side": "buy",
+    "timestamp": 1748036343476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12328287560652,
+    "size": 0.04347686973594002,
+    "side": "buy",
+    "timestamp": 1748036343976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.13968224701823,
+    "size": 0.06013555282520461,
+    "side": "sell",
+    "timestamp": 1748036344476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1479528120291,
+    "size": 0.22355548403780154,
+    "side": "sell",
+    "timestamp": 1748036344976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.16143216720587,
+    "size": 0.10325112012464117,
+    "side": "sell",
+    "timestamp": 1748036345476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.17303892436708,
+    "size": 0.5005411159426819,
+    "side": "buy",
+    "timestamp": 1748036345976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.186341333579,
+    "size": 0.1714284414873077,
+    "side": "sell",
+    "timestamp": 1748036346476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.16950591972562,
+    "size": 0.014434837240402851,
+    "side": "sell",
+    "timestamp": 1748036346976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.15891222794043,
+    "size": 0.21438476009965846,
+    "side": "buy",
+    "timestamp": 1748036347476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.16176353888967,
+    "size": 0.05396487552642672,
+    "side": "buy",
+    "timestamp": 1748036347976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1541310112541,
+    "size": 0.06908742723317451,
+    "side": "sell",
+    "timestamp": 1748036348476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.16793943438401,
+    "size": 0.009333907188896314,
+    "side": "buy",
+    "timestamp": 1748036348976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.15205172592353,
+    "size": 0.00903587794308101,
+    "side": "buy",
+    "timestamp": 1748036349476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.13513973487301,
+    "size": 0.24804381019969096,
+    "side": "buy",
+    "timestamp": 1748036349976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.13882148056284,
+    "size": 0.027209573373959225,
+    "side": "buy",
+    "timestamp": 1748036350476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12800353837005,
+    "size": 0.034956519611789194,
+    "side": "buy",
+    "timestamp": 1748036350976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1153711248378,
+    "size": 0.10665930919024474,
+    "side": "sell",
+    "timestamp": 1748036351476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.11493692008747,
+    "size": 0.009976210699117131,
+    "side": "sell",
+    "timestamp": 1748036351976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.11739965999288,
+    "size": 0.06702140394030398,
+    "side": "buy",
+    "timestamp": 1748036352476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.11039005697025,
+    "size": 0.09498894068272072,
+    "side": "buy",
+    "timestamp": 1748036352976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.11645689984809,
+    "size": 0.01112941429200409,
+    "side": "sell",
+    "timestamp": 1748036353476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1031080726363,
+    "size": 0.11119231490184155,
+    "side": "buy",
+    "timestamp": 1748036353976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.10778050180164,
+    "size": 0.10177765437342241,
+    "side": "sell",
+    "timestamp": 1748036354476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1171676587091,
+    "size": 0.1805160734573942,
+    "side": "buy",
+    "timestamp": 1748036354976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12672029965114,
+    "size": 0.01162924023600495,
+    "side": "sell",
+    "timestamp": 1748036355476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.14102844265534,
+    "size": 0.10755786892194744,
+    "side": "sell",
+    "timestamp": 1748036355976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.15656447376521,
+    "size": 0.0001729496634159422,
+    "side": "sell",
+    "timestamp": 1748036356476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.15168661707114,
+    "size": 0.13469445326177473,
+    "side": "sell",
+    "timestamp": 1748036356976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.16192040778081,
+    "size": 0.12253856328205326,
+    "side": "sell",
+    "timestamp": 1748036357476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.15996438690674,
+    "size": 0.34494070548307076,
+    "side": "buy",
+    "timestamp": 1748036357976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.16729902919212,
+    "size": 0.07245013681310063,
+    "side": "sell",
+    "timestamp": 1748036358476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.16810073024567,
+    "size": 0.1611787740083538,
+    "side": "sell",
+    "timestamp": 1748036358976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.15521491991184,
+    "size": 0.4406873646369275,
+    "side": "sell",
+    "timestamp": 1748036359476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.15048792165499,
+    "size": 0.09976090029563221,
+    "side": "buy",
+    "timestamp": 1748036359976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.14439937176824,
+    "size": 0.017333796864941117,
+    "side": "buy",
+    "timestamp": 1748036360476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.13900316356955,
+    "size": 0.17941636920417892,
+    "side": "sell",
+    "timestamp": 1748036360976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.15404517739915,
+    "size": 0.07454504040888847,
+    "side": "buy",
+    "timestamp": 1748036361476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.15537131488475,
+    "size": 0.01586649642968155,
+    "side": "sell",
+    "timestamp": 1748036361976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.14334764001673,
+    "size": 0.14277330115522632,
+    "side": "buy",
+    "timestamp": 1748036362476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.14979892831263,
+    "size": 0.04579839321422231,
+    "side": "buy",
+    "timestamp": 1748036362976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.14307860956859,
+    "size": 0.22453954839465906,
+    "side": "sell",
+    "timestamp": 1748036363476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.15382778096381,
+    "size": 0.03780584431523065,
+    "side": "sell",
+    "timestamp": 1748036363976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.15373672449483,
+    "size": 0.0076024658610470254,
+    "side": "buy",
+    "timestamp": 1748036364476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.14332099076722,
+    "size": 0.04863196786745885,
+    "side": "buy",
+    "timestamp": 1748036364976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.13868683006245,
+    "size": 0.0854440549711882,
+    "side": "buy",
+    "timestamp": 1748036365476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.13884958580985,
+    "size": 0.021069801465328025,
+    "side": "buy",
+    "timestamp": 1748036365976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.13443099181477,
+    "size": 0.017648700080752415,
+    "side": "buy",
+    "timestamp": 1748036366476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12734349188787,
+    "size": 0.08828326357852335,
+    "side": "buy",
+    "timestamp": 1748036366976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.14800206461948,
+    "size": 0.023453004390887083,
+    "side": "buy",
+    "timestamp": 1748036367476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.15885359353065,
+    "size": 0.060940929154838445,
+    "side": "buy",
+    "timestamp": 1748036367976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1488854462818,
+    "size": 0.09565670052336553,
+    "side": "buy",
+    "timestamp": 1748036368476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.14671969390587,
+    "size": 0.12376679041612229,
+    "side": "sell",
+    "timestamp": 1748036368976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.16107665859202,
+    "size": 0.1734782016723947,
+    "side": "buy",
+    "timestamp": 1748036369476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.15268798740395,
+    "size": 0.07529253595003349,
+    "side": "buy",
+    "timestamp": 1748036369976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.15297760947004,
+    "size": 0.04026913753732552,
+    "side": "buy",
+    "timestamp": 1748036370476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.18697311462805,
+    "size": 0.03734534672896758,
+    "side": "sell",
+    "timestamp": 1748036370976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.18882487778575,
+    "size": 0.1518449799719101,
+    "side": "sell",
+    "timestamp": 1748036371476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.203950836557,
+    "size": 0.005420124667766839,
+    "side": "sell",
+    "timestamp": 1748036371976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.19843837143658,
+    "size": 0.03103198868385176,
+    "side": "sell",
+    "timestamp": 1748036372476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.20418739105139,
+    "size": 0.6469192609742902,
+    "side": "buy",
+    "timestamp": 1748036372976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.19883428495785,
+    "size": 0.12289029309708865,
+    "side": "buy",
+    "timestamp": 1748036373476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.19459445190246,
+    "size": 0.11142172796004571,
+    "side": "buy",
+    "timestamp": 1748036373976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.18964490726023,
+    "size": 0.14289247181990122,
+    "side": "buy",
+    "timestamp": 1748036374476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.18949393462903,
+    "size": 0.16215683293006256,
+    "side": "buy",
+    "timestamp": 1748036374976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.19585746662688,
+    "size": 0.1114433539355334,
+    "side": "sell",
+    "timestamp": 1748036375476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.19252622666588,
+    "size": 0.029668232087701713,
+    "side": "sell",
+    "timestamp": 1748036375976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.18711775389562,
+    "size": 0.10104472997359822,
+    "side": "buy",
+    "timestamp": 1748036376476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.18759020211532,
+    "size": 0.001360348628118231,
+    "side": "sell",
+    "timestamp": 1748036376976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.18828574370951,
+    "size": 0.07669662176142364,
+    "side": "sell",
+    "timestamp": 1748036377476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1841931395773,
+    "size": 0.07397975773468657,
+    "side": "sell",
+    "timestamp": 1748036377976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.18290448463621,
+    "size": 0.029864981921494956,
+    "side": "buy",
+    "timestamp": 1748036378476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.18405046593591,
+    "size": 0.04912269124392888,
+    "side": "sell",
+    "timestamp": 1748036378976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.18994441505356,
+    "size": 0.005469696174690519,
+    "side": "sell",
+    "timestamp": 1748036379476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.17212150929006,
+    "size": 0.10514947995008542,
+    "side": "buy",
+    "timestamp": 1748036379976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.17489277283784,
+    "size": 0.02791769528352512,
+    "side": "sell",
+    "timestamp": 1748036380476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.15834627151935,
+    "size": 0.19771314490506783,
+    "side": "buy",
+    "timestamp": 1748036380976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.16739775882547,
+    "size": 0.07565243886746706,
+    "side": "buy",
+    "timestamp": 1748036381476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.16937933040136,
+    "size": 0.10446278807175534,
+    "side": "buy",
+    "timestamp": 1748036381976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.17778745655322,
+    "size": 0.15019519004414789,
+    "side": "buy",
+    "timestamp": 1748036382476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.16614671817591,
+    "size": 0.18752516939658428,
+    "side": "buy",
+    "timestamp": 1748036382976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.15931542696742,
+    "size": 0.03576601764798272,
+    "side": "sell",
+    "timestamp": 1748036383476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.161389049701,
+    "size": 0.2162298526649058,
+    "side": "sell",
+    "timestamp": 1748036383976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.16101819333285,
+    "size": 0.11574800778125904,
+    "side": "sell",
+    "timestamp": 1748036384476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.16212616478954,
+    "size": 0.053130763980535095,
+    "side": "buy",
+    "timestamp": 1748036384976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1659237059596,
+    "size": 0.022071430261558004,
+    "side": "buy",
+    "timestamp": 1748036385476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.17856626220387,
+    "size": 0.0763175173343247,
+    "side": "sell",
+    "timestamp": 1748036385976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.18049689882716,
+    "size": 0.2148340562008539,
+    "side": "buy",
+    "timestamp": 1748036386476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.18232072497027,
+    "size": 0.26461368712432204,
+    "side": "sell",
+    "timestamp": 1748036386976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.18022041368958,
+    "size": 0.0722051577958882,
+    "side": "sell",
+    "timestamp": 1748036387476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.18081384832173,
+    "size": 0.07714388212336849,
+    "side": "sell",
+    "timestamp": 1748036387976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.17761299319055,
+    "size": 0.008958185841669077,
+    "side": "sell",
+    "timestamp": 1748036388476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1713856322515,
+    "size": 0.07760711751039201,
+    "side": "sell",
+    "timestamp": 1748036388976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.18426918802356,
+    "size": 0.16149883772909862,
+    "side": "buy",
+    "timestamp": 1748036389476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.17795537729053,
+    "size": 0.0228347930667797,
+    "side": "buy",
+    "timestamp": 1748036389976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1753890599209,
+    "size": 0.07661967800739806,
+    "side": "sell",
+    "timestamp": 1748036390476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.18502832395198,
+    "size": 0.1058275446642742,
+    "side": "buy",
+    "timestamp": 1748036390976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.19053403961216,
+    "size": 0.014326145137674329,
+    "side": "sell",
+    "timestamp": 1748036391476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.18476042208619,
+    "size": 0.10576999466177467,
+    "side": "sell",
+    "timestamp": 1748036391976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.17533138046925,
+    "size": 0.0163736615559393,
+    "side": "sell",
+    "timestamp": 1748036392476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.19212720184996,
+    "size": 0.022906837249306294,
+    "side": "buy",
+    "timestamp": 1748036392976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.19658357588217,
+    "size": 0.32420604442552925,
+    "side": "sell",
+    "timestamp": 1748036393476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1954400483874,
+    "size": 0.16205564373715828,
+    "side": "buy",
+    "timestamp": 1748036393976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.19473279914878,
+    "size": 0.12723796323233239,
+    "side": "sell",
+    "timestamp": 1748036394476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1849292417632,
+    "size": 0.1362195800537701,
+    "side": "sell",
+    "timestamp": 1748036394976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.17627012027448,
+    "size": 0.12112574850014331,
+    "side": "buy",
+    "timestamp": 1748036395476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1638995580672,
+    "size": 0.08133338970430962,
+    "side": "sell",
+    "timestamp": 1748036395976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.16649145357464,
+    "size": 0.050455617360571685,
+    "side": "buy",
+    "timestamp": 1748036396476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.17454921130803,
+    "size": 0.05770197099722327,
+    "side": "buy",
+    "timestamp": 1748036396976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.17844932971269,
+    "size": 0.09825513443598735,
+    "side": "buy",
+    "timestamp": 1748036397476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.16293607055312,
+    "size": 0.0951373970585705,
+    "side": "buy",
+    "timestamp": 1748036397976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.15906383898799,
+    "size": 0.016553081745631366,
+    "side": "buy",
+    "timestamp": 1748036398476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.14792338026709,
+    "size": 0.12840124609003187,
+    "side": "buy",
+    "timestamp": 1748036398976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1198552789459,
+    "size": 0.0696707821379112,
+    "side": "sell",
+    "timestamp": 1748036399476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.11976248794643,
+    "size": 0.1494262665960325,
+    "side": "sell",
+    "timestamp": 1748036399976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09629633800613,
+    "size": 0.1311433979552413,
+    "side": "sell",
+    "timestamp": 1748036400476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08834675704045,
+    "size": 0.004278646041177159,
+    "side": "buy",
+    "timestamp": 1748036400976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09450834741568,
+    "size": 0.04161997936041151,
+    "side": "buy",
+    "timestamp": 1748036401476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0857750571805,
+    "size": 0.08851886188838014,
+    "side": "sell",
+    "timestamp": 1748036401976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07823564768256,
+    "size": 0.01430795222084738,
+    "side": "buy",
+    "timestamp": 1748036402476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.06535199743665,
+    "size": 0.03871755834940043,
+    "side": "sell",
+    "timestamp": 1748036402976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05676654977897,
+    "size": 0.027617164297241044,
+    "side": "sell",
+    "timestamp": 1748036403476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.06262535988638,
+    "size": 0.17662080448115144,
+    "side": "buy",
+    "timestamp": 1748036403976,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0730541552146,
+    "size": 0.28466888127263773,
+    "side": "buy",
+    "timestamp": 1748036404476,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09082735996908,
+    "size": 0.007248317123157874,
+    "side": "buy",
+    "timestamp": 1748036404977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.10394391403376,
+    "size": 0.16560514349895256,
+    "side": "sell",
+    "timestamp": 1748036405477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1090386198872,
+    "size": 0.2669472536060252,
+    "side": "buy",
+    "timestamp": 1748036405977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.11142211297884,
+    "size": 0.0024489899021278103,
+    "side": "sell",
+    "timestamp": 1748036406477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12162182253992,
+    "size": 0.08427077460616215,
+    "side": "sell",
+    "timestamp": 1748036406977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12023703429487,
+    "size": 0.05933264559158551,
+    "side": "buy",
+    "timestamp": 1748036407477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12297525680358,
+    "size": 0.009651928978505734,
+    "side": "buy",
+    "timestamp": 1748036407977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.11828503911772,
+    "size": 0.05978573377297343,
+    "side": "sell",
+    "timestamp": 1748036408477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1252264650408,
+    "size": 0.02476893574967689,
+    "side": "sell",
+    "timestamp": 1748036408977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0942336877941,
+    "size": 0.05645481188977376,
+    "side": "buy",
+    "timestamp": 1748036409477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07779198395646,
+    "size": 0.18386747451600258,
+    "side": "buy",
+    "timestamp": 1748036409977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.06603834572171,
+    "size": 0.06213646188539787,
+    "side": "buy",
+    "timestamp": 1748036410477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07134230739584,
+    "size": 0.02185569468642373,
+    "side": "buy",
+    "timestamp": 1748036410977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08275698337565,
+    "size": 0.058643554813105875,
+    "side": "sell",
+    "timestamp": 1748036411477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08626059020862,
+    "size": 0.11466465067268944,
+    "side": "sell",
+    "timestamp": 1748036411977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08900168162045,
+    "size": 0.002972995350630199,
+    "side": "sell",
+    "timestamp": 1748036412477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07809278580285,
+    "size": 0.06594258868788747,
+    "side": "sell",
+    "timestamp": 1748036412977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08858165378682,
+    "size": 0.027946265439300472,
+    "side": "buy",
+    "timestamp": 1748036413477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08965019989566,
+    "size": 0.23508462609561007,
+    "side": "sell",
+    "timestamp": 1748036413977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.095141073043,
+    "size": 0.025265139069248238,
+    "side": "buy",
+    "timestamp": 1748036414477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09938926318894,
+    "size": 0.1322047091702255,
+    "side": "sell",
+    "timestamp": 1748036414977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09976157882555,
+    "size": 0.0006959740852282953,
+    "side": "sell",
+    "timestamp": 1748036415477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.10592158342452,
+    "size": 0.011592118393678442,
+    "side": "buy",
+    "timestamp": 1748036415977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09921206186877,
+    "size": 0.050455703757229825,
+    "side": "buy",
+    "timestamp": 1748036416477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08551158753541,
+    "size": 0.020246504220956293,
+    "side": "sell",
+    "timestamp": 1748036416977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08881918335511,
+    "size": 0.0028749491923000096,
+    "side": "sell",
+    "timestamp": 1748036417477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.090980592394,
+    "size": 0.04232269668604404,
+    "side": "sell",
+    "timestamp": 1748036417977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09345594924747,
+    "size": 0.0029504720381466005,
+    "side": "buy",
+    "timestamp": 1748036418477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07976706432798,
+    "size": 0.030012128667767382,
+    "side": "buy",
+    "timestamp": 1748036418977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07701447036668,
+    "size": 0.16187943147156292,
+    "side": "sell",
+    "timestamp": 1748036419477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08721841428218,
+    "size": 0.3664504946477314,
+    "side": "sell",
+    "timestamp": 1748036419977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08129246877111,
+    "size": 0.004054723444155172,
+    "side": "sell",
+    "timestamp": 1748036420477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07593856459964,
+    "size": 0.06436379090337885,
+    "side": "sell",
+    "timestamp": 1748036420977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07563280448785,
+    "size": 0.05991823455268772,
+    "side": "sell",
+    "timestamp": 1748036421477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08251370645073,
+    "size": 0.48963079090635697,
+    "side": "sell",
+    "timestamp": 1748036421977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08268824522246,
+    "size": 0.06790341932481497,
+    "side": "buy",
+    "timestamp": 1748036422477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.10399837238722,
+    "size": 0.30558436033525815,
+    "side": "buy",
+    "timestamp": 1748036422977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09226220844437,
+    "size": 0.03416750358426171,
+    "side": "buy",
+    "timestamp": 1748036423477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09574272324929,
+    "size": 0.1058729929362521,
+    "side": "sell",
+    "timestamp": 1748036423977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09704532043693,
+    "size": 0.29548969197873526,
+    "side": "sell",
+    "timestamp": 1748036424477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.10502567031791,
+    "size": 0.025775332864423198,
+    "side": "buy",
+    "timestamp": 1748036424977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0974733573804,
+    "size": 0.21445563847005233,
+    "side": "buy",
+    "timestamp": 1748036425477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08505475715187,
+    "size": 0.19888352490011652,
+    "side": "buy",
+    "timestamp": 1748036425977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0795395974855,
+    "size": 0.19957058156448151,
+    "side": "buy",
+    "timestamp": 1748036426477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.06651893999314,
+    "size": 0.12713767523096536,
+    "side": "sell",
+    "timestamp": 1748036426977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05741533240815,
+    "size": 0.10834829066724481,
+    "side": "sell",
+    "timestamp": 1748036427477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07457453982809,
+    "size": 0.08254719785058864,
+    "side": "sell",
+    "timestamp": 1748036427977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07636234012706,
+    "size": 0.1521308884149114,
+    "side": "buy",
+    "timestamp": 1748036428477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07900365508056,
+    "size": 0.046445463870271125,
+    "side": "sell",
+    "timestamp": 1748036428977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08511255643734,
+    "size": 0.0013670006232291124,
+    "side": "sell",
+    "timestamp": 1748036429477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.087287019896,
+    "size": 0.029186959222158495,
+    "side": "sell",
+    "timestamp": 1748036429977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09949480987174,
+    "size": 0.07313435570460669,
+    "side": "sell",
+    "timestamp": 1748036430477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.10009071171912,
+    "size": 0.00863277214872146,
+    "side": "buy",
+    "timestamp": 1748036430977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09045100869865,
+    "size": 0.006532009583034093,
+    "side": "sell",
+    "timestamp": 1748036431477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08607485766863,
+    "size": 0.45422075565857906,
+    "side": "buy",
+    "timestamp": 1748036431977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09286703656065,
+    "size": 0.12240458020357764,
+    "side": "buy",
+    "timestamp": 1748036432477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.10011256155364,
+    "size": 0.42846681870830106,
+    "side": "buy",
+    "timestamp": 1748036432977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07857640808176,
+    "size": 0.16262149509209287,
+    "side": "sell",
+    "timestamp": 1748036433477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07572456893004,
+    "size": 0.034819355934760855,
+    "side": "sell",
+    "timestamp": 1748036433977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07957224073134,
+    "size": 0.17581370804645896,
+    "side": "sell",
+    "timestamp": 1748036434477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09720504839429,
+    "size": 0.03286564990151698,
+    "side": "sell",
+    "timestamp": 1748036434977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.11199142966927,
+    "size": 0.08535334613079298,
+    "side": "sell",
+    "timestamp": 1748036435477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.10664579727003,
+    "size": 0.2155893967073319,
+    "side": "buy",
+    "timestamp": 1748036435977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12059727290509,
+    "size": 0.1421937384241575,
+    "side": "buy",
+    "timestamp": 1748036436477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1038240802263,
+    "size": 0.1566871061681846,
+    "side": "sell",
+    "timestamp": 1748036436977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09954406113263,
+    "size": 0.06558602088732363,
+    "side": "buy",
+    "timestamp": 1748036437477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09435311358273,
+    "size": 0.18997975481639853,
+    "side": "sell",
+    "timestamp": 1748036437977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0850483111927,
+    "size": 0.001985710964174203,
+    "side": "buy",
+    "timestamp": 1748036438477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07511449348792,
+    "size": 0.02040534820222603,
+    "side": "sell",
+    "timestamp": 1748036438977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0743646197474,
+    "size": 0.05574385098883659,
+    "side": "buy",
+    "timestamp": 1748036439477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07566115762823,
+    "size": 0.23027667301965674,
+    "side": "sell",
+    "timestamp": 1748036439977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0850163310961,
+    "size": 0.007683318931988277,
+    "side": "buy",
+    "timestamp": 1748036440477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07876509209225,
+    "size": 0.18857980806288185,
+    "side": "sell",
+    "timestamp": 1748036440977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0827010850958,
+    "size": 0.005150019132648208,
+    "side": "sell",
+    "timestamp": 1748036441477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09004145915199,
+    "size": 0.012465083202600006,
+    "side": "sell",
+    "timestamp": 1748036441977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08239026726494,
+    "size": 0.0217650080200856,
+    "side": "buy",
+    "timestamp": 1748036442477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07617661014021,
+    "size": 0.13076795523725257,
+    "side": "sell",
+    "timestamp": 1748036442977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05704359135972,
+    "size": 0.010639321931402518,
+    "side": "sell",
+    "timestamp": 1748036443477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05180676805577,
+    "size": 0.07599352521520664,
+    "side": "buy",
+    "timestamp": 1748036443977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.06682976502377,
+    "size": 0.0010582439572091882,
+    "side": "buy",
+    "timestamp": 1748036444477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05379803005532,
+    "size": 0.010072977866973169,
+    "side": "sell",
+    "timestamp": 1748036444977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05562250435942,
+    "size": 0.17558145511307202,
+    "side": "buy",
+    "timestamp": 1748036445477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03758978052748,
+    "size": 0.04085562547580482,
+    "side": "sell",
+    "timestamp": 1748036445977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0203190615292,
+    "size": 0.11085153781099284,
+    "side": "sell",
+    "timestamp": 1748036446477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.02151321519997,
+    "size": 0.23927290120035322,
+    "side": "sell",
+    "timestamp": 1748036446977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.01782083672713,
+    "size": 0.0895281303320174,
+    "side": "buy",
+    "timestamp": 1748036447477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.02088009038206,
+    "size": 0.08653196171593473,
+    "side": "sell",
+    "timestamp": 1748036447977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03821816687118,
+    "size": 0.08792836555897904,
+    "side": "sell",
+    "timestamp": 1748036448477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04441218183976,
+    "size": 0.034823332155991586,
+    "side": "sell",
+    "timestamp": 1748036448977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05556208667299,
+    "size": 0.005013010835895761,
+    "side": "sell",
+    "timestamp": 1748036449477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05264056183364,
+    "size": 0.11246327471611606,
+    "side": "buy",
+    "timestamp": 1748036449977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03284095679635,
+    "size": 0.12655900601698195,
+    "side": "sell",
+    "timestamp": 1748036450477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.02743259081487,
+    "size": 0.35430257884735566,
+    "side": "sell",
+    "timestamp": 1748036450977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04161163733191,
+    "size": 0.2997284467574801,
+    "side": "sell",
+    "timestamp": 1748036451477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04038866953013,
+    "size": 0.096068126731416,
+    "side": "sell",
+    "timestamp": 1748036451977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04282806936693,
+    "size": 0.09356044540760314,
+    "side": "buy",
+    "timestamp": 1748036452477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0513372102968,
+    "size": 0.006953105090925312,
+    "side": "sell",
+    "timestamp": 1748036452977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05662233670215,
+    "size": 0.46181322490005255,
+    "side": "sell",
+    "timestamp": 1748036453477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04993007399662,
+    "size": 0.13044007224127235,
+    "side": "sell",
+    "timestamp": 1748036453977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.06479254403126,
+    "size": 0.017010488739848877,
+    "side": "buy",
+    "timestamp": 1748036454477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07096031903379,
+    "size": 0.04556367946570482,
+    "side": "buy",
+    "timestamp": 1748036454977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04977614419995,
+    "size": 0.15951997905094717,
+    "side": "buy",
+    "timestamp": 1748036455477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04971588179082,
+    "size": 0.09409582410355088,
+    "side": "sell",
+    "timestamp": 1748036455977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05723188221705,
+    "size": 0.002826679342562756,
+    "side": "sell",
+    "timestamp": 1748036456477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05551543977198,
+    "size": 0.2594284718530335,
+    "side": "buy",
+    "timestamp": 1748036456977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07173934538429,
+    "size": 0.1235755905379681,
+    "side": "sell",
+    "timestamp": 1748036457477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08427824805192,
+    "size": 0.06405720843301693,
+    "side": "buy",
+    "timestamp": 1748036457977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09049534788625,
+    "size": 0.2349074808877819,
+    "side": "buy",
+    "timestamp": 1748036458477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07752583647688,
+    "size": 0.14391982622090752,
+    "side": "buy",
+    "timestamp": 1748036458977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08170129589243,
+    "size": 0.1343024555676877,
+    "side": "sell",
+    "timestamp": 1748036459477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07789252342909,
+    "size": 0.0015664020146604054,
+    "side": "sell",
+    "timestamp": 1748036459977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08943795158267,
+    "size": 0.015798082822474604,
+    "side": "sell",
+    "timestamp": 1748036460477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09998833976239,
+    "size": 0.2602008917747374,
+    "side": "sell",
+    "timestamp": 1748036460977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09831079136163,
+    "size": 0.1050784463181075,
+    "side": "buy",
+    "timestamp": 1748036461477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08619051657425,
+    "size": 0.026010914055905856,
+    "side": "sell",
+    "timestamp": 1748036461977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09739739918156,
+    "size": 0.031150004586611147,
+    "side": "buy",
+    "timestamp": 1748036462477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09084691209532,
+    "size": 0.04250356164453344,
+    "side": "sell",
+    "timestamp": 1748036462977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1034150991786,
+    "size": 0.033750403895811326,
+    "side": "sell",
+    "timestamp": 1748036463477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.11094660081758,
+    "size": 0.08883860471141845,
+    "side": "buy",
+    "timestamp": 1748036463977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.10241755413972,
+    "size": 0.07654170797983077,
+    "side": "buy",
+    "timestamp": 1748036464477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12220113099977,
+    "size": 0.27709991590115846,
+    "side": "buy",
+    "timestamp": 1748036464977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.13354002575174,
+    "size": 0.21324399334848101,
+    "side": "sell",
+    "timestamp": 1748036465477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.13906507941041,
+    "size": 0.012217788757273895,
+    "side": "sell",
+    "timestamp": 1748036465977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12636431831794,
+    "size": 0.6106928598879053,
+    "side": "buy",
+    "timestamp": 1748036466477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.11720564573373,
+    "size": 0.25838945536675023,
+    "side": "buy",
+    "timestamp": 1748036466977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12890699281682,
+    "size": 0.010188992594270106,
+    "side": "sell",
+    "timestamp": 1748036467477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.14037516158439,
+    "size": 0.04301476167908794,
+    "side": "sell",
+    "timestamp": 1748036467977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.15328600541125,
+    "size": 0.037741264450990034,
+    "side": "buy",
+    "timestamp": 1748036468477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.15638541396784,
+    "size": 0.24390448606022602,
+    "side": "sell",
+    "timestamp": 1748036468977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.14976083959276,
+    "size": 0.14877343077296656,
+    "side": "buy",
+    "timestamp": 1748036469477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.14125214232932,
+    "size": 0.03415090186756408,
+    "side": "buy",
+    "timestamp": 1748036469977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.13494050495524,
+    "size": 0.08897916377502975,
+    "side": "sell",
+    "timestamp": 1748036470477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.14031684893716,
+    "size": 0.03093574575304743,
+    "side": "sell",
+    "timestamp": 1748036470977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.13875876488957,
+    "size": 0.06342576199179281,
+    "side": "buy",
+    "timestamp": 1748036471477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1476851592214,
+    "size": 0.045198030343109874,
+    "side": "buy",
+    "timestamp": 1748036471977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.14515576081929,
+    "size": 0.08590884682805067,
+    "side": "sell",
+    "timestamp": 1748036472477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.15213929528262,
+    "size": 0.04887171358254048,
+    "side": "buy",
+    "timestamp": 1748036472977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.13829674314067,
+    "size": 0.019760770321371843,
+    "side": "buy",
+    "timestamp": 1748036473477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.13308810840934,
+    "size": 0.0919870578402172,
+    "side": "buy",
+    "timestamp": 1748036473977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1328862031619,
+    "size": 0.15854010792839865,
+    "side": "sell",
+    "timestamp": 1748036474477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.14048959881777,
+    "size": 0.08503917247533599,
+    "side": "sell",
+    "timestamp": 1748036474977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.13741593357008,
+    "size": 0.05231311036348171,
+    "side": "sell",
+    "timestamp": 1748036475477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12956103294819,
+    "size": 0.46791302623483944,
+    "side": "sell",
+    "timestamp": 1748036475977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12782399039313,
+    "size": 0.019898638626772477,
+    "side": "sell",
+    "timestamp": 1748036476477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.10809205513915,
+    "size": 0.013079905963617655,
+    "side": "sell",
+    "timestamp": 1748036476977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.11939653874306,
+    "size": 0.0012715941281140706,
+    "side": "buy",
+    "timestamp": 1748036477477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.11965983961322,
+    "size": 0.009826421975218193,
+    "side": "sell",
+    "timestamp": 1748036477977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.13127289644017,
+    "size": 0.01692267983984884,
+    "side": "buy",
+    "timestamp": 1748036478477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12305064527271,
+    "size": 0.147359388348252,
+    "side": "buy",
+    "timestamp": 1748036478977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.13083431310767,
+    "size": 0.006472321671194882,
+    "side": "buy",
+    "timestamp": 1748036479477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.13434817548853,
+    "size": 0.19413417082580975,
+    "side": "sell",
+    "timestamp": 1748036479977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.13460832576915,
+    "size": 0.08579658771554055,
+    "side": "buy",
+    "timestamp": 1748036480477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.14407010490943,
+    "size": 0.09683727581399146,
+    "side": "buy",
+    "timestamp": 1748036480977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.14549533073668,
+    "size": 0.0033091603263729927,
+    "side": "sell",
+    "timestamp": 1748036481477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.133508038717,
+    "size": 0.03320725123717202,
+    "side": "buy",
+    "timestamp": 1748036481977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.13467299508503,
+    "size": 0.09353333869981863,
+    "side": "sell",
+    "timestamp": 1748036482477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12912151499101,
+    "size": 0.13172193755920217,
+    "side": "buy",
+    "timestamp": 1748036482977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12711753591623,
+    "size": 0.1729642950341533,
+    "side": "buy",
+    "timestamp": 1748036483477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1273346450158,
+    "size": 0.0521108979905992,
+    "side": "buy",
+    "timestamp": 1748036483977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12695566415488,
+    "size": 0.06689117047253626,
+    "side": "sell",
+    "timestamp": 1748036484477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.13412240625617,
+    "size": 0.2229195828546332,
+    "side": "buy",
+    "timestamp": 1748036484977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.13027041233941,
+    "size": 0.07450595198858982,
+    "side": "sell",
+    "timestamp": 1748036485477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12453677589096,
+    "size": 0.11754895835575532,
+    "side": "sell",
+    "timestamp": 1748036485977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12435805794952,
+    "size": 0.34726286022127645,
+    "side": "sell",
+    "timestamp": 1748036486477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12297137322773,
+    "size": 0.04562943968696166,
+    "side": "buy",
+    "timestamp": 1748036486977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.11242526461294,
+    "size": 0.4650067973501182,
+    "side": "sell",
+    "timestamp": 1748036487477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12362620606369,
+    "size": 0.05977192172548182,
+    "side": "sell",
+    "timestamp": 1748036487977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.11526648401353,
+    "size": 0.04029402421063846,
+    "side": "buy",
+    "timestamp": 1748036488477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.13138095785467,
+    "size": 0.002452128660807418,
+    "side": "sell",
+    "timestamp": 1748036488977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12832870932688,
+    "size": 0.21355250420249436,
+    "side": "buy",
+    "timestamp": 1748036489477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.13947844644326,
+    "size": 0.013326808217730477,
+    "side": "sell",
+    "timestamp": 1748036489977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.13043115414561,
+    "size": 0.1729731840164764,
+    "side": "sell",
+    "timestamp": 1748036490477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1244412147046,
+    "size": 0.09554801446387495,
+    "side": "buy",
+    "timestamp": 1748036490977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.13673546582027,
+    "size": 0.05102725495156292,
+    "side": "buy",
+    "timestamp": 1748036491477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.13759716163857,
+    "size": 0.017485616119490146,
+    "side": "sell",
+    "timestamp": 1748036491977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12499720462517,
+    "size": 0.12735709296503248,
+    "side": "buy",
+    "timestamp": 1748036492477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.11513182921715,
+    "size": 0.2825471000762465,
+    "side": "sell",
+    "timestamp": 1748036492977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12156072927817,
+    "size": 0.12275531992788376,
+    "side": "buy",
+    "timestamp": 1748036493477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12138127616625,
+    "size": 0.10820776269227386,
+    "side": "sell",
+    "timestamp": 1748036493977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12822211728935,
+    "size": 0.041915087567491405,
+    "side": "buy",
+    "timestamp": 1748036494477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12513820531846,
+    "size": 0.0480731515004351,
+    "side": "buy",
+    "timestamp": 1748036494977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.11067578445058,
+    "size": 0.024966296356446902,
+    "side": "buy",
+    "timestamp": 1748036495477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.11351144435773,
+    "size": 0.06757323370433421,
+    "side": "buy",
+    "timestamp": 1748036495977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09806336935985,
+    "size": 0.0766199653557877,
+    "side": "sell",
+    "timestamp": 1748036496477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09555970401014,
+    "size": 0.014358360536200977,
+    "side": "buy",
+    "timestamp": 1748036496977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08561713685812,
+    "size": 0.29927389084511746,
+    "side": "buy",
+    "timestamp": 1748036497477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08934344412191,
+    "size": 0.030626098278068465,
+    "side": "sell",
+    "timestamp": 1748036497977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0886602940977,
+    "size": 0.09248044967865288,
+    "side": "buy",
+    "timestamp": 1748036498477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07897701839734,
+    "size": 0.08682286766519591,
+    "side": "buy",
+    "timestamp": 1748036498977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.10367547153771,
+    "size": 0.04826438232128267,
+    "side": "buy",
+    "timestamp": 1748036499477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.11526699806807,
+    "size": 0.011851256991751874,
+    "side": "sell",
+    "timestamp": 1748036499977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.11325963246605,
+    "size": 0.23408874269681254,
+    "side": "buy",
+    "timestamp": 1748036500477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.11563048117696,
+    "size": 0.22145206458099925,
+    "side": "sell",
+    "timestamp": 1748036500977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1289029394566,
+    "size": 0.06770878146213183,
+    "side": "sell",
+    "timestamp": 1748036501477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.13189958385848,
+    "size": 0.13639222386539454,
+    "side": "buy",
+    "timestamp": 1748036501977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.14803576108866,
+    "size": 0.332179152773809,
+    "side": "buy",
+    "timestamp": 1748036502477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.15488491885505,
+    "size": 0.022676178625331996,
+    "side": "sell",
+    "timestamp": 1748036502977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.14331829987773,
+    "size": 0.017194468733012738,
+    "side": "sell",
+    "timestamp": 1748036503477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.14490106132963,
+    "size": 0.02341945986360711,
+    "side": "buy",
+    "timestamp": 1748036503977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1395937218248,
+    "size": 0.016233178115179093,
+    "side": "buy",
+    "timestamp": 1748036504477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.14685753641376,
+    "size": 0.037324088340483806,
+    "side": "sell",
+    "timestamp": 1748036504977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1429841860023,
+    "size": 0.032470037304116586,
+    "side": "sell",
+    "timestamp": 1748036505477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.14491014454367,
+    "size": 0.06861263955101904,
+    "side": "buy",
+    "timestamp": 1748036505977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.14629688537194,
+    "size": 0.17633230580436932,
+    "side": "buy",
+    "timestamp": 1748036506477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12664131709104,
+    "size": 0.041129553714742154,
+    "side": "buy",
+    "timestamp": 1748036506977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.12208345044671,
+    "size": 0.04594747269319578,
+    "side": "sell",
+    "timestamp": 1748036507477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.10561484135717,
+    "size": 0.09315164303264478,
+    "side": "buy",
+    "timestamp": 1748036507977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.1035462429988,
+    "size": 0.09311694023982342,
+    "side": "buy",
+    "timestamp": 1748036508477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.10369227359526,
+    "size": 0.022705214409070196,
+    "side": "buy",
+    "timestamp": 1748036508977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.10658362561,
+    "size": 0.09499622483040726,
+    "side": "sell",
+    "timestamp": 1748036509477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09903794190798,
+    "size": 0.041935196330354474,
+    "side": "sell",
+    "timestamp": 1748036509977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09758268012943,
+    "size": 0.035645539064718755,
+    "side": "sell",
+    "timestamp": 1748036510477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08240928137741,
+    "size": 0.06793707712027398,
+    "side": "buy",
+    "timestamp": 1748036510977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07752973941798,
+    "size": 0.29904392413635245,
+    "side": "buy",
+    "timestamp": 1748036511477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07883274561738,
+    "size": 0.10789886789414878,
+    "side": "buy",
+    "timestamp": 1748036511977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.06870680720992,
+    "size": 0.11191118867461106,
+    "side": "sell",
+    "timestamp": 1748036512477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.06805409048945,
+    "size": 0.18307551169766342,
+    "side": "buy",
+    "timestamp": 1748036512977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.06405995624773,
+    "size": 0.004980610721033405,
+    "side": "sell",
+    "timestamp": 1748036513477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.06806122129406,
+    "size": 0.30793275806086357,
+    "side": "buy",
+    "timestamp": 1748036513977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09286945709242,
+    "size": 0.09772002127843275,
+    "side": "sell",
+    "timestamp": 1748036514477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.09834014212157,
+    "size": 0.01153157321487809,
+    "side": "sell",
+    "timestamp": 1748036514977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.10000114247522,
+    "size": 0.009003547694359378,
+    "side": "buy",
+    "timestamp": 1748036515477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07534767095473,
+    "size": 0.026935671071671337,
+    "side": "buy",
+    "timestamp": 1748036515977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08134048106363,
+    "size": 0.2561439954897745,
+    "side": "buy",
+    "timestamp": 1748036516477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07132095790391,
+    "size": 0.06549327941262663,
+    "side": "sell",
+    "timestamp": 1748036516977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0785729298174,
+    "size": 0.03975754102337864,
+    "side": "sell",
+    "timestamp": 1748036517477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08356530569628,
+    "size": 0.012234798544505536,
+    "side": "sell",
+    "timestamp": 1748036517977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0847914675518,
+    "size": 0.09711123974330207,
+    "side": "sell",
+    "timestamp": 1748036518477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0745722143644,
+    "size": 0.05064192251624499,
+    "side": "sell",
+    "timestamp": 1748036518977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08646700398084,
+    "size": 0.01897715191737945,
+    "side": "buy",
+    "timestamp": 1748036519477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08087997660431,
+    "size": 0.014548353089002373,
+    "side": "sell",
+    "timestamp": 1748036519977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08155025173109,
+    "size": 0.03942079009936777,
+    "side": "sell",
+    "timestamp": 1748036520477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07521131147513,
+    "size": 0.03550745612408774,
+    "side": "buy",
+    "timestamp": 1748036520977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08066064682534,
+    "size": 0.05070348133499847,
+    "side": "sell",
+    "timestamp": 1748036521477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07951935948971,
+    "size": 0.07644967357393188,
+    "side": "sell",
+    "timestamp": 1748036521977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07837985855461,
+    "size": 0.06064967090000284,
+    "side": "buy",
+    "timestamp": 1748036522477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.06956080269772,
+    "size": 0.054740153163955245,
+    "side": "sell",
+    "timestamp": 1748036522977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07272070704077,
+    "size": 0.41284713092349207,
+    "side": "buy",
+    "timestamp": 1748036523477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.08343975450137,
+    "size": 0.060497322381037534,
+    "side": "sell",
+    "timestamp": 1748036523977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.07958260343999,
+    "size": 0.017896087875162392,
+    "side": "sell",
+    "timestamp": 1748036524477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05969486521076,
+    "size": 0.012734480179780835,
+    "side": "sell",
+    "timestamp": 1748036524977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.05223726787129,
+    "size": 0.06025964158697581,
+    "side": "buy",
+    "timestamp": 1748036525477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.03776700204948,
+    "size": 0.0063325058736757025,
+    "side": "sell",
+    "timestamp": 1748036525977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.02685692655845,
+    "size": 0.3216913447038129,
+    "side": "sell",
+    "timestamp": 1748036526477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.04021666492936,
+    "size": 0.08962797906818892,
+    "side": "sell",
+    "timestamp": 1748036526977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.0187668647134,
+    "size": 0.09607406462631177,
+    "side": "buy",
+    "timestamp": 1748036527477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.01581334862308,
+    "size": 0.004365949970624643,
+    "side": "sell",
+    "timestamp": 1748036527977,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.02171533705409,
+    "size": 0.050074019610049016,
+    "side": "sell",
+    "timestamp": 1748036528477,
+    "synthetic": true
+  },
+  {
+    "symbol": "SOL-USD-PERP",
+    "price": 100.02159937422799,
+    "size": 0.059672953640764775,
+    "side": "sell",
+    "timestamp": 1748036528977,
+    "synthetic": true
+  }
+]

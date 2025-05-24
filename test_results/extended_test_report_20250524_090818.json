@@ -1,0 +1,24 @@
+{
+  "test_duration": 4135.631698,
+  "start_time": "2025-05-24T09:08:18.736162",
+  "end_time": "2025-05-24T10:17:14.367860",
+  "api_calls": 1194,
+  "api_errors": 597,
+  "api_success_rate": 0.5,
+  "signal_generations": 0,
+  "signal_errors": 360,
+  "signal_success_rate": -359.0,
+  "data_points": 0,
+  "data_errors": 597,
+  "data_success_rate": -596.0,
+  "signal_distribution": {
+    "buy": 0.0,
+    "sell": 0.0,
+    "neutral": 0.0
+  },
+  "signals": {},
+  "error_statistics": {
+    "counts": {},
+    "history": []
+  }
+}

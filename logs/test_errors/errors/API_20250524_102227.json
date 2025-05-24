@@ -1,0 +1,15 @@
+{
+  "message": "Invalid symbol: INVALID_SYMBOL",
+  "severity": "ERROR",
+  "category": "API",
+  "recoverable": true,
+  "retry_after": 1.0,
+  "context": {
+    "endpoint": "market_data",
+    "params": {
+      "symbol": "INVALID_SYMBOL"
+    }
+  },
+  "timestamp": "2025-05-24T10:22:27.915310",
+  "traceback": "NoneType: None\n"
+}

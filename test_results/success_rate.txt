@@ -1,0 +1,4 @@
+Overall Success Rate: -31816.67%
+API Success Rate: 50.00%
+Signal Success Rate: -35900.00%
+Data Success Rate: -59600.00%

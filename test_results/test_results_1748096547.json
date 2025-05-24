@@ -1,0 +1,31 @@
+{
+  "timestamp": 1748096547,
+  "datetime": "2025-05-24 10:22:27",
+  "rate_limiter_status": {
+    "use_mock_data": true,
+    "active_cooldowns": {},
+    "request_counts": {},
+    "rate_limits": {
+      "default": 60,
+      "market_data": 120,
+      "order_book": 60,
+      "historical_data": 30,
+      "user_state": 20
+    }
+  },
+  "data_accumulator_stats": {
+    "symbols": [
+      "BTC",
+      "ETH",
+      "SOL"
+    ],
+    "timeframes": [
+      "1m",
+      "5m",
+      "15m",
+      "1h",
+      "4h",
+      "1d"
+    ]
+  }
+}

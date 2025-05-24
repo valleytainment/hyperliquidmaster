@@ -1,0 +1,197 @@
+2025-05-24 09:18:10 [INFO] Created directory structure in test_data
+2025-05-24 09:18:10 [INFO] Initializing Master Omni Overlord Robust Strategy...
+2025-05-24 09:18:10 [INFO] Initializing Master Omni Overlord Robust Strategy...
+2025-05-24 09:18:10 [INFO] Initializing Master Omni Overlord Robust Strategy...
+2025-05-24 09:18:10 [INFO] Starting extended testing with real market data...
+2025-05-24 09:18:10 [INFO] Testing API integration with rate limiting...
+2025-05-24 09:18:10 [ERROR] Error fetching market data for BTC: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:10 [ERROR] Error executing API call to market_data: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:10 [ERROR] Failed to retrieve market data for BTC: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:11 [ERROR] Error fetching order book for BTC: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/orderbook
+2025-05-24 09:18:11 [ERROR] Error executing API call to order_book: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/orderbook
+2025-05-24 09:18:11 [ERROR] Failed to retrieve order book for BTC: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/orderbook
+2025-05-24 09:18:11 [ERROR] Error fetching historical data for BTC: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:11 [ERROR] Error executing API call to historical_data: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:11 [ERROR] Failed to retrieve historical data for BTC (1m): 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:11 [ERROR] Error fetching historical data for BTC: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:11 [ERROR] Error executing API call to historical_data: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:11 [ERROR] Failed to retrieve historical data for BTC (5m): 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:11 [ERROR] Error fetching historical data for BTC: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:11 [ERROR] Error executing API call to historical_data: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:11 [ERROR] Failed to retrieve historical data for BTC (15m): 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:11 [ERROR] Error fetching historical data for BTC: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:11 [ERROR] Error executing API call to historical_data: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:11 [ERROR] Failed to retrieve historical data for BTC (1h): 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:11 [ERROR] Error fetching funding rate for BTC: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:11 [ERROR] Error executing API call to funding_rate: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:11 [ERROR] Failed to retrieve funding rate for BTC: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:12 [ERROR] Error fetching market data for BTC: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:12 [ERROR] Error executing API call to market_data: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:12 [INFO] Cache miss for market data for BTC
+2025-05-24 09:18:12 [ERROR] Error fetching market data for ETH: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:12 [ERROR] Error executing API call to market_data: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:12 [ERROR] Failed to retrieve market data for ETH: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:12 [ERROR] Error fetching order book for ETH: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/orderbook
+2025-05-24 09:18:12 [ERROR] Error executing API call to order_book: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/orderbook
+2025-05-24 09:18:12 [ERROR] Failed to retrieve order book for ETH: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/orderbook
+2025-05-24 09:18:12 [ERROR] Error fetching historical data for ETH: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:12 [ERROR] Error executing API call to historical_data: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:12 [ERROR] Failed to retrieve historical data for ETH (1m): 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:12 [ERROR] Error fetching historical data for ETH: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:12 [ERROR] Error executing API call to historical_data: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:12 [ERROR] Failed to retrieve historical data for ETH (5m): 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:12 [ERROR] Error fetching historical data for ETH: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:12 [ERROR] Error executing API call to historical_data: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:12 [ERROR] Failed to retrieve historical data for ETH (15m): 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:13 [ERROR] Error fetching historical data for ETH: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:13 [ERROR] Error executing API call to historical_data: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:13 [ERROR] Failed to retrieve historical data for ETH (1h): 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:13 [ERROR] Error fetching funding rate for ETH: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:13 [ERROR] Error executing API call to funding_rate: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:13 [ERROR] Failed to retrieve funding rate for ETH: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:13 [ERROR] Error fetching market data for ETH: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:13 [ERROR] Error executing API call to market_data: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:13 [INFO] Cache miss for market data for ETH
+2025-05-24 09:18:13 [ERROR] Error fetching market data for SOL: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:13 [ERROR] Error executing API call to market_data: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:13 [ERROR] Failed to retrieve market data for SOL: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:13 [ERROR] Error fetching order book for SOL: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/orderbook
+2025-05-24 09:18:13 [ERROR] Error executing API call to order_book: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/orderbook
+2025-05-24 09:18:13 [ERROR] Failed to retrieve order book for SOL: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/orderbook
+2025-05-24 09:18:14 [ERROR] Error fetching historical data for SOL: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:14 [ERROR] Error executing API call to historical_data: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:14 [ERROR] Failed to retrieve historical data for SOL (1m): 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:14 [ERROR] Error fetching historical data for SOL: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:14 [ERROR] Error executing API call to historical_data: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:14 [ERROR] Failed to retrieve historical data for SOL (5m): 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:14 [ERROR] Error fetching historical data for SOL: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:14 [ERROR] Error executing API call to historical_data: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:14 [ERROR] Failed to retrieve historical data for SOL (15m): 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:14 [ERROR] Error fetching historical data for SOL: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:14 [ERROR] Error executing API call to historical_data: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:14 [ERROR] Failed to retrieve historical data for SOL (1h): 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:15 [ERROR] Error fetching funding rate for SOL: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:15 [ERROR] Error executing API call to funding_rate: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:15 [ERROR] Failed to retrieve funding rate for SOL: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:15 [ERROR] Error fetching market data for SOL: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:15 [ERROR] Error executing API call to market_data: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:15 [INFO] Cache miss for market data for SOL
+2025-05-24 09:18:15 [INFO] API integration test completed with 12.50% success rate, 0.00% cache hit rate, and 0.1972s average response time
+2025-05-24 09:18:15 [INFO] Testing historical data accumulation...
+2025-05-24 09:18:15 [ERROR] Error fetching historical data for BTC: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:15 [ERROR] Error executing API call to historical_data: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:15 [ERROR] Failed to retrieve historical data for BTC (1m): 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:15 [ERROR] Error fetching historical data for BTC: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:15 [ERROR] Error executing API call to historical_data: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:15 [ERROR] Failed to retrieve historical data for BTC (5m): 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:15 [ERROR] Error fetching historical data for BTC: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:15 [ERROR] Error executing API call to historical_data: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:15 [ERROR] Failed to retrieve historical data for BTC (15m): 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:16 [ERROR] Error fetching historical data for BTC: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:16 [ERROR] Error executing API call to historical_data: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:16 [ERROR] Failed to retrieve historical data for BTC (1h): 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:16 [WARNING] No data for BTC (1m)
+2025-05-24 09:18:16 [INFO] Retrieved 0 data points for BTC (1m)
+2025-05-24 09:18:16 [WARNING] No data for BTC (5m)
+2025-05-24 09:18:16 [INFO] Retrieved 0 data points for BTC (5m)
+2025-05-24 09:18:16 [WARNING] No data for BTC (15m)
+2025-05-24 09:18:16 [INFO] Retrieved 0 data points for BTC (15m)
+2025-05-24 09:18:16 [WARNING] No data for BTC (1h)
+2025-05-24 09:18:16 [INFO] Retrieved 0 data points for BTC (1h)
+2025-05-24 09:18:16 [ERROR] Error fetching historical data for ETH: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:16 [ERROR] Error executing API call to historical_data: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:16 [ERROR] Failed to retrieve historical data for ETH (1m): 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:16 [ERROR] Error fetching historical data for ETH: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:16 [ERROR] Error executing API call to historical_data: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:16 [ERROR] Failed to retrieve historical data for ETH (5m): 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:16 [ERROR] Error fetching historical data for ETH: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:16 [ERROR] Error executing API call to historical_data: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:16 [ERROR] Failed to retrieve historical data for ETH (15m): 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:16 [ERROR] Error fetching historical data for ETH: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:16 [ERROR] Error executing API call to historical_data: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:16 [ERROR] Failed to retrieve historical data for ETH (1h): 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:16 [WARNING] No data for ETH (1m)
+2025-05-24 09:18:16 [INFO] Retrieved 0 data points for ETH (1m)
+2025-05-24 09:18:16 [WARNING] No data for ETH (5m)
+2025-05-24 09:18:16 [INFO] Retrieved 0 data points for ETH (5m)
+2025-05-24 09:18:16 [WARNING] No data for ETH (15m)
+2025-05-24 09:18:16 [INFO] Retrieved 0 data points for ETH (15m)
+2025-05-24 09:18:16 [WARNING] No data for ETH (1h)
+2025-05-24 09:18:16 [INFO] Retrieved 0 data points for ETH (1h)
+2025-05-24 09:18:17 [ERROR] Error fetching historical data for SOL: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:17 [ERROR] Error executing API call to historical_data: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:17 [ERROR] Failed to retrieve historical data for SOL (1m): 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:17 [ERROR] Error fetching historical data for SOL: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:17 [ERROR] Error executing API call to historical_data: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:17 [ERROR] Failed to retrieve historical data for SOL (5m): 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:17 [ERROR] Error fetching historical data for SOL: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:17 [ERROR] Error executing API call to historical_data: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:17 [ERROR] Failed to retrieve historical data for SOL (15m): 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:17 [ERROR] Error fetching historical data for SOL: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:17 [ERROR] Error executing API call to historical_data: 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:17 [ERROR] Failed to retrieve historical data for SOL (1h): 404 Client Error: Not Found for url: https://api.hyperliquid.xyz/candles
+2025-05-24 09:18:17 [WARNING] No data for SOL (1m)
+2025-05-24 09:18:17 [INFO] Retrieved 0 data points for SOL (1m)
+2025-05-24 09:18:17 [WARNING] No data for SOL (5m)
+2025-05-24 09:18:17 [INFO] Retrieved 0 data points for SOL (5m)
+2025-05-24 09:18:17 [WARNING] No data for SOL (15m)
+2025-05-24 09:18:17 [INFO] Retrieved 0 data points for SOL (15m)
+2025-05-24 09:18:17 [WARNING] No data for SOL (1h)
+2025-05-24 09:18:17 [INFO] Retrieved 0 data points for SOL (1h)
+2025-05-24 09:18:17 [INFO] Data accumulation test completed with 0.00% success rate
+2025-05-24 09:18:17 [INFO] Testing technical indicators...
+2025-05-24 09:18:17 [WARNING] No data for BTC (1m)
+2025-05-24 09:18:17 [WARNING] No data available for BTC (1m)
+2025-05-24 09:18:17 [WARNING] No data for BTC (5m)
+2025-05-24 09:18:17 [WARNING] No data available for BTC (5m)
+2025-05-24 09:18:17 [WARNING] No data for BTC (15m)
+2025-05-24 09:18:17 [WARNING] No data available for BTC (15m)
+2025-05-24 09:18:17 [WARNING] No data for BTC (1h)
+2025-05-24 09:18:17 [WARNING] No data available for BTC (1h)
+2025-05-24 09:18:17 [WARNING] No data for ETH (1m)
+2025-05-24 09:18:17 [WARNING] No data available for ETH (1m)
+2025-05-24 09:18:17 [WARNING] No data for ETH (5m)
+2025-05-24 09:18:17 [WARNING] No data available for ETH (5m)
+2025-05-24 09:18:17 [WARNING] No data for ETH (15m)
+2025-05-24 09:18:17 [WARNING] No data available for ETH (15m)
+2025-05-24 09:18:17 [WARNING] No data for ETH (1h)
+2025-05-24 09:18:17 [WARNING] No data available for ETH (1h)
+2025-05-24 09:18:17 [WARNING] No data for SOL (1m)
+2025-05-24 09:18:17 [WARNING] No data available for SOL (1m)
+2025-05-24 09:18:17 [WARNING] No data for SOL (5m)
+2025-05-24 09:18:17 [WARNING] No data available for SOL (5m)
+2025-05-24 09:18:17 [WARNING] No data for SOL (15m)
+2025-05-24 09:18:17 [WARNING] No data available for SOL (15m)
+2025-05-24 09:18:17 [WARNING] No data for SOL (1h)
+2025-05-24 09:18:17 [WARNING] No data available for SOL (1h)
+2025-05-24 09:18:17 [INFO] Testing signal generation...
+2025-05-24 09:18:17 [ERROR] Error fetching market data for BTC: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:17 [ERROR] Error executing API call to market_data: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:17 [ERROR] Failed to retrieve market data for BTC: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:17 [ERROR] Error fetching market data for ETH: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:17 [ERROR] Error executing API call to market_data: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:17 [ERROR] Failed to retrieve market data for ETH: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:18 [ERROR] Error fetching market data for SOL: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:18 [ERROR] Error executing API call to market_data: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:18 [ERROR] Failed to retrieve market data for SOL: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:18 [INFO] Signal generation test completed with 0.00% success rate and 0.0000s average signal generation time
+2025-05-24 09:18:18 [INFO] Testing strategy integration...
+2025-05-24 09:18:18 [ERROR] Error fetching market data for BTC: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:18 [ERROR] Error executing API call to market_data: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:18 [ERROR] Failed to retrieve market data for BTC: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:18 [ERROR] Error fetching market data for ETH: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:18 [ERROR] Error executing API call to market_data: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:18 [ERROR] Failed to retrieve market data for ETH: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:18 [ERROR] Error fetching market data for SOL: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:18 [ERROR] Error executing API call to market_data: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:18 [ERROR] Failed to retrieve market data for SOL: 405 Client Error: Method Not Allowed for url: https://api.hyperliquid.xyz/info
+2025-05-24 09:18:18 [INFO] Extended testing completed successfully
+2025-05-24 09:18:18 [INFO] === Extended Testing Summary ===
+2025-05-24 09:18:18 [INFO] API Calls: 24 total, 12.50% success rate, 0.00% cache hit rate, 0.1972s avg response time
+2025-05-24 09:18:18 [INFO] Data Accumulation: 0 total points, 0.00% success rate
+2025-05-24 09:18:18 [INFO] Signal Generation: 0 total, 0.00% success rate, 0.0000s avg generation time
+2025-05-24 09:18:18 [INFO] Signal Types: 0 buy, 0 sell, 0 neutral, 0 error
+2025-05-24 09:18:18 [INFO] Overall Success Rate: 4.17%
+2025-05-24 09:18:18 [INFO] ===============================
+2025-05-24 09:19:45 [INFO] Websocket connected
+2025-05-24 10:21:50 [ERROR] Connection to remote host was lost. - goodbye
