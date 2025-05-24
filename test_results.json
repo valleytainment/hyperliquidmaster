@@ -1,0 +1,116 @@
+{
+  "timestamp": "2025-05-24T07:18:01.012398",
+  "success": false,
+  "tests": {
+    "market_data_retrieval": {
+      "success": true,
+      "symbols_tested": 3,
+      "symbols_succeeded": 3,
+      "errors": 0,
+      "data": {
+        "BTC": {
+          "price": 109313.5,
+          "funding_rate": 0.0
+        },
+        "ETH": {
+          "price": 2566.45,
+          "funding_rate": 0.0
+        },
+        "SOL": {
+          "price": 177.19,
+          "funding_rate": 0.0
+        }
+      }
+    },
+    "order_book_retrieval": {
+      "success": true,
+      "symbols_tested": 3,
+      "symbols_succeeded": 3,
+      "errors": 0,
+      "data": {
+        "BTC": {
+          "bid_count": 10,
+          "ask_count": 10
+        },
+        "ETH": {
+          "bid_count": 10,
+          "ask_count": 10
+        },
+        "SOL": {
+          "bid_count": 10,
+          "ask_count": 10
+        }
+      }
+    },
+    "historical_data_accumulation": {
+      "success": false,
+      "symbols_tested": 3,
+      "symbols_succeeded": 0,
+      "errors": 3,
+      "data": {}
+    },
+    "signal_generation": {
+      "success": true,
+      "symbols_tested": 3,
+      "symbols_succeeded": 3,
+      "errors": 0,
+      "data": {
+        "BTC": {
+          "action": "none",
+          "signal_strength": 0.0,
+          "entry_price": 0.0,
+          "stop_loss": 0.0,
+          "take_profit": 0.0
+        },
+        "ETH": {
+          "action": "none",
+          "signal_strength": 0.0,
+          "entry_price": 0.0,
+          "stop_loss": 0.0,
+          "take_profit": 0.0
+        },
+        "SOL": {
+          "action": "none",
+          "signal_strength": 0.0,
+          "entry_price": 0.0,
+          "stop_loss": 0.0,
+          "take_profit": 0.0
+        }
+      }
+    },
+    "continuous_operation": {
+      "success": true,
+      "duration_seconds": 60,
+      "data_collection_count": 33,
+      "signal_generation_count": 33,
+      "errors": 0,
+      "signals": {
+        "BTC": {
+          "action": "none",
+          "signal_strength": 0.0,
+          "entry_price": 0.0,
+          "stop_loss": 0.0,
+          "take_profit": 0.0,
+          "timestamp": "2025-05-24T07:19:21.589049"
+        },
+        "ETH": {
+          "action": "none",
+          "signal_strength": 0.0,
+          "entry_price": 0.0,
+          "stop_loss": 0.0,
+          "take_profit": 0.0,
+          "timestamp": "2025-05-24T07:19:22.608363"
+        },
+        "SOL": {
+          "action": "none",
+          "signal_strength": 0.0,
+          "entry_price": 0.0,
+          "stop_loss": 0.0,
+          "take_profit": 0.0,
+          "timestamp": "2025-05-24T07:19:23.669577"
+        }
+      },
+      "actual_duration_seconds": 66.34166812896729
+    }
+  }
+}
