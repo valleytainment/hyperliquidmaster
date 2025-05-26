@@ -72,6 +72,9 @@ class EnhancedTradingBotGUI:
         self.root.geometry("1200x800")
         self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
         
+        # Store config path
+        self.config_path = config_path
+        
         # Setup logging with queue for GUI display
         self.log_queue = queue.Queue()
         self.logger = self._setup_logger()
@@ -84,10 +87,8 @@ class EnhancedTradingBotGUI:
         self.error_handler = ErrorHandler(self.logger)
         
         # Initialize exchange adapter
-        self.exchange = HyperliquidExchangeAdapter(
-            self.config,
-            self.logger,
-            self.error_handler
+        self.exchange = HyperliquidAdapter(
+            self.config_path
         )
         
         # Initialize API rate limiter
@@ -100,7 +101,7 @@ class EnhancedTradingBotGUI:
         self.data_accumulator = HistoricalDataAccumulator()
         
         # Initialize strategy
-        self.strategy = MasterOmniOverlordStrategy(self.logger)
+        self.strategy = MasterOmniOverlordRobustStrategy(self.logger)
         
         # Runtime variables
         self.running = False

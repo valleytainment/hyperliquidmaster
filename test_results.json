@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-05-24T07:18:01.012398",
+  "timestamp": "2025-05-26T16:52:21.635110",
   "success": false,
   "tests": {
     "market_data_retrieval": {
@@ -9,15 +9,15 @@
       "errors": 0,
       "data": {
         "BTC": {
-          "price": 109313.5,
+          "price": 109440.5,
           "funding_rate": 0.0
         },
         "ETH": {
-          "price": 2566.45,
+          "price": 2556.35,
           "funding_rate": 0.0
         },
         "SOL": {
-          "price": 177.19,
+          "price": 174.825,
           "funding_rate": 0.0
         }
       }
@@ -58,21 +58,21 @@
         "BTC": {
           "action": "none",
           "signal_strength": 0.0,
-          "entry_price": 0.0,
+          "entry_price": 109439.5,
           "stop_loss": 0.0,
           "take_profit": 0.0
         },
         "ETH": {
           "action": "none",
           "signal_strength": 0.0,
-          "entry_price": 0.0,
+          "entry_price": 2556.15,
           "stop_loss": 0.0,
           "take_profit": 0.0
         },
         "SOL": {
           "action": "none",
           "signal_strength": 0.0,
-          "entry_price": 0.0,
+          "entry_price": 174.775,
           "stop_loss": 0.0,
           "take_profit": 0.0
         }
@@ -81,36 +81,36 @@
     "continuous_operation": {
       "success": true,
       "duration_seconds": 60,
-      "data_collection_count": 33,
-      "signal_generation_count": 33,
+      "data_collection_count": 30,
+      "signal_generation_count": 30,
       "errors": 0,
       "signals": {
         "BTC": {
           "action": "none",
           "signal_strength": 0.0,
-          "entry_price": 0.0,
+          "entry_price": 109457.5,
           "stop_loss": 0.0,
           "take_profit": 0.0,
-          "timestamp": "2025-05-24T07:19:21.589049"
+          "timestamp": "2025-05-26T16:53:37.187846"
         },
         "ETH": {
           "action": "none",
           "signal_strength": 0.0,
-          "entry_price": 0.0,
+          "entry_price": 2561.9,
           "stop_loss": 0.0,
           "take_profit": 0.0,
-          "timestamp": "2025-05-24T07:19:22.608363"
+          "timestamp": "2025-05-26T16:53:38.349007"
         },
         "SOL": {
           "action": "none",
           "signal_strength": 0.0,
-          "entry_price": 0.0,
+          "entry_price": 174.995,
           "stop_loss": 0.0,
           "take_profit": 0.0,
-          "timestamp": "2025-05-24T07:19:23.669577"
+          "timestamp": "2025-05-26T16:53:39.495161"
         }
       },
-      "actual_duration_seconds": 66.34166812896729
+      "actual_duration_seconds": 60.74477958679199
     }
   }
 }

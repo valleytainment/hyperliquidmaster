@@ -6,6 +6,10 @@ A comprehensive, AI-powered cryptocurrency trading bot for the Hyperliquid excha
 
 # Enhanced Hyperliquid Trading Bot
 
+![Hyperliquid Trading Bot GUI](gui_screenshot.png)
+
+*Screenshot of the Enhanced Hyperliquid Trading Bot GUI showing the price chart interface, trading controls, and configuration options.*
+
 ## Overview
 
 This enhanced trading bot builds upon the original Hyperliquid trading system with advanced features:
