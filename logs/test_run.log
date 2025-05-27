@@ -380,3 +380,51 @@
 2025-05-27 12:08:33,559 [INFO] Testing combination 25/81: {'signal_threshold': 0.5599999999999999, 'trend_filter_strength': 0.6, 'mean_reversion_factor': 0.36, 'volatility_adjustment': 0.8}
 2025-05-27 12:08:33,559 [INFO] Starting backtest
 2025-05-27 12:08:33,577 [INFO] Running backtest with 8737 data points
+2025-05-27 12:10:19,833 [INFO] Backtest completed in 106.27 seconds
+2025-05-27 12:10:19,833 [INFO] Final equity: $907809.79
+2025-05-27 12:10:19,833 [INFO] Return: 8978.10%
+2025-05-27 12:10:19,833 [INFO] Sharpe ratio: 1.11
+2025-05-27 12:10:19,833 [INFO] Max drawdown: -50.42%
+2025-05-27 12:10:19,839 [INFO] Testing combination 26/81: {'signal_threshold': 0.5599999999999999, 'trend_filter_strength': 0.6, 'mean_reversion_factor': 0.36, 'volatility_adjustment': 1.0}
+2025-05-27 12:10:19,839 [INFO] Starting backtest
+2025-05-27 12:10:19,857 [INFO] Running backtest with 8737 data points
+2025-05-27 12:12:03,744 [INFO] Backtest completed in 103.90 seconds
+2025-05-27 12:12:03,744 [INFO] Final equity: $879300.76
+2025-05-27 12:12:03,744 [INFO] Return: 8693.01%
+2025-05-27 12:12:03,744 [INFO] Sharpe ratio: 1.11
+2025-05-27 12:12:03,744 [INFO] Max drawdown: -36.31%
+2025-05-27 12:12:03,746 [INFO] Testing combination 27/81: {'signal_threshold': 0.5599999999999999, 'trend_filter_strength': 0.6, 'mean_reversion_factor': 0.36, 'volatility_adjustment': 1.2}
+2025-05-27 12:12:03,746 [INFO] Starting backtest
+2025-05-27 12:12:03,764 [INFO] Running backtest with 8737 data points
+2025-05-27 12:13:46,886 [INFO] Backtest completed in 103.14 seconds
+2025-05-27 12:13:46,886 [INFO] Final equity: $879300.76
+2025-05-27 12:13:46,886 [INFO] Return: 8693.01%
+2025-05-27 12:13:46,886 [INFO] Sharpe ratio: 1.11
+2025-05-27 12:13:46,886 [INFO] Max drawdown: -36.31%
+2025-05-27 12:13:46,893 [INFO] Testing combination 28/81: {'signal_threshold': 0.7, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.24, 'volatility_adjustment': 0.8}
+2025-05-27 12:13:46,893 [INFO] Starting backtest
+2025-05-27 12:13:46,911 [INFO] Running backtest with 8737 data points
+2025-05-27 12:15:24,655 [INFO] Backtest completed in 97.76 seconds
+2025-05-27 12:15:24,655 [INFO] Final equity: $10000.00
+2025-05-27 12:15:24,655 [INFO] Return: 0.00%
+2025-05-27 12:15:24,655 [INFO] Sharpe ratio: 0.00
+2025-05-27 12:15:24,655 [INFO] Max drawdown: 0.00%
+2025-05-27 12:15:24,662 [INFO] Testing combination 29/81: {'signal_threshold': 0.7, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.24, 'volatility_adjustment': 1.0}
+2025-05-27 12:15:24,662 [INFO] Starting backtest
+2025-05-27 12:15:24,680 [INFO] Running backtest with 8737 data points
+2025-05-27 12:17:02,739 [INFO] Backtest completed in 98.08 seconds
+2025-05-27 12:17:02,739 [INFO] Final equity: $10000.00
+2025-05-27 12:17:02,739 [INFO] Return: 0.00%
+2025-05-27 12:17:02,739 [INFO] Sharpe ratio: 0.00
+2025-05-27 12:17:02,739 [INFO] Max drawdown: 0.00%
+2025-05-27 12:17:02,741 [INFO] Testing combination 30/81: {'signal_threshold': 0.7, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.24, 'volatility_adjustment': 1.2}
+2025-05-27 12:17:02,741 [INFO] Starting backtest
+2025-05-27 12:17:02,759 [INFO] Running backtest with 8737 data points
+2025-05-27 12:18:50,616 [INFO] Backtest completed in 107.88 seconds
+2025-05-27 12:18:50,616 [INFO] Final equity: $907809.79
+2025-05-27 12:18:50,616 [INFO] Return: 8978.10%
+2025-05-27 12:18:50,616 [INFO] Sharpe ratio: 1.11
+2025-05-27 12:18:50,616 [INFO] Max drawdown: -50.42%
+2025-05-27 12:18:50,618 [INFO] Testing combination 31/81: {'signal_threshold': 0.7, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 0.8}
+2025-05-27 12:18:50,618 [INFO] Starting backtest
+2025-05-27 12:18:50,636 [INFO] Running backtest with 8737 data points

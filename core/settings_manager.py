@@ -182,14 +182,8 @@ class SettingsManager:
         if not secret_key or secret_key.strip() == "":
             return False, "Secret key cannot be empty"
         
-        # Basic format validation for account address (should be a hex string)
-        if not all(c in '0123456789abcdefABCDEF' for c in account_address.strip()):
-            return False, "Account address should be a hexadecimal string"
-        
-        # Basic length check for secret key
-        if len(secret_key.strip()) < 8:
-            return False, "Secret key should be at least 8 characters long"
-        
+        # Skip additional validation for now to allow any format of keys
+        # This ensures compatibility with various key formats
         return True, ""
     
     def save_api_keys(self, account_address: str, secret_key: str) -> Tuple[bool, str]:

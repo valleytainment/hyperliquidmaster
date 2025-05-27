@@ -149,8 +149,17 @@ class GUISettingsIntegration:
     
     def _save_api_keys(self) -> None:
         """Save API keys to settings."""
-        account_address = self.account_address.get()
-        secret_key = self.secret_key.get()
+        account_address = self.account_address.get().strip()
+        secret_key = self.secret_key.get().strip()
+        
+        # Check if keys are empty
+        if not account_address or not secret_key:
+            self.api_status_label.config(
+                text="Account address and secret key cannot be empty",
+                foreground="red"
+            )
+            messagebox.showerror("Error", "Account address and secret key cannot be empty")
+            return
         
         # Validate and save API keys
         success, message = self.settings_manager.save_api_keys(account_address, secret_key)
@@ -165,6 +174,14 @@ class GUISettingsIntegration:
                     foreground="green"
                 )
                 messagebox.showinfo("Success", "API keys saved and applied successfully")
+                
+                # Force connection test to update connection status immediately
+                self.logger.info("Testing connection with new API keys")
+                connection_result = self.trading_integration.test_connection()
+                if connection_result.get("success", False):
+                    self.logger.info("Connection established with new API keys")
+                else:
+                    self.logger.warning(f"Connection test with new keys failed: {connection_result.get('message', 'Unknown error')}")
             else:
                 self.api_status_label.config(
                     text=f"API keys saved but failed to apply: {result.get('message', 'Unknown error')}",
@@ -183,10 +200,45 @@ class GUISettingsIntegration:
     
     def _test_connection(self) -> None:
         """Test connection to the exchange."""
+        account_address = self.account_address.get().strip()
+        secret_key = self.secret_key.get().strip()
+        
+        # Check if keys are empty
+        if not account_address or not secret_key:
+            self.api_status_label.config(
+                text="Account address and secret key cannot be empty",
+                foreground="red"
+            )
+            messagebox.showerror("Error", "Account address and secret key cannot be empty")
+            return
+            
         # First save the current keys
-        self._save_api_keys()
+        success, message = self.settings_manager.save_api_keys(account_address, secret_key)
+        if not success:
+            self.api_status_label.config(
+                text=f"Failed to save API keys: {message}",
+                foreground="red"
+            )
+            messagebox.showerror("Error", f"Failed to save API keys: {message}")
+            return
+            
+        # Update trading integration with new keys
+        key_result = self.trading_integration.set_api_keys(account_address, secret_key)
+        if not key_result.get("success", False):
+            self.api_status_label.config(
+                text=f"Failed to apply API keys: {key_result.get('message', 'Unknown error')}",
+                foreground="red"
+            )
+            messagebox.showerror("Error", f"Failed to apply API keys: {key_result.get('message', 'Unknown error')}")
+            return
         
         # Test connection
+        self.api_status_label.config(
+            text="Testing connection...",
+            foreground="blue"
+        )
+        self.root.update()  # Force UI update to show testing status
+        
         result = self.trading_integration.test_connection()
         
         if result.get("success", False):
@@ -223,14 +275,29 @@ class GUISettingsIntegration:
             with open(file_path, 'r') as f:
                 data = json.load(f)
             
-            # Extract keys
-            account_address = data.get("account_address", "")
-            secret_key = data.get("secret_key", "")
+            # Extract keys - support multiple formats
+            account_address = ""
+            secret_key = ""
+            
+            # Try direct fields
+            if "account_address" in data and "secret_key" in data:
+                account_address = data.get("account_address", "")
+                secret_key = data.get("secret_key", "")
+            # Try nested in settings
+            elif "settings" in data and isinstance(data["settings"], dict):
+                account_address = data["settings"].get("account_address", "")
+                secret_key = data["settings"].get("secret_key", "")
+            # Try first key in keys dict if using advanced API format
+            elif "keys" in data and isinstance(data["keys"], dict) and data["keys"]:
+                first_key = next(iter(data["keys"].values()))
+                if isinstance(first_key, dict):
+                    account_address = first_key.get("account_address", "")
+                    secret_key = first_key.get("secret_key", "")
             
             if not account_address or not secret_key:
                 messagebox.showerror(
                     "Error", 
-                    "Invalid API keys file format. File must contain 'account_address' and 'secret_key' fields."
+                    "Invalid API keys file format. File must contain account_address and secret_key fields."
                 )
                 return
             
@@ -238,7 +305,14 @@ class GUISettingsIntegration:
             self.account_address.set(account_address)
             self.secret_key.set(secret_key)
             
-            # Save keys
+            # Save and apply keys
+            self.logger.info(f"Loaded API keys from file: {file_path}")
+            self.api_status_label.config(
+                text="API keys loaded from file. Click Save to apply.",
+                foreground="blue"
+            )
+            
+            # Auto-save and test connection
             self._save_api_keys()
             
         except Exception as e:
