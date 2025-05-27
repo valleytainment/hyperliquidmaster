@@ -11,6 +11,8 @@ Features:
 - Live monitoring of positions and performance metrics
 - Manual trading controls (buy/sell buttons)
 - Technical indicator visualization
+- API key management
+- Modern themed interface with light/dark mode support
 """
 
 import os
@@ -43,6 +45,9 @@ from historical_data_accumulator import HistoricalDataAccumulator
 from config_compatibility import ConfigManager
 from api_rate_limiter import APIRateLimiter
 from order_book_handler import OrderBookHandler
+
+# Import GUI style manager
+from gui_style import GUIStyleManager, create_header_label, create_subheader_label
 
 # Constants
 CONFIG_FILE = "config.json"
@@ -82,6 +87,10 @@ class EnhancedTradingBotGUI:
         # Load configuration
         self.config_manager = ConfigManager(config_path, self.logger)
         self.config = self.config_manager.get_config()
+        
+        # Initialize style manager
+        theme = self.config.get("theme", "dark")
+        self.style_manager = GUIStyleManager(self.root, theme)
         
         # Initialize error handler
         self.error_handler = ErrorHandler(self.logger)
@@ -178,16 +187,16 @@ class EnhancedTradingBotGUI:
         self.start_button = ttk.Button(top_frame, text="Start Bot", command=self.start_bot)
         self.start_button.pack(side=tk.LEFT, padx=(0, 5))
         
-        self.stop_button = ttk.Button(top_frame, text="Stop Bot", command=self.stop_bot, state=tk.DISABLED)
+        self.stop_button = ttk.Button(top_frame, text="Stop Bot", command=self.stop_bot, style="Error.TButton", state=tk.DISABLED)
         self.stop_button.pack(side=tk.LEFT, padx=(0, 5))
         
         # Create manual trade buttons
         ttk.Label(top_frame, text="Manual:").pack(side=tk.LEFT, padx=(10, 5))
         
-        self.buy_button = ttk.Button(top_frame, text="Buy", command=self._manual_buy)
+        self.buy_button = ttk.Button(top_frame, text="Buy", command=self._manual_buy, style="Success.TButton")
         self.buy_button.pack(side=tk.LEFT, padx=(0, 5))
         
-        self.sell_button = ttk.Button(top_frame, text="Sell", command=self._manual_sell)
+        self.sell_button = ttk.Button(top_frame, text="Sell", command=self._manual_sell, style="Warning.TButton")
         self.sell_button.pack(side=tk.LEFT, padx=(0, 5))
         
         self.close_button = ttk.Button(top_frame, text="Close Position", command=self._manual_close)
@@ -198,6 +207,10 @@ class EnhancedTradingBotGUI:
         self.size_var = tk.StringVar(value=str(self.config.get("manual_entry_size", 1.0)))
         size_entry = ttk.Entry(top_frame, textvariable=self.size_var, width=8)
         size_entry.pack(side=tk.LEFT, padx=(0, 5))
+        
+        # Add theme toggle button
+        self.theme_button = ttk.Button(top_frame, text="Toggle Theme", command=self._toggle_theme)
+        self.theme_button.pack(side=tk.RIGHT, padx=(5, 0))
         
         # Create notebook for tabs
         notebook = ttk.Notebook(main_frame)
@@ -211,6 +224,9 @@ class EnhancedTradingBotGUI:
         self.fig = Figure(figsize=(12, 6), dpi=100)
         self.ax1 = self.fig.add_subplot(211)  # Price chart
         self.ax2 = self.fig.add_subplot(212, sharex=self.ax1)  # Volume chart
+        
+        # Apply matplotlib style
+        plt.rcParams.update(self.style_manager.get_matplotlib_style())
         
         self.canvas = FigureCanvasTkAgg(self.fig, master=chart_frame)
         self.canvas.draw()
@@ -243,7 +259,7 @@ class EnhancedTradingBotGUI:
         row = 0
         
         # Technical indicators settings
-        ttk.Label(settings_grid, text="Technical Indicators", font=("TkDefaultFont", 12, "bold")).grid(
+        create_header_label(settings_grid, "Technical Indicators").grid(
             row=row, column=0, columnspan=2, sticky=tk.W, pady=(0, 10))
         row += 1
         
@@ -293,7 +309,7 @@ class EnhancedTradingBotGUI:
         row += 1
         
         # Risk management settings
-        ttk.Label(settings_grid, text="Risk Management", font=("TkDefaultFont", 12, "bold")).grid(
+        create_header_label(settings_grid, "Risk Management").grid(
             row=row, column=0, columnspan=2, sticky=tk.W, pady=(10, 10))
         row += 1
         
@@ -332,7 +348,7 @@ class EnhancedTradingBotGUI:
         row += 1
         
         # Order settings
-        ttk.Label(settings_grid, text="Order Settings", font=("TkDefaultFont", 12, "bold")).grid(
+        create_header_label(settings_grid, "Order Settings").grid(
             row=row, column=0, columnspan=2, sticky=tk.W, pady=(10, 10))
         row += 1
         
@@ -360,141 +376,155 @@ class EnhancedTradingBotGUI:
         row += 1
         
         # Manual close size
-        self.use_manual_close_size_var = tk.BooleanVar(value=self.config.get("use_manual_close_size", True))
+        self.use_manual_close_size_var = tk.BooleanVar(value=self.config.get("use_manual_close_size", False))
         ttk.Checkbutton(settings_grid, text="Use Manual Close Size", variable=self.use_manual_close_size_var).grid(
             row=row, column=0, columnspan=2, sticky=tk.W)
         row += 1
         
-        ttk.Label(settings_grid, text="Position Close Size:").grid(row=row, column=0, sticky=tk.W)
-        self.position_close_size_var = tk.StringVar(value=str(self.config.get("position_close_size", 10.0)))
+        ttk.Label(settings_grid, text="Position Close Size %:").grid(row=row, column=0, sticky=tk.W)
+        self.position_close_size_var = tk.StringVar(value=str(self.config.get("position_close_size", 100.0)))
         ttk.Entry(settings_grid, textvariable=self.position_close_size_var, width=8).grid(row=row, column=1, sticky=tk.W)
         row += 1
         
-        # Save settings button
-        ttk.Button(settings_grid, text="Save Settings", command=self._save_settings).grid(
-            row=row, column=0, columnspan=2, pady=(10, 0))
-        
-        # Create second column for advanced settings
-        row = 0
-        col_offset = 3
-        
         # Advanced settings
-        ttk.Label(settings_grid, text="Advanced Settings", font=("TkDefaultFont", 12, "bold")).grid(
-            row=row, column=col_offset, columnspan=2, sticky=tk.W, pady=(0, 10))
+        create_header_label(settings_grid, "Advanced Settings").grid(
+            row=row, column=0, columnspan=2, sticky=tk.W, pady=(10, 10))
         row += 1
         
         # Neural network settings
-        ttk.Label(settings_grid, text="NN Lookback Bars:").grid(row=row, column=col_offset, sticky=tk.W)
-        self.nn_lookback_bars_var = tk.StringVar(value=str(self.config.get("nn_lookback_bars", 30)))
-        ttk.Entry(settings_grid, textvariable=self.nn_lookback_bars_var, width=8).grid(row=row, column=col_offset+1, sticky=tk.W)
+        ttk.Label(settings_grid, text="NN Lookback Bars:").grid(row=row, column=0, sticky=tk.W)
+        self.nn_lookback_bars_var = tk.StringVar(value=str(self.config.get("nn_lookback_bars", 100)))
+        ttk.Entry(settings_grid, textvariable=self.nn_lookback_bars_var, width=8).grid(row=row, column=1, sticky=tk.W)
         row += 1
         
-        ttk.Label(settings_grid, text="NN Hidden Size:").grid(row=row, column=col_offset, sticky=tk.W)
+        ttk.Label(settings_grid, text="NN Hidden Size:").grid(row=row, column=0, sticky=tk.W)
         self.nn_hidden_size_var = tk.StringVar(value=str(self.config.get("nn_hidden_size", 64)))
-        ttk.Entry(settings_grid, textvariable=self.nn_hidden_size_var, width=8).grid(row=row, column=col_offset+1, sticky=tk.W)
+        ttk.Entry(settings_grid, textvariable=self.nn_hidden_size_var, width=8).grid(row=row, column=1, sticky=tk.W)
         row += 1
         
-        ttk.Label(settings_grid, text="NN Learning Rate:").grid(row=row, column=col_offset, sticky=tk.W)
-        self.nn_lr_var = tk.StringVar(value=str(self.config.get("nn_lr", 0.0003)))
-        ttk.Entry(settings_grid, textvariable=self.nn_lr_var, width=8).grid(row=row, column=col_offset+1, sticky=tk.W)
+        ttk.Label(settings_grid, text="NN Learning Rate:").grid(row=row, column=0, sticky=tk.W)
+        self.nn_lr_var = tk.StringVar(value=str(self.config.get("nn_lr", 0.001)))
+        ttk.Entry(settings_grid, textvariable=self.nn_lr_var, width=8).grid(row=row, column=1, sticky=tk.W)
         row += 1
         
-        # Synergy confidence threshold
-        ttk.Label(settings_grid, text="Synergy Threshold:").grid(row=row, column=col_offset, sticky=tk.W)
-        self.synergy_conf_threshold_var = tk.StringVar(value=str(self.config.get("synergy_conf_threshold", 0.8)))
-        ttk.Entry(settings_grid, textvariable=self.synergy_conf_threshold_var, width=8).grid(row=row, column=col_offset+1, sticky=tk.W)
+        # Strategy settings
+        ttk.Label(settings_grid, text="Synergy Conf Threshold:").grid(row=row, column=0, sticky=tk.W)
+        self.synergy_conf_threshold_var = tk.StringVar(value=str(self.config.get("synergy_conf_threshold", 0.7)))
+        ttk.Entry(settings_grid, textvariable=self.synergy_conf_threshold_var, width=8).grid(row=row, column=1, sticky=tk.W)
         row += 1
         
-        # Circuit breaker threshold
-        ttk.Label(settings_grid, text="Circuit Breaker %:").grid(row=row, column=col_offset, sticky=tk.W)
+        ttk.Label(settings_grid, text="Circuit Breaker Threshold:").grid(row=row, column=0, sticky=tk.W)
         self.circuit_breaker_threshold_var = tk.StringVar(value=str(self.config.get("circuit_breaker_threshold", 0.05)))
-        ttk.Entry(settings_grid, textvariable=self.circuit_breaker_threshold_var, width=8).grid(row=row, column=col_offset+1, sticky=tk.W)
+        ttk.Entry(settings_grid, textvariable=self.circuit_breaker_threshold_var, width=8).grid(row=row, column=1, sticky=tk.W)
         row += 1
         
-        # Taker fee
-        ttk.Label(settings_grid, text="Taker Fee:").grid(row=row, column=col_offset, sticky=tk.W)
+        # Fee settings
+        ttk.Label(settings_grid, text="Taker Fee:").grid(row=row, column=0, sticky=tk.W)
         self.taker_fee_var = tk.StringVar(value=str(self.config.get("taker_fee", 0.00042)))
-        ttk.Entry(settings_grid, textvariable=self.taker_fee_var, width=8).grid(row=row, column=col_offset+1, sticky=tk.W)
+        ttk.Entry(settings_grid, textvariable=self.taker_fee_var, width=8).grid(row=row, column=1, sticky=tk.W)
         row += 1
         
         # API settings
-        ttk.Label(settings_grid, text="API Settings", font=("TkDefaultFont", 12, "bold")).grid(
-            row=row, column=col_offset, columnspan=2, sticky=tk.W, pady=(10, 10))
+        create_header_label(settings_grid, "API Settings").grid(
+            row=row, column=0, columnspan=2, sticky=tk.W, pady=(10, 10))
         row += 1
         
         # API URL
-        ttk.Label(settings_grid, text="API URL:").grid(row=row, column=col_offset, sticky=tk.W)
+        ttk.Label(settings_grid, text="API URL:").grid(row=row, column=0, sticky=tk.W)
         self.api_url_var = tk.StringVar(value=str(self.config.get("api_url", "https://api.hyperliquid.xyz")))
-        ttk.Entry(settings_grid, textvariable=self.api_url_var, width=30).grid(row=row, column=col_offset+1, sticky=tk.W)
+        ttk.Entry(settings_grid, textvariable=self.api_url_var, width=30).grid(row=row, column=1, sticky=tk.W)
         row += 1
         
         # Poll interval
-        ttk.Label(settings_grid, text="Poll Interval (s):").grid(row=row, column=col_offset, sticky=tk.W)
-        self.poll_interval_var = tk.StringVar(value=str(self.config.get("poll_interval_seconds", 2)))
-        ttk.Entry(settings_grid, textvariable=self.poll_interval_var, width=8).grid(row=row, column=col_offset+1, sticky=tk.W)
+        ttk.Label(settings_grid, text="Poll Interval (s):").grid(row=row, column=0, sticky=tk.W)
+        self.poll_interval_var = tk.StringVar(value=str(self.config.get("poll_interval_seconds", 5.0)))
+        ttk.Entry(settings_grid, textvariable=self.poll_interval_var, width=8).grid(row=row, column=1, sticky=tk.W)
         row += 1
         
         # Micro poll interval
-        ttk.Label(settings_grid, text="Micro Poll Interval (s):").grid(row=row, column=col_offset, sticky=tk.W)
-        self.micro_poll_interval_var = tk.StringVar(value=str(self.config.get("micro_poll_interval", 2)))
-        ttk.Entry(settings_grid, textvariable=self.micro_poll_interval_var, width=8).grid(row=row, column=col_offset+1, sticky=tk.W)
+        ttk.Label(settings_grid, text="Micro Poll Interval (s):").grid(row=row, column=0, sticky=tk.W)
+        self.micro_poll_interval_var = tk.StringVar(value=str(self.config.get("micro_poll_interval", 2.0)))
+        ttk.Entry(settings_grid, textvariable=self.micro_poll_interval_var, width=8).grid(row=row, column=1, sticky=tk.W)
         row += 1
         
-        # Create positions tab
-        positions_frame = ttk.Frame(notebook)
-        notebook.add(positions_frame, text="Positions")
+        # API Key Management
+        create_header_label(settings_grid, "API Key Management").grid(
+            row=row, column=0, columnspan=2, sticky=tk.W, pady=(10, 10))
+        row += 1
         
-        # Create positions treeview
-        columns = ("symbol", "side", "size", "entry_price", "current_price", "pnl", "pnl_pct")
-        self.positions_tree = ttk.Treeview(positions_frame, columns=columns, show="headings")
+        # Account Address
+        ttk.Label(settings_grid, text="Account Address:").grid(row=row, column=0, sticky=tk.W)
+        self.account_address_var = tk.StringVar(value=str(self.config.get("account_address", "")))
+        ttk.Entry(settings_grid, textvariable=self.account_address_var, width=40).grid(row=row, column=1, sticky=tk.W)
+        row += 1
         
-        # Define headings
-        self.positions_tree.heading("symbol", text="Symbol")
-        self.positions_tree.heading("side", text="Side")
-        self.positions_tree.heading("size", text="Size")
-        self.positions_tree.heading("entry_price", text="Entry Price")
-        self.positions_tree.heading("current_price", text="Current Price")
-        self.positions_tree.heading("pnl", text="PnL")
-        self.positions_tree.heading("pnl_pct", text="PnL %")
+        # Secret Key
+        ttk.Label(settings_grid, text="Secret Key:").grid(row=row, column=0, sticky=tk.W)
+        self.secret_key_var = tk.StringVar(value=str(self.config.get("secret_key", "")))
+        secret_key_entry = ttk.Entry(settings_grid, textvariable=self.secret_key_var, width=40, show="*")
+        secret_key_entry.grid(row=row, column=1, sticky=tk.W)
+        row += 1
         
-        # Define columns
-        self.positions_tree.column("symbol", width=100)
-        self.positions_tree.column("side", width=100)
-        self.positions_tree.column("size", width=100)
-        self.positions_tree.column("entry_price", width=100)
-        self.positions_tree.column("current_price", width=100)
-        self.positions_tree.column("pnl", width=100)
-        self.positions_tree.column("pnl_pct", width=100)
+        # Show/Hide Secret Key
+        self.show_secret_key_var = tk.BooleanVar(value=False)
+        show_secret_key_cb = ttk.Checkbutton(
+            settings_grid, 
+            text="Show Secret Key", 
+            variable=self.show_secret_key_var,
+            command=lambda: secret_key_entry.config(show="" if self.show_secret_key_var.get() else "*")
+        )
+        show_secret_key_cb.grid(row=row, column=0, columnspan=2, sticky=tk.W)
+        row += 1
         
-        # Add scrollbar
-        positions_scrollbar = ttk.Scrollbar(positions_frame, orient=tk.VERTICAL, command=self.positions_tree.yview)
-        self.positions_tree.configure(yscrollcommand=positions_scrollbar.set)
+        # Save settings button
+        save_button = ttk.Button(settings_grid, text="Save Settings", command=self._save_settings)
+        save_button.grid(row=row, column=0, columnspan=2, pady=(10, 0))
+        row += 1
         
-        # Pack treeview and scrollbar
-        self.positions_tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-        positions_scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
-        
-        # Create log tab
-        log_frame = ttk.Frame(notebook)
-        notebook.add(log_frame, text="Logs")
+        # Create logs tab
+        logs_frame = ttk.Frame(notebook)
+        notebook.add(logs_frame, text="Logs")
         
         # Create log text widget
-        self.log_text = scrolledtext.ScrolledText(log_frame, wrap=tk.WORD)
-        self.log_text.pack(fill=tk.BOTH, expand=True)
+        self.log_text = scrolledtext.ScrolledText(logs_frame, wrap=tk.WORD, height=20)
+        self.log_text.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
         
         # Create status bar
+        status_frame = ttk.Frame(main_frame)
+        status_frame.pack(fill=tk.X, pady=(10, 0))
+        
         self.status_var = tk.StringVar(value="Ready")
-        status_bar = ttk.Label(main_frame, textvariable=self.status_var, relief=tk.SUNKEN, anchor=tk.W)
-        status_bar.pack(fill=tk.X, side=tk.BOTTOM, pady=(5, 0))
+        status_label = ttk.Label(status_frame, textvariable=self.status_var)
+        status_label.pack(side=tk.LEFT)
         
         # Initialize charts
         self._init_charts()
     
+    def _toggle_theme(self):
+        """Toggle between light and dark themes."""
+        current_theme = self.style_manager.theme_name
+        new_theme = "light" if current_theme == "dark" else "dark"
+        
+        # Switch theme
+        self.style_manager.switch_theme(new_theme)
+        
+        # Update matplotlib style
+        plt.rcParams.update(self.style_manager.get_matplotlib_style())
+        
+        # Redraw charts
+        self._update_charts()
+        
+        # Save theme preference
+        self.config["theme"] = new_theme
+        self.style_manager.save_theme_preference(self.config_path)
+        
+        self.logger.info(f"Switched to {new_theme} theme")
+    
     def _init_charts(self):
-        """Initialize empty charts."""
+        """Initialize charts."""
         # Price chart
         self.ax1.clear()
-        self.ax1.set_title("Price Chart")
+        self.ax1.set_title("Price")
         self.ax1.set_ylabel("Price")
         self.ax1.grid(True)
         
@@ -603,6 +633,10 @@ class EnhancedTradingBotGUI:
             self.config["api_url"] = self.api_url_var.get()
             self.config["poll_interval_seconds"] = float(self.poll_interval_var.get())
             self.config["micro_poll_interval"] = float(self.micro_poll_interval_var.get())
+            
+            # API Key Management
+            self.config["account_address"] = self.account_address_var.get()
+            self.config["secret_key"] = self.secret_key_var.get()
             
             # Save to file
             with open(CONFIG_FILE, "w") as f:
@@ -868,7 +902,7 @@ class EnhancedTradingBotGUI:
             minus_di = 100 * (smoothed_minus_dm / smoothed_tr.replace(0, 0.001))
             
             # ADX
-            dx = 100 * abs(plus_di - minus_di) / (plus_di + minus_di).replace(0, 0.001)
+            dx = 100 * (abs(plus_di - minus_di) / (plus_di + minus_di).replace(0, 0.001))
             self.hist_data["adx"] = dx.rolling(window=14).mean()
             
         except Exception as e:
@@ -876,117 +910,104 @@ class EnhancedTradingBotGUI:
     
     def _update_charts(self):
         """Update charts with latest data."""
-        if len(self.hist_data) < 30:
+        if len(self.hist_data) < 5:
             return
         
         try:
-            # Get last 100 data points for display
-            display_data = self.hist_data.tail(100).copy()
-            
-            # Convert time to datetime for better display
-            display_data["time"] = pd.to_datetime(display_data["time"])
+            # Get last N data points
+            n = min(100, len(self.hist_data))
+            data = self.hist_data.iloc[-n:]
             
             # Update price chart
             self.ax1.clear()
-            self.ax1.set_title("Price Chart")
-            self.ax1.set_ylabel("Price")
-            self.ax1.grid(True)
+            self.ax1.set_title(f"{self.symbol_var.get()} Price")
+            self.ax1.plot(range(len(data)), data["price"], label="Price")
             
-            # Plot price
-            self.ax1.plot(display_data["time"], display_data["price"], label="Price")
+            if "fast_ma" in data.columns and not data["fast_ma"].isna().all():
+                self.ax1.plot(range(len(data)), data["fast_ma"], label=f"Fast MA ({self.config.get('fast_ma', 5)})")
             
-            # Plot MAs if available
-            if "fast_ma" in display_data.columns and not display_data["fast_ma"].isna().all():
-                self.ax1.plot(display_data["time"], display_data["fast_ma"], label=f"Fast MA ({self.config.get('fast_ma', 5)})")
+            if "slow_ma" in data.columns and not data["slow_ma"].isna().all():
+                self.ax1.plot(range(len(data)), data["slow_ma"], label=f"Slow MA ({self.config.get('slow_ma', 15)})")
             
-            if "slow_ma" in display_data.columns and not display_data["slow_ma"].isna().all():
-                self.ax1.plot(display_data["time"], display_data["slow_ma"], label=f"Slow MA ({self.config.get('slow_ma', 15)})")
-            
-            # Plot Bollinger Bands if available
-            if "bb_high" in display_data.columns and not display_data["bb_high"].isna().all():
-                self.ax1.plot(display_data["time"], display_data["bb_high"], 'r--', label="BB Upper")
-                self.ax1.plot(display_data["time"], display_data["bb_low"], 'g--', label="BB Lower")
+            if "bb_high" in data.columns and "bb_low" in data.columns and not data["bb_high"].isna().all():
+                self.ax1.plot(range(len(data)), data["bb_high"], "r--", label="BB Upper")
+                self.ax1.plot(range(len(data)), data["bb_low"], "g--", label="BB Lower")
             
             self.ax1.legend(loc="upper left")
-            
-            # Format x-axis
-            self.ax1.tick_params(axis='x', rotation=45)
+            self.ax1.grid(True)
             
             # Update volume chart
             self.ax2.clear()
             self.ax2.set_title("Volume")
-            self.ax2.set_ylabel("Volume")
-            self.ax2.set_xlabel("Time")
-            self.ax2.grid(True)
+            self.ax2.bar(range(len(data)), data["volume"], label="Volume")
             
-            # Plot volume
-            self.ax2.bar(display_data["time"], display_data["volume"], label="Volume", alpha=0.5)
-            
-            # Plot volume MA if available
-            if "vol_ma" in display_data.columns and not display_data["vol_ma"].isna().all():
-                self.ax2.plot(display_data["time"], display_data["vol_ma"], 'r', label="Volume MA")
+            if "vol_ma" in data.columns and not data["vol_ma"].isna().all():
+                self.ax2.plot(range(len(data)), data["vol_ma"], "r-", label="Volume MA (20)")
             
             self.ax2.legend(loc="upper left")
+            self.ax2.grid(True)
             
-            # Format x-axis
-            self.ax2.tick_params(axis='x', rotation=45)
-            
-            # Adjust layout and draw
-            self.fig.tight_layout()
+            # Update canvas
             self.canvas.draw()
             
             # Update indicators chart
             # RSI
             self.ind_ax1.clear()
             self.ind_ax1.set_title("RSI")
-            self.ind_ax1.axhline(y=70, color='r', linestyle='-')
-            self.ind_ax1.axhline(y=30, color='g', linestyle='-')
-            self.ind_ax1.set_ylim(0, 100)
-            self.ind_ax1.grid(True)
             
-            if "rsi" in display_data.columns and not display_data["rsi"].isna().all():
-                self.ind_ax1.plot(display_data["time"], display_data["rsi"], label="RSI")
+            if "rsi" in data.columns and not data["rsi"].isna().all():
+                self.ind_ax1.plot(range(len(data)), data["rsi"], "b-", label="RSI")
+                self.ind_ax1.axhline(y=70, color='r', linestyle='-')
+                self.ind_ax1.axhline(y=30, color='g', linestyle='-')
+                self.ind_ax1.set_ylim(0, 100)
+            
+            self.ind_ax1.grid(True)
+            self.ind_ax1.legend(loc="upper left")
             
             # MACD
             self.ind_ax2.clear()
             self.ind_ax2.set_title("MACD")
-            self.ind_ax2.grid(True)
             
-            if "macd_line" in display_data.columns and not display_data["macd_line"].isna().all():
-                self.ind_ax2.plot(display_data["time"], display_data["macd_line"], label="MACD")
-                self.ind_ax2.plot(display_data["time"], display_data["macd_signal"], label="Signal")
-                self.ind_ax2.bar(display_data["time"], display_data["macd_hist"], label="Histogram", alpha=0.5)
-                self.ind_ax2.axhline(y=0, color='k', linestyle='-')
-                self.ind_ax2.legend(loc="upper left")
+            if "macd_line" in data.columns and "macd_signal" in data.columns and not data["macd_line"].isna().all():
+                self.ind_ax2.plot(range(len(data)), data["macd_line"], "b-", label="MACD")
+                self.ind_ax2.plot(range(len(data)), data["macd_signal"], "r-", label="Signal")
+                
+                # Plot histogram
+                if "macd_hist" in data.columns:
+                    for i in range(len(data)):
+                        if not np.isnan(data["macd_hist"].iloc[i]):
+                            color = "g" if data["macd_hist"].iloc[i] >= 0 else "r"
+                            self.ind_ax2.bar(i, data["macd_hist"].iloc[i], color=color, width=0.8)
+            
+            self.ind_ax2.grid(True)
+            self.ind_ax2.legend(loc="upper left")
             
             # Bollinger Bands
             self.ind_ax3.clear()
-            self.ind_ax3.set_title("Bollinger Bands")
-            self.ind_ax3.grid(True)
+            self.ind_ax3.set_title("Price with Bollinger Bands")
             
-            if "bb_high" in display_data.columns and not display_data["bb_high"].isna().all():
-                self.ind_ax3.plot(display_data["time"], display_data["price"], label="Price")
-                self.ind_ax3.plot(display_data["time"], display_data["bb_middle"], label="Middle")
-                self.ind_ax3.plot(display_data["time"], display_data["bb_high"], 'r--', label="Upper")
-                self.ind_ax3.plot(display_data["time"], display_data["bb_low"], 'g--', label="Lower")
-                self.ind_ax3.legend(loc="upper left")
+            self.ind_ax3.plot(range(len(data)), data["price"], "b-", label="Price")
+            
+            if "bb_middle" in data.columns and not data["bb_middle"].isna().all():
+                self.ind_ax3.plot(range(len(data)), data["bb_middle"], "k-", label="BB Middle")
+                self.ind_ax3.plot(range(len(data)), data["bb_high"], "r--", label="BB Upper")
+                self.ind_ax3.plot(range(len(data)), data["bb_low"], "g--", label="BB Lower")
+            
+            self.ind_ax3.grid(True)
+            self.ind_ax3.legend(loc="upper left")
             
             # ADX
             self.ind_ax4.clear()
             self.ind_ax4.set_title("ADX")
-            self.ind_ax4.grid(True)
             
-            if "adx" in display_data.columns and not display_data["adx"].isna().all():
-                self.ind_ax4.plot(display_data["time"], display_data["adx"], label="ADX")
+            if "adx" in data.columns and not data["adx"].isna().all():
+                self.ind_ax4.plot(range(len(data)), data["adx"], "b-", label="ADX")
                 self.ind_ax4.axhline(y=25, color='r', linestyle='--')
-                self.ind_ax4.legend(loc="upper left")
             
-            # Format x-axis
-            for ax in [self.ind_ax1, self.ind_ax2, self.ind_ax3, self.ind_ax4]:
-                ax.tick_params(axis='x', rotation=45)
+            self.ind_ax4.grid(True)
+            self.ind_ax4.legend(loc="upper left")
             
-            # Adjust layout and draw
-            self.ind_fig.tight_layout()
+            # Update canvas
             self.ind_canvas.draw()
             
         except Exception as e:
@@ -994,86 +1015,38 @@ class EnhancedTradingBotGUI:
     
     def _update_positions(self):
         """Update positions display."""
-        try:
-            # Clear existing items
-            for item in self.positions_tree.get_children():
-                self.positions_tree.delete(item)
-            
-            # Get positions
-            positions = self._get_positions()
-            
-            # Add positions to treeview
-            for symbol, pos in positions.items():
-                side = "LONG" if pos["side"] == 1 else "SHORT"
-                size = pos["size"]
-                entry_price = pos["entry_price"]
-                current_price = pos["current_price"]
-                
-                # Calculate PnL
-                if side == "LONG":
-                    pnl = size * (current_price - entry_price)
-                    pnl_pct = (current_price - entry_price) / entry_price * 100
-                else:
-                    pnl = size * (entry_price - current_price)
-                    pnl_pct = (entry_price - current_price) / entry_price * 100
-                
-                # Add to treeview
-                self.positions_tree.insert("", "end", values=(
-                    symbol, side, f"{size:.4f}", f"${entry_price:.2f}", 
-                    f"${current_price:.2f}", f"${pnl:.2f}", f"{pnl_pct:.2f}%"
-                ))
-            
-        except Exception as e:
-            self.logger.error(f"Error updating positions: {e}")
-    
-    def _get_positions(self) -> Dict:
-        """Get current positions."""
         # This would call the exchange adapter to get the positions
-        # For now, just return dummy values
-        return {
+        # For now, just use dummy values
+        self.positions = {
             "BTC": {
-                "side": 1,  # 1 for long, 2 for short
                 "size": 0.1,
                 "entry_price": 50000.0,
-                "current_price": 50100.0
-            },
-            "ETH": {
-                "side": 2,  # 1 for long, 2 for short
-                "size": 1.0,
-                "entry_price": 3000.0,
-                "current_price": 2950.0
+                "current_price": 50100.0,
+                "pnl": 10.0,
+                "pnl_pct": 0.2
             }
         }
     
     def on_closing(self):
         """Handle window closing event."""
         if messagebox.askokcancel("Quit", "Do you want to quit?"):
-            # Stop bot if running
-            if self.running:
-                self.stop_bot()
-            
-            # Stop log consumer
+            self.running = False
             self.log_consumer_running = False
+            
+            if self.thread:
+                self.thread.join(timeout=1.0)
+            
             if self.log_consumer_thread:
                 self.log_consumer_thread.join(timeout=1.0)
             
-            # Destroy window
             self.root.destroy()
-    
-    def run(self):
-        """Run the GUI application."""
-        self.root.mainloop()
 
+###############################################################################
+# Main Entry Point
+###############################################################################
 def main():
-    """Main entry point."""
-    # Get configuration path from command line arguments
-    config_path = "config.json"
-    if len(sys.argv) > 1:
-        config_path = sys.argv[1]
-    
-    # Create and run the GUI application
-    app = EnhancedTradingBotGUI(config_path)
-    app.run()
+    app = EnhancedTradingBotGUI()
+    app.root.mainloop()
 
 if __name__ == "__main__":
     main()
