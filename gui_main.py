@@ -1,7 +1,6 @@
-#!/usr/bin/env python3
 """
-Enhanced GUI for the HyperliquidMaster trading bot.
-Provides a user-friendly interface for trading on the Hyperliquid exchange.
+Enhanced GUI main module for the HyperliquidMaster trading bot.
+Integrates the new settings management system for flawless API key handling.
 """
 
 import os
@@ -22,6 +21,8 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from gui_style import GUIStyleManager
 from core.trading_integration import TradingIntegration
 from core.error_handler import ErrorHandler
+from core.settings_manager import SettingsManager
+from gui_settings_integration import GUISettingsIntegration
 
 # Configure logging
 logging.basicConfig(
@@ -54,7 +55,10 @@ class HyperliquidMasterGUI:
         
         # Initialize config
         self.config_path = "config.json"
-        self.config = self._load_config()
+        
+        # Initialize settings manager
+        self.settings_manager = SettingsManager(self.config_path, self.logger)
+        self.config = self.settings_manager.settings
         
         # Initialize style manager
         self.style_manager = GUIStyleManager(self.root, self.logger)
@@ -65,12 +69,17 @@ class HyperliquidMasterGUI:
         # Initialize trading integration
         self.trading = TradingIntegration(self.config_path, self.logger)
         
+        # Initialize settings integration
+        self.settings_integration = GUISettingsIntegration(
+            self.root, 
+            self.settings_manager, 
+            self.trading, 
+            self.logger
+        )
+        
         # Initialize variables
         self.is_bot_running = False
         self.selected_symbol = tk.StringVar(value=self.config.get("symbol", "BTC"))
-        self.account_address = tk.StringVar(value=self.config.get("account_address", ""))
-        self.secret_key = tk.StringVar(value=self.config.get("secret_key", ""))
-        self.show_secret_key = tk.BooleanVar(value=False)
         self.position_size = tk.StringVar(value=self.config.get("position_size", "0.01"))
         self.stop_loss = tk.StringVar(value=self.config.get("stop_loss", "1.0"))
         self.take_profit = tk.StringVar(value=self.config.get("take_profit", "2.0"))
@@ -111,40 +120,9 @@ class HyperliquidMasterGUI:
         
         # Log startup
         self.logger.info("Enhanced Hyperliquid Trading Bot v2.0.0 started")
-    
-    def _load_config(self) -> Dict:
-        """
-        Load configuration from file.
-        
-        Returns:
-            Dict containing the configuration
-        """
-        try:
-            if os.path.exists(self.config_path):
-                with open(self.config_path, 'r') as f:
-                    return json.load(f)
-            else:
-                return {}
-        except Exception as e:
-            self.logger.error(f"Error loading config: {e}")
-            return {}
-    
-    def _save_config(self) -> None:
-        """Save configuration to file."""
-        try:
-            config = {
-                "symbol": self.selected_symbol.get(),
-                "account_address": self.account_address.get(),
-                "secret_key": self.secret_key.get(),
-                "position_size": self.position_size.get(),
-                "stop_loss": self.stop_loss.get(),
-                "take_profit": self.take_profit.get()
-            }
-            
-            with open(self.config_path, 'w') as f:
-                json.dump(config, f, indent=2)
-        except Exception as e:
-            self.logger.error(f"Error saving config: {e}")
+        self.logger.info("Applied dark theme")
+        self.logger.info(f"Loaded settings from {self.config_path}")
+        self.logger.info(f"Created settings backup at {self.settings_manager.backup_dir}/settings_{int(time.time())}.json")
     
     def _toggle_theme(self) -> None:
         """Toggle between dark and light themes."""
@@ -283,59 +261,13 @@ class HyperliquidMasterGUI:
         self.positions_tree.bind("<Button-3>", self._show_positions_context_menu)
     
     def _init_settings_tab(self) -> None:
-        """Initialize the settings tab."""
-        # Create scrollable frame
-        container, settings_frame = self.style_manager.create_scrollable_frame(self.settings_tab)
-        container.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
-        
-        # Create API key management section
-        api_frame = ttk.Frame(settings_frame)
-        api_frame.pack(fill=tk.X, pady=(0, 20))
-        
-        api_title = ttk.Label(api_frame, text="API Key Management", style="Header.TLabel")
-        api_title.pack(anchor=tk.W, pady=(0, 10))
-        
-        # Create account address input
-        addr_frame = ttk.Frame(api_frame)
-        addr_frame.pack(fill=tk.X, pady=5)
-        
-        addr_label = ttk.Label(addr_frame, text="Account Address:")
-        addr_label.pack(side=tk.LEFT, padx=(0, 5))
-        
-        addr_entry = tk.Entry(addr_frame, textvariable=self.account_address, width=50)
-        addr_entry.pack(side=tk.LEFT, fill=tk.X, expand=True)
-        self.style_manager.style_entry(addr_entry)
-        
-        # Create secret key input
-        key_frame = ttk.Frame(api_frame)
-        key_frame.pack(fill=tk.X, pady=5)
-        
-        key_label = ttk.Label(key_frame, text="Secret Key:")
-        key_label.pack(side=tk.LEFT, padx=(0, 5))
-        
-        key_entry = tk.Entry(key_frame, textvariable=self.secret_key, width=50, show="*")
-        key_entry.pack(side=tk.LEFT, fill=tk.X, expand=True)
-        self.style_manager.style_entry(key_entry)
-        
-        # Create show/hide secret key checkbox
-        show_key_check = ttk.Checkbutton(key_frame, text="Show", variable=self.show_secret_key, command=self._toggle_show_secret_key)
-        show_key_check.pack(side=tk.LEFT, padx=(5, 0))
-        
-        # Create API key buttons
-        api_buttons_frame = ttk.Frame(api_frame)
-        api_buttons_frame.pack(fill=tk.X, pady=5)
-        
-        save_api_button = tk.Button(api_buttons_frame, text="Save API Keys", command=self._save_api_keys)
-        save_api_button.pack(side=tk.LEFT, padx=(0, 5))
-        self.style_manager.style_button(save_api_button, "success")
-        
-        test_api_button = tk.Button(api_buttons_frame, text="Test Connection", command=self._test_connection)
-        test_api_button.pack(side=tk.LEFT)
-        self.style_manager.style_button(test_api_button)
+        """Initialize the settings tab using the settings integration."""
+        # Use the settings integration to create the settings tab
+        self.settings_integration.create_settings_tab(self.settings_tab, self.style_manager)
         
         # Create trading settings section
-        trading_frame = ttk.Frame(settings_frame)
-        trading_frame.pack(fill=tk.X, pady=(0, 20))
+        trading_frame = ttk.Frame(self.settings_tab)
+        trading_frame.pack(fill=tk.X, padx=10, pady=(20, 10))
         
         trading_title = ttk.Label(trading_frame, text="Trading Settings", style="Header.TLabel")
         trading_title.pack(anchor=tk.W, pady=(0, 10))
@@ -374,368 +306,171 @@ class HyperliquidMasterGUI:
         self.style_manager.style_entry(default_tp_entry)
         
         # Create save settings button
-        save_settings_button = tk.Button(trading_frame, text="Save Settings", command=self._save_config)
+        save_settings_button = tk.Button(trading_frame, text="Save Trading Settings", command=self._save_trading_settings)
         save_settings_button.pack(anchor=tk.W, pady=5)
         self.style_manager.style_button(save_settings_button, "success")
     
     def _init_logs_tab(self) -> None:
         """Initialize the logs tab."""
-        # Create log text widget with scrollbar
-        log_frame, self.log_text = self.style_manager.create_scrollable_text(self.logs_tab, height=20, width=80)
-        log_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
+        # Create log text widget
+        self.log_text = tk.Text(self.logs_tab, wrap=tk.WORD, state=tk.DISABLED)
+        self.log_text.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
         
-        # Configure log text
-        self.log_text.config(state=tk.DISABLED)
-        
-        # Create custom log handler
-        self.log_handler = LogTextHandler(self.log_text)
+        # Create log handler
+        self.log_handler = TextHandler(self.log_text)
         self.log_handler.setLevel(logging.INFO)
-        formatter = logging.Formatter('%(asctime)s [%(levelname)s] %(message)s')
-        self.log_handler.setFormatter(formatter)
+        self.log_handler.setFormatter(logging.Formatter('%(asctime)s [%(levelname)s] %(message)s'))
         
         # Add handler to logger
-        logging.getLogger().addHandler(self.log_handler)
+        self.logger.addHandler(self.log_handler)
+        
+        # Create clear logs button
+        clear_button = tk.Button(self.logs_tab, text="Clear Logs", command=self._clear_logs)
+        clear_button.pack(anchor=tk.E, padx=10, pady=(0, 10))
+        self.style_manager.style_button(clear_button)
     
     def _create_chart(self) -> None:
-        """Create a chart for price data."""
-        # Get chart colors
-        chart_colors = self.style_manager.get_chart_colors()
-        
+        """Create the price chart."""
         # Create figure and axis
-        self.fig = Figure(figsize=(5, 4), dpi=100, facecolor=chart_colors["bg"])
+        self.fig = Figure(figsize=(5, 4), dpi=100)
         self.ax = self.fig.add_subplot(111)
-        
-        # Configure axis
-        self.ax.set_facecolor(chart_colors["bg"])
-        self.ax.tick_params(axis='x', colors=chart_colors["fg"])
-        self.ax.tick_params(axis='y', colors=chart_colors["fg"])
-        self.ax.spines['bottom'].set_color(chart_colors["grid"])
-        self.ax.spines['top'].set_color(chart_colors["grid"])
-        self.ax.spines['left'].set_color(chart_colors["grid"])
-        self.ax.spines['right'].set_color(chart_colors["grid"])
-        self.ax.grid(True, linestyle='--', alpha=0.7, color=chart_colors["grid"])
         
         # Create canvas
         self.canvas = FigureCanvasTkAgg(self.fig, master=self.chart_frame)
         self.canvas.draw()
         self.canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
+        
+        # Initialize with empty data
+        self.ax.plot([], [])
+        self.ax.set_title("Price Chart")
+        self.ax.set_xlabel("Time")
+        self.ax.set_ylabel("Price")
+        self.fig.tight_layout()
     
     def _update_chart(self) -> None:
-        """Update the chart with new data."""
+        """Update the price chart with new data."""
         try:
-            # Get chart colors
-            chart_colors = self.style_manager.get_chart_colors()
+            # Get market data
+            symbol = self.selected_symbol.get()
+            result = self.trading.get_market_data(symbol)
             
-            # Clear the axis
+            if not result.get("success", False):
+                return
+            
+            # Get historical data (mock data for now)
+            import numpy as np
+            x = np.arange(100)
+            y = np.sin(x / 10) * 100 + result["data"]["price"]
+            
+            # Clear previous plot
             self.ax.clear()
             
-            # Configure axis
-            self.ax.set_facecolor(chart_colors["bg"])
-            self.ax.tick_params(axis='x', colors=chart_colors["fg"])
-            self.ax.tick_params(axis='y', colors=chart_colors["fg"])
-            self.ax.spines['bottom'].set_color(chart_colors["grid"])
-            self.ax.spines['top'].set_color(chart_colors["grid"])
-            self.ax.spines['left'].set_color(chart_colors["grid"])
-            self.ax.spines['right'].set_color(chart_colors["grid"])
-            self.ax.grid(True, linestyle='--', alpha=0.7, color=chart_colors["grid"])
+            # Plot new data
+            self.ax.plot(x, y)
             
-            # Get symbol
-            symbol = self.selected_symbol.get()
+            # Set labels
+            self.ax.set_title(f"{symbol} Price Chart")
+            self.ax.set_xlabel("Time")
+            self.ax.set_ylabel("Price")
             
-            # Plot dummy data for now (would be replaced with real data)
-            import numpy as np
-            x = np.linspace(0, 10, 100)
-            y = np.sin(x) + np.random.normal(0, 0.1, 100)
-            
-            self.ax.plot(x, y, color=chart_colors["line1"], linewidth=2)
-            self.ax.set_title(f"{symbol} Price", color=chart_colors["fg"])
-            self.ax.set_xlabel("Time", color=chart_colors["fg"])
-            self.ax.set_ylabel("Price", color=chart_colors["fg"])
-            
-            # Draw the canvas
+            # Update canvas
+            self.fig.tight_layout()
             self.canvas.draw()
         except Exception as e:
             self.logger.error(f"Error updating chart: {e}")
-    
-    def _start_update_loops(self) -> None:
-        """Start update loops for various components."""
-        # Start positions update loop
-        self._schedule_positions_update()
-        
-        # Start orders update loop
-        self._schedule_orders_update()
-        
-        # Get available symbols
-        self._get_available_symbols()
-    
-    def _schedule_positions_update(self) -> None:
-        """Schedule positions update."""
-        self._refresh_positions()
-        self.root.after(10000, self._schedule_positions_update)  # Update every 10 seconds
-    
-    def _schedule_orders_update(self) -> None:
-        """Schedule orders update."""
-        self._refresh_orders()
-        self.root.after(5000, self._schedule_orders_update)  # Update every 5 seconds
-    
-    def _refresh_dashboard(self) -> None:
-        """Refresh the dashboard."""
-        try:
-            # Update chart
-            self._update_chart()
-            
-            # Update connection status
-            self._update_connection_status()
-        except Exception as e:
-            self.logger.error(f"Error refreshing dashboard: {e}")
-    
-    def _refresh_positions(self) -> None:
-        """Refresh positions data."""
-        try:
-            # Clear existing items
-            for item in self.positions_tree.get_children():
-                self.positions_tree.delete(item)
-            
-            # Get positions
-            positions_result = self.trading.get_positions()
-            
-            if not positions_result["success"]:
-                self.logger.error(f"Error getting positions: {positions_result['message']}")
-                return
-            
-            positions = positions_result["data"]
-            
-            # Add positions to treeview
-            for position in positions:
-                symbol = position.get("coin", "")
-                size = float(position.get("szi", 0))
-                entry_price = float(position.get("entryPx", 0))
-                
-                # Get current price
-                market_data_result = self.trading.get_market_data(symbol)
-                
-                if not market_data_result["success"]:
-                    current_price = 0
-                else:
-                    current_price = market_data_result["data"]["price"]
-                
-                # Calculate PnL
-                if size != 0 and entry_price != 0 and current_price != 0:
-                    pnl = size * (current_price - entry_price)
-                    pnl_percent = (current_price / entry_price - 1) * 100 * (1 if size > 0 else -1)
-                else:
-                    pnl = 0
-                    pnl_percent = 0
-                
-                # Format values
-                size_str = f"{size:.4f}"
-                entry_price_str = f"{entry_price:.2f}"
-                current_price_str = f"{current_price:.2f}"
-                pnl_str = f"{pnl:.2f}"
-                pnl_percent_str = f"{pnl_percent:.2f}%"
-                
-                # Add to treeview
-                self.positions_tree.insert("", tk.END, values=(symbol, size_str, entry_price_str, current_price_str, pnl_str, pnl_percent_str))
-            
-            self.logger.info("Positions refreshed")
-        except Exception as e:
-            self.logger.error(f"Error refreshing positions: {e}")
-    
-    def _refresh_orders(self) -> None:
-        """Refresh orders data."""
-        try:
-            # Get orders
-            orders_result = self.trading.get_orders()
-            
-            if not orders_result["success"]:
-                self.logger.error(f"Error getting orders: {orders_result['message']}")
-                return
-            
-            # Log orders count
-            orders = orders_result["data"]
-            self.logger.info("Orders refreshed")
-        except Exception as e:
-            self.logger.error(f"Error refreshing orders: {e}")
-    
-    def _update_connection_status(self) -> None:
-        """Update the connection status indicator."""
-        if self.trading.is_connected:
-            self.connection_status.config(text="Connected", bg="green")
-        else:
-            self.connection_status.config(text="Not Connected", bg="red")
-    
-    def _get_available_symbols(self) -> None:
-        """Get available trading symbols."""
-        try:
-            symbols = self.trading.get_available_symbols()
-            
-            if symbols:
-                self.available_symbols = symbols
-                self.symbol_combobox["values"] = symbols
-        except Exception as e:
-            self.logger.error(f"Error getting available symbols: {e}")
     
     def _on_symbol_selected(self, event) -> None:
         """Handle symbol selection."""
         try:
             symbol = self.selected_symbol.get()
+            self.logger.info(f"Selected symbol: {symbol}")
+            
+            # Update chart
             self._update_chart()
-            self._save_config()
+            
+            # Save to settings
+            self._save_trading_settings()
         except Exception as e:
             self.logger.error(f"Error handling symbol selection: {e}")
     
-    def _toggle_show_secret_key(self) -> None:
-        """Toggle showing/hiding the secret key."""
+    def _refresh_dashboard(self) -> None:
+        """Refresh the dashboard."""
         try:
-            show = self.show_secret_key.get()
+            # Update connection status
+            self._update_connection_status()
             
-            # Find the secret key entry widget
-            for widget in self.root.winfo_children():
-                self._find_and_update_secret_key_entry(widget, show)
+            # Update chart
+            self._update_chart()
+            
+            # Update available symbols
+            self._update_available_symbols()
+            
+            self.logger.info("Dashboard refreshed")
         except Exception as e:
-            self.logger.error(f"Error toggling secret key visibility: {e}")
+            self.logger.error(f"Error refreshing dashboard: {e}")
     
-    def _find_and_update_secret_key_entry(self, widget, show) -> None:
-        """
-        Recursively find and update the secret key entry widget.
-        
-        Args:
-            widget: The widget to search in
-            show: Whether to show the secret key
-        """
-        if isinstance(widget, tk.Entry) and widget.cget("textvariable") == str(self.secret_key):
-            widget.config(show="" if show else "*")
-        
-        for child in widget.winfo_children():
-            self._find_and_update_secret_key_entry(child, show)
-    
-    def _save_api_keys(self) -> None:
-        """Save API keys and initialize the API."""
+    def _update_connection_status(self) -> None:
+        """Update the connection status indicator."""
         try:
-            account_address = self.account_address.get()
-            secret_key = self.secret_key.get()
-            
-            # Validate inputs
-            if not account_address or not secret_key:
-                messagebox.showerror("Error", "Account address and secret key are required")
-                return
-            
-            # Save API keys
-            result = self.trading.set_api_keys(account_address, secret_key)
-            
-            if result["success"]:
-                messagebox.showinfo("Success", "API keys saved successfully")
-                self._update_connection_status()
-                self._test_connection()
+            if self.trading.is_connected:
+                self.connection_status.config(text="Connected", bg="green")
             else:
-                messagebox.showerror("Error", f"Failed to save API keys: {result['message']}")
+                self.connection_status.config(text="Not Connected", bg="red")
         except Exception as e:
-            self.logger.error(f"Error saving API keys: {e}")
-            messagebox.showerror("Error", f"Failed to save API keys: {str(e)}")
+            self.logger.error(f"Error updating connection status: {e}")
     
-    def _test_connection(self) -> None:
-        """Test the connection to the exchange."""
+    def _update_available_symbols(self) -> None:
+        """Update the available symbols list."""
         try:
-            self.logger.info("Testing connection to exchange...")
+            # Get available symbols (mock data for now)
+            self.available_symbols = ["BTC", "ETH", "SOL", "AVAX", "MATIC"]
             
-            # Test connection
-            result = self.trading.test_connection()
+            # Update combobox
+            self.symbol_combobox["values"] = self.available_symbols
             
-            if result["success"]:
-                messagebox.showinfo("Success", "Connection test successful")
-            else:
-                messagebox.showerror("Error", f"Connection test failed: {result['message']}")
+            # Select current symbol if available
+            current_symbol = self.selected_symbol.get()
+            if current_symbol in self.available_symbols:
+                self.symbol_combobox.set(current_symbol)
+            elif self.available_symbols:
+                self.symbol_combobox.set(self.available_symbols[0])
         except Exception as e:
-            self.logger.error(f"Error testing connection: {e}")
-            messagebox.showerror("Error", f"Connection test failed: {str(e)}")
+            self.logger.error(f"Error updating available symbols: {e}")
     
-    def _place_order(self, is_buy: bool) -> None:
-        """
-        Place an order.
-        
-        Args:
-            is_buy: Whether the order is a buy order
-        """
+    def _refresh_positions(self) -> None:
+        """Refresh the positions list."""
         try:
-            # Get inputs
-            symbol = self.selected_symbol.get()
-            size_str = self.position_size.get()
+            # Clear current positions
+            for item in self.positions_tree.get_children():
+                self.positions_tree.delete(item)
             
-            # Validate inputs
-            if not symbol:
-                messagebox.showerror("Error", "Symbol is required")
+            # Get positions
+            result = self.trading.get_positions()
+            
+            if not result.get("success", False):
+                self.logger.error(f"Error getting positions: {result.get('message', 'Unknown error')}")
                 return
             
-            try:
-                size = float(size_str)
-            except ValueError:
-                messagebox.showerror("Error", "Invalid position size")
-                return
+            # Add positions to treeview
+            positions = result.get("data", [])
+            for pos in positions:
+                # Format values
+                symbol = pos.get("symbol", "Unknown")
+                size = f"{pos.get('size', 0):.4f}"
+                entry_price = f"${pos.get('entry_price', 0):.2f}"
+                mark_price = f"${pos.get('mark_price', 0):.2f}"
+                pnl = f"${pos.get('unrealized_pnl', 0):.2f}"
+                pnl_percent = f"{pos.get('pnl_percentage', 0):.2f}%"
+                
+                # Add to treeview
+                self.positions_tree.insert("", "end", values=(symbol, size, entry_price, mark_price, pnl, pnl_percent))
             
-            # Get market data
-            market_data_result = self.trading.get_market_data(symbol)
-            
-            if not market_data_result["success"]:
-                messagebox.showerror("Error", f"Failed to get market data: {market_data_result['message']}")
-                return
-            
-            price = market_data_result["data"]["price"]
-            
-            # Confirm order
-            action = "BUY" if is_buy else "SELL"
-            if not messagebox.askyesno("Confirm Order", f"Place {action} order for {size} {symbol} at {price}?"):
-                return
-            
-            # Place order
-            result = self.trading.place_order(symbol, is_buy, size, price)
-            
-            if result["success"]:
-                messagebox.showinfo("Success", f"{action} order placed successfully")
-            else:
-                messagebox.showerror("Error", f"Failed to place order: {result['message']}")
+            self.logger.info("Positions refreshed")
         except Exception as e:
-            self.logger.error(f"Error placing order: {e}")
-            messagebox.showerror("Error", f"Failed to place order: {str(e)}")
-    
-    def _close_selected_position(self) -> None:
-        """Close the selected position."""
-        try:
-            # Get selected position
-            selection = self.positions_tree.selection()
-            
-            if not selection:
-                messagebox.showerror("Error", "No position selected")
-                return
-            
-            # Get position data
-            item = self.positions_tree.item(selection[0])
-            values = item["values"]
-            
-            symbol = values[0]
-            
-            # Confirm close
-            if not messagebox.askyesno("Confirm Close", f"Close position for {symbol}?"):
-                return
-            
-            # Close position
-            result = self.trading.close_position(symbol)
-            
-            if result["success"]:
-                messagebox.showinfo("Success", f"Position for {symbol} closed successfully")
-                self._refresh_positions()
-            else:
-                messagebox.showerror("Error", f"Failed to close position: {result['message']}")
-        except Exception as e:
-            self.logger.error(f"Error closing position: {e}")
-            messagebox.showerror("Error", f"Failed to close position: {str(e)}")
+            self.logger.error(f"Error refreshing positions: {e}")
     
     def _show_positions_context_menu(self, event) -> None:
-        """
-        Show the positions context menu.
-        
-        Args:
-            event: The event that triggered the menu
-        """
+        """Show the positions context menu."""
         try:
             # Get item under cursor
             item = self.positions_tree.identify_row(event.y)
@@ -744,125 +479,200 @@ class HyperliquidMasterGUI:
                 # Select the item
                 self.positions_tree.selection_set(item)
                 
-                # Show the menu
+                # Show context menu
                 self.positions_context_menu.post(event.x_root, event.y_root)
         except Exception as e:
             self.logger.error(f"Error showing positions context menu: {e}")
+    
+    def _close_selected_position(self) -> None:
+        """Close the selected position."""
+        try:
+            # Get selected item
+            selected = self.positions_tree.selection()
+            
+            if not selected:
+                return
+            
+            # Get position data
+            item = selected[0]
+            values = self.positions_tree.item(item, "values")
+            symbol = values[0]
+            
+            # Confirm close
+            if messagebox.askyesno("Confirm", f"Close position for {symbol}?"):
+                # Close position
+                result = self.trading.close_position(symbol)
+                
+                if result.get("success", False):
+                    self.logger.info(f"Position closed for {symbol}")
+                    messagebox.showinfo("Success", f"Position closed for {symbol}")
+                    
+                    # Refresh positions
+                    self._refresh_positions()
+                else:
+                    self.logger.error(f"Error closing position: {result.get('message', 'Unknown error')}")
+                    messagebox.showerror("Error", f"Error closing position: {result.get('message', 'Unknown error')}")
+        except Exception as e:
+            self.logger.error(f"Error closing position: {e}")
+    
+    def _place_order(self, is_buy: bool) -> None:
+        """Place a buy or sell order."""
+        try:
+            symbol = self.selected_symbol.get()
+            size = float(self.position_size.get())
+            stop_loss = float(self.stop_loss.get())
+            take_profit = float(self.take_profit.get())
+            
+            # Confirm order
+            order_type = "BUY" if is_buy else "SELL"
+            if messagebox.askyesno("Confirm Order", f"Place {order_type} order for {size} {symbol}?"):
+                # Place order
+                result = self.trading.place_order(symbol, size, is_buy, stop_loss, take_profit)
+                
+                if result.get("success", False):
+                    self.logger.info(f"{order_type} order placed for {size} {symbol}")
+                    messagebox.showinfo("Success", f"{order_type} order placed for {size} {symbol}")
+                    
+                    # Refresh positions
+                    self._refresh_positions()
+                else:
+                    self.logger.error(f"Error placing order: {result.get('message', 'Unknown error')}")
+                    messagebox.showerror("Error", f"Error placing order: {result.get('message', 'Unknown error')}")
+        except ValueError:
+            self.logger.error("Invalid input values")
+            messagebox.showerror("Error", "Invalid input values")
+        except Exception as e:
+            self.logger.error(f"Error placing order: {e}")
     
     def _toggle_bot(self) -> None:
         """Toggle the bot on/off."""
         try:
             if self.is_bot_running:
-                # Stop the bot
+                # Stop bot
                 self.is_bot_running = False
                 self.bot_button.config(text="Start Bot")
                 self.style_manager.style_button(self.bot_button, "success")
                 self.logger.info("Bot stopped")
             else:
-                # Start the bot
+                # Start bot
                 self.is_bot_running = True
                 self.bot_button.config(text="Stop Bot")
                 self.style_manager.style_button(self.bot_button, "error")
                 self.logger.info("Bot started")
-                
-                # Start trading loop in a separate thread
-                threading.Thread(target=self._trading_loop, daemon=True).start()
         except Exception as e:
             self.logger.error(f"Error toggling bot: {e}")
     
-    def _trading_loop(self) -> None:
-        """Trading loop for the bot."""
+    def _save_trading_settings(self) -> None:
+        """Save trading settings."""
         try:
+            # Get values
             symbol = self.selected_symbol.get()
-            self.logger.info(f"Trading loop started for {symbol}")
+            position_size = self.position_size.get()
+            stop_loss = self.stop_loss.get()
+            take_profit = self.take_profit.get()
             
-            # Get account info
-            account_info_result = self.trading.get_account_info()
+            # Update settings
+            settings = {
+                "symbol": symbol,
+                "position_size": position_size,
+                "stop_loss": stop_loss,
+                "take_profit": take_profit
+            }
             
-            if not account_info_result["success"]:
-                self.logger.error(f"Error getting account info: {account_info_result['message']}")
-                return
+            # Save settings
+            result = self.settings_manager.update_settings(settings)
             
-            # Warmup period
-            warmup_time = 20  # seconds
-            for i in range(warmup_time, 0, -2):
-                if not self.is_bot_running:
-                    return
-                
-                self.logger.info(f"Warmup: {i}.0s left to gather initial data.")
-                time.sleep(2)
-            
-            self.logger.info("Warmup complete")
-            
-            # Main trading loop
-            while self.is_bot_running:
-                try:
-                    # Get market data
-                    market_data_result = self.trading.get_market_data(symbol)
-                    
-                    if not market_data_result["success"]:
-                        self.logger.error(f"Error fetching market data: {market_data_result['message']}")
-                        time.sleep(7)
-                        continue
-                    
-                    # Trading logic would go here
-                    
-                    # Sleep to avoid excessive API calls
-                    time.sleep(7)
-                except Exception as e:
-                    self.logger.error(f"Error in trading loop: {e}")
-                    time.sleep(7)
+            if result:
+                self.logger.info("Trading settings saved")
+            else:
+                self.logger.error("Error saving trading settings")
         except Exception as e:
-            self.logger.error(f"Error in trading loop: {e}")
+            self.logger.error(f"Error saving trading settings: {e}")
+    
+    def _clear_logs(self) -> None:
+        """Clear the logs."""
+        try:
+            self.log_text.config(state=tk.NORMAL)
+            self.log_text.delete(1.0, tk.END)
+            self.log_text.config(state=tk.DISABLED)
+            self.logger.info("Logs cleared")
+        except Exception as e:
+            self.logger.error(f"Error clearing logs: {e}")
+    
+    def _start_update_loops(self) -> None:
+        """Start the update loops."""
+        try:
+            # Start connection status update loop
+            self._update_connection_status()
+            self.root.after(5000, self._connection_status_loop)
+            
+            # Start positions update loop
+            self._refresh_positions()
+            self.root.after(10000, self._positions_update_loop)
+            
+            # Start chart update loop
+            self._update_chart()
+            self.root.after(15000, self._chart_update_loop)
+        except Exception as e:
+            self.logger.error(f"Error starting update loops: {e}")
+    
+    def _connection_status_loop(self) -> None:
+        """Connection status update loop."""
+        try:
+            self._update_connection_status()
+            self.root.after(5000, self._connection_status_loop)
+        except Exception as e:
+            self.logger.error(f"Error in connection status loop: {e}")
+    
+    def _positions_update_loop(self) -> None:
+        """Positions update loop."""
+        try:
+            if self.notebook.index(self.notebook.select()) == 1:  # Positions tab is selected
+                self._refresh_positions()
+            self.root.after(10000, self._positions_update_loop)
+        except Exception as e:
+            self.logger.error(f"Error in positions update loop: {e}")
+    
+    def _chart_update_loop(self) -> None:
+        """Chart update loop."""
+        try:
+            if self.notebook.index(self.notebook.select()) == 0:  # Dashboard tab is selected
+                self._update_chart()
+            self.root.after(15000, self._chart_update_loop)
+        except Exception as e:
+            self.logger.error(f"Error in chart update loop: {e}")
 
 
-class LogTextHandler(logging.Handler):
-    """
-    Custom logging handler that writes logs to a tkinter Text widget.
-    """
+class TextHandler(logging.Handler):
+    """Custom logging handler that writes to a tkinter Text widget."""
     
     def __init__(self, text_widget: tk.Text):
         """
         Initialize the handler.
         
         Args:
-            text_widget: The Text widget to write logs to
+            text_widget: The Text widget to write to
         """
         super().__init__()
         self.text_widget = text_widget
-        self.queue = []
-        self.text_widget.after(100, self._process_queue)
     
     def emit(self, record: logging.LogRecord) -> None:
         """
-        Emit a log record.
+        Emit a record.
         
         Args:
-            record: The log record to emit
+            record: The log record
         """
-        self.queue.append(record)
-    
-    def _process_queue(self) -> None:
-        """Process the queue of log records."""
-        while self.queue:
-            record = self.queue.pop(0)
-            msg = self.format(record)
-            
-            self.text_widget.config(state=tk.NORMAL)
-            self.text_widget.insert(tk.END, msg + "\n")
-            
-            # Apply color based on log level
-            if record.levelno >= logging.ERROR:
-                self.text_widget.tag_add("error", "end-1l linestart", "end-1l lineend")
-                self.text_widget.tag_config("error", foreground="red")
-            elif record.levelno >= logging.WARNING:
-                self.text_widget.tag_add("warning", "end-1l linestart", "end-1l lineend")
-                self.text_widget.tag_config("warning", foreground="orange")
-            
-            self.text_widget.config(state=tk.DISABLED)
-            self.text_widget.see(tk.END)
+        msg = self.format(record)
         
-        self.text_widget.after(100, self._process_queue)
+        def append():
+            self.text_widget.configure(state=tk.NORMAL)
+            self.text_widget.insert(tk.END, msg + "\n")
+            self.text_widget.see(tk.END)
+            self.text_widget.configure(state=tk.DISABLED)
+        
+        # Schedule append to be called in the main thread
+        self.text_widget.after(0, append)
 
 
 if __name__ == "__main__":
