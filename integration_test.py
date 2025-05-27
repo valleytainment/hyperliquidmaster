@@ -10,10 +10,12 @@ import json
 import logging
 import os
 import time
+import pandas as pd
+from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Any
 
 # Import core components
-from core.hyperliquid_adapter import HyperliquidExchangeAdapter
+from core.hyperliquid_adapter import HyperliquidAdapter as HyperliquidExchangeAdapter
 from core.error_handler import ErrorHandler
 from sentiment.llm_analyzer import LLMSentimentAnalyzer
 from strategies.triple_confluence import TripleConfluenceStrategy
@@ -154,11 +156,9 @@ class IntegrationTester:
         
         try:
             # Initialize exchange adapter
-            self.exchange = HyperliquidExchangeAdapter(
-                self.config,
-                self.logger,
-                self.error_handler
-            )
+            # Modified to match HyperliquidAdapter's actual constructor signature
+            self.exchange = HyperliquidExchangeAdapter("config.json")
+            # Note: Original code expected different constructor parameters
             
             # Initialize exchange connection
             connection_result = await self.exchange.initialize()
@@ -297,32 +297,35 @@ class IntegrationTester:
                 "asks": [[50000 + i * 10, 5 + i] for i in range(10)]
             }
             
-            # Update Triple Confluence strategy data
-            for i in range(100):
-                self.triple_confluence_strategy.update_data(
-                    symbol,
-                    price_data[i],
-                    volume_data[i],
-                    funding_rate,
-                    mock_order_book
-                )
+            # Create a DataFrame for the Triple Confluence strategy instead of using update_data
+            # which doesn't exist in the actual implementation
+            strategy_data = pd.DataFrame({
+                'close': price_data,
+                'volume': volume_data,
+                'funding_rate': [funding_rate] * 100,
+                'bid_volume': [sum(bid[1] for bid in mock_order_book['bids'])] * 100,
+                'ask_volume': [sum(ask[1] for ask in mock_order_book['asks'])] * 100
+            })
+            
+            # Note: Original code expected an update_data method that doesn't exist
                 
             # Analyze with Triple Confluence strategy
-            tc_result = self.triple_confluence_strategy.analyze(symbol)
+            tc_result = self.triple_confluence_strategy.generate_signals(strategy_data)
             
             # Mock data for Oracle Update strategy
             market_price = 50000
             oracle_price = 50100  # Oracle price higher than market price
             
             # Update Oracle Update strategy data
-            self.oracle_update_strategy.update_data(
-                symbol,
-                market_price,
-                oracle_price
-            )
+            # Create a DataFrame for the Oracle Update strategy
+            oracle_data = pd.DataFrame({
+                'close': [market_price] * 30,
+                'oracle_price': [oracle_price] * 30,
+                'timestamp': [datetime.now() - timedelta(seconds=i) for i in range(30)]
+            })
             
             # Analyze with Oracle Update strategy
-            ou_result = self.oracle_update_strategy.analyze(symbol)
+            ou_result = self.oracle_update_strategy.generate_signals(oracle_data)
             
             # Check strategy results
             if tc_result and ou_result:
@@ -447,7 +450,11 @@ class IntegrationTester:
                 if tc_result["signal"] != "NEUTRAL" and tc_result["confidence"] > 0.7:
                     final_signal = tc_result["signal"]
                     confidence = tc_result["confidence"]
-                elif ou_result["signal"] != "NEUTRAL" and ou_result["confidence"] > 0.7:
+                # Add a default confidence value if it doesn't exist
+                if "confidence" not in ou_result:
+                    ou_result["confidence"] = 0.0
+                    
+                if ou_result["signal"] != "NEUTRAL" and ou_result["confidence"] > 0.7:
                     final_signal = ou_result["signal"]
                     confidence = ou_result["confidence"]
                     
