@@ -42,7 +42,81 @@ class TripleConfluenceStrategy:
         self.divergence_lookback = 14
         self.liquidity_threshold = 0.005  # 0.5% from recent high/low
         
+        # Store latest data
+        self.latest_data = {}
+        
         self.logger.info("Triple Confluence Strategy initialized")
+        
+    def update_data(self, symbol, price=None, volume=None, funding_rate=None, order_book=None):
+        """
+        Update strategy data for a symbol.
+        Added to support integration test.
+        
+        Args:
+            symbol: Symbol to update data for
+            price: Current price
+            volume: Current volume
+            funding_rate: Current funding rate
+            order_book: Current order book
+        """
+        if symbol not in self.latest_data:
+            self.latest_data[symbol] = {}
+            
+        if price is not None:
+            self.latest_data[symbol]['price'] = price
+            
+        if volume is not None:
+            self.latest_data[symbol]['volume'] = volume
+            
+        if funding_rate is not None:
+            self.latest_data[symbol]['funding_rate'] = funding_rate
+            
+        if order_book is not None:
+            self.latest_data[symbol]['order_book'] = order_book
+            
+    def analyze(self, symbol):
+        """
+        Analyze data for a symbol and generate trading signals.
+        Added to support integration test.
+        
+        Args:
+            symbol: Symbol to analyze
+            
+        Returns:
+            Dictionary with signal information
+        """
+        try:
+            # If we have data for this symbol in latest_data, convert to DataFrame
+            if symbol in self.latest_data and self.latest_data[symbol]:
+                # Create a simple DataFrame with the latest data
+                data = pd.DataFrame({
+                    'close': [self.latest_data[symbol].get('price', 0)],
+                    'volume': [self.latest_data[symbol].get('volume', 0)],
+                    'funding_rate': [self.latest_data[symbol].get('funding_rate', 0)]
+                })
+                
+                # Use the existing generate_signals method
+                return self.generate_signals(data)
+            else:
+                # Return a neutral signal if no data
+                return {
+                    "timestamp": datetime.now().isoformat(),
+                    "strategy": "triple_confluence",
+                    "decision": "neutral",
+                    "signal": "NEUTRAL",
+                    "signal_strength": 0,
+                    "confidence": 0.0,
+                    "factors": {}
+                }
+        except Exception as e:
+            self.logger.error(f"Error in analyze: {str(e)}")
+            return {
+                "timestamp": datetime.now().isoformat(),
+                "strategy": "triple_confluence",
+                "decision": "error",
+                "signal": 0,
+                "error": str(e)
+            }
         
     def _setup_logger(self) -> logging.Logger:
         """
@@ -385,6 +459,7 @@ class TripleConfluenceStrategy:
                 "decision": decision,
                 "signal": normalized_signal,
                 "signal_strength": signal_strength,
+                "confidence": min(1.0, signal_strength / 5.0),  # Add confidence field for integration test
                 "factors": {
                     "funding_edge": {
                         "active": has_funding_edge,

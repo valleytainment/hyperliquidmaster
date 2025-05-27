@@ -38,7 +38,73 @@ class OracleUpdateStrategy:
         self.oracle_update_interval = 3  # 3 seconds between oracle updates
         self.max_trade_duration = 30     # Maximum trade duration in seconds
         
+        # Store latest data
+        self.latest_data = {}
+        
         self.logger.info(f"Oracle Update Strategy initialized with min_deviation={self.min_deviation}")
+        
+    def update_data(self, symbol, market_price=None, oracle_price=None):
+        """
+        Update strategy data for a symbol.
+        Added to support integration test.
+        
+        Args:
+            symbol: Symbol to update data for
+            market_price: Current market price
+            oracle_price: Current oracle price
+        """
+        if symbol not in self.latest_data:
+            self.latest_data[symbol] = {}
+            
+        if market_price is not None:
+            self.latest_data[symbol]['market_price'] = market_price
+            
+        if oracle_price is not None:
+            self.latest_data[symbol]['oracle_price'] = oracle_price
+            
+    def analyze(self, symbol):
+        """
+        Analyze data for a symbol and generate trading signals.
+        Added to support integration test.
+        
+        Args:
+            symbol: Symbol to analyze
+            
+        Returns:
+            Dictionary with signal information
+        """
+        try:
+            # If we have data for this symbol in latest_data, convert to DataFrame
+            if symbol in self.latest_data and self.latest_data[symbol]:
+                # Create a simple DataFrame with the latest data
+                data = pd.DataFrame({
+                    'close': [self.latest_data[symbol].get('market_price', 0)],
+                    'oracle_price': [self.latest_data[symbol].get('oracle_price', 0)],
+                    'timestamp': [datetime.now()]
+                })
+                
+                # Use the existing generate_signals method
+                return self.generate_signals(data)
+            else:
+                # Return a neutral signal if no data
+                return {
+                    "timestamp": datetime.now().isoformat(),
+                    "strategy": "oracle_update",
+                    "decision": "neutral",
+                    "signal": "NEUTRAL",
+                    "signal_strength": 0,
+                    "confidence": 0.0,
+                    "factors": {}
+                }
+        except Exception as e:
+            self.logger.error(f"Error in analyze: {str(e)}")
+            return {
+                "timestamp": datetime.now().isoformat(),
+                "strategy": "oracle_update",
+                "decision": "error",
+                "signal": 0,
+                "error": str(e)
+            }
         
     def _setup_logger(self) -> logging.Logger:
         """

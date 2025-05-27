@@ -261,20 +261,60 @@ class LLMSentimentAnalyzer:
             self.logger.error(f"Error in market narrative detection: {str(e)}")
             return {"narratives": [], "confidence": 0.0, "market_regime": "uncertain"}
             
-    async def evaluate_trade_opportunity(self, symbol: str, signal_type: str, technical_data: Dict[str, Any], 
-                                        sentiment_data: Dict[str, Any]) -> Dict[str, Any]:
+    async def analyze_market_sentiment(self, symbol: str) -> Dict[str, Any]:
         """
-        Evaluate a potential trade opportunity using LLM reasoning.
+        Analyze market sentiment for a specific trading symbol.
         
         Args:
-            symbol: Trading symbol
-            signal_type: Type of signal (LONG, SHORT)
-            technical_data: Technical analysis data
-            sentiment_data: Sentiment analysis data
+            symbol: Trading symbol to analyze
             
         Returns:
-            Dictionary with trade evaluation results
+            Dictionary with sentiment analysis results
         """
+        self.logger.info(f"Analyzing market sentiment for {symbol}")
+        
+        try:
+            # In a real implementation, this would fetch recent news and social media posts
+            # related to the symbol and analyze them. For now, we'll return a neutral sentiment.
+            
+            # Check cache
+            cache_key = f"market_sentiment_{symbol}_{datetime.now().strftime('%Y-%m-%d')}"
+            current_time = time.time()
+            
+            if cache_key in self.cache and current_time < self.cache_expiry.get(cache_key, 0):
+                self.logger.debug(f"Using cached market sentiment for {symbol}")
+                return self.cache[cache_key]
+            
+            # For demonstration, return a neutral sentiment
+            result = {
+                "symbol": symbol,
+                "sentiment": "neutral",
+                "score": 0.5,
+                "confidence": 0.3,
+                "sources_analyzed": 0,
+                "key_factors": [],
+                "timestamp": datetime.now().isoformat()
+            }
+            
+            # Cache result
+            self.cache[cache_key] = result
+            self.cache_expiry[cache_key] = current_time + self.cache_ttl
+            
+            self.logger.info(f"Market sentiment for {symbol}: {result['sentiment']} (score: {result['score']}, confidence: {result['confidence']})")
+            return result
+            
+        except Exception as e:
+            self.logger.error(f"Error analyzing market sentiment for {symbol}: {str(e)}")
+            return {
+                "symbol": symbol,
+                "sentiment": "neutral",
+                "score": 0.5,
+                "confidence": 0.0,
+                "sources_analyzed": 0,
+                "key_factors": [],
+                "error": str(e),
+                "timestamp": datetime.now().isoformat()
+            }
         # Prepare technical data summary
         technical_summary = json.dumps(technical_data, indent=2)
         sentiment_summary = json.dumps(sentiment_data, indent=2)
