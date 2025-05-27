@@ -1,0 +1,72 @@
+2025-05-27 03:10:16,421 [INFO] Initializing Market Data Generator
+2025-05-27 03:10:16,422 [INFO] Market Data Generator initialized
+2025-05-27 03:10:16,422 [INFO] Generating market data for all symbols and regimes
+2025-05-27 03:10:16,422 [INFO] Generating BULLISH market data for BTC
+2025-05-27 03:10:16,432 [INFO] Market data saved to market_data/BTC_BULLISH.json
+2025-05-27 03:10:16,432 [INFO] Generating BEARISH market data for BTC
+2025-05-27 03:10:16,433 [INFO] Market data saved to market_data/BTC_BEARISH.json
+2025-05-27 03:10:16,433 [INFO] Generating RANGING market data for BTC
+2025-05-27 03:10:16,434 [INFO] Market data saved to market_data/BTC_RANGING.json
+2025-05-27 03:10:16,434 [INFO] Generating VOLATILE market data for BTC
+2025-05-27 03:10:16,436 [INFO] Market data saved to market_data/BTC_VOLATILE.json
+2025-05-27 03:10:16,436 [INFO] Generating BULLISH market data for ETH
+2025-05-27 03:10:16,437 [INFO] Market data saved to market_data/ETH_BULLISH.json
+2025-05-27 03:10:16,437 [INFO] Generating BEARISH market data for ETH
+2025-05-27 03:10:16,438 [INFO] Market data saved to market_data/ETH_BEARISH.json
+2025-05-27 03:10:16,438 [INFO] Generating RANGING market data for ETH
+2025-05-27 03:10:16,439 [INFO] Market data saved to market_data/ETH_RANGING.json
+2025-05-27 03:10:16,439 [INFO] Generating VOLATILE market data for ETH
+2025-05-27 03:10:16,440 [INFO] Market data saved to market_data/ETH_VOLATILE.json
+2025-05-27 03:10:16,440 [INFO] Generating BULLISH market data for XRP
+2025-05-27 03:10:16,441 [INFO] Market data saved to market_data/XRP_BULLISH.json
+2025-05-27 03:10:16,441 [INFO] Generating BEARISH market data for XRP
+2025-05-27 03:10:16,442 [INFO] Market data saved to market_data/XRP_BEARISH.json
+2025-05-27 03:10:16,442 [INFO] Generating RANGING market data for XRP
+2025-05-27 03:10:16,443 [INFO] Market data saved to market_data/XRP_RANGING.json
+2025-05-27 03:10:16,443 [INFO] Generating VOLATILE market data for XRP
+2025-05-27 03:10:16,444 [INFO] Market data saved to market_data/XRP_VOLATILE.json
+2025-05-27 03:10:16,444 [INFO] Generating BULLISH market data for SOL
+2025-05-27 03:10:16,445 [INFO] Market data saved to market_data/SOL_BULLISH.json
+2025-05-27 03:10:16,445 [INFO] Generating BEARISH market data for SOL
+2025-05-27 03:10:16,446 [INFO] Market data saved to market_data/SOL_BEARISH.json
+2025-05-27 03:10:16,446 [INFO] Generating RANGING market data for SOL
+2025-05-27 03:10:16,447 [INFO] Market data saved to market_data/SOL_RANGING.json
+2025-05-27 03:10:16,447 [INFO] Generating VOLATILE market data for SOL
+2025-05-27 03:10:16,449 [INFO] Market data saved to market_data/SOL_VOLATILE.json
+2025-05-27 03:10:16,449 [INFO] Market data generated for 4 symbols in 4 regimes
+2025-05-27 03:17:30,940 [INFO] Initializing Market Data Generator
+2025-05-27 03:17:30,940 [INFO] Market Data Generator initialized
+2025-05-27 03:17:30,940 [INFO] Generating market data for all symbols and regimes
+2025-05-27 03:17:30,940 [INFO] Generating BULLISH market data for BTC
+2025-05-27 03:17:30,978 [INFO] Market data saved to market_data/BTC_BULLISH.json
+2025-05-27 03:17:30,978 [INFO] Generating BEARISH market data for BTC
+2025-05-27 03:17:30,988 [INFO] Market data saved to market_data/BTC_BEARISH.json
+2025-05-27 03:17:30,989 [INFO] Generating RANGING market data for BTC
+2025-05-27 03:17:30,999 [INFO] Market data saved to market_data/BTC_RANGING.json
+2025-05-27 03:17:30,999 [INFO] Generating VOLATILE market data for BTC
+2025-05-27 03:17:31,011 [INFO] Market data saved to market_data/BTC_VOLATILE.json
+2025-05-27 03:17:31,011 [INFO] Generating BULLISH market data for ETH
+2025-05-27 03:17:31,021 [INFO] Market data saved to market_data/ETH_BULLISH.json
+2025-05-27 03:17:31,021 [INFO] Generating BEARISH market data for ETH
+2025-05-27 03:17:31,031 [INFO] Market data saved to market_data/ETH_BEARISH.json
+2025-05-27 03:17:31,031 [INFO] Generating RANGING market data for ETH
+2025-05-27 03:17:31,041 [INFO] Market data saved to market_data/ETH_RANGING.json
+2025-05-27 03:17:31,041 [INFO] Generating VOLATILE market data for ETH
+2025-05-27 03:17:31,051 [INFO] Market data saved to market_data/ETH_VOLATILE.json
+2025-05-27 03:17:31,051 [INFO] Generating BULLISH market data for XRP
+2025-05-27 03:17:31,061 [INFO] Market data saved to market_data/XRP_BULLISH.json
+2025-05-27 03:17:31,061 [INFO] Generating BEARISH market data for XRP
+2025-05-27 03:17:31,072 [INFO] Market data saved to market_data/XRP_BEARISH.json
+2025-05-27 03:17:31,072 [INFO] Generating RANGING market data for XRP
+2025-05-27 03:17:31,082 [INFO] Market data saved to market_data/XRP_RANGING.json
+2025-05-27 03:17:31,082 [INFO] Generating VOLATILE market data for XRP
+2025-05-27 03:17:31,092 [INFO] Market data saved to market_data/XRP_VOLATILE.json
+2025-05-27 03:17:31,092 [INFO] Generating BULLISH market data for SOL
+2025-05-27 03:17:31,102 [INFO] Market data saved to market_data/SOL_BULLISH.json
+2025-05-27 03:17:31,102 [INFO] Generating BEARISH market data for SOL
+2025-05-27 03:17:31,112 [INFO] Market data saved to market_data/SOL_BEARISH.json
+2025-05-27 03:17:31,112 [INFO] Generating RANGING market data for SOL
+2025-05-27 03:17:31,122 [INFO] Market data saved to market_data/SOL_RANGING.json
+2025-05-27 03:17:31,122 [INFO] Generating VOLATILE market data for SOL
+2025-05-27 03:17:31,132 [INFO] Market data saved to market_data/SOL_VOLATILE.json
+2025-05-27 03:17:31,132 [INFO] Market data generation completed

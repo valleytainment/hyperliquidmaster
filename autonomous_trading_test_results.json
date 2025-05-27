@@ -1,0 +1,281 @@
+{
+    "long_entry_tests": [
+        {
+            "test_name": "Long entry for XRP",
+            "success": true,
+            "position_size": 100.0,
+            "entry_price": 0.5,
+            "stop_loss_price": 0.475,
+            "result": {
+                "success": true,
+                "position": {
+                    "symbol": "XRP",
+                    "side": "LONG",
+                    "size": 100.0,
+                    "entry_price": 0.5,
+                    "current_price": 0.5,
+                    "liquidation_price": 0.3,
+                    "pnl": 0.0,
+                    "pnl_percent": 0.0,
+                    "stop_loss_price": 0.475,
+                    "take_profit_price": 0.575
+                },
+                "message": "Position opened: XRP LONG, Size: 100.0, Entry: 0.5"
+            },
+            "timestamp": "2025-05-27 03:01:58"
+        },
+        {
+            "test_name": "Long entry for ETH",
+            "success": true,
+            "position_size": 0.0641025641025641,
+            "entry_price": 3000.0,
+            "stop_loss_price": 2850.0,
+            "result": {
+                "success": true,
+                "position": {
+                    "symbol": "ETH",
+                    "side": "LONG",
+                    "size": 0.0641025641025641,
+                    "entry_price": 3000.0,
+                    "current_price": 3000.0,
+                    "liquidation_price": 1800.0,
+                    "pnl": 0.0,
+                    "pnl_percent": 0.0,
+                    "stop_loss_price": 2850.0,
+                    "take_profit_price": 3449.9999999999995
+                },
+                "message": "Position opened: ETH LONG, Size: 0.0641025641025641, Entry: 3000.0"
+            },
+            "timestamp": "2025-05-27 03:01:59"
+        }
+    ],
+    "long_exit_tests": [
+        {
+            "test_name": "Long exit for XRP",
+            "success": true,
+            "position": {
+                "symbol": "XRP",
+                "side": "LONG",
+                "size": 100.0,
+                "entry_price": 0.5,
+                "current_price": 0.5,
+                "liquidation_price": 0.3,
+                "pnl": 0.0,
+                "pnl_percent": 0.0,
+                "stop_loss_price": 0.475,
+                "take_profit_price": 0.575
+            },
+            "result": {
+                "success": true,
+                "symbol": "XRP",
+                "side": "LONG",
+                "exit_price": 0.5,
+                "pnl": 0.0,
+                "pnl_percent": 0.0,
+                "message": "Position closed: XRP LONG, Exit: 0.5, PnL: 0.00 (0.00%)"
+            },
+            "timestamp": "2025-05-27 03:02:00"
+        },
+        {
+            "test_name": "Long exit for ETH",
+            "success": true,
+            "position": {
+                "symbol": "ETH",
+                "side": "LONG",
+                "size": 0.0641025641025641,
+                "entry_price": 3000.0,
+                "current_price": 3000.0,
+                "liquidation_price": 1800.0,
+                "pnl": 0.0,
+                "pnl_percent": 0.0,
+                "stop_loss_price": 2850.0,
+                "take_profit_price": 3449.9999999999995
+            },
+            "result": {
+                "success": true,
+                "symbol": "ETH",
+                "side": "LONG",
+                "exit_price": 3000.0,
+                "pnl": 0.0,
+                "pnl_percent": 0.0,
+                "message": "Position closed: ETH LONG, Exit: 3000.0, PnL: 0.00 (0.00%)"
+            },
+            "timestamp": "2025-05-27 03:02:01"
+        }
+    ],
+    "short_entry_tests": [
+        {
+            "test_name": "Short entry for XRP",
+            "success": true,
+            "position_size": 100.0,
+            "entry_price": 0.5,
+            "stop_loss_price": 0.525,
+            "result": {
+                "success": true,
+                "position": {
+                    "symbol": "XRP",
+                    "side": "SHORT",
+                    "size": 100.0,
+                    "entry_price": 0.5,
+                    "current_price": 0.5,
+                    "liquidation_price": 0.7,
+                    "pnl": 0.0,
+                    "pnl_percent": 0.0,
+                    "stop_loss_price": 0.525,
+                    "take_profit_price": 0.425
+                },
+                "message": "Position opened: XRP SHORT, Size: 100.0, Entry: 0.5"
+            },
+            "timestamp": "2025-05-27 03:02:02"
+        },
+        {
+            "test_name": "Short entry for ETH",
+            "success": true,
+            "position_size": 0.0641025641025641,
+            "entry_price": 3000.0,
+            "stop_loss_price": 3150.0,
+            "result": {
+                "success": true,
+                "position": {
+                    "symbol": "ETH",
+                    "side": "SHORT",
+                    "size": 0.0641025641025641,
+                    "entry_price": 3000.0,
+                    "current_price": 3000.0,
+                    "liquidation_price": 4200.0,
+                    "pnl": 0.0,
+                    "pnl_percent": 0.0,
+                    "stop_loss_price": 3150.0,
+                    "take_profit_price": 2550.0
+                },
+                "message": "Position opened: ETH SHORT, Size: 0.0641025641025641, Entry: 3000.0"
+            },
+            "timestamp": "2025-05-27 03:02:03"
+        }
+    ],
+    "short_exit_tests": [
+        {
+            "test_name": "Short exit for XRP",
+            "success": true,
+            "position": {
+                "symbol": "XRP",
+                "side": "SHORT",
+                "size": 100.0,
+                "entry_price": 0.5,
+                "current_price": 0.5,
+                "liquidation_price": 0.7,
+                "pnl": 0.0,
+                "pnl_percent": 0.0,
+                "stop_loss_price": 0.525,
+                "take_profit_price": 0.425
+            },
+            "result": {
+                "success": true,
+                "symbol": "XRP",
+                "side": "SHORT",
+                "exit_price": 0.5,
+                "pnl": 0.0,
+                "pnl_percent": 0.0,
+                "message": "Position closed: XRP SHORT, Exit: 0.5, PnL: 0.00 (0.00%)"
+            },
+            "timestamp": "2025-05-27 03:02:04"
+        },
+        {
+            "test_name": "Short exit for ETH",
+            "success": true,
+            "position": {
+                "symbol": "ETH",
+                "side": "SHORT",
+                "size": 0.0641025641025641,
+                "entry_price": 3000.0,
+                "current_price": 3000.0,
+                "liquidation_price": 4200.0,
+                "pnl": 0.0,
+                "pnl_percent": 0.0,
+                "stop_loss_price": 3150.0,
+                "take_profit_price": 2550.0
+            },
+            "result": {
+                "success": true,
+                "symbol": "ETH",
+                "side": "SHORT",
+                "exit_price": 3000.0,
+                "pnl": 0.0,
+                "pnl_percent": 0.0,
+                "message": "Position closed: ETH SHORT, Exit: 3000.0, PnL: 0.00 (0.00%)"
+            },
+            "timestamp": "2025-05-27 03:02:05"
+        }
+    ],
+    "mode_switching_tests": [
+        {
+            "test_name": "Switch to PAPER_TRADING",
+            "success": true,
+            "expected": "PAPER_TRADING",
+            "actual": "PAPER_TRADING",
+            "timestamp": "2025-05-27 03:01:57"
+        },
+        {
+            "test_name": "Switch to LIVE_TRADING",
+            "success": true,
+            "expected": "LIVE_TRADING",
+            "actual": "LIVE_TRADING",
+            "timestamp": "2025-05-27 03:01:57"
+        },
+        {
+            "test_name": "Switch to MONITOR_ONLY",
+            "success": true,
+            "expected": "MONITOR_ONLY",
+            "actual": "MONITOR_ONLY",
+            "timestamp": "2025-05-27 03:01:57"
+        },
+        {
+            "test_name": "Switch to AGGRESSIVE",
+            "success": true,
+            "expected": "AGGRESSIVE",
+            "actual": "AGGRESSIVE",
+            "timestamp": "2025-05-27 03:01:57"
+        },
+        {
+            "test_name": "Switch to CONSERVATIVE",
+            "success": true,
+            "expected": "CONSERVATIVE",
+            "actual": "CONSERVATIVE",
+            "timestamp": "2025-05-27 03:01:57"
+        }
+    ],
+    "error_handling_tests": [
+        {
+            "test_name": "Connection loss and recovery",
+            "success": true,
+            "is_disconnected": true,
+            "reconnect_success": true,
+            "is_reconnected": true,
+            "timestamp": "2025-05-27 03:02:08"
+        },
+        {
+            "test_name": "Invalid order handling",
+            "success": false,
+            "result": {
+                "success": true,
+                "position": {
+                    "symbol": "INVALID_SYMBOL",
+                    "side": "LONG",
+                    "size": 0.0,
+                    "entry_price": 1.0,
+                    "current_price": 1.0,
+                    "liquidation_price": 0.6,
+                    "pnl": 0.0,
+                    "pnl_percent": 0.0,
+                    "stop_loss_price": null,
+                    "take_profit_price": null
+                },
+                "message": "Position opened: INVALID_SYMBOL LONG, Size: 0.0, Entry: 1.0"
+            },
+            "timestamp": "2025-05-27 03:02:09"
+        }
+    ],
+    "overall_success": true,
+    "timestamp": "2025-05-27 03:01:54",
+    "success_rate": 0.9333333333333333
+}

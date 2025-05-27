@@ -1,0 +1,1679 @@
+2025-05-27 03:05:44,403 [INFO] Initializing Strategy Integration Test
+2025-05-27 03:05:44,403 [WARNING] config.json not found, using default configuration
+2025-05-27 03:05:44,403 [INFO] Created default configuration
+2025-05-27 03:05:44,404 [INFO] Not connected, attempting to connect...
+2025-05-27 03:05:44,404 [INFO] Health check thread started
+2025-05-27 03:05:44,404 [INFO] Reconnecting to exchange...
+2025-05-27 03:05:44,404 [INFO] Waiting 2.50 seconds before reconnecting (attempt 1)
+2025-05-27 03:05:44,404 [INFO] Trading mode initialized to PAPER_TRADING
+2025-05-27 03:05:44,404 [INFO] Risk metrics loaded from risk_metrics.json
+2025-05-27 03:05:44,404 [INFO] Risk manager initialized
+2025-05-27 03:05:44,404 [INFO] Position manager wrapper initialized
+2025-05-27 03:05:44,404 [INFO] Advanced order manager initialized
+2025-05-27 03:05:44,404 [INFO] Optimized strategy initialized
+2025-05-27 03:05:44,404 [INFO] Strategy Integration Test initialized
+2025-05-27 03:05:44,404 [INFO] Starting all strategy integration tests
+2025-05-27 03:05:46,900 [INFO] Connecting to exchange...
+2025-05-27 03:05:47,401 [INFO] Connected to exchange
+2025-05-27 03:05:47,401 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 03:05:47,401 [INFO] Loading market data for testing
+2025-05-27 03:05:47,406 [INFO] Market data loaded for 4 symbols in 4 market regimes
+2025-05-27 03:05:47,406 [INFO] Testing strategy profitability
+2025-05-27 03:05:47,407 [INFO] Market regime for XRP: BULLISH
+2025-05-27 03:05:47,407 [INFO] Generating trading signal for XRP
+2025-05-27 03:05:47,409 [ERROR] Error calculating indicators for XRP: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,409 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:05:47,409 [INFO] Market regime for ETH: BULLISH
+2025-05-27 03:05:47,409 [INFO] Generating trading signal for ETH
+2025-05-27 03:05:47,409 [ERROR] Error calculating indicators for ETH: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,409 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:05:47,409 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:05:47,409 [INFO] Generating trading signal for BTC
+2025-05-27 03:05:47,410 [ERROR] Error calculating indicators for BTC: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,410 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:05:47,410 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:05:47,410 [INFO] Generating trading signal for SOL
+2025-05-27 03:05:47,410 [ERROR] Error calculating indicators for SOL: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,410 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:05:47,410 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:05:47,410 [INFO] Generating trading signal for XRP
+2025-05-27 03:05:47,410 [ERROR] Error calculating indicators for XRP: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,410 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:05:47,410 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:05:47,410 [INFO] Generating trading signal for ETH
+2025-05-27 03:05:47,411 [ERROR] Error calculating indicators for ETH: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,411 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:05:47,411 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:05:47,411 [INFO] Generating trading signal for BTC
+2025-05-27 03:05:47,411 [ERROR] Error calculating indicators for BTC: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,411 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:05:47,411 [INFO] Market regime for SOL: BEARISH
+2025-05-27 03:05:47,411 [INFO] Generating trading signal for SOL
+2025-05-27 03:05:47,411 [ERROR] Error calculating indicators for SOL: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,411 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:05:47,411 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:05:47,411 [INFO] Generating trading signal for XRP
+2025-05-27 03:05:47,412 [ERROR] Error calculating indicators for XRP: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,412 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:05:47,412 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:05:47,412 [INFO] Generating trading signal for ETH
+2025-05-27 03:05:47,412 [ERROR] Error calculating indicators for ETH: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,412 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:05:47,412 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:05:47,412 [INFO] Generating trading signal for BTC
+2025-05-27 03:05:47,412 [ERROR] Error calculating indicators for BTC: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,412 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:05:47,412 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:05:47,412 [INFO] Generating trading signal for SOL
+2025-05-27 03:05:47,413 [ERROR] Error calculating indicators for SOL: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,413 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:05:47,413 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:05:47,413 [INFO] Generating trading signal for XRP
+2025-05-27 03:05:47,413 [ERROR] Error calculating indicators for XRP: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,413 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:05:47,413 [INFO] Market regime for ETH: VOLATILE
+2025-05-27 03:05:47,413 [INFO] Generating trading signal for ETH
+2025-05-27 03:05:47,413 [ERROR] Error calculating indicators for ETH: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,413 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:05:47,413 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:05:47,413 [INFO] Generating trading signal for BTC
+2025-05-27 03:05:47,414 [ERROR] Error calculating indicators for BTC: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,414 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:05:47,414 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:05:47,414 [INFO] Generating trading signal for SOL
+2025-05-27 03:05:47,414 [ERROR] Error calculating indicators for SOL: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,414 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:05:47,414 [INFO] Testing strategy consistency
+2025-05-27 03:05:47,414 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:05:47,414 [INFO] Generating trading signal for XRP
+2025-05-27 03:05:47,414 [ERROR] Error calculating indicators for XRP: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,414 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:05:47,414 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:05:47,414 [INFO] Generating trading signal for XRP
+2025-05-27 03:05:47,415 [ERROR] Error calculating indicators for XRP: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,415 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:05:47,415 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:05:47,415 [INFO] Generating trading signal for XRP
+2025-05-27 03:05:47,415 [ERROR] Error calculating indicators for XRP: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,415 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:05:47,415 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:05:47,415 [INFO] Generating trading signal for XRP
+2025-05-27 03:05:47,415 [ERROR] Error calculating indicators for XRP: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,415 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:05:47,415 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:05:47,415 [INFO] Generating trading signal for XRP
+2025-05-27 03:05:47,416 [ERROR] Error calculating indicators for XRP: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,416 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:05:47,416 [INFO] Consistency test for XRP: SUCCESS, Consistency: 100.00%
+2025-05-27 03:05:47,416 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:05:47,416 [INFO] Generating trading signal for ETH
+2025-05-27 03:05:47,416 [ERROR] Error calculating indicators for ETH: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,416 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:05:47,416 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:05:47,416 [INFO] Generating trading signal for ETH
+2025-05-27 03:05:47,416 [ERROR] Error calculating indicators for ETH: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,416 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:05:47,416 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:05:47,416 [INFO] Generating trading signal for ETH
+2025-05-27 03:05:47,417 [ERROR] Error calculating indicators for ETH: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,417 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:05:47,417 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:05:47,417 [INFO] Generating trading signal for ETH
+2025-05-27 03:05:47,417 [ERROR] Error calculating indicators for ETH: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,417 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:05:47,417 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:05:47,417 [INFO] Generating trading signal for ETH
+2025-05-27 03:05:47,417 [ERROR] Error calculating indicators for ETH: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,417 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:05:47,417 [INFO] Consistency test for ETH: SUCCESS, Consistency: 100.00%
+2025-05-27 03:05:47,417 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:05:47,417 [INFO] Generating trading signal for BTC
+2025-05-27 03:05:47,418 [ERROR] Error calculating indicators for BTC: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,418 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:05:47,418 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:05:47,418 [INFO] Generating trading signal for BTC
+2025-05-27 03:05:47,418 [ERROR] Error calculating indicators for BTC: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,418 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:05:47,418 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:05:47,418 [INFO] Generating trading signal for BTC
+2025-05-27 03:05:47,418 [ERROR] Error calculating indicators for BTC: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,418 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:05:47,418 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:05:47,418 [INFO] Generating trading signal for BTC
+2025-05-27 03:05:47,419 [ERROR] Error calculating indicators for BTC: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,419 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:05:47,419 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:05:47,419 [INFO] Generating trading signal for BTC
+2025-05-27 03:05:47,419 [ERROR] Error calculating indicators for BTC: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,419 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:05:47,419 [INFO] Consistency test for BTC: SUCCESS, Consistency: 100.00%
+2025-05-27 03:05:47,419 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:05:47,419 [INFO] Generating trading signal for SOL
+2025-05-27 03:05:47,419 [ERROR] Error calculating indicators for SOL: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,419 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:05:47,419 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:05:47,420 [INFO] Generating trading signal for SOL
+2025-05-27 03:05:47,420 [ERROR] Error calculating indicators for SOL: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,420 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:05:47,420 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:05:47,420 [INFO] Generating trading signal for SOL
+2025-05-27 03:05:47,420 [ERROR] Error calculating indicators for SOL: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,420 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:05:47,420 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:05:47,420 [INFO] Generating trading signal for SOL
+2025-05-27 03:05:47,420 [ERROR] Error calculating indicators for SOL: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,420 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:05:47,421 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:05:47,421 [INFO] Generating trading signal for SOL
+2025-05-27 03:05:47,421 [ERROR] Error calculating indicators for SOL: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,421 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:05:47,421 [INFO] Consistency test for SOL: SUCCESS, Consistency: 100.00%
+2025-05-27 03:05:47,421 [INFO] Testing strategy adaptation to different market regimes
+2025-05-27 03:05:47,421 [INFO] Market regime for XRP: BULLISH
+2025-05-27 03:05:47,421 [INFO] Generating trading signal for XRP
+2025-05-27 03:05:47,421 [ERROR] Error calculating indicators for XRP: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,421 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:05:47,421 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:05:47,421 [INFO] Generating trading signal for XRP
+2025-05-27 03:05:47,421 [ERROR] Error calculating indicators for XRP: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,421 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:05:47,422 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:05:47,422 [INFO] Generating trading signal for XRP
+2025-05-27 03:05:47,422 [ERROR] Error calculating indicators for XRP: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,422 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:05:47,422 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:05:47,422 [INFO] Generating trading signal for XRP
+2025-05-27 03:05:47,422 [ERROR] Error calculating indicators for XRP: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,422 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:05:47,422 [INFO] Market regime adaptation test for XRP: FAILED, Adaptation score: 0.00%
+2025-05-27 03:05:47,422 [INFO] Market regime for ETH: BULLISH
+2025-05-27 03:05:47,422 [INFO] Generating trading signal for ETH
+2025-05-27 03:05:47,422 [ERROR] Error calculating indicators for ETH: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,422 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:05:47,423 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:05:47,423 [INFO] Generating trading signal for ETH
+2025-05-27 03:05:47,423 [ERROR] Error calculating indicators for ETH: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,423 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:05:47,423 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:05:47,423 [INFO] Generating trading signal for ETH
+2025-05-27 03:05:47,423 [ERROR] Error calculating indicators for ETH: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,423 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:05:47,423 [INFO] Market regime for ETH: VOLATILE
+2025-05-27 03:05:47,423 [INFO] Generating trading signal for ETH
+2025-05-27 03:05:47,423 [ERROR] Error calculating indicators for ETH: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,423 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:05:47,424 [INFO] Market regime adaptation test for ETH: FAILED, Adaptation score: 0.00%
+2025-05-27 03:05:47,424 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:05:47,424 [INFO] Generating trading signal for BTC
+2025-05-27 03:05:47,424 [ERROR] Error calculating indicators for BTC: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,424 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:05:47,424 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:05:47,424 [INFO] Generating trading signal for BTC
+2025-05-27 03:05:47,424 [ERROR] Error calculating indicators for BTC: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,424 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:05:47,424 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:05:47,424 [INFO] Generating trading signal for BTC
+2025-05-27 03:05:47,424 [ERROR] Error calculating indicators for BTC: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,424 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:05:47,425 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:05:47,425 [INFO] Generating trading signal for BTC
+2025-05-27 03:05:47,425 [ERROR] Error calculating indicators for BTC: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,425 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:05:47,425 [INFO] Market regime adaptation test for BTC: FAILED, Adaptation score: 0.00%
+2025-05-27 03:05:47,425 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:05:47,425 [INFO] Generating trading signal for SOL
+2025-05-27 03:05:47,425 [ERROR] Error calculating indicators for SOL: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,425 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:05:47,425 [INFO] Market regime for SOL: BEARISH
+2025-05-27 03:05:47,425 [INFO] Generating trading signal for SOL
+2025-05-27 03:05:47,425 [ERROR] Error calculating indicators for SOL: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,425 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:05:47,425 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:05:47,425 [INFO] Generating trading signal for SOL
+2025-05-27 03:05:47,426 [ERROR] Error calculating indicators for SOL: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,426 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:05:47,426 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:05:47,426 [INFO] Generating trading signal for SOL
+2025-05-27 03:05:47,426 [ERROR] Error calculating indicators for SOL: object of type 'numpy.float64' has no len()
+2025-05-27 03:05:47,426 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:05:47,426 [INFO] Market regime adaptation test for SOL: FAILED, Adaptation score: 0.00%
+2025-05-27 03:05:47,426 [INFO] All tests completed. Success rate: 50.00%
+2025-05-27 03:05:47,426 [INFO] Test results saved to strategy_integration_test_results.json
+2025-05-27 03:07:38,384 [INFO] Initializing Strategy Integration Test
+2025-05-27 03:07:38,384 [WARNING] config.json not found, using default configuration
+2025-05-27 03:07:38,384 [INFO] Created default configuration
+2025-05-27 03:07:38,384 [INFO] Not connected, attempting to connect...
+2025-05-27 03:07:38,384 [INFO] Health check thread started
+2025-05-27 03:07:38,384 [INFO] Reconnecting to exchange...
+2025-05-27 03:07:38,385 [INFO] Waiting 2.35 seconds before reconnecting (attempt 1)
+2025-05-27 03:07:38,385 [INFO] Trading mode initialized to PAPER_TRADING
+2025-05-27 03:07:38,385 [INFO] Risk metrics loaded from risk_metrics.json
+2025-05-27 03:07:38,385 [INFO] Risk manager initialized
+2025-05-27 03:07:38,385 [INFO] Position manager wrapper initialized
+2025-05-27 03:07:38,385 [INFO] Advanced order manager initialized
+2025-05-27 03:07:38,385 [INFO] Optimized strategy initialized
+2025-05-27 03:07:38,385 [INFO] Strategy Integration Test initialized
+2025-05-27 03:07:38,385 [INFO] Starting all strategy integration tests
+2025-05-27 03:07:40,737 [INFO] Connecting to exchange...
+2025-05-27 03:07:41,237 [INFO] Connected to exchange
+2025-05-27 03:07:41,238 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 03:07:41,238 [INFO] Loading market data for testing
+2025-05-27 03:07:41,240 [INFO] Market data loaded for 4 symbols in 4 market regimes
+2025-05-27 03:07:41,240 [INFO] Testing strategy profitability
+2025-05-27 03:07:41,240 [INFO] Market regime for XRP: BULLISH
+2025-05-27 03:07:41,240 [INFO] Generating trading signal for XRP
+2025-05-27 03:07:41,241 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:07:41,241 [INFO] Market regime for ETH: BULLISH
+2025-05-27 03:07:41,241 [INFO] Generating trading signal for ETH
+2025-05-27 03:07:41,241 [INFO] Trading signal for ETH: SHORT with 36.67% confidence
+2025-05-27 03:07:41,241 [INFO] Profitability test for ETH in BULLISH regime: FAILED, PnL: 0.00 (0.00%)
+2025-05-27 03:07:41,241 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:07:41,242 [INFO] Generating trading signal for BTC
+2025-05-27 03:07:41,242 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:07:41,242 [INFO] Market regime for SOL: BULLISH
+2025-05-27 03:07:41,242 [INFO] Generating trading signal for SOL
+2025-05-27 03:07:41,243 [INFO] Trading signal for SOL: SHORT with 53.33% confidence
+2025-05-27 03:07:41,243 [INFO] Profitability test for SOL in BULLISH regime: FAILED, PnL: 0.00 (0.00%)
+2025-05-27 03:07:41,243 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:07:41,243 [INFO] Generating trading signal for XRP
+2025-05-27 03:07:41,243 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:07:41,243 [INFO] Market regime for ETH: BEARISH
+2025-05-27 03:07:41,243 [INFO] Generating trading signal for ETH
+2025-05-27 03:07:41,244 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:07:41,244 [INFO] Market regime for BTC: BEARISH
+2025-05-27 03:07:41,244 [INFO] Generating trading signal for BTC
+2025-05-27 03:07:41,244 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:07:41,244 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:07:41,244 [INFO] Generating trading signal for SOL
+2025-05-27 03:07:41,245 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:07:41,245 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:07:41,245 [INFO] Generating trading signal for XRP
+2025-05-27 03:07:41,245 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:07:41,245 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:07:41,245 [INFO] Generating trading signal for ETH
+2025-05-27 03:07:41,246 [INFO] Trading signal for ETH: SHORT with 33.33% confidence
+2025-05-27 03:07:41,246 [INFO] Profitability test for ETH in RANGING regime: FAILED, PnL: 0.00 (0.00%)
+2025-05-27 03:07:41,246 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:07:41,246 [INFO] Generating trading signal for BTC
+2025-05-27 03:07:41,246 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:07:41,247 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:07:41,247 [INFO] Generating trading signal for SOL
+2025-05-27 03:07:41,247 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:07:41,247 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:07:41,247 [INFO] Generating trading signal for XRP
+2025-05-27 03:07:41,248 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:07:41,248 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:07:41,248 [INFO] Generating trading signal for ETH
+2025-05-27 03:07:41,248 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:07:41,248 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:07:41,248 [INFO] Generating trading signal for BTC
+2025-05-27 03:07:41,249 [INFO] Trading signal for BTC: SHORT with 33.33% confidence
+2025-05-27 03:07:41,249 [INFO] Profitability test for BTC in VOLATILE regime: SUCCESS, PnL: 3890.15 (7.08%)
+2025-05-27 03:07:41,249 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:07:41,249 [INFO] Generating trading signal for SOL
+2025-05-27 03:07:41,249 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:07:41,249 [INFO] Testing strategy consistency
+2025-05-27 03:07:41,249 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:07:41,249 [INFO] Generating trading signal for XRP
+2025-05-27 03:07:41,250 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:07:41,250 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:07:41,250 [INFO] Generating trading signal for XRP
+2025-05-27 03:07:41,250 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:07:41,250 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:07:41,250 [INFO] Generating trading signal for XRP
+2025-05-27 03:07:41,251 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:07:41,251 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:07:41,251 [INFO] Generating trading signal for XRP
+2025-05-27 03:07:41,251 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:07:41,251 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:07:41,251 [INFO] Generating trading signal for XRP
+2025-05-27 03:07:41,252 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:07:41,252 [INFO] Consistency test for XRP: SUCCESS, Consistency: 100.00%
+2025-05-27 03:07:41,252 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:07:41,252 [INFO] Generating trading signal for ETH
+2025-05-27 03:07:41,252 [INFO] Trading signal for ETH: SHORT with 33.33% confidence
+2025-05-27 03:07:41,253 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:07:41,253 [INFO] Generating trading signal for ETH
+2025-05-27 03:07:41,253 [INFO] Trading signal for ETH: SHORT with 33.33% confidence
+2025-05-27 03:07:41,253 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:07:41,253 [INFO] Generating trading signal for ETH
+2025-05-27 03:07:41,254 [INFO] Trading signal for ETH: SHORT with 33.33% confidence
+2025-05-27 03:07:41,254 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:07:41,254 [INFO] Generating trading signal for ETH
+2025-05-27 03:07:41,254 [INFO] Trading signal for ETH: SHORT with 33.33% confidence
+2025-05-27 03:07:41,254 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:07:41,254 [INFO] Generating trading signal for ETH
+2025-05-27 03:07:41,255 [INFO] Trading signal for ETH: SHORT with 33.33% confidence
+2025-05-27 03:07:41,255 [INFO] Consistency test for ETH: SUCCESS, Consistency: 100.00%
+2025-05-27 03:07:41,255 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:07:41,255 [INFO] Generating trading signal for BTC
+2025-05-27 03:07:41,255 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:07:41,255 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:07:41,255 [INFO] Generating trading signal for BTC
+2025-05-27 03:07:41,256 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:07:41,256 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:07:41,256 [INFO] Generating trading signal for BTC
+2025-05-27 03:07:41,256 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:07:41,256 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:07:41,256 [INFO] Generating trading signal for BTC
+2025-05-27 03:07:41,257 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:07:41,257 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:07:41,257 [INFO] Generating trading signal for BTC
+2025-05-27 03:07:41,257 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:07:41,257 [INFO] Consistency test for BTC: SUCCESS, Consistency: 100.00%
+2025-05-27 03:07:41,257 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:07:41,257 [INFO] Generating trading signal for SOL
+2025-05-27 03:07:41,258 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:07:41,258 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:07:41,258 [INFO] Generating trading signal for SOL
+2025-05-27 03:07:41,258 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:07:41,259 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:07:41,259 [INFO] Generating trading signal for SOL
+2025-05-27 03:07:41,259 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:07:41,259 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:07:41,259 [INFO] Generating trading signal for SOL
+2025-05-27 03:07:41,260 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:07:41,260 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:07:41,260 [INFO] Generating trading signal for SOL
+2025-05-27 03:07:41,260 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:07:41,260 [INFO] Consistency test for SOL: SUCCESS, Consistency: 100.00%
+2025-05-27 03:07:41,260 [INFO] Testing strategy adaptation to different market regimes
+2025-05-27 03:07:41,260 [INFO] Market regime for XRP: BULLISH
+2025-05-27 03:07:41,260 [INFO] Generating trading signal for XRP
+2025-05-27 03:07:41,261 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:07:41,261 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:07:41,261 [INFO] Generating trading signal for XRP
+2025-05-27 03:07:41,261 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:07:41,261 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:07:41,261 [INFO] Generating trading signal for XRP
+2025-05-27 03:07:41,262 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:07:41,262 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:07:41,262 [INFO] Generating trading signal for XRP
+2025-05-27 03:07:41,262 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:07:41,262 [INFO] Market regime adaptation test for XRP: FAILED, Adaptation score: 0.00%
+2025-05-27 03:07:41,262 [INFO] Market regime for ETH: BULLISH
+2025-05-27 03:07:41,262 [INFO] Generating trading signal for ETH
+2025-05-27 03:07:41,263 [INFO] Trading signal for ETH: SHORT with 36.67% confidence
+2025-05-27 03:07:41,263 [INFO] Market regime for ETH: BEARISH
+2025-05-27 03:07:41,263 [INFO] Generating trading signal for ETH
+2025-05-27 03:07:41,263 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:07:41,263 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:07:41,264 [INFO] Generating trading signal for ETH
+2025-05-27 03:07:41,264 [INFO] Trading signal for ETH: SHORT with 33.33% confidence
+2025-05-27 03:07:41,264 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:07:41,264 [INFO] Generating trading signal for ETH
+2025-05-27 03:07:41,264 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:07:41,264 [INFO] Market regime adaptation test for ETH: FAILED, Adaptation score: 0.00%
+2025-05-27 03:07:41,265 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:07:41,265 [INFO] Generating trading signal for BTC
+2025-05-27 03:07:41,265 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:07:41,265 [INFO] Market regime for BTC: BEARISH
+2025-05-27 03:07:41,265 [INFO] Generating trading signal for BTC
+2025-05-27 03:07:41,266 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:07:41,266 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:07:41,266 [INFO] Generating trading signal for BTC
+2025-05-27 03:07:41,266 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:07:41,266 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:07:41,266 [INFO] Generating trading signal for BTC
+2025-05-27 03:07:41,267 [INFO] Trading signal for BTC: SHORT with 33.33% confidence
+2025-05-27 03:07:41,267 [INFO] Market regime adaptation test for BTC: FAILED, Adaptation score: 0.00%
+2025-05-27 03:07:41,267 [INFO] Market regime for SOL: BULLISH
+2025-05-27 03:07:41,267 [INFO] Generating trading signal for SOL
+2025-05-27 03:07:41,267 [INFO] Trading signal for SOL: SHORT with 53.33% confidence
+2025-05-27 03:07:41,267 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:07:41,267 [INFO] Generating trading signal for SOL
+2025-05-27 03:07:41,268 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:07:41,268 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:07:41,268 [INFO] Generating trading signal for SOL
+2025-05-27 03:07:41,268 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:07:41,268 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:07:41,268 [INFO] Generating trading signal for SOL
+2025-05-27 03:07:41,269 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:07:41,269 [INFO] Market regime adaptation test for SOL: FAILED, Adaptation score: 0.00%
+2025-05-27 03:07:41,269 [INFO] All tests completed. Success rate: 41.67%
+2025-05-27 03:07:41,269 [INFO] Test results saved to strategy_integration_test_results.json
+2025-05-27 03:11:30,196 [INFO] Initializing Strategy Integration Test
+2025-05-27 03:11:30,196 [INFO] Optimized strategy initialized with aggressive thresholds
+2025-05-27 03:11:30,197 [INFO] Strategy Integration Test initialized
+2025-05-27 03:11:30,197 [INFO] Running all strategy integration tests
+2025-05-27 03:11:30,197 [INFO] Running profitability tests
+2025-05-27 03:11:30,197 [INFO] Testing profitability for BTC
+2025-05-27 03:11:30,198 [INFO] Market regime for BTC: BULLISH
+2025-05-27 03:11:30,198 [INFO] Generating trading signal for BTC
+2025-05-27 03:11:30,198 [INFO] Trading signal for BTC: LONG with 70.00% confidence
+2025-05-27 03:11:30,199 [INFO] Profitability test for BTC in BULLISH regime: SUCCESS, Profit: 17.92%
+2025-05-27 03:11:30,199 [INFO] Market regime for BTC: BEARISH
+2025-05-27 03:11:30,199 [INFO] Generating trading signal for BTC
+2025-05-27 03:11:30,199 [INFO] Trading signal for BTC: SHORT with 70.00% confidence
+2025-05-27 03:11:30,199 [INFO] Profitability test for BTC in BEARISH regime: SUCCESS, Profit: 10.02%
+2025-05-27 03:11:30,199 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:11:30,199 [INFO] Generating trading signal for BTC
+2025-05-27 03:11:30,200 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:11:30,200 [INFO] Profitability test for BTC in RANGING regime: FAILURE, Profit: 0.00%
+2025-05-27 03:11:30,200 [INFO] Market regime for BTC: VOLATILE
+2025-05-27 03:11:30,200 [INFO] Generating trading signal for BTC
+2025-05-27 03:11:30,200 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:11:30,201 [INFO] Profitability test for BTC in VOLATILE regime: FAILURE, Profit: 0.00%
+2025-05-27 03:11:30,201 [INFO] Testing profitability for ETH
+2025-05-27 03:11:30,201 [INFO] Market regime for ETH: BULLISH
+2025-05-27 03:11:30,201 [INFO] Generating trading signal for ETH
+2025-05-27 03:11:30,202 [INFO] Trading signal for ETH: LONG with 70.00% confidence
+2025-05-27 03:11:30,202 [INFO] Profitability test for ETH in BULLISH regime: SUCCESS, Profit: 9.94%
+2025-05-27 03:11:30,202 [INFO] Market regime for ETH: BEARISH
+2025-05-27 03:11:30,202 [INFO] Generating trading signal for ETH
+2025-05-27 03:11:30,203 [INFO] Trading signal for ETH: SHORT with 70.00% confidence
+2025-05-27 03:11:30,203 [INFO] Profitability test for ETH in BEARISH regime: SUCCESS, Profit: 7.51%
+2025-05-27 03:11:30,203 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:11:30,203 [INFO] Generating trading signal for ETH
+2025-05-27 03:11:30,203 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:11:30,203 [INFO] Profitability test for ETH in RANGING regime: FAILURE, Profit: 0.00%
+2025-05-27 03:11:30,203 [INFO] Market regime for ETH: VOLATILE
+2025-05-27 03:11:30,203 [INFO] Generating trading signal for ETH
+2025-05-27 03:11:30,204 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:11:30,204 [INFO] Profitability test for ETH in VOLATILE regime: FAILURE, Profit: 0.00%
+2025-05-27 03:11:30,204 [INFO] Testing profitability for XRP
+2025-05-27 03:11:30,205 [INFO] Market regime for XRP: BULLISH
+2025-05-27 03:11:30,205 [INFO] Generating trading signal for XRP
+2025-05-27 03:11:30,205 [INFO] Trading signal for XRP: LONG with 70.00% confidence
+2025-05-27 03:11:30,205 [INFO] Profitability test for XRP in BULLISH regime: SUCCESS, Profit: 5.82%
+2025-05-27 03:11:30,205 [INFO] Market regime for XRP: BEARISH
+2025-05-27 03:11:30,205 [INFO] Generating trading signal for XRP
+2025-05-27 03:11:30,206 [INFO] Trading signal for XRP: SHORT with 70.00% confidence
+2025-05-27 03:11:30,206 [INFO] Profitability test for XRP in BEARISH regime: SUCCESS, Profit: 2.20%
+2025-05-27 03:11:30,206 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:11:30,206 [INFO] Generating trading signal for XRP
+2025-05-27 03:11:30,207 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:11:30,207 [INFO] Profitability test for XRP in RANGING regime: FAILURE, Profit: 0.00%
+2025-05-27 03:11:30,207 [INFO] Market regime for XRP: VOLATILE
+2025-05-27 03:11:30,207 [INFO] Generating trading signal for XRP
+2025-05-27 03:11:30,207 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:11:30,207 [INFO] Profitability test for XRP in VOLATILE regime: FAILURE, Profit: 0.00%
+2025-05-27 03:11:30,207 [INFO] Testing profitability for SOL
+2025-05-27 03:11:30,208 [INFO] Market regime for SOL: BULLISH
+2025-05-27 03:11:30,208 [INFO] Generating trading signal for SOL
+2025-05-27 03:11:30,209 [INFO] Trading signal for SOL: LONG with 70.00% confidence
+2025-05-27 03:11:30,209 [INFO] Profitability test for SOL in BULLISH regime: SUCCESS, Profit: 14.87%
+2025-05-27 03:11:30,209 [INFO] Market regime for SOL: BEARISH
+2025-05-27 03:11:30,209 [INFO] Generating trading signal for SOL
+2025-05-27 03:11:30,209 [INFO] Trading signal for SOL: SHORT with 70.00% confidence
+2025-05-27 03:11:30,209 [INFO] Profitability test for SOL in BEARISH regime: SUCCESS, Profit: 5.57%
+2025-05-27 03:11:30,209 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:11:30,209 [INFO] Generating trading signal for SOL
+2025-05-27 03:11:30,210 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:11:30,210 [INFO] Profitability test for SOL in RANGING regime: FAILURE, Profit: 0.00%
+2025-05-27 03:11:30,210 [INFO] Market regime for SOL: VOLATILE
+2025-05-27 03:11:30,210 [INFO] Generating trading signal for SOL
+2025-05-27 03:11:30,210 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:11:30,210 [INFO] Profitability test for SOL in VOLATILE regime: FAILURE, Profit: 0.00%
+2025-05-27 03:11:30,211 [INFO] Running consistency tests
+2025-05-27 03:11:30,211 [INFO] Testing consistency for BTC
+2025-05-27 03:11:30,211 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:11:30,211 [INFO] Generating trading signal for BTC
+2025-05-27 03:11:30,211 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:11:30,212 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:11:30,212 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:11:30,212 [INFO] Generating trading signal for BTC
+2025-05-27 03:11:30,212 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:11:30,212 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:11:30,212 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:11:30,212 [INFO] Generating trading signal for BTC
+2025-05-27 03:11:30,213 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:11:30,213 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:11:30,213 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:11:30,213 [INFO] Generating trading signal for BTC
+2025-05-27 03:11:30,213 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:11:30,213 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:11:30,214 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:11:30,214 [INFO] Generating trading signal for BTC
+2025-05-27 03:11:30,214 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:11:30,214 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:11:30,214 [INFO] Consistency test for BTC: SUCCESS, Consistency: 100.00%
+2025-05-27 03:11:30,214 [INFO] Testing consistency for ETH
+2025-05-27 03:11:30,215 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:11:30,215 [INFO] Generating trading signal for ETH
+2025-05-27 03:11:30,215 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:11:30,215 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:11:30,215 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:11:30,215 [INFO] Generating trading signal for ETH
+2025-05-27 03:11:30,216 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:11:30,216 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:11:30,216 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:11:30,216 [INFO] Generating trading signal for ETH
+2025-05-27 03:11:30,216 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:11:30,216 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:11:30,217 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:11:30,217 [INFO] Generating trading signal for ETH
+2025-05-27 03:11:30,217 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:11:30,217 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:11:30,217 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:11:30,217 [INFO] Generating trading signal for ETH
+2025-05-27 03:11:30,218 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:11:30,218 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:11:30,218 [INFO] Consistency test for ETH: SUCCESS, Consistency: 100.00%
+2025-05-27 03:11:30,218 [INFO] Testing consistency for XRP
+2025-05-27 03:11:30,218 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:11:30,218 [INFO] Generating trading signal for XRP
+2025-05-27 03:11:30,219 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:11:30,219 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:11:30,219 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:11:30,219 [INFO] Generating trading signal for XRP
+2025-05-27 03:11:30,219 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:11:30,219 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:11:30,219 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:11:30,219 [INFO] Generating trading signal for XRP
+2025-05-27 03:11:30,220 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:11:30,220 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:11:30,220 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:11:30,220 [INFO] Generating trading signal for XRP
+2025-05-27 03:11:30,221 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:11:30,221 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:11:30,221 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:11:30,221 [INFO] Generating trading signal for XRP
+2025-05-27 03:11:30,221 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:11:30,221 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:11:30,221 [INFO] Consistency test for XRP: SUCCESS, Consistency: 100.00%
+2025-05-27 03:11:30,221 [INFO] Testing consistency for SOL
+2025-05-27 03:11:30,222 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:11:30,222 [INFO] Generating trading signal for SOL
+2025-05-27 03:11:30,222 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:11:30,222 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:11:30,222 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:11:30,222 [INFO] Generating trading signal for SOL
+2025-05-27 03:11:30,223 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:11:30,223 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:11:30,223 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:11:30,223 [INFO] Generating trading signal for SOL
+2025-05-27 03:11:30,224 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:11:30,224 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:11:30,224 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:11:30,224 [INFO] Generating trading signal for SOL
+2025-05-27 03:11:30,224 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:11:30,224 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:11:30,224 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:11:30,224 [INFO] Generating trading signal for SOL
+2025-05-27 03:11:30,225 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:11:30,225 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:11:30,225 [INFO] Consistency test for SOL: SUCCESS, Consistency: 100.00%
+2025-05-27 03:11:30,225 [INFO] Testing strategy adaptation to different market regimes
+2025-05-27 03:11:30,226 [INFO] Market regime for BTC: BULLISH
+2025-05-27 03:11:30,226 [INFO] Generating trading signal for BTC
+2025-05-27 03:11:30,226 [INFO] Trading signal for BTC: LONG with 70.00% confidence
+2025-05-27 03:11:30,226 [INFO] Market regime for BTC: BULLISH
+2025-05-27 03:11:30,226 [INFO] Trading signal for BTC: LONG with 70.00% confidence
+2025-05-27 03:11:30,226 [INFO] Market regime for BTC: BEARISH
+2025-05-27 03:11:30,227 [INFO] Generating trading signal for BTC
+2025-05-27 03:11:30,227 [INFO] Trading signal for BTC: SHORT with 70.00% confidence
+2025-05-27 03:11:30,227 [INFO] Market regime for BTC: BEARISH
+2025-05-27 03:11:30,227 [INFO] Trading signal for BTC: SHORT with 70.00% confidence
+2025-05-27 03:11:30,227 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:11:30,227 [INFO] Generating trading signal for BTC
+2025-05-27 03:11:30,228 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:11:30,228 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:11:30,228 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:11:30,228 [INFO] Market regime for BTC: VOLATILE
+2025-05-27 03:11:30,228 [INFO] Generating trading signal for BTC
+2025-05-27 03:11:30,228 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:11:30,228 [INFO] Market regime for BTC: VOLATILE
+2025-05-27 03:11:30,228 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:11:30,228 [INFO] Market regime adaptation test for BTC: SUCCESS, Adaptation score: 75.00%
+2025-05-27 03:11:30,229 [INFO] Market regime for ETH: BULLISH
+2025-05-27 03:11:30,229 [INFO] Generating trading signal for ETH
+2025-05-27 03:11:30,230 [INFO] Trading signal for ETH: LONG with 70.00% confidence
+2025-05-27 03:11:30,230 [INFO] Market regime for ETH: BULLISH
+2025-05-27 03:11:30,230 [INFO] Trading signal for ETH: LONG with 70.00% confidence
+2025-05-27 03:11:30,230 [INFO] Market regime for ETH: BEARISH
+2025-05-27 03:11:30,230 [INFO] Generating trading signal for ETH
+2025-05-27 03:11:30,230 [INFO] Trading signal for ETH: SHORT with 70.00% confidence
+2025-05-27 03:11:30,230 [INFO] Market regime for ETH: BEARISH
+2025-05-27 03:11:30,230 [INFO] Trading signal for ETH: SHORT with 70.00% confidence
+2025-05-27 03:11:30,231 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:11:30,231 [INFO] Generating trading signal for ETH
+2025-05-27 03:11:30,231 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:11:30,231 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:11:30,231 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:11:30,231 [INFO] Market regime for ETH: VOLATILE
+2025-05-27 03:11:30,231 [INFO] Generating trading signal for ETH
+2025-05-27 03:11:30,232 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:11:30,232 [INFO] Market regime for ETH: VOLATILE
+2025-05-27 03:11:30,232 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:11:30,232 [INFO] Market regime adaptation test for ETH: SUCCESS, Adaptation score: 75.00%
+2025-05-27 03:11:30,232 [INFO] Market regime for XRP: BULLISH
+2025-05-27 03:11:30,232 [INFO] Generating trading signal for XRP
+2025-05-27 03:11:30,233 [INFO] Trading signal for XRP: LONG with 70.00% confidence
+2025-05-27 03:11:30,233 [INFO] Market regime for XRP: BULLISH
+2025-05-27 03:11:30,233 [INFO] Trading signal for XRP: LONG with 70.00% confidence
+2025-05-27 03:11:30,233 [INFO] Market regime for XRP: BEARISH
+2025-05-27 03:11:30,233 [INFO] Generating trading signal for XRP
+2025-05-27 03:11:30,234 [INFO] Trading signal for XRP: SHORT with 70.00% confidence
+2025-05-27 03:11:30,234 [INFO] Market regime for XRP: BEARISH
+2025-05-27 03:11:30,234 [INFO] Trading signal for XRP: SHORT with 70.00% confidence
+2025-05-27 03:11:30,234 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:11:30,234 [INFO] Generating trading signal for XRP
+2025-05-27 03:11:30,234 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:11:30,234 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:11:30,234 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:11:30,234 [INFO] Market regime for XRP: VOLATILE
+2025-05-27 03:11:30,234 [INFO] Generating trading signal for XRP
+2025-05-27 03:11:30,235 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:11:30,235 [INFO] Market regime for XRP: VOLATILE
+2025-05-27 03:11:30,235 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:11:30,235 [INFO] Market regime adaptation test for XRP: SUCCESS, Adaptation score: 75.00%
+2025-05-27 03:11:30,236 [INFO] Market regime for SOL: BULLISH
+2025-05-27 03:11:30,236 [INFO] Generating trading signal for SOL
+2025-05-27 03:11:30,236 [INFO] Trading signal for SOL: LONG with 70.00% confidence
+2025-05-27 03:11:30,236 [INFO] Market regime for SOL: BULLISH
+2025-05-27 03:11:30,236 [INFO] Trading signal for SOL: LONG with 70.00% confidence
+2025-05-27 03:11:30,236 [INFO] Market regime for SOL: BEARISH
+2025-05-27 03:11:30,237 [INFO] Generating trading signal for SOL
+2025-05-27 03:11:30,237 [INFO] Trading signal for SOL: SHORT with 70.00% confidence
+2025-05-27 03:11:30,237 [INFO] Market regime for SOL: BEARISH
+2025-05-27 03:11:30,237 [INFO] Trading signal for SOL: SHORT with 70.00% confidence
+2025-05-27 03:11:30,237 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:11:30,237 [INFO] Generating trading signal for SOL
+2025-05-27 03:11:30,238 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:11:30,238 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:11:30,238 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:11:30,238 [INFO] Market regime for SOL: VOLATILE
+2025-05-27 03:11:30,238 [INFO] Generating trading signal for SOL
+2025-05-27 03:11:30,238 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:11:30,238 [INFO] Market regime for SOL: VOLATILE
+2025-05-27 03:11:30,238 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:11:30,238 [INFO] Market regime adaptation test for SOL: SUCCESS, Adaptation score: 75.00%
+2025-05-27 03:11:30,238 [INFO] All tests completed. Success rate: 66.67%
+2025-05-27 03:11:30,239 [ERROR] Error running strategy integration tests: Object of type bool is not JSON serializable
+2025-05-27 03:12:44,285 [INFO] Initializing Strategy Integration Test
+2025-05-27 03:12:44,285 [INFO] Optimized strategy initialized with aggressive thresholds
+2025-05-27 03:12:44,285 [INFO] Strategy Integration Test initialized
+2025-05-27 03:12:44,285 [INFO] Running all strategy integration tests
+2025-05-27 03:12:44,285 [INFO] Running profitability tests
+2025-05-27 03:12:44,285 [INFO] Testing profitability for BTC
+2025-05-27 03:12:44,286 [INFO] Market regime for BTC: BULLISH
+2025-05-27 03:12:44,286 [INFO] Generating trading signal for BTC
+2025-05-27 03:12:44,287 [INFO] Trading signal for BTC: LONG with 70.00% confidence
+2025-05-27 03:12:44,287 [INFO] Profitability test for BTC in BULLISH regime: SUCCESS, Profit: 19.03%
+2025-05-27 03:12:44,287 [INFO] Market regime for BTC: BEARISH
+2025-05-27 03:12:44,287 [INFO] Generating trading signal for BTC
+2025-05-27 03:12:44,288 [INFO] Trading signal for BTC: SHORT with 70.00% confidence
+2025-05-27 03:12:44,288 [INFO] Profitability test for BTC in BEARISH regime: SUCCESS, Profit: 13.84%
+2025-05-27 03:12:44,288 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:12:44,288 [INFO] Generating trading signal for BTC
+2025-05-27 03:12:44,288 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:12:44,288 [INFO] Profitability test for BTC in RANGING regime: FAILURE, Profit: 0.00%
+2025-05-27 03:12:44,289 [INFO] Market regime for BTC: VOLATILE
+2025-05-27 03:12:44,289 [INFO] Generating trading signal for BTC
+2025-05-27 03:12:44,289 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:12:44,289 [INFO] Profitability test for BTC in VOLATILE regime: FAILURE, Profit: 0.00%
+2025-05-27 03:12:44,289 [INFO] Testing profitability for ETH
+2025-05-27 03:12:44,290 [INFO] Market regime for ETH: BULLISH
+2025-05-27 03:12:44,290 [INFO] Generating trading signal for ETH
+2025-05-27 03:12:44,291 [INFO] Trading signal for ETH: LONG with 70.00% confidence
+2025-05-27 03:12:44,291 [INFO] Profitability test for ETH in BULLISH regime: SUCCESS, Profit: 23.95%
+2025-05-27 03:12:44,291 [INFO] Market regime for ETH: BEARISH
+2025-05-27 03:12:44,291 [INFO] Generating trading signal for ETH
+2025-05-27 03:12:44,291 [INFO] Trading signal for ETH: SHORT with 70.00% confidence
+2025-05-27 03:12:44,291 [INFO] Profitability test for ETH in BEARISH regime: SUCCESS, Profit: 10.36%
+2025-05-27 03:12:44,291 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:12:44,291 [INFO] Generating trading signal for ETH
+2025-05-27 03:12:44,292 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:12:44,292 [INFO] Profitability test for ETH in RANGING regime: FAILURE, Profit: 0.00%
+2025-05-27 03:12:44,292 [INFO] Market regime for ETH: VOLATILE
+2025-05-27 03:12:44,292 [INFO] Generating trading signal for ETH
+2025-05-27 03:12:44,292 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:12:44,292 [INFO] Profitability test for ETH in VOLATILE regime: FAILURE, Profit: 0.00%
+2025-05-27 03:12:44,293 [INFO] Testing profitability for XRP
+2025-05-27 03:12:44,293 [INFO] Market regime for XRP: BULLISH
+2025-05-27 03:12:44,293 [INFO] Generating trading signal for XRP
+2025-05-27 03:12:44,294 [INFO] Trading signal for XRP: LONG with 70.00% confidence
+2025-05-27 03:12:44,294 [INFO] Profitability test for XRP in BULLISH regime: SUCCESS, Profit: 7.42%
+2025-05-27 03:12:44,294 [INFO] Market regime for XRP: BEARISH
+2025-05-27 03:12:44,294 [INFO] Generating trading signal for XRP
+2025-05-27 03:12:44,294 [INFO] Trading signal for XRP: SHORT with 70.00% confidence
+2025-05-27 03:12:44,295 [INFO] Profitability test for XRP in BEARISH regime: SUCCESS, Profit: 12.61%
+2025-05-27 03:12:44,295 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:12:44,295 [INFO] Generating trading signal for XRP
+2025-05-27 03:12:44,295 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:12:44,295 [INFO] Profitability test for XRP in RANGING regime: FAILURE, Profit: 0.00%
+2025-05-27 03:12:44,295 [INFO] Market regime for XRP: VOLATILE
+2025-05-27 03:12:44,295 [INFO] Generating trading signal for XRP
+2025-05-27 03:12:44,296 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:12:44,296 [INFO] Profitability test for XRP in VOLATILE regime: FAILURE, Profit: 0.00%
+2025-05-27 03:12:44,296 [INFO] Testing profitability for SOL
+2025-05-27 03:12:44,297 [INFO] Market regime for SOL: BULLISH
+2025-05-27 03:12:44,297 [INFO] Generating trading signal for SOL
+2025-05-27 03:12:44,297 [INFO] Trading signal for SOL: LONG with 70.00% confidence
+2025-05-27 03:12:44,297 [INFO] Profitability test for SOL in BULLISH regime: SUCCESS, Profit: 7.70%
+2025-05-27 03:12:44,297 [INFO] Market regime for SOL: BEARISH
+2025-05-27 03:12:44,297 [INFO] Generating trading signal for SOL
+2025-05-27 03:12:44,298 [INFO] Trading signal for SOL: SHORT with 70.00% confidence
+2025-05-27 03:12:44,298 [INFO] Profitability test for SOL in BEARISH regime: SUCCESS, Profit: 13.11%
+2025-05-27 03:12:44,298 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:12:44,298 [INFO] Generating trading signal for SOL
+2025-05-27 03:12:44,298 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:12:44,298 [INFO] Profitability test for SOL in RANGING regime: FAILURE, Profit: 0.00%
+2025-05-27 03:12:44,298 [INFO] Market regime for SOL: VOLATILE
+2025-05-27 03:12:44,299 [INFO] Generating trading signal for SOL
+2025-05-27 03:12:44,299 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:12:44,299 [INFO] Profitability test for SOL in VOLATILE regime: FAILURE, Profit: 0.00%
+2025-05-27 03:12:44,299 [INFO] Running consistency tests
+2025-05-27 03:12:44,299 [INFO] Testing consistency for BTC
+2025-05-27 03:12:44,299 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:12:44,299 [INFO] Generating trading signal for BTC
+2025-05-27 03:12:44,300 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:12:44,300 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:12:44,300 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:12:44,300 [INFO] Generating trading signal for BTC
+2025-05-27 03:12:44,301 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:12:44,301 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:12:44,301 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:12:44,301 [INFO] Generating trading signal for BTC
+2025-05-27 03:12:44,301 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:12:44,301 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:12:44,301 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:12:44,301 [INFO] Generating trading signal for BTC
+2025-05-27 03:12:44,302 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:12:44,302 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:12:44,302 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:12:44,302 [INFO] Generating trading signal for BTC
+2025-05-27 03:12:44,303 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:12:44,303 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:12:44,303 [INFO] Consistency test for BTC: SUCCESS, Consistency: 100.00%
+2025-05-27 03:12:44,303 [INFO] Testing consistency for ETH
+2025-05-27 03:12:44,303 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:12:44,303 [INFO] Generating trading signal for ETH
+2025-05-27 03:12:44,303 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:12:44,304 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:12:44,304 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:12:44,304 [INFO] Generating trading signal for ETH
+2025-05-27 03:12:44,304 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:12:44,304 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:12:44,304 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:12:44,304 [INFO] Generating trading signal for ETH
+2025-05-27 03:12:44,305 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:12:44,305 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:12:44,305 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:12:44,305 [INFO] Generating trading signal for ETH
+2025-05-27 03:12:44,305 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:12:44,305 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:12:44,306 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:12:44,306 [INFO] Generating trading signal for ETH
+2025-05-27 03:12:44,306 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:12:44,306 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:12:44,306 [INFO] Consistency test for ETH: SUCCESS, Consistency: 100.00%
+2025-05-27 03:12:44,306 [INFO] Testing consistency for XRP
+2025-05-27 03:12:44,307 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:12:44,307 [INFO] Generating trading signal for XRP
+2025-05-27 03:12:44,307 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:12:44,307 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:12:44,307 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:12:44,307 [INFO] Generating trading signal for XRP
+2025-05-27 03:12:44,308 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:12:44,308 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:12:44,308 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:12:44,308 [INFO] Generating trading signal for XRP
+2025-05-27 03:12:44,308 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:12:44,308 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:12:44,309 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:12:44,309 [INFO] Generating trading signal for XRP
+2025-05-27 03:12:44,309 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:12:44,309 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:12:44,309 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:12:44,309 [INFO] Generating trading signal for XRP
+2025-05-27 03:12:44,310 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:12:44,310 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:12:44,310 [INFO] Consistency test for XRP: SUCCESS, Consistency: 100.00%
+2025-05-27 03:12:44,310 [INFO] Testing consistency for SOL
+2025-05-27 03:12:44,310 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:12:44,310 [INFO] Generating trading signal for SOL
+2025-05-27 03:12:44,311 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:12:44,311 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:12:44,311 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:12:44,311 [INFO] Generating trading signal for SOL
+2025-05-27 03:12:44,311 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:12:44,311 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:12:44,311 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:12:44,312 [INFO] Generating trading signal for SOL
+2025-05-27 03:12:44,312 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:12:44,312 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:12:44,312 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:12:44,312 [INFO] Generating trading signal for SOL
+2025-05-27 03:12:44,313 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:12:44,313 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:12:44,313 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:12:44,313 [INFO] Generating trading signal for SOL
+2025-05-27 03:12:44,313 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:12:44,313 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:12:44,313 [INFO] Consistency test for SOL: SUCCESS, Consistency: 100.00%
+2025-05-27 03:12:44,313 [INFO] Testing strategy adaptation to different market regimes
+2025-05-27 03:12:44,314 [INFO] Market regime for BTC: BULLISH
+2025-05-27 03:12:44,314 [INFO] Generating trading signal for BTC
+2025-05-27 03:12:44,315 [INFO] Trading signal for BTC: LONG with 70.00% confidence
+2025-05-27 03:12:44,315 [INFO] Market regime for BTC: BULLISH
+2025-05-27 03:12:44,315 [INFO] Trading signal for BTC: LONG with 70.00% confidence
+2025-05-27 03:12:44,315 [INFO] Market regime for BTC: BEARISH
+2025-05-27 03:12:44,315 [INFO] Generating trading signal for BTC
+2025-05-27 03:12:44,315 [INFO] Trading signal for BTC: SHORT with 70.00% confidence
+2025-05-27 03:12:44,315 [INFO] Market regime for BTC: BEARISH
+2025-05-27 03:12:44,315 [INFO] Trading signal for BTC: SHORT with 70.00% confidence
+2025-05-27 03:12:44,315 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:12:44,315 [INFO] Generating trading signal for BTC
+2025-05-27 03:12:44,316 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:12:44,316 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:12:44,316 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:12:44,316 [INFO] Market regime for BTC: VOLATILE
+2025-05-27 03:12:44,316 [INFO] Generating trading signal for BTC
+2025-05-27 03:12:44,316 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:12:44,317 [INFO] Market regime for BTC: VOLATILE
+2025-05-27 03:12:44,317 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:12:44,317 [INFO] Market regime adaptation test for BTC: SUCCESS, Adaptation score: 75.00%
+2025-05-27 03:12:44,317 [INFO] Market regime for ETH: BULLISH
+2025-05-27 03:12:44,317 [INFO] Generating trading signal for ETH
+2025-05-27 03:12:44,318 [INFO] Trading signal for ETH: LONG with 70.00% confidence
+2025-05-27 03:12:44,318 [INFO] Market regime for ETH: BULLISH
+2025-05-27 03:12:44,318 [INFO] Trading signal for ETH: LONG with 70.00% confidence
+2025-05-27 03:12:44,318 [INFO] Market regime for ETH: BEARISH
+2025-05-27 03:12:44,318 [INFO] Generating trading signal for ETH
+2025-05-27 03:12:44,319 [INFO] Trading signal for ETH: SHORT with 70.00% confidence
+2025-05-27 03:12:44,319 [INFO] Market regime for ETH: BEARISH
+2025-05-27 03:12:44,319 [INFO] Trading signal for ETH: SHORT with 70.00% confidence
+2025-05-27 03:12:44,319 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:12:44,319 [INFO] Generating trading signal for ETH
+2025-05-27 03:12:44,319 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:12:44,319 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:12:44,319 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:12:44,319 [INFO] Market regime for ETH: VOLATILE
+2025-05-27 03:12:44,319 [INFO] Generating trading signal for ETH
+2025-05-27 03:12:44,320 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:12:44,320 [INFO] Market regime for ETH: VOLATILE
+2025-05-27 03:12:44,320 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:12:44,320 [INFO] Market regime adaptation test for ETH: SUCCESS, Adaptation score: 75.00%
+2025-05-27 03:12:44,321 [INFO] Market regime for XRP: BULLISH
+2025-05-27 03:12:44,321 [INFO] Generating trading signal for XRP
+2025-05-27 03:12:44,321 [INFO] Trading signal for XRP: LONG with 70.00% confidence
+2025-05-27 03:12:44,321 [INFO] Market regime for XRP: BULLISH
+2025-05-27 03:12:44,321 [INFO] Trading signal for XRP: LONG with 70.00% confidence
+2025-05-27 03:12:44,321 [INFO] Market regime for XRP: BEARISH
+2025-05-27 03:12:44,321 [INFO] Generating trading signal for XRP
+2025-05-27 03:12:44,322 [INFO] Trading signal for XRP: SHORT with 70.00% confidence
+2025-05-27 03:12:44,322 [INFO] Market regime for XRP: BEARISH
+2025-05-27 03:12:44,322 [INFO] Trading signal for XRP: SHORT with 70.00% confidence
+2025-05-27 03:12:44,322 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:12:44,322 [INFO] Generating trading signal for XRP
+2025-05-27 03:12:44,322 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:12:44,323 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:12:44,323 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:12:44,323 [INFO] Market regime for XRP: VOLATILE
+2025-05-27 03:12:44,323 [INFO] Generating trading signal for XRP
+2025-05-27 03:12:44,323 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:12:44,323 [INFO] Market regime for XRP: VOLATILE
+2025-05-27 03:12:44,323 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:12:44,323 [INFO] Market regime adaptation test for XRP: SUCCESS, Adaptation score: 75.00%
+2025-05-27 03:12:44,324 [INFO] Market regime for SOL: BULLISH
+2025-05-27 03:12:44,324 [INFO] Generating trading signal for SOL
+2025-05-27 03:12:44,324 [INFO] Trading signal for SOL: LONG with 70.00% confidence
+2025-05-27 03:12:44,325 [INFO] Market regime for SOL: BULLISH
+2025-05-27 03:12:44,325 [INFO] Trading signal for SOL: LONG with 70.00% confidence
+2025-05-27 03:12:44,325 [INFO] Market regime for SOL: BEARISH
+2025-05-27 03:12:44,325 [INFO] Generating trading signal for SOL
+2025-05-27 03:12:44,325 [INFO] Trading signal for SOL: SHORT with 70.00% confidence
+2025-05-27 03:12:44,325 [INFO] Market regime for SOL: BEARISH
+2025-05-27 03:12:44,325 [INFO] Trading signal for SOL: SHORT with 70.00% confidence
+2025-05-27 03:12:44,325 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:12:44,325 [INFO] Generating trading signal for SOL
+2025-05-27 03:12:44,326 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:12:44,326 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:12:44,326 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:12:44,326 [INFO] Market regime for SOL: VOLATILE
+2025-05-27 03:12:44,326 [INFO] Generating trading signal for SOL
+2025-05-27 03:12:44,326 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:12:44,326 [INFO] Market regime for SOL: VOLATILE
+2025-05-27 03:12:44,326 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:12:44,326 [INFO] Market regime adaptation test for SOL: SUCCESS, Adaptation score: 75.00%
+2025-05-27 03:12:44,327 [INFO] All tests completed. Success rate: 66.67%
+2025-05-27 03:12:44,327 [ERROR] Error running strategy integration tests: `np.float_` was removed in the NumPy 2.0 release. Use `np.float64` instead.
+2025-05-27 03:14:03,655 [INFO] Initializing Strategy Integration Test
+2025-05-27 03:14:03,655 [INFO] Optimized strategy initialized with aggressive thresholds
+2025-05-27 03:14:03,655 [INFO] Strategy Integration Test initialized
+2025-05-27 03:14:03,655 [INFO] Running all strategy integration tests
+2025-05-27 03:14:03,655 [INFO] Running profitability tests
+2025-05-27 03:14:03,655 [INFO] Testing profitability for BTC
+2025-05-27 03:14:03,656 [INFO] Market regime for BTC: BULLISH
+2025-05-27 03:14:03,657 [INFO] Generating trading signal for BTC
+2025-05-27 03:14:03,657 [INFO] Trading signal for BTC: LONG with 70.00% confidence
+2025-05-27 03:14:03,657 [INFO] Profitability test for BTC in BULLISH regime: SUCCESS, Profit: 7.62%
+2025-05-27 03:14:03,657 [INFO] Market regime for BTC: BEARISH
+2025-05-27 03:14:03,657 [INFO] Generating trading signal for BTC
+2025-05-27 03:14:03,658 [INFO] Trading signal for BTC: SHORT with 70.00% confidence
+2025-05-27 03:14:03,658 [INFO] Profitability test for BTC in BEARISH regime: SUCCESS, Profit: 3.54%
+2025-05-27 03:14:03,658 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:14:03,658 [INFO] Generating trading signal for BTC
+2025-05-27 03:14:03,659 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:14:03,659 [INFO] Profitability test for BTC in RANGING regime: FAILURE, Profit: 0.00%
+2025-05-27 03:14:03,659 [INFO] Market regime for BTC: VOLATILE
+2025-05-27 03:14:03,659 [INFO] Generating trading signal for BTC
+2025-05-27 03:14:03,659 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:14:03,659 [INFO] Profitability test for BTC in VOLATILE regime: FAILURE, Profit: 0.00%
+2025-05-27 03:14:03,659 [INFO] Testing profitability for ETH
+2025-05-27 03:14:03,660 [INFO] Market regime for ETH: BULLISH
+2025-05-27 03:14:03,660 [INFO] Generating trading signal for ETH
+2025-05-27 03:14:03,661 [INFO] Trading signal for ETH: LONG with 70.00% confidence
+2025-05-27 03:14:03,661 [INFO] Profitability test for ETH in BULLISH regime: SUCCESS, Profit: 7.91%
+2025-05-27 03:14:03,661 [INFO] Market regime for ETH: BEARISH
+2025-05-27 03:14:03,661 [INFO] Generating trading signal for ETH
+2025-05-27 03:14:03,661 [INFO] Trading signal for ETH: SHORT with 70.00% confidence
+2025-05-27 03:14:03,662 [INFO] Profitability test for ETH in BEARISH regime: SUCCESS, Profit: 10.39%
+2025-05-27 03:14:03,662 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:14:03,662 [INFO] Generating trading signal for ETH
+2025-05-27 03:14:03,662 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:14:03,662 [INFO] Profitability test for ETH in RANGING regime: FAILURE, Profit: 0.00%
+2025-05-27 03:14:03,662 [INFO] Market regime for ETH: VOLATILE
+2025-05-27 03:14:03,662 [INFO] Generating trading signal for ETH
+2025-05-27 03:14:03,663 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:14:03,663 [INFO] Profitability test for ETH in VOLATILE regime: FAILURE, Profit: 0.00%
+2025-05-27 03:14:03,663 [INFO] Testing profitability for XRP
+2025-05-27 03:14:03,664 [INFO] Market regime for XRP: BULLISH
+2025-05-27 03:14:03,664 [INFO] Generating trading signal for XRP
+2025-05-27 03:14:03,664 [INFO] Trading signal for XRP: LONG with 70.00% confidence
+2025-05-27 03:14:03,664 [INFO] Profitability test for XRP in BULLISH regime: SUCCESS, Profit: 5.22%
+2025-05-27 03:14:03,664 [INFO] Market regime for XRP: BEARISH
+2025-05-27 03:14:03,664 [INFO] Generating trading signal for XRP
+2025-05-27 03:14:03,665 [INFO] Trading signal for XRP: SHORT with 70.00% confidence
+2025-05-27 03:14:03,665 [INFO] Profitability test for XRP in BEARISH regime: SUCCESS, Profit: 9.69%
+2025-05-27 03:14:03,665 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:14:03,665 [INFO] Generating trading signal for XRP
+2025-05-27 03:14:03,666 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:14:03,666 [INFO] Profitability test for XRP in RANGING regime: FAILURE, Profit: 0.00%
+2025-05-27 03:14:03,666 [INFO] Market regime for XRP: VOLATILE
+2025-05-27 03:14:03,666 [INFO] Generating trading signal for XRP
+2025-05-27 03:14:03,666 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:14:03,667 [INFO] Profitability test for XRP in VOLATILE regime: FAILURE, Profit: 0.00%
+2025-05-27 03:14:03,667 [INFO] Testing profitability for SOL
+2025-05-27 03:14:03,667 [INFO] Market regime for SOL: BULLISH
+2025-05-27 03:14:03,667 [INFO] Generating trading signal for SOL
+2025-05-27 03:14:03,668 [INFO] Trading signal for SOL: LONG with 70.00% confidence
+2025-05-27 03:14:03,668 [INFO] Profitability test for SOL in BULLISH regime: SUCCESS, Profit: 8.31%
+2025-05-27 03:14:03,668 [INFO] Market regime for SOL: BEARISH
+2025-05-27 03:14:03,668 [INFO] Generating trading signal for SOL
+2025-05-27 03:14:03,669 [INFO] Trading signal for SOL: SHORT with 70.00% confidence
+2025-05-27 03:14:03,669 [INFO] Profitability test for SOL in BEARISH regime: SUCCESS, Profit: 9.30%
+2025-05-27 03:14:03,669 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:14:03,669 [INFO] Generating trading signal for SOL
+2025-05-27 03:14:03,669 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:14:03,669 [INFO] Profitability test for SOL in RANGING regime: FAILURE, Profit: 0.00%
+2025-05-27 03:14:03,669 [INFO] Market regime for SOL: VOLATILE
+2025-05-27 03:14:03,669 [INFO] Generating trading signal for SOL
+2025-05-27 03:14:03,670 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:14:03,670 [INFO] Profitability test for SOL in VOLATILE regime: FAILURE, Profit: 0.00%
+2025-05-27 03:14:03,670 [INFO] Running consistency tests
+2025-05-27 03:14:03,670 [INFO] Testing consistency for BTC
+2025-05-27 03:14:03,670 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:14:03,670 [INFO] Generating trading signal for BTC
+2025-05-27 03:14:03,671 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:14:03,671 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:14:03,671 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:14:03,671 [INFO] Generating trading signal for BTC
+2025-05-27 03:14:03,671 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:14:03,671 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:14:03,672 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:14:03,672 [INFO] Generating trading signal for BTC
+2025-05-27 03:14:03,672 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:14:03,672 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:14:03,672 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:14:03,672 [INFO] Generating trading signal for BTC
+2025-05-27 03:14:03,673 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:14:03,673 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:14:03,673 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:14:03,673 [INFO] Generating trading signal for BTC
+2025-05-27 03:14:03,673 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:14:03,673 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:14:03,673 [INFO] Consistency test for BTC: SUCCESS, Consistency: 100.00%
+2025-05-27 03:14:03,673 [INFO] Testing consistency for ETH
+2025-05-27 03:14:03,674 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:14:03,674 [INFO] Generating trading signal for ETH
+2025-05-27 03:14:03,674 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:14:03,674 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:14:03,674 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:14:03,674 [INFO] Generating trading signal for ETH
+2025-05-27 03:14:03,675 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:14:03,675 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:14:03,675 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:14:03,675 [INFO] Generating trading signal for ETH
+2025-05-27 03:14:03,676 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:14:03,676 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:14:03,676 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:14:03,676 [INFO] Generating trading signal for ETH
+2025-05-27 03:14:03,676 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:14:03,676 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:14:03,676 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:14:03,677 [INFO] Generating trading signal for ETH
+2025-05-27 03:14:03,677 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:14:03,677 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:14:03,677 [INFO] Consistency test for ETH: SUCCESS, Consistency: 100.00%
+2025-05-27 03:14:03,677 [INFO] Testing consistency for XRP
+2025-05-27 03:14:03,677 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:14:03,677 [INFO] Generating trading signal for XRP
+2025-05-27 03:14:03,678 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:14:03,678 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:14:03,678 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:14:03,678 [INFO] Generating trading signal for XRP
+2025-05-27 03:14:03,679 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:14:03,679 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:14:03,679 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:14:03,679 [INFO] Generating trading signal for XRP
+2025-05-27 03:14:03,679 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:14:03,679 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:14:03,679 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:14:03,679 [INFO] Generating trading signal for XRP
+2025-05-27 03:14:03,680 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:14:03,680 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:14:03,680 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:14:03,680 [INFO] Generating trading signal for XRP
+2025-05-27 03:14:03,680 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:14:03,680 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:14:03,681 [INFO] Consistency test for XRP: SUCCESS, Consistency: 100.00%
+2025-05-27 03:14:03,681 [INFO] Testing consistency for SOL
+2025-05-27 03:14:03,681 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:14:03,681 [INFO] Generating trading signal for SOL
+2025-05-27 03:14:03,681 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:14:03,682 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:14:03,682 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:14:03,682 [INFO] Generating trading signal for SOL
+2025-05-27 03:14:03,682 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:14:03,682 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:14:03,682 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:14:03,683 [INFO] Generating trading signal for SOL
+2025-05-27 03:14:03,683 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:14:03,683 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:14:03,683 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:14:03,683 [INFO] Generating trading signal for SOL
+2025-05-27 03:14:03,684 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:14:03,684 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:14:03,684 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:14:03,684 [INFO] Generating trading signal for SOL
+2025-05-27 03:14:03,684 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:14:03,684 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:14:03,684 [INFO] Consistency test for SOL: SUCCESS, Consistency: 100.00%
+2025-05-27 03:14:03,684 [INFO] Testing strategy adaptation to different market regimes
+2025-05-27 03:14:03,685 [INFO] Market regime for BTC: BULLISH
+2025-05-27 03:14:03,685 [INFO] Generating trading signal for BTC
+2025-05-27 03:14:03,686 [INFO] Trading signal for BTC: LONG with 70.00% confidence
+2025-05-27 03:14:03,686 [INFO] Market regime for BTC: BULLISH
+2025-05-27 03:14:03,686 [INFO] Trading signal for BTC: LONG with 70.00% confidence
+2025-05-27 03:14:03,686 [INFO] Market regime for BTC: BEARISH
+2025-05-27 03:14:03,686 [INFO] Generating trading signal for BTC
+2025-05-27 03:14:03,686 [INFO] Trading signal for BTC: SHORT with 70.00% confidence
+2025-05-27 03:14:03,686 [INFO] Market regime for BTC: BEARISH
+2025-05-27 03:14:03,686 [INFO] Trading signal for BTC: SHORT with 70.00% confidence
+2025-05-27 03:14:03,687 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:14:03,687 [INFO] Generating trading signal for BTC
+2025-05-27 03:14:03,687 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:14:03,687 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:14:03,687 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:14:03,687 [INFO] Market regime for BTC: VOLATILE
+2025-05-27 03:14:03,687 [INFO] Generating trading signal for BTC
+2025-05-27 03:14:03,688 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:14:03,688 [INFO] Market regime for BTC: VOLATILE
+2025-05-27 03:14:03,688 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:14:03,688 [INFO] Market regime adaptation test for BTC: SUCCESS, Adaptation score: 75.00%
+2025-05-27 03:14:03,689 [INFO] Market regime for ETH: BULLISH
+2025-05-27 03:14:03,689 [INFO] Generating trading signal for ETH
+2025-05-27 03:14:03,689 [INFO] Trading signal for ETH: LONG with 70.00% confidence
+2025-05-27 03:14:03,689 [INFO] Market regime for ETH: BULLISH
+2025-05-27 03:14:03,689 [INFO] Trading signal for ETH: LONG with 70.00% confidence
+2025-05-27 03:14:03,689 [INFO] Market regime for ETH: BEARISH
+2025-05-27 03:14:03,689 [INFO] Generating trading signal for ETH
+2025-05-27 03:14:03,690 [INFO] Trading signal for ETH: SHORT with 70.00% confidence
+2025-05-27 03:14:03,690 [INFO] Market regime for ETH: BEARISH
+2025-05-27 03:14:03,690 [INFO] Trading signal for ETH: SHORT with 70.00% confidence
+2025-05-27 03:14:03,690 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:14:03,690 [INFO] Generating trading signal for ETH
+2025-05-27 03:14:03,690 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:14:03,690 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:14:03,690 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:14:03,691 [INFO] Market regime for ETH: VOLATILE
+2025-05-27 03:14:03,691 [INFO] Generating trading signal for ETH
+2025-05-27 03:14:03,691 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:14:03,691 [INFO] Market regime for ETH: VOLATILE
+2025-05-27 03:14:03,691 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:14:03,691 [INFO] Market regime adaptation test for ETH: SUCCESS, Adaptation score: 75.00%
+2025-05-27 03:14:03,692 [INFO] Market regime for XRP: BULLISH
+2025-05-27 03:14:03,692 [INFO] Generating trading signal for XRP
+2025-05-27 03:14:03,692 [INFO] Trading signal for XRP: LONG with 70.00% confidence
+2025-05-27 03:14:03,692 [INFO] Market regime for XRP: BULLISH
+2025-05-27 03:14:03,692 [INFO] Trading signal for XRP: LONG with 70.00% confidence
+2025-05-27 03:14:03,693 [INFO] Market regime for XRP: BEARISH
+2025-05-27 03:14:03,693 [INFO] Generating trading signal for XRP
+2025-05-27 03:14:03,693 [INFO] Trading signal for XRP: SHORT with 70.00% confidence
+2025-05-27 03:14:03,693 [INFO] Market regime for XRP: BEARISH
+2025-05-27 03:14:03,693 [INFO] Trading signal for XRP: SHORT with 70.00% confidence
+2025-05-27 03:14:03,693 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:14:03,693 [INFO] Generating trading signal for XRP
+2025-05-27 03:14:03,694 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:14:03,694 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:14:03,694 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:14:03,694 [INFO] Market regime for XRP: VOLATILE
+2025-05-27 03:14:03,694 [INFO] Generating trading signal for XRP
+2025-05-27 03:14:03,694 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:14:03,694 [INFO] Market regime for XRP: VOLATILE
+2025-05-27 03:14:03,694 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:14:03,694 [INFO] Market regime adaptation test for XRP: SUCCESS, Adaptation score: 75.00%
+2025-05-27 03:14:03,695 [INFO] Market regime for SOL: BULLISH
+2025-05-27 03:14:03,695 [INFO] Generating trading signal for SOL
+2025-05-27 03:14:03,696 [INFO] Trading signal for SOL: LONG with 70.00% confidence
+2025-05-27 03:14:03,696 [INFO] Market regime for SOL: BULLISH
+2025-05-27 03:14:03,696 [INFO] Trading signal for SOL: LONG with 70.00% confidence
+2025-05-27 03:14:03,696 [INFO] Market regime for SOL: BEARISH
+2025-05-27 03:14:03,696 [INFO] Generating trading signal for SOL
+2025-05-27 03:14:03,696 [INFO] Trading signal for SOL: SHORT with 70.00% confidence
+2025-05-27 03:14:03,696 [INFO] Market regime for SOL: BEARISH
+2025-05-27 03:14:03,696 [INFO] Trading signal for SOL: SHORT with 70.00% confidence
+2025-05-27 03:14:03,696 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:14:03,696 [INFO] Generating trading signal for SOL
+2025-05-27 03:14:03,697 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:14:03,697 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:14:03,697 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:14:03,697 [INFO] Market regime for SOL: VOLATILE
+2025-05-27 03:14:03,697 [INFO] Generating trading signal for SOL
+2025-05-27 03:14:03,698 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:14:03,698 [INFO] Market regime for SOL: VOLATILE
+2025-05-27 03:14:03,698 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:14:03,698 [INFO] Market regime adaptation test for SOL: SUCCESS, Adaptation score: 75.00%
+2025-05-27 03:14:03,698 [INFO] All tests completed. Success rate: 66.67%
+2025-05-27 03:14:03,699 [INFO] Test results saved to strategy_integration_test_results.json
+2025-05-27 03:16:29,903 [INFO] Initializing Strategy Integration Test
+2025-05-27 03:16:29,903 [INFO] Optimized strategy initialized with enhanced parameters
+2025-05-27 03:16:29,903 [INFO] Strategy Integration Test initialized
+2025-05-27 03:16:29,903 [INFO] Running all strategy integration tests
+2025-05-27 03:16:29,903 [INFO] Running profitability tests
+2025-05-27 03:16:29,903 [INFO] Testing profitability for BTC
+2025-05-27 03:16:29,904 [INFO] Market regime for BTC: BULLISH
+2025-05-27 03:16:29,904 [INFO] Generating trading signal for BTC
+2025-05-27 03:16:29,923 [INFO] Trading signal for BTC: LONG with 61.25% confidence
+2025-05-27 03:16:29,923 [INFO] Profitability test for BTC in BULLISH regime: SUCCESS, Profit: 6.88%
+2025-05-27 03:16:29,923 [INFO] Market regime for BTC: BEARISH
+2025-05-27 03:16:29,923 [INFO] Generating trading signal for BTC
+2025-05-27 03:16:29,924 [INFO] Trading signal for BTC: SHORT with 61.25% confidence
+2025-05-27 03:16:29,924 [INFO] Profitability test for BTC in BEARISH regime: SUCCESS, Profit: 13.85%
+2025-05-27 03:16:29,924 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:16:29,924 [INFO] Generating trading signal for BTC
+2025-05-27 03:16:29,925 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:16:29,925 [INFO] Profitability test for BTC in RANGING regime: FAILURE, Profit: 0.00%
+2025-05-27 03:16:29,925 [INFO] Market regime for BTC: VOLATILE
+2025-05-27 03:16:29,925 [INFO] Generating trading signal for BTC
+2025-05-27 03:16:29,925 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:16:29,925 [INFO] Profitability test for BTC in VOLATILE regime: FAILURE, Profit: 0.00%
+2025-05-27 03:16:29,925 [INFO] Testing profitability for ETH
+2025-05-27 03:16:29,926 [INFO] Market regime for ETH: BULLISH
+2025-05-27 03:16:29,926 [INFO] Generating trading signal for ETH
+2025-05-27 03:16:29,927 [INFO] Trading signal for ETH: LONG with 61.25% confidence
+2025-05-27 03:16:29,927 [INFO] Profitability test for ETH in BULLISH regime: SUCCESS, Profit: 12.65%
+2025-05-27 03:16:29,927 [INFO] Market regime for ETH: BEARISH
+2025-05-27 03:16:29,927 [INFO] Generating trading signal for ETH
+2025-05-27 03:16:29,928 [INFO] Trading signal for ETH: SHORT with 61.25% confidence
+2025-05-27 03:16:29,928 [INFO] Profitability test for ETH in BEARISH regime: SUCCESS, Profit: 3.00%
+2025-05-27 03:16:29,928 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:16:29,928 [INFO] Generating trading signal for ETH
+2025-05-27 03:16:29,928 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:16:29,929 [INFO] Profitability test for ETH in RANGING regime: FAILURE, Profit: 0.00%
+2025-05-27 03:16:29,929 [INFO] Market regime for ETH: VOLATILE
+2025-05-27 03:16:29,929 [INFO] Generating trading signal for ETH
+2025-05-27 03:16:29,929 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:16:29,929 [INFO] Profitability test for ETH in VOLATILE regime: FAILURE, Profit: 0.00%
+2025-05-27 03:16:29,929 [INFO] Testing profitability for XRP
+2025-05-27 03:16:29,930 [INFO] Market regime for XRP: BULLISH
+2025-05-27 03:16:29,930 [INFO] Generating trading signal for XRP
+2025-05-27 03:16:29,931 [INFO] Trading signal for XRP: LONG with 48.75% confidence
+2025-05-27 03:16:29,931 [INFO] Profitability test for XRP in BULLISH regime: SUCCESS, Profit: 4.95%
+2025-05-27 03:16:29,931 [INFO] Market regime for XRP: BEARISH
+2025-05-27 03:16:29,931 [INFO] Generating trading signal for XRP
+2025-05-27 03:16:29,932 [INFO] Trading signal for XRP: SHORT with 61.25% confidence
+2025-05-27 03:16:29,932 [INFO] Profitability test for XRP in BEARISH regime: SUCCESS, Profit: 15.09%
+2025-05-27 03:16:29,932 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:16:29,932 [INFO] Generating trading signal for XRP
+2025-05-27 03:16:29,932 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:16:29,933 [INFO] Profitability test for XRP in RANGING regime: FAILURE, Profit: 0.00%
+2025-05-27 03:16:29,933 [INFO] Market regime for XRP: VOLATILE
+2025-05-27 03:16:29,933 [INFO] Generating trading signal for XRP
+2025-05-27 03:16:29,933 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:16:29,933 [INFO] Profitability test for XRP in VOLATILE regime: FAILURE, Profit: 0.00%
+2025-05-27 03:16:29,933 [INFO] Testing profitability for SOL
+2025-05-27 03:16:29,934 [INFO] Market regime for SOL: BULLISH
+2025-05-27 03:16:29,934 [INFO] Generating trading signal for SOL
+2025-05-27 03:16:29,935 [INFO] Trading signal for SOL: LONG with 48.75% confidence
+2025-05-27 03:16:29,935 [INFO] Profitability test for SOL in BULLISH regime: SUCCESS, Profit: 13.88%
+2025-05-27 03:16:29,935 [INFO] Market regime for SOL: BEARISH
+2025-05-27 03:16:29,935 [INFO] Generating trading signal for SOL
+2025-05-27 03:16:29,936 [INFO] Trading signal for SOL: SHORT with 50.15% confidence
+2025-05-27 03:16:29,936 [INFO] Profitability test for SOL in BEARISH regime: SUCCESS, Profit: 12.26%
+2025-05-27 03:16:29,936 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:16:29,936 [INFO] Generating trading signal for SOL
+2025-05-27 03:16:29,937 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:16:29,937 [INFO] Profitability test for SOL in RANGING regime: FAILURE, Profit: 0.00%
+2025-05-27 03:16:29,937 [INFO] Market regime for SOL: VOLATILE
+2025-05-27 03:16:29,937 [INFO] Generating trading signal for SOL
+2025-05-27 03:16:29,938 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:16:29,938 [INFO] Profitability test for SOL in VOLATILE regime: FAILURE, Profit: 0.00%
+2025-05-27 03:16:29,938 [INFO] Running consistency tests
+2025-05-27 03:16:29,938 [INFO] Testing consistency for BTC
+2025-05-27 03:16:29,938 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:16:29,938 [INFO] Generating trading signal for BTC
+2025-05-27 03:16:29,939 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:16:29,939 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:16:29,939 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:16:29,939 [INFO] Generating trading signal for BTC
+2025-05-27 03:16:29,940 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:16:29,940 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:16:29,940 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:16:29,940 [INFO] Generating trading signal for BTC
+2025-05-27 03:16:29,941 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:16:29,941 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:16:29,941 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:16:29,942 [INFO] Generating trading signal for BTC
+2025-05-27 03:16:29,942 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:16:29,943 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:16:29,943 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:16:29,943 [INFO] Generating trading signal for BTC
+2025-05-27 03:16:29,944 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:16:29,944 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:16:29,944 [INFO] Consistency test for BTC: SUCCESS, Consistency: 100.00%
+2025-05-27 03:16:29,944 [INFO] Testing consistency for ETH
+2025-05-27 03:16:29,945 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:16:29,945 [INFO] Generating trading signal for ETH
+2025-05-27 03:16:29,945 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:16:29,946 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:16:29,946 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:16:29,946 [INFO] Generating trading signal for ETH
+2025-05-27 03:16:29,947 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:16:29,947 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:16:29,947 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:16:29,947 [INFO] Generating trading signal for ETH
+2025-05-27 03:16:29,947 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:16:29,947 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:16:29,948 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:16:29,948 [INFO] Generating trading signal for ETH
+2025-05-27 03:16:29,948 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:16:29,948 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:16:29,949 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:16:29,949 [INFO] Generating trading signal for ETH
+2025-05-27 03:16:29,950 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:16:29,950 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:16:29,950 [INFO] Consistency test for ETH: SUCCESS, Consistency: 100.00%
+2025-05-27 03:16:29,950 [INFO] Testing consistency for XRP
+2025-05-27 03:16:29,950 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:16:29,950 [INFO] Generating trading signal for XRP
+2025-05-27 03:16:29,951 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:16:29,951 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:16:29,952 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:16:29,952 [INFO] Generating trading signal for XRP
+2025-05-27 03:16:29,953 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:16:29,953 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:16:29,953 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:16:29,953 [INFO] Generating trading signal for XRP
+2025-05-27 03:16:29,954 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:16:29,954 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:16:29,954 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:16:29,954 [INFO] Generating trading signal for XRP
+2025-05-27 03:16:29,955 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:16:29,955 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:16:29,955 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:16:29,956 [INFO] Generating trading signal for XRP
+2025-05-27 03:16:29,956 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:16:29,956 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:16:29,957 [INFO] Consistency test for XRP: SUCCESS, Consistency: 100.00%
+2025-05-27 03:16:29,957 [INFO] Testing consistency for SOL
+2025-05-27 03:16:29,957 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:16:29,957 [INFO] Generating trading signal for SOL
+2025-05-27 03:16:29,958 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:16:29,958 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:16:29,958 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:16:29,959 [INFO] Generating trading signal for SOL
+2025-05-27 03:16:29,959 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:16:29,959 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:16:29,960 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:16:29,960 [INFO] Generating trading signal for SOL
+2025-05-27 03:16:29,961 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:16:29,961 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:16:29,961 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:16:29,961 [INFO] Generating trading signal for SOL
+2025-05-27 03:16:29,962 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:16:29,962 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:16:29,962 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:16:29,962 [INFO] Generating trading signal for SOL
+2025-05-27 03:16:29,963 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:16:29,963 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:16:29,963 [INFO] Consistency test for SOL: SUCCESS, Consistency: 100.00%
+2025-05-27 03:16:29,963 [INFO] Testing strategy adaptation to different market regimes
+2025-05-27 03:16:29,964 [INFO] Market regime for BTC: BULLISH
+2025-05-27 03:16:29,965 [INFO] Generating trading signal for BTC
+2025-05-27 03:16:29,965 [INFO] Trading signal for BTC: LONG with 61.25% confidence
+2025-05-27 03:16:29,965 [INFO] Market regime for BTC: BULLISH
+2025-05-27 03:16:29,965 [INFO] Trading signal for BTC: LONG with 61.25% confidence
+2025-05-27 03:16:29,965 [INFO] Market regime for BTC: BEARISH
+2025-05-27 03:16:29,965 [INFO] Generating trading signal for BTC
+2025-05-27 03:16:29,966 [INFO] Trading signal for BTC: SHORT with 61.25% confidence
+2025-05-27 03:16:29,966 [INFO] Market regime for BTC: BEARISH
+2025-05-27 03:16:29,966 [INFO] Trading signal for BTC: SHORT with 61.25% confidence
+2025-05-27 03:16:29,966 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:16:29,966 [INFO] Generating trading signal for BTC
+2025-05-27 03:16:29,967 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:16:29,967 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:16:29,967 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:16:29,967 [INFO] Market regime for BTC: VOLATILE
+2025-05-27 03:16:29,967 [INFO] Generating trading signal for BTC
+2025-05-27 03:16:29,968 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:16:29,968 [INFO] Market regime for BTC: VOLATILE
+2025-05-27 03:16:29,968 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:16:29,968 [INFO] Market regime adaptation test for BTC: SUCCESS, Adaptation score: 75.00%
+2025-05-27 03:16:29,969 [INFO] Market regime for ETH: BULLISH
+2025-05-27 03:16:29,969 [INFO] Generating trading signal for ETH
+2025-05-27 03:16:29,969 [INFO] Trading signal for ETH: LONG with 61.25% confidence
+2025-05-27 03:16:29,969 [INFO] Market regime for ETH: BULLISH
+2025-05-27 03:16:29,969 [INFO] Trading signal for ETH: LONG with 61.25% confidence
+2025-05-27 03:16:29,970 [INFO] Market regime for ETH: BEARISH
+2025-05-27 03:16:29,970 [INFO] Generating trading signal for ETH
+2025-05-27 03:16:29,970 [INFO] Trading signal for ETH: SHORT with 61.25% confidence
+2025-05-27 03:16:29,970 [INFO] Market regime for ETH: BEARISH
+2025-05-27 03:16:29,970 [INFO] Trading signal for ETH: SHORT with 61.25% confidence
+2025-05-27 03:16:29,970 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:16:29,970 [INFO] Generating trading signal for ETH
+2025-05-27 03:16:29,971 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:16:29,971 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:16:29,971 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:16:29,971 [INFO] Market regime for ETH: VOLATILE
+2025-05-27 03:16:29,971 [INFO] Generating trading signal for ETH
+2025-05-27 03:16:29,972 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:16:29,972 [INFO] Market regime for ETH: VOLATILE
+2025-05-27 03:16:29,972 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:16:29,972 [INFO] Market regime adaptation test for ETH: SUCCESS, Adaptation score: 75.00%
+2025-05-27 03:16:29,973 [INFO] Market regime for XRP: BULLISH
+2025-05-27 03:16:29,973 [INFO] Generating trading signal for XRP
+2025-05-27 03:16:29,973 [INFO] Trading signal for XRP: LONG with 48.75% confidence
+2025-05-27 03:16:29,973 [INFO] Market regime for XRP: BULLISH
+2025-05-27 03:16:29,973 [INFO] Trading signal for XRP: LONG with 48.75% confidence
+2025-05-27 03:16:29,973 [INFO] Market regime for XRP: BEARISH
+2025-05-27 03:16:29,973 [INFO] Generating trading signal for XRP
+2025-05-27 03:16:29,974 [INFO] Trading signal for XRP: SHORT with 61.25% confidence
+2025-05-27 03:16:29,974 [INFO] Market regime for XRP: BEARISH
+2025-05-27 03:16:29,974 [INFO] Trading signal for XRP: SHORT with 61.25% confidence
+2025-05-27 03:16:29,974 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:16:29,974 [INFO] Generating trading signal for XRP
+2025-05-27 03:16:29,975 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:16:29,975 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:16:29,975 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:16:29,975 [INFO] Market regime for XRP: VOLATILE
+2025-05-27 03:16:29,975 [INFO] Generating trading signal for XRP
+2025-05-27 03:16:29,975 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:16:29,975 [INFO] Market regime for XRP: VOLATILE
+2025-05-27 03:16:29,975 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:16:29,975 [INFO] Market regime adaptation test for XRP: SUCCESS, Adaptation score: 75.00%
+2025-05-27 03:16:29,976 [INFO] Market regime for SOL: BULLISH
+2025-05-27 03:16:29,976 [INFO] Generating trading signal for SOL
+2025-05-27 03:16:29,977 [INFO] Trading signal for SOL: LONG with 48.75% confidence
+2025-05-27 03:16:29,977 [INFO] Market regime for SOL: BULLISH
+2025-05-27 03:16:29,977 [INFO] Trading signal for SOL: LONG with 48.75% confidence
+2025-05-27 03:16:29,977 [INFO] Market regime for SOL: BEARISH
+2025-05-27 03:16:29,977 [INFO] Generating trading signal for SOL
+2025-05-27 03:16:29,978 [INFO] Trading signal for SOL: SHORT with 50.15% confidence
+2025-05-27 03:16:29,978 [INFO] Market regime for SOL: BEARISH
+2025-05-27 03:16:29,978 [INFO] Trading signal for SOL: SHORT with 50.15% confidence
+2025-05-27 03:16:29,978 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:16:29,978 [INFO] Generating trading signal for SOL
+2025-05-27 03:16:29,978 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:16:29,979 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:16:29,979 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:16:29,979 [INFO] Market regime for SOL: VOLATILE
+2025-05-27 03:16:29,979 [INFO] Generating trading signal for SOL
+2025-05-27 03:16:29,979 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:16:29,979 [INFO] Market regime for SOL: VOLATILE
+2025-05-27 03:16:29,979 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:16:29,979 [INFO] Market regime adaptation test for SOL: SUCCESS, Adaptation score: 75.00%
+2025-05-27 03:16:29,980 [INFO] All tests completed. Success rate: 66.67%
+2025-05-27 03:16:29,980 [INFO] Test results saved to strategy_integration_test_results.json
+2025-05-27 03:20:15,612 [INFO] Initializing Strategy Integration Test
+2025-05-27 03:20:15,612 [INFO] Optimized strategy initialized with enhanced parameters
+2025-05-27 03:20:15,612 [INFO] Strategy Integration Test initialized
+2025-05-27 03:20:15,612 [INFO] Running all strategy integration tests
+2025-05-27 03:20:15,612 [INFO] Running profitability tests
+2025-05-27 03:20:15,612 [INFO] Testing profitability for BTC
+2025-05-27 03:20:15,617 [INFO] Market regime for BTC: BULLISH
+2025-05-27 03:20:15,618 [INFO] Generating trading signal for BTC
+2025-05-27 03:20:15,618 [INFO] Trading signal for BTC: LONG with 100.00% confidence
+2025-05-27 03:20:15,618 [INFO] Profitability test for BTC in BULLISH regime: SUCCESS, Profit: 7.77%
+2025-05-27 03:20:15,618 [INFO] Market regime for BTC: BEARISH
+2025-05-27 03:20:15,619 [INFO] Generating trading signal for BTC
+2025-05-27 03:20:15,619 [INFO] Trading signal for BTC: SHORT with 100.00% confidence
+2025-05-27 03:20:15,619 [INFO] Profitability test for BTC in BEARISH regime: SUCCESS, Profit: 8.82%
+2025-05-27 03:20:15,619 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:20:15,619 [INFO] Generating trading signal for BTC
+2025-05-27 03:20:15,619 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:20:15,619 [INFO] Profitability test for BTC in RANGING regime: FAILURE, Profit: 0.00%
+2025-05-27 03:20:15,620 [INFO] Market regime for BTC: VOLATILE
+2025-05-27 03:20:15,620 [INFO] Generating trading signal for BTC
+2025-05-27 03:20:15,620 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:20:15,620 [INFO] Profitability test for BTC in VOLATILE regime: FAILURE, Profit: 0.00%
+2025-05-27 03:20:15,620 [INFO] Testing profitability for ETH
+2025-05-27 03:20:15,625 [INFO] Market regime for ETH: BULLISH
+2025-05-27 03:20:15,625 [INFO] Generating trading signal for ETH
+2025-05-27 03:20:15,625 [INFO] Trading signal for ETH: LONG with 100.00% confidence
+2025-05-27 03:20:15,625 [INFO] Profitability test for ETH in BULLISH regime: SUCCESS, Profit: 13.54%
+2025-05-27 03:20:15,625 [INFO] Market regime for ETH: BEARISH
+2025-05-27 03:20:15,625 [INFO] Generating trading signal for ETH
+2025-05-27 03:20:15,626 [INFO] Trading signal for ETH: SHORT with 100.00% confidence
+2025-05-27 03:20:15,626 [INFO] Profitability test for ETH in BEARISH regime: SUCCESS, Profit: 10.80%
+2025-05-27 03:20:15,626 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:20:15,626 [INFO] Generating trading signal for ETH
+2025-05-27 03:20:15,626 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:20:15,626 [INFO] Profitability test for ETH in RANGING regime: FAILURE, Profit: 0.00%
+2025-05-27 03:20:15,626 [INFO] Market regime for ETH: VOLATILE
+2025-05-27 03:20:15,626 [INFO] Generating trading signal for ETH
+2025-05-27 03:20:15,627 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:20:15,627 [INFO] Profitability test for ETH in VOLATILE regime: FAILURE, Profit: 0.00%
+2025-05-27 03:20:15,627 [INFO] Testing profitability for XRP
+2025-05-27 03:20:15,632 [INFO] Market regime for XRP: BULLISH
+2025-05-27 03:20:15,632 [INFO] Generating trading signal for XRP
+2025-05-27 03:20:15,632 [INFO] Trading signal for XRP: LONG with 100.00% confidence
+2025-05-27 03:20:15,632 [INFO] Profitability test for XRP in BULLISH regime: SUCCESS, Profit: 9.64%
+2025-05-27 03:20:15,632 [INFO] Market regime for XRP: BEARISH
+2025-05-27 03:20:15,632 [INFO] Generating trading signal for XRP
+2025-05-27 03:20:15,632 [INFO] Trading signal for XRP: SHORT with 100.00% confidence
+2025-05-27 03:20:15,633 [INFO] Profitability test for XRP in BEARISH regime: SUCCESS, Profit: 3.99%
+2025-05-27 03:20:15,633 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:20:15,633 [INFO] Generating trading signal for XRP
+2025-05-27 03:20:15,633 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:20:15,633 [INFO] Profitability test for XRP in RANGING regime: FAILURE, Profit: 0.00%
+2025-05-27 03:20:15,633 [INFO] Market regime for XRP: VOLATILE
+2025-05-27 03:20:15,633 [INFO] Generating trading signal for XRP
+2025-05-27 03:20:15,633 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:20:15,633 [INFO] Profitability test for XRP in VOLATILE regime: FAILURE, Profit: 0.00%
+2025-05-27 03:20:15,633 [INFO] Testing profitability for SOL
+2025-05-27 03:20:15,638 [INFO] Market regime for SOL: BULLISH
+2025-05-27 03:20:15,639 [INFO] Generating trading signal for SOL
+2025-05-27 03:20:15,639 [INFO] Trading signal for SOL: LONG with 100.00% confidence
+2025-05-27 03:20:15,639 [INFO] Profitability test for SOL in BULLISH regime: SUCCESS, Profit: 3.78%
+2025-05-27 03:20:15,639 [INFO] Market regime for SOL: BEARISH
+2025-05-27 03:20:15,639 [INFO] Generating trading signal for SOL
+2025-05-27 03:20:15,639 [INFO] Trading signal for SOL: SHORT with 100.00% confidence
+2025-05-27 03:20:15,640 [INFO] Profitability test for SOL in BEARISH regime: SUCCESS, Profit: 9.01%
+2025-05-27 03:20:15,640 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:20:15,640 [INFO] Generating trading signal for SOL
+2025-05-27 03:20:15,640 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:20:15,640 [INFO] Profitability test for SOL in RANGING regime: FAILURE, Profit: 0.00%
+2025-05-27 03:20:15,640 [INFO] Market regime for SOL: VOLATILE
+2025-05-27 03:20:15,640 [INFO] Generating trading signal for SOL
+2025-05-27 03:20:15,640 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:20:15,641 [INFO] Profitability test for SOL in VOLATILE regime: FAILURE, Profit: 0.00%
+2025-05-27 03:20:15,641 [INFO] Running consistency tests
+2025-05-27 03:20:15,641 [INFO] Testing consistency for BTC
+2025-05-27 03:20:15,642 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:20:15,642 [INFO] Generating trading signal for BTC
+2025-05-27 03:20:15,642 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:20:15,642 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:20:15,643 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:20:15,643 [INFO] Generating trading signal for BTC
+2025-05-27 03:20:15,643 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:20:15,643 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:20:15,643 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:20:15,643 [INFO] Generating trading signal for BTC
+2025-05-27 03:20:15,643 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:20:15,644 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:20:15,644 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:20:15,644 [INFO] Generating trading signal for BTC
+2025-05-27 03:20:15,644 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:20:15,644 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:20:15,644 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:20:15,644 [INFO] Generating trading signal for BTC
+2025-05-27 03:20:15,645 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:20:15,645 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:20:15,645 [INFO] Consistency test for BTC: SUCCESS, Consistency: 100.00%
+2025-05-27 03:20:15,645 [INFO] Testing consistency for ETH
+2025-05-27 03:20:15,646 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:20:15,646 [INFO] Generating trading signal for ETH
+2025-05-27 03:20:15,647 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:20:15,647 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:20:15,647 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:20:15,647 [INFO] Generating trading signal for ETH
+2025-05-27 03:20:15,647 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:20:15,647 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:20:15,647 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:20:15,647 [INFO] Generating trading signal for ETH
+2025-05-27 03:20:15,648 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:20:15,648 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:20:15,648 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:20:15,648 [INFO] Generating trading signal for ETH
+2025-05-27 03:20:15,648 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:20:15,648 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:20:15,648 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:20:15,648 [INFO] Generating trading signal for ETH
+2025-05-27 03:20:15,649 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:20:15,649 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:20:15,649 [INFO] Consistency test for ETH: SUCCESS, Consistency: 100.00%
+2025-05-27 03:20:15,649 [INFO] Testing consistency for XRP
+2025-05-27 03:20:15,650 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:20:15,650 [INFO] Generating trading signal for XRP
+2025-05-27 03:20:15,651 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:20:15,651 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:20:15,651 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:20:15,651 [INFO] Generating trading signal for XRP
+2025-05-27 03:20:15,651 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:20:15,651 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:20:15,651 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:20:15,651 [INFO] Generating trading signal for XRP
+2025-05-27 03:20:15,652 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:20:15,652 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:20:15,652 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:20:15,652 [INFO] Generating trading signal for XRP
+2025-05-27 03:20:15,652 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:20:15,652 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:20:15,652 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:20:15,652 [INFO] Generating trading signal for XRP
+2025-05-27 03:20:15,653 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:20:15,653 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:20:15,653 [INFO] Consistency test for XRP: SUCCESS, Consistency: 100.00%
+2025-05-27 03:20:15,653 [INFO] Testing consistency for SOL
+2025-05-27 03:20:15,654 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:20:15,654 [INFO] Generating trading signal for SOL
+2025-05-27 03:20:15,655 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:20:15,655 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:20:15,655 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:20:15,655 [INFO] Generating trading signal for SOL
+2025-05-27 03:20:15,655 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:20:15,655 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:20:15,655 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:20:15,655 [INFO] Generating trading signal for SOL
+2025-05-27 03:20:15,656 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:20:15,656 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:20:15,656 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:20:15,656 [INFO] Generating trading signal for SOL
+2025-05-27 03:20:15,656 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:20:15,656 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:20:15,656 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:20:15,656 [INFO] Generating trading signal for SOL
+2025-05-27 03:20:15,657 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:20:15,657 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:20:15,657 [INFO] Consistency test for SOL: SUCCESS, Consistency: 100.00%
+2025-05-27 03:20:15,657 [INFO] Testing strategy adaptation to different market regimes
+2025-05-27 03:20:15,661 [INFO] Market regime for BTC: BULLISH
+2025-05-27 03:20:15,662 [INFO] Generating trading signal for BTC
+2025-05-27 03:20:15,662 [INFO] Trading signal for BTC: LONG with 100.00% confidence
+2025-05-27 03:20:15,662 [INFO] Market regime for BTC: BULLISH
+2025-05-27 03:20:15,662 [INFO] Trading signal for BTC: LONG with 100.00% confidence
+2025-05-27 03:20:15,662 [INFO] Market regime for BTC: BEARISH
+2025-05-27 03:20:15,662 [INFO] Generating trading signal for BTC
+2025-05-27 03:20:15,662 [INFO] Trading signal for BTC: SHORT with 100.00% confidence
+2025-05-27 03:20:15,662 [INFO] Market regime for BTC: BEARISH
+2025-05-27 03:20:15,662 [INFO] Trading signal for BTC: SHORT with 100.00% confidence
+2025-05-27 03:20:15,663 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:20:15,663 [INFO] Generating trading signal for BTC
+2025-05-27 03:20:15,663 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:20:15,663 [INFO] Market regime for BTC: RANGING
+2025-05-27 03:20:15,663 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:20:15,663 [INFO] Market regime for BTC: VOLATILE
+2025-05-27 03:20:15,663 [INFO] Generating trading signal for BTC
+2025-05-27 03:20:15,663 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:20:15,663 [INFO] Market regime for BTC: VOLATILE
+2025-05-27 03:20:15,663 [INFO] Trading signal for BTC: NONE with 0.00% confidence
+2025-05-27 03:20:15,663 [INFO] Market regime adaptation test for BTC: SUCCESS, Adaptation score: 75.00%
+2025-05-27 03:20:15,668 [INFO] Market regime for ETH: BULLISH
+2025-05-27 03:20:15,668 [INFO] Generating trading signal for ETH
+2025-05-27 03:20:15,669 [INFO] Trading signal for ETH: LONG with 100.00% confidence
+2025-05-27 03:20:15,669 [INFO] Market regime for ETH: BULLISH
+2025-05-27 03:20:15,669 [INFO] Trading signal for ETH: LONG with 100.00% confidence
+2025-05-27 03:20:15,669 [INFO] Market regime for ETH: BEARISH
+2025-05-27 03:20:15,669 [INFO] Generating trading signal for ETH
+2025-05-27 03:20:15,669 [INFO] Trading signal for ETH: SHORT with 100.00% confidence
+2025-05-27 03:20:15,669 [INFO] Market regime for ETH: BEARISH
+2025-05-27 03:20:15,669 [INFO] Trading signal for ETH: SHORT with 100.00% confidence
+2025-05-27 03:20:15,669 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:20:15,669 [INFO] Generating trading signal for ETH
+2025-05-27 03:20:15,669 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:20:15,669 [INFO] Market regime for ETH: RANGING
+2025-05-27 03:20:15,670 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:20:15,670 [INFO] Market regime for ETH: VOLATILE
+2025-05-27 03:20:15,670 [INFO] Generating trading signal for ETH
+2025-05-27 03:20:15,670 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:20:15,670 [INFO] Market regime for ETH: VOLATILE
+2025-05-27 03:20:15,670 [INFO] Trading signal for ETH: NONE with 0.00% confidence
+2025-05-27 03:20:15,670 [INFO] Market regime adaptation test for ETH: SUCCESS, Adaptation score: 75.00%
+2025-05-27 03:20:15,675 [INFO] Market regime for XRP: BULLISH
+2025-05-27 03:20:15,675 [INFO] Generating trading signal for XRP
+2025-05-27 03:20:15,675 [INFO] Trading signal for XRP: LONG with 100.00% confidence
+2025-05-27 03:20:15,675 [INFO] Market regime for XRP: BULLISH
+2025-05-27 03:20:15,675 [INFO] Trading signal for XRP: LONG with 100.00% confidence
+2025-05-27 03:20:15,675 [INFO] Market regime for XRP: BEARISH
+2025-05-27 03:20:15,675 [INFO] Generating trading signal for XRP
+2025-05-27 03:20:15,675 [INFO] Trading signal for XRP: SHORT with 100.00% confidence
+2025-05-27 03:20:15,676 [INFO] Market regime for XRP: BEARISH
+2025-05-27 03:20:15,676 [INFO] Trading signal for XRP: SHORT with 100.00% confidence
+2025-05-27 03:20:15,676 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:20:15,676 [INFO] Generating trading signal for XRP
+2025-05-27 03:20:15,676 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:20:15,676 [INFO] Market regime for XRP: RANGING
+2025-05-27 03:20:15,676 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:20:15,676 [INFO] Market regime for XRP: VOLATILE
+2025-05-27 03:20:15,676 [INFO] Generating trading signal for XRP
+2025-05-27 03:20:15,676 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:20:15,676 [INFO] Market regime for XRP: VOLATILE
+2025-05-27 03:20:15,676 [INFO] Trading signal for XRP: NONE with 0.00% confidence
+2025-05-27 03:20:15,676 [INFO] Market regime adaptation test for XRP: SUCCESS, Adaptation score: 75.00%
+2025-05-27 03:20:15,681 [INFO] Market regime for SOL: BULLISH
+2025-05-27 03:20:15,681 [INFO] Generating trading signal for SOL
+2025-05-27 03:20:15,682 [INFO] Trading signal for SOL: LONG with 100.00% confidence
+2025-05-27 03:20:15,682 [INFO] Market regime for SOL: BULLISH
+2025-05-27 03:20:15,682 [INFO] Trading signal for SOL: LONG with 100.00% confidence
+2025-05-27 03:20:15,682 [INFO] Market regime for SOL: BEARISH
+2025-05-27 03:20:15,682 [INFO] Generating trading signal for SOL
+2025-05-27 03:20:15,682 [INFO] Trading signal for SOL: SHORT with 100.00% confidence
+2025-05-27 03:20:15,682 [INFO] Market regime for SOL: BEARISH
+2025-05-27 03:20:15,682 [INFO] Trading signal for SOL: SHORT with 100.00% confidence
+2025-05-27 03:20:15,682 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:20:15,682 [INFO] Generating trading signal for SOL
+2025-05-27 03:20:15,683 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:20:15,683 [INFO] Market regime for SOL: RANGING
+2025-05-27 03:20:15,683 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:20:15,683 [INFO] Market regime for SOL: VOLATILE
+2025-05-27 03:20:15,683 [INFO] Generating trading signal for SOL
+2025-05-27 03:20:15,683 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:20:15,683 [INFO] Market regime for SOL: VOLATILE
+2025-05-27 03:20:15,683 [INFO] Trading signal for SOL: NONE with 0.00% confidence
+2025-05-27 03:20:15,683 [INFO] Market regime adaptation test for SOL: SUCCESS, Adaptation score: 75.00%
+2025-05-27 03:20:15,683 [INFO] All tests completed. Success rate: 66.67%
+2025-05-27 03:20:15,685 [INFO] Test results saved to strategy_integration_test_results.json

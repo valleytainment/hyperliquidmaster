@@ -1,0 +1,57 @@
+{
+    "PAPER_TRADING": {
+        "risk_level": 0.02,
+        "max_position_size": 0.1,
+        "max_open_positions": 5,
+        "use_stop_loss": true,
+        "use_take_profit": true,
+        "tp_multiplier": 2.0,
+        "sl_multiplier": 1.0,
+        "use_trailing_stop": true,
+        "description": "Paper trading mode with simulated trades. No real money at risk."
+    },
+    "LIVE_TRADING": {
+        "risk_level": 0.01,
+        "max_position_size": 0.05,
+        "max_open_positions": 3,
+        "use_stop_loss": true,
+        "use_take_profit": true,
+        "tp_multiplier": 2.0,
+        "sl_multiplier": 1.0,
+        "use_trailing_stop": true,
+        "description": "Live trading mode with real money. Standard risk parameters."
+    },
+    "MONITOR_ONLY": {
+        "risk_level": 0.0,
+        "max_position_size": 0.0,
+        "max_open_positions": 0,
+        "use_stop_loss": false,
+        "use_take_profit": false,
+        "tp_multiplier": 0.0,
+        "sl_multiplier": 0.0,
+        "use_trailing_stop": false,
+        "description": "Monitor only mode. Generates signals but does not execute trades."
+    },
+    "AGGRESSIVE": {
+        "risk_level": 0.03,
+        "max_position_size": 0.15,
+        "max_open_positions": 7,
+        "use_stop_loss": true,
+        "use_take_profit": true,
+        "tp_multiplier": 3.0,
+        "sl_multiplier": 1.5,
+        "use_trailing_stop": true,
+        "description": "Aggressive trading mode with higher risk and reward parameters."
+    },
+    "CONSERVATIVE": {
+        "risk_level": 0.005,
+        "max_position_size": 0.03,
+        "max_open_positions": 2,
+        "use_stop_loss": true,
+        "use_take_profit": true,
+        "tp_multiplier": 1.5,
+        "sl_multiplier": 0.7,
+        "use_trailing_stop": true,
+        "description": "Conservative trading mode with lower risk and reward parameters."
+    }
+}

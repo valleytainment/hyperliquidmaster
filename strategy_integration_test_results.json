@@ -1,0 +1,299 @@
+{
+    "timestamp": "2025-05-27 03:20:15",
+    "overall_success": "False",
+    "success_rate": 66.66666666666666,
+    "profitability_tests": [
+        {
+            "symbol": "BTC",
+            "regime": "BULLISH",
+            "signal": "LONG",
+            "confidence": 1.0,
+            "profit_percent": 7.773746279554322,
+            "success": "True",
+            "details": "Long trade profitable"
+        },
+        {
+            "symbol": "BTC",
+            "regime": "BEARISH",
+            "signal": "SHORT",
+            "confidence": 1.0,
+            "profit_percent": 8.82160604757141,
+            "success": "True",
+            "details": "Short trade profitable"
+        },
+        {
+            "symbol": "BTC",
+            "regime": "RANGING",
+            "signal": "NONE",
+            "confidence": 0.0,
+            "profit_percent": 0.0,
+            "success": "False",
+            "details": "No trade executed"
+        },
+        {
+            "symbol": "BTC",
+            "regime": "VOLATILE",
+            "signal": "NONE",
+            "confidence": 0.0,
+            "profit_percent": 0.0,
+            "success": "False",
+            "details": "No trade executed"
+        },
+        {
+            "symbol": "ETH",
+            "regime": "BULLISH",
+            "signal": "LONG",
+            "confidence": 1.0,
+            "profit_percent": 13.540698438582346,
+            "success": "True",
+            "details": "Long trade profitable"
+        },
+        {
+            "symbol": "ETH",
+            "regime": "BEARISH",
+            "signal": "SHORT",
+            "confidence": 1.0,
+            "profit_percent": 10.802429850174319,
+            "success": "True",
+            "details": "Short trade profitable"
+        },
+        {
+            "symbol": "ETH",
+            "regime": "RANGING",
+            "signal": "NONE",
+            "confidence": 0.0,
+            "profit_percent": 0.0,
+            "success": "False",
+            "details": "No trade executed"
+        },
+        {
+            "symbol": "ETH",
+            "regime": "VOLATILE",
+            "signal": "NONE",
+            "confidence": 0.0,
+            "profit_percent": 0.0,
+            "success": "False",
+            "details": "No trade executed"
+        },
+        {
+            "symbol": "XRP",
+            "regime": "BULLISH",
+            "signal": "LONG",
+            "confidence": 1.0,
+            "profit_percent": 9.636637341353135,
+            "success": "True",
+            "details": "Long trade profitable"
+        },
+        {
+            "symbol": "XRP",
+            "regime": "BEARISH",
+            "signal": "SHORT",
+            "confidence": 1.0,
+            "profit_percent": 3.987596059653625,
+            "success": "True",
+            "details": "Short trade profitable"
+        },
+        {
+            "symbol": "XRP",
+            "regime": "RANGING",
+            "signal": "NONE",
+            "confidence": 0.0,
+            "profit_percent": 0.0,
+            "success": "False",
+            "details": "No trade executed"
+        },
+        {
+            "symbol": "XRP",
+            "regime": "VOLATILE",
+            "signal": "NONE",
+            "confidence": 0.0,
+            "profit_percent": 0.0,
+            "success": "False",
+            "details": "No trade executed"
+        },
+        {
+            "symbol": "SOL",
+            "regime": "BULLISH",
+            "signal": "LONG",
+            "confidence": 1.0,
+            "profit_percent": 3.781547087767466,
+            "success": "True",
+            "details": "Long trade profitable"
+        },
+        {
+            "symbol": "SOL",
+            "regime": "BEARISH",
+            "signal": "SHORT",
+            "confidence": 1.0,
+            "profit_percent": 9.009601565521132,
+            "success": "True",
+            "details": "Short trade profitable"
+        },
+        {
+            "symbol": "SOL",
+            "regime": "RANGING",
+            "signal": "NONE",
+            "confidence": 0.0,
+            "profit_percent": 0.0,
+            "success": "False",
+            "details": "No trade executed"
+        },
+        {
+            "symbol": "SOL",
+            "regime": "VOLATILE",
+            "signal": "NONE",
+            "confidence": 0.0,
+            "profit_percent": 0.0,
+            "success": "False",
+            "details": "No trade executed"
+        }
+    ],
+    "consistency_tests": [
+        {
+            "symbol": "BTC",
+            "signals": [
+                "NONE",
+                "NONE",
+                "NONE",
+                "NONE",
+                "NONE"
+            ],
+            "most_common_signal": "NONE",
+            "consistency": 100.0,
+            "success": "True"
+        },
+        {
+            "symbol": "ETH",
+            "signals": [
+                "NONE",
+                "NONE",
+                "NONE",
+                "NONE",
+                "NONE"
+            ],
+            "most_common_signal": "NONE",
+            "consistency": 100.0,
+            "success": "True"
+        },
+        {
+            "symbol": "XRP",
+            "signals": [
+                "NONE",
+                "NONE",
+                "NONE",
+                "NONE",
+                "NONE"
+            ],
+            "most_common_signal": "NONE",
+            "consistency": 100.0,
+            "success": "True"
+        },
+        {
+            "symbol": "SOL",
+            "signals": [
+                "NONE",
+                "NONE",
+                "NONE",
+                "NONE",
+                "NONE"
+            ],
+            "most_common_signal": "NONE",
+            "consistency": 100.0,
+            "success": "True"
+        }
+    ],
+    "market_regime_tests": [
+        {
+            "symbol": "BTC",
+            "signals_by_regime": {
+                "BULLISH": {
+                    "signal": "LONG",
+                    "confidence": 1.0
+                },
+                "BEARISH": {
+                    "signal": "SHORT",
+                    "confidence": 1.0
+                },
+                "RANGING": {
+                    "signal": "NONE",
+                    "confidence": 0.0
+                },
+                "VOLATILE": {
+                    "signal": "NONE",
+                    "confidence": 0.0
+                }
+            },
+            "adaptation_score": 75.0,
+            "success": "True"
+        },
+        {
+            "symbol": "ETH",
+            "signals_by_regime": {
+                "BULLISH": {
+                    "signal": "LONG",
+                    "confidence": 1.0
+                },
+                "BEARISH": {
+                    "signal": "SHORT",
+                    "confidence": 1.0
+                },
+                "RANGING": {
+                    "signal": "NONE",
+                    "confidence": 0.0
+                },
+                "VOLATILE": {
+                    "signal": "NONE",
+                    "confidence": 0.0
+                }
+            },
+            "adaptation_score": 75.0,
+            "success": "True"
+        },
+        {
+            "symbol": "XRP",
+            "signals_by_regime": {
+                "BULLISH": {
+                    "signal": "LONG",
+                    "confidence": 1.0
+                },
+                "BEARISH": {
+                    "signal": "SHORT",
+                    "confidence": 1.0
+                },
+                "RANGING": {
+                    "signal": "NONE",
+                    "confidence": 0.0
+                },
+                "VOLATILE": {
+                    "signal": "NONE",
+                    "confidence": 0.0
+                }
+            },
+            "adaptation_score": 75.0,
+            "success": "True"
+        },
+        {
+            "symbol": "SOL",
+            "signals_by_regime": {
+                "BULLISH": {
+                    "signal": "LONG",
+                    "confidence": 1.0
+                },
+                "BEARISH": {
+                    "signal": "SHORT",
+                    "confidence": 1.0
+                },
+                "RANGING": {
+                    "signal": "NONE",
+                    "confidence": 0.0
+                },
+                "VOLATILE": {
+                    "signal": "NONE",
+                    "confidence": 0.0
+                }
+            },
+            "adaptation_score": 75.0,
+            "success": "True"
+        }
+    ]
+}

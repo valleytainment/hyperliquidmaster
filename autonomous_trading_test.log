@@ -1,0 +1,78 @@
+2025-05-27 03:01:54,817 [INFO] Initializing Autonomous Trading Test
+2025-05-27 03:01:54,817 [WARNING] config.json not found, using default configuration
+2025-05-27 03:01:54,817 [INFO] Created default configuration
+2025-05-27 03:01:54,817 [INFO] Not connected, attempting to connect...
+2025-05-27 03:01:54,817 [INFO] Health check thread started
+2025-05-27 03:01:54,817 [INFO] Reconnecting to exchange...
+2025-05-27 03:01:54,818 [INFO] Waiting 1.75 seconds before reconnecting (attempt 1)
+2025-05-27 03:01:54,818 [INFO] Trading mode initialized to PAPER_TRADING
+2025-05-27 03:01:54,819 [INFO] Risk manager initialized
+2025-05-27 03:01:54,819 [INFO] Position manager wrapper initialized
+2025-05-27 03:01:54,819 [INFO] Advanced order manager initialized
+2025-05-27 03:01:54,819 [INFO] Autonomous Trading Test initialized
+2025-05-27 03:01:54,819 [INFO] Starting all autonomous trading tests
+2025-05-27 03:01:56,568 [INFO] Connecting to exchange...
+2025-05-27 03:01:57,069 [INFO] Connected to exchange
+2025-05-27 03:01:57,069 [INFO] Testing trading mode switching
+2025-05-27 03:01:57,069 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 03:01:57,069 [INFO] Mode switching test to PAPER_TRADING: SUCCESS
+2025-05-27 03:01:57,069 [INFO] Trading mode set to LIVE_TRADING
+2025-05-27 03:01:57,069 [INFO] Mode switching test to LIVE_TRADING: SUCCESS
+2025-05-27 03:01:57,069 [INFO] Trading mode set to MONITOR_ONLY
+2025-05-27 03:01:57,069 [INFO] Mode switching test to MONITOR_ONLY: SUCCESS
+2025-05-27 03:01:57,069 [INFO] Trading mode set to AGGRESSIVE
+2025-05-27 03:01:57,069 [INFO] Mode switching test to AGGRESSIVE: SUCCESS
+2025-05-27 03:01:57,070 [INFO] Trading mode set to CONSERVATIVE
+2025-05-27 03:01:57,070 [INFO] Mode switching test to CONSERVATIVE: SUCCESS
+2025-05-27 03:01:57,070 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 03:01:57,070 [INFO] Testing long position entry
+2025-05-27 03:01:57,070 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 03:01:57,070 [WARNING] Position size 380.9524 exceeds max position size 100.0000, limiting
+2025-05-27 03:01:57,070 [INFO] Calculated position size: 100.0000 for XRP with 1.00% risk
+2025-05-27 03:01:57,070 [INFO] Opening position: XRP LONG, Size: 100.0
+2025-05-27 03:01:58,170 [INFO] Position opened: XRP LONG, Size: 100.0, Entry: 0.5
+2025-05-27 03:01:58,171 [INFO] Long entry test for XRP: SUCCESS
+2025-05-27 03:01:58,171 [INFO] Calculated position size: 0.0641 for ETH with 1.00% risk
+2025-05-27 03:01:58,171 [INFO] Opening position: ETH LONG, Size: 0.0641025641025641
+2025-05-27 03:01:59,271 [INFO] Position opened: ETH LONG, Size: 0.0641025641025641, Entry: 3000.0
+2025-05-27 03:01:59,271 [INFO] Long entry test for ETH: SUCCESS
+2025-05-27 03:01:59,271 [INFO] Testing long position exit
+2025-05-27 03:01:59,271 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 03:01:59,271 [INFO] Closing position: XRP LONG
+2025-05-27 03:02:00,372 [INFO] Position closed: XRP LONG, Exit: 0.5, PnL: 0.00 (0.00%)
+2025-05-27 03:02:00,372 [INFO] Long exit test for XRP: SUCCESS
+2025-05-27 03:02:00,372 [INFO] Closing position: ETH LONG
+2025-05-27 03:02:01,472 [INFO] Position closed: ETH LONG, Exit: 3000.0, PnL: 0.00 (0.00%)
+2025-05-27 03:02:01,472 [INFO] Long exit test for ETH: SUCCESS
+2025-05-27 03:02:01,472 [INFO] Testing short position entry
+2025-05-27 03:02:01,473 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 03:02:01,473 [WARNING] Position size 380.9524 exceeds max position size 100.0000, limiting
+2025-05-27 03:02:01,473 [INFO] Calculated position size: 100.0000 for XRP with 1.00% risk
+2025-05-27 03:02:01,473 [INFO] Opening position: XRP SHORT, Size: 100.0
+2025-05-27 03:02:02,573 [INFO] Position opened: XRP SHORT, Size: 100.0, Entry: 0.5
+2025-05-27 03:02:02,573 [INFO] Short entry test for XRP: SUCCESS
+2025-05-27 03:02:02,573 [INFO] Calculated position size: 0.0641 for ETH with 1.00% risk
+2025-05-27 03:02:02,573 [INFO] Opening position: ETH SHORT, Size: 0.0641025641025641
+2025-05-27 03:02:03,674 [INFO] Position opened: ETH SHORT, Size: 0.0641025641025641, Entry: 3000.0
+2025-05-27 03:02:03,674 [INFO] Short entry test for ETH: SUCCESS
+2025-05-27 03:02:03,674 [INFO] Testing short position exit
+2025-05-27 03:02:03,674 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 03:02:03,674 [INFO] Closing position: XRP SHORT
+2025-05-27 03:02:04,775 [INFO] Position closed: XRP SHORT, Exit: 0.5, PnL: 0.00 (0.00%)
+2025-05-27 03:02:04,775 [INFO] Short exit test for XRP: SUCCESS
+2025-05-27 03:02:04,775 [INFO] Closing position: ETH SHORT
+2025-05-27 03:02:05,875 [INFO] Position closed: ETH SHORT, Exit: 3000.0, PnL: 0.00 (0.00%)
+2025-05-27 03:02:05,875 [INFO] Short exit test for ETH: SUCCESS
+2025-05-27 03:02:05,875 [INFO] Testing error handling and recovery
+2025-05-27 03:02:05,875 [INFO] Disconnecting from exchange...
+2025-05-27 03:02:06,376 [INFO] Disconnected from exchange
+2025-05-27 03:02:06,376 [INFO] Reconnecting to exchange...
+2025-05-27 03:02:06,376 [INFO] Waiting 1.52 seconds before reconnecting (attempt 1)
+2025-05-27 03:02:07,893 [INFO] Connecting to exchange...
+2025-05-27 03:02:08,393 [INFO] Connected to exchange
+2025-05-27 03:02:08,394 [INFO] Connection loss and recovery test: SUCCESS
+2025-05-27 03:02:08,394 [INFO] Opening position: INVALID_SYMBOL LONG, Size: 0.0
+2025-05-27 03:02:09,494 [INFO] Position opened: INVALID_SYMBOL LONG, Size: 0.0, Entry: 1.0
+2025-05-27 03:02:09,494 [INFO] Invalid order handling test: FAILED
+2025-05-27 03:02:09,494 [INFO] All tests completed. Success rate: 93.33%
+2025-05-27 03:02:09,495 [INFO] Test results saved to autonomous_trading_test_results.json
