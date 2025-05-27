@@ -22,7 +22,16 @@ def integrate_advanced_api_management(gui_main_instance):
     settings_tab = gui_main_instance.settings_tab
     style_manager = gui_main_instance.style_manager
     logger = gui_main_instance.logger
-    config_dir = os.path.dirname(gui_main_instance.config_path)
+    
+    # Ensure config_dir is valid and not empty
+    config_dir = os.path.dirname(os.path.abspath(gui_main_instance.config_path))
+    if not config_dir or config_dir.strip() == "":
+        config_dir = os.path.join(os.getcwd(), "config")
+        logger.warning(f"Empty config directory detected, using default: {config_dir}")
+    
+    # Create config directory if it doesn't exist
+    os.makedirs(config_dir, exist_ok=True)
+    logger.info(f"Using config directory: {config_dir}")
     
     # Initialize advanced API manager
     api_manager = AdvancedAPIManager(config_dir, logger)

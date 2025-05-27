@@ -356,3 +356,27 @@
 2025-05-27 12:03:05,836 [INFO] Testing combination 22/81: {'signal_threshold': 0.5599999999999999, 'trend_filter_strength': 0.6, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 0.8}
 2025-05-27 12:03:05,837 [INFO] Starting backtest
 2025-05-27 12:03:05,856 [INFO] Running backtest with 8737 data points
+2025-05-27 12:04:54,191 [INFO] Backtest completed in 108.35 seconds
+2025-05-27 12:04:54,191 [INFO] Final equity: $907809.79
+2025-05-27 12:04:54,191 [INFO] Return: 8978.10%
+2025-05-27 12:04:54,191 [INFO] Sharpe ratio: 1.11
+2025-05-27 12:04:54,191 [INFO] Max drawdown: -50.42%
+2025-05-27 12:04:54,197 [INFO] Testing combination 23/81: {'signal_threshold': 0.5599999999999999, 'trend_filter_strength': 0.6, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.0}
+2025-05-27 12:04:54,197 [INFO] Starting backtest
+2025-05-27 12:04:54,216 [INFO] Running backtest with 8737 data points
+2025-05-27 12:06:46,502 [INFO] Backtest completed in 112.31 seconds
+2025-05-27 12:06:46,503 [INFO] Final equity: $879300.76
+2025-05-27 12:06:46,503 [INFO] Return: 8693.01%
+2025-05-27 12:06:46,503 [INFO] Sharpe ratio: 1.11
+2025-05-27 12:06:46,503 [INFO] Max drawdown: -36.31%
+2025-05-27 12:06:46,505 [INFO] Testing combination 24/81: {'signal_threshold': 0.5599999999999999, 'trend_filter_strength': 0.6, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 1.2}
+2025-05-27 12:06:46,505 [INFO] Starting backtest
+2025-05-27 12:06:46,524 [INFO] Running backtest with 8737 data points
+2025-05-27 12:08:33,553 [INFO] Backtest completed in 107.05 seconds
+2025-05-27 12:08:33,553 [INFO] Final equity: $879300.76
+2025-05-27 12:08:33,553 [INFO] Return: 8693.01%
+2025-05-27 12:08:33,553 [INFO] Sharpe ratio: 1.11
+2025-05-27 12:08:33,553 [INFO] Max drawdown: -36.31%
+2025-05-27 12:08:33,559 [INFO] Testing combination 25/81: {'signal_threshold': 0.5599999999999999, 'trend_filter_strength': 0.6, 'mean_reversion_factor': 0.36, 'volatility_adjustment': 0.8}
+2025-05-27 12:08:33,559 [INFO] Starting backtest
+2025-05-27 12:08:33,577 [INFO] Running backtest with 8737 data points

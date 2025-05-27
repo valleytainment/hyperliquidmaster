@@ -43,6 +43,12 @@ class AdvancedAPIManager:
             logger: Logger instance
         """
         self.logger = logger or logging.getLogger("AdvancedAPIManager")
+        
+        # Ensure config_dir is valid and not empty
+        if not config_path or config_path.strip() == "":
+            config_path = os.path.join(os.getcwd(), "config")
+            self.logger.warning(f"Empty config path detected, using default: {config_path}")
+            
         self.config_dir = config_path
         self.api_keys_file = os.path.join(self.config_dir, "api_keys.json")
         self.backup_dir = os.path.join(self.config_dir, "api_keys_backup")
@@ -50,8 +56,18 @@ class AdvancedAPIManager:
         self.active_key_id: Optional[str] = None
         
         # Create directories if they don't exist
-        os.makedirs(self.config_dir, exist_ok=True)
-        os.makedirs(self.backup_dir, exist_ok=True)
+        try:
+            os.makedirs(self.config_dir, exist_ok=True)
+            os.makedirs(self.backup_dir, exist_ok=True)
+            self.logger.info(f"Using API keys directory: {self.config_dir}")
+        except Exception as e:
+            self.logger.error(f"Error creating directories: {e}")
+            # Fallback to current directory if there's an error
+            self.config_dir = os.getcwd()
+            self.api_keys_file = os.path.join(self.config_dir, "api_keys.json")
+            self.backup_dir = os.path.join(self.config_dir, "api_keys_backup")
+            os.makedirs(self.backup_dir, exist_ok=True)
+            self.logger.warning(f"Using fallback directory: {self.config_dir}")
         
         # Load API keys
         self.load_api_keys()
