@@ -1,0 +1,50 @@
+{
+    "SOL-USD-PERP": {
+        "1h": {
+            "status": "success",
+            "source": "hyperliquid",
+            "is_synthetic": false,
+            "synthetic_ratio": 0.0,
+            "data_points": 720
+        },
+        "4h": {
+            "status": "success",
+            "source": "hyperliquid",
+            "is_synthetic": false,
+            "synthetic_ratio": 0.0,
+            "data_points": 180
+        }
+    },
+    "BTC-USD-PERP": {
+        "1h": {
+            "status": "success",
+            "source": "hyperliquid",
+            "is_synthetic": false,
+            "synthetic_ratio": 0.0,
+            "data_points": 720
+        },
+        "4h": {
+            "status": "success",
+            "source": "hyperliquid",
+            "is_synthetic": false,
+            "synthetic_ratio": 0.0,
+            "data_points": 180
+        }
+    },
+    "ETH-USD-PERP": {
+        "1h": {
+            "status": "success",
+            "source": "hyperliquid",
+            "is_synthetic": false,
+            "synthetic_ratio": 0.0,
+            "data_points": 720
+        },
+        "4h": {
+            "status": "success",
+            "source": "hyperliquid",
+            "is_synthetic": false,
+            "synthetic_ratio": 0.0,
+            "data_points": 180
+        }
+    }
+}
