@@ -115,6 +115,15 @@ class SettingsManager:
             Setting value or default
         """
         return self.settings.get(key, default)
+        
+    def get_settings(self) -> Dict[str, Any]:
+        """
+        Get all settings.
+        
+        Returns:
+            Dict containing all settings
+        """
+        return self.settings
     
     def set_setting(self, key: str, value: Any) -> None:
         """
