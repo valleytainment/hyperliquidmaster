@@ -7,7 +7,7 @@ Provides consistent styling across the application with theme support.
 import tkinter as tk
 from tkinter import ttk
 import logging
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, Union, List, Tuple
 
 class GUIStyleManager:
     """
@@ -120,7 +120,16 @@ class GUIStyleManager:
             style.configure("TFrame", background=theme["bg"])
             style.configure("TLabel", background=theme["bg"], foreground=theme["fg"])
             style.configure("TButton", background=theme["button_bg"], foreground=theme["button_fg"])
-            style.configure("TEntry", fieldbackground=theme["entry_bg"], foreground=theme["entry_fg"], insertbackground=theme["entry_insertbackground"])
+            
+            # Fix for Entry widget styling
+            style.configure("TEntry", 
+                fieldbackground=theme["entry_bg"], 
+                foreground=theme["entry_fg"],
+                background=theme["entry_bg"])
+            
+            # The insertbackground is handled separately for tk.Entry widgets
+            # as ttk.Entry doesn't support direct insertbackground configuration
+            
             style.configure("TCheckbutton", background=theme["bg"], foreground=theme["fg"])
             style.configure("TRadiobutton", background=theme["bg"], foreground=theme["fg"])
             style.configure("TNotebook", background=theme["bg"], tabmargins=[2, 5, 2, 0])
@@ -170,6 +179,44 @@ class GUIStyleManager:
         except Exception as e:
             self.logger.error(f"Error toggling theme: {e}")
     
+    def _is_ttk_widget(self, widget) -> bool:
+        """
+        Check if a widget is a ttk widget.
+        
+        Args:
+            widget: The widget to check
+            
+        Returns:
+            True if the widget is a ttk widget, False otherwise
+        """
+        return widget.__class__.__module__.startswith('tkinter.ttk')
+    
+    def _safe_configure(self, widget, **kwargs) -> None:
+        """
+        Safely configure a widget, handling different widget types.
+        
+        Args:
+            widget: The widget to configure
+            **kwargs: Configuration options
+        """
+        try:
+            # Filter out options that aren't supported by the widget
+            valid_options = {}
+            for key, value in kwargs.items():
+                try:
+                    # Check if the option is valid for this widget
+                    widget.configure({key: value})
+                    valid_options[key] = value
+                except tk.TclError:
+                    # Option not supported by this widget
+                    pass
+            
+            # Apply valid options
+            if valid_options:
+                widget.configure(**valid_options)
+        except Exception as e:
+            self.logger.warning(f"Error configuring widget {widget}: {e}")
+    
     def apply_theme_to_all_widgets(self, parent: tk.Widget) -> None:
         """
         Recursively apply the current theme to all widgets.
@@ -181,35 +228,96 @@ class GUIStyleManager:
         
         for child in parent.winfo_children():
             try:
-                # Apply theme based on widget type
-                if isinstance(child, tk.Frame) or isinstance(child, ttk.Frame):
-                    child.configure(background=theme["bg"])
+                # Handle different widget types
+                if isinstance(child, (tk.Frame, ttk.Frame)):
+                    # Handle both tk and ttk Frame widgets
+                    if self._is_ttk_widget(child):
+                        # ttk Frame - style is applied through ttk.Style
+                        pass
+                    else:
+                        # tk Frame
+                        self._safe_configure(child, background=theme["bg"])
                 
-                elif isinstance(child, tk.Label) or isinstance(child, ttk.Label):
-                    child.configure(background=theme["bg"], foreground=theme["fg"])
+                elif isinstance(child, (tk.Label, ttk.Label)):
+                    # Handle both tk and ttk Label widgets
+                    if self._is_ttk_widget(child):
+                        # ttk Label - style is applied through ttk.Style
+                        pass
+                    else:
+                        # tk Label
+                        self._safe_configure(child, background=theme["bg"], foreground=theme["fg"])
                 
-                elif isinstance(child, tk.Button) or isinstance(child, ttk.Button):
-                    if isinstance(child, tk.Button):
-                        child.configure(background=theme["button_bg"], foreground=theme["button_fg"], 
-                                       activebackground=theme["highlight_bg"], activeforeground=theme["highlight_fg"])
+                elif isinstance(child, (tk.Button, ttk.Button)):
+                    # Handle both tk and ttk Button widgets
+                    if self._is_ttk_widget(child):
+                        # ttk Button - style is applied through ttk.Style
+                        pass
+                    else:
+                        # tk Button
+                        self._safe_configure(child, 
+                            background=theme["button_bg"], 
+                            foreground=theme["button_fg"],
+                            activebackground=theme["highlight_bg"], 
+                            activeforeground=theme["highlight_fg"])
                 
-                elif isinstance(child, tk.Entry) or isinstance(child, ttk.Entry):
-                    if isinstance(child, tk.Entry):
-                        child.configure(background=theme["entry_bg"], foreground=theme["entry_fg"], 
-                                       insertbackground=theme["entry_insertbackground"])
+                elif isinstance(child, (tk.Entry, ttk.Entry)):
+                    # Handle both tk and ttk Entry widgets
+                    if self._is_ttk_widget(child):
+                        # ttk Entry - style is applied through ttk.Style
+                        # But insertbackground needs special handling
+                        try:
+                            child.config(insertbackground=theme["entry_insertbackground"])
+                        except tk.TclError:
+                            # Some ttk Entry widgets might not support insertbackground
+                            pass
+                    else:
+                        # tk Entry
+                        self._safe_configure(child, 
+                            background=theme["entry_bg"], 
+                            foreground=theme["entry_fg"],
+                            insertbackground=theme["entry_insertbackground"],
+                            highlightbackground=theme["border"], 
+                            highlightcolor=theme["accent1"])
                 
                 elif isinstance(child, tk.Text):
-                    child.configure(background=theme["entry_bg"], foreground=theme["entry_fg"], 
-                                   insertbackground=theme["entry_insertbackground"])
+                    # Text widget
+                    self._safe_configure(child, 
+                        background=theme["entry_bg"], 
+                        foreground=theme["entry_fg"],
+                        insertbackground=theme["entry_insertbackground"],
+                        highlightbackground=theme["border"], 
+                        highlightcolor=theme["accent1"])
                 
                 elif isinstance(child, tk.Canvas):
-                    child.configure(background=theme["chart_bg"])
+                    # Canvas widget
+                    self._safe_configure(child, background=theme["chart_bg"])
                 
                 elif isinstance(child, tk.Scrollbar):
-                    child.configure(background=theme["scrollbar_bg"], troughcolor=theme["scrollbar_fg"])
+                    # Scrollbar widget
+                    self._safe_configure(child, 
+                        background=theme["scrollbar_bg"], 
+                        troughcolor=theme["scrollbar_fg"])
                 
                 elif isinstance(child, ttk.Notebook):
-                    pass  # Already styled through ttk.Style
+                    # ttk Notebook - style is applied through ttk.Style
+                    pass
+                
+                elif isinstance(child, ttk.Treeview):
+                    # ttk Treeview - style is applied through ttk.Style
+                    pass
+                
+                # Special handling for specific widget classes
+                elif child.winfo_class() == 'TCombobox':
+                    # ttk Combobox
+                    try:
+                        child.configure(foreground=theme["entry_fg"])
+                        # Set dropdown list colors
+                        self.root.option_add('*TCombobox*Listbox.background', theme["entry_bg"])
+                        self.root.option_add('*TCombobox*Listbox.foreground', theme["entry_fg"])
+                        self.root.option_add('*TCombobox*Listbox.selectBackground', theme["accent1"])
+                        self.root.option_add('*TCombobox*Listbox.selectForeground', theme["fg"])
+                    except Exception as e:
+                        self.logger.warning(f"Error styling Combobox: {e}")
                 
                 # Recursively apply to children
                 self.apply_theme_to_all_widgets(child)
@@ -225,7 +333,7 @@ class GUIStyleManager:
         """
         return self.themes[self.current_theme]
     
-    def create_scrollable_frame(self, parent: tk.Widget) -> tuple:
+    def create_scrollable_frame(self, parent: tk.Widget) -> Tuple[ttk.Frame, ttk.Frame]:
         """
         Create a scrollable frame.
         
@@ -240,7 +348,7 @@ class GUIStyleManager:
         # Create a container frame
         container = ttk.Frame(parent)
         
-        # Create a canvas
+        # Create a canvas with proper styling
         canvas = tk.Canvas(container, bg=theme["bg"], highlightthickness=0)
         
         # Create a scrollbar
@@ -248,11 +356,35 @@ class GUIStyleManager:
         
         # Create a frame inside the canvas
         scrollable_frame = ttk.Frame(canvas)
-        scrollable_frame.bind("<Configure>", lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
+        
+        # Configure the canvas to resize with the frame
+        def configure_canvas(event):
+            canvas.configure(scrollregion=canvas.bbox("all"))
+            # Set the canvas width to match the frame width
+            canvas.itemconfig("frame", width=event.width)
+        
+        scrollable_frame.bind("<Configure>", configure_canvas)
         
         # Add the frame to the canvas
-        canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
+        canvas_frame = canvas.create_window((0, 0), window=scrollable_frame, anchor="nw", tags="frame")
+        
+        # Configure the canvas to resize with the container
+        def resize_canvas(event):
+            canvas.configure(width=event.width)
+        
+        canvas.bind("<Configure>", resize_canvas)
+        
+        # Configure the scrollbar
         canvas.configure(yscrollcommand=scrollbar.set)
+        
+        # Add mousewheel scrolling
+        def _on_mousewheel(event):
+            canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
+        
+        # Bind mousewheel events
+        canvas.bind_all("<MouseWheel>", _on_mousewheel)  # Windows
+        canvas.bind_all("<Button-4>", lambda e: canvas.yview_scroll(-1, "units"))  # Linux
+        canvas.bind_all("<Button-5>", lambda e: canvas.yview_scroll(1, "units"))  # Linux
         
         # Pack the widgets
         canvas.pack(side="left", fill="both", expand=True)
@@ -260,7 +392,7 @@ class GUIStyleManager:
         
         return container, scrollable_frame
     
-    def create_scrollable_text(self, parent: tk.Widget, **kwargs) -> tk.Text:
+    def create_scrollable_text(self, parent: tk.Widget, **kwargs) -> Tuple[ttk.Frame, tk.Text]:
         """
         Create a scrollable text widget.
         
@@ -269,16 +401,21 @@ class GUIStyleManager:
             **kwargs: Additional arguments for the Text widget
             
         Returns:
-            The Text widget
+            Tuple containing (frame, text_widget)
         """
         theme = self.themes[self.current_theme]
         
         # Create a frame
         frame = ttk.Frame(parent)
         
-        # Create a text widget
-        text = tk.Text(frame, bg=theme["entry_bg"], fg=theme["entry_fg"], 
-                      insertbackground=theme["entry_insertbackground"], **kwargs)
+        # Create a text widget with proper styling
+        text = tk.Text(frame, 
+                      bg=theme["entry_bg"], 
+                      fg=theme["entry_fg"],
+                      insertbackground=theme["entry_insertbackground"],
+                      highlightbackground=theme["border"],
+                      highlightcolor=theme["accent1"],
+                      **kwargs)
         
         # Create a scrollbar
         scrollbar = ttk.Scrollbar(frame, orient="vertical", command=text.yview)
@@ -290,7 +427,7 @@ class GUIStyleManager:
         
         return frame, text
     
-    def style_button(self, button: tk.Button, button_type: str = "normal") -> None:
+    def style_button(self, button: Union[tk.Button, ttk.Button], button_type: str = "normal") -> None:
         """
         Apply styling to a button.
         
@@ -300,20 +437,44 @@ class GUIStyleManager:
         """
         theme = self.themes[self.current_theme]
         
-        if button_type == "success":
-            button.configure(background=theme["success"], foreground="#FFFFFF", 
-                           activebackground=theme["success"], activeforeground="#FFFFFF")
-        elif button_type == "warning":
-            button.configure(background=theme["warning"], foreground="#000000", 
-                           activebackground=theme["warning"], activeforeground="#000000")
-        elif button_type == "error":
-            button.configure(background=theme["error"], foreground="#FFFFFF", 
-                           activebackground=theme["error"], activeforeground="#FFFFFF")
+        # Handle ttk buttons differently
+        if self._is_ttk_widget(button):
+            # ttk Button - use style configuration
+            if button_type == "success":
+                button.configure(style="Success.TButton")
+            elif button_type == "warning":
+                button.configure(style="Warning.TButton")
+            elif button_type == "error":
+                button.configure(style="Error.TButton")
+            # Normal ttk buttons use the default TButton style
         else:
-            button.configure(background=theme["button_bg"], foreground=theme["button_fg"], 
-                           activebackground=theme["highlight_bg"], activeforeground=theme["highlight_fg"])
+            # tk Button - configure directly
+            if button_type == "success":
+                self._safe_configure(button,
+                    background=theme["success"], 
+                    foreground="#FFFFFF",
+                    activebackground=theme["success"], 
+                    activeforeground="#FFFFFF")
+            elif button_type == "warning":
+                self._safe_configure(button,
+                    background=theme["warning"], 
+                    foreground="#000000",
+                    activebackground=theme["warning"], 
+                    activeforeground="#000000")
+            elif button_type == "error":
+                self._safe_configure(button,
+                    background=theme["error"], 
+                    foreground="#FFFFFF",
+                    activebackground=theme["error"], 
+                    activeforeground="#FFFFFF")
+            else:
+                self._safe_configure(button,
+                    background=theme["button_bg"], 
+                    foreground=theme["button_fg"],
+                    activebackground=theme["highlight_bg"], 
+                    activeforeground=theme["highlight_fg"])
     
-    def style_entry(self, entry: tk.Entry) -> None:
+    def style_entry(self, entry: Union[tk.Entry, ttk.Entry]) -> None:
         """
         Apply styling to an entry widget.
         
@@ -322,9 +483,22 @@ class GUIStyleManager:
         """
         theme = self.themes[self.current_theme]
         
-        entry.configure(background=theme["entry_bg"], foreground=theme["entry_fg"], 
-                       insertbackground=theme["entry_insertbackground"],
-                       highlightbackground=theme["border"], highlightcolor=theme["accent1"])
+        # Handle ttk entries differently
+        if self._is_ttk_widget(entry):
+            # ttk Entry - insertbackground needs special handling
+            try:
+                entry.configure(insertbackground=theme["entry_insertbackground"])
+            except tk.TclError:
+                # Some ttk Entry widgets might not support insertbackground
+                pass
+        else:
+            # tk Entry - configure directly
+            self._safe_configure(entry,
+                background=theme["entry_bg"], 
+                foreground=theme["entry_fg"],
+                insertbackground=theme["entry_insertbackground"],
+                highlightbackground=theme["border"], 
+                highlightcolor=theme["accent1"])
     
     def style_text(self, text: tk.Text) -> None:
         """
@@ -335,9 +509,12 @@ class GUIStyleManager:
         """
         theme = self.themes[self.current_theme]
         
-        text.configure(background=theme["entry_bg"], foreground=theme["entry_fg"], 
-                      insertbackground=theme["entry_insertbackground"],
-                      highlightbackground=theme["border"], highlightcolor=theme["accent1"])
+        self._safe_configure(text,
+            background=theme["entry_bg"], 
+            foreground=theme["entry_fg"],
+            insertbackground=theme["entry_insertbackground"],
+            highlightbackground=theme["border"], 
+            highlightcolor=theme["accent1"])
     
     def get_chart_colors(self) -> Dict[str, str]:
         """
@@ -356,3 +533,42 @@ class GUIStyleManager:
             "line2": theme["chart_line2"],
             "line3": theme["chart_line3"]
         }
+    
+    def create_tooltip(self, widget: tk.Widget, text: str) -> None:
+        """
+        Create a tooltip for a widget.
+        
+        Args:
+            widget: The widget to add a tooltip to
+            text: The tooltip text
+        """
+        theme = self.themes[self.current_theme]
+        
+        tooltip_window = None
+        
+        def enter(event):
+            nonlocal tooltip_window
+            x, y, _, _ = widget.bbox("insert")
+            x += widget.winfo_rootx() + 25
+            y += widget.winfo_rooty() + 25
+            
+            # Create a toplevel window
+            tooltip_window = tk.Toplevel(widget)
+            tooltip_window.wm_overrideredirect(True)
+            tooltip_window.wm_geometry(f"+{x}+{y}")
+            
+            # Create a label for the tooltip
+            label = tk.Label(tooltip_window, text=text, justify=tk.LEFT,
+                           background=theme["tooltip_bg"], foreground=theme["tooltip_fg"],
+                           relief=tk.SOLID, borderwidth=1, padx=5, pady=2)
+            label.pack(ipadx=1)
+        
+        def leave(event):
+            nonlocal tooltip_window
+            if tooltip_window:
+                tooltip_window.destroy()
+                tooltip_window = None
+        
+        # Bind events
+        widget.bind("<Enter>", enter)
+        widget.bind("<Leave>", leave)
