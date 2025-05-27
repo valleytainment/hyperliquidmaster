@@ -1,6 +1,6 @@
 """
-HyperliquidAdapter module for connecting to the Hyperliquid exchange API.
-Provides direct integration with the Hyperliquid exchange for trading operations.
+Enhanced HyperliquidAdapter module for connecting to the Hyperliquid exchange API.
+Provides robust connection management and error handling for trading operations.
 """
 
 import os
@@ -21,10 +21,14 @@ from hyperliquid.exchange import Exchange
 from hyperliquid.info import Info
 from hyperliquid.utils.signing import OrderType
 
+# Import enhanced connection and settings managers
+from core.enhanced_connection_manager import EnhancedConnectionManager
+from core.settings_manager import SettingsManager
+
 class HyperliquidAdapter:
     """
-    Adapter for the Hyperliquid exchange API.
-    Provides methods for interacting with the exchange.
+    Enhanced adapter for the Hyperliquid exchange API.
+    Provides methods for interacting with the exchange with robust connection management.
     """
     
     def __init__(self, config_path: str):
@@ -40,20 +44,16 @@ class HyperliquidAdapter:
         self.info = None
         self.account_address = ""
         self.secret_key = ""
-        self.is_connected = False
         self.api_url = "https://api.hyperliquid.xyz"
         
-        # Connection state tracking
-        self.last_connection_attempt = 0
-        self.connection_attempts = 0
-        self.max_connection_attempts = 5
-        self.connection_backoff_base = 2  # seconds
-        self.connection_lock = threading.Lock()
-        self.connection_health_check_interval = 60  # seconds
-        self.last_health_check = 0
+        # Initialize enhanced connection manager
+        self.connection_manager = EnhancedConnectionManager(self.logger)
+        
+        # Initialize settings manager
+        self.settings_manager = SettingsManager(config_path, self.logger)
         
         # Load configuration
-        self.config = self._load_config()
+        self.config = self.settings_manager.get_settings()
         
         # Initialize API if keys are available
         self._init_api()
@@ -72,7 +72,10 @@ class HyperliquidAdapter:
         self.reload_config()
         
         # Ensure connection
-        if not self._ensure_connection():
+        if not self.connection_manager.ensure_connection(
+            connect_func=self._init_api,
+            test_func=self._test_api_connection
+        ):
             self.logger.error("Failed to initialize adapter: Could not establish connection")
             return False
         
@@ -85,74 +88,50 @@ class HyperliquidAdapter:
         self.logger.info("HyperliquidAdapter initialized successfully")
         return True
     
-    def _load_config(self) -> Dict:
-        """
-        Load configuration from file.
-        
-        Returns:
-            Dict containing the configuration
-        """
-        try:
-            if os.path.exists(self.config_path):
-                with open(self.config_path, 'r') as f:
-                    return json.load(f)
-            else:
-                self.logger.warning(f"Config file not found at {self.config_path}, using empty config")
-                return {}
-        except Exception as e:
-            self.logger.error(f"Error loading config: {e}")
-            return {}
-    
     def reload_config(self) -> None:
-        """Reload configuration from file."""
-        self.config = self._load_config()
+        """Reload configuration from settings manager."""
+        self.config = self.settings_manager.get_settings()
         self._init_api()
     
-    def _init_api(self) -> None:
-        """Initialize the Hyperliquid API with current configuration."""
-        with self.connection_lock:
+    def _init_api(self) -> bool:
+        """
+        Initialize the Hyperliquid API with current configuration.
+        
+        Returns:
+            True if successful, False otherwise
+        """
+        try:
+            # Get API keys from config
+            self.account_address = self.config.get("account_address", "")
+            self.secret_key = self.config.get("secret_key", "")
+            self.api_url = self.config.get("api_url", "https://api.hyperliquid.xyz")
+            
+            # Check if keys are available
+            if not self.account_address or not self.secret_key:
+                self.logger.warning("API keys not found in config")
+                return False
+            
+            # Initialize API
             try:
-                # Get API keys from config
-                self.account_address = self.config.get("account_address", "")
-                self.secret_key = self.config.get("secret_key", "")
-                self.api_url = self.config.get("api_url", "https://api.hyperliquid.xyz")
+                # Create LocalAccount from secret key
+                account: LocalAccount = eth_account.Account.from_key(self.secret_key)
                 
-                # Check if keys are available
-                if not self.account_address or not self.secret_key:
-                    self.logger.warning("API keys not found in config")
-                    self.is_connected = False
-                    return
+                # Initialize Info and Exchange
+                self.info = Info(base_url=self.api_url)
+                self.exchange = Exchange(
+                    wallet=account,
+                    base_url=self.api_url,
+                    account_address=self.account_address
+                )
                 
-                # Initialize API
-                try:
-                    # Create LocalAccount from secret key
-                    account: LocalAccount = eth_account.Account.from_key(self.secret_key)
-                    
-                    # Initialize Info and Exchange
-                    self.info = Info(base_url=self.api_url)
-                    self.exchange = Exchange(
-                        wallet=account,
-                        base_url=self.api_url,
-                        account_address=self.account_address
-                    )
-                    
-                    # Test connection
-                    self._test_api_connection()
-                    
-                    # Reset connection attempts on successful connection
-                    self.connection_attempts = 0
-                    self.last_connection_attempt = time.time()
-                    self.last_health_check = time.time()
-                    
-                    self.logger.info("API initialized successfully")
-                except Exception as e:
-                    self.logger.error(f"Error initializing exchange: {e}")
-                    self.is_connected = False
-                    self.connection_attempts += 1
+                # Test connection
+                return self._test_api_connection()
             except Exception as e:
-                self.logger.error(f"Error initializing API: {e}")
-                self.is_connected = False
-                self.connection_attempts += 1
+                self.logger.error(f"Error initializing exchange: {e}")
+                return False
+        except Exception as e:
+            self.logger.error(f"Error initializing API: {e}")
+            return False
     
     def _test_api_connection(self) -> bool:
         """
@@ -167,67 +146,12 @@ class HyperliquidAdapter:
                 # Try to get meta data
                 meta = self.info.meta()
                 if meta and not isinstance(meta, dict) or not "error" in meta:
-                    self.is_connected = True
                     return True
             
-            self.is_connected = False
             return False
         except Exception as e:
             self.logger.error(f"API connection test failed: {e}")
-            self.is_connected = False
             return False
-    
-    def _ensure_connection(self) -> bool:
-        """
-        Ensure that the API is connected, attempting to reconnect if necessary.
-        
-        Returns:
-            True if connected, False otherwise
-        """
-        with self.connection_lock:
-            # Check if already connected
-            if self.is_connected:
-                # Check if health check is due
-                current_time = time.time()
-                if current_time - self.last_health_check > self.connection_health_check_interval:
-                    self.last_health_check = current_time
-                    if not self._test_api_connection():
-                        self.logger.warning("Health check failed, attempting to reconnect")
-                        return self._reconnect()
-                return True
-            
-            # Not connected, attempt to reconnect
-            return self._reconnect()
-    
-    def _reconnect(self) -> bool:
-        """
-        Attempt to reconnect to the API with exponential backoff.
-        
-        Returns:
-            True if reconnection is successful, False otherwise
-        """
-        # Check if max attempts reached
-        if self.connection_attempts >= self.max_connection_attempts:
-            self.logger.error(f"Max connection attempts ({self.max_connection_attempts}) reached")
-            return False
-        
-        # Calculate backoff time
-        current_time = time.time()
-        backoff_time = self.connection_backoff_base ** self.connection_attempts
-        time_since_last_attempt = current_time - self.last_connection_attempt
-        
-        # Wait for backoff if necessary
-        if time_since_last_attempt < backoff_time:
-            wait_time = backoff_time - time_since_last_attempt
-            self.logger.info(f"Waiting {wait_time:.2f}s before reconnection attempt")
-            time.sleep(wait_time)
-        
-        # Attempt to reconnect
-        self.logger.info(f"Attempting to reconnect (attempt {self.connection_attempts + 1}/{self.max_connection_attempts})")
-        self.last_connection_attempt = time.time()
-        self._init_api()
-        
-        return self.is_connected
     
     def set_api_keys(self, account_address: str, secret_key: str) -> bool:
         """
@@ -242,20 +166,23 @@ class HyperliquidAdapter:
         """
         try:
             # Update config
-            self.config["account_address"] = account_address
-            self.config["secret_key"] = secret_key
+            new_settings = self.config.copy()
+            new_settings["account_address"] = account_address
+            new_settings["secret_key"] = secret_key
             
-            # Save config
-            with open(self.config_path, 'w') as f:
-                json.dump(self.config, f, indent=2)
+            # Save config using settings manager
+            if not self.settings_manager.update_settings(new_settings):
+                self.logger.error("Failed to save API keys to settings")
+                return False
+            
+            # Reload config
+            self.reload_config()
             
             # Reset connection state
-            self.connection_attempts = 0
+            self.connection_manager.reset_state()
             
             # Initialize API
-            self._init_api()
-            
-            return self.is_connected
+            return self._init_api()
         except Exception as e:
             self.logger.error(f"Error setting API keys: {e}")
             return False
@@ -268,12 +195,19 @@ class HyperliquidAdapter:
             Dict containing the result of the test
         """
         try:
-            if not self._ensure_connection():
+            if not self.connection_manager.ensure_connection(
+                connect_func=self._init_api,
+                test_func=self._test_api_connection
+            ):
                 return {"error": "Not connected to exchange"}
             
             # Test connection by getting user state
             try:
-                user_state = self._safe_api_call(lambda: self.info.user_state(self.account_address))
+                user_state = self.connection_manager.safe_api_call(
+                    lambda: self.info.user_state(self.account_address),
+                    connect_func=self._init_api,
+                    test_func=self._test_api_connection
+                )
                 
                 if isinstance(user_state, dict) and "error" in user_state:
                     self.logger.error(f"Connection test failed: {user_state['error']}")
@@ -286,61 +220,6 @@ class HyperliquidAdapter:
         except Exception as e:
             self.logger.error(f"Error testing connection: {e}")
             return {"error": f"Error testing connection: {e}"}
-    
-    def _safe_api_call(self, api_func, max_retries=3, retry_delay=1):
-        """
-        Safely call an API function with retry logic.
-        
-        Args:
-            api_func: Function to call
-            max_retries: Maximum number of retries
-            retry_delay: Delay between retries in seconds
-            
-        Returns:
-            Result of the API call
-        """
-        retries = 0
-        last_error = None
-        
-        while retries <= max_retries:
-            try:
-                if not self.is_connected and not self._ensure_connection():
-                    return {"error": "Not connected to exchange"}
-                
-                result = api_func()
-                
-                # Check if result is an error
-                if isinstance(result, dict) and "error" in result:
-                    # Check if it's a connection error
-                    error_msg = str(result["error"]).lower()
-                    if "connect" in error_msg or "timeout" in error_msg or "network" in error_msg:
-                        self.is_connected = False
-                        if not self._ensure_connection():
-                            return {"error": f"Connection error: {result['error']}"}
-                        retries += 1
-                        time.sleep(retry_delay * retries)
-                        continue
-                
-                return result
-            except Exception as e:
-                last_error = e
-                error_msg = str(e).lower()
-                
-                # Check if it's a connection error
-                if "connect" in error_msg or "timeout" in error_msg or "network" in error_msg:
-                    self.is_connected = False
-                    if not self._ensure_connection():
-                        return {"error": f"Connection error: {e}"}
-                
-                retries += 1
-                if retries <= max_retries:
-                    self.logger.warning(f"API call failed, retrying ({retries}/{max_retries}): {e}")
-                    time.sleep(retry_delay * retries)
-                else:
-                    self.logger.error(f"API call failed after {max_retries} retries: {e}")
-                    return {"error": f"API call failed: {e}"}
-        
-        return {"error": f"API call failed: {last_error}"}
     
     def _safe_get_attribute(self, obj, attr_name, default=None):
         """
@@ -415,11 +294,18 @@ class HyperliquidAdapter:
             Dict containing account information
         """
         try:
-            if not self._ensure_connection():
+            if not self.connection_manager.ensure_connection(
+                connect_func=self._init_api,
+                test_func=self._test_api_connection
+            ):
                 return {"error": "Not connected to exchange"}
             
             # Get user state
-            user_state = self._safe_api_call(lambda: self.info.user_state(self.account_address))
+            user_state = self.connection_manager.safe_api_call(
+                lambda: self.info.user_state(self.account_address),
+                connect_func=self._init_api,
+                test_func=self._test_api_connection
+            )
             
             if isinstance(user_state, dict) and "error" in user_state:
                 self.logger.error(f"Error getting account info: {user_state['error']}")
@@ -454,14 +340,21 @@ class HyperliquidAdapter:
             Dict containing market data
         """
         try:
-            if not self._ensure_connection():
+            if not self.connection_manager.ensure_connection(
+                connect_func=self._init_api,
+                test_func=self._test_api_connection
+            ):
                 return {"error": "Not connected to exchange"}
             
             if not symbol:
                 return {"error": "Symbol cannot be empty"}
             
             # Get meta and asset contexts which contains all market data
-            meta_and_assets = self._safe_api_call(lambda: self.info.meta_and_asset_ctxs())
+            meta_and_assets = self.connection_manager.safe_api_call(
+                lambda: self.info.meta_and_asset_ctxs(),
+                connect_func=self._init_api,
+                test_func=self._test_api_connection
+            )
             
             if isinstance(meta_and_assets, dict) and "error" in meta_and_assets:
                 self.logger.error(f"Error getting meta data: {meta_and_assets['error']}")
@@ -582,11 +475,18 @@ class HyperliquidAdapter:
             Dict containing positions
         """
         try:
-            if not self._ensure_connection():
+            if not self.connection_manager.ensure_connection(
+                connect_func=self._init_api,
+                test_func=self._test_api_connection
+            ):
                 return {"error": "Not connected to exchange"}
             
             # Get user state
-            user_state = self._safe_api_call(lambda: self.info.user_state(self.account_address))
+            user_state = self.connection_manager.safe_api_call(
+                lambda: self.info.user_state(self.account_address),
+                connect_func=self._init_api,
+                test_func=self._test_api_connection
+            )
             
             if isinstance(user_state, dict) and "error" in user_state:
                 self.logger.error(f"Error getting positions: {user_state['error']}")
@@ -663,11 +563,18 @@ class HyperliquidAdapter:
             Dict containing orders
         """
         try:
-            if not self._ensure_connection():
+            if not self.connection_manager.ensure_connection(
+                connect_func=self._init_api,
+                test_func=self._test_api_connection
+            ):
                 return {"error": "Not connected to exchange"}
             
             # Get user state
-            user_state = self._safe_api_call(lambda: self.info.user_state(self.account_address))
+            user_state = self.connection_manager.safe_api_call(
+                lambda: self.info.user_state(self.account_address),
+                connect_func=self._init_api,
+                test_func=self._test_api_connection
+            )
             
             if isinstance(user_state, dict) and "error" in user_state:
                 self.logger.error(f"Error getting orders: {user_state['error']}")
@@ -720,7 +627,10 @@ class HyperliquidAdapter:
             Dict containing the result of the operation
         """
         try:
-            if not self._ensure_connection():
+            if not self.connection_manager.ensure_connection(
+                connect_func=self._init_api,
+                test_func=self._test_api_connection
+            ):
                 return {"error": "Not connected to exchange"}
             
             if not symbol:
@@ -741,13 +651,17 @@ class HyperliquidAdapter:
             order_type_dict = {order_type_lower: order_type_lower}
             
             # Place order - FIXED: Use 'name' instead of 'coin' parameter and proper OrderType format
-            result = self._safe_api_call(lambda: self.exchange.order(
-                name=symbol,  # Changed from 'coin' to 'name' to match SDK signature
-                is_buy=is_buy,
-                sz=size,
-                limit_px=price,
-                order_type=order_type_dict  # Changed from string to dict format
-            ))
+            result = self.connection_manager.safe_api_call(
+                lambda: self.exchange.order(
+                    name=symbol,  # Changed from 'coin' to 'name' to match SDK signature
+                    is_buy=is_buy,
+                    sz=size,
+                    limit_px=price,
+                    order_type=order_type_dict  # Changed from string to dict format
+                ),
+                connect_func=self._init_api,
+                test_func=self._test_api_connection
+            )
             
             if isinstance(result, dict) and "error" in result:
                 self.logger.error(f"Error placing order: {result['error']}")
@@ -757,76 +671,79 @@ class HyperliquidAdapter:
             order_id = "Unknown"
             if isinstance(result, dict) and "oid" in result:
                 order_id = result["oid"]
+            elif isinstance(result, dict) and "order_id" in result:
+                order_id = result["order_id"]
             elif isinstance(result, str):
-                # Try to parse as JSON if it's a string
-                try:
-                    parsed = json.loads(result)
-                    if isinstance(parsed, dict) and "oid" in parsed:
-                        order_id = parsed["oid"]
-                except:
-                    # If parsing fails, use the string as is
-                    order_id = result
+                order_id = result
             
-            return {
+            # Construct response
+            response = {
                 "data": {
-                    "id": order_id,
+                    "order_id": order_id,
                     "symbol": symbol,
+                    "side": "buy" if is_buy else "sell",
                     "size": size,
                     "price": price,
-                    "side": "buy" if is_buy else "sell",
                     "type": order_type.lower(),
                     "status": "open",
                     "time": int(time.time() * 1000)  # Current time in milliseconds
                 }
             }
+            
+            return response
         except Exception as e:
             self.logger.error(f"Error placing order: {e}")
             return {"error": f"Error placing order: {e}"}
     
-    def cancel_order(self, order_id: str) -> Dict[str, Any]:
+    def cancel_order(self, symbol: str, order_id: str) -> Dict[str, Any]:
         """
         Cancel an order.
         
         Args:
-            order_id: The ID of the order to cancel
+            symbol: The symbol of the order
+            order_id: The ID of the order
             
         Returns:
             Dict containing the result of the operation
         """
         try:
-            if not self._ensure_connection():
+            if not self.connection_manager.ensure_connection(
+                connect_func=self._init_api,
+                test_func=self._test_api_connection
+            ):
                 return {"error": "Not connected to exchange"}
+            
+            if not symbol:
+                return {"error": "Symbol cannot be empty"}
             
             if not order_id:
                 return {"error": "Order ID cannot be empty"}
             
-            # Get current orders to find the coin
-            orders_result = self.get_orders()
-            
-            if "error" in orders_result:
-                return {"error": f"Error getting orders: {orders_result['error']}"}
-            
-            # Find the order
-            coin = None
-            for order in orders_result.get("data", []):
-                if order.get("id") == order_id:
-                    coin = order.get("symbol")
-                    break
-            
-            if not coin:
-                return {"error": f"Order {order_id} not found"}
-            
             # Cancel order - FIXED: Use 'name' instead of 'coin' parameter
-            result = self._safe_api_call(lambda: self.exchange.cancel_order(
-                name=coin,  # Changed from 'coin' to 'name' to match SDK signature
-                oid=order_id
-            ))
+            result = self.connection_manager.safe_api_call(
+                lambda: self.exchange.cancel_order(
+                    name=symbol,  # Changed from 'coin' to 'name' to match SDK signature
+                    oid=order_id
+                ),
+                connect_func=self._init_api,
+                test_func=self._test_api_connection
+            )
             
             if isinstance(result, dict) and "error" in result:
                 self.logger.error(f"Error canceling order: {result['error']}")
                 return {"error": f"Error canceling order: {result['error']}"}
             
-            return {"data": {"id": order_id, "status": "canceled"}}
+            # Construct response
+            response = {
+                "data": {
+                    "order_id": order_id,
+                    "symbol": symbol,
+                    "status": "canceled",
+                    "time": int(time.time() * 1000)  # Current time in milliseconds
+                }
+            }
+            
+            return response
         except Exception as e:
             self.logger.error(f"Error canceling order: {e}")
             return {"error": f"Error canceling order: {e}"}
@@ -836,13 +753,16 @@ class HyperliquidAdapter:
         Cancel all orders.
         
         Args:
-            symbol: The symbol to cancel orders for (optional)
+            symbol: Optional symbol to cancel orders for
             
         Returns:
             Dict containing the result of the operation
         """
         try:
-            if not self._ensure_connection():
+            if not self.connection_manager.ensure_connection(
+                connect_func=self._init_api,
+                test_func=self._test_api_connection
+            ):
                 return {"error": "Not connected to exchange"}
             
             # Get current orders
@@ -851,137 +771,73 @@ class HyperliquidAdapter:
             if "error" in orders_result:
                 return {"error": f"Error getting orders: {orders_result['error']}"}
             
-            # Filter orders by symbol if provided
             orders = orders_result.get("data", [])
+            
+            # Filter orders by symbol if provided
             if symbol:
                 orders = [order for order in orders if order.get("symbol") == symbol]
             
             # Cancel each order
             canceled_orders = []
             for order in orders:
+                order_symbol = order.get("symbol")
                 order_id = order.get("id")
-                coin = order.get("symbol")
                 
-                # FIXED: Use 'name' instead of 'coin' parameter
-                result = self._safe_api_call(lambda: self.exchange.cancel_order(
-                    name=coin,  # Changed from 'coin' to 'name' to match SDK signature
-                    oid=order_id
-                ))
-                
-                if isinstance(result, dict) and "error" in result:
-                    self.logger.error(f"Error canceling order {order_id}: {result['error']}")
-                else:
-                    canceled_orders.append({"id": order_id, "status": "canceled"})
+                if order_symbol and order_id:
+                    cancel_result = self.cancel_order(order_symbol, order_id)
+                    
+                    if "error" not in cancel_result:
+                        canceled_orders.append(cancel_result.get("data", {}))
             
-            return {"data": {"canceled_orders": canceled_orders, "count": len(canceled_orders)}}
+            # Construct response
+            response = {
+                "data": {
+                    "canceled_orders": canceled_orders,
+                    "count": len(canceled_orders),
+                    "time": int(time.time() * 1000)  # Current time in milliseconds
+                }
+            }
+            
+            return response
         except Exception as e:
             self.logger.error(f"Error canceling all orders: {e}")
             return {"error": f"Error canceling all orders: {e}"}
     
-    def close_position(self, symbol: str, size_percentage: float = 100.0) -> Dict[str, Any]:
+    def get_connection_stats(self) -> Dict[str, Any]:
         """
-        Close a position.
+        Get connection statistics.
+        
+        Returns:
+            Dict containing connection statistics
+        """
+        return self.connection_manager.get_connection_stats()
+    
+    def get_settings_backups(self) -> List[Dict[str, Any]]:
+        """
+        Get list of available settings backups.
+        
+        Returns:
+            List of dicts containing backup information
+        """
+        return self.settings_manager.list_backups()
+    
+    def restore_settings_backup(self, backup_index: int = 0) -> bool:
+        """
+        Restore settings from a backup.
         
         Args:
-            symbol: The symbol to close the position for
-            size_percentage: The percentage of the position to close (0-100)
+            backup_index: Index of the backup to restore (0 = most recent)
             
         Returns:
-            Dict containing the result of the operation
+            True if successful, False otherwise
         """
-        try:
-            if not self._ensure_connection():
-                return {"error": "Not connected to exchange"}
-            
-            if not symbol:
-                return {"error": "Symbol cannot be empty"}
-            
-            if size_percentage <= 0 or size_percentage > 100:
-                return {"error": "Size percentage must be between 0 and 100"}
-            
-            # Get current positions
-            positions_result = self.get_positions()
-            
-            if "error" in positions_result:
-                return {"error": f"Error getting positions: {positions_result['error']}"}
-            
-            # Find the position
-            position = None
-            for pos in positions_result.get("data", []):
-                if pos.get("symbol") == symbol:
-                    position = pos
-                    break
-            
-            if not position:
-                return {"error": f"No position found for {symbol}"}
-            
-            # Calculate size to close
-            size = position.get("size", 0.0)
-            if size == 0:
-                return {"error": f"Position size for {symbol} is 0"}
-            
-            close_size = abs(size) * size_percentage / 100.0
-            is_buy = size < 0  # If position is short, we need to buy to close
-            
-            # Get current market price
-            market_data = self.get_market_data(symbol)
-            
-            if "error" in market_data:
-                return {"error": f"Error getting market data: {market_data['error']}"}
-            
-            price = market_data.get("price", 0.0)
-            if price <= 0:
-                return {"error": f"Invalid market price for {symbol}"}
-            
-            # Place market order to close position
-            # FIXED: Use proper OrderType format
-            result = self.place_order(
-                symbol=symbol,
-                is_buy=is_buy,
-                size=close_size,
-                price=price,
-                order_type="MARKET"
-            )
-            
-            if "error" in result:
-                return {"error": f"Error closing position: {result['error']}"}
-            
-            return {"data": {"symbol": symbol, "closed_size": close_size, "order": result.get("data", {})}}
-        except Exception as e:
-            self.logger.error(f"Error closing position: {e}")
-            return {"error": f"Error closing position: {e}"}
+        return self.settings_manager.restore_backup(backup_index)
     
-    def get_available_symbols(self) -> List[str]:
+    def force_settings_backup(self) -> bool:
         """
-        Get a list of available trading symbols.
+        Force creation of a settings backup.
         
         Returns:
-            List of available symbols
+            True if successful, False otherwise
         """
-        try:
-            if not self._ensure_connection():
-                return []
-            
-            # Get meta and asset contexts
-            meta_and_assets = self._safe_api_call(lambda: self.info.meta_and_asset_ctxs())
-            
-            if isinstance(meta_and_assets, dict) and "error" in meta_and_assets:
-                self.logger.error(f"Error getting meta data: {meta_and_assets['error']}")
-                return []
-            
-            # Extract symbols
-            symbols = []
-            
-            # meta_and_assets is a list where first item is meta data and second item is list of assets
-            if len(meta_and_assets) >= 1 and isinstance(meta_and_assets[0], dict):
-                meta = meta_and_assets[0]
-                universe = self._safe_get_attribute(meta, "universe", [])
-                for asset in universe:
-                    symbol = self._safe_get_attribute(asset, "name", "")
-                    if symbol:
-                        symbols.append(symbol)
-            
-            return symbols
-        except Exception as e:
-            self.logger.error(f"Error getting available symbols: {e}")
-            return []
+        return self.settings_manager.force_backup()
