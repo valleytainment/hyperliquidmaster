@@ -1,6 +1,6 @@
 """
-Enhanced GUI main module for the HyperliquidMaster trading bot.
-Integrates the new settings management system for flawless API key handling.
+Enhanced GUI main module for the HyperLiquid Trading Bot.
+Integrates advanced API management features.
 """
 
 import os
@@ -22,7 +22,10 @@ from gui_style import GUIStyleManager
 from core.trading_integration import TradingIntegration
 from core.error_handler import ErrorHandler
 from core.settings_manager import SettingsManager
+from core.advanced_api_manager import AdvancedAPIManager
 from gui_settings_integration import GUISettingsIntegration
+from gui_api_management import AdvancedAPIManagementGUI
+from gui_api_integration import integrate_advanced_api_management
 
 # Configure logging
 logging.basicConfig(
@@ -35,7 +38,7 @@ logging.basicConfig(
 
 class HyperliquidMasterGUI:
     """
-    Main GUI class for the HyperliquidMaster trading bot.
+    Main GUI class for the HyperLiquid trading bot.
     """
     
     def __init__(self, root: tk.Tk):
@@ -55,6 +58,8 @@ class HyperliquidMasterGUI:
         
         # Initialize config
         self.config_path = "config.json"
+        self.config_dir = os.path.dirname(os.path.abspath(self.config_path))
+        os.makedirs(self.config_dir, exist_ok=True)
         
         # Initialize settings manager
         self.settings_manager = SettingsManager(self.config_path, self.logger)
@@ -114,6 +119,9 @@ class HyperliquidMasterGUI:
         self._init_positions_tab()
         self._init_settings_tab()
         self._init_logs_tab()
+        
+        # Integrate advanced API management
+        self.api_gui = integrate_advanced_api_management(self)
         
         # Start update loops
         self._start_update_loops()
@@ -262,19 +270,24 @@ class HyperliquidMasterGUI:
     
     def _init_settings_tab(self) -> None:
         """Initialize the settings tab using the settings integration."""
-        # Use the settings integration to create the settings tab
-        self.settings_integration.create_settings_tab(self.settings_tab, self.style_manager)
+        # Create scrollable frame for settings tab
+        container, settings_frame = self.style_manager.create_scrollable_frame(self.settings_tab)
+        container.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
+        
+        # Create basic API key management section (legacy)
+        basic_api_frame = ttk.LabelFrame(settings_frame, text="Basic API Key Management")
+        basic_api_frame.pack(fill=tk.X, pady=(0, 20))
+        
+        # Use the settings integration to create the basic API key management
+        self.settings_integration.create_settings_tab(basic_api_frame, self.style_manager)
         
         # Create trading settings section
-        trading_frame = ttk.Frame(self.settings_tab)
-        trading_frame.pack(fill=tk.X, padx=10, pady=(20, 10))
-        
-        trading_title = ttk.Label(trading_frame, text="Trading Settings", style="Header.TLabel")
-        trading_title.pack(anchor=tk.W, pady=(0, 10))
+        trading_frame = ttk.LabelFrame(settings_frame, text="Trading Settings")
+        trading_frame.pack(fill=tk.X, pady=(0, 20))
         
         # Create default position size input
         default_size_frame = ttk.Frame(trading_frame)
-        default_size_frame.pack(fill=tk.X, pady=5)
+        default_size_frame.pack(fill=tk.X, pady=5, padx=10)
         
         default_size_label = ttk.Label(default_size_frame, text="Default Position Size:")
         default_size_label.pack(side=tk.LEFT, padx=(0, 5))
@@ -285,7 +298,7 @@ class HyperliquidMasterGUI:
         
         # Create default stop loss input
         default_sl_frame = ttk.Frame(trading_frame)
-        default_sl_frame.pack(fill=tk.X, pady=5)
+        default_sl_frame.pack(fill=tk.X, pady=5, padx=10)
         
         default_sl_label = ttk.Label(default_sl_frame, text="Default Stop Loss %:")
         default_sl_label.pack(side=tk.LEFT, padx=(0, 5))
@@ -296,7 +309,7 @@ class HyperliquidMasterGUI:
         
         # Create default take profit input
         default_tp_frame = ttk.Frame(trading_frame)
-        default_tp_frame.pack(fill=tk.X, pady=5)
+        default_tp_frame.pack(fill=tk.X, pady=5, padx=10)
         
         default_tp_label = ttk.Label(default_tp_frame, text="Default Take Profit %:")
         default_tp_label.pack(side=tk.LEFT, padx=(0, 5))
@@ -307,8 +320,14 @@ class HyperliquidMasterGUI:
         
         # Create save settings button
         save_settings_button = tk.Button(trading_frame, text="Save Trading Settings", command=self._save_trading_settings)
-        save_settings_button.pack(anchor=tk.W, pady=5)
+        save_settings_button.pack(anchor=tk.W, pady=5, padx=10)
         self.style_manager.style_button(save_settings_button, "success")
+        
+        # Create advanced API management section
+        advanced_api_frame = ttk.LabelFrame(settings_frame, text="Advanced API Management")
+        advanced_api_frame.pack(fill=tk.BOTH, expand=True, pady=(0, 20))
+        
+        # Advanced API management will be integrated here by gui_api_integration.py
     
     def _init_logs_tab(self) -> None:
         """Initialize the logs tab."""
