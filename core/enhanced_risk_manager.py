@@ -354,6 +354,105 @@ class RiskManager:
         except Exception as e:
             self.logger.error(f"Error calculating position size: {e}")
             return 0.01  # Default small position size
+            
+    def calculate_risk_reward_ratio(self, entry_price: float, stop_loss_price: float, take_profit_price: float) -> float:
+        """
+        Calculate risk-reward ratio for a trade setup.
+        
+        Args:
+            entry_price: Entry price
+            stop_loss_price: Stop loss price
+            take_profit_price: Take profit price
+            
+        Returns:
+            Risk-reward ratio (reward/risk)
+        """
+        try:
+            # Calculate risk and reward
+            risk = abs(entry_price - stop_loss_price)
+            reward = abs(entry_price - take_profit_price)
+            
+            if risk == 0:
+                self.logger.warning("Risk is zero, cannot calculate risk-reward ratio")
+                return 0.0
+                
+            # Calculate ratio
+            ratio = reward / risk
+            
+            self.logger.debug(f"Calculated risk-reward ratio: {ratio:.2f}")
+            return ratio
+        except Exception as e:
+            self.logger.error(f"Error calculating risk-reward ratio: {e}")
+            return 0.0
+            
+    def validate_risk_reward_ratio(self, entry_price: float, stop_loss_price: float, take_profit_price: float) -> bool:
+        """
+        Validate if a trade setup meets the minimum risk-reward ratio.
+        
+        Args:
+            entry_price: Entry price
+            stop_loss_price: Stop loss price
+            take_profit_price: Take profit price
+            
+        Returns:
+            True if valid, False otherwise
+        """
+        try:
+            # Calculate risk-reward ratio
+            ratio = self.calculate_risk_reward_ratio(entry_price, stop_loss_price, take_profit_price)
+            
+            # Get minimum ratio from config
+            min_ratio = self.config.get("min_risk_reward_ratio", 2.0)
+            
+            # Validate ratio
+            is_valid = ratio >= min_ratio
+            
+            if not is_valid:
+                self.logger.warning(f"Trade setup does not meet minimum risk-reward ratio: {ratio:.2f} < {min_ratio:.2f}")
+            else:
+                self.logger.debug(f"Trade setup meets minimum risk-reward ratio: {ratio:.2f} >= {min_ratio:.2f}")
+                
+            return is_valid
+        except Exception as e:
+            self.logger.error(f"Error validating risk-reward ratio: {e}")
+            return False
+            
+    def check_drawdown_protection(self) -> bool:
+        """
+        Check if trading should be paused due to drawdown protection.
+        
+        Returns:
+            True if trading should continue, False if it should be paused
+        """
+        try:
+            # Check current drawdown against max allowed
+            current_drawdown = self.risk_metrics["current_drawdown"]
+            max_drawdown = self.max_drawdown
+            
+            if current_drawdown >= max_drawdown:
+                self.logger.warning(f"Drawdown protection triggered: {current_drawdown:.2%} >= {max_drawdown:.2%}")
+                return False
+                
+            # Check daily loss against max allowed
+            daily_loss = -self.risk_metrics["daily_pnl_percentage"]
+            max_daily_loss = self.daily_loss_limit
+            
+            if daily_loss >= max_daily_loss:
+                self.logger.warning(f"Daily loss protection triggered: {daily_loss:.2%} >= {max_daily_loss:.2%}")
+                return False
+                
+            # Check consecutive losses
+            consecutive_losses = self.risk_metrics["consecutive_losses"]
+            max_consecutive_losses = 5  # Default value
+            
+            if consecutive_losses >= max_consecutive_losses:
+                self.logger.warning(f"Consecutive loss protection triggered: {consecutive_losses} >= {max_consecutive_losses}")
+                return False
+                
+            return True
+        except Exception as e:
+            self.logger.error(f"Error checking drawdown protection: {e}")
+            return True  # Default to allowing trading in case of error
     
     def _get_symbol_volatility(self, symbol: str) -> float:
         """

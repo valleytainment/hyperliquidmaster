@@ -18,14 +18,24 @@ class ConnectionManager:
     and automatic reconnection.
     """
     
-    def __init__(self, logger: logging.Logger):
+    def __init__(self, logger=None):
         """
         Initialize the connection manager.
         
         Args:
-            logger: Logger instance
+            logger: Logger instance (optional, will create one if not provided)
         """
-        self.logger = logger
+        # Initialize logger if not provided
+        if logger is None:
+            self.logger = logging.getLogger("ConnectionManager")
+            handler = logging.StreamHandler()
+            formatter = logging.Formatter('%(asctime)s [%(levelname)s] %(message)s')
+            handler.setFormatter(formatter)
+            self.logger.addHandler(handler)
+            self.logger.setLevel(logging.INFO)
+        else:
+            self.logger = logger
+            
         self.connected = False
         self.last_connected_time = None
         self.connection_attempts = 0
@@ -235,7 +245,7 @@ class ConnectionManager:
         """
         Start the health check thread.
         """
-        if self.health_check_thread is not None and self.health_check_thread.is_alive():
+        if hasattr(self, 'health_check_thread') and self.health_check_thread is not None and self.health_check_thread.is_alive():
             return
         
         self.stop_health_check.clear()
@@ -248,7 +258,7 @@ class ConnectionManager:
         """
         Stop the health check thread.
         """
-        if self.health_check_thread is None or not self.health_check_thread.is_alive():
+        if not hasattr(self, 'health_check_thread') or self.health_check_thread is None or not self.health_check_thread.is_alive():
             return
         
         self.stop_health_check.set()
@@ -378,4 +388,9 @@ class ConnectionManager:
         """
         Clean up resources.
         """
-        self._stop_health_check()
+        try:
+            if hasattr(self, '_stop_health_check'):
+                self._stop_health_check()
+        except Exception:
+            # Ignore errors during cleanup
+            pass

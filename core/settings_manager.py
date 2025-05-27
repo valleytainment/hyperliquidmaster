@@ -20,16 +20,31 @@ class SettingsManager:
     for the HyperliquidMaster application.
     """
     
-    def __init__(self, config_path: str, logger: logging.Logger):
+    def __init__(self, config_path: str = None, logger: logging.Logger = None):
         """
         Initialize the settings manager.
         
         Args:
-            config_path: Path to the configuration file
-            logger: Logger instance
+            config_path: Path to the configuration file (optional, defaults to config.json)
+            logger: Logger instance (optional, creates one if not provided)
         """
-        self.config_path = config_path
-        self.logger = logger
+        # Set default config path if not provided
+        if config_path is None:
+            self.config_path = "config.json"
+        else:
+            self.config_path = config_path
+            
+        # Set default logger if not provided
+        if logger is None:
+            self.logger = logging.getLogger("SettingsManager")
+            handler = logging.StreamHandler()
+            formatter = logging.Formatter('%(asctime)s [%(levelname)s] %(message)s')
+            handler.setFormatter(formatter)
+            self.logger.addHandler(handler)
+            self.logger.setLevel(logging.INFO)
+        else:
+            self.logger = logger
+            
         self.backup_dir = "settings_backup"
         self.max_backups = 10
         

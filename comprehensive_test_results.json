@@ -1,0 +1,178 @@
+{
+  "connection_tests": {
+    "connection_manager": {
+      "success": true,
+      "message": "Connection manager initialized successfully"
+    },
+    "adapter_connection": {
+      "success": false,
+      "message": "Error connecting adapter: Not connected to exchange"
+    },
+    "reconnection": {
+      "success": true,
+      "message": "Reconnection successful"
+    }
+  },
+  "settings_tests": {
+    "settings_save": {
+      "success": true,
+      "message": "Settings saved successfully"
+    },
+    "settings_load": {
+      "success": true,
+      "message": "Settings loaded successfully"
+    },
+    "settings_backup": {
+      "success": true,
+      "message": "Settings backup successful"
+    },
+    "settings_restore": {
+      "success": true,
+      "message": "Settings restore successful"
+    }
+  },
+  "trading_mode_tests": {
+    "mode_switch_PAPER_TRADING": {
+      "success": true,
+      "message": "Mode switch to PAPER_TRADING successful"
+    },
+    "mode_switch_LIVE_TRADING": {
+      "success": true,
+      "message": "Mode switch to LIVE_TRADING successful"
+    },
+    "mode_switch_MONITOR_ONLY": {
+      "success": true,
+      "message": "Mode switch to MONITOR_ONLY successful"
+    },
+    "mode_switch_AGGRESSIVE": {
+      "success": true,
+      "message": "Mode switch to AGGRESSIVE successful"
+    },
+    "mode_switch_CONSERVATIVE": {
+      "success": true,
+      "message": "Mode switch to CONSERVATIVE successful"
+    },
+    "mode_persistence": {
+      "success": true,
+      "message": "Mode persistence successful"
+    },
+    "mode_settings_PAPER_TRADING": {
+      "success": true,
+      "message": "Mode settings for PAPER_TRADING retrieved successfully"
+    },
+    "mode_settings_LIVE_TRADING": {
+      "success": true,
+      "message": "Mode settings for LIVE_TRADING retrieved successfully"
+    },
+    "mode_settings_AGGRESSIVE": {
+      "success": true,
+      "message": "Mode settings for AGGRESSIVE retrieved successfully"
+    },
+    "mode_settings_CONSERVATIVE": {
+      "success": true,
+      "message": "Mode settings for CONSERVATIVE retrieved successfully"
+    }
+  },
+  "risk_management_tests": {
+    "position_sizing_PAPER_TRADING": {
+      "success": true,
+      "message": "Position sizing for PAPER_TRADING successful: 1000.0",
+      "position_size": 1000.0
+    },
+    "position_sizing_LIVE_TRADING": {
+      "success": true,
+      "message": "Position sizing for LIVE_TRADING successful: 1000.0",
+      "position_size": 1000.0
+    },
+    "position_sizing_AGGRESSIVE": {
+      "success": true,
+      "message": "Position sizing for AGGRESSIVE successful: 1000.0",
+      "position_size": 1000.0
+    },
+    "position_sizing_CONSERVATIVE": {
+      "success": true,
+      "message": "Position sizing for CONSERVATIVE successful: 1000.0",
+      "position_size": 1000.0
+    },
+    "risk_reward_validation": {
+      "success": true,
+      "message": "Risk-reward validation successful: RRR=2.5, Valid=True",
+      "rrr": 2.5,
+      "is_valid": true
+    },
+    "drawdown_protection": {
+      "success": true,
+      "message": "Drawdown protection check successful: Trading allowed = True",
+      "trading_allowed": true
+    }
+  },
+  "order_management_tests": {
+    "order_creation": {
+      "success": true,
+      "message": "Order creation successful"
+    },
+    "twap_order": {
+      "success": true,
+      "message": "TWAP order creation successful"
+    },
+    "scale_order": {
+      "success": true,
+      "message": "Scale order creation successful"
+    }
+  },
+  "position_management_tests": {
+    "position_opening": {
+      "success": true,
+      "message": "Position opening successful"
+    },
+    "position_closing": {
+      "success": true,
+      "message": "Position closing successful"
+    },
+    "partial_exit": {
+      "success": true,
+      "message": "Partial exit successful"
+    }
+  },
+  "strategy_tests": {
+    "market_regime_detection": {
+      "success": true,
+      "message": "Market regime detection successful: RANGING",
+      "regime": "RANGING"
+    },
+    "signal_generation": {
+      "success": true,
+      "message": "Signal generation successful: {'signal': 'NEUTRAL', 'regime': 'RANGING'}",
+      "signal": {
+        "signal": "NEUTRAL",
+        "regime": "RANGING"
+      }
+    },
+    "strategy_execution": {
+      "success": true,
+      "message": "Strategy execution successful: {'success': True, 'message': 'No action taken', 'position': 'neutral', 'regime': 'RANGING'}",
+      "execution_result": {
+        "success": true,
+        "message": "No action taken",
+        "position": "neutral",
+        "regime": "RANGING"
+      }
+    }
+  },
+  "live_trade_tests": {
+    "long_position": {
+      "success": true,
+      "message": "Long position test successful"
+    },
+    "short_position": {
+      "success": true,
+      "message": "Short position test successful"
+    },
+    "autonomous_trading": {
+      "success": true,
+      "message": "Autonomous trading test successful"
+    }
+  },
+  "timestamp": "2025-05-27T09:28:05.241126",
+  "success_rate": 97.14285714285714
+}

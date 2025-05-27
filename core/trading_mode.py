@@ -27,23 +27,38 @@ class TradingModeManager:
     each with its own risk parameters and behavior.
     """
     
-    def __init__(self, config: Dict[str, Any], logger: logging.Logger):
+    def __init__(self, config: Dict[str, Any] = None, logger: logging.Logger = None):
         """
         Initialize the trading mode manager.
         
         Args:
-            config: Configuration dictionary
-            logger: Logger instance
+            config: Configuration dictionary (optional, creates empty config if not provided)
+            logger: Logger instance (optional, creates one if not provided)
         """
-        self.config = config
-        self.logger = logger
+        # Initialize config if not provided
+        if config is None:
+            self.config = {}
+        else:
+            self.config = config
+            
+        # Initialize logger if not provided
+        if logger is None:
+            self.logger = logging.getLogger("TradingModeManager")
+            handler = logging.StreamHandler()
+            formatter = logging.Formatter('%(asctime)s [%(levelname)s] %(message)s')
+            handler.setFormatter(formatter)
+            self.logger.addHandler(handler)
+            self.logger.setLevel(logging.INFO)
+        else:
+            self.logger = logger
+            
         self.mode_settings_file = "mode_settings.json"
         
         # Initialize mode settings
         self.mode_settings = self._load_mode_settings()
         
         # Set default mode
-        mode_name = config.get("trading_mode", "PAPER_TRADING")
+        mode_name = self.config.get("trading_mode", "PAPER_TRADING")
         try:
             self.current_mode = TradingMode[mode_name]
         except (KeyError, ValueError):
@@ -184,6 +199,29 @@ class TradingModeManager:
             return True
         except Exception as e:
             self.logger.error(f"Error setting trading mode: {e}")
+            return False
+            
+    def save_mode(self) -> bool:
+        """
+        Save the current trading mode to persistent storage.
+        
+        Returns:
+            True if successful, False otherwise
+        """
+        try:
+            # Create a settings dictionary with the current mode
+            settings = {
+                "trading_mode": self.current_mode.name
+            }
+            
+            # Save to a mode file
+            with open("trading_mode.json", 'w') as f:
+                json.dump(settings, f, indent=4)
+                
+            self.logger.info(f"Trading mode {self.current_mode.name} saved to persistent storage")
+            return True
+        except Exception as e:
+            self.logger.error(f"Error saving trading mode: {e}")
             return False
     
     def get_mode_settings(self, mode: Optional[TradingMode] = None) -> Dict[str, Any]:

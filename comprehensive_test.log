@@ -1,0 +1,465 @@
+2025-05-27 03:29:57,622 [ERROR] Error importing modules: No module named 'core.hyperliquid_adapter'
+2025-05-27 03:36:38,912 [ERROR] Error importing modules: cannot import name 'OrderManager' from 'core.advanced_order_manager' (/home/ubuntu/workspace/hyperliquidmaster/core/advanced_order_manager.py)
+2025-05-27 03:38:35,551 [ERROR] Error importing modules: cannot import name 'PositionManager' from 'core.position_manager_wrapper' (/home/ubuntu/workspace/hyperliquidmaster/core/position_manager_wrapper.py)
+2025-05-27 03:40:04,538 [INFO] Successfully imported all core modules
+2025-05-27 03:41:23,801 [INFO] Successfully imported all core modules
+2025-05-27 03:41:23,802 [INFO] Not connected, attempting to connect...
+2025-05-27 03:41:23,802 [INFO] Health check thread started
+2025-05-27 03:41:23,803 [INFO] Reconnecting to exchange...
+2025-05-27 03:42:33,927 [INFO] Successfully imported all core modules
+2025-05-27 03:42:33,928 [INFO] Not connected, attempting to connect...
+2025-05-27 03:42:33,929 [INFO] Health check thread started
+2025-05-27 03:42:33,929 [INFO] Reconnecting to exchange...
+2025-05-27 03:43:46,858 [INFO] Successfully imported all core modules
+2025-05-27 03:43:46,860 [INFO] Not connected, attempting to connect...
+2025-05-27 03:43:46,860 [INFO] Health check thread started
+2025-05-27 03:43:46,860 [INFO] Trading mode initialized to PAPER_TRADING
+2025-05-27 03:43:46,860 [INFO] Reconnecting to exchange...
+2025-05-27 09:15:52,705 [INFO] Successfully imported all core modules
+2025-05-27 09:15:52,707 [INFO] Not connected, attempting to connect...
+2025-05-27 09:15:52,707 [INFO] Health check thread started
+2025-05-27 09:15:52,707 [INFO] Trading mode initialized to PAPER_TRADING
+2025-05-27 09:15:52,707 [INFO] Reconnecting to exchange...
+2025-05-27 09:18:24,180 [INFO] Successfully imported all core modules
+2025-05-27 09:18:24,181 [INFO] Not connected, attempting to connect...
+2025-05-27 09:18:24,182 [INFO] Health check thread started
+2025-05-27 09:18:24,182 [INFO] Trading mode initialized to PAPER_TRADING
+2025-05-27 09:18:24,182 [INFO] Reconnecting to exchange...
+2025-05-27 09:19:13,886 [INFO] Successfully imported all core modules
+2025-05-27 09:19:13,887 [INFO] Not connected, attempting to connect...
+2025-05-27 09:19:13,887 [INFO] Health check thread started
+2025-05-27 09:19:13,888 [INFO] Trading mode initialized to PAPER_TRADING
+2025-05-27 09:19:13,888 [INFO] Risk metrics loaded from risk_metrics.json
+2025-05-27 09:19:13,888 [INFO] Risk manager initialized
+2025-05-27 09:19:13,888 [INFO] Advanced order manager initialized
+2025-05-27 09:19:13,888 [INFO] Reconnecting to exchange...
+2025-05-27 09:19:56,277 [INFO] Successfully imported all core modules
+2025-05-27 09:19:56,279 [INFO] Not connected, attempting to connect...
+2025-05-27 09:19:56,279 [INFO] Health check thread started
+2025-05-27 09:19:56,279 [INFO] Trading mode initialized to PAPER_TRADING
+2025-05-27 09:19:56,279 [INFO] Risk metrics loaded from risk_metrics.json
+2025-05-27 09:19:56,280 [INFO] Risk manager initialized
+2025-05-27 09:19:56,280 [INFO] Advanced order manager initialized
+2025-05-27 09:19:56,279 [INFO] Reconnecting to exchange...
+2025-05-27 09:20:37,153 [INFO] Successfully imported all core modules
+2025-05-27 09:20:37,154 [INFO] Not connected, attempting to connect...
+2025-05-27 09:20:37,154 [INFO] Health check thread started
+2025-05-27 09:20:37,155 [INFO] Trading mode initialized to PAPER_TRADING
+2025-05-27 09:20:37,155 [INFO] Risk metrics loaded from risk_metrics.json
+2025-05-27 09:20:37,155 [INFO] Risk manager initialized
+2025-05-27 09:20:37,155 [INFO] Advanced order manager initialized
+2025-05-27 09:20:37,155 [INFO] Position manager wrapper initialized
+2025-05-27 09:20:37,155 [INFO] Starting comprehensive tests
+2025-05-27 09:20:37,155 [INFO] Testing connection functionality
+2025-05-27 09:20:37,155 [INFO] Testing connection manager
+2025-05-27 09:20:37,155 [INFO] Testing adapter connection
+2025-05-27 09:20:37,155 [INFO] Testing reconnection
+2025-05-27 09:20:37,154 [INFO] Reconnecting to exchange...
+2025-05-27 09:20:37,155 [INFO] Waiting 1.65 seconds before reconnecting (attempt 1)
+2025-05-27 09:20:38,809 [INFO] Connecting to exchange...
+2025-05-27 09:20:39,309 [INFO] Connected to exchange
+2025-05-27 09:20:39,309 [INFO] Disconnecting from exchange...
+2025-05-27 09:20:39,810 [INFO] Disconnected from exchange
+2025-05-27 09:20:40,810 [INFO] Reconnecting to exchange...
+2025-05-27 09:20:40,810 [INFO] Waiting 2.44 seconds before reconnecting (attempt 1)
+2025-05-27 09:20:43,247 [INFO] Connecting to exchange...
+2025-05-27 09:20:43,747 [INFO] Connected to exchange
+2025-05-27 09:20:43,747 [INFO] Testing settings functionality
+2025-05-27 09:20:43,747 [INFO] Testing settings save
+2025-05-27 09:20:43,747 [ERROR] Error testing settings save: SettingsManager.save_settings() takes 2 positional arguments but 3 were given
+2025-05-27 09:20:43,747 [INFO] Testing settings load
+2025-05-27 09:20:43,747 [ERROR] Error testing settings load: SettingsManager.load_settings() takes 1 positional argument but 2 were given
+2025-05-27 09:20:43,747 [INFO] Testing settings backup
+2025-05-27 09:20:43,747 [ERROR] Error testing settings backup: 'SettingsManager' object has no attribute 'backup_settings'
+2025-05-27 09:20:43,747 [INFO] Testing settings restore
+2025-05-27 09:20:43,747 [ERROR] Error testing settings restore: 'SettingsManager' object has no attribute 'restore_settings_from_backup'
+2025-05-27 09:20:43,748 [INFO] Testing trading mode functionality
+2025-05-27 09:20:43,748 [INFO] Testing mode switch to PAPER_TRADING
+2025-05-27 09:20:43,748 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 09:20:43,748 [INFO] Testing mode switch to LIVE_TRADING
+2025-05-27 09:20:43,748 [INFO] Trading mode set to LIVE_TRADING
+2025-05-27 09:20:43,748 [INFO] Testing mode switch to MONITOR_ONLY
+2025-05-27 09:20:43,748 [INFO] Trading mode set to MONITOR_ONLY
+2025-05-27 09:20:43,748 [INFO] Testing mode switch to AGGRESSIVE
+2025-05-27 09:20:43,748 [INFO] Trading mode set to AGGRESSIVE
+2025-05-27 09:20:43,748 [INFO] Testing mode switch to CONSERVATIVE
+2025-05-27 09:20:43,748 [INFO] Trading mode set to CONSERVATIVE
+2025-05-27 09:20:43,748 [INFO] Testing mode persistence
+2025-05-27 09:20:43,748 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 09:20:43,748 [ERROR] Error testing mode persistence: 'TradingModeManager' object has no attribute 'save_mode'
+2025-05-27 09:20:43,748 [INFO] Testing mode-specific settings
+2025-05-27 09:20:43,748 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 09:20:43,748 [INFO] Trading mode set to LIVE_TRADING
+2025-05-27 09:20:43,748 [INFO] Trading mode set to AGGRESSIVE
+2025-05-27 09:20:43,748 [INFO] Trading mode set to CONSERVATIVE
+2025-05-27 09:20:43,748 [INFO] Testing risk management functionality
+2025-05-27 09:20:43,748 [INFO] Testing position sizing
+2025-05-27 09:20:43,748 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 09:20:43,748 [WARNING] Position size 4761.9048 exceeds max position size 1000.0000, limiting
+2025-05-27 09:20:43,748 [INFO] Calculated position size: 1000.0000 for XRP-PERP with 1.00% risk
+2025-05-27 09:20:43,748 [INFO] Trading mode set to LIVE_TRADING
+2025-05-27 09:20:43,748 [WARNING] Position size 4761.9048 exceeds max position size 1000.0000, limiting
+2025-05-27 09:20:43,748 [INFO] Calculated position size: 1000.0000 for XRP-PERP with 1.00% risk
+2025-05-27 09:20:43,748 [INFO] Trading mode set to AGGRESSIVE
+2025-05-27 09:20:43,749 [WARNING] Position size 4761.9048 exceeds max position size 1000.0000, limiting
+2025-05-27 09:20:43,749 [INFO] Calculated position size: 1000.0000 for XRP-PERP with 1.00% risk
+2025-05-27 09:20:43,749 [INFO] Trading mode set to CONSERVATIVE
+2025-05-27 09:20:43,749 [WARNING] Position size 4761.9048 exceeds max position size 1000.0000, limiting
+2025-05-27 09:20:43,749 [INFO] Calculated position size: 1000.0000 for XRP-PERP with 1.00% risk
+2025-05-27 09:20:43,749 [INFO] Testing risk-reward validation
+2025-05-27 09:20:43,749 [ERROR] Error testing risk-reward validation: 'RiskManager' object has no attribute 'calculate_risk_reward_ratio'
+2025-05-27 09:20:43,749 [INFO] Testing drawdown protection
+2025-05-27 09:20:43,749 [ERROR] Error testing drawdown protection: 'RiskManager' object has no attribute 'check_drawdown_protection'
+2025-05-27 09:20:43,749 [INFO] Testing order management functionality
+2025-05-27 09:20:43,749 [INFO] Testing order creation
+2025-05-27 09:20:43,849 [INFO] Testing TWAP order
+2025-05-27 09:20:43,849 [INFO] Executing TWAP order for XRP-PERP: BUY LONG, Size: 1000.0, Duration: 5min, Slices: 5
+2025-05-27 09:20:43,850 [INFO] Starting TWAP execution thread for order twap_XRP-PERP_20250527092043
+2025-05-27 09:20:43,850 [INFO] Testing scale order
+2025-05-27 09:20:43,850 [INFO] Executing Scale order for XRP-PERP: BUY LONG, Size: 1000.0, Range: 1.0%, Orders: 3
+2025-05-27 09:20:43,850 [INFO] Starting Scale execution thread for order scale_XRP-PERP_20250527092043
+2025-05-27 09:20:43,850 [INFO] Testing position management functionality
+2025-05-27 09:20:43,850 [INFO] Testing position opening
+2025-05-27 09:20:43,850 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 09:20:43,851 [INFO] Opening position: XRP-PERP LONG, Size: 100.0
+2025-05-27 09:20:43,950 [INFO] TWAP slice 1/5 executed: Size 200.0, Price 60.6
+2025-05-27 09:20:43,951 [INFO] Scale order 1/3 executed: Size 333.3333333333333, Price 0.5
+2025-05-27 09:20:44,051 [INFO] Scale order 2/3 executed: Size 333.3333333333333, Price 0.4975
+2025-05-27 09:20:44,152 [INFO] Scale order 3/3 executed: Size 333.33333333333337, Price 0.495
+2025-05-27 09:20:44,152 [INFO] Scale order scale_XRP-PERP_20250527092043 completed: 3/3 orders, Average price: 0.4975
+2025-05-27 09:20:44,851 [INFO] Position opened: XRP-PERP LONG, Size: 100.0, Entry: 0.5
+2025-05-27 09:20:44,851 [INFO] Testing position closing
+2025-05-27 09:20:44,851 [INFO] Closing all positions for XRP-PERP
+2025-05-27 09:20:44,851 [INFO] Closing position: XRP-PERP LONG
+2025-05-27 09:20:45,851 [INFO] Position closed: XRP-PERP LONG, Exit: 60.6, PnL: 6010.00 (12020.00%)
+2025-05-27 09:20:45,852 [INFO] Closing position: XRP-PERP SHORT
+2025-05-27 09:20:46,352 [INFO] Fetched 1 positions
+2025-05-27 09:20:46,352 [INFO] Testing partial position exit
+2025-05-27 09:20:46,352 [INFO] Opening position: XRP-PERP LONG, Size: 100.0
+2025-05-27 09:20:47,352 [INFO] Position opened: XRP-PERP LONG, Size: 100.0, Entry: 0.5
+2025-05-27 09:20:47,353 [ERROR] Error testing partial exit: 'PositionManagerWrapper' object has no attribute 'partial_exit'
+2025-05-27 09:20:47,353 [INFO] Testing strategy functionality
+2025-05-27 09:20:47,353 [INFO] Testing market regime detection
+2025-05-27 09:20:47,353 [ERROR] Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:20:47,353 [ERROR] Error getting klines: Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:20:47,353 [INFO] Testing signal generation
+2025-05-27 09:20:47,353 [ERROR] Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:20:47,353 [ERROR] Error getting klines: Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:20:47,353 [INFO] Detected market regime: RANGING
+2025-05-27 09:20:47,353 [ERROR] Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:20:47,353 [ERROR] Error getting klines: Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:20:47,353 [INFO] Testing strategy execution
+2025-05-27 09:20:47,353 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 09:20:47,353 [ERROR] Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:20:47,353 [ERROR] Error getting klines: Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:20:47,353 [INFO] Detected market regime: RANGING
+2025-05-27 09:20:47,353 [ERROR] Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:20:47,353 [ERROR] Error getting klines: Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:20:47,353 [INFO] Generated signal: NEUTRAL in RANGING regime
+2025-05-27 09:20:47,353 [INFO] Testing live trading functionality
+2025-05-27 09:20:47,353 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 09:20:47,353 [INFO] Testing long position
+2025-05-27 09:20:47,353 [INFO] Opening position: XRP-PERP LONG, Size: 100.0
+2025-05-27 09:20:48,354 [INFO] Position opened: XRP-PERP LONG, Size: 100.0, Entry: 0.5
+2025-05-27 09:20:48,354 [INFO] Closing all positions for XRP-PERP
+2025-05-27 09:20:48,354 [INFO] Closing position: XRP-PERP LONG
+2025-05-27 09:20:49,354 [INFO] Position closed: XRP-PERP LONG, Exit: 60.6, PnL: 6010.00 (12020.00%)
+2025-05-27 09:20:49,354 [INFO] Closing position: XRP-PERP SHORT
+2025-05-27 09:20:49,354 [INFO] Testing short position
+2025-05-27 09:20:49,354 [INFO] Opening position: XRP-PERP SHORT, Size: 100.0
+2025-05-27 09:20:50,355 [INFO] Position opened: XRP-PERP SHORT, Size: 100.0, Entry: 0.5
+2025-05-27 09:20:50,355 [INFO] Closing all positions for XRP-PERP
+2025-05-27 09:20:50,355 [INFO] Closing position: XRP-PERP LONG
+2025-05-27 09:20:50,355 [INFO] Closing position: XRP-PERP SHORT
+2025-05-27 09:20:51,355 [INFO] Position closed: XRP-PERP SHORT, Exit: 60.6, PnL: -6010.00 (-12020.00%)
+2025-05-27 09:20:51,356 [INFO] Testing autonomous trading
+2025-05-27 09:20:51,356 [ERROR] Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:20:51,356 [ERROR] Error getting klines: Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:20:51,356 [INFO] Detected market regime: RANGING
+2025-05-27 09:20:51,356 [ERROR] Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:20:51,356 [ERROR] Error getting klines: Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:20:51,356 [INFO] Generated signal: NEUTRAL in RANGING regime
+2025-05-27 09:20:51,356 [INFO] Test results saved. Success rate: 62.86%
+2025-05-27 09:20:51,356 [INFO] Comprehensive tests completed
+2025-05-27 09:24:14,869 [INFO] Successfully imported all core modules
+2025-05-27 09:24:14,870 [INFO] Not connected, attempting to connect...
+2025-05-27 09:24:14,870 [INFO] Health check thread started
+2025-05-27 09:24:14,871 [INFO] Trading mode initialized to PAPER_TRADING
+2025-05-27 09:24:14,871 [INFO] Risk metrics loaded from risk_metrics.json
+2025-05-27 09:24:14,871 [INFO] Risk manager initialized
+2025-05-27 09:24:14,871 [INFO] Advanced order manager initialized
+2025-05-27 09:24:14,871 [INFO] Position manager wrapper initialized
+2025-05-27 09:24:14,871 [INFO] Starting comprehensive tests
+2025-05-27 09:24:14,871 [INFO] Testing connection functionality
+2025-05-27 09:24:14,871 [INFO] Testing connection manager
+2025-05-27 09:24:14,871 [INFO] Testing adapter connection
+2025-05-27 09:24:14,871 [INFO] Testing reconnection
+2025-05-27 09:24:14,870 [INFO] Reconnecting to exchange...
+2025-05-27 09:24:14,871 [INFO] Waiting 1.96 seconds before reconnecting (attempt 1)
+2025-05-27 09:24:16,833 [INFO] Connecting to exchange...
+2025-05-27 09:24:17,334 [INFO] Connected to exchange
+2025-05-27 09:24:17,334 [INFO] Disconnecting from exchange...
+2025-05-27 09:24:17,834 [INFO] Disconnected from exchange
+2025-05-27 09:24:18,835 [INFO] Reconnecting to exchange...
+2025-05-27 09:24:18,835 [INFO] Waiting 2.14 seconds before reconnecting (attempt 1)
+2025-05-27 09:24:20,978 [INFO] Connecting to exchange...
+2025-05-27 09:24:21,479 [INFO] Connected to exchange
+2025-05-27 09:24:21,479 [INFO] Testing settings functionality
+2025-05-27 09:24:21,479 [INFO] Testing settings save
+2025-05-27 09:24:21,479 [INFO] Settings backup created at settings_backup/config_20250527_092421.json
+2025-05-27 09:24:21,479 [INFO] Settings saved to config.json
+2025-05-27 09:24:21,480 [INFO] Testing settings load
+2025-05-27 09:24:21,480 [INFO] Settings loaded from config.json
+2025-05-27 09:24:21,480 [INFO] Testing settings backup
+2025-05-27 09:24:21,480 [INFO] Settings backup created at settings_backup/config_20250527_092421.json
+2025-05-27 09:24:21,480 [INFO] Testing settings restore
+2025-05-27 09:24:21,480 [INFO] Settings restored from settings_backup/config_20250527_092421.json
+2025-05-27 09:24:21,480 [INFO] Testing trading mode functionality
+2025-05-27 09:24:21,480 [INFO] Testing mode switch to PAPER_TRADING
+2025-05-27 09:24:21,480 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 09:24:21,480 [INFO] Testing mode switch to LIVE_TRADING
+2025-05-27 09:24:21,480 [INFO] Trading mode set to LIVE_TRADING
+2025-05-27 09:24:21,480 [INFO] Testing mode switch to MONITOR_ONLY
+2025-05-27 09:24:21,480 [INFO] Trading mode set to MONITOR_ONLY
+2025-05-27 09:24:21,480 [INFO] Testing mode switch to AGGRESSIVE
+2025-05-27 09:24:21,480 [INFO] Trading mode set to AGGRESSIVE
+2025-05-27 09:24:21,480 [INFO] Testing mode switch to CONSERVATIVE
+2025-05-27 09:24:21,481 [INFO] Trading mode set to CONSERVATIVE
+2025-05-27 09:24:21,481 [INFO] Testing mode persistence
+2025-05-27 09:24:21,481 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 09:24:21,481 [INFO] Trading mode PAPER_TRADING saved to persistent storage
+2025-05-27 09:24:21,481 [INFO] Trading mode initialized to PAPER_TRADING
+2025-05-27 09:24:21,481 [INFO] Testing mode-specific settings
+2025-05-27 09:24:21,481 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 09:24:21,481 [INFO] Trading mode set to LIVE_TRADING
+2025-05-27 09:24:21,481 [INFO] Trading mode set to AGGRESSIVE
+2025-05-27 09:24:21,481 [INFO] Trading mode set to CONSERVATIVE
+2025-05-27 09:24:21,481 [INFO] Testing risk management functionality
+2025-05-27 09:24:21,481 [INFO] Testing position sizing
+2025-05-27 09:24:21,481 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 09:24:21,481 [WARNING] Position size 4761.9048 exceeds max position size 1000.0000, limiting
+2025-05-27 09:24:21,481 [INFO] Calculated position size: 1000.0000 for XRP-PERP with 1.00% risk
+2025-05-27 09:24:21,481 [INFO] Trading mode set to LIVE_TRADING
+2025-05-27 09:24:21,482 [WARNING] Position size 4761.9048 exceeds max position size 1000.0000, limiting
+2025-05-27 09:24:21,482 [INFO] Calculated position size: 1000.0000 for XRP-PERP with 1.00% risk
+2025-05-27 09:24:21,482 [INFO] Trading mode set to AGGRESSIVE
+2025-05-27 09:24:21,482 [WARNING] Position size 4761.9048 exceeds max position size 1000.0000, limiting
+2025-05-27 09:24:21,482 [INFO] Calculated position size: 1000.0000 for XRP-PERP with 1.00% risk
+2025-05-27 09:24:21,482 [INFO] Trading mode set to CONSERVATIVE
+2025-05-27 09:24:21,482 [WARNING] Position size 4761.9048 exceeds max position size 1000.0000, limiting
+2025-05-27 09:24:21,482 [INFO] Calculated position size: 1000.0000 for XRP-PERP with 1.00% risk
+2025-05-27 09:24:21,482 [INFO] Testing risk-reward validation
+2025-05-27 09:24:21,482 [INFO] Testing drawdown protection
+2025-05-27 09:24:21,482 [ERROR] Error testing drawdown protection: RiskManager.check_drawdown_protection() takes 1 positional argument but 2 were given
+2025-05-27 09:24:21,482 [INFO] Testing order management functionality
+2025-05-27 09:24:21,482 [INFO] Testing order creation
+2025-05-27 09:24:21,582 [INFO] Testing TWAP order
+2025-05-27 09:24:21,582 [INFO] Executing TWAP order for XRP-PERP: BUY LONG, Size: 1000.0, Duration: 5min, Slices: 5
+2025-05-27 09:24:21,583 [INFO] Starting TWAP execution thread for order twap_XRP-PERP_20250527092421
+2025-05-27 09:24:21,583 [INFO] Testing scale order
+2025-05-27 09:24:21,583 [INFO] Executing Scale order for XRP-PERP: BUY LONG, Size: 1000.0, Range: 1.0%, Orders: 3
+2025-05-27 09:24:21,583 [INFO] Starting Scale execution thread for order scale_XRP-PERP_20250527092421
+2025-05-27 09:24:21,583 [INFO] Testing position management functionality
+2025-05-27 09:24:21,583 [INFO] Testing position opening
+2025-05-27 09:24:21,583 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 09:24:21,583 [INFO] Opening position: XRP-PERP LONG, Size: 100.0
+2025-05-27 09:24:21,683 [INFO] TWAP slice 1/5 executed: Size 200.0, Price 60.64
+2025-05-27 09:24:21,683 [INFO] Scale order 1/3 executed: Size 333.3333333333333, Price 0.5
+2025-05-27 09:24:21,784 [INFO] Scale order 2/3 executed: Size 333.3333333333333, Price 0.4975
+2025-05-27 09:24:21,884 [INFO] Scale order 3/3 executed: Size 333.33333333333337, Price 0.495
+2025-05-27 09:24:21,884 [INFO] Scale order scale_XRP-PERP_20250527092421 completed: 3/3 orders, Average price: 0.4975
+2025-05-27 09:24:22,584 [INFO] Position opened: XRP-PERP LONG, Size: 100.0, Entry: 0.5
+2025-05-27 09:24:22,584 [INFO] Testing position closing
+2025-05-27 09:24:22,584 [INFO] Closing all positions for XRP-PERP
+2025-05-27 09:24:22,584 [INFO] Closing position: XRP-PERP LONG
+2025-05-27 09:24:23,584 [INFO] Position closed: XRP-PERP LONG, Exit: 60.64, PnL: 6014.00 (12028.00%)
+2025-05-27 09:24:23,585 [INFO] Closing position: XRP-PERP SHORT
+2025-05-27 09:24:24,085 [INFO] Fetched 1 positions
+2025-05-27 09:24:24,085 [INFO] Testing partial position exit
+2025-05-27 09:24:24,085 [INFO] Opening position: XRP-PERP LONG, Size: 100.0
+2025-05-27 09:24:25,085 [INFO] Position opened: XRP-PERP LONG, Size: 100.0, Entry: 0.5
+2025-05-27 09:24:25,086 [ERROR] Error testing partial exit: PositionManagerWrapper.partial_exit() missing 1 required positional argument: 'is_long'
+2025-05-27 09:24:25,086 [INFO] Testing strategy functionality
+2025-05-27 09:24:25,086 [INFO] Testing market regime detection
+2025-05-27 09:24:25,086 [ERROR] Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:24:25,086 [ERROR] Error getting klines: Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:24:25,086 [INFO] Testing signal generation
+2025-05-27 09:24:25,086 [ERROR] Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:24:25,086 [ERROR] Error getting klines: Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:24:25,086 [INFO] Detected market regime: RANGING
+2025-05-27 09:24:25,086 [ERROR] Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:24:25,086 [ERROR] Error getting klines: Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:24:25,086 [INFO] Testing strategy execution
+2025-05-27 09:24:25,086 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 09:24:25,086 [ERROR] Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:24:25,086 [ERROR] Error getting klines: Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:24:25,086 [INFO] Detected market regime: RANGING
+2025-05-27 09:24:25,086 [ERROR] Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:24:25,086 [ERROR] Error getting klines: Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:24:25,086 [INFO] Generated signal: NEUTRAL in RANGING regime
+2025-05-27 09:24:25,086 [INFO] Testing live trading functionality
+2025-05-27 09:24:25,086 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 09:24:25,086 [INFO] Testing long position
+2025-05-27 09:24:25,086 [INFO] Opening position: XRP-PERP LONG, Size: 100.0
+2025-05-27 09:24:26,087 [INFO] Position opened: XRP-PERP LONG, Size: 100.0, Entry: 0.5
+2025-05-27 09:24:26,087 [INFO] Closing all positions for XRP-PERP
+2025-05-27 09:24:26,087 [INFO] Closing position: XRP-PERP LONG
+2025-05-27 09:24:27,087 [INFO] Position closed: XRP-PERP LONG, Exit: 60.64, PnL: 6014.00 (12028.00%)
+2025-05-27 09:24:27,087 [INFO] Closing position: XRP-PERP SHORT
+2025-05-27 09:24:27,088 [INFO] Testing short position
+2025-05-27 09:24:27,088 [INFO] Opening position: XRP-PERP SHORT, Size: 100.0
+2025-05-27 09:24:28,088 [INFO] Position opened: XRP-PERP SHORT, Size: 100.0, Entry: 0.5
+2025-05-27 09:24:28,088 [INFO] Closing all positions for XRP-PERP
+2025-05-27 09:24:28,088 [INFO] Closing position: XRP-PERP LONG
+2025-05-27 09:24:28,088 [INFO] Closing position: XRP-PERP SHORT
+2025-05-27 09:24:29,088 [INFO] Position closed: XRP-PERP SHORT, Exit: 60.64, PnL: -6014.00 (-12028.00%)
+2025-05-27 09:24:29,088 [INFO] Testing autonomous trading
+2025-05-27 09:24:29,089 [ERROR] Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:24:29,089 [ERROR] Error getting klines: Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:24:29,089 [INFO] Detected market regime: RANGING
+2025-05-27 09:24:29,089 [ERROR] Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:24:29,089 [ERROR] Error getting klines: Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:24:29,089 [INFO] Generated signal: NEUTRAL in RANGING regime
+2025-05-27 09:24:29,089 [INFO] Test results saved. Success rate: 80.00%
+2025-05-27 09:24:29,089 [INFO] Comprehensive tests completed
+2025-05-27 09:27:49,701 [INFO] Successfully imported all core modules
+2025-05-27 09:27:49,702 [INFO] Not connected, attempting to connect...
+2025-05-27 09:27:49,702 [INFO] Health check thread started
+2025-05-27 09:27:49,702 [INFO] Trading mode initialized to PAPER_TRADING
+2025-05-27 09:27:49,703 [INFO] Risk metrics loaded from risk_metrics.json
+2025-05-27 09:27:49,703 [INFO] Risk manager initialized
+2025-05-27 09:27:49,703 [INFO] Advanced order manager initialized
+2025-05-27 09:27:49,703 [INFO] Position manager wrapper initialized
+2025-05-27 09:27:49,703 [INFO] Starting comprehensive tests
+2025-05-27 09:27:49,703 [INFO] Testing connection functionality
+2025-05-27 09:27:49,703 [INFO] Testing connection manager
+2025-05-27 09:27:49,703 [INFO] Testing adapter connection
+2025-05-27 09:27:49,703 [INFO] Testing reconnection
+2025-05-27 09:27:49,702 [INFO] Reconnecting to exchange...
+2025-05-27 09:27:49,703 [INFO] Waiting 1.96 seconds before reconnecting (attempt 1)
+2025-05-27 09:27:51,667 [INFO] Connecting to exchange...
+2025-05-27 09:27:52,167 [INFO] Connected to exchange
+2025-05-27 09:27:52,168 [INFO] Disconnecting from exchange...
+2025-05-27 09:27:52,668 [INFO] Disconnected from exchange
+2025-05-27 09:27:53,668 [INFO] Reconnecting to exchange...
+2025-05-27 09:27:53,669 [INFO] Waiting 2.46 seconds before reconnecting (attempt 1)
+2025-05-27 09:27:56,129 [INFO] Connecting to exchange...
+2025-05-27 09:27:56,629 [INFO] Connected to exchange
+2025-05-27 09:27:56,630 [INFO] Testing settings functionality
+2025-05-27 09:27:56,630 [INFO] Testing settings save
+2025-05-27 09:27:56,630 [INFO] Settings backup created at settings_backup/config_20250527_092756.json
+2025-05-27 09:27:56,630 [INFO] Settings saved to config.json
+2025-05-27 09:27:56,631 [INFO] Testing settings load
+2025-05-27 09:27:56,631 [INFO] Settings loaded from config.json
+2025-05-27 09:27:56,631 [INFO] Testing settings backup
+2025-05-27 09:27:56,631 [INFO] Settings backup created at settings_backup/config_20250527_092756.json
+2025-05-27 09:27:56,631 [INFO] Testing settings restore
+2025-05-27 09:27:56,631 [INFO] Settings restored from settings_backup/config_20250527_092756.json
+2025-05-27 09:27:56,631 [INFO] Testing trading mode functionality
+2025-05-27 09:27:56,631 [INFO] Testing mode switch to PAPER_TRADING
+2025-05-27 09:27:56,631 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 09:27:56,631 [INFO] Testing mode switch to LIVE_TRADING
+2025-05-27 09:27:56,631 [INFO] Trading mode set to LIVE_TRADING
+2025-05-27 09:27:56,632 [INFO] Testing mode switch to MONITOR_ONLY
+2025-05-27 09:27:56,632 [INFO] Trading mode set to MONITOR_ONLY
+2025-05-27 09:27:56,632 [INFO] Testing mode switch to AGGRESSIVE
+2025-05-27 09:27:56,632 [INFO] Trading mode set to AGGRESSIVE
+2025-05-27 09:27:56,632 [INFO] Testing mode switch to CONSERVATIVE
+2025-05-27 09:27:56,632 [INFO] Trading mode set to CONSERVATIVE
+2025-05-27 09:27:56,632 [INFO] Testing mode persistence
+2025-05-27 09:27:56,632 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 09:27:56,632 [INFO] Trading mode PAPER_TRADING saved to persistent storage
+2025-05-27 09:27:56,632 [INFO] Trading mode initialized to PAPER_TRADING
+2025-05-27 09:27:56,632 [INFO] Testing mode-specific settings
+2025-05-27 09:27:56,632 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 09:27:56,632 [INFO] Trading mode set to LIVE_TRADING
+2025-05-27 09:27:56,632 [INFO] Trading mode set to AGGRESSIVE
+2025-05-27 09:27:56,632 [INFO] Trading mode set to CONSERVATIVE
+2025-05-27 09:27:56,632 [INFO] Testing risk management functionality
+2025-05-27 09:27:56,632 [INFO] Testing position sizing
+2025-05-27 09:27:56,632 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 09:27:56,633 [WARNING] Position size 4761.9048 exceeds max position size 1000.0000, limiting
+2025-05-27 09:27:56,633 [INFO] Calculated position size: 1000.0000 for XRP-PERP with 1.00% risk
+2025-05-27 09:27:56,633 [INFO] Trading mode set to LIVE_TRADING
+2025-05-27 09:27:56,633 [WARNING] Position size 4761.9048 exceeds max position size 1000.0000, limiting
+2025-05-27 09:27:56,633 [INFO] Calculated position size: 1000.0000 for XRP-PERP with 1.00% risk
+2025-05-27 09:27:56,633 [INFO] Trading mode set to AGGRESSIVE
+2025-05-27 09:27:56,633 [WARNING] Position size 4761.9048 exceeds max position size 1000.0000, limiting
+2025-05-27 09:27:56,633 [INFO] Calculated position size: 1000.0000 for XRP-PERP with 1.00% risk
+2025-05-27 09:27:56,633 [INFO] Trading mode set to CONSERVATIVE
+2025-05-27 09:27:56,633 [WARNING] Position size 4761.9048 exceeds max position size 1000.0000, limiting
+2025-05-27 09:27:56,633 [INFO] Calculated position size: 1000.0000 for XRP-PERP with 1.00% risk
+2025-05-27 09:27:56,633 [INFO] Testing risk-reward validation
+2025-05-27 09:27:56,633 [INFO] Testing drawdown protection
+2025-05-27 09:27:56,633 [INFO] Testing order management functionality
+2025-05-27 09:27:56,633 [INFO] Testing order creation
+2025-05-27 09:27:56,734 [INFO] Testing TWAP order
+2025-05-27 09:27:56,734 [INFO] Executing TWAP order for XRP-PERP: BUY LONG, Size: 1000.0, Duration: 5min, Slices: 5
+2025-05-27 09:27:56,734 [INFO] Starting TWAP execution thread for order twap_XRP-PERP_20250527092756
+2025-05-27 09:27:56,734 [INFO] Testing scale order
+2025-05-27 09:27:56,734 [INFO] Executing Scale order for XRP-PERP: BUY LONG, Size: 1000.0, Range: 1.0%, Orders: 3
+2025-05-27 09:27:56,735 [INFO] Starting Scale execution thread for order scale_XRP-PERP_20250527092756
+2025-05-27 09:27:56,735 [INFO] Testing position management functionality
+2025-05-27 09:27:56,735 [INFO] Testing position opening
+2025-05-27 09:27:56,735 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 09:27:56,735 [INFO] Opening position: XRP-PERP LONG, Size: 100.0
+2025-05-27 09:27:56,835 [INFO] TWAP slice 1/5 executed: Size 200.0, Price 60.67
+2025-05-27 09:27:56,835 [INFO] Scale order 1/3 executed: Size 333.3333333333333, Price 0.5
+2025-05-27 09:27:56,935 [INFO] Scale order 2/3 executed: Size 333.3333333333333, Price 0.4975
+2025-05-27 09:27:57,036 [INFO] Scale order 3/3 executed: Size 333.33333333333337, Price 0.495
+2025-05-27 09:27:57,036 [INFO] Scale order scale_XRP-PERP_20250527092756 completed: 3/3 orders, Average price: 0.4975
+2025-05-27 09:27:57,735 [INFO] Position opened: XRP-PERP LONG, Size: 100.0, Entry: 0.5
+2025-05-27 09:27:57,735 [INFO] Testing position closing
+2025-05-27 09:27:57,735 [INFO] Closing all positions for XRP-PERP
+2025-05-27 09:27:57,735 [INFO] Closing position: XRP-PERP LONG
+2025-05-27 09:27:58,735 [INFO] Position closed: XRP-PERP LONG, Exit: 60.67, PnL: 6017.00 (12034.00%)
+2025-05-27 09:27:58,736 [INFO] Closing position: XRP-PERP SHORT
+2025-05-27 09:27:59,236 [INFO] Fetched 1 positions
+2025-05-27 09:27:59,236 [INFO] Testing partial exit
+2025-05-27 09:27:59,236 [INFO] Opening position: XRP-PERP LONG, Size: 100.0
+2025-05-27 09:28:00,236 [INFO] Position opened: XRP-PERP LONG, Size: 100.0, Entry: 0.5
+2025-05-27 09:28:00,237 [INFO] Partially exiting position: XRP-PERP LONG, 50.0%
+2025-05-27 09:28:01,237 [INFO] Position partially exited: XRP-PERP LONG, 50.0%, Exit: 60.68, PnL: 3009.00 (12036.00%)
+2025-05-27 09:28:01,237 [INFO] Testing strategy functionality
+2025-05-27 09:28:01,237 [INFO] Testing market regime detection
+2025-05-27 09:28:01,237 [ERROR] Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:28:01,237 [ERROR] Error getting klines: Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:28:01,237 [INFO] Testing signal generation
+2025-05-27 09:28:01,237 [ERROR] Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:28:01,237 [ERROR] Error getting klines: Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:28:01,238 [INFO] Detected market regime: RANGING
+2025-05-27 09:28:01,238 [ERROR] Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:28:01,238 [ERROR] Error getting klines: Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:28:01,238 [INFO] Testing strategy execution
+2025-05-27 09:28:01,238 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 09:28:01,238 [ERROR] Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:28:01,238 [ERROR] Error getting klines: Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:28:01,238 [INFO] Detected market regime: RANGING
+2025-05-27 09:28:01,238 [ERROR] Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:28:01,238 [ERROR] Error getting klines: Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:28:01,238 [INFO] Generated signal: NEUTRAL in RANGING regime
+2025-05-27 09:28:01,238 [INFO] Testing live trading functionality
+2025-05-27 09:28:01,238 [INFO] Trading mode set to PAPER_TRADING
+2025-05-27 09:28:01,238 [INFO] Testing long position
+2025-05-27 09:28:01,238 [INFO] Opening position: XRP-PERP LONG, Size: 100.0
+2025-05-27 09:28:02,238 [INFO] Position opened: XRP-PERP LONG, Size: 100.0, Entry: 0.5
+2025-05-27 09:28:02,239 [INFO] Closing all positions for XRP-PERP
+2025-05-27 09:28:02,239 [INFO] Closing position: XRP-PERP LONG
+2025-05-27 09:28:03,239 [INFO] Position closed: XRP-PERP LONG, Exit: 60.68, PnL: 6018.00 (12036.00%)
+2025-05-27 09:28:03,239 [INFO] Closing position: XRP-PERP SHORT
+2025-05-27 09:28:03,239 [INFO] Testing short position
+2025-05-27 09:28:03,239 [INFO] Opening position: XRP-PERP SHORT, Size: 100.0
+2025-05-27 09:28:04,240 [INFO] Position opened: XRP-PERP SHORT, Size: 100.0, Entry: 0.5
+2025-05-27 09:28:04,240 [INFO] Closing all positions for XRP-PERP
+2025-05-27 09:28:04,240 [INFO] Closing position: XRP-PERP LONG
+2025-05-27 09:28:04,240 [INFO] Closing position: XRP-PERP SHORT
+2025-05-27 09:28:05,240 [INFO] Position closed: XRP-PERP SHORT, Exit: 60.68, PnL: -6018.00 (-12036.00%)
+2025-05-27 09:28:05,240 [INFO] Testing autonomous trading
+2025-05-27 09:28:05,240 [ERROR] Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:28:05,240 [ERROR] Error getting klines: Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:28:05,240 [INFO] Detected market regime: RANGING
+2025-05-27 09:28:05,241 [ERROR] Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:28:05,241 [ERROR] Error getting klines: Error getting klines: 'NoneType' object has no attribute 'candles'
+2025-05-27 09:28:05,241 [INFO] Generated signal: NEUTRAL in RANGING regime
+2025-05-27 09:28:05,241 [INFO] Test results saved. Success rate: 97.14%
+2025-05-27 09:28:05,241 [INFO] Comprehensive tests completed
