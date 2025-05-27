@@ -1,0 +1,41 @@
+{
+  "trades": [
+    {
+      "type": "buy",
+      "symbol": "XRP",
+      "size": 0.1,
+      "price": 2.28635,
+      "execution_time": 6.001755237579346,
+      "timestamp": "2025-05-27T01:20:23.195757",
+      "success": false,
+      "error": "Error placing order: API call failed: string indices must be integers, not 'str'"
+    },
+    {
+      "type": "buy",
+      "symbol": "XRP",
+      "size": 0.2,
+      "price": 2.28715,
+      "execution_time": 6.001638650894165,
+      "timestamp": "2025-05-27T01:20:34.652633",
+      "success": false,
+      "error": "Error placing order: API call failed: string indices must be integers, not 'str'"
+    },
+    {
+      "type": "buy",
+      "symbol": "XRP",
+      "size": 0.5,
+      "price": 2.28715,
+      "execution_time": 6.0016584396362305,
+      "timestamp": "2025-05-27T01:20:46.103928",
+      "success": false,
+      "error": "Error placing order: API call failed: string indices must be integers, not 'str'"
+    }
+  ],
+  "profit_loss": 0.0,
+  "success_rate": 0.0,
+  "avg_execution_time": 0,
+  "price_impact": 0.0,
+  "score": 20.0,
+  "errors": [],
+  "actual_profit_loss": 0.0
+}

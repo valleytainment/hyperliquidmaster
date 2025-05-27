@@ -1,0 +1,117 @@
+{
+  "long_entry": {
+    "paper_trading": {
+      "success": true,
+      "price": 2.30435,
+      "size": 0.1,
+      "order_id": "sim_long_1748325969",
+      "timestamp": 1748325969.0398467
+    },
+    "live_trading": {
+      "success": true,
+      "price": 2.30435,
+      "size": 0.1,
+      "order_type": "LIMIT",
+      "timestamp": 1748325969.653896
+    },
+    "aggressive": {
+      "success": true,
+      "price": 2.30435,
+      "size": 0.2,
+      "order_type": "MARKET",
+      "timestamp": 1748325970.8100693
+    },
+    "conservative": {
+      "success": true,
+      "price": 2.30435,
+      "size": 0.05,
+      "order_type": "LIMIT",
+      "timestamp": 1748325972.2544477
+    }
+  },
+  "long_exit": {
+    "paper_trading": {
+      "success": true,
+      "price": 2.3066543499999996,
+      "order_id": "sim_long_close_1748325969",
+      "timestamp": 1748325969.0399172
+    },
+    "live_trading": {
+      "success": true,
+      "price": 2.3089587,
+      "order_type": "LIMIT",
+      "timestamp": 1748325969.6539557
+    },
+    "aggressive": {
+      "success": true,
+      "price": 2.3089587,
+      "order_type": "MARKET",
+      "timestamp": 1748325970.8101254
+    },
+    "conservative": {
+      "success": true,
+      "price": 2.3089587,
+      "order_type": "LIMIT",
+      "timestamp": 1748325972.2545063
+    }
+  },
+  "short_entry": {
+    "paper_trading": {
+      "success": true,
+      "price": 2.30435,
+      "size": -0.1,
+      "order_id": "sim_short_1748325969",
+      "timestamp": 1748325969.3492577
+    }
+  },
+  "short_exit": {
+    "paper_trading": {
+      "success": true,
+      "price": 2.3020456499999997,
+      "order_id": "sim_short_close_1748325969",
+      "timestamp": 1748325969.3493338
+    }
+  },
+  "mode_switch": {
+    "paper_trading": {
+      "success": true,
+      "current_mode": "paper_trading",
+      "settings": {
+        "use_real_orders": false,
+        "risk_percent": 0.01,
+        "max_position_size": 1.0,
+        "use_market_orders": false
+      }
+    },
+    "live_trading": {
+      "success": true,
+      "current_mode": "live_trading",
+      "settings": {
+        "use_real_orders": true,
+        "risk_percent": 0.01,
+        "max_position_size": 1.0,
+        "use_market_orders": false
+      }
+    },
+    "aggressive": {
+      "success": true,
+      "current_mode": "aggressive",
+      "settings": {
+        "use_real_orders": true,
+        "risk_percent": 0.02,
+        "max_position_size": 2.0,
+        "use_market_orders": true
+      }
+    },
+    "conservative": {
+      "success": true,
+      "current_mode": "conservative",
+      "settings": {
+        "use_real_orders": true,
+        "risk_percent": 0.005,
+        "max_position_size": 0.5,
+        "use_market_orders": false
+      }
+    }
+  }
+}

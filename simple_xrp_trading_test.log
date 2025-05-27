@@ -1,0 +1,122 @@
+2025-05-27 02:06:02,754 [INFO] Initializing Simplified XRP Trading Test with Mode Management...
+2025-05-27 02:06:02,754 [INFO] Trading mode initialized to: paper_trading
+2025-05-27 02:06:04,367 [INFO] Starting simplified XRP trading tests with mode management...
+2025-05-27 02:06:04,367 [INFO] Initializing test environment...
+2025-05-27 02:06:04,548 [INFO] Connection test successful
+2025-05-27 02:06:04,548 [INFO] Testing mode switching...
+2025-05-27 02:06:04,549 [INFO] Switching to mode: paper_trading
+2025-05-27 02:06:04,549 [INFO] Trading mode set to: paper_trading
+2025-05-27 02:06:04,549 [INFO] Successfully switched to mode: paper_trading
+2025-05-27 02:06:04,549 [INFO] Current mode: paper_trading
+2025-05-27 02:06:04,549 [INFO] Mode settings: {
+  "use_real_orders": false,
+  "risk_percent": 0.01,
+  "max_position_size": 1.0,
+  "use_market_orders": false
+}
+2025-05-27 02:06:05,549 [INFO] Switching to mode: live_trading
+2025-05-27 02:06:05,550 [INFO] Trading mode set to: live_trading
+2025-05-27 02:06:05,550 [INFO] Successfully switched to mode: live_trading
+2025-05-27 02:06:05,550 [INFO] Current mode: live_trading
+2025-05-27 02:06:05,550 [INFO] Mode settings: {
+  "use_real_orders": true,
+  "risk_percent": 0.01,
+  "max_position_size": 1.0,
+  "use_market_orders": false
+}
+2025-05-27 02:06:06,550 [INFO] Switching to mode: aggressive
+2025-05-27 02:06:06,551 [INFO] Trading mode set to: aggressive
+2025-05-27 02:06:06,551 [INFO] Successfully switched to mode: aggressive
+2025-05-27 02:06:06,551 [INFO] Current mode: aggressive
+2025-05-27 02:06:06,551 [INFO] Mode settings: {
+  "use_real_orders": true,
+  "risk_percent": 0.02,
+  "max_position_size": 2.0,
+  "use_market_orders": true
+}
+2025-05-27 02:06:07,551 [INFO] Switching to mode: conservative
+2025-05-27 02:06:07,552 [INFO] Trading mode set to: conservative
+2025-05-27 02:06:07,552 [INFO] Successfully switched to mode: conservative
+2025-05-27 02:06:07,552 [INFO] Current mode: conservative
+2025-05-27 02:06:07,552 [INFO] Mode settings: {
+  "use_real_orders": true,
+  "risk_percent": 0.005,
+  "max_position_size": 0.5,
+  "use_market_orders": false
+}
+2025-05-27 02:06:08,552 [INFO] Simulating long position entry...
+2025-05-27 02:06:08,553 [INFO] Trading mode set to: paper_trading
+2025-05-27 02:06:08,553 [INFO] Switched to mode: paper_trading
+2025-05-27 02:06:08,553 [INFO] Getting market data for XRP...
+2025-05-27 02:06:09,039 [INFO] Market data for XRP: price=2.30435, funding_rate=1.25e-05
+2025-05-27 02:06:09,039 [INFO] Current XRP price: 2.30435
+2025-05-27 02:06:09,039 [INFO] Simulating long position for XRP with size 0.1...
+2025-05-27 02:06:09,039 [INFO] Simulated long position entry successful at price 2.30435
+2025-05-27 02:06:09,039 [INFO] Simulating closing long position for XRP...
+2025-05-27 02:06:09,039 [INFO] Simulated long position exit successful at price 2.3066543499999996
+2025-05-27 02:06:09,039 [INFO] Simulating short position entry...
+2025-05-27 02:06:09,040 [INFO] Trading mode set to: paper_trading
+2025-05-27 02:06:09,040 [INFO] Switched to mode: paper_trading
+2025-05-27 02:06:09,040 [INFO] Getting market data for XRP...
+2025-05-27 02:06:09,348 [INFO] Market data for XRP: price=2.30435, funding_rate=1.25e-05
+2025-05-27 02:06:09,349 [INFO] Current XRP price: 2.30435
+2025-05-27 02:06:09,349 [INFO] Simulating short position for XRP with size 0.1...
+2025-05-27 02:06:09,349 [INFO] Simulated short position entry successful at price 2.30435
+2025-05-27 02:06:09,349 [INFO] Simulating closing short position for XRP...
+2025-05-27 02:06:09,349 [INFO] Simulated short position exit successful at price 2.3020456499999997
+2025-05-27 02:06:09,349 [INFO] Simulating live mode operations...
+2025-05-27 02:06:09,349 [INFO] Trading mode set to: live_trading
+2025-05-27 02:06:09,349 [INFO] Switched to mode: live_trading
+2025-05-27 02:06:09,349 [INFO] Mode settings: {
+  "use_real_orders": true,
+  "risk_percent": 0.01,
+  "max_position_size": 1.0,
+  "use_market_orders": false
+}
+2025-05-27 02:06:09,349 [INFO] Getting market data for XRP...
+2025-05-27 02:06:09,653 [INFO] Market data for XRP: price=2.30435, funding_rate=1.25e-05
+2025-05-27 02:06:09,653 [INFO] Simulated live_trading mode entry: size=0.1, order_type=LIMIT
+2025-05-27 02:06:09,653 [INFO] Simulated live_trading mode exit at price 2.3089587
+2025-05-27 02:06:10,654 [INFO] Trading mode set to: aggressive
+2025-05-27 02:06:10,654 [INFO] Switched to mode: aggressive
+2025-05-27 02:06:10,654 [INFO] Mode settings: {
+  "use_real_orders": true,
+  "risk_percent": 0.02,
+  "max_position_size": 2.0,
+  "use_market_orders": true
+}
+2025-05-27 02:06:10,654 [INFO] Getting market data for XRP...
+2025-05-27 02:06:10,809 [INFO] Market data for XRP: price=2.30435, funding_rate=1.25e-05
+2025-05-27 02:06:10,810 [INFO] Simulated aggressive mode entry: size=0.2, order_type=MARKET
+2025-05-27 02:06:10,810 [INFO] Simulated aggressive mode exit at price 2.3089587
+2025-05-27 02:06:11,810 [INFO] Trading mode set to: conservative
+2025-05-27 02:06:11,810 [INFO] Switched to mode: conservative
+2025-05-27 02:06:11,810 [INFO] Mode settings: {
+  "use_real_orders": true,
+  "risk_percent": 0.005,
+  "max_position_size": 0.5,
+  "use_market_orders": false
+}
+2025-05-27 02:06:11,810 [INFO] Getting market data for XRP...
+2025-05-27 02:06:12,254 [INFO] Market data for XRP: price=2.30435, funding_rate=1.25e-05
+2025-05-27 02:06:12,254 [INFO] Simulated conservative mode entry: size=0.05, order_type=LIMIT
+2025-05-27 02:06:12,254 [INFO] Simulated conservative mode exit at price 2.3089587
+2025-05-27 02:06:13,255 [INFO] Trading mode set to: paper_trading
+2025-05-27 02:06:13,255 [INFO] Switched back to mode: paper_trading
+2025-05-27 02:06:13,255 [INFO] Test results saved to simple_xrp_trading_test_results.json
+2025-05-27 02:06:13,255 [INFO] XRP trading tests completed
+2025-05-27 02:06:13,255 [INFO] === XRP Trading Test Summary ===
+2025-05-27 02:06:13,255 [INFO] Mode Switching:
+2025-05-27 02:06:13,255 [INFO]   paper_trading: SUCCESS
+2025-05-27 02:06:13,255 [INFO]   live_trading: SUCCESS
+2025-05-27 02:06:13,255 [INFO]   aggressive: SUCCESS
+2025-05-27 02:06:13,255 [INFO]   conservative: SUCCESS
+2025-05-27 02:06:13,255 [INFO] Long Position:
+2025-05-27 02:06:13,255 [INFO]   paper_trading: Entry: SUCCESS, Exit: SUCCESS
+2025-05-27 02:06:13,256 [INFO]   live_trading: Entry: SUCCESS, Exit: SUCCESS
+2025-05-27 02:06:13,256 [INFO]   aggressive: Entry: SUCCESS, Exit: SUCCESS
+2025-05-27 02:06:13,256 [INFO]   conservative: Entry: SUCCESS, Exit: SUCCESS
+2025-05-27 02:06:13,256 [INFO] Short Position:
+2025-05-27 02:06:13,256 [INFO]   paper_trading: Entry: SUCCESS, Exit: SUCCESS
+2025-05-27 02:06:13,256 [INFO] Overall Success Rate: 100.00% (14/14)
+2025-05-27 02:06:13,256 [INFO] ===============================

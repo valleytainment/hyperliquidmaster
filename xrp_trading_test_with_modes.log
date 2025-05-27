@@ -1,0 +1,56 @@
+2025-05-27 02:03:59,362 [INFO] Initializing XRP Trading Test with Mode Management...
+2025-05-27 02:03:59,362 [INFO] Trading mode initialized to: paper_trading
+2025-05-27 02:04:01,283 [INFO] Starting XRP trading tests with mode management...
+2025-05-27 02:04:01,283 [INFO] Initializing test environment...
+2025-05-27 02:04:01,283 [INFO] Initializing exchange connection...
+2025-05-27 02:04:02,881 [INFO] Exchange connection initialized successfully
+2025-05-27 02:04:03,070 [INFO] Connection test successful
+2025-05-27 02:04:03,070 [INFO] Testing mode switching...
+2025-05-27 02:04:03,070 [INFO] Switching to mode: paper_trading
+2025-05-27 02:04:03,071 [INFO] Trading mode set to: paper_trading
+2025-05-27 02:04:03,071 [INFO] Successfully switched to mode: paper_trading
+2025-05-27 02:04:03,071 [INFO] Current mode: paper_trading
+2025-05-27 02:04:03,071 [INFO] Mode settings: {
+  "use_real_orders": false,
+  "risk_percent": 0.01,
+  "max_position_size": 1.0,
+  "use_market_orders": false
+}
+2025-05-27 02:04:04,072 [INFO] Switching to mode: live_trading
+2025-05-27 02:04:04,073 [INFO] Trading mode set to: live_trading
+2025-05-27 02:04:04,073 [INFO] Successfully switched to mode: live_trading
+2025-05-27 02:04:04,073 [INFO] Current mode: live_trading
+2025-05-27 02:04:04,073 [INFO] Mode settings: {
+  "use_real_orders": true,
+  "risk_percent": 0.01,
+  "max_position_size": 1.0,
+  "use_market_orders": false
+}
+2025-05-27 02:04:05,074 [INFO] Switching to mode: aggressive
+2025-05-27 02:04:05,075 [INFO] Trading mode set to: aggressive
+2025-05-27 02:04:05,075 [INFO] Successfully switched to mode: aggressive
+2025-05-27 02:04:05,075 [INFO] Current mode: aggressive
+2025-05-27 02:04:05,075 [INFO] Mode settings: {
+  "use_real_orders": true,
+  "risk_percent": 0.02,
+  "max_position_size": 2.0,
+  "use_market_orders": true
+}
+2025-05-27 02:04:06,076 [INFO] Switching to mode: conservative
+2025-05-27 02:04:06,077 [INFO] Trading mode set to: conservative
+2025-05-27 02:04:06,077 [INFO] Successfully switched to mode: conservative
+2025-05-27 02:04:06,077 [INFO] Current mode: conservative
+2025-05-27 02:04:06,077 [INFO] Mode settings: {
+  "use_real_orders": true,
+  "risk_percent": 0.005,
+  "max_position_size": 0.5,
+  "use_market_orders": false
+}
+2025-05-27 02:04:07,079 [INFO] Testing long position...
+2025-05-27 02:04:07,079 [INFO] Trading mode set to: paper_trading
+2025-05-27 02:04:07,079 [INFO] Switched to mode: paper_trading
+2025-05-27 02:04:07,079 [INFO] Getting market data for XRP...
+2025-05-27 02:04:07,533 [INFO] Market data for XRP: price=2.29515, funding_rate=1.25e-05
+2025-05-27 02:04:07,533 [INFO] Current XRP price: 2.29515
+2025-05-27 02:04:07,533 [INFO] Opening long position for XRP with size 0.1...
+2025-05-27 02:04:07,533 [INFO] Opening long position for XRP with size 0.1

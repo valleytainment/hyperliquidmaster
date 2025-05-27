@@ -1,0 +1,16 @@
+2025-05-27 01:33:56,631 [INFO] Websocket connected
+2025-05-27 01:33:58,194 [INFO] API initialized successfully
+2025-05-27 01:33:58,194 [INFO] Starting XRP trading test...
+2025-05-27 01:33:58,194 [INFO] Initializing XRP trading test...
+2025-05-27 01:33:58,194 [INFO] Initializing HyperliquidAdapter...
+2025-05-27 01:33:58,194 [INFO] Initializing HyperliquidAdapter...
+2025-05-27 01:33:58,519 [INFO] Websocket connected
+2025-05-27 01:33:59,768 [INFO] API initialized successfully
+2025-05-27 01:33:59,918 [INFO] HyperliquidAdapter initialized successfully
+2025-05-27 01:33:59,919 [INFO] HyperliquidAdapter initialized successfully
+2025-05-27 01:34:00,144 [INFO] Initial account balance: $17.63
+2025-05-27 01:34:00,145 [INFO] Executing trade cycle for XRP with size 0.1
+2025-05-27 01:34:00,145 [INFO] Executing buy trade for XRP with size 0.1
+2025-05-27 01:34:00,943 [INFO] Attempting to reconnect (attempt 1/5)
+2025-05-27 01:34:56,631 [ERROR] Connection to remote host was lost. - goodbye
+2025-05-27 01:34:58,511 [ERROR] Connection to remote host was lost. - goodbye

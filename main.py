@@ -20,6 +20,7 @@ from typing import Dict, List, Optional, Any, Callable
 # Import core components
 from core.hyperliquid_adapter import HyperliquidAdapter as HyperliquidExchangeAdapter
 from core.error_handler import ErrorHandler
+from core.trading_mode import TradingModeManager, TradingMode
 from sentiment.llm_analyzer import LLMSentimentAnalyzer
 from config_compatibility import ConfigManager
 
@@ -124,6 +125,10 @@ class EnhancedTradingBot:
         # Initialize error handler
         self.error_handler = ErrorHandler(self.logger)
         
+        # Initialize trading mode manager
+        self.mode_manager = TradingModeManager(config_path, self.logger)
+        self.logger.info(f"Current trading mode: {self.mode_manager.get_current_mode().value}")
+        
         # Initialize exchange adapter
         self.exchange = HyperliquidExchangeAdapter(
             self.config_path
@@ -227,7 +232,8 @@ class EnhancedTradingBot:
                 "last_trade_time": self.last_trade_time,
                 "market_data": self.market_data,
                 "positions": self.positions,
-                "timestamp": time.time()
+                "timestamp": time.time(),
+                "trading_mode": self.mode_manager.get_current_mode().value
             }
             
             with open(self.state_file, "w") as f:
@@ -256,6 +262,14 @@ class EnhancedTradingBot:
             self.market_data = state.get("market_data", {})
             self.positions = state.get("positions", {})
             
+            # Restore trading mode if present
+            if "trading_mode" in state:
+                try:
+                    self.mode_manager.set_mode(state["trading_mode"])
+                    self.logger.info(f"Restored trading mode: {state['trading_mode']}")
+                except Exception as e:
+                    self.logger.error(f"Failed to restore trading mode: {e}")
+            
             self.logger.info("Bot state loaded")
         except Exception as e:
             self.logger.error(f"Failed to load bot state: {e}")
@@ -268,6 +282,7 @@ class EnhancedTradingBot:
             
         self.running = True
         self.logger.info("Starting trading bot...")
+        self.logger.info(f"Trading mode: {self.mode_manager.get_current_mode().value}")
         
         # Start watchdog
         self.watchdog.start()
@@ -452,27 +467,13 @@ class EnhancedTradingBot:
         for symbol in symbols:
             try:
                 if symbol not in self.market_data:
-                    self.logger.warning(f"No market data for {symbol}, skipping signal generation")
+                    self.logger.warning(f"No market data available for {symbol}, skipping signal generation")
                     continue
-                    
-                # Get market data for symbol
-                market_data = self.market_data[symbol]
                 
-                # Generate signal using sentiment analysis if available
-                sentiment_signal = None
-                if self.sentiment_analyzer:
-                    try:
-                        sentiment_signal = await self.sentiment_analyzer.analyze_market_sentiment(symbol)
-                    except Exception as e:
-                        self.logger.error(f"Error in sentiment analysis for {symbol}: {str(e)}")
-                        sentiment_signal = None
-                    
-                # TODO: Implement signal generation logic
-                # For now, just log a placeholder signal
-                signal = "none"
-                quantity = 0.0
+                # Generate signals based on market data
+                # This is a placeholder for actual signal generation logic
                 
-                self.logger.info(f"Generated signal for {symbol}: {signal} with quantity {quantity}")
+                self.logger.info(f"Generated signals for {symbol}")
                 
             except Exception as e:
                 error_info = self.error_handler.handle_error(e, {
@@ -480,81 +481,148 @@ class EnhancedTradingBot:
                     "symbol": symbol
                 })
                 
-                self.logger.error(f"Error generating signal for {symbol}: {str(e)}")
+                self.logger.error(f"Error generating signals for {symbol}: {str(e)}")
     
     async def execute_trades(self):
         """Execute trades based on signals."""
-        self.logger.info("Executing trades...")
-        
-        # Check if enough time has passed since last trade
-        current_time = time.time()
-        min_trade_interval = self.config.get("min_trade_interval", 60)
-        
-        if current_time - self.last_trade_time < min_trade_interval:
-            self.logger.info(f"Skipping trade execution, min interval not reached ({min_trade_interval}s)")
+        # Skip trade execution if in monitor-only mode
+        if self.mode_manager.get_current_mode() == TradingMode.MONITOR_ONLY:
+            self.logger.info("Monitor-only mode active, skipping trade execution")
             return
             
-        # TODO: Implement trade execution logic
-        # For now, just log a placeholder message
-        self.logger.info("No trades executed")
+        self.logger.info("Executing trades...")
         
-        # Update last trade time
-        self.last_trade_time = current_time
+        # Get symbols to monitor
+        symbols = self.config.get("symbols", ["BTC", "ETH", "SOL"])
+        
+        for symbol in symbols:
+            try:
+                # Execute trades based on signals
+                # This is a placeholder for actual trade execution logic
+                
+                # Only execute real orders if in live trading mode
+                if self.mode_manager.is_real_trading():
+                    self.logger.info(f"Executing real trade for {symbol}")
+                    # Execute real trade
+                else:
+                    self.logger.info(f"Simulating trade for {symbol}")
+                    # Simulate trade
+                
+                # Update last trade time
+                self.last_trade_time = time.time()
+                
+            except Exception as e:
+                error_info = self.error_handler.handle_error(e, {
+                    "function": "execute_trades",
+                    "symbol": symbol
+                })
+                
+                self.logger.error(f"Error executing trades for {symbol}: {str(e)}")
+    
+    # Mode management methods
+    def get_current_mode(self) -> TradingMode:
+        """
+        Get the current trading mode.
+        
+        Returns:
+            Current trading mode
+        """
+        return self.mode_manager.get_current_mode()
+    
+    def set_mode(self, mode: str) -> bool:
+        """
+        Set the current trading mode.
+        
+        Args:
+            mode: Trading mode to set
+            
+        Returns:
+            True if successful, False otherwise
+        """
+        try:
+            result = self.mode_manager.set_mode(mode)
+            if result:
+                self.logger.info(f"Trading mode set to: {mode}")
+                # Save state to persist mode change
+                self.save_state()
+            else:
+                self.logger.error(f"Failed to set trading mode to: {mode}")
+            return result
+        except Exception as e:
+            self.logger.error(f"Error setting trading mode: {e}")
+            return False
+    
+    def get_available_modes(self) -> List[str]:
+        """
+        Get list of available trading modes.
+        
+        Returns:
+            List of available trading modes
+        """
+        return self.mode_manager.get_available_modes()
+    
+    def get_mode_settings(self) -> Dict[str, Any]:
+        """
+        Get settings for current mode.
+        
+        Returns:
+            Dict containing mode settings
+        """
+        return self.mode_manager.get_mode_settings()
+    
+    def update_mode_settings(self, settings: Dict[str, Any]) -> bool:
+        """
+        Update settings for current mode.
+        
+        Args:
+            settings: Dict containing settings to update
+            
+        Returns:
+            True if successful, False otherwise
+        """
+        try:
+            result = self.mode_manager.update_mode_settings(settings)
+            if result:
+                self.logger.info(f"Mode settings updated: {settings}")
+                # Save state to persist settings change
+                self.save_state()
+            else:
+                self.logger.error(f"Failed to update mode settings: {settings}")
+            return result
+        except Exception as e:
+            self.logger.error(f"Error updating mode settings: {e}")
+            return False
 
-async def main():
-    """Main entry point with resilience."""
-    # Get config path from command line or use default
-    config_path = "config.json"
-    if len(sys.argv) > 1:
-        config_path = sys.argv[1]
-    
-    # Setup root logger
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s [%(levelname)s] %(message)s",
-        handlers=[
-            logging.StreamHandler(),
-            logging.FileHandler("main_loop.log", mode="a")
-        ]
-    )
-    
-    logger = logging.getLogger("MainLoop")
-    logger.info("Starting main loop...")
+# Main entry point
+if __name__ == "__main__":
+    # Parse command line arguments
+    import argparse
+    parser = argparse.ArgumentParser(description="Enhanced Hyperliquid Trading Bot")
+    parser.add_argument("--config", type=str, default="config.json", help="Path to configuration file")
+    parser.add_argument("--mode", type=str, help="Trading mode to use")
+    args = parser.parse_args()
     
     # Create bot instance
-    bot = None
+    bot = EnhancedTradingBot(args.config)
     
+    # Set trading mode if specified
+    if args.mode:
+        if bot.set_mode(args.mode):
+            print(f"Trading mode set to: {args.mode}")
+        else:
+            print(f"Failed to set trading mode to: {args.mode}")
+            print(f"Available modes: {', '.join(bot.get_available_modes())}")
+            sys.exit(1)
+    
+    # Print current mode
+    print(f"Current trading mode: {bot.get_current_mode().value}")
+    print(f"Mode settings: {json.dumps(bot.get_mode_settings(), indent=2)}")
+    
+    # Run bot
     try:
-        # Create bot
-        bot = EnhancedTradingBot(config_path)
-        
-        # Start bot
-        await bot.start()
+        asyncio.run(bot.start())
     except KeyboardInterrupt:
-        logger.info("Keyboard interrupt received")
-        if bot and bot.running:
-            await bot.stop()
+        print("Bot stopped by user")
     except Exception as e:
-        logger.error(f"Critical error in main loop: {str(e)}")
-        logger.error(traceback.format_exc())
-        
-        # Try to stop bot gracefully
-        if bot and bot.running:
-            try:
-                await bot.stop()
-            except Exception as stop_error:
-                logger.error(f"Error stopping bot: {stop_error}")
-        
-        # Exit with error code
-        sys.exit(1)
-    
-    logger.info("Main loop exited")
-
-if __name__ == "__main__":
-    # Use asyncio.run with error handling
-    try:
-        asyncio.run(main())
-    except Exception as e:
-        print(f"Fatal error: {e}")
+        print(f"Error running bot: {e}")
         traceback.print_exc()
-        sys.exit(1)

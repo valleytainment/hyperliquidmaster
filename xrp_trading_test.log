@@ -1,0 +1,90 @@
+2025-05-27 01:16:17,388 [INFO] Websocket connected
+2025-05-27 01:16:18,583 [INFO] API initialized successfully
+2025-05-27 01:16:18,583 [INFO] Starting XRP trading test...
+2025-05-27 01:16:18,583 [INFO] Initializing XRP trading test...
+2025-05-27 01:16:18,583 [INFO] Initializing HyperliquidAdapter...
+2025-05-27 01:16:18,900 [INFO] Websocket connected
+2025-05-27 01:16:20,060 [INFO] API initialized successfully
+2025-05-27 01:16:20,232 [INFO] HyperliquidAdapter initialized successfully
+2025-05-27 01:16:20,878 [INFO] Initial account balance: $17.63
+2025-05-27 01:16:20,878 [INFO] Executing trade cycle for XRP with size 0.1
+2025-05-27 01:16:20,878 [INFO] Executing buy trade for XRP with size 0.1
+2025-05-27 01:16:21,336 [WARNING] API call failed, retrying (1/3): Exchange.order() got an unexpected keyword argument 'coin'
+2025-05-27 01:16:22,336 [WARNING] API call failed, retrying (2/3): Exchange.order() got an unexpected keyword argument 'coin'
+2025-05-27 01:16:24,337 [WARNING] API call failed, retrying (3/3): Exchange.order() got an unexpected keyword argument 'coin'
+2025-05-27 01:16:27,337 [ERROR] API call failed after 3 retries: Exchange.order() got an unexpected keyword argument 'coin'
+2025-05-27 01:16:27,337 [ERROR] Error placing order: API call failed: Exchange.order() got an unexpected keyword argument 'coin'
+2025-05-27 01:16:27,337 [ERROR] Error executing buy trade: Error placing order: API call failed: Exchange.order() got an unexpected keyword argument 'coin'
+2025-05-27 01:16:27,337 [ERROR] Trade cycle failed at buy step: Error placing order: API call failed: Exchange.order() got an unexpected keyword argument 'coin'
+2025-05-27 01:16:32,343 [INFO] Executing trade cycle for XRP with size 0.2
+2025-05-27 01:16:32,343 [INFO] Executing buy trade for XRP with size 0.2
+2025-05-27 01:16:32,846 [WARNING] API call failed, retrying (1/3): Exchange.order() got an unexpected keyword argument 'coin'
+2025-05-27 01:16:33,847 [WARNING] API call failed, retrying (2/3): Exchange.order() got an unexpected keyword argument 'coin'
+2025-05-27 01:16:35,847 [WARNING] API call failed, retrying (3/3): Exchange.order() got an unexpected keyword argument 'coin'
+2025-05-27 01:16:38,847 [ERROR] API call failed after 3 retries: Exchange.order() got an unexpected keyword argument 'coin'
+2025-05-27 01:16:38,848 [ERROR] Error placing order: API call failed: Exchange.order() got an unexpected keyword argument 'coin'
+2025-05-27 01:16:38,848 [ERROR] Error executing buy trade: Error placing order: API call failed: Exchange.order() got an unexpected keyword argument 'coin'
+2025-05-27 01:16:38,848 [ERROR] Trade cycle failed at buy step: Error placing order: API call failed: Exchange.order() got an unexpected keyword argument 'coin'
+2025-05-27 01:16:43,853 [INFO] Executing trade cycle for XRP with size 0.5
+2025-05-27 01:16:43,853 [INFO] Executing buy trade for XRP with size 0.5
+2025-05-27 01:16:44,307 [WARNING] API call failed, retrying (1/3): Exchange.order() got an unexpected keyword argument 'coin'
+2025-05-27 01:16:45,307 [WARNING] API call failed, retrying (2/3): Exchange.order() got an unexpected keyword argument 'coin'
+2025-05-27 01:16:47,307 [WARNING] API call failed, retrying (3/3): Exchange.order() got an unexpected keyword argument 'coin'
+2025-05-27 01:16:50,308 [ERROR] API call failed after 3 retries: Exchange.order() got an unexpected keyword argument 'coin'
+2025-05-27 01:16:50,308 [ERROR] Error placing order: API call failed: Exchange.order() got an unexpected keyword argument 'coin'
+2025-05-27 01:16:50,308 [ERROR] Error executing buy trade: Error placing order: API call failed: Exchange.order() got an unexpected keyword argument 'coin'
+2025-05-27 01:16:50,308 [ERROR] Trade cycle failed at buy step: Error placing order: API call failed: Exchange.order() got an unexpected keyword argument 'coin'
+2025-05-27 01:16:55,475 [INFO] Final account balance: $17.63
+2025-05-27 01:16:55,475 [INFO] Actual P&L from account balance: $0.00
+2025-05-27 01:16:55,475 [INFO] XRP trading test completed with score: 20.0/100
+2025-05-27 01:16:55,475 [INFO] Success rate: 0.0%
+2025-05-27 01:16:55,475 [INFO] Total P&L: $0.0000
+2025-05-27 01:16:55,476 [INFO] Average execution time: 0.000s
+2025-05-27 01:16:55,476 [INFO] Test results saved to xrp_test_results.json
+2025-05-27 01:17:17,406 [ERROR] Connection to remote host was lost. - goodbye
+2025-05-27 01:17:19,053 [ERROR] Connection to remote host was lost. - goodbye
+2025-05-27 01:20:13,316 [INFO] Websocket connected
+2025-05-27 01:20:14,211 [INFO] API initialized successfully
+2025-05-27 01:20:14,211 [INFO] Starting XRP trading test...
+2025-05-27 01:20:14,211 [INFO] Initializing XRP trading test...
+2025-05-27 01:20:14,211 [INFO] Initializing HyperliquidAdapter...
+2025-05-27 01:20:14,547 [INFO] Websocket connected
+2025-05-27 01:20:15,631 [INFO] API initialized successfully
+2025-05-27 01:20:15,929 [INFO] HyperliquidAdapter initialized successfully
+2025-05-27 01:20:16,734 [INFO] Initial account balance: $17.63
+2025-05-27 01:20:16,734 [INFO] Executing trade cycle for XRP with size 0.1
+2025-05-27 01:20:16,734 [INFO] Executing buy trade for XRP with size 0.1
+2025-05-27 01:20:17,194 [WARNING] API call failed, retrying (1/3): string indices must be integers, not 'str'
+2025-05-27 01:20:18,194 [WARNING] API call failed, retrying (2/3): string indices must be integers, not 'str'
+2025-05-27 01:20:20,195 [WARNING] API call failed, retrying (3/3): string indices must be integers, not 'str'
+2025-05-27 01:20:23,195 [ERROR] API call failed after 3 retries: string indices must be integers, not 'str'
+2025-05-27 01:20:23,195 [ERROR] Error placing order: API call failed: string indices must be integers, not 'str'
+2025-05-27 01:20:23,195 [ERROR] Error executing buy trade: Error placing order: API call failed: string indices must be integers, not 'str'
+2025-05-27 01:20:23,195 [ERROR] Trade cycle failed at buy step: Error placing order: API call failed: string indices must be integers, not 'str'
+2025-05-27 01:20:28,201 [INFO] Executing trade cycle for XRP with size 0.2
+2025-05-27 01:20:28,201 [INFO] Executing buy trade for XRP with size 0.2
+2025-05-27 01:20:28,651 [WARNING] API call failed, retrying (1/3): string indices must be integers, not 'str'
+2025-05-27 01:20:29,651 [WARNING] API call failed, retrying (2/3): string indices must be integers, not 'str'
+2025-05-27 01:20:31,651 [WARNING] API call failed, retrying (3/3): string indices must be integers, not 'str'
+2025-05-27 01:20:34,652 [ERROR] API call failed after 3 retries: string indices must be integers, not 'str'
+2025-05-27 01:20:34,652 [ERROR] Error placing order: API call failed: string indices must be integers, not 'str'
+2025-05-27 01:20:34,652 [ERROR] Error executing buy trade: Error placing order: API call failed: string indices must be integers, not 'str'
+2025-05-27 01:20:34,652 [ERROR] Trade cycle failed at buy step: Error placing order: API call failed: string indices must be integers, not 'str'
+2025-05-27 01:20:39,658 [INFO] Executing trade cycle for XRP with size 0.5
+2025-05-27 01:20:39,658 [INFO] Executing buy trade for XRP with size 0.5
+2025-05-27 01:20:40,102 [WARNING] API call failed, retrying (1/3): string indices must be integers, not 'str'
+2025-05-27 01:20:41,102 [WARNING] API call failed, retrying (2/3): string indices must be integers, not 'str'
+2025-05-27 01:20:43,103 [WARNING] API call failed, retrying (3/3): string indices must be integers, not 'str'
+2025-05-27 01:20:46,103 [ERROR] API call failed after 3 retries: string indices must be integers, not 'str'
+2025-05-27 01:20:46,103 [ERROR] Error placing order: API call failed: string indices must be integers, not 'str'
+2025-05-27 01:20:46,103 [ERROR] Error executing buy trade: Error placing order: API call failed: string indices must be integers, not 'str'
+2025-05-27 01:20:46,104 [ERROR] Trade cycle failed at buy step: Error placing order: API call failed: string indices must be integers, not 'str'
+2025-05-27 01:20:51,291 [INFO] Final account balance: $17.63
+2025-05-27 01:20:51,292 [INFO] Actual P&L from account balance: $0.00
+2025-05-27 01:20:51,292 [INFO] XRP trading test completed with score: 20.0/100
+2025-05-27 01:20:51,292 [INFO] Success rate: 0.0%
+2025-05-27 01:20:51,292 [INFO] Total P&L: $0.0000
+2025-05-27 01:20:51,292 [INFO] Average execution time: 0.000s
+2025-05-27 01:20:51,292 [INFO] Test results saved to xrp_test_results.json
+2025-05-27 01:21:13,312 [ERROR] Connection to remote host was lost. - goodbye
+2025-05-27 01:21:14,546 [ERROR] Connection to remote host was lost. - goodbye
