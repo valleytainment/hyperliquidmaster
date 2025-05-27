@@ -9,6 +9,7 @@ import time
 import logging
 import traceback
 import threading
+import asyncio
 from typing import Dict, List, Any, Optional, Tuple, Union
 
 # Import eth_account for LocalAccount creation
@@ -55,6 +56,33 @@ class HyperliquidAdapter:
         
         # Initialize API if keys are available
         self._init_api()
+    
+    async def initialize(self) -> bool:
+        """
+        Initialize the adapter asynchronously.
+        This method is called by the main trading bot.
+        
+        Returns:
+            True if initialization is successful, False otherwise
+        """
+        self.logger.info("Initializing HyperliquidAdapter...")
+        
+        # Reload config to ensure we have the latest settings
+        self.reload_config()
+        
+        # Ensure connection
+        if not self._ensure_connection():
+            self.logger.error("Failed to initialize adapter: Could not establish connection")
+            return False
+        
+        # Test connection
+        test_result = self.test_connection()
+        if "error" in test_result:
+            self.logger.error(f"Failed to initialize adapter: {test_result['error']}")
+            return False
+        
+        self.logger.info("HyperliquidAdapter initialized successfully")
+        return True
     
     def _load_config(self) -> Dict:
         """
@@ -428,55 +456,122 @@ class HyperliquidAdapter:
             if not self._ensure_connection():
                 return {"error": "Not connected to exchange"}
             
-            if not symbol or symbol.strip() == "":
+            if not symbol:
                 return {"error": "Symbol cannot be empty"}
             
-            # Get market data
-            try:
-                # Get meta data
-                meta_and_asset = self._safe_api_call(lambda: self.info.meta_and_asset())
+            # Get meta and asset contexts which contains all market data
+            meta_and_assets = self._safe_api_call(lambda: self.info.meta_and_asset_ctxs())
+            
+            if isinstance(meta_and_assets, dict) and "error" in meta_and_assets:
+                self.logger.error(f"Error getting meta data: {meta_and_assets['error']}")
+                return {"error": f"Error getting meta data: {meta_and_assets['error']}"}
+            
+            # Find asset data for the specified symbol
+            asset_data = None
+            asset_index = -1
+            
+            # meta_and_assets is a list where first item is meta data and second item is list of assets
+            if len(meta_and_assets) >= 2 and isinstance(meta_and_assets[1], list):
+                assets = meta_and_assets[1]
                 
-                if isinstance(meta_and_asset, dict) and "error" in meta_and_asset:
-                    self.logger.error(f"Error getting meta data: {meta_and_asset['error']}")
-                    return {"error": f"Error getting meta data: {meta_and_asset['error']}"}
+                # Debug log the first few assets to understand structure
+                if len(assets) > 0:
+                    self.logger.debug(f"First asset data: {assets[0]}")
                 
-                # Find the symbol in the meta data
-                symbol_data = None
-                universe = self._safe_get_attribute(meta_and_asset, "universe", [])
-                
-                for asset in universe:
-                    if self._safe_get_attribute(asset, "name") == symbol:
-                        symbol_data = asset
-                        break
-                
-                if not symbol_data:
-                    self.logger.error(f"Symbol {symbol} not found")
-                    return {"error": f"Symbol {symbol} not found"}
-                
-                # Get market data for the symbol
-                market_data = self._safe_api_call(lambda: self.info.market_data(symbol))
-                
-                if isinstance(market_data, dict) and "error" in market_data:
-                    self.logger.error(f"Error getting market data: {market_data['error']}")
-                    return {"error": f"Error getting market data: {market_data['error']}"}
-                
-                # Extract market data with safe access
+                # First try to find by exact name match
+                for i, asset in enumerate(assets):
+                    # Get name from asset metadata in first element if available
+                    if len(meta_and_assets) >= 1 and isinstance(meta_and_assets[0], dict):
+                        meta = meta_and_assets[0]
+                        universe = self._safe_get_attribute(meta, "universe", [])
+                        if i < len(universe):
+                            asset_name = self._safe_get_attribute(universe[i], "name", "")
+                            if asset_name.upper() == symbol.upper():
+                                asset_data = asset
+                                asset_index = i
+                                break
+            
+            if not asset_data:
+                self.logger.warning(f"Symbol {symbol} not found in asset data")
+                # Return default data structure with zeros
                 return {
                     "symbol": symbol,
-                    "price": self._safe_float_convert(self._safe_get_attribute(market_data, "midPrice", 0)),
-                    "mark_price": self._safe_float_convert(self._safe_get_attribute(market_data, "markPrice", 0)),
-                    "index_price": self._safe_float_convert(self._safe_get_attribute(market_data, "indexPrice", 0)),
-                    "funding_rate": self._safe_float_convert(self._safe_get_attribute(market_data, "fundingRate", 0)),
-                    "open_interest": self._safe_float_convert(self._safe_get_attribute(market_data, "openInterest", 0)),
-                    "volume_24h": self._safe_float_convert(self._safe_get_attribute(market_data, "volume24h", 0)),
-                    "price_change_24h": self._safe_float_convert(self._safe_get_attribute(market_data, "priceChange24h", 0))
+                    "price": 0.0,
+                    "mark_price": 0.0,
+                    "index_price": 0.0,
+                    "funding_rate": 0.0,
+                    "open_interest": 0.0,
+                    "volume_24h": 0.0,
+                    "price_change_24h": 0.0
                 }
-            except Exception as e:
-                self.logger.error(f"Error getting market data: {e}")
-                return {"error": f"Error getting market data: {e}"}
+            
+            # Extract market data from asset context with robust fallbacks
+            # Use midPx as primary price source, with fallbacks to markPx and oraclePx
+            mid_price = self._safe_float_convert(self._safe_get_attribute(asset_data, "midPx", 0.0))
+            mark_price = self._safe_float_convert(self._safe_get_attribute(asset_data, "markPx", mid_price))
+            oracle_price = self._safe_float_convert(self._safe_get_attribute(asset_data, "oraclePx", mid_price or mark_price))
+            
+            # Determine the best price to use (midPx > markPx > oraclePx > 0.0)
+            price = mid_price
+            if price == 0.0:
+                price = mark_price
+            if price == 0.0:
+                price = oracle_price
+            
+            # Get other market data with fallbacks
+            funding_rate = self._safe_float_convert(self._safe_get_attribute(asset_data, "funding", 0.0))
+            open_interest = self._safe_float_convert(self._safe_get_attribute(asset_data, "openInterest", 0.0))
+            volume_24h = self._safe_float_convert(self._safe_get_attribute(asset_data, "dayNtlVlm", 0.0))
+            
+            # Calculate price change (if previous day price is available)
+            prev_day_price = self._safe_float_convert(self._safe_get_attribute(asset_data, "prevDayPx", 0.0))
+            price_change_24h = 0.0
+            if prev_day_price > 0 and price > 0:
+                price_change_24h = (price - prev_day_price) / prev_day_price * 100
+            
+            # Construct market data with price field explicitly set
+            market_data = {
+                "symbol": symbol,
+                "price": price,  # Explicitly set price field
+                "mark_price": mark_price,
+                "index_price": oracle_price,
+                "funding_rate": funding_rate,
+                "open_interest": open_interest,
+                "volume_24h": volume_24h,
+                "price_change_24h": price_change_24h
+            }
+            
+            # Log successful market data retrieval
+            self.logger.debug(f"Market data for {symbol}: price={price}, funding_rate={funding_rate}")
+            
+            return market_data
         except Exception as e:
-            self.logger.error(f"Error getting market data: {e}")
-            return {"error": f"Error getting market data: {e}"}
+            self.logger.error(f"Error getting market data for {symbol}: {e}")
+            self.logger.error(f"Traceback: {traceback.format_exc()}")
+            # Return default data structure with zeros on error
+            return {
+                "symbol": symbol,
+                "price": 0.0,
+                "mark_price": 0.0,
+                "index_price": 0.0,
+                "funding_rate": 0.0,
+                "open_interest": 0.0,
+                "volume_24h": 0.0,
+                "price_change_24h": 0.0
+            }
+    
+    async def fetch_market_data(self, symbol: str) -> Dict[str, Any]:
+        """
+        Fetch market data for a symbol asynchronously.
+        This method is called by the main trading bot.
+        
+        Args:
+            symbol: The symbol to get market data for
+            
+        Returns:
+            Dict containing market data
+        """
+        return self.get_market_data(symbol)
     
     def get_positions(self) -> Dict[str, Any]:
         """
@@ -496,13 +591,68 @@ class HyperliquidAdapter:
                 self.logger.error(f"Error getting positions: {user_state['error']}")
                 return {"error": f"Error getting positions: {user_state['error']}"}
             
-            # Extract positions with safe access
-            positions = self._safe_get_attribute(user_state, "assetPositions", [])
+            # Extract positions
+            positions_data = self._safe_get_attribute(user_state, "assetPositions", [])
+            positions = []
             
-            return {"success": True, "data": positions}
+            for pos in positions_data:
+                # Skip positions with zero size
+                size = self._safe_float_convert(self._safe_get_attribute(pos, "position", 0.0))
+                if size == 0:
+                    continue
+                
+                # Extract position data
+                coin = self._safe_get_attribute(pos, "coin", "Unknown")
+                entry_price = self._safe_float_convert(self._safe_get_attribute(pos, "entryPx", 0.0))
+                mark_price = self._safe_float_convert(self._safe_get_attribute(pos, "markPx", 0.0))
+                liquidation_price = self._safe_float_convert(self._safe_get_attribute(pos, "liquidationPx", 0.0))
+                unrealized_pnl = self._safe_float_convert(self._safe_get_attribute(pos, "unrealizedPnl", 0.0))
+                
+                # Calculate PnL percentage
+                pnl_percentage = 0.0
+                if entry_price > 0 and size != 0:
+                    price_diff = mark_price - entry_price
+                    direction = 1 if size > 0 else -1
+                    pnl_percentage = direction * price_diff / entry_price * 100
+                
+                # Construct position
+                position = {
+                    "symbol": coin,
+                    "size": size,
+                    "entry_price": entry_price,
+                    "mark_price": mark_price,
+                    "liquidation_price": liquidation_price,
+                    "unrealized_pnl": unrealized_pnl,
+                    "pnl_percentage": pnl_percentage
+                }
+                
+                positions.append(position)
+            
+            return {"data": positions}
         except Exception as e:
             self.logger.error(f"Error getting positions: {e}")
             return {"error": f"Error getting positions: {e}"}
+    
+    async def get_user_positions(self) -> Dict[str, Any]:
+        """
+        Get user positions asynchronously.
+        This method is called by the main trading bot.
+        
+        Returns:
+            Dict containing positions
+        """
+        positions_result = self.get_positions()
+        
+        if "error" in positions_result:
+            return {}
+        
+        # Convert list of positions to dict keyed by symbol
+        positions_dict = {}
+        for pos in positions_result.get("data", []):
+            symbol = pos.get("symbol", "Unknown")
+            positions_dict[symbol] = pos
+        
+        return positions_dict
     
     def get_orders(self) -> Dict[str, Any]:
         """
@@ -515,14 +665,41 @@ class HyperliquidAdapter:
             if not self._ensure_connection():
                 return {"error": "Not connected to exchange"}
             
-            # Get open orders
-            orders = self._safe_api_call(lambda: self.info.open_orders(self.account_address))
+            # Get user state
+            user_state = self._safe_api_call(lambda: self.info.user_state(self.account_address))
             
-            if isinstance(orders, dict) and "error" in orders:
-                self.logger.error(f"Error getting orders: {orders['error']}")
-                return {"error": f"Error getting orders: {orders['error']}"}
+            if isinstance(user_state, dict) and "error" in user_state:
+                self.logger.error(f"Error getting orders: {user_state['error']}")
+                return {"error": f"Error getting orders: {user_state['error']}"}
             
-            return {"success": True, "data": orders}
+            # Extract orders
+            orders_data = self._safe_get_attribute(user_state, "openOrders", [])
+            orders = []
+            
+            for order in orders_data:
+                # Extract order data
+                coin = self._safe_get_attribute(order, "coin", "Unknown")
+                order_id = self._safe_get_attribute(order, "oid", "Unknown")
+                size = self._safe_float_convert(self._safe_get_attribute(order, "sz", 0.0))
+                price = self._safe_float_convert(self._safe_get_attribute(order, "limitPx", 0.0))
+                side = "buy" if self._safe_get_attribute(order, "side", "") == "B" else "sell"
+                order_type = self._safe_get_attribute(order, "orderType", "limit")
+                
+                # Construct order
+                order_data = {
+                    "id": order_id,
+                    "symbol": coin,
+                    "size": size,
+                    "price": price,
+                    "side": side,
+                    "type": order_type,
+                    "status": "open",
+                    "time": int(time.time() * 1000)  # Current time in milliseconds
+                }
+                
+                orders.append(order_data)
+            
+            return {"data": orders}
         except Exception as e:
             self.logger.error(f"Error getting orders: {e}")
             return {"error": f"Error getting orders: {e}"}
@@ -545,32 +722,47 @@ class HyperliquidAdapter:
             if not self._ensure_connection():
                 return {"error": "Not connected to exchange"}
             
+            if not symbol:
+                return {"error": "Symbol cannot be empty"}
+            
+            if size <= 0:
+                return {"error": "Size must be greater than 0"}
+            
+            if order_type.upper() == "LIMIT" and price <= 0:
+                return {"error": "Price must be greater than 0 for LIMIT orders"}
+            
+            # Prepare order
+            side = "B" if is_buy else "S"
+            order_type_api = order_type.lower()
+            
             # Place order
-            try:
-                # Prepare order type
-                order_spec = {"limit": {"tif": "Gtc"}} if order_type == "LIMIT" else "market"
-                
-                # Place order
-                order_result = self._safe_api_call(lambda: self.exchange.order(
-                    name=symbol,
-                    is_buy=is_buy,
-                    sz=size,
-                    limit_px=price,
-                    order_type=order_spec
-                ))
-                
-                if isinstance(order_result, dict) and "error" in order_result:
-                    self.logger.error(f"Error placing order: {order_result['error']}")
-                    return {"error": f"Error placing order: {order_result['error']}"}
-                
-                if self._safe_get_attribute(order_result, "status") != "ok":
-                    self.logger.error(f"Error placing order: {order_result}")
-                    return {"error": f"Error placing order: {order_result}"}
-                
-                return {"success": True, "data": order_result}
-            except Exception as e:
-                self.logger.error(f"Error placing order: {e}")
-                return {"error": f"Error placing order: {e}"}
+            result = self._safe_api_call(lambda: self.exchange.order(
+                coin=symbol,
+                is_buy=is_buy,
+                sz=size,
+                limit_px=price,
+                order_type=order_type_api
+            ))
+            
+            if isinstance(result, dict) and "error" in result:
+                self.logger.error(f"Error placing order: {result['error']}")
+                return {"error": f"Error placing order: {result['error']}"}
+            
+            # Extract order ID
+            order_id = self._safe_get_attribute(result, "oid", "Unknown")
+            
+            return {
+                "data": {
+                    "id": order_id,
+                    "symbol": symbol,
+                    "size": size,
+                    "price": price,
+                    "side": "buy" if is_buy else "sell",
+                    "type": order_type.lower(),
+                    "status": "open",
+                    "time": int(time.time() * 1000)  # Current time in milliseconds
+                }
+            }
         except Exception as e:
             self.logger.error(f"Error placing order: {e}")
             return {"error": f"Error placing order: {e}"}
@@ -589,22 +781,36 @@ class HyperliquidAdapter:
             if not self._ensure_connection():
                 return {"error": "Not connected to exchange"}
             
+            if not order_id:
+                return {"error": "Order ID cannot be empty"}
+            
+            # Get current orders to find the coin
+            orders_result = self.get_orders()
+            
+            if "error" in orders_result:
+                return {"error": f"Error getting orders: {orders_result['error']}"}
+            
+            # Find the order
+            coin = None
+            for order in orders_result.get("data", []):
+                if order.get("id") == order_id:
+                    coin = order.get("symbol")
+                    break
+            
+            if not coin:
+                return {"error": f"Order {order_id} not found"}
+            
             # Cancel order
-            try:
-                cancel_result = self._safe_api_call(lambda: self.exchange.cancel(oid=order_id))
-                
-                if isinstance(cancel_result, dict) and "error" in cancel_result:
-                    self.logger.error(f"Error canceling order: {cancel_result['error']}")
-                    return {"error": f"Error canceling order: {cancel_result['error']}"}
-                
-                if self._safe_get_attribute(cancel_result, "status") != "ok":
-                    self.logger.error(f"Error canceling order: {cancel_result}")
-                    return {"error": f"Error canceling order: {cancel_result}"}
-                
-                return {"success": True, "data": cancel_result}
-            except Exception as e:
-                self.logger.error(f"Error canceling order: {e}")
-                return {"error": f"Error canceling order: {e}"}
+            result = self._safe_api_call(lambda: self.exchange.cancel_order(
+                coin=coin,
+                oid=order_id
+            ))
+            
+            if isinstance(result, dict) and "error" in result:
+                self.logger.error(f"Error canceling order: {result['error']}")
+                return {"error": f"Error canceling order: {result['error']}"}
+            
+            return {"data": {"id": order_id, "status": "canceled"}}
         except Exception as e:
             self.logger.error(f"Error canceling order: {e}")
             return {"error": f"Error canceling order: {e}"}
@@ -623,22 +829,34 @@ class HyperliquidAdapter:
             if not self._ensure_connection():
                 return {"error": "Not connected to exchange"}
             
-            # Cancel all orders
-            try:
-                cancel_result = self._safe_api_call(lambda: self.exchange.cancel_all(coin=symbol))
+            # Get current orders
+            orders_result = self.get_orders()
+            
+            if "error" in orders_result:
+                return {"error": f"Error getting orders: {orders_result['error']}"}
+            
+            # Filter orders by symbol if provided
+            orders = orders_result.get("data", [])
+            if symbol:
+                orders = [order for order in orders if order.get("symbol") == symbol]
+            
+            # Cancel each order
+            canceled_orders = []
+            for order in orders:
+                order_id = order.get("id")
+                coin = order.get("symbol")
                 
-                if isinstance(cancel_result, dict) and "error" in cancel_result:
-                    self.logger.error(f"Error canceling all orders: {cancel_result['error']}")
-                    return {"error": f"Error canceling all orders: {cancel_result['error']}"}
+                result = self._safe_api_call(lambda: self.exchange.cancel_order(
+                    coin=coin,
+                    oid=order_id
+                ))
                 
-                if self._safe_get_attribute(cancel_result, "status") != "ok":
-                    self.logger.error(f"Error canceling all orders: {cancel_result}")
-                    return {"error": f"Error canceling all orders: {cancel_result}"}
-                
-                return {"success": True, "data": cancel_result}
-            except Exception as e:
-                self.logger.error(f"Error canceling all orders: {e}")
-                return {"error": f"Error canceling all orders: {e}"}
+                if isinstance(result, dict) and "error" in result:
+                    self.logger.error(f"Error canceling order {order_id}: {result['error']}")
+                else:
+                    canceled_orders.append({"id": order_id, "status": "canceled"})
+            
+            return {"data": {"canceled_orders": canceled_orders, "count": len(canceled_orders)}}
         except Exception as e:
             self.logger.error(f"Error canceling all orders: {e}")
             return {"error": f"Error canceling all orders: {e}"}
@@ -658,41 +876,59 @@ class HyperliquidAdapter:
             if not self._ensure_connection():
                 return {"error": "Not connected to exchange"}
             
-            # Get positions
+            if not symbol:
+                return {"error": "Symbol cannot be empty"}
+            
+            if size_percentage <= 0 or size_percentage > 100:
+                return {"error": "Size percentage must be between 0 and 100"}
+            
+            # Get current positions
             positions_result = self.get_positions()
             
             if "error" in positions_result:
-                return positions_result
+                return {"error": f"Error getting positions: {positions_result['error']}"}
             
-            positions = positions_result.get("data", [])
-            
-            # Find the position for the symbol
+            # Find the position
             position = None
-            for pos in positions:
-                if self._safe_get_attribute(pos, "coin") == symbol:
+            for pos in positions_result.get("data", []):
+                if pos.get("symbol") == symbol:
                     position = pos
                     break
             
             if not position:
-                self.logger.error(f"No position found for {symbol}")
                 return {"error": f"No position found for {symbol}"}
             
             # Calculate size to close
-            size = self._safe_float_convert(self._safe_get_attribute(position, "szi", 0))
-            is_long = size > 0
-            size = abs(size)
+            size = position.get("size", 0.0)
+            if size == 0:
+                return {"error": f"Position size for {symbol} is 0"}
             
-            if size_percentage < 100:
-                size = size * size_percentage / 100
+            close_size = abs(size) * size_percentage / 100.0
+            is_buy = size < 0  # If position is short, we need to buy to close
             
-            # Place order to close position
-            return self.place_order(
+            # Get current market price
+            market_data = self.get_market_data(symbol)
+            
+            if "error" in market_data:
+                return {"error": f"Error getting market data: {market_data['error']}"}
+            
+            price = market_data.get("price", 0.0)
+            if price <= 0:
+                return {"error": f"Invalid market price for {symbol}"}
+            
+            # Place market order to close position
+            result = self.place_order(
                 symbol=symbol,
-                is_buy=not is_long,  # Opposite direction to close
-                size=size,
-                price=0,  # Market order
+                is_buy=is_buy,
+                size=close_size,
+                price=price,
                 order_type="MARKET"
             )
+            
+            if "error" in result:
+                return {"error": f"Error closing position: {result['error']}"}
+            
+            return {"data": {"symbol": symbol, "closed_size": close_size, "order": result.get("data", {})}}
         except Exception as e:
             self.logger.error(f"Error closing position: {e}")
             return {"error": f"Error closing position: {e}"}
@@ -708,21 +944,24 @@ class HyperliquidAdapter:
             if not self._ensure_connection():
                 return []
             
-            # Get meta data
-            meta_and_asset = self._safe_api_call(lambda: self.info.meta_and_asset())
+            # Get meta and asset contexts
+            meta_and_assets = self._safe_api_call(lambda: self.info.meta_and_asset_ctxs())
             
-            if isinstance(meta_and_asset, dict) and "error" in meta_and_asset:
-                self.logger.error(f"Error getting meta data: {meta_and_asset['error']}")
+            if isinstance(meta_and_assets, dict) and "error" in meta_and_assets:
+                self.logger.error(f"Error getting meta data: {meta_and_assets['error']}")
                 return []
             
             # Extract symbols
             symbols = []
-            universe = self._safe_get_attribute(meta_and_asset, "universe", [])
             
-            for asset in universe:
-                symbol = self._safe_get_attribute(asset, "name")
-                if symbol:
-                    symbols.append(symbol)
+            # meta_and_assets is a list where first item is meta data and second item is list of assets
+            if len(meta_and_assets) >= 1 and isinstance(meta_and_assets[0], dict):
+                meta = meta_and_assets[0]
+                universe = self._safe_get_attribute(meta, "universe", [])
+                for asset in universe:
+                    symbol = self._safe_get_attribute(asset, "name", "")
+                    if symbol:
+                        symbols.append(symbol)
             
             return symbols
         except Exception as e:
