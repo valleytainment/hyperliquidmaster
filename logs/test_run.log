@@ -1,0 +1,214 @@
+2025-05-27 11:18:14,550 [INFO] Starting test run
+2025-05-27 11:18:14,550 [INFO] Created settings backup directory: settings_backup
+2025-05-27 11:18:14,550 [INFO] Loaded settings from config.json
+2025-05-27 11:18:14,551 [INFO] Created settings backup at settings_backup/settings_1748359094.json
+2025-05-27 11:18:14,551 [INFO] Settings manager initialized
+2025-05-27 11:18:14,551 [INFO] Test runner initialized
+2025-05-27 11:18:14,551 [INFO] Starting all tests
+2025-05-27 11:18:14,551 [INFO] Starting unit tests
+2025-05-27 11:18:14,551 [INFO] Testing connection manager
+2025-05-27 11:18:14,551 [INFO] Enhanced connection manager initialized
+2025-05-27 11:18:14,551 [INFO] Connection manager state reset
+2025-05-27 11:18:14,551 [INFO] Connection attempt 1/5
+2025-05-27 11:18:14,551 [WARNING] Connection attempt 1 failed
+2025-05-27 11:18:14,551 [INFO] Waiting 1.05s before next attempt
+2025-05-27 11:18:15,601 [INFO] Connection attempt 2/5
+2025-05-27 11:18:15,601 [WARNING] Connection attempt 2 failed
+2025-05-27 11:18:15,601 [INFO] Waiting 2.09s before next attempt
+2025-05-27 11:18:17,695 [INFO] Connection attempt 3/5
+2025-05-27 11:18:17,695 [WARNING] Connection attempt 3 failed
+2025-05-27 11:18:17,695 [INFO] Waiting 4.25s before next attempt
+2025-05-27 11:18:21,949 [INFO] Connection attempt 4/5
+2025-05-27 11:18:21,949 [WARNING] Connection attempt 4 failed
+2025-05-27 11:18:21,949 [INFO] Waiting 8.08s before next attempt
+2025-05-27 11:18:30,031 [INFO] Connection attempt 5/5
+2025-05-27 11:18:30,031 [WARNING] Connection attempt 5 failed
+2025-05-27 11:18:30,031 [INFO] Waiting 17.47s before next attempt
+2025-05-27 11:18:47,500 [ERROR] All 5 connection attempts failed
+2025-05-27 11:18:47,500 [ERROR] API call failed (attempt 1/5): Test error
+2025-05-27 11:18:47,500 [INFO] Waiting 1.04s before next attempt
+2025-05-27 11:18:48,538 [ERROR] API call failed (attempt 2/5): Test error
+2025-05-27 11:18:48,538 [INFO] Waiting 2.05s before next attempt
+2025-05-27 11:18:50,591 [ERROR] API call failed (attempt 3/5): Test error
+2025-05-27 11:18:50,592 [WARNING] Opening circuit after 3 consecutive failures
+2025-05-27 11:18:50,592 [INFO] Waiting 4.05s before next attempt
+2025-05-27 11:18:54,646 [ERROR] API call failed (attempt 4/5): Test error
+2025-05-27 11:18:54,646 [INFO] Waiting 8.06s before next attempt
+2025-05-27 11:19:02,710 [ERROR] API call failed (attempt 5/5): Test error
+2025-05-27 11:19:02,711 [INFO] Testing settings manager
+2025-05-27 11:19:02,711 [INFO] Created settings backup directory: test_results/settings_backup
+2025-05-27 11:19:02,711 [WARNING] Configuration file not found: test_results/temp_config.json
+2025-05-27 11:19:02,711 [INFO] Creating default configuration file
+2025-05-27 11:19:02,711 [INFO] Saved settings to test_results/temp_config.json
+2025-05-27 11:19:02,711 [INFO] Created settings backup at test_results/settings_backup/settings_1748359142.json
+2025-05-27 11:19:02,711 [INFO] Settings manager initialized
+2025-05-27 11:19:02,712 [INFO] Created settings backup at test_results/settings_backup/settings_1748359142.json
+2025-05-27 11:19:02,712 [INFO] Saved settings to test_results/temp_config.json
+2025-05-27 11:19:02,712 [INFO] Settings updated successfully
+2025-05-27 11:19:02,712 [INFO] Created settings backup at test_results/settings_backup/settings_1748359142.json
+2025-05-27 11:19:02,712 [INFO] Testing cache manager
+2025-05-27 11:19:02,712 [INFO] Cache manager initialized
+2025-05-27 11:19:02,712 [INFO] Cache 'test_cache' initialized
+2025-05-27 11:19:02,713 [INFO] Cache 'test_cache' cleared
+2025-05-27 11:19:02,713 [INFO] Testing sentiment analyzer
+2025-05-27 11:19:02,740 [INFO] NLTK sentiment analyzer initialized
+2025-05-27 11:19:02,740 [INFO] Sentiment analyzer initialized
+2025-05-27 11:19:02,740 [INFO] Async HTTP session initialized
+2025-05-27 11:19:02,740 [INFO] Analyzing sentiment for BTC (lookback: 24h)
+2025-05-27 11:19:02,740 [INFO] Fetching news for BTC
+2025-05-27 11:19:02,740 [INFO] Found 6 news articles for BTC
+2025-05-27 11:19:02,740 [INFO] Fetching social media for BTC
+2025-05-27 11:19:02,740 [INFO] Found 12 social media posts for BTC
+2025-05-27 11:19:02,776 [INFO] Sentiment analysis for BTC: neutral (score: 0.08, confidence: 0.32)
+2025-05-27 11:19:02,776 [INFO] Using cached sentiment for BTC
+2025-05-27 11:19:02,776 [INFO] Async HTTP session closed
+2025-05-27 11:19:02,777 [INFO] Testing strategy components
+2025-05-27 11:19:02,777 [INFO] Initializing Master Omni Overlord Strategy...
+2025-05-27 11:19:02,777 [INFO] Initializing Triple Confluence Strategy...
+2025-05-27 11:19:02,777 [INFO] Triple Confluence Strategy initialized
+2025-05-27 11:19:02,777 [INFO] Initializing Oracle Update Strategy...
+2025-05-27 11:19:02,777 [INFO] Oracle Update Strategy initialized with min_deviation=0.0025
+2025-05-27 11:19:02,777 [INFO] Master Omni Overlord Strategy initialized
+2025-05-27 11:19:02,810 [INFO] Market regime detected: trending (volatility: 0.0002, trend strength: 1.0000)
+2025-05-27 11:19:02,810 [INFO] Initializing Triple Confluence Strategy...
+2025-05-27 11:19:02,810 [INFO] Triple Confluence Strategy initialized
+2025-05-27 11:19:02,810 [INFO] Initializing Oracle Update Strategy...
+2025-05-27 11:19:02,810 [INFO] Oracle Update Strategy initialized with min_deviation=0.0025
+2025-05-27 11:19:02,810 [INFO] Unit tests completed in 48.26 seconds
+2025-05-27 11:19:02,810 [INFO] Passed: 21, Failed: 0, Errors: 0
+2025-05-27 11:19:02,810 [INFO] Starting integration tests
+2025-05-27 11:19:02,810 [INFO] Testing adapter with connection manager
+2025-05-27 11:19:02,810 [INFO] Enhanced connection manager initialized
+2025-05-27 11:19:02,810 [INFO] Loaded settings from config.json
+2025-05-27 11:19:02,811 [INFO] Created settings backup at settings_backup/settings_1748359142.json
+2025-05-27 11:19:02,811 [INFO] Settings manager initialized
+2025-05-27 11:19:02,811 [WARNING] API keys not found in config
+2025-05-27 11:19:02,811 [INFO] Connection attempt 1/5
+2025-05-27 11:19:02,811 [WARNING] API keys not found in config
+2025-05-27 11:19:02,811 [WARNING] Connection attempt 1 failed
+2025-05-27 11:19:02,811 [INFO] Waiting 1.08s before next attempt
+2025-05-27 11:19:03,887 [INFO] Connection attempt 2/5
+2025-05-27 11:19:03,887 [WARNING] API keys not found in config
+2025-05-27 11:19:03,887 [WARNING] Connection attempt 2 failed
+2025-05-27 11:19:03,887 [INFO] Waiting 2.14s before next attempt
+2025-05-27 11:19:06,026 [INFO] Connection attempt 3/5
+2025-05-27 11:19:06,026 [WARNING] API keys not found in config
+2025-05-27 11:19:06,026 [WARNING] Connection attempt 3 failed
+2025-05-27 11:19:06,026 [INFO] Waiting 4.38s before next attempt
+2025-05-27 11:19:10,403 [INFO] Connection attempt 4/5
+2025-05-27 11:19:10,404 [WARNING] API keys not found in config
+2025-05-27 11:19:10,404 [WARNING] Connection attempt 4 failed
+2025-05-27 11:19:10,404 [INFO] Waiting 8.09s before next attempt
+2025-05-27 11:19:18,493 [INFO] Connection attempt 5/5
+2025-05-27 11:19:18,494 [WARNING] API keys not found in config
+2025-05-27 11:19:18,494 [WARNING] Connection attempt 5 failed
+2025-05-27 11:19:18,494 [INFO] Waiting 17.31s before next attempt
+2025-05-27 11:19:35,805 [ERROR] All 5 connection attempts failed
+2025-05-27 11:19:35,805 [INFO] Testing strategy with sentiment analyzer
+2025-05-27 11:19:35,814 [INFO] NLTK sentiment analyzer initialized
+2025-05-27 11:19:35,815 [INFO] Sentiment analyzer initialized
+2025-05-27 11:19:35,815 [INFO] Async HTTP session initialized
+2025-05-27 11:19:35,815 [INFO] Initializing Master Omni Overlord Strategy...
+2025-05-27 11:19:35,815 [INFO] Initializing Triple Confluence Strategy...
+2025-05-27 11:19:35,815 [INFO] Triple Confluence Strategy initialized
+2025-05-27 11:19:35,815 [INFO] Initializing Oracle Update Strategy...
+2025-05-27 11:19:35,815 [INFO] Oracle Update Strategy initialized with min_deviation=0.0025
+2025-05-27 11:19:35,815 [INFO] Master Omni Overlord Strategy initialized
+2025-05-27 11:19:35,815 [INFO] Analyzing sentiment for BTC (lookback: 24h)
+2025-05-27 11:19:35,815 [INFO] Fetching news for BTC
+2025-05-27 11:19:35,816 [INFO] Found 6 news articles for BTC
+2025-05-27 11:19:35,816 [INFO] Fetching social media for BTC
+2025-05-27 11:19:35,816 [INFO] Found 12 social media posts for BTC
+2025-05-27 11:19:35,825 [INFO] Sentiment analysis for BTC: neutral (score: 0.08, confidence: 0.32)
+2025-05-27 11:19:35,825 [INFO] Adjusted strategy weights: Triple Confluence=0.50, Oracle Update=0.50
+2025-05-27 11:19:35,825 [INFO] Async HTTP session closed
+2025-05-27 11:19:35,826 [INFO] Testing full trading pipeline
+2025-05-27 11:19:35,826 [INFO] Enhanced connection manager initialized
+2025-05-27 11:19:35,826 [INFO] Loaded settings from config.json
+2025-05-27 11:19:35,827 [INFO] Created settings backup at settings_backup/settings_1748359175.json
+2025-05-27 11:19:35,827 [INFO] Settings manager initialized
+2025-05-27 11:19:35,827 [WARNING] API keys not found in config
+2025-05-27 11:19:35,827 [INFO] Initializing Master Omni Overlord Strategy...
+2025-05-27 11:19:35,827 [INFO] Initializing Triple Confluence Strategy...
+2025-05-27 11:19:35,827 [INFO] Triple Confluence Strategy initialized
+2025-05-27 11:19:35,827 [INFO] Initializing Oracle Update Strategy...
+2025-05-27 11:19:35,827 [INFO] Oracle Update Strategy initialized with min_deviation=0.0025
+2025-05-27 11:19:35,827 [INFO] Master Omni Overlord Strategy initialized
+2025-05-27 11:19:35,837 [INFO] NLTK sentiment analyzer initialized
+2025-05-27 11:19:35,837 [INFO] Sentiment analyzer initialized
+2025-05-27 11:19:35,837 [INFO] Async HTTP session initialized
+2025-05-27 11:19:35,837 [INFO] Async HTTP session closed
+2025-05-27 11:19:35,837 [INFO] Cache manager initialized
+2025-05-27 11:19:35,838 [INFO] Integration tests completed in 33.03 seconds
+2025-05-27 11:19:35,838 [INFO] Passed: 7, Failed: 1, Errors: 0
+2025-05-27 11:19:35,838 [INFO] Starting backtests
+2025-05-27 11:19:35,838 [INFO] Backtest engine initialized
+2025-05-27 11:19:35,838 [INFO] Loading historical data for BTC from 2023-01-01 to 2023-12-31 (1h)
+2025-05-27 11:19:35,838 [INFO] Generating mock data for BTC
+2025-05-27 11:19:36,072 [INFO] Generated and saved mock data for BTC with 8737 data points
+2025-05-27 11:19:36,072 [INFO] Loading historical data for ETH from 2023-01-01 to 2023-12-31 (1h)
+2025-05-27 11:19:36,072 [INFO] Generating mock data for ETH
+2025-05-27 11:19:36,281 [INFO] Generated and saved mock data for ETH with 8737 data points
+2025-05-27 11:19:36,281 [INFO] Loading historical data for SOL from 2023-01-01 to 2023-12-31 (1h)
+2025-05-27 11:19:36,282 [INFO] Generating mock data for SOL
+2025-05-27 11:19:36,446 [INFO] Generated and saved mock data for SOL with 8737 data points
+2025-05-27 11:19:36,447 [INFO] Testing MasterOmniOverlord strategy
+2025-05-27 11:19:36,447 [INFO] Starting backtest
+2025-05-27 11:19:36,465 [INFO] Running backtest with 8737 data points
+2025-05-27 11:21:25,224 [INFO] Backtest completed in 108.78 seconds
+2025-05-27 11:21:25,224 [INFO] Final equity: $907809.79
+2025-05-27 11:21:25,224 [INFO] Return: 8978.10%
+2025-05-27 11:21:25,224 [INFO] Sharpe ratio: 1.11
+2025-05-27 11:21:25,224 [INFO] Max drawdown: -50.42%
+2025-05-27 11:21:26,069 [INFO] Plot saved to test_results/MasterOmniOverlord_backtest.png
+2025-05-27 11:21:26,136 [INFO] Results saved to test_results/MasterOmniOverlord_backtest.json
+2025-05-27 11:21:26,136 [INFO] Testing TripleConfluence strategy
+2025-05-27 11:21:26,136 [INFO] Starting backtest
+2025-05-27 11:21:26,160 [INFO] Running backtest with 8737 data points
+2025-05-27 11:23:12,771 [INFO] Backtest completed in 106.63 seconds
+2025-05-27 11:23:12,771 [INFO] Final equity: $886437.28
+2025-05-27 11:23:12,771 [INFO] Return: 8764.37%
+2025-05-27 11:23:12,771 [INFO] Sharpe ratio: 1.12
+2025-05-27 11:23:12,771 [INFO] Max drawdown: -33.31%
+2025-05-27 11:23:13,158 [INFO] Plot saved to test_results/TripleConfluence_backtest.png
+2025-05-27 11:23:13,435 [INFO] Results saved to test_results/TripleConfluence_backtest.json
+2025-05-27 11:23:13,435 [INFO] Testing OracleUpdate strategy
+2025-05-27 11:23:13,435 [INFO] Starting backtest
+2025-05-27 11:23:13,458 [INFO] Running backtest with 8737 data points
+2025-05-27 11:24:37,735 [INFO] Backtest completed in 84.30 seconds
+2025-05-27 11:24:37,735 [INFO] Final equity: $50511.93
+2025-05-27 11:24:37,735 [INFO] Return: 405.12%
+2025-05-27 11:24:37,735 [INFO] Sharpe ratio: 0.45
+2025-05-27 11:24:37,735 [INFO] Max drawdown: -80.34%
+2025-05-27 11:24:38,128 [INFO] Plot saved to test_results/OracleUpdate_backtest.png
+2025-05-27 11:24:38,389 [INFO] Results saved to test_results/OracleUpdate_backtest.json
+2025-05-27 11:24:38,389 [INFO] Optimizing MasterOmniOverlord strategy
+2025-05-27 11:24:38,389 [INFO] Starting strategy optimization
+2025-05-27 11:24:38,389 [INFO] Testing 81 parameter combinations
+2025-05-27 11:24:38,390 [INFO] Testing combination 1/81: {'signal_threshold': 0.5599999999999999, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.24, 'volatility_adjustment': 0.8}
+2025-05-27 11:24:38,390 [INFO] Starting backtest
+2025-05-27 11:24:38,411 [INFO] Running backtest with 8737 data points
+2025-05-27 11:26:19,883 [INFO] Backtest completed in 101.49 seconds
+2025-05-27 11:26:19,883 [INFO] Final equity: $10000.00
+2025-05-27 11:26:19,883 [INFO] Return: 0.00%
+2025-05-27 11:26:19,883 [INFO] Sharpe ratio: 0.00
+2025-05-27 11:26:19,883 [INFO] Max drawdown: 0.00%
+2025-05-27 11:26:19,883 [INFO] Testing combination 2/81: {'signal_threshold': 0.5599999999999999, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.24, 'volatility_adjustment': 1.0}
+2025-05-27 11:26:19,883 [INFO] Starting backtest
+2025-05-27 11:26:19,902 [INFO] Running backtest with 8737 data points
+2025-05-27 11:28:10,473 [INFO] Backtest completed in 110.59 seconds
+2025-05-27 11:28:10,473 [INFO] Final equity: $907809.79
+2025-05-27 11:28:10,473 [INFO] Return: 8978.10%
+2025-05-27 11:28:10,473 [INFO] Sharpe ratio: 1.11
+2025-05-27 11:28:10,473 [INFO] Max drawdown: -50.42%
+2025-05-27 11:28:10,475 [INFO] Testing combination 3/81: {'signal_threshold': 0.5599999999999999, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.24, 'volatility_adjustment': 1.2}
+2025-05-27 11:28:10,475 [INFO] Starting backtest
+2025-05-27 11:28:10,494 [INFO] Running backtest with 8737 data points
+2025-05-27 11:29:58,954 [INFO] Backtest completed in 108.48 seconds
+2025-05-27 11:29:58,954 [INFO] Final equity: $907809.79
+2025-05-27 11:29:58,954 [INFO] Return: 8978.10%
+2025-05-27 11:29:58,954 [INFO] Sharpe ratio: 1.11
+2025-05-27 11:29:58,954 [INFO] Max drawdown: -50.42%
+2025-05-27 11:29:58,956 [INFO] Testing combination 4/81: {'signal_threshold': 0.5599999999999999, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.3, 'volatility_adjustment': 0.8}
+2025-05-27 11:29:58,956 [INFO] Starting backtest
+2025-05-27 11:29:58,974 [INFO] Running backtest with 8737 data points

@@ -46,6 +46,9 @@ class HyperliquidAdapter:
         self.secret_key = ""
         self.api_url = "https://api.hyperliquid.xyz"
         
+        # Initialize connection status
+        self.is_connected = False
+        
         # Initialize enhanced connection manager
         self.connection_manager = EnhancedConnectionManager(self.logger)
         
@@ -77,15 +80,18 @@ class HyperliquidAdapter:
             test_func=self._test_api_connection
         ):
             self.logger.error("Failed to initialize adapter: Could not establish connection")
+            self.is_connected = False
             return False
         
         # Test connection
         test_result = self.test_connection()
         if "error" in test_result:
             self.logger.error(f"Failed to initialize adapter: {test_result['error']}")
+            self.is_connected = False
             return False
         
         self.logger.info("HyperliquidAdapter initialized successfully")
+        self.is_connected = True
         return True
     
     def reload_config(self) -> None:
@@ -109,6 +115,7 @@ class HyperliquidAdapter:
             # Check if keys are available
             if not self.account_address or not self.secret_key:
                 self.logger.warning("API keys not found in config")
+                self.is_connected = False
                 return False
             
             # Initialize API
@@ -125,12 +132,16 @@ class HyperliquidAdapter:
                 )
                 
                 # Test connection
-                return self._test_api_connection()
+                connection_success = self._test_api_connection()
+                self.is_connected = connection_success
+                return connection_success
             except Exception as e:
                 self.logger.error(f"Error initializing exchange: {e}")
+                self.is_connected = False
                 return False
         except Exception as e:
             self.logger.error(f"Error initializing API: {e}")
+            self.is_connected = False
             return False
     
     def _test_api_connection(self) -> bool:
@@ -146,11 +157,14 @@ class HyperliquidAdapter:
                 # Try to get meta data
                 meta = self.info.meta()
                 if meta and not isinstance(meta, dict) or not "error" in meta:
+                    self.is_connected = True
                     return True
             
+            self.is_connected = False
             return False
         except Exception as e:
             self.logger.error(f"API connection test failed: {e}")
+            self.is_connected = False
             return False
     
     def set_api_keys(self, account_address: str, secret_key: str) -> bool:
@@ -173,6 +187,7 @@ class HyperliquidAdapter:
             # Save config using settings manager
             if not self.settings_manager.update_settings(new_settings):
                 self.logger.error("Failed to save API keys to settings")
+                self.is_connected = False
                 return False
             
             # Reload config
@@ -182,9 +197,12 @@ class HyperliquidAdapter:
             self.connection_manager.reset_state()
             
             # Initialize API
-            return self._init_api()
+            connection_success = self._init_api()
+            self.is_connected = connection_success
+            return connection_success
         except Exception as e:
             self.logger.error(f"Error setting API keys: {e}")
+            self.is_connected = False
             return False
     
     def test_connection(self) -> Dict[str, Any]:
@@ -199,6 +217,7 @@ class HyperliquidAdapter:
                 connect_func=self._init_api,
                 test_func=self._test_api_connection
             ):
+                self.is_connected = False
                 return {"error": "Not connected to exchange"}
             
             # Test connection by getting user state
@@ -211,14 +230,18 @@ class HyperliquidAdapter:
                 
                 if isinstance(user_state, dict) and "error" in user_state:
                     self.logger.error(f"Connection test failed: {user_state['error']}")
+                    self.is_connected = False
                     return {"error": f"Connection test failed: {user_state['error']}"}
                 
+                self.is_connected = True
                 return {"success": "Connection test successful"}
             except Exception as e:
                 self.logger.error(f"Connection test failed: {e}")
+                self.is_connected = False
                 return {"error": f"Connection test failed: {e}"}
         except Exception as e:
             self.logger.error(f"Error testing connection: {e}")
+            self.is_connected = False
             return {"error": f"Error testing connection: {e}"}
     
     def _safe_get_attribute(self, obj, attr_name, default=None):
@@ -298,6 +321,7 @@ class HyperliquidAdapter:
                 connect_func=self._init_api,
                 test_func=self._test_api_connection
             ):
+                self.is_connected = False
                 return {"error": "Not connected to exchange"}
             
             # Get user state
@@ -309,6 +333,7 @@ class HyperliquidAdapter:
             
             if isinstance(user_state, dict) and "error" in user_state:
                 self.logger.error(f"Error getting account info: {user_state['error']}")
+                self.is_connected = False
                 return {"error": f"Error getting account info: {user_state['error']}"}
             
             # Extract account info with safe access
@@ -324,9 +349,11 @@ class HyperliquidAdapter:
                 "wallet_balance": self._safe_float_convert(self._safe_get_attribute(margin_summary, "walletBalance", 0))
             }
             
+            self.is_connected = True
             return account_info
         except Exception as e:
             self.logger.error(f"Error getting account info: {e}")
+            self.is_connected = False
             return {"error": f"Error getting account info: {e}"}
     
     def get_market_data(self, symbol: str) -> Dict[str, Any]:
@@ -344,6 +371,7 @@ class HyperliquidAdapter:
                 connect_func=self._init_api,
                 test_func=self._test_api_connection
             ):
+                self.is_connected = False
                 return {"error": "Not connected to exchange"}
             
             if not symbol:
@@ -358,6 +386,7 @@ class HyperliquidAdapter:
             
             if isinstance(meta_and_assets, dict) and "error" in meta_and_assets:
                 self.logger.error(f"Error getting meta data: {meta_and_assets['error']}")
+                self.is_connected = False
                 return {"error": f"Error getting meta data: {meta_and_assets['error']}"}
             
             # Find asset data for the specified symbol
@@ -412,21 +441,18 @@ class HyperliquidAdapter:
             if price == 0.0:
                 price = oracle_price
             
-            # Get other market data with fallbacks
-            funding_rate = self._safe_float_convert(self._safe_get_attribute(asset_data, "funding", 0.0))
+            # Extract other market data
+            funding_rate = self._safe_float_convert(self._safe_get_attribute(asset_data, "fundingRate", 0.0))
             open_interest = self._safe_float_convert(self._safe_get_attribute(asset_data, "openInterest", 0.0))
-            volume_24h = self._safe_float_convert(self._safe_get_attribute(asset_data, "dayNtlVlm", 0.0))
             
-            # Calculate price change (if previous day price is available)
-            prev_day_price = self._safe_float_convert(self._safe_get_attribute(asset_data, "prevDayPx", 0.0))
-            price_change_24h = 0.0
-            if prev_day_price > 0 and price > 0:
-                price_change_24h = (price - prev_day_price) / prev_day_price * 100
+            # Get 24h volume and price change if available
+            volume_24h = self._safe_float_convert(self._safe_get_attribute(asset_data, "volume24h", 0.0))
+            price_change_24h = self._safe_float_convert(self._safe_get_attribute(asset_data, "priceChange24h", 0.0))
             
-            # Construct market data with price field explicitly set
+            # Construct market data
             market_data = {
                 "symbol": symbol,
-                "price": price,  # Explicitly set price field
+                "price": price,
                 "mark_price": mark_price,
                 "index_price": oracle_price,
                 "funding_rate": funding_rate,
@@ -435,37 +461,12 @@ class HyperliquidAdapter:
                 "price_change_24h": price_change_24h
             }
             
-            # Log successful market data retrieval
-            self.logger.debug(f"Market data for {symbol}: price={price}, funding_rate={funding_rate}")
-            
+            self.is_connected = True
             return market_data
         except Exception as e:
             self.logger.error(f"Error getting market data for {symbol}: {e}")
-            self.logger.error(f"Traceback: {traceback.format_exc()}")
-            # Return default data structure with zeros on error
-            return {
-                "symbol": symbol,
-                "price": 0.0,
-                "mark_price": 0.0,
-                "index_price": 0.0,
-                "funding_rate": 0.0,
-                "open_interest": 0.0,
-                "volume_24h": 0.0,
-                "price_change_24h": 0.0
-            }
-    
-    async def fetch_market_data(self, symbol: str) -> Dict[str, Any]:
-        """
-        Fetch market data for a symbol asynchronously.
-        This method is called by the main trading bot.
-        
-        Args:
-            symbol: The symbol to get market data for
-            
-        Returns:
-            Dict containing market data
-        """
-        return self.get_market_data(symbol)
+            self.is_connected = False
+            return {"error": f"Error getting market data for {symbol}: {e}"}
     
     def get_positions(self) -> Dict[str, Any]:
         """
@@ -479,6 +480,7 @@ class HyperliquidAdapter:
                 connect_func=self._init_api,
                 test_func=self._test_api_connection
             ):
+                self.is_connected = False
                 return {"error": "Not connected to exchange"}
             
             # Get user state
@@ -490,354 +492,178 @@ class HyperliquidAdapter:
             
             if isinstance(user_state, dict) and "error" in user_state:
                 self.logger.error(f"Error getting positions: {user_state['error']}")
+                self.is_connected = False
                 return {"error": f"Error getting positions: {user_state['error']}"}
             
-            # Extract positions
-            positions_data = self._safe_get_attribute(user_state, "assetPositions", [])
+            # Extract positions from user state
             positions = []
             
-            for pos in positions_data:
+            # Get assetPositions from user state
+            asset_positions = self._safe_get_attribute(user_state, "assetPositions", [])
+            
+            # Process each position
+            for pos in asset_positions:
+                # Get position details
+                coin = self._safe_get_attribute(pos, "coin", "")
+                position_size = self._safe_float_convert(self._safe_get_attribute(pos, "position", 0.0))
+                entry_price = self._safe_float_convert(self._safe_get_attribute(pos, "entryPx", 0.0))
+                
                 # Skip positions with zero size
-                size = self._safe_float_convert(self._safe_get_attribute(pos, "position", 0.0))
-                if size == 0:
+                if position_size == 0.0:
                     continue
                 
-                # Extract position data
-                coin = self._safe_get_attribute(pos, "coin", "Unknown")
-                entry_price = self._safe_float_convert(self._safe_get_attribute(pos, "entryPx", 0.0))
-                mark_price = self._safe_float_convert(self._safe_get_attribute(pos, "markPx", 0.0))
+                # Get additional position details
                 liquidation_price = self._safe_float_convert(self._safe_get_attribute(pos, "liquidationPx", 0.0))
                 unrealized_pnl = self._safe_float_convert(self._safe_get_attribute(pos, "unrealizedPnl", 0.0))
                 
-                # Calculate PnL percentage
-                pnl_percentage = 0.0
-                if entry_price > 0 and size != 0:
-                    price_diff = mark_price - entry_price
-                    direction = 1 if size > 0 else -1
-                    pnl_percentage = direction * price_diff / entry_price * 100
-                
-                # Construct position
+                # Create position object
                 position = {
                     "symbol": coin,
-                    "size": size,
+                    "size": position_size,
                     "entry_price": entry_price,
-                    "mark_price": mark_price,
                     "liquidation_price": liquidation_price,
-                    "unrealized_pnl": unrealized_pnl,
-                    "pnl_percentage": pnl_percentage
+                    "unrealized_pnl": unrealized_pnl
                 }
                 
                 positions.append(position)
             
+            self.is_connected = True
             return {"data": positions}
         except Exception as e:
             self.logger.error(f"Error getting positions: {e}")
+            self.is_connected = False
             return {"error": f"Error getting positions: {e}"}
     
-    async def get_user_positions(self) -> Dict[str, Any]:
+    def place_order(self, symbol: str, size: float, price: Optional[float] = None, is_buy: bool = True, reduce_only: bool = False) -> Dict[str, Any]:
         """
-        Get user positions asynchronously.
-        This method is called by the main trading bot.
-        
-        Returns:
-            Dict containing positions
-        """
-        positions_result = self.get_positions()
-        
-        if "error" in positions_result:
-            return {}
-        
-        # Convert list of positions to dict keyed by symbol
-        positions_dict = {}
-        for pos in positions_result.get("data", []):
-            symbol = pos.get("symbol", "Unknown")
-            positions_dict[symbol] = pos
-        
-        return positions_dict
-    
-    def get_orders(self) -> Dict[str, Any]:
-        """
-        Get current orders.
-        
-        Returns:
-            Dict containing orders
-        """
-        try:
-            if not self.connection_manager.ensure_connection(
-                connect_func=self._init_api,
-                test_func=self._test_api_connection
-            ):
-                return {"error": "Not connected to exchange"}
-            
-            # Get user state
-            user_state = self.connection_manager.safe_api_call(
-                lambda: self.info.user_state(self.account_address),
-                connect_func=self._init_api,
-                test_func=self._test_api_connection
-            )
-            
-            if isinstance(user_state, dict) and "error" in user_state:
-                self.logger.error(f"Error getting orders: {user_state['error']}")
-                return {"error": f"Error getting orders: {user_state['error']}"}
-            
-            # Extract orders
-            orders_data = self._safe_get_attribute(user_state, "openOrders", [])
-            orders = []
-            
-            for order in orders_data:
-                # Extract order data
-                coin = self._safe_get_attribute(order, "coin", "Unknown")
-                order_id = self._safe_get_attribute(order, "oid", "Unknown")
-                size = self._safe_float_convert(self._safe_get_attribute(order, "sz", 0.0))
-                price = self._safe_float_convert(self._safe_get_attribute(order, "limitPx", 0.0))
-                side = "buy" if self._safe_get_attribute(order, "side", "") == "B" else "sell"
-                order_type = self._safe_get_attribute(order, "orderType", "limit")
-                
-                # Construct order
-                order_data = {
-                    "id": order_id,
-                    "symbol": coin,
-                    "size": size,
-                    "price": price,
-                    "side": side,
-                    "type": order_type,
-                    "status": "open",
-                    "time": int(time.time() * 1000)  # Current time in milliseconds
-                }
-                
-                orders.append(order_data)
-            
-            return {"data": orders}
-        except Exception as e:
-            self.logger.error(f"Error getting orders: {e}")
-            return {"error": f"Error getting orders: {e}"}
-    
-    def place_order(self, symbol: str, is_buy: bool, size: float, price: float, order_type: str = "LIMIT") -> Dict[str, Any]:
-        """
-        Place an order.
+        Place an order on the exchange.
         
         Args:
-            symbol: The symbol to place an order for
-            is_buy: Whether the order is a buy order
-            size: The size of the order
-            price: The price of the order
-            order_type: The type of order (LIMIT, MARKET)
+            symbol: Symbol to place order for
+            size: Size of the order
+            price: Price of the order (None for market orders)
+            is_buy: True for buy orders, False for sell orders
+            reduce_only: True to only reduce position, not open new ones
             
         Returns:
-            Dict containing the result of the operation
+            Dict containing the result of the order placement
         """
         try:
             if not self.connection_manager.ensure_connection(
                 connect_func=self._init_api,
                 test_func=self._test_api_connection
             ):
+                self.is_connected = False
                 return {"error": "Not connected to exchange"}
             
+            # Validate inputs
             if not symbol:
                 return {"error": "Symbol cannot be empty"}
             
             if size <= 0:
-                return {"error": "Size must be greater than 0"}
+                return {"error": "Size must be positive"}
             
-            if order_type.upper() == "LIMIT" and price <= 0:
-                return {"error": "Price must be greater than 0 for LIMIT orders"}
+            # Determine order type
+            order_type = OrderType.LIMIT if price is not None else OrderType.MARKET
             
-            # Prepare order
-            side = "B" if is_buy else "S"
+            # Adjust size sign based on direction
+            signed_size = size if is_buy else -size
             
-            # Convert string order_type to proper OrderType format
-            # OrderType is a TypedDict that expects {'limit': 'limit'} or similar format
-            order_type_lower = order_type.lower()
-            order_type_dict = {order_type_lower: order_type_lower}
-            
-            # Place order - FIXED: Use 'name' instead of 'coin' parameter and proper OrderType format
-            result = self.connection_manager.safe_api_call(
+            # Place order
+            order_result = self.connection_manager.safe_api_call(
                 lambda: self.exchange.order(
-                    name=symbol,  # Changed from 'coin' to 'name' to match SDK signature
+                    coin=symbol,
                     is_buy=is_buy,
-                    sz=size,
-                    limit_px=price,
-                    order_type=order_type_dict  # Changed from string to dict format
+                    sz=abs(signed_size),
+                    limit_px=price if price is not None else None,
+                    order_type=order_type,
+                    reduce_only=reduce_only
                 ),
                 connect_func=self._init_api,
                 test_func=self._test_api_connection
             )
             
-            if isinstance(result, dict) and "error" in result:
-                self.logger.error(f"Error placing order: {result['error']}")
-                return {"error": f"Error placing order: {result['error']}"}
+            if isinstance(order_result, dict) and "error" in order_result:
+                self.logger.error(f"Error placing order: {order_result['error']}")
+                return {"error": f"Error placing order: {order_result['error']}"}
             
-            # Extract order ID - handle both string and dict responses
-            order_id = "Unknown"
-            if isinstance(result, dict) and "oid" in result:
-                order_id = result["oid"]
-            elif isinstance(result, dict) and "order_id" in result:
-                order_id = result["order_id"]
-            elif isinstance(result, str):
-                order_id = result
-            
-            # Construct response
-            response = {
-                "data": {
-                    "order_id": order_id,
-                    "symbol": symbol,
-                    "side": "buy" if is_buy else "sell",
-                    "size": size,
-                    "price": price,
-                    "type": order_type.lower(),
-                    "status": "open",
-                    "time": int(time.time() * 1000)  # Current time in milliseconds
-                }
-            }
-            
-            return response
+            self.is_connected = True
+            return {"success": "Order placed successfully", "data": order_result}
         except Exception as e:
             self.logger.error(f"Error placing order: {e}")
+            self.is_connected = False
             return {"error": f"Error placing order: {e}"}
     
-    def cancel_order(self, symbol: str, order_id: str) -> Dict[str, Any]:
+    def cancel_order(self, order_id: str) -> Dict[str, Any]:
         """
-        Cancel an order.
+        Cancel an order on the exchange.
         
         Args:
-            symbol: The symbol of the order
-            order_id: The ID of the order
+            order_id: ID of the order to cancel
             
         Returns:
-            Dict containing the result of the operation
+            Dict containing the result of the cancellation
         """
         try:
             if not self.connection_manager.ensure_connection(
                 connect_func=self._init_api,
                 test_func=self._test_api_connection
             ):
+                self.is_connected = False
                 return {"error": "Not connected to exchange"}
             
-            if not symbol:
-                return {"error": "Symbol cannot be empty"}
-            
+            # Validate inputs
             if not order_id:
                 return {"error": "Order ID cannot be empty"}
             
-            # Cancel order - FIXED: Use 'name' instead of 'coin' parameter
-            result = self.connection_manager.safe_api_call(
-                lambda: self.exchange.cancel_order(
-                    name=symbol,  # Changed from 'coin' to 'name' to match SDK signature
-                    oid=order_id
-                ),
+            # Cancel order
+            cancel_result = self.connection_manager.safe_api_call(
+                lambda: self.exchange.cancel_order(order_id),
                 connect_func=self._init_api,
                 test_func=self._test_api_connection
             )
             
-            if isinstance(result, dict) and "error" in result:
-                self.logger.error(f"Error canceling order: {result['error']}")
-                return {"error": f"Error canceling order: {result['error']}"}
+            if isinstance(cancel_result, dict) and "error" in cancel_result:
+                self.logger.error(f"Error cancelling order: {cancel_result['error']}")
+                return {"error": f"Error cancelling order: {cancel_result['error']}"}
             
-            # Construct response
-            response = {
-                "data": {
-                    "order_id": order_id,
-                    "symbol": symbol,
-                    "status": "canceled",
-                    "time": int(time.time() * 1000)  # Current time in milliseconds
-                }
-            }
-            
-            return response
+            self.is_connected = True
+            return {"success": "Order cancelled successfully", "data": cancel_result}
         except Exception as e:
-            self.logger.error(f"Error canceling order: {e}")
-            return {"error": f"Error canceling order: {e}"}
+            self.logger.error(f"Error cancelling order: {e}")
+            self.is_connected = False
+            return {"error": f"Error cancelling order: {e}"}
     
-    def cancel_all_orders(self, symbol: str = None) -> Dict[str, Any]:
+    def get_open_orders(self) -> Dict[str, Any]:
         """
-        Cancel all orders.
+        Get open orders.
         
-        Args:
-            symbol: Optional symbol to cancel orders for
-            
         Returns:
-            Dict containing the result of the operation
+            Dict containing open orders
         """
         try:
             if not self.connection_manager.ensure_connection(
                 connect_func=self._init_api,
                 test_func=self._test_api_connection
             ):
+                self.is_connected = False
                 return {"error": "Not connected to exchange"}
             
-            # Get current orders
-            orders_result = self.get_orders()
+            # Get open orders
+            open_orders = self.connection_manager.safe_api_call(
+                lambda: self.info.open_orders(self.account_address),
+                connect_func=self._init_api,
+                test_func=self._test_api_connection
+            )
             
-            if "error" in orders_result:
-                return {"error": f"Error getting orders: {orders_result['error']}"}
+            if isinstance(open_orders, dict) and "error" in open_orders:
+                self.logger.error(f"Error getting open orders: {open_orders['error']}")
+                self.is_connected = False
+                return {"error": f"Error getting open orders: {open_orders['error']}"}
             
-            orders = orders_result.get("data", [])
-            
-            # Filter orders by symbol if provided
-            if symbol:
-                orders = [order for order in orders if order.get("symbol") == symbol]
-            
-            # Cancel each order
-            canceled_orders = []
-            for order in orders:
-                order_symbol = order.get("symbol")
-                order_id = order.get("id")
-                
-                if order_symbol and order_id:
-                    cancel_result = self.cancel_order(order_symbol, order_id)
-                    
-                    if "error" not in cancel_result:
-                        canceled_orders.append(cancel_result.get("data", {}))
-            
-            # Construct response
-            response = {
-                "data": {
-                    "canceled_orders": canceled_orders,
-                    "count": len(canceled_orders),
-                    "time": int(time.time() * 1000)  # Current time in milliseconds
-                }
-            }
-            
-            return response
+            self.is_connected = True
+            return {"data": open_orders}
         except Exception as e:
-            self.logger.error(f"Error canceling all orders: {e}")
-            return {"error": f"Error canceling all orders: {e}"}
-    
-    def get_connection_stats(self) -> Dict[str, Any]:
-        """
-        Get connection statistics.
-        
-        Returns:
-            Dict containing connection statistics
-        """
-        return self.connection_manager.get_connection_stats()
-    
-    def get_settings_backups(self) -> List[Dict[str, Any]]:
-        """
-        Get list of available settings backups.
-        
-        Returns:
-            List of dicts containing backup information
-        """
-        return self.settings_manager.list_backups()
-    
-    def restore_settings_backup(self, backup_index: int = 0) -> bool:
-        """
-        Restore settings from a backup.
-        
-        Args:
-            backup_index: Index of the backup to restore (0 = most recent)
-            
-        Returns:
-            True if successful, False otherwise
-        """
-        return self.settings_manager.restore_backup(backup_index)
-    
-    def force_settings_backup(self) -> bool:
-        """
-        Force creation of a settings backup.
-        
-        Returns:
-            True if successful, False otherwise
-        """
-        return self.settings_manager.force_backup()
+            self.logger.error(f"Error getting open orders: {e}")
+            self.is_connected = False
+            return {"error": f"Error getting open orders: {e}"}

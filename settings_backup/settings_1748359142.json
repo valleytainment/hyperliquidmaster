@@ -1,0 +1,1 @@
+{"api_key": "test_key", "secret_key": "test_secret", "symbols": ["BTC", "ETH", "SOL"], "initial_capital": 10000, "fee_rate": 0.0005, "slippage": 0.0002, "test_output_dir": "test_results", "sentiment_cache_ttl": 3600}

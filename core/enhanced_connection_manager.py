@@ -1,22 +1,22 @@
 """
-Enhanced Connection Manager for Hyperliquid Trading Bot
-------------------------------------------------------
-Provides robust connection management with persistent reconnection,
-state preservation, and comprehensive error handling.
+Enhanced Connection Manager for HyperLiquid Trading Bot
+
+This module provides robust connection management with automatic retry,
+exponential backoff, and circuit breaker patterns for API interactions.
 """
 
-import os
-import json
 import time
 import logging
-import threading
-import traceback
-from typing import Dict, Any, Optional, Callable, List, Tuple
+import asyncio
+import random
+from typing import Dict, Any, Callable, Optional, TypeVar, Generic
+
+T = TypeVar('T')
 
 class EnhancedConnectionManager:
     """
-    Enhanced connection manager with persistent reconnection logic,
-    state preservation, and comprehensive error handling.
+    Enhanced connection manager with circuit breaker pattern and exponential backoff.
+    Provides robust connection handling for API interactions.
     """
     
     def __init__(self, logger=None):
@@ -26,292 +26,342 @@ class EnhancedConnectionManager:
         Args:
             logger: Optional logger instance
         """
+        # Setup logging
         self.logger = logger or logging.getLogger("EnhancedConnectionManager")
         
+        # Circuit breaker state
+        self.circuit_open = False
+        self.failure_count = 0
+        self.last_failure_time = 0
+        self.reset_timeout = 30  # seconds
+        
+        # Retry configuration
+        self.max_retries = 5
+        self.base_delay = 1  # seconds
+        self.max_delay = 60  # seconds
+        self.jitter_factor = 0.1  # 10% jitter
+        
         # Connection state
-        self.is_connected = False
-        self.connection_attempts = 0
-        self.last_connection_attempt = 0
         self.last_successful_connection = 0
-        self.connection_failures = 0
-        self.consecutive_failures = 0
+        self.connection_health = 1.0  # 1.0 = perfect health, 0.0 = completely unhealthy
         
-        # Connection settings
-        self.max_backoff_time = 300  # Maximum backoff time in seconds (5 minutes)
-        self.initial_backoff = 1  # Initial backoff time in seconds
-        self.backoff_factor = 1.5  # Backoff factor for exponential backoff
-        self.jitter_factor = 0.2  # Random jitter factor to avoid thundering herd
-        self.health_check_interval = 30  # Health check interval in seconds
-        self.last_health_check = 0
-        
-        # Connection lock for thread safety
-        self.connection_lock = threading.Lock()
-        
-        # Connection state file
-        self.state_file = "connection_state.json"
-        
-        # Load state
-        self._load_state()
+        self.logger.info("Enhanced connection manager initialized")
     
-    def _load_state(self) -> None:
-        """Load connection state from file."""
-        try:
-            if os.path.exists(self.state_file):
-                with open(self.state_file, 'r') as f:
-                    state = json.load(f)
-                
-                # Restore state
-                self.is_connected = state.get("is_connected", False)
-                self.connection_attempts = state.get("connection_attempts", 0)
-                self.last_connection_attempt = state.get("last_connection_attempt", 0)
-                self.last_successful_connection = state.get("last_successful_connection", 0)
-                self.connection_failures = state.get("connection_failures", 0)
-                self.consecutive_failures = state.get("consecutive_failures", 0)
-                
-                self.logger.info(f"Loaded connection state: attempts={self.connection_attempts}, failures={self.connection_failures}")
-        except Exception as e:
-            self.logger.error(f"Error loading connection state: {e}")
+    def reset_state(self):
+        """Reset the connection manager state."""
+        self.circuit_open = False
+        self.failure_count = 0
+        self.last_failure_time = 0
+        self.connection_health = 1.0
+        self.logger.info("Connection manager state reset")
     
-    def _save_state(self) -> None:
-        """Save connection state to file."""
-        try:
-            state = {
-                "is_connected": self.is_connected,
-                "connection_attempts": self.connection_attempts,
-                "last_connection_attempt": self.last_connection_attempt,
-                "last_successful_connection": self.last_successful_connection,
-                "connection_failures": self.connection_failures,
-                "consecutive_failures": self.consecutive_failures,
-                "timestamp": time.time()
-            }
-            
-            with open(self.state_file, 'w') as f:
-                json.dump(state, f, indent=2)
-        except Exception as e:
-            self.logger.error(f"Error saving connection state: {e}")
-    
-    def reset_state(self) -> None:
-        """Reset connection state."""
-        with self.connection_lock:
-            self.is_connected = False
-            self.connection_attempts = 0
-            self.last_connection_attempt = 0
-            self.last_successful_connection = 0
-            self.connection_failures = 0
-            self.consecutive_failures = 0
-            self._save_state()
-            self.logger.info("Connection state reset")
-    
-    def connection_successful(self) -> None:
-        """Mark connection as successful."""
-        with self.connection_lock:
-            self.is_connected = True
-            self.last_successful_connection = time.time()
-            self.consecutive_failures = 0
-            self._save_state()
-            self.logger.info("Connection marked as successful")
-    
-    def connection_failed(self) -> None:
-        """Mark connection as failed."""
-        with self.connection_lock:
-            self.is_connected = False
-            self.connection_failures += 1
-            self.consecutive_failures += 1
-            self._save_state()
-            self.logger.warning(f"Connection marked as failed (consecutive failures: {self.consecutive_failures})")
-    
-    def calculate_backoff_time(self) -> float:
+    def _should_attempt_reconnect(self) -> bool:
         """
-        Calculate backoff time with exponential backoff and jitter.
-        
-        Returns:
-            Backoff time in seconds
-        """
-        # Calculate base backoff time
-        backoff = min(
-            self.max_backoff_time,
-            self.initial_backoff * (self.backoff_factor ** min(self.consecutive_failures, 10))
-        )
-        
-        # Add jitter to avoid thundering herd
-        import random
-        jitter = random.uniform(-self.jitter_factor, self.jitter_factor) * backoff
-        backoff = max(self.initial_backoff, backoff + jitter)
-        
-        return backoff
-    
-    def should_reconnect(self) -> bool:
-        """
-        Check if reconnection should be attempted.
+        Determine if a reconnection attempt should be made based on circuit breaker state.
         
         Returns:
             True if reconnection should be attempted, False otherwise
         """
-        # Always attempt to reconnect
-        return True
+        # If circuit is closed, always allow connection attempts
+        if not self.circuit_open:
+            return True
+            
+        # If circuit is open, check if enough time has passed to try again
+        current_time = time.time()
+        time_since_failure = current_time - self.last_failure_time
+        
+        # Calculate dynamic reset timeout based on failure count
+        dynamic_timeout = min(self.reset_timeout * (2 ** min(self.failure_count - 1, 5)), 300)
+        
+        if time_since_failure > dynamic_timeout:
+            self.logger.info(f"Circuit half-open after {time_since_failure:.1f}s, attempting reconnection")
+            return True
+            
+        return False
     
-    def wait_before_reconnect(self) -> None:
-        """Wait before reconnection attempt."""
-        backoff_time = self.calculate_backoff_time()
-        self.logger.info(f"Waiting {backoff_time:.2f}s before reconnection attempt")
-        time.sleep(backoff_time)
+    def _update_circuit_state(self, success: bool):
+        """
+        Update circuit breaker state based on connection attempt result.
+        
+        Args:
+            success: Whether the connection attempt was successful
+        """
+        if success:
+            # Reset circuit on success
+            if self.circuit_open:
+                self.logger.info("Connection successful, closing circuit")
+            self.circuit_open = False
+            self.failure_count = 0
+            self.last_successful_connection = time.time()
+            
+            # Improve connection health
+            self.connection_health = min(1.0, self.connection_health + 0.2)
+        else:
+            # Update failure stats
+            self.failure_count += 1
+            self.last_failure_time = time.time()
+            
+            # Degrade connection health
+            self.connection_health = max(0.0, self.connection_health - 0.25)
+            
+            # Open circuit if too many failures
+            if self.failure_count >= 3 and not self.circuit_open:
+                self.logger.warning(f"Opening circuit after {self.failure_count} consecutive failures")
+                self.circuit_open = True
+    
+    def _calculate_backoff_time(self, retry_count: int) -> float:
+        """
+        Calculate backoff time with exponential backoff and jitter.
+        
+        Args:
+            retry_count: Current retry attempt number
+            
+        Returns:
+            Time to wait in seconds
+        """
+        # Calculate base delay with exponential backoff
+        delay = min(self.max_delay, self.base_delay * (2 ** retry_count))
+        
+        # Add jitter to prevent thundering herd problem
+        jitter = delay * self.jitter_factor * random.random()
+        
+        return delay + jitter
     
     def ensure_connection(self, connect_func: Callable[[], bool], test_func: Callable[[], bool]) -> bool:
         """
-        Ensure connection is established, attempting to reconnect if necessary.
+        Ensure connection is established with retry logic.
         
         Args:
             connect_func: Function to establish connection
-            test_func: Function to test connection
+            test_func: Function to test if connection is valid
             
         Returns:
-            True if connected, False otherwise
+            True if connection is established, False otherwise
         """
-        with self.connection_lock:
-            # Check if already connected
-            if self.is_connected:
-                # Check if health check is due
-                current_time = time.time()
-                if current_time - self.last_health_check > self.health_check_interval:
-                    self.last_health_check = current_time
-                    if not test_func():
-                        self.logger.warning("Health check failed, attempting to reconnect")
-                        return self._reconnect(connect_func, test_func)
-                return True
-            
-            # Not connected, attempt to reconnect
-            return self._reconnect(connect_func, test_func)
-    
-    def _reconnect(self, connect_func: Callable[[], bool], test_func: Callable[[], bool]) -> bool:
-        """
-        Attempt to reconnect with exponential backoff.
-        
-        Args:
-            connect_func: Function to establish connection
-            test_func: Function to test connection
-            
-        Returns:
-            True if reconnection is successful, False otherwise
-        """
-        # Check if reconnection should be attempted
-        if not self.should_reconnect():
-            self.logger.error("Reconnection not allowed")
+        # Check if circuit is open
+        if self.circuit_open and not self._should_attempt_reconnect():
+            self.logger.warning("Circuit open, skipping connection attempt")
             return False
-        
-        # Wait before reconnection if necessary
-        current_time = time.time()
-        backoff_time = self.calculate_backoff_time()
-        time_since_last_attempt = current_time - self.last_connection_attempt
-        
-        if time_since_last_attempt < backoff_time:
-            wait_time = backoff_time - time_since_last_attempt
-            self.logger.info(f"Waiting {wait_time:.2f}s before reconnection attempt")
-            time.sleep(wait_time)
-        
-        # Attempt to reconnect
-        self.connection_attempts += 1
-        self.last_connection_attempt = time.time()
-        self.logger.info(f"Attempting to reconnect (attempt {self.connection_attempts}, consecutive failures: {self.consecutive_failures})")
-        
+            
+        # Try to use existing connection
         try:
-            # Attempt connection
-            if connect_func():
-                # Test connection
-                if test_func():
-                    self.connection_successful()
-                    return True
-            
-            # Connection failed
-            self.connection_failed()
-            return False
+            if test_func():
+                self._update_circuit_state(True)
+                return True
         except Exception as e:
-            self.logger.error(f"Error during reconnection: {e}")
-            self.logger.error(traceback.format_exc())
-            self.connection_failed()
-            return False
+            self.logger.debug(f"Connection test failed: {e}")
+            # Continue to reconnection attempt
+        
+        # Attempt reconnection with retry
+        for retry in range(self.max_retries):
+            try:
+                self.logger.info(f"Connection attempt {retry + 1}/{self.max_retries}")
+                
+                # Attempt to connect
+                if connect_func():
+                    # Test connection
+                    if test_func():
+                        self.logger.info(f"Connection established successfully on attempt {retry + 1}")
+                        self._update_circuit_state(True)
+                        return True
+                
+                # If we get here, connection failed
+                self.logger.warning(f"Connection attempt {retry + 1} failed")
+                
+                # Calculate backoff time
+                backoff_time = self._calculate_backoff_time(retry)
+                self.logger.info(f"Waiting {backoff_time:.2f}s before next attempt")
+                
+                # Wait before next attempt
+                time.sleep(backoff_time)
+                
+            except Exception as e:
+                self.logger.error(f"Error during connection attempt {retry + 1}: {e}")
+                
+                # Calculate backoff time
+                backoff_time = self._calculate_backoff_time(retry)
+                self.logger.info(f"Waiting {backoff_time:.2f}s before next attempt")
+                
+                # Wait before next attempt
+                time.sleep(backoff_time)
+        
+        # All attempts failed
+        self.logger.error(f"All {self.max_retries} connection attempts failed")
+        self._update_circuit_state(False)
+        return False
     
-    def safe_api_call(self, api_func: Callable, max_retries: int = 3, retry_delay: float = 1.0,
-                     connect_func: Optional[Callable[[], bool]] = None, 
-                     test_func: Optional[Callable[[], bool]] = None) -> Any:
+    def safe_api_call(self, api_func: Callable[[], T], connect_func: Callable[[], bool] = None, test_func: Callable[[], bool] = None) -> T:
         """
-        Safely call an API function with retry logic.
+        Safely make an API call with automatic reconnection if needed.
         
         Args:
-            api_func: Function to call
-            max_retries: Maximum number of retries
-            retry_delay: Delay between retries in seconds
-            connect_func: Function to establish connection
-            test_func: Function to test connection
+            api_func: Function to make the API call
+            connect_func: Optional function to establish connection if needed
+            test_func: Optional function to test if connection is valid
             
         Returns:
             Result of the API call
         """
-        retries = 0
-        last_error = None
+        # Ensure connection if connect_func and test_func are provided
+        if connect_func and test_func:
+            if not self.ensure_connection(connect_func, test_func):
+                return {"error": "Failed to establish connection"}
         
-        while retries <= max_retries:
+        # Make API call with retry
+        for retry in range(self.max_retries):
             try:
-                # Ensure connection if connect_func and test_func are provided
-                if connect_func and test_func:
-                    if not self.is_connected and not self.ensure_connection(connect_func, test_func):
-                        return {"error": "Not connected to API"}
-                
-                # Call API function
+                # Attempt API call
                 result = api_func()
                 
-                # Check if result is an error
-                if isinstance(result, dict) and "error" in result:
-                    # Check if it's a connection error
-                    error_msg = str(result["error"]).lower()
-                    if "connect" in error_msg or "timeout" in error_msg or "network" in error_msg:
-                        self.is_connected = False
-                        if connect_func and test_func:
-                            if not self.ensure_connection(connect_func, test_func):
-                                return {"error": f"Connection error: {result['error']}"}
-                        retries += 1
-                        time.sleep(retry_delay * retries)
-                        continue
+                # Update connection health on success
+                self._update_circuit_state(True)
                 
                 return result
+                
             except Exception as e:
-                last_error = e
-                error_msg = str(e).lower()
+                self.logger.error(f"API call failed (attempt {retry + 1}/{self.max_retries}): {e}")
                 
-                # Check if it's a connection error
-                if "connect" in error_msg or "timeout" in error_msg or "network" in error_msg:
-                    self.is_connected = False
-                    if connect_func and test_func:
-                        if not self.ensure_connection(connect_func, test_func):
-                            return {"error": f"Connection error: {e}"}
+                # Update circuit state
+                self._update_circuit_state(False)
                 
-                retries += 1
-                if retries <= max_retries:
-                    self.logger.warning(f"API call failed, retrying ({retries}/{max_retries}): {e}")
-                    time.sleep(retry_delay * retries)
-                else:
-                    self.logger.error(f"API call failed after {max_retries} retries: {e}")
-                    return {"error": f"API call failed: {e}"}
+                # Last attempt, return error
+                if retry == self.max_retries - 1:
+                    return {"error": f"API call failed after {self.max_retries} attempts: {str(e)}"}
+                
+                # Calculate backoff time
+                backoff_time = self._calculate_backoff_time(retry)
+                self.logger.info(f"Waiting {backoff_time:.2f}s before next attempt")
+                
+                # Wait before next attempt
+                time.sleep(backoff_time)
+                
+                # Try to reconnect if connect_func and test_func are provided
+                if connect_func and test_func:
+                    if not self.ensure_connection(connect_func, test_func):
+                        return {"error": "Failed to re-establish connection"}
         
-        return {"error": f"API call failed: {last_error}"}
+        # This should never be reached due to the return in the last retry
+        return {"error": "Unexpected error in API call retry logic"}
     
-    def get_connection_stats(self) -> Dict[str, Any]:
+    async def async_safe_api_call(self, api_func: Callable[[], T], connect_func: Callable[[], bool] = None, test_func: Callable[[], bool] = None) -> T:
         """
-        Get connection statistics.
+        Safely make an asynchronous API call with automatic reconnection if needed.
         
+        Args:
+            api_func: Async function to make the API call
+            connect_func: Optional async function to establish connection if needed
+            test_func: Optional async function to test if connection is valid
+            
         Returns:
-            Dict containing connection statistics
+            Result of the API call
         """
-        with self.connection_lock:
-            current_time = time.time()
+        # Ensure connection if connect_func and test_func are provided
+        if connect_func and test_func:
+            # Convert to async if needed
+            async_connect_func = connect_func if asyncio.iscoroutinefunction(connect_func) else lambda: connect_func()
+            async_test_func = test_func if asyncio.iscoroutinefunction(test_func) else lambda: test_func()
             
-            stats = {
-                "is_connected": self.is_connected,
-                "connection_attempts": self.connection_attempts,
-                "connection_failures": self.connection_failures,
-                "consecutive_failures": self.consecutive_failures,
-                "time_since_last_attempt": current_time - self.last_connection_attempt if self.last_connection_attempt > 0 else -1,
-                "time_since_last_success": current_time - self.last_successful_connection if self.last_successful_connection > 0 else -1,
-                "success_rate": (self.connection_attempts - self.connection_failures) / self.connection_attempts * 100 if self.connection_attempts > 0 else 0
-            }
+            # Ensure connection
+            connection_result = await self._async_ensure_connection(async_connect_func, async_test_func)
+            if not connection_result:
+                return {"error": "Failed to establish connection"}
+        
+        # Make API call with retry
+        for retry in range(self.max_retries):
+            try:
+                # Attempt API call
+                result = await api_func()
+                
+                # Update connection health on success
+                self._update_circuit_state(True)
+                
+                return result
+                
+            except Exception as e:
+                self.logger.error(f"Async API call failed (attempt {retry + 1}/{self.max_retries}): {e}")
+                
+                # Update circuit state
+                self._update_circuit_state(False)
+                
+                # Last attempt, return error
+                if retry == self.max_retries - 1:
+                    return {"error": f"Async API call failed after {self.max_retries} attempts: {str(e)}"}
+                
+                # Calculate backoff time
+                backoff_time = self._calculate_backoff_time(retry)
+                self.logger.info(f"Waiting {backoff_time:.2f}s before next attempt")
+                
+                # Wait before next attempt
+                await asyncio.sleep(backoff_time)
+                
+                # Try to reconnect if connect_func and test_func are provided
+                if connect_func and test_func:
+                    connection_result = await self._async_ensure_connection(async_connect_func, async_test_func)
+                    if not connection_result:
+                        return {"error": "Failed to re-establish connection"}
+        
+        # This should never be reached due to the return in the last retry
+        return {"error": "Unexpected error in async API call retry logic"}
+    
+    async def _async_ensure_connection(self, connect_func, test_func) -> bool:
+        """
+        Ensure connection is established with retry logic (async version).
+        
+        Args:
+            connect_func: Async function to establish connection
+            test_func: Async function to test if connection is valid
             
-            return stats
+        Returns:
+            True if connection is established, False otherwise
+        """
+        # Check if circuit is open
+        if self.circuit_open and not self._should_attempt_reconnect():
+            self.logger.warning("Circuit open, skipping connection attempt")
+            return False
+            
+        # Try to use existing connection
+        try:
+            if await test_func():
+                self._update_circuit_state(True)
+                return True
+        except Exception as e:
+            self.logger.debug(f"Async connection test failed: {e}")
+            # Continue to reconnection attempt
+        
+        # Attempt reconnection with retry
+        for retry in range(self.max_retries):
+            try:
+                self.logger.info(f"Async connection attempt {retry + 1}/{self.max_retries}")
+                
+                # Attempt to connect
+                if await connect_func():
+                    # Test connection
+                    if await test_func():
+                        self.logger.info(f"Async connection established successfully on attempt {retry + 1}")
+                        self._update_circuit_state(True)
+                        return True
+                
+                # If we get here, connection failed
+                self.logger.warning(f"Async connection attempt {retry + 1} failed")
+                
+                # Calculate backoff time
+                backoff_time = self._calculate_backoff_time(retry)
+                self.logger.info(f"Waiting {backoff_time:.2f}s before next attempt")
+                
+                # Wait before next attempt
+                await asyncio.sleep(backoff_time)
+                
+            except Exception as e:
+                self.logger.error(f"Error during async connection attempt {retry + 1}: {e}")
+                
+                # Calculate backoff time
+                backoff_time = self._calculate_backoff_time(retry)
+                self.logger.info(f"Waiting {backoff_time:.2f}s before next attempt")
+                
+                # Wait before next attempt
+                await asyncio.sleep(backoff_time)
+        
+        # All attempts failed
+        self.logger.error(f"All {self.max_retries} async connection attempts failed")
+        self._update_circuit_state(False)
+        return False

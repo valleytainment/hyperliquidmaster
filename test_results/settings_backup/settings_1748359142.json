@@ -1,0 +1,35 @@
+{
+    "account_address": "",
+    "secret_key": "",
+    "api_url": "https://api.hyperliquid.xyz",
+    "symbols": [
+        "BTC",
+        "ETH",
+        "SOL"
+    ],
+    "poll_interval_seconds": 5,
+    "risk_percent": 0.01,
+    "max_open_positions": 3,
+    "trading_mode": "monitor_only",
+    "strategy": "master_omni_overlord",
+    "strategy_params": {
+        "signal_threshold": 0.7,
+        "trend_filter_strength": 0.5,
+        "mean_reversion_factor": 0.3,
+        "volatility_adjustment": 1.0
+    },
+    "logging": {
+        "level": "INFO",
+        "file_path": "logs/trading_bot.log",
+        "max_file_size_mb": 10,
+        "backup_count": 5
+    },
+    "notifications": {
+        "enabled": false,
+        "email": "",
+        "webhook_url": "",
+        "notify_on_trade": true,
+        "notify_on_error": true
+    },
+    "test_setting": "test_value"
+}
