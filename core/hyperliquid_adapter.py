@@ -1,286 +1,490 @@
 """
-HyperliquidAdapter module for interfacing with the Hyperliquid exchange API.
-This is a real implementation for live trading.
+HyperliquidAdapter module for connecting to the Hyperliquid exchange API.
+Provides direct integration with the Hyperliquid exchange for trading operations.
 """
 
-import json
 import os
-from typing import Dict, List, Optional, Any, Union
+import json
+import time
+import logging
+import traceback
+from typing import Dict, List, Any, Optional, Tuple
 
+# Import eth_account for LocalAccount creation
+import eth_account
+from eth_account.signers.local import LocalAccount
+
+# Import Hyperliquid SDK - fixed import paths
 from hyperliquid.exchange import Exchange
 from hyperliquid.info import Info
-from hyperliquid.utils import constants
 
 class HyperliquidAdapter:
     """
     Adapter for the Hyperliquid exchange API.
-    Provides methods for trading, account management, and market data.
+    Provides methods for interacting with the exchange.
     """
     
     def __init__(self, config_path: str):
         """
-        Initialize the adapter with configuration from the provided path.
+        Initialize the Hyperliquid adapter.
         
         Args:
-            config_path: Path to the configuration file containing API keys
+            config_path: Path to the configuration file
         """
         self.config_path = config_path
+        self.logger = logging.getLogger("HyperliquidAdapter")
+        self.exchange = None
+        self.info = None
+        self.account_address = ""
+        self.secret_key = ""
+        self.is_connected = False
+        self.api_url = "https://api.hyperliquid.xyz"
+        
+        # Load configuration
         self.config = self._load_config()
         
-        # Initialize API clients
-        self.base_url = constants.MAINNET_API_URL  # Use mainnet by default
-        self.info = Info(self.base_url, skip_ws=True)
-        
-        # Only initialize exchange if we have valid credentials
-        self.exchange = None
-        if self._has_valid_credentials():
-            self._initialize_exchange()
+        # Initialize API if keys are available
+        self._init_api()
     
     def _load_config(self) -> Dict:
-        """Load configuration from file."""
+        """
+        Load configuration from file.
+        
+        Returns:
+            Dict containing the configuration
+        """
         try:
             if os.path.exists(self.config_path):
                 with open(self.config_path, 'r') as f:
                     return json.load(f)
             else:
-                # Create default config
-                default_config = {
-                    "account_address": "",
-                    "secret_key": "",
-                    "symbols": ["BTC", "ETH", "SOL"],
-                    "theme": "dark"
-                }
-                
-                with open(self.config_path, 'w') as f:
-                    json.dump(default_config, f, indent=2)
-                
-                return default_config
+                return {}
         except Exception as e:
-            print(f"Error loading config: {e}")
+            self.logger.error(f"Error loading config: {e}")
             return {}
     
-    def _has_valid_credentials(self) -> bool:
-        """Check if valid API credentials are available."""
-        return (
-            "account_address" in self.config and 
-            "secret_key" in self.config and 
-            self.config["account_address"] and 
-            self.config["secret_key"]
-        )
-    
-    def _initialize_exchange(self):
-        """Initialize the exchange client with credentials."""
-        try:
-            self.exchange = Exchange(
-                self.base_url,
-                self.config["account_address"],
-                self.config["secret_key"]
-            )
-        except Exception as e:
-            print(f"Error initializing exchange: {e}")
-            self.exchange = None
-    
-    def reload_config(self):
-        """Reload configuration and reinitialize if needed."""
+    def reload_config(self) -> None:
+        """Reload configuration from file."""
         self.config = self._load_config()
-        if self._has_valid_credentials():
-            self._initialize_exchange()
+        self._init_api()
     
-    def get_account_info(self) -> Dict:
+    def _init_api(self) -> None:
+        """Initialize the Hyperliquid API with current configuration."""
+        try:
+            # Get API keys from config
+            self.account_address = self.config.get("account_address", "")
+            self.secret_key = self.config.get("secret_key", "")
+            self.api_url = self.config.get("api_url", "https://api.hyperliquid.xyz")
+            
+            # Check if keys are available
+            if not self.account_address or not self.secret_key:
+                self.is_connected = False
+                return
+            
+            # Initialize API
+            try:
+                # Create LocalAccount from secret key
+                account: LocalAccount = eth_account.Account.from_key(self.secret_key)
+                
+                # Initialize Info and Exchange
+                self.info = Info(base_url=self.api_url)
+                self.exchange = Exchange(
+                    wallet=account,
+                    base_url=self.api_url,
+                    account_address=self.account_address
+                )
+                self.is_connected = True
+                self.logger.info("API initialized successfully")
+            except Exception as e:
+                self.logger.error(f"Error initializing exchange: {e}")
+                self.is_connected = False
+        except Exception as e:
+            self.logger.error(f"Error initializing API: {e}")
+            self.is_connected = False
+    
+    def set_api_keys(self, account_address: str, secret_key: str) -> bool:
         """
-        Get account information including equity and positions.
+        Set API keys and initialize the API.
+        
+        Args:
+            account_address: The account address
+            secret_key: The secret key
+            
+        Returns:
+            True if successful, False otherwise
+        """
+        try:
+            # Update config
+            self.config["account_address"] = account_address
+            self.config["secret_key"] = secret_key
+            
+            # Save config
+            with open(self.config_path, 'w') as f:
+                json.dump(self.config, f, indent=2)
+            
+            # Initialize API
+            self._init_api()
+            
+            return True
+        except Exception as e:
+            self.logger.error(f"Error setting API keys: {e}")
+            return False
+    
+    def test_connection(self) -> Dict[str, Any]:
+        """
+        Test the connection to the exchange.
+        
+        Returns:
+            Dict containing the result of the test
+        """
+        try:
+            if not self.is_connected:
+                return {"error": "Not connected to exchange"}
+            
+            # Test connection by getting user state
+            user_state = self.info.user_state(self.account_address)
+            
+            if "error" in user_state:
+                self.logger.error(f"Connection test failed: {user_state['error']}")
+                return {"error": f"Connection test failed: {user_state['error']}"}
+            
+            return {"success": "Connection test successful"}
+        except Exception as e:
+            self.logger.error(f"Error testing connection: {e}")
+            return {"error": f"Error testing connection: {e}"}
+    
+    def get_account_info(self) -> Dict[str, Any]:
+        """
+        Get account information.
         
         Returns:
             Dict containing account information
         """
         try:
-            if not self._has_valid_credentials():
-                return {"error": "No valid API credentials"}
+            if not self.is_connected:
+                return {"error": "Not connected to exchange"}
             
-            user_state = self.info.user_state(self.config["account_address"])
+            # Get user state
+            user_state = self.info.user_state(self.account_address)
             
-            # Extract relevant information
+            if "error" in user_state:
+                self.logger.error(f"Error getting account info: {user_state['error']}")
+                return {"error": f"Error getting account info: {user_state['error']}"}
+            
+            # Extract account info
+            margin_summary = user_state.get("marginSummary", {})
             account_info = {
-                "equity": 0.0,
-                "available_balance": 0.0,
-                "positions": []
+                "equity": float(margin_summary.get("accountValue", 0)),
+                "margin": float(margin_summary.get("totalMargin", 0)),
+                "free_margin": float(margin_summary.get("marginAvailable", 0)),
+                "margin_ratio": float(margin_summary.get("marginRatio", 0)),
+                "unrealized_pnl": float(margin_summary.get("unrealizedPnl", 0)),
+                "realized_pnl": float(margin_summary.get("realizedPnl", 0)),
+                "total_pnl": float(margin_summary.get("totalPnl", 0)),
+                "wallet_balance": float(margin_summary.get("walletBalance", 0))
             }
-            
-            if "crossMarginSummary" in user_state:
-                margin_summary = user_state["crossMarginSummary"]
-                account_info["equity"] = float(margin_summary.get("equity", 0))
-                account_info["available_balance"] = float(margin_summary.get("availableBalance", 0))
-            
-            if "assetPositions" in user_state:
-                for position in user_state["assetPositions"]:
-                    if "position" in position:
-                        account_info["positions"].append(position["position"])
             
             return account_info
         except Exception as e:
+            self.logger.error(f"Error getting account info: {e}")
             return {"error": f"Error getting account info: {e}"}
     
-    def place_order(self, symbol: str, side: bool, size: float, price: Optional[float] = None, 
-                   order_type: str = "LIMIT") -> Dict:
+    def get_market_data(self, symbol: str) -> Dict[str, Any]:
         """
-        Place an order on the exchange.
+        Get market data for a symbol.
         
         Args:
-            symbol: Trading symbol (e.g., "BTC")
-            side: True for buy, False for sell
-            size: Order size
-            price: Order price (required for limit orders)
-            order_type: Order type ("LIMIT" or "MARKET")
+            symbol: The symbol to get market data for
             
         Returns:
-            Dict containing order result
+            Dict containing market data
         """
         try:
-            if not self.exchange:
-                return {"error": "Exchange not initialized"}
+            if not self.info:
+                return {"error": "Info API not initialized"}
             
-            # Convert order type to Hyperliquid format
-            if order_type == "MARKET":
-                order_spec = {"market": {}}
-            else:
-                # Default to GTC limit order
-                order_spec = {"limit": {"tif": "Gtc"}}
+            if not symbol or symbol.strip() == "":
+                return {"error": "Symbol cannot be empty"}
             
-            # Place the order
-            result = self.exchange.order(symbol, side, size, price if price else 0, order_spec)
-            return result
+            # Get market data
+            try:
+                meta_and_asset = self.info.meta_and_asset()
+                
+                # Find the symbol in the meta data
+                symbol_data = None
+                for asset in meta_and_asset.get("universe", []):
+                    if asset.get("name") == symbol:
+                        symbol_data = asset
+                        break
+                
+                if not symbol_data:
+                    self.logger.error(f"Symbol {symbol} not found")
+                    return {"error": f"Symbol {symbol} not found"}
+                
+                # Get market data for the symbol
+                market_data = self.info.market_data(symbol)
+                
+                # Extract market data
+                return {
+                    "symbol": symbol,
+                    "price": float(market_data.get("midPrice", 0)),
+                    "mark_price": float(market_data.get("markPrice", 0)),
+                    "index_price": float(market_data.get("indexPrice", 0)),
+                    "funding_rate": float(market_data.get("fundingRate", 0)),
+                    "open_interest": float(market_data.get("openInterest", 0)),
+                    "volume_24h": float(market_data.get("volume24h", 0)),
+                    "price_change_24h": float(market_data.get("priceChange24h", 0))
+                }
+            except Exception as e:
+                self.logger.error(f"Error getting market data: {e}")
+                return {"error": f"Error getting market data: {e}"}
         except Exception as e:
-            return {"error": f"Error placing order: {e}"}
+            self.logger.error(f"Error getting market data: {e}")
+            return {"error": f"Error getting market data: {e}"}
     
-    def cancel_order(self, symbol: str, order_id: str) -> Dict:
-        """
-        Cancel an order by ID.
-        
-        Args:
-            symbol: Trading symbol
-            order_id: Order ID to cancel
-            
-        Returns:
-            Dict containing cancel result
-        """
-        try:
-            if not self.exchange:
-                return {"error": "Exchange not initialized"}
-            
-            result = self.exchange.cancel(symbol, order_id)
-            return result
-        except Exception as e:
-            return {"error": f"Error canceling order: {e}"}
-    
-    def get_positions(self) -> List[Dict]:
+    def get_positions(self) -> Dict[str, Any]:
         """
         Get current positions.
         
         Returns:
-            List of position dictionaries
+            Dict containing positions
         """
         try:
-            account_info = self.get_account_info()
-            return account_info.get("positions", [])
+            if not self.is_connected:
+                return {"error": "Not connected to exchange"}
+            
+            # Get user state
+            user_state = self.info.user_state(self.account_address)
+            
+            if "error" in user_state:
+                self.logger.error(f"Error getting positions: {user_state['error']}")
+                return {"error": f"Error getting positions: {user_state['error']}"}
+            
+            # Extract positions
+            positions = user_state.get("assetPositions", [])
+            
+            return {"success": True, "data": positions}
         except Exception as e:
-            print(f"Error getting positions: {e}")
-            return []
+            self.logger.error(f"Error getting positions: {e}")
+            return {"error": f"Error getting positions: {e}"}
     
-    def close_position(self, symbol: str, size_percentage: float = 100.0) -> Dict:
+    def get_orders(self) -> Dict[str, Any]:
         """
-        Close a position for a symbol.
+        Get current orders.
+        
+        Returns:
+            Dict containing orders
+        """
+        try:
+            if not self.is_connected:
+                return {"error": "Not connected to exchange"}
+            
+            # Get open orders
+            orders = self.info.open_orders(self.account_address)
+            
+            if "error" in orders:
+                self.logger.error(f"Error getting orders: {orders['error']}")
+                return {"error": f"Error getting orders: {orders['error']}"}
+            
+            return {"success": True, "data": orders}
+        except Exception as e:
+            self.logger.error(f"Error getting orders: {e}")
+            return {"error": f"Error getting orders: {e}"}
+    
+    def place_order(self, symbol: str, is_buy: bool, size: float, price: float, order_type: str = "LIMIT") -> Dict[str, Any]:
+        """
+        Place an order.
         
         Args:
-            symbol: Trading symbol
-            size_percentage: Percentage of position to close (default: 100%)
+            symbol: The symbol to place an order for
+            is_buy: Whether the order is a buy order
+            size: The size of the order
+            price: The price of the order
+            order_type: The type of order (LIMIT, MARKET)
             
         Returns:
-            Dict containing close result
+            Dict containing the result of the operation
         """
         try:
-            if not self.exchange:
-                return {"error": "Exchange not initialized"}
+            if not self.is_connected:
+                return {"error": "Not connected to exchange"}
             
-            # Get current position
-            positions = self.get_positions()
+            # Place order
+            try:
+                # Prepare order type
+                order_spec = {"limit": {"tif": "Gtc"}} if order_type == "LIMIT" else "market"
+                
+                # Place order
+                order_result = self.exchange.order(
+                    name=symbol,
+                    is_buy=is_buy,
+                    sz=size,
+                    limit_px=price,
+                    order_type=order_spec
+                )
+                
+                if order_result.get("status") != "ok":
+                    self.logger.error(f"Error placing order: {order_result}")
+                    return {"error": f"Error placing order: {order_result}"}
+                
+                return {"success": True, "data": order_result}
+            except Exception as e:
+                self.logger.error(f"Error placing order: {e}")
+                return {"error": f"Error placing order: {e}"}
+        except Exception as e:
+            self.logger.error(f"Error placing order: {e}")
+            return {"error": f"Error placing order: {e}"}
+    
+    def cancel_order(self, order_id: str) -> Dict[str, Any]:
+        """
+        Cancel an order.
+        
+        Args:
+            order_id: The ID of the order to cancel
+            
+        Returns:
+            Dict containing the result of the operation
+        """
+        try:
+            if not self.is_connected:
+                return {"error": "Not connected to exchange"}
+            
+            # Cancel order
+            try:
+                cancel_result = self.exchange.cancel(oid=order_id)
+                
+                if cancel_result.get("status") != "ok":
+                    self.logger.error(f"Error canceling order: {cancel_result}")
+                    return {"error": f"Error canceling order: {cancel_result}"}
+                
+                return {"success": True, "data": cancel_result}
+            except Exception as e:
+                self.logger.error(f"Error canceling order: {e}")
+                return {"error": f"Error canceling order: {e}"}
+        except Exception as e:
+            self.logger.error(f"Error canceling order: {e}")
+            return {"error": f"Error canceling order: {e}"}
+    
+    def cancel_all_orders(self, symbol: str = None) -> Dict[str, Any]:
+        """
+        Cancel all orders.
+        
+        Args:
+            symbol: The symbol to cancel orders for (optional)
+            
+        Returns:
+            Dict containing the result of the operation
+        """
+        try:
+            if not self.is_connected:
+                return {"error": "Not connected to exchange"}
+            
+            # Cancel all orders
+            try:
+                cancel_result = self.exchange.cancel_all(coin=symbol)
+                
+                if cancel_result.get("status") != "ok":
+                    self.logger.error(f"Error canceling all orders: {cancel_result}")
+                    return {"error": f"Error canceling all orders: {cancel_result}"}
+                
+                return {"success": True, "data": cancel_result}
+            except Exception as e:
+                self.logger.error(f"Error canceling all orders: {e}")
+                return {"error": f"Error canceling all orders: {e}"}
+        except Exception as e:
+            self.logger.error(f"Error canceling all orders: {e}")
+            return {"error": f"Error canceling all orders: {e}"}
+    
+    def close_position(self, symbol: str, size_percentage: float = 100.0) -> Dict[str, Any]:
+        """
+        Close a position.
+        
+        Args:
+            symbol: The symbol to close the position for
+            size_percentage: The percentage of the position to close (0-100)
+            
+        Returns:
+            Dict containing the result of the operation
+        """
+        try:
+            if not self.is_connected:
+                return {"error": "Not connected to exchange"}
+            
+            # Get positions
+            positions_result = self.get_positions()
+            
+            if "error" in positions_result:
+                return positions_result
+            
+            positions = positions_result.get("data", [])
+            
+            # Find the position for the symbol
             position = None
-            
             for pos in positions:
                 if pos.get("coin") == symbol:
                     position = pos
                     break
             
             if not position:
-                return {"error": f"No open position for {symbol}"}
+                self.logger.error(f"No position found for {symbol}")
+                return {"error": f"No position found for {symbol}"}
             
-            # Determine side and size
-            position_size = float(position.get("szi", 0))
-            if position_size == 0:
-                return {"error": f"Position size is zero for {symbol}"}
+            # Calculate size to close
+            position_data = position.get("position", {})
+            size = float(position_data.get("szi", 0))
+            if size == 0:
+                self.logger.error(f"Position size is 0 for {symbol}")
+                return {"error": f"Position size is 0 for {symbol}"}
             
-            is_long = position_size > 0
-            close_size = abs(position_size) * (size_percentage / 100.0)
+            close_size = size * (size_percentage / 100.0)
+            is_long = size > 0
             
-            # Place order in opposite direction
-            return self.place_order(symbol, not is_long, close_size, None, "MARKET")
+            # Get current market price
+            market_data = self.get_market_data(symbol)
+            
+            if "error" in market_data:
+                return market_data
+            
+            price = market_data["price"]
+            
+            # Place order to close position
+            return self.place_order(
+                symbol=symbol,
+                is_buy=not is_long,  # Opposite of position direction
+                size=abs(close_size),
+                price=price,
+                order_type="LIMIT"
+            )
         except Exception as e:
+            self.logger.error(f"Error closing position: {e}")
             return {"error": f"Error closing position: {e}"}
     
-    def get_market_data(self, symbol: str) -> Dict:
+    def get_available_symbols(self) -> List[str]:
         """
-        Get market data for a symbol.
+        Get a list of available trading symbols.
         
-        Args:
-            symbol: Trading symbol
-            
         Returns:
-            Dict containing market data
+            List of available symbols
         """
         try:
-            # Get market data from info endpoint
-            meta_and_asset = self.info.meta_and_asset()
+            if not self.info:
+                return []
             
-            # Find the asset in the response
-            asset_info = None
-            for asset in meta_and_asset.get("universe", []):
-                if asset.get("name") == symbol:
-                    asset_info = asset
-                    break
-            
-            if not asset_info:
-                return {"error": f"Symbol {symbol} not found"}
-            
-            # Get order book for the symbol
-            order_book = self.info.l2_snapshot(symbol)
-            
-            # Construct market data
-            market_data = {
-                "symbol": symbol,
-                "price": float(asset_info.get("oraclePrice", 0)),
-                "funding_rate": float(asset_info.get("funding", {}).get("fundingRate", 0)),
-                "open_interest": float(asset_info.get("openInterest", {}).get("szi", 0)),
-                "order_book": order_book
-            }
-            
-            return market_data
+            # Get meta data
+            try:
+                meta_and_asset = self.info.meta_and_asset()
+                
+                # Extract symbols
+                symbols = []
+                for asset in meta_and_asset.get("universe", []):
+                    symbol = asset.get("name")
+                    if symbol:
+                        symbols.append(symbol)
+                
+                return symbols
+            except Exception as e:
+                self.logger.error(f"Error getting available symbols: {e}")
+                return []
         except Exception as e:
-            return {"error": f"Error getting market data: {e}"}
-    
-    def get_order_status(self, order_id: str) -> Dict:
-        """
-        Get status of an order by ID.
-        
-        Args:
-            order_id: Order ID
-            
-        Returns:
-            Dict containing order status
-        """
-        try:
-            if not self._has_valid_credentials():
-                return {"error": "No valid API credentials"}
-            
-            order_status = self.info.query_order_by_oid(self.config["account_address"], order_id)
-            return order_status
-        except Exception as e:
-            return {"error": f"Error getting order status: {e}"}
+            self.logger.error(f"Error getting available symbols: {e}")
+            return []
