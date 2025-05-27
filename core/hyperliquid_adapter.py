@@ -19,6 +19,7 @@ from eth_account.signers.local import LocalAccount
 # Import Hyperliquid SDK - fixed import paths
 from hyperliquid.exchange import Exchange
 from hyperliquid.info import Info
+from hyperliquid.utils.signing import OrderType
 
 class HyperliquidAdapter:
     """
@@ -733,23 +734,38 @@ class HyperliquidAdapter:
             
             # Prepare order
             side = "B" if is_buy else "S"
-            order_type_api = order_type.lower()
             
-            # Place order
+            # Convert string order_type to proper OrderType format
+            # OrderType is a TypedDict that expects {'limit': 'limit'} or similar format
+            order_type_lower = order_type.lower()
+            order_type_dict = {order_type_lower: order_type_lower}
+            
+            # Place order - FIXED: Use 'name' instead of 'coin' parameter and proper OrderType format
             result = self._safe_api_call(lambda: self.exchange.order(
-                coin=symbol,
+                name=symbol,  # Changed from 'coin' to 'name' to match SDK signature
                 is_buy=is_buy,
                 sz=size,
                 limit_px=price,
-                order_type=order_type_api
+                order_type=order_type_dict  # Changed from string to dict format
             ))
             
             if isinstance(result, dict) and "error" in result:
                 self.logger.error(f"Error placing order: {result['error']}")
                 return {"error": f"Error placing order: {result['error']}"}
             
-            # Extract order ID
-            order_id = self._safe_get_attribute(result, "oid", "Unknown")
+            # Extract order ID - handle both string and dict responses
+            order_id = "Unknown"
+            if isinstance(result, dict) and "oid" in result:
+                order_id = result["oid"]
+            elif isinstance(result, str):
+                # Try to parse as JSON if it's a string
+                try:
+                    parsed = json.loads(result)
+                    if isinstance(parsed, dict) and "oid" in parsed:
+                        order_id = parsed["oid"]
+                except:
+                    # If parsing fails, use the string as is
+                    order_id = result
             
             return {
                 "data": {
@@ -800,9 +816,9 @@ class HyperliquidAdapter:
             if not coin:
                 return {"error": f"Order {order_id} not found"}
             
-            # Cancel order
+            # Cancel order - FIXED: Use 'name' instead of 'coin' parameter
             result = self._safe_api_call(lambda: self.exchange.cancel_order(
-                coin=coin,
+                name=coin,  # Changed from 'coin' to 'name' to match SDK signature
                 oid=order_id
             ))
             
@@ -846,8 +862,9 @@ class HyperliquidAdapter:
                 order_id = order.get("id")
                 coin = order.get("symbol")
                 
+                # FIXED: Use 'name' instead of 'coin' parameter
                 result = self._safe_api_call(lambda: self.exchange.cancel_order(
-                    coin=coin,
+                    name=coin,  # Changed from 'coin' to 'name' to match SDK signature
                     oid=order_id
                 ))
                 
@@ -917,6 +934,7 @@ class HyperliquidAdapter:
                 return {"error": f"Invalid market price for {symbol}"}
             
             # Place market order to close position
+            # FIXED: Use proper OrderType format
             result = self.place_order(
                 symbol=symbol,
                 is_buy=is_buy,
