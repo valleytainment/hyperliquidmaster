@@ -1,0 +1,692 @@
+2025-05-27 21:12:56,040 [INFO] Starting Hyperliquid Trading Bot in headless mode
+2025-05-27 21:12:56,426 [INFO] Starting headless tests for Hyperliquid Trading Bot
+2025-05-27 21:12:56,428 [INFO] Setting up test case
+2025-05-27 21:12:56,428 [INFO] Error handler initialized
+2025-05-27 21:12:56,428 [INFO] API Rate Limiter initialized with 60 req/min, 1000 req/hour, 60 min cooldown
+2025-05-27 21:12:56,429 [INFO] Enhanced Mock Data Provider initialized
+2025-05-27 21:12:56,429 [INFO] RobustSignalGenerator initialized with technical indicators and error handler
+2025-05-27 21:12:56,429 [INFO] Initializing Master Omni Overlord Robust Strategy for XRP on 1h timeframe...
+2025-05-27 21:12:56,429 [INFO] Master Omni Overlord Robust Strategy initialized successfully
+2025-05-27 21:12:56,429 [INFO] Creating mock data
+2025-05-27 21:12:56,431 [INFO] Mock data created
+2025-05-27 21:12:56,432 [INFO] Testing API rate limiter
+2025-05-27 21:12:56,432 [INFO] Initial status: {'minute_requests': 0, 'hour_requests': 0, 'max_requests_per_minute': 60, 'max_requests_per_hour': 1000, 'in_cooldown': False, 'cooldown_remaining_seconds': 0, 'cooldown_remaining_formatted': '0:00:00', 'is_limited': False, 'cooldown_remaining': 0}
+2025-05-27 21:12:56,436 [INFO] Status after calls: {'minute_requests': 10, 'hour_requests': 10, 'max_requests_per_minute': 60, 'max_requests_per_hour': 1000, 'in_cooldown': False, 'cooldown_remaining_seconds': 0, 'cooldown_remaining_formatted': '0:00:00', 'is_limited': False, 'cooldown_remaining': 0}
+2025-05-27 21:12:56,437 [INFO] Rate limiter state reset
+2025-05-27 21:12:56,437 [INFO] Status after reset: {'minute_requests': 0, 'hour_requests': 0, 'max_requests_per_minute': 60, 'max_requests_per_hour': 1000, 'in_cooldown': False, 'cooldown_remaining_seconds': 0, 'cooldown_remaining_formatted': '0:00:00', 'is_limited': False, 'cooldown_remaining': 0}
+2025-05-27 21:12:56,437 [INFO] API rate limiter test passed
+2025-05-27 21:12:56,437 [INFO] Setting up test case
+2025-05-27 21:12:56,437 [INFO] Error handler initialized
+2025-05-27 21:12:56,438 [INFO] API Rate Limiter initialized with 60 req/min, 1000 req/hour, 60 min cooldown
+2025-05-27 21:12:56,438 [INFO] Enhanced Mock Data Provider initialized
+2025-05-27 21:12:56,438 [INFO] RobustSignalGenerator initialized with technical indicators and error handler
+2025-05-27 21:12:56,438 [INFO] Initializing Master Omni Overlord Robust Strategy for XRP on 1h timeframe...
+2025-05-27 21:12:56,438 [INFO] Master Omni Overlord Robust Strategy initialized successfully
+2025-05-27 21:12:56,438 [INFO] Creating mock data
+2025-05-27 21:12:56,440 [INFO] Mock data created
+2025-05-27 21:12:56,440 [INFO] Testing data loading
+2025-05-27 21:12:56,445 [INFO] Loaded 100 candles
+2025-05-27 21:12:56,445 [INFO] Data set for XRP on 1h timeframe with 100 candles
+2025-05-27 21:12:56,445 [INFO] Data loading test passed
+2025-05-27 21:12:56,445 [INFO] Setting up test case
+2025-05-27 21:12:56,445 [INFO] Error handler initialized
+2025-05-27 21:12:56,446 [INFO] API Rate Limiter initialized with 60 req/min, 1000 req/hour, 60 min cooldown
+2025-05-27 21:12:56,446 [INFO] Enhanced Mock Data Provider initialized
+2025-05-27 21:12:56,446 [INFO] RobustSignalGenerator initialized with technical indicators and error handler
+2025-05-27 21:12:56,446 [INFO] Initializing Master Omni Overlord Robust Strategy for XRP on 1h timeframe...
+2025-05-27 21:12:56,446 [INFO] Master Omni Overlord Robust Strategy initialized successfully
+2025-05-27 21:12:56,446 [INFO] Creating mock data
+2025-05-27 21:12:56,448 [INFO] Mock data created
+2025-05-27 21:12:56,449 [INFO] Testing error handling
+2025-05-27 21:12:56,449 [ERROR] [Test error] test_function
+2025-05-27 21:12:56,449 [INFO] Error handling test passed
+2025-05-27 21:12:56,449 [INFO] Setting up test case
+2025-05-27 21:12:56,449 [INFO] Error handler initialized
+2025-05-27 21:12:56,449 [INFO] API Rate Limiter initialized with 60 req/min, 1000 req/hour, 60 min cooldown
+2025-05-27 21:12:56,450 [INFO] Enhanced Mock Data Provider initialized
+2025-05-27 21:12:56,450 [INFO] RobustSignalGenerator initialized with technical indicators and error handler
+2025-05-27 21:12:56,450 [INFO] Initializing Master Omni Overlord Robust Strategy for XRP on 1h timeframe...
+2025-05-27 21:12:56,450 [INFO] Master Omni Overlord Robust Strategy initialized successfully
+2025-05-27 21:12:56,450 [INFO] Creating mock data
+2025-05-27 21:12:56,452 [INFO] Mock data created
+2025-05-27 21:12:56,452 [INFO] Testing integration of all components
+2025-05-27 21:12:56,455 [INFO] Data set for XRP on 1h timeframe with 100 candles
+2025-05-27 21:12:56,455 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,459 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,459 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,459 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,465 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,465 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,466 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,468 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,468 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,468 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,474 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,474 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,474 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,476 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,476 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,476 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,482 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,482 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,482 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,484 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,484 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,484 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,489 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,489 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,490 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,491 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,491 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,492 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,496 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,497 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,497 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,499 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,499 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,499 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,504 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,504 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,504 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,506 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,506 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,506 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,511 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,511 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,511 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,513 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,513 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,513 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,518 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,518 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,519 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,520 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,520 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,521 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,526 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,526 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,526 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,528 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,528 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,528 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,533 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,533 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,533 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,535 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,535 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,535 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,540 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,540 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,540 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,542 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,542 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,542 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,547 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,547 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,548 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,549 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,550 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,550 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,555 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,555 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,555 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,557 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,557 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,557 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,562 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,562 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,562 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,564 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,564 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,564 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,569 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,569 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,570 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,571 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,571 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,572 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,576 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,577 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,577 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,578 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,579 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,579 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,584 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,584 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,584 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,586 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,586 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,586 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,591 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,591 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,591 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,593 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,593 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,593 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,598 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,599 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,599 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,602 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,602 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,602 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,608 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,608 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,608 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,610 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,610 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,610 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,615 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,616 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,616 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,618 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,618 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,618 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,623 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,623 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,624 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,626 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,626 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,626 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,631 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,631 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,631 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,633 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,633 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,633 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,638 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,639 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,639 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,641 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,641 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,641 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,647 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,647 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,647 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,649 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,649 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,649 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,654 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,654 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,655 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,656 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,657 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,657 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,662 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,662 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,662 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,664 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,664 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,664 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,669 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,669 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,670 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,671 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,671 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,672 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,677 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,677 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,677 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,679 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,679 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,679 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,684 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,684 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,685 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,686 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,687 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,687 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,692 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,692 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,692 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,695 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,695 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,695 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,700 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,700 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,700 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,702 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,702 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,703 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,708 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,708 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,708 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,710 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,710 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,710 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,715 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,715 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,715 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,717 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,717 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,717 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,722 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,722 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,723 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,725 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,725 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,725 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,730 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,730 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,730 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,732 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,732 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,732 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,737 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,737 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,738 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,739 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,740 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,740 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,745 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,745 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,745 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,747 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,747 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,747 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,752 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,752 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,753 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,754 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,755 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,755 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,761 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,761 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,761 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,763 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,763 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,763 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,769 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,769 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,769 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,771 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,771 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,771 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,776 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,776 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,776 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,778 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,778 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,779 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,783 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,784 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,784 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,785 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,786 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,786 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,791 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,791 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,792 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,793 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,793 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,793 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,798 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,799 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,799 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,800 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,801 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,801 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,806 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,806 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,806 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,808 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,808 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,808 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,814 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,814 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,815 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,816 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,816 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,817 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,822 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,822 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,822 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,824 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,824 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,824 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,829 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,829 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,830 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,831 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,831 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,832 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,837 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,837 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,838 [INFO] Integration test passed
+2025-05-27 21:12:56,838 [INFO] Setting up test case
+2025-05-27 21:12:56,839 [INFO] Error handler initialized
+2025-05-27 21:12:56,839 [INFO] API Rate Limiter initialized with 60 req/min, 1000 req/hour, 60 min cooldown
+2025-05-27 21:12:56,839 [INFO] Enhanced Mock Data Provider initialized
+2025-05-27 21:12:56,839 [INFO] RobustSignalGenerator initialized with technical indicators and error handler
+2025-05-27 21:12:56,839 [INFO] Initializing Master Omni Overlord Robust Strategy for XRP on 1h timeframe...
+2025-05-27 21:12:56,839 [INFO] Master Omni Overlord Robust Strategy initialized successfully
+2025-05-27 21:12:56,839 [INFO] Creating mock data
+2025-05-27 21:12:56,842 [INFO] Mock data created
+2025-05-27 21:12:56,842 [INFO] Testing mock data mode
+2025-05-27 21:12:56,842 [INFO] Getting klines for XRP on 1h timeframe (limit: 100)
+2025-05-27 21:12:56,845 [INFO] Got 100 candles from mock data provider
+2025-05-27 21:12:56,847 [INFO] Data set for XRP on 1h timeframe with 100 candles
+2025-05-27 21:12:56,848 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,850 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,850 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,850 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,855 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,855 [INFO] Generated signal for XRP: 0
+2025-05-27 21:12:56,855 [INFO] Generated signal: 0
+2025-05-27 21:12:56,855 [INFO] Mock data mode test passed
+2025-05-27 21:12:56,855 [INFO] Setting up test case
+2025-05-27 21:12:56,855 [INFO] Error handler initialized
+2025-05-27 21:12:56,856 [INFO] API Rate Limiter initialized with 60 req/min, 1000 req/hour, 60 min cooldown
+2025-05-27 21:12:56,856 [INFO] Enhanced Mock Data Provider initialized
+2025-05-27 21:12:56,856 [INFO] RobustSignalGenerator initialized with technical indicators and error handler
+2025-05-27 21:12:56,856 [INFO] Initializing Master Omni Overlord Robust Strategy for XRP on 1h timeframe...
+2025-05-27 21:12:56,856 [INFO] Master Omni Overlord Robust Strategy initialized successfully
+2025-05-27 21:12:56,856 [INFO] Creating mock data
+2025-05-27 21:12:56,858 [INFO] Mock data created
+2025-05-27 21:12:56,859 [INFO] Testing signal generation
+2025-05-27 21:12:56,861 [INFO] Data set for XRP on 1h timeframe with 100 candles
+2025-05-27 21:12:56,861 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,863 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,863 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,863 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,868 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,868 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:56,869 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,871 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,871 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,871 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,877 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,877 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:56,878 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,879 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,879 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,880 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,884 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,885 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:56,885 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,887 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,887 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,887 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,892 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,892 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:56,892 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,894 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,894 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,894 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,899 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,900 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:56,900 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,902 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,902 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,902 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,907 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,907 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:56,908 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,909 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,910 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,910 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,915 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,915 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:56,915 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,917 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,917 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,917 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,922 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,922 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:56,922 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,924 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,924 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,924 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,930 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,930 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:56,930 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,932 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,932 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,932 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,937 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,937 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:56,938 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,939 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,940 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,940 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,945 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,945 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:56,945 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,947 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,947 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,947 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,952 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,952 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:56,953 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,954 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,954 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,955 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,960 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,960 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:56,960 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,962 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,962 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,962 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,967 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,967 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:56,967 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,969 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,969 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,970 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,975 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,976 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:56,976 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,977 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,978 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,978 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,983 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,983 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:56,983 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,985 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,985 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,985 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,990 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,990 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:56,991 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:56,993 [INFO] Market regime detected: volatile
+2025-05-27 21:12:56,993 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:56,993 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:56,999 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:56,999 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:56,999 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:57,001 [INFO] Market regime detected: volatile
+2025-05-27 21:12:57,001 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:57,001 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:57,006 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:57,006 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:57,006 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:57,008 [INFO] Market regime detected: volatile
+2025-05-27 21:12:57,009 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:57,009 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:57,014 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:57,014 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:57,014 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:57,016 [INFO] Market regime detected: volatile
+2025-05-27 21:12:57,016 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:57,016 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:57,021 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:57,022 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:57,022 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:57,024 [INFO] Market regime detected: volatile
+2025-05-27 21:12:57,024 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:57,024 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:57,029 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:57,029 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:57,030 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:57,031 [INFO] Market regime detected: volatile
+2025-05-27 21:12:57,032 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:57,032 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:57,037 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:57,037 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:57,037 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:57,039 [INFO] Market regime detected: volatile
+2025-05-27 21:12:57,039 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:57,039 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:57,046 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:57,046 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:57,046 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:57,048 [INFO] Market regime detected: volatile
+2025-05-27 21:12:57,048 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:57,048 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:57,053 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:57,053 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:57,053 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:57,055 [INFO] Market regime detected: volatile
+2025-05-27 21:12:57,055 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:57,056 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:57,061 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:57,061 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:57,061 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:57,063 [INFO] Market regime detected: volatile
+2025-05-27 21:12:57,063 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:57,063 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:57,068 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:57,068 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:57,069 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:57,071 [INFO] Market regime detected: volatile
+2025-05-27 21:12:57,071 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:57,071 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:57,076 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:57,076 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:57,077 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:57,079 [INFO] Market regime detected: volatile
+2025-05-27 21:12:57,079 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:57,079 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:57,085 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:57,085 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:57,086 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:57,087 [INFO] Market regime detected: volatile
+2025-05-27 21:12:57,088 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:57,088 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:57,093 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:57,093 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:57,094 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:57,095 [INFO] Market regime detected: volatile
+2025-05-27 21:12:57,096 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:57,096 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:57,101 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:57,101 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:57,101 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:57,103 [INFO] Market regime detected: volatile
+2025-05-27 21:12:57,103 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:57,103 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:57,108 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:57,109 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:57,109 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:57,111 [INFO] Market regime detected: volatile
+2025-05-27 21:12:57,111 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:57,111 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:57,116 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:59,816 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:59,817 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:59,819 [INFO] Market regime detected: volatile
+2025-05-27 21:12:59,819 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:59,819 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:59,825 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:59,825 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:59,825 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:59,827 [INFO] Market regime detected: volatile
+2025-05-27 21:12:59,827 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:59,827 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:59,832 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:59,832 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:59,833 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:59,834 [INFO] Market regime detected: volatile
+2025-05-27 21:12:59,834 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:59,835 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:59,840 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:59,840 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:59,840 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:59,842 [INFO] Market regime detected: volatile
+2025-05-27 21:12:59,842 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:59,842 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:59,847 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:59,847 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:59,847 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:59,849 [INFO] Market regime detected: volatile
+2025-05-27 21:12:59,849 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:59,849 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:59,854 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:59,854 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:59,855 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:59,856 [INFO] Market regime detected: volatile
+2025-05-27 21:12:59,857 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:59,857 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:59,868 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:59,869 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:59,870 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:59,875 [INFO] Market regime detected: volatile
+2025-05-27 21:12:59,875 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:59,875 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:59,881 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:59,881 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:59,881 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:59,883 [INFO] Market regime detected: volatile
+2025-05-27 21:12:59,883 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:59,883 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:59,888 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:59,888 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:59,888 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:59,890 [INFO] Market regime detected: volatile
+2025-05-27 21:12:59,890 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:59,890 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:59,895 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:59,895 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:59,896 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:59,897 [INFO] Market regime detected: volatile
+2025-05-27 21:12:59,897 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:59,898 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:59,903 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:59,903 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:59,903 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:59,905 [INFO] Market regime detected: volatile
+2025-05-27 21:12:59,905 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:59,905 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:59,910 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:59,910 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:59,910 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:59,912 [INFO] Market regime detected: volatile
+2025-05-27 21:12:59,912 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:59,912 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:59,918 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:59,918 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:59,918 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:59,920 [INFO] Market regime detected: volatile
+2025-05-27 21:12:59,920 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:59,920 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:59,926 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:59,926 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:59,926 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:59,928 [INFO] Market regime detected: volatile
+2025-05-27 21:12:59,928 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:59,928 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:59,934 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:59,934 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:59,934 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:59,936 [INFO] Market regime detected: volatile
+2025-05-27 21:12:59,936 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:59,936 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:59,942 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:59,942 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:59,942 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:59,944 [INFO] Market regime detected: volatile
+2025-05-27 21:12:59,944 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:59,944 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:59,949 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:59,949 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:59,950 [INFO] Generating signal for XRP using Master Omni Overlord Strategy
+2025-05-27 21:12:59,951 [INFO] Market regime detected: volatile
+2025-05-27 21:12:59,952 [INFO] Adjusted strategy weights: Triple Confluence=0.30, Oracle Update=0.70
+2025-05-27 21:12:59,952 [INFO] Adjusted adaptive parameters: {'signal_threshold': 0.8, 'trend_filter_strength': 0.4, 'mean_reversion_factor': 0.2, 'volatility_adjustment': 1.2}
+2025-05-27 21:12:59,957 [WARNING] Missing VWMA columns for crossover check: vwma_20 or vwma_50
+2025-05-27 21:12:59,958 [INFO] Generated signal for XRP: -1
+2025-05-27 21:12:59,958 [INFO] Generated 50 signals
+2025-05-27 21:12:59,958 [INFO] Buy signals: 0
+2025-05-27 21:12:59,958 [INFO] Sell signals: 50
+2025-05-27 21:12:59,958 [INFO] Neutral signals: 0
+2025-05-27 21:12:59,958 [INFO] Signal generation test passed
+2025-05-27 21:12:59,959 [INFO] Headless tests completed

@@ -2,101 +2,88 @@
 """
 Main entry point for the Hyperliquid Trading Bot.
 
-This script initializes and runs the integrated trading bot with all features
-from all branches, ensuring no loss of functionality or settings.
+This script launches the trading bot in either GUI or headless mode.
+It handles command-line arguments, environment setup, and application initialization.
 """
 
 import os
 import sys
-import json
+import argparse
 import logging
-from pathlib import Path
-
-# Set up base directory
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-# Add directories to path
-sys.path.append(str(BASE_DIR))
+from datetime import datetime
 
 # Configure logging
+log_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logs")
+os.makedirs(log_dir, exist_ok=True)
+
+log_file = os.path.join(log_dir, f"hyperliquid_bot_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log")
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
         logging.StreamHandler(),
-        logging.FileHandler(os.path.join(BASE_DIR, "logs", "hyperliquid_bot.log"))
+        logging.FileHandler(log_file)
     ]
 )
 logger = logging.getLogger(__name__)
 
-def ensure_directories():
-    """Ensure all required directories exist."""
-    dirs = ["logs", "data/cache", "config/backup"]
-    for dir_path in dirs:
-        os.makedirs(os.path.join(BASE_DIR, dir_path), exist_ok=True)
-    logger.info("Directory structure verified")
+def parse_arguments():
+    """Parse command-line arguments"""
+    parser = argparse.ArgumentParser(description="Hyperliquid Trading Bot")
+    parser.add_argument("--headless", action="store_true", help="Run in headless mode (no GUI)")
+    parser.add_argument("--config", type=str, help="Path to configuration file")
+    parser.add_argument("--debug", action="store_true", help="Enable debug logging")
+    return parser.parse_args()
 
-def load_config():
-    """Load configuration from config files."""
-    config = {}
-    
-    # Load trading mode
+def run_gui_mode(args):
+    """Run in GUI mode"""
     try:
-        with open(os.path.join(BASE_DIR, "config", "trading_mode.json"), "r") as f:
-            config["trading_mode"] = json.load(f)
-        logger.info(f"Trading mode loaded: {config['trading_mode']['trading_mode']}")
+        logger.info("Starting Hyperliquid Trading Bot in GUI mode")
+        
+        # Import GUI module
+        from gui.enhanced_gui import main as gui_main
+        
+        # Run GUI
+        gui_main()
+    except ImportError:
+        logger.error("Failed to import GUI module. Make sure all dependencies are installed.")
+        sys.exit(1)
     except Exception as e:
-        logger.error(f"Failed to load trading mode: {e}")
-        config["trading_mode"] = {"trading_mode": "PAPER_TRADING"}
-    
-    # Load mode settings
+        logger.error(f"Error running GUI mode: {str(e)}")
+        sys.exit(1)
+
+def run_headless_mode(args):
+    """Run in headless mode"""
     try:
-        with open(os.path.join(BASE_DIR, "config", "mode_settings.json"), "r") as f:
-            config["mode_settings"] = json.load(f)
-        logger.info(f"Mode settings loaded for {len(config['mode_settings'])} modes")
+        logger.info("Starting Hyperliquid Trading Bot in headless mode")
+        
+        # Import headless module
+        from tests.headless_test import main as headless_main
+        
+        # Run headless
+        headless_main()
+    except ImportError:
+        logger.error("Failed to import headless module. Make sure all dependencies are installed.")
+        sys.exit(1)
     except Exception as e:
-        logger.error(f"Failed to load mode settings: {e}")
-        config["mode_settings"] = {}
-    
-    # Load risk metrics
-    try:
-        with open(os.path.join(BASE_DIR, "config", "risk_metrics.json"), "r") as f:
-            config["risk_metrics"] = json.load(f)
-        logger.info("Risk metrics loaded")
-    except Exception as e:
-        logger.error(f"Failed to load risk metrics: {e}")
-        config["risk_metrics"] = {}
-    
-    return config
+        logger.error(f"Error running headless mode: {str(e)}")
+        sys.exit(1)
 
 def main():
-    """Main entry point for the Hyperliquid Trading Bot."""
-    logger.info("Starting Hyperliquid Trading Bot - Integrated Version")
+    """Main entry point"""
+    # Parse arguments
+    args = parse_arguments()
     
-    # Ensure directories exist
-    ensure_directories()
+    # Set log level
+    if args.debug:
+        logging.getLogger().setLevel(logging.DEBUG)
+        logger.debug("Debug logging enabled")
     
-    # Load configuration
-    config = load_config()
-    
-    # Determine which interface to launch based on arguments
-    if len(sys.argv) > 1 and sys.argv[1] == "--headless":
-        logger.info("Starting in headless mode")
-        from tests.headless_gui_test import run_headless_test
-        run_headless_test()
+    # Run in appropriate mode
+    if args.headless:
+        run_headless_mode(args)
     else:
-        logger.info("Starting GUI interface")
-        try:
-            # Try to import the optimized GUI first
-            from gui.gui_main_optimized_fixed import run_gui
-            logger.info("Using optimized GUI")
-        except ImportError:
-            # Fall back to standard GUI if optimized is not available
-            from gui.gui_main import run_gui
-            logger.info("Using standard GUI")
-        
-        # Run the GUI with the loaded configuration
-        run_gui(config)
+        run_gui_mode(args)
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,2 @@
+2025-05-27 20:50:53,162 [INFO] Starting Hyperliquid Trading Bot in headless mode
+2025-05-27 20:50:53,165 [ERROR] Failed to import headless module. Make sure all dependencies are installed.

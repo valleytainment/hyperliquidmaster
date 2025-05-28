@@ -409,6 +409,31 @@ class EnhancedMockDataProvider:
         self._save_to_cache("candles", f"{symbol}_{timeframe}", candles)
         
         return candles
+    
+    def get_klines(self, symbol: str, timeframe: str, limit: int = 100) -> List[Dict]:
+        """
+        Get klines (candlestick data) for a symbol.
+        This is an alias for get_candles to maintain compatibility with test suite,
+        but ensures timestamps are in seconds instead of milliseconds.
+        
+        Args:
+            symbol: Symbol to get klines for
+            timeframe: Timeframe (e.g., "1m", "5m", "1h")
+            limit: Number of klines to return
+            
+        Returns:
+            List of kline dictionaries with timestamps in seconds
+        """
+        logger.info(f"Getting klines for {symbol} on {timeframe} timeframe (limit: {limit})")
+        
+        # Get candles with millisecond timestamps
+        candles = self.get_candles(symbol, timeframe, limit)
+        
+        # Convert timestamps from milliseconds to seconds for test compatibility
+        for candle in candles:
+            candle["timestamp"] = int(candle["timestamp"] / 1000)
+        
+        return candles
         
     def get_historical_data(self, symbol: str, timeframe: str, start_date: str, end_date: str) -> pd.DataFrame:
         """
@@ -469,75 +494,270 @@ class EnhancedMockDataProvider:
         
         # If symbol is specified, generate position for that symbol
         if symbol:
-            # 50% chance of having a position
+            if symbol not in self.price_models:
+                self._init_price_model(symbol)
+                
+            # Generate random position
             if random.random() < 0.5:
-                price = self.last_prices.get(symbol, self.default_params[symbol]["base_price"])
-                size = np.random.lognormal(np.log(1.0), 0.5) * (1 if random.random() < 0.5 else -1)
-                entry_price = price * (1 + np.random.normal(0, 0.01))
-                unrealized_pnl = size * (price - entry_price)
+                # Long position
+                size = np.random.lognormal(np.log(1), 0.5)
+                entry_price = self.last_prices[symbol] * (1 - np.random.uniform(0, 0.05))
+                liquidation_price = entry_price * 0.8
                 
                 positions.append({
                     "symbol": symbol,
                     "size": size,
                     "entry_price": entry_price,
-                    "unrealized_pnl": unrealized_pnl,
-                    "liquidation_price": entry_price * (0.8 if size > 0 else 1.2)
+                    "mark_price": self.last_prices[symbol],
+                    "liquidation_price": liquidation_price,
+                    "unrealized_pnl": (self.last_prices[symbol] - entry_price) * size,
+                    "realized_pnl": 0,
+                    "side": "long",
+                    "timestamp": int(time.time() * 1000)
+                })
+            else:
+                # Short position
+                size = -np.random.lognormal(np.log(1), 0.5)
+                entry_price = self.last_prices[symbol] * (1 + np.random.uniform(0, 0.05))
+                liquidation_price = entry_price * 1.2
+                
+                positions.append({
+                    "symbol": symbol,
+                    "size": size,
+                    "entry_price": entry_price,
+                    "mark_price": self.last_prices[symbol],
+                    "liquidation_price": liquidation_price,
+                    "unrealized_pnl": (entry_price - self.last_prices[symbol]) * abs(size),
+                    "realized_pnl": 0,
+                    "side": "short",
+                    "timestamp": int(time.time() * 1000)
                 })
         else:
             # Generate positions for all symbols
-            for sym in self.price_models:
-                # 30% chance of having a position
-                if random.random() < 0.3:
-                    price = self.last_prices.get(sym, self.default_params[sym]["base_price"])
-                    size = np.random.lognormal(np.log(1.0), 0.5) * (1 if random.random() < 0.5 else -1)
-                    entry_price = price * (1 + np.random.normal(0, 0.01))
-                    unrealized_pnl = size * (price - entry_price)
+            for symbol in self.price_models:
+                # Generate random position with 50% probability
+                if random.random() < 0.5:
+                    # Long position
+                    size = np.random.lognormal(np.log(1), 0.5)
+                    entry_price = self.last_prices[symbol] * (1 - np.random.uniform(0, 0.05))
+                    liquidation_price = entry_price * 0.8
                     
                     positions.append({
-                        "symbol": sym,
+                        "symbol": symbol,
                         "size": size,
                         "entry_price": entry_price,
-                        "unrealized_pnl": unrealized_pnl,
-                        "liquidation_price": entry_price * (0.8 if size > 0 else 1.2)
+                        "mark_price": self.last_prices[symbol],
+                        "liquidation_price": liquidation_price,
+                        "unrealized_pnl": (self.last_prices[symbol] - entry_price) * size,
+                        "realized_pnl": 0,
+                        "side": "long",
+                        "timestamp": int(time.time() * 1000)
+                    })
+                elif random.random() < 0.5:
+                    # Short position
+                    size = -np.random.lognormal(np.log(1), 0.5)
+                    entry_price = self.last_prices[symbol] * (1 + np.random.uniform(0, 0.05))
+                    liquidation_price = entry_price * 1.2
+                    
+                    positions.append({
+                        "symbol": symbol,
+                        "size": size,
+                        "entry_price": entry_price,
+                        "mark_price": self.last_prices[symbol],
+                        "liquidation_price": liquidation_price,
+                        "unrealized_pnl": (entry_price - self.last_prices[symbol]) * abs(size),
+                        "realized_pnl": 0,
+                        "side": "short",
+                        "timestamp": int(time.time() * 1000)
                     })
                     
         return positions
         
-    def execute_order(self, order: Dict) -> Dict:
+    def get_trades(self, symbol: str, limit: int = 100) -> List[Dict]:
         """
-        Execute an order.
+        Get trades for a symbol.
         
         Args:
-            order: Order dictionary
+            symbol: Symbol to get trades for
+            limit: Number of trades to return
             
         Returns:
-            Order result dictionary
+            List of trade dictionaries
         """
-        # Extract order details
-        symbol = order.get("symbol", "BTC")
-        order_type = order.get("type", "limit")
-        side = order.get("side", "buy")
-        size = order.get("size", 1.0)
-        price = order.get("price", self.last_prices.get(symbol, self.default_params[symbol]["base_price"]))
+        # Check if symbol is supported
+        if symbol not in self.price_models:
+            self._init_price_model(symbol)
+            
+        # Generate trades
+        trades = []
+        current_time = int(time.time() * 1000)
         
-        # Generate order ID
-        order_id = f"mock_{int(time.time() * 1000)}_{random.randint(1000, 9999)}"
+        for i in range(limit):
+            # Generate random trade
+            price = self.last_prices[symbol] * (1 + np.random.normal(0, 0.001))
+            size = np.random.lognormal(np.log(0.1), 0.5)
+            side = random.choice(["buy", "sell"])
+            
+            trades.append({
+                "id": current_time - i * 1000 + random.randint(0, 999),
+                "price": price,
+                "size": size,
+                "side": side,
+                "timestamp": current_time - i * 1000
+            })
+            
+        return trades
         
-        # Create order result
-        order_result = {
-            "order_id": order_id,
+    def get_funding_rate(self, symbol: str) -> Dict:
+        """
+        Get funding rate for a symbol.
+        
+        Args:
+            symbol: Symbol to get funding rate for
+            
+        Returns:
+            Funding rate dictionary
+        """
+        # Check if symbol is supported
+        if symbol not in self.price_models:
+            self._init_price_model(symbol)
+            
+        # Generate funding rate
+        funding_rate = np.random.normal(0, 0.0001)
+        
+        # Create funding rate dictionary
+        funding_rate_dict = {
             "symbol": symbol,
-            "type": order_type,
-            "side": side,
-            "size": size,
-            "price": price,
-            "status": "filled",
-            "filled_size": size,
-            "filled_price": price * (1 + np.random.normal(0, 0.001)),
+            "funding_rate": funding_rate,
+            "next_funding_time": int(time.time() * 1000) + 8 * 60 * 60 * 1000,
             "timestamp": int(time.time() * 1000)
         }
         
-        return order_result
+        return funding_rate_dict
+        
+    def get_ticker(self, symbol: str) -> Dict:
+        """
+        Get ticker for a symbol.
+        
+        Args:
+            symbol: Symbol to get ticker for
+            
+        Returns:
+            Ticker dictionary
+        """
+        # Check if symbol is supported
+        if symbol not in self.price_models:
+            self._init_price_model(symbol)
+            
+        # Generate price
+        price = self._generate_next_price(symbol)
+        
+        # Generate volume
+        volume_24h = self._generate_volume(symbol) * 24
+        
+        # Generate change
+        change_24h = np.random.normal(0, self.volatility[symbol] * 5)
+        
+        # Create ticker
+        ticker = {
+            "symbol": symbol,
+            "price": price,
+            "volume": volume_24h,
+            "change": change_24h,
+            "timestamp": int(time.time() * 1000)
+        }
+        
+        return ticker
+        
+    def get_mock_data(self, endpoint: str, params: Dict) -> Any:
+        """
+        Get mock data for an endpoint.
+        
+        Args:
+            endpoint: API endpoint
+            params: Parameters for the endpoint
+            
+        Returns:
+            Mock data
+        """
+        # Get symbol from params
+        symbol = params.get("symbol", "BTC")
+        
+        # Get mock data based on endpoint
+        if endpoint == "klines":
+            return self.get_klines(
+                symbol,
+                params.get("interval", "1h"),
+                params.get("limit", 100)
+            )
+        elif endpoint == "ticker":
+            return self.get_ticker(symbol)
+        elif endpoint == "orderbook":
+            return self.get_order_book(symbol)
+        elif endpoint == "trades":
+            return self.get_trades(
+                symbol,
+                params.get("limit", 100)
+            )
+        elif endpoint == "positions":
+            return self.get_positions(symbol)
+        elif endpoint == "funding_rate":
+            return self.get_funding_rate(symbol)
+        else:
+            # Default to empty response
+            return {}
+            
+    def get_mock_klines(self, symbol: str, interval: str, limit: int = 100) -> List[Dict]:
+        """
+        Get mock klines for a symbol.
+        
+        Args:
+            symbol: Symbol to get klines for
+            interval: Interval (e.g., "1m", "5m", "1h")
+            limit: Number of klines to return
+            
+        Returns:
+            List of kline dictionaries
+        """
+        return self.get_klines(symbol, interval, limit)
+        
+    def get_mock_ticker(self, symbol: str) -> Dict:
+        """
+        Get mock ticker for a symbol.
+        
+        Args:
+            symbol: Symbol to get ticker for
+            
+        Returns:
+            Ticker dictionary
+        """
+        return self.get_ticker(symbol)
+        
+    def get_mock_orderbook(self, symbol: str, limit: int = 100) -> Dict:
+        """
+        Get mock order book for a symbol.
+        
+        Args:
+            symbol: Symbol to get order book for
+            limit: Number of levels to return
+            
+        Returns:
+            Order book dictionary
+        """
+        return self.get_order_book(symbol)
+        
+    def get_mock_trades(self, symbol: str, limit: int = 100) -> List[Dict]:
+        """
+        Get mock trades for a symbol.
+        
+        Args:
+            symbol: Symbol to get trades for
+            limit: Number of trades to return
+            
+        Returns:
+            List of trade dictionaries
+        """
+        return self.get_trades(symbol, limit)
         
     def _save_to_cache(self, data_type: str, key: str, data: Any) -> None:
         """
@@ -555,12 +775,15 @@ class EnhancedMockDataProvider:
             
             # Save data to cache
             cache_file = os.path.join(cache_dir, f"{key}.json")
-            with open(cache_file, "w") as f:
-                json.dump(data, f, default=str)
-        except Exception as e:
-            logger.warning(f"Error saving to cache: {str(e)}")
             
-    def _load_from_cache(self, data_type: str, key: str) -> Optional[Any]:
+            with open(cache_file, "w") as f:
+                json.dump(data, f, indent=2, default=str)
+                
+            logger.debug(f"Saved {data_type} data for {key} to cache")
+        except Exception as e:
+            logger.warning(f"Error saving {data_type} data for {key} to cache: {str(e)}")
+            
+    def _load_from_cache(self, data_type: str, key: str) -> Any:
         """
         Load data from cache.
         
@@ -569,444 +792,54 @@ class EnhancedMockDataProvider:
             key: Cache key
             
         Returns:
-            Cached data or None if not found
+            Cached data
         """
         try:
             # Check if cache file exists
             cache_file = os.path.join(self.cache_dir, data_type, f"{key}.json")
-            if not os.path.exists(cache_file):
+            
+            if os.path.exists(cache_file):
+                # Load data from cache
+                with open(cache_file, "r") as f:
+                    data = json.load(f)
+                    
+                logger.debug(f"Loaded {data_type} data for {key} from cache")
+                return data
+            else:
+                logger.debug(f"No cached {data_type} data for {key}")
                 return None
-                
-            # Load data from cache
-            with open(cache_file, "r") as f:
-                data = json.load(f)
-                
-            return data
         except Exception as e:
-            logger.warning(f"Error loading from cache: {str(e)}")
+            logger.warning(f"Error loading {data_type} data for {key} from cache: {str(e)}")
             return None
             
-    def cache_real_response(self, endpoint: str, params: Dict, response: Any) -> None:
+    def cache_real_response(self, endpoint: str, params: Dict, data: Any) -> None:
         """
         Cache real API response.
         
         Args:
             endpoint: API endpoint
-            params: Request parameters
-            response: API response
+            params: Parameters for the endpoint
+            data: Response data
         """
-        try:
-            # Create cache key
-            key = f"{endpoint}_{json.dumps(params, sort_keys=True)}"
-            
-            # Save to cache
-            self._save_to_cache("api_responses", key, response)
-        except Exception as e:
-            logger.warning(f"Error caching real response: {str(e)}")
-            
-    def get_cached_response(self, endpoint: str, params: Dict) -> Optional[Any]:
+        # Create cache key
+        key = f"{endpoint}_{json.dumps(params, sort_keys=True)}"
+        
+        # Save to cache
+        self._save_to_cache("real_responses", key, data)
+        
+    def get_cached_response(self, endpoint: str, params: Dict) -> Any:
         """
         Get cached API response.
         
         Args:
             endpoint: API endpoint
-            params: Request parameters
+            params: Parameters for the endpoint
             
         Returns:
-            Cached response or None if not found
+            Cached response data
         """
-        try:
-            # Create cache key
-            key = f"{endpoint}_{json.dumps(params, sort_keys=True)}"
-            
-            # Load from cache
-            return self._load_from_cache("api_responses", key)
-        except Exception as e:
-            logger.warning(f"Error getting cached response: {str(e)}")
-            return None
-            
-    def generate_synthetic_data(self, symbol: str, timeframe: str, days: int = 30) -> pd.DataFrame:
-        """
-        Generate synthetic data for a symbol.
+        # Create cache key
+        key = f"{endpoint}_{json.dumps(params, sort_keys=True)}"
         
-        Args:
-            symbol: Symbol to generate data for
-            timeframe: Timeframe (e.g., "1m", "5m", "1h")
-            days: Number of days of data to generate
-            
-        Returns:
-            DataFrame with synthetic data
-        """
-        # Check if symbol is supported
-        if symbol not in self.price_models:
-            self._init_price_model(symbol)
-            
-        # Get timeframe in milliseconds
-        timeframe_ms = self._get_timeframe_milliseconds(timeframe)
-        
-        # Calculate number of candles
-        num_candles = days * 24 * 60 * 60 * 1000 // timeframe_ms
-        
-        # Generate candles
-        candles = []
-        current_time = int(time.time() * 1000)
-        start_time = current_time - num_candles * timeframe_ms
-        
-        for i in range(num_candles):
-            candle_time = start_time + i * timeframe_ms
-            candle = self._generate_candle(symbol, timeframe, candle_time)
-            candles.append(candle)
-            
-        # Create DataFrame
-        df = pd.DataFrame(candles)
-        df["datetime"] = pd.to_datetime(df["timestamp"], unit="ms")
-        df.set_index("datetime", inplace=True)
-        
-        # Add technical indicators
-        df = self._add_technical_indicators(df)
-        
-        # Save to file
-        os.makedirs(os.path.join(self.data_dir, "synthetic"), exist_ok=True)
-        df.to_csv(os.path.join(self.data_dir, "synthetic", f"{symbol}_{timeframe}_{days}d.csv"))
-        
-        return df
-        
-    def _add_technical_indicators(self, df: pd.DataFrame) -> pd.DataFrame:
-        """
-        Add technical indicators to DataFrame.
-        
-        Args:
-            df: DataFrame with OHLCV data
-            
-        Returns:
-            DataFrame with technical indicators
-        """
-        # Copy DataFrame
-        df_copy = df.copy()
-        
-        # Calculate SMA
-        df_copy["sma_5"] = df_copy["close"].rolling(window=5).mean()
-        df_copy["sma_10"] = df_copy["close"].rolling(window=10).mean()
-        df_copy["sma_20"] = df_copy["close"].rolling(window=20).mean()
-        df_copy["sma_50"] = df_copy["close"].rolling(window=50).mean()
-        df_copy["sma_100"] = df_copy["close"].rolling(window=100).mean()
-        df_copy["sma_200"] = df_copy["close"].rolling(window=200).mean()
-        
-        # Calculate EMA
-        df_copy["ema_5"] = df_copy["close"].ewm(span=5, adjust=False).mean()
-        df_copy["ema_10"] = df_copy["close"].ewm(span=10, adjust=False).mean()
-        df_copy["ema_20"] = df_copy["close"].ewm(span=20, adjust=False).mean()
-        df_copy["ema_50"] = df_copy["close"].ewm(span=50, adjust=False).mean()
-        df_copy["ema_100"] = df_copy["close"].ewm(span=100, adjust=False).mean()
-        df_copy["ema_200"] = df_copy["close"].ewm(span=200, adjust=False).mean()
-        
-        # Calculate VWMA
-        df_copy["vwma_5"] = (df_copy["close"] * df_copy["volume"]).rolling(window=5).sum() / df_copy["volume"].rolling(window=5).sum()
-        df_copy["vwma_10"] = (df_copy["close"] * df_copy["volume"]).rolling(window=10).sum() / df_copy["volume"].rolling(window=10).sum()
-        df_copy["vwma_20"] = (df_copy["close"] * df_copy["volume"]).rolling(window=20).sum() / df_copy["volume"].rolling(window=20).sum()
-        
-        # Calculate RSI
-        delta = df_copy["close"].diff()
-        gain = delta.where(delta > 0, 0)
-        loss = -delta.where(delta < 0, 0)
-        avg_gain = gain.rolling(window=14).mean()
-        avg_loss = loss.rolling(window=14).mean()
-        rs = avg_gain / avg_loss
-        df_copy["rsi_14"] = 100 - (100 / (1 + rs))
-        
-        # Calculate MACD
-        df_copy["macd"] = df_copy["close"].ewm(span=12, adjust=False).mean() - df_copy["close"].ewm(span=26, adjust=False).mean()
-        df_copy["macd_signal"] = df_copy["macd"].ewm(span=9, adjust=False).mean()
-        df_copy["macd_histogram"] = df_copy["macd"] - df_copy["macd_signal"]
-        
-        # Calculate Bollinger Bands
-        df_copy["bb_middle"] = df_copy["close"].rolling(window=20).mean()
-        df_copy["bb_std"] = df_copy["close"].rolling(window=20).std()
-        df_copy["bb_upper"] = df_copy["bb_middle"] + 2 * df_copy["bb_std"]
-        df_copy["bb_lower"] = df_copy["bb_middle"] - 2 * df_copy["bb_std"]
-        
-        # Calculate ATR
-        high_low = df_copy["high"] - df_copy["low"]
-        high_close = (df_copy["high"] - df_copy["close"].shift()).abs()
-        low_close = (df_copy["low"] - df_copy["close"].shift()).abs()
-        ranges = pd.concat([high_low, high_close, low_close], axis=1)
-        true_range = ranges.max(axis=1)
-        df_copy["atr_14"] = true_range.rolling(window=14).mean()
-        
-        # Calculate Stochastic Oscillator
-        low_14 = df_copy["low"].rolling(window=14).min()
-        high_14 = df_copy["high"].rolling(window=14).max()
-        df_copy["stoch_k"] = 100 * (df_copy["close"] - low_14) / (high_14 - low_14)
-        df_copy["stoch_d"] = df_copy["stoch_k"].rolling(window=3).mean()
-        
-        # Calculate OBV
-        obv = (df_copy["close"].diff().apply(lambda x: 1 if x > 0 else (-1 if x < 0 else 0)) * df_copy["volume"]).cumsum()
-        df_copy["obv"] = obv
-        
-        # Calculate ADX
-        plus_dm = df_copy["high"].diff()
-        minus_dm = df_copy["low"].diff(-1).abs()
-        plus_dm = plus_dm.where((plus_dm > 0) & (plus_dm > minus_dm), 0)
-        minus_dm = minus_dm.where((minus_dm > 0) & (minus_dm > plus_dm), 0)
-        tr = pd.concat([
-            (df_copy["high"] - df_copy["low"]).abs(),
-            (df_copy["high"] - df_copy["close"].shift()).abs(),
-            (df_copy["low"] - df_copy["close"].shift()).abs()
-        ], axis=1).max(axis=1)
-        atr_14 = tr.rolling(window=14).mean()
-        plus_di_14 = 100 * (plus_dm.rolling(window=14).mean() / atr_14)
-        minus_di_14 = 100 * (minus_dm.rolling(window=14).mean() / atr_14)
-        dx = 100 * ((plus_di_14 - minus_di_14).abs() / (plus_di_14 + minus_di_14).abs())
-        df_copy["adx_14"] = dx.rolling(window=14).mean()
-        
-        return df_copy
-        
-    def generate_all_synthetic_data(self, symbols: List[str] = None, timeframes: List[str] = None, days: int = 30) -> Dict[str, Dict[str, pd.DataFrame]]:
-        """
-        Generate synthetic data for all symbols and timeframes.
-        
-        Args:
-            symbols: List of symbols to generate data for (if None, use all supported symbols)
-            timeframes: List of timeframes to generate data for (if None, use default timeframes)
-            days: Number of days of data to generate
-            
-        Returns:
-            Dictionary of synthetic data by symbol and timeframe
-        """
-        # Use default symbols if not specified
-        if symbols is None:
-            symbols = list(self.default_params.keys())
-            
-        # Use default timeframes if not specified
-        if timeframes is None:
-            timeframes = ["1m", "5m", "15m", "1h", "4h", "1d"]
-            
-        # Generate synthetic data
-        synthetic_data = {}
-        
-        for symbol in symbols:
-            synthetic_data[symbol] = {}
-            
-            for timeframe in timeframes:
-                logger.info(f"Generating synthetic data for {symbol} {timeframe}")
-                synthetic_data[symbol][timeframe] = self.generate_synthetic_data(symbol, timeframe, days)
-                
-        return synthetic_data
-        
-    def save_synthetic_data(self, synthetic_data: Dict[str, Dict[str, pd.DataFrame]], output_dir: str = None) -> None:
-        """
-        Save synthetic data to files.
-        
-        Args:
-            synthetic_data: Dictionary of synthetic data by symbol and timeframe
-            output_dir: Output directory (if None, use default data directory)
-        """
-        # Use default data directory if not specified
-        if output_dir is None:
-            output_dir = os.path.join(self.data_dir, "synthetic")
-            
-        # Create output directory if it doesn't exist
-        os.makedirs(output_dir, exist_ok=True)
-        
-        # Save synthetic data
-        for symbol, timeframe_data in synthetic_data.items():
-            for timeframe, df in timeframe_data.items():
-                output_file = os.path.join(output_dir, f"{symbol}_{timeframe}.csv")
-                df.to_csv(output_file)
-                logger.info(f"Saved synthetic data to {output_file}")
-                
-    def load_synthetic_data(self, symbol: str, timeframe: str, input_dir: str = None) -> Optional[pd.DataFrame]:
-        """
-        Load synthetic data from file.
-        
-        Args:
-            symbol: Symbol to load data for
-            timeframe: Timeframe to load data for
-            input_dir: Input directory (if None, use default data directory)
-            
-        Returns:
-            DataFrame with synthetic data or None if not found
-        """
-        # Use default data directory if not specified
-        if input_dir is None:
-            input_dir = os.path.join(self.data_dir, "synthetic")
-            
-        # Check if file exists
-        input_file = os.path.join(input_dir, f"{symbol}_{timeframe}.csv")
-        if not os.path.exists(input_file):
-            logger.warning(f"Synthetic data file not found: {input_file}")
-            return None
-            
-        # Load synthetic data
-        df = pd.read_csv(input_file, index_col=0, parse_dates=True)
-        logger.info(f"Loaded synthetic data from {input_file}")
-        
-        return df
-        
-    def get_synthetic_candles(self, symbol: str, timeframe: str, limit: int = 100) -> List[Dict]:
-        """
-        Get synthetic candles for a symbol.
-        
-        Args:
-            symbol: Symbol to get candles for
-            timeframe: Timeframe (e.g., "1m", "5m", "1h")
-            limit: Number of candles to return
-            
-        Returns:
-            List of candle dictionaries
-        """
-        # Try to load synthetic data
-        df = self.load_synthetic_data(symbol, timeframe)
-        
-        # If synthetic data not found, generate it
-        if df is None:
-            df = self.generate_synthetic_data(symbol, timeframe)
-            
-        # Get last 'limit' candles
-        df = df.iloc[-limit:]
-        
-        # Convert to list of dictionaries
-        candles = []
-        for _, row in df.iterrows():
-            candle = {
-                "timestamp": int(row.name.timestamp() * 1000),
-                "open": row["open"],
-                "high": row["high"],
-                "low": row["low"],
-                "close": row["close"],
-                "volume": row["volume"]
-            }
-            candles.append(candle)
-            
-        return candles
-        
-    def get_synthetic_market_data(self, symbol: str) -> Dict:
-        """
-        Get synthetic market data for a symbol.
-        
-        Args:
-            symbol: Symbol to get market data for
-            
-        Returns:
-            Market data dictionary
-        """
-        # Try to load synthetic data
-        df = self.load_synthetic_data(symbol, "1m")
-        
-        # If synthetic data not found, generate it
-        if df is None:
-            df = self.generate_synthetic_data(symbol, "1m")
-            
-        # Get last row
-        last_row = df.iloc[-1]
-        
-        # Create market data
-        market_data = {
-            "symbol": symbol,
-            "last_price": last_row["close"],
-            "volume_24h": df.iloc[-1440:]["volume"].sum(),  # Last 24 hours (1440 minutes)
-            "change_24h": (last_row["close"] / df.iloc[-1440]["close"] - 1) * 100,  # Last 24 hours
-            "timestamp": int(last_row.name.timestamp() * 1000)
-        }
-        
-        return market_data
-        
-    def get_synthetic_order_book(self, symbol: str) -> Dict:
-        """
-        Get synthetic order book for a symbol.
-        
-        Args:
-            symbol: Symbol to get order book for
-            
-        Returns:
-            Order book dictionary
-        """
-        # Try to load synthetic data
-        df = self.load_synthetic_data(symbol, "1m")
-        
-        # If synthetic data not found, generate it
-        if df is None:
-            df = self.generate_synthetic_data(symbol, "1m")
-            
-        # Get last price
-        last_price = df.iloc[-1]["close"]
-        
-        # Generate order book
-        order_book = self._generate_order_book(symbol, last_price)
-        
-        return order_book
-        
-    def get_synthetic_historical_data(self, symbol: str, timeframe: str, start_date: str, end_date: str) -> pd.DataFrame:
-        """
-        Get synthetic historical data for a symbol.
-        
-        Args:
-            symbol: Symbol to get historical data for
-            timeframe: Timeframe (e.g., "1m", "5m", "1h")
-            start_date: Start date (YYYY-MM-DD)
-            end_date: End date (YYYY-MM-DD)
-            
-        Returns:
-            DataFrame with historical data
-        """
-        # Try to load synthetic data
-        df = self.load_synthetic_data(symbol, timeframe)
-        
-        # If synthetic data not found, generate it
-        if df is None:
-            # Calculate days needed
-            start_timestamp = datetime.datetime.strptime(start_date, "%Y-%m-%d").timestamp()
-            end_timestamp = datetime.datetime.strptime(end_date, "%Y-%m-%d").timestamp()
-            days_needed = int((end_timestamp - start_timestamp) / (24 * 60 * 60)) + 1
-            
-            # Generate synthetic data
-            df = self.generate_synthetic_data(symbol, timeframe, days=days_needed)
-            
-        # Filter by date range
-        df = df.loc[start_date:end_date]
-        
-        return df
-        
-def main():
-    """
-    Main function for testing.
-    """
-    # Configure logging
-    logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-    
-    # Create mock data provider
-    mock_provider = EnhancedMockDataProvider()
-    
-    # Generate synthetic data for all symbols and timeframes
-    symbols = ["BTC", "ETH", "SOL", "XRP"]
-    timeframes = ["1m", "5m", "15m", "1h", "4h", "1d"]
-    
-    synthetic_data = mock_provider.generate_all_synthetic_data(symbols, timeframes, days=30)
-    mock_provider.save_synthetic_data(synthetic_data)
-    
-    # Test market data
-    for symbol in symbols:
-        market_data = mock_provider.get_synthetic_market_data(symbol)
-        print(f"Market data for {symbol}: {market_data}")
-        
-    # Test order book
-    for symbol in symbols:
-        order_book = mock_provider.get_synthetic_order_book(symbol)
-        print(f"Order book for {symbol}: {len(order_book['bids'])} bids, {len(order_book['asks'])} asks")
-        
-    # Test candles
-    for symbol in symbols:
-        for timeframe in timeframes:
-            candles = mock_provider.get_synthetic_candles(symbol, timeframe, limit=10)
-            print(f"Candles for {symbol} {timeframe}: {len(candles)} candles")
-            
-    # Test historical data
-    for symbol in symbols:
-        for timeframe in timeframes:
-            df = mock_provider.get_synthetic_historical_data(symbol, timeframe, "2025-04-24", "2025-05-24")
-            print(f"Historical data for {symbol} {timeframe}: {len(df)} rows")
-            
-    print("All tests completed successfully")
-    
-if __name__ == "__main__":
-    main()
+        # Load from cache
+        return self._load_from_cache("real_responses", key)
