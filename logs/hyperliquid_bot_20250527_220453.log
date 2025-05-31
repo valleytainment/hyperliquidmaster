@@ -1,0 +1,2 @@
+2025-05-27 22:04:53,610 [INFO] Starting Hyperliquid Trading Bot in GUI mode
+2025-05-27 22:04:53,620 [ERROR] Error running GUI mode: f-string: unmatched '[' (enhanced_gui.py, line 1039)

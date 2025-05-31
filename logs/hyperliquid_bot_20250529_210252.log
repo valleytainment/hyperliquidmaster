@@ -1,0 +1,2 @@
+2025-05-29 21:02:52,446 [INFO] Starting Hyperliquid Trading Bot in GUI mode
+2025-05-29 21:02:52,468 [ERROR] Error running GUI mode: invalid syntax. Perhaps you forgot a comma? (enhanced_gui.py, line 1208)

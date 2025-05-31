@@ -1,0 +1,2 @@
+2025-05-27 22:05:30,017 [INFO] Starting Hyperliquid Trading Bot in GUI mode
+2025-05-27 22:05:30,051 [ERROR] Error running GUI mode: '(' was never closed (enhanced_gui.py, line 1206)
