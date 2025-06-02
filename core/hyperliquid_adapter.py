@@ -260,6 +260,40 @@ class HyperliquidAdapter:
             self.logger.error(f"Error getting account info: {e}")
             return {"error": f"Error getting account info: {e}"}
     
+    def get_all_available_tokens(self) -> Dict[str, Any]:
+        """
+        Get all available tokens from the exchange.
+        
+        Returns:
+            Dict containing list of available tokens
+        """
+        try:
+            # Ensure connection
+            if not self.ensure_connection():
+                return {"error": "Not connected to exchange", "tokens": []}
+            
+            if not self.info:
+                return {"error": "Info API not initialized", "tokens": []}
+            
+            # Get meta and asset data
+            try:
+                meta_and_asset = self.info.meta_and_asset()
+                
+                # Extract token names from universe
+                tokens = []
+                for asset in meta_and_asset.get("universe", []):
+                    token_name = asset.get("name")
+                    if token_name:
+                        tokens.append(token_name)
+                
+                return {"success": True, "tokens": tokens}
+            except Exception as e:
+                self.logger.error(f"Error getting available tokens: {e}")
+                return {"error": f"Error getting available tokens: {e}", "tokens": []}
+        except Exception as e:
+            self.logger.error(f"Error getting available tokens: {e}")
+            return {"error": f"Error getting available tokens: {e}", "tokens": []}
+    
     def get_market_data(self, symbol: str) -> Dict[str, Any]:
         """
         Get market data for a symbol.

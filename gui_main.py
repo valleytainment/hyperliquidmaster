@@ -100,6 +100,9 @@ class HyperliquidMasterGUI:
             self.position_manager
         )
         
+        # Check if API keys are missing and prompt if needed
+        self._check_and_prompt_for_api_keys()
+        
         # Initialize variables
         self.is_bot_running = False
         self.selected_symbol = tk.StringVar(value=self.config.get("symbol", "XRP"))
@@ -365,51 +368,184 @@ class HyperliquidMasterGUI:
         container, settings_frame = self.style_manager.create_scrollable_frame(self.settings_tab)
         container.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
         
-        # Create API key management section
-        api_frame = ttk.Frame(settings_frame)
-        api_frame.pack(fill=tk.X, pady=(0, 20))
+        # Create API Keys button to open dedicated API settings window
+        api_button_frame = ttk.Frame(settings_frame)
+        api_button_frame.pack(fill=tk.X, pady=(0, 20))
         
-        api_title = ttk.Label(api_frame, text="API Key Management", style="Header.TLabel")
+        api_title = ttk.Label(api_button_frame, text="API Key Management", style="Header.TLabel")
         api_title.pack(anchor=tk.W, pady=(0, 10))
         
-        # Create account address input
-        addr_frame = ttk.Frame(api_frame)
-        addr_frame.pack(fill=tk.X, pady=5)
+        api_desc = ttk.Label(api_button_frame, text="API keys are stored securely in a separate configuration. Click the button below to manage your API keys.")
+        api_desc.pack(anchor=tk.W, pady=(0, 10))
         
-        addr_label = ttk.Label(addr_frame, text="Account Address:")
-        addr_label.pack(side=tk.LEFT, padx=(0, 5))
+        open_api_button = tk.Button(api_button_frame, text="Open API Key Settings", command=self._open_api_settings_window)
+        open_api_button.pack(anchor=tk.W)
+        self.style_manager.style_button(open_api_button, "primary")
         
-        addr_entry = tk.Entry(addr_frame, textvariable=self.account_address, width=50)
-        addr_entry.pack(side=tk.LEFT, fill=tk.X, expand=True)
-        self.style_manager.style_entry(addr_entry)
+        # Initialize trading settings frame
+        self._init_trading_settings_frame(settings_frame)
         
-        # Create secret key input
-        key_frame = ttk.Frame(api_frame)
-        key_frame.pack(fill=tk.X, pady=5)
+    def _open_api_settings_window(self) -> None:
+        """Open a dedicated window for API key settings."""
+        try:
+            # Create Toplevel window
+            api_window = tk.Toplevel(self.root)
+            api_window.title("API Key Settings")
+            api_window.geometry("500x250")
+            api_window.transient(self.root) # Keep window on top
+            api_window.grab_set() # Modal behavior
+            
+            # Apply styling
+            self.style_manager.apply_theme_to_widget(api_window)
+            
+            # Create main frame
+            main_frame = ttk.Frame(api_window, padding="10 10 10 10")
+            main_frame.pack(fill=tk.BOTH, expand=True)
+            
+            # Create account address input
+            addr_frame = ttk.Frame(main_frame)
+            addr_frame.pack(fill=tk.X, pady=5)
+            
+            addr_label = ttk.Label(addr_frame, text="Account Address:")
+            addr_label.pack(side=tk.LEFT, padx=(0, 5))
+            
+            addr_entry = tk.Entry(addr_frame, textvariable=self.account_address, width=50)
+            addr_entry.pack(side=tk.LEFT, fill=tk.X, expand=True)
+            self.style_manager.style_entry(addr_entry)
+            
+            # Create secret key input
+            key_frame = ttk.Frame(main_frame)
+            key_frame.pack(fill=tk.X, pady=5)
+            
+            key_label = ttk.Label(key_frame, text="Secret Key:")
+            key_label.pack(side=tk.LEFT, padx=(0, 5))
+            
+            key_entry = tk.Entry(key_frame, textvariable=self.secret_key, width=50, show="*")
+            key_entry.pack(side=tk.LEFT, fill=tk.X, expand=True)
+            self.style_manager.style_entry(key_entry)
+            
+            # Create show/hide secret key checkbox
+            show_key_check = ttk.Checkbutton(key_frame, text="Show", variable=self.show_secret_key, 
+                                             command=lambda: self._toggle_show_secret_key_widget(key_entry))
+            show_key_check.pack(side=tk.LEFT, padx=(5, 0))
+            
+            # Create buttons frame
+            buttons_frame = ttk.Frame(main_frame)
+            buttons_frame.pack(fill=tk.X, pady=10)
+            
+            # Save button
+            save_button = tk.Button(buttons_frame, text="Save API Keys", 
+                                    command=lambda: self._save_api_keys_from_window(api_window))
+            save_button.pack(side=tk.LEFT, padx=(0, 5))
+            self.style_manager.style_button(save_button, "success")
+            
+            # Test connection button
+            test_button = tk.Button(buttons_frame, text="Test Connection", 
+                                    command=self._test_connection_from_window)
+            test_button.pack(side=tk.LEFT, padx=(0, 5))
+            self.style_manager.style_button(test_button)
+            
+            # Close button
+            close_button = tk.Button(buttons_frame, text="Close", command=api_window.destroy)
+            close_button.pack(side=tk.RIGHT)
+            self.style_manager.style_button(close_button)
+            
+            # Center the window
+            api_window.update_idletasks()
+            x = self.root.winfo_x() + (self.root.winfo_width() // 2) - (api_window.winfo_width() // 2)
+            y = self.root.winfo_y() + (self.root.winfo_height() // 2) - (api_window.winfo_height() // 2)
+            api_window.geometry(f"+{x}+{y}")
+            
+        except Exception as e:
+            self.logger.error(f"Error opening API settings window: {e}")
+            messagebox.showerror("Error", f"Error opening API settings window: {e}")
+            
+    def _toggle_show_secret_key_widget(self, key_entry_widget: tk.Entry) -> None:
+        """Toggle showing/hiding secret key in a specific widget."""
+        try:
+            key_entry_widget.config(show="" if self.show_secret_key.get() else "*")
+        except Exception as e:
+            self.logger.error(f"Error toggling secret key visibility: {e}")
+            
+    def _save_api_keys_from_window(self, window: tk.Toplevel) -> None:
+        """Save API keys from the dedicated window."""
+        try:
+            # Update config
+            self.config["account_address"] = self.account_address.get()
+            self.config["secret_key"] = self.secret_key.get()
+            
+            # Save config using SettingsManager
+            self.settings_manager.save_settings(self.config)
+            
+            # Reload config in adapter and trading integration
+            self.adapter.reload_config()
+            self.trading.adapter.reload_config() # Ensure trading integration also reloads
+            
+            self.logger.info("API keys saved successfully from dedicated window")
+            messagebox.showinfo("API Keys Saved", "API keys saved successfully.", parent=window)
+            window.destroy() # Close window after saving
+        except Exception as e:
+            self.logger.error(f"Error saving API keys from window: {e}")
+            messagebox.showerror("Error", f"Error saving API keys: {e}", parent=window)
+            
+    def _test_connection_from_window(self) -> None:
+        """Test connection from the dedicated API settings window."""
+        try:
+            # Ensure keys are loaded in the adapter before testing
+            self.adapter.reload_config()
+            self.trading.adapter.reload_config()
+            
+            # Test connection using the adapter directly
+            result = self.adapter.test_connection()
+            
+            if result:
+                self.logger.info("Connection test successful from API window")
+                messagebox.showinfo("Connection Test", "Connection test successful.")
+            else:
+                self.logger.warning("Connection test failed from API window")
+                messagebox.showwarning("Connection Test", "Connection test failed. Please check your API keys and network connection.")
+        except Exception as e:
+            self.logger.error(f"Error testing connection from API window: {e}")
+            messagebox.showerror("Error", f"Error testing connection: {e}")
+            
+    def _check_and_prompt_for_api_keys(self) -> None:
+        """Check if API keys are missing and prompt user if needed."""
+        try:
+            # Check if API keys are missing
+            account_address = self.config.get("account_address", "")
+            secret_key = self.config.get("secret_key", "")
+            
+            if not account_address or not secret_key:
+                self.logger.info("API keys missing, prompting user for input")
+                
+                # Show message to user
+                result = messagebox.askyesno(
+                    "API Keys Required",
+                    "Welcome to HyperliquidMaster!\n\n"
+                    "No API keys were found. You need to set up your API keys to use the trading features.\n\n"
+                    "Would you like to set up your API keys now?"
+                )
+                
+                if result:
+                    # User wants to set up API keys now
+                    self.root.after(500, self._open_api_settings_window)  # Slight delay for better UX
+                else:
+                    # User declined to set up API keys
+                    self.logger.warning("User declined to set up API keys at first start")
+                    messagebox.showinfo(
+                        "Limited Functionality",
+                        "You can continue using the application with limited functionality.\n\n"
+                        "You can set up your API keys later by clicking 'Open API Key Settings' in the Settings tab."
+                    )
+            else:
+                self.logger.info("API keys found, no prompt needed")
+                
+        except Exception as e:
+            self.logger.error(f"Error checking/prompting for API keys: {e}")
+            # Don't show error to user as this is a background check
         
-        key_label = ttk.Label(key_frame, text="Secret Key:")
-        key_label.pack(side=tk.LEFT, padx=(0, 5))
-        
-        key_entry = tk.Entry(key_frame, textvariable=self.secret_key, width=50, show="*")
-        key_entry.pack(side=tk.LEFT, fill=tk.X, expand=True)
-        self.style_manager.style_entry(key_entry)
-        
-        # Create show/hide secret key checkbox
-        show_key_check = ttk.Checkbutton(key_frame, text="Show", variable=self.show_secret_key, command=self._toggle_show_secret_key)
-        show_key_check.pack(side=tk.LEFT, padx=(5, 0))
-        
-        # Create API key buttons
-        api_buttons_frame = ttk.Frame(api_frame)
-        api_buttons_frame.pack(fill=tk.X, pady=5)
-        
-        save_api_button = tk.Button(api_buttons_frame, text="Save API Keys", command=self._save_api_keys)
-        save_api_button.pack(side=tk.LEFT, padx=(0, 5))
-        self.style_manager.style_button(save_api_button, "success")
-        
-        test_api_button = tk.Button(api_buttons_frame, text="Test Connection", command=self._test_connection)
-        test_api_button.pack(side=tk.LEFT)
-        self.style_manager.style_button(test_api_button)
-        
+    def _init_trading_settings_frame(self, settings_frame):
+        """Initialize the trading settings frame."""
         # Create trading settings section
         trading_frame = ttk.Frame(settings_frame)
         trading_frame.pack(fill=tk.X, pady=(0, 20))
@@ -1098,6 +1234,9 @@ class HyperliquidMasterGUI:
     def _toggle_show_secret_key(self) -> None:
         """Toggle showing/hiding secret key."""
         try:
+            # This method is now deprecated in favor of _toggle_show_secret_key_widget
+            # which handles a specific widget rather than searching through all widgets
+            self.logger.warning("Using deprecated _toggle_show_secret_key method")
             for widget in self.root.winfo_children():
                 if isinstance(widget, tk.Entry) and widget.cget("show") == "*":
                     widget.config(show="" if self.show_secret_key.get() else "*")
@@ -1107,6 +1246,10 @@ class HyperliquidMasterGUI:
     def _save_api_keys(self) -> None:
         """Save API keys to config."""
         try:
+            # This method is now deprecated in favor of _save_api_keys_from_window
+            # which handles saving from the dedicated API key window
+            self.logger.warning("Using deprecated _save_api_keys method")
+            
             # Update config
             self.config["account_address"] = self.account_address.get()
             self.config["secret_key"] = self.secret_key.get()
@@ -1115,7 +1258,12 @@ class HyperliquidMasterGUI:
             self.settings_manager.save_settings(self.config)
             
             # Update trading integration
-            self.trading.update_api_keys(self.account_address.get(), self.secret_key.get())
+            if hasattr(self.trading, "update_api_keys"):
+                self.trading.update_api_keys(self.account_address.get(), self.secret_key.get())
+            else:
+                # If method doesn't exist, reload config in adapter
+                self.adapter.reload_config()
+                self.trading.adapter.reload_config()
             
             self.logger.info("API keys saved successfully")
             messagebox.showinfo("API Keys", "API keys saved successfully")
@@ -1126,6 +1274,16 @@ class HyperliquidMasterGUI:
     def _test_connection(self) -> None:
         """Test connection to exchange."""
         try:
+            # This method is now deprecated in favor of _test_connection_from_window
+            # which handles testing from the dedicated API key window
+            self.logger.warning("Using deprecated _test_connection method")
+            
+            # Ensure keys are loaded in the adapter before testing
+            if hasattr(self, "adapter"):
+                self.adapter.reload_config()
+            if hasattr(self.trading, "adapter"):
+                self.trading.adapter.reload_config()
+            
             # Test connection
             result = self.connection_manager.test_connection()
             
@@ -1134,7 +1292,7 @@ class HyperliquidMasterGUI:
                 messagebox.showinfo("Connection Test", "Connection test successful")
             else:
                 self.logger.warning("Connection test failed")
-                messagebox.showwarning("Connection Test", "Connection test failed")
+                messagebox.showwarning("Connection Test", "Connection test failed. Please check your API keys and network connection.")
         except Exception as e:
             self.logger.error(f"Error testing connection: {e}")
             messagebox.showerror("Error", f"Error testing connection: {e}")
@@ -1166,6 +1324,9 @@ class HyperliquidMasterGUI:
     def _refresh_dashboard(self) -> None:
         """Refresh dashboard data."""
         try:
+            # Fetch available tokens
+            self._fetch_available_tokens()
+            
             # Update chart
             self._update_chart()
             
@@ -1175,6 +1336,43 @@ class HyperliquidMasterGUI:
             self.logger.info("Dashboard refreshed")
         except Exception as e:
             self.logger.error(f"Error refreshing dashboard: {e}")
+            
+    def _fetch_available_tokens(self) -> None:
+        """Fetch all available tokens from the exchange."""
+        try:
+            # Show loading cursor
+            self.root.config(cursor="watch")
+            self.root.update()
+            
+            # Fetch tokens
+            result = self.trading.get_all_available_tokens()
+            
+            if "error" in result:
+                self.logger.warning(f"Error fetching tokens: {result['error']}")
+                # If error, keep the default tokens but don't show error to user
+                # as this is not critical functionality
+            
+            # Update available symbols if tokens were fetched successfully
+            if "tokens" in result and result["tokens"]:
+                self.available_symbols = result["tokens"]
+                
+                # Update all comboboxes with new symbols
+                self.symbol_combobox["values"] = self.available_symbols
+                
+                # Update other comboboxes if they exist
+                if hasattr(self, "twap_symbol_combo"):
+                    self.twap_symbol_combo["values"] = self.available_symbols
+                if hasattr(self, "scale_symbol_combo"):
+                    self.scale_symbol_combo["values"] = self.available_symbols
+                
+                self.logger.info(f"Updated available symbols: {len(self.available_symbols)} tokens found")
+            
+            # Restore cursor
+            self.root.config(cursor="")
+        except Exception as e:
+            self.logger.error(f"Error fetching available tokens: {e}")
+            # Restore cursor
+            self.root.config(cursor="")
     
     def _refresh_positions(self) -> None:
         """Refresh positions data."""

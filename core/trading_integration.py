@@ -177,6 +177,20 @@ class TradingIntegration:
             self.logger.error(f"Error getting account info: {e}")
             return {"error": f"Error getting account info: {e}"}
     
+    def get_all_available_tokens(self) -> Dict[str, Any]:
+        """
+        Get all available tokens from the exchange.
+        
+        Returns:
+            Dict containing list of available tokens
+        """
+        try:
+            # Get all available tokens
+            return self.adapter.get_all_available_tokens()
+        except Exception as e:
+            self.logger.error(f"Error getting available tokens: {e}")
+            return {"error": f"Error getting available tokens: {e}", "tokens": []}
+    
     def get_market_data(self, symbol: str) -> Dict[str, Any]:
         """
         Get market data for a symbol.
