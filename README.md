@@ -1,6 +1,6 @@
-# Hyperliquid Trading Bot - Ultimate Edition
+# 🏆 Hyperliquid Trading Bot - BEST BRANCH EDITION
 
-🚀 **The most comprehensive and advanced Hyperliquid trading bot** combining the best features from multiple repositories with enhanced functionality, modern GUI, and professional-grade risk management.
+🚀 **The ULTIMATE and most comprehensive Hyperliquid trading bot** - This is the BEST BRANCH with maximum optimizations, enhanced features, and production-ready performance.
 
 ## 🌟 Features
 
