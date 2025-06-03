@@ -134,6 +134,7 @@ class HyperliquidMasterGUI:
         # Create tabs
         self.dashboard_tab = ttk.Frame(self.notebook)
         self.positions_tab = ttk.Frame(self.notebook)
+        self.api_keys_tab = ttk.Frame(self.notebook)  # New dedicated API keys tab
         self.settings_tab = ttk.Frame(self.notebook)
         self.strategy_tab = ttk.Frame(self.notebook)
         self.advanced_tab = ttk.Frame(self.notebook)
@@ -141,6 +142,7 @@ class HyperliquidMasterGUI:
         
         self.notebook.add(self.dashboard_tab, text="Dashboard")
         self.notebook.add(self.positions_tab, text="Positions")
+        self.notebook.add(self.api_keys_tab, text="API Keys")  # Add the API keys tab
         self.notebook.add(self.settings_tab, text="Settings")
         self.notebook.add(self.strategy_tab, text="Strategy")
         self.notebook.add(self.advanced_tab, text="Advanced")
@@ -154,6 +156,7 @@ class HyperliquidMasterGUI:
         # Initialize tabs
         self._init_dashboard_tab()
         self._init_positions_tab()
+        self._init_api_keys_tab()  # Initialize the new API keys tab
         self._init_settings_tab()
         self._init_strategy_tab()
         self._init_advanced_tab()
@@ -368,17 +371,17 @@ class HyperliquidMasterGUI:
         container, settings_frame = self.style_manager.create_scrollable_frame(self.settings_tab)
         container.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
         
-        # Create API Keys button to open dedicated API settings window
+        # Create note about API Keys tab
         api_button_frame = ttk.Frame(settings_frame)
         api_button_frame.pack(fill=tk.X, pady=(0, 20))
         
         api_title = ttk.Label(api_button_frame, text="API Key Management", style="Header.TLabel")
         api_title.pack(anchor=tk.W, pady=(0, 10))
         
-        api_desc = ttk.Label(api_button_frame, text="API keys are stored securely in a separate configuration. Click the button below to manage your API keys.")
+        api_desc = ttk.Label(api_button_frame, text="API keys can now be managed in the dedicated 'API Keys' tab.")
         api_desc.pack(anchor=tk.W, pady=(0, 10))
         
-        open_api_button = tk.Button(api_button_frame, text="Open API Key Settings", command=self._open_api_settings_window)
+        open_api_button = tk.Button(api_button_frame, text="Go to API Keys Tab", command=lambda: self.notebook.select(self.api_keys_tab))
         open_api_button.pack(anchor=tk.W)
         self.style_manager.style_button(open_api_button, "primary")
         
@@ -518,24 +521,39 @@ class HyperliquidMasterGUI:
             if not account_address or not secret_key:
                 self.logger.info("API keys missing, prompting user for input")
                 
-                # Show message to user
+                # Show welcome message with API key setup prompt
                 result = messagebox.askyesno(
-                    "API Keys Required",
-                    "Welcome to HyperliquidMaster!\n\n"
-                    "No API keys were found. You need to set up your API keys to use the trading features.\n\n"
-                    "Would you like to set up your API keys now?"
+                    "Welcome to HyperliquidMaster",
+                    "Welcome to HyperliquidMaster Trading Bot!\n\n"
+                    "This appears to be your first time running the application or no API keys were found.\n\n"
+                    "To use trading features, you need to set up your Hyperliquid API keys.\n\n"
+                    "Would you like to set up your API keys now?",
+                    icon=messagebox.QUESTION
                 )
                 
                 if result:
                     # User wants to set up API keys now
-                    self.root.after(500, self._open_api_settings_window)  # Slight delay for better UX
+                    self.logger.info("User chose to set up API keys at first start")
+                    
+                    # Switch to the API Keys tab and highlight it
+                    self.notebook.select(self.api_keys_tab)
+                    
+                    # Show a helpful tooltip/message
+                    messagebox.showinfo(
+                        "API Key Setup",
+                        "Please enter your Hyperliquid account address and secret key.\n\n"
+                        "You can find these in your Hyperliquid account settings.\n\n"
+                        "Your keys will be stored securely in the local config file.",
+                        parent=self.api_keys_tab
+                    )
                 else:
                     # User declined to set up API keys
                     self.logger.warning("User declined to set up API keys at first start")
                     messagebox.showinfo(
                         "Limited Functionality",
                         "You can continue using the application with limited functionality.\n\n"
-                        "You can set up your API keys later by clicking 'Open API Key Settings' in the Settings tab."
+                        "You can set up your API keys later by accessing the 'API Keys' tab.",
+                        icon=messagebox.INFO
                     )
             else:
                 self.logger.info("API keys found, no prompt needed")
@@ -1825,3 +1843,113 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+    def _init_api_keys_tab(self) -> None:
+        """Initialize the dedicated API keys tab."""
+        try:
+            # Create scrollable frame
+            container, api_keys_frame = self.style_manager.create_scrollable_frame(self.api_keys_tab)
+            container.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
+            
+            api_title = ttk.Label(api_keys_frame, text="API Key Management", style="Header.TLabel")
+            api_title.pack(anchor=tk.W, pady=(0, 10))
+            
+            api_desc = ttk.Label(api_keys_frame, text="Enter your Hyperliquid account address and secret key below. These are stored securely in config.json.")
+            api_desc.pack(anchor=tk.W, pady=(0, 10))
+            
+            # Create account address input
+            addr_frame = ttk.Frame(api_keys_frame)
+            addr_frame.pack(fill=tk.X, pady=5)
+            
+            addr_label = ttk.Label(addr_frame, text="Account Address:")
+            addr_label.pack(side=tk.LEFT, padx=(0, 5))
+            
+            addr_entry = tk.Entry(addr_frame, textvariable=self.account_address, width=60)
+            addr_entry.pack(side=tk.LEFT, fill=tk.X, expand=True)
+            self.style_manager.style_entry(addr_entry)
+            
+            # Create secret key input
+            key_frame = ttk.Frame(api_keys_frame)
+            key_frame.pack(fill=tk.X, pady=5)
+            
+            key_label = ttk.Label(key_frame, text="Secret Key:")
+            key_label.pack(side=tk.LEFT, padx=(0, 5))
+            
+            self.api_key_entry = tk.Entry(key_frame, textvariable=self.secret_key, width=60, show="*")
+            self.api_key_entry.pack(side=tk.LEFT, fill=tk.X, expand=True)
+            self.style_manager.style_entry(self.api_key_entry)
+            
+            # Create show/hide secret key checkbox
+            show_key_check = ttk.Checkbutton(key_frame, text="Show", variable=self.show_secret_key, 
+                                             command=lambda: self._toggle_show_secret_key_widget(self.api_key_entry))
+            show_key_check.pack(side=tk.LEFT, padx=(5, 0))
+            
+            # Create buttons frame
+            buttons_frame = ttk.Frame(api_keys_frame)
+            buttons_frame.pack(fill=tk.X, pady=10)
+            
+            # Save button
+            save_button = tk.Button(buttons_frame, text="Save API Keys", 
+                                    command=self._save_api_keys_from_tab)
+            save_button.pack(side=tk.LEFT, padx=(0, 5))
+            self.style_manager.style_button(save_button, "success")
+            
+            # Test connection button
+            test_button = tk.Button(buttons_frame, text="Test Connection", 
+                                    command=self._test_connection_from_tab)
+            test_button.pack(side=tk.LEFT, padx=(0, 5))
+            self.style_manager.style_button(test_button)
+            
+        except Exception as e:
+            self.logger.error(f"Error initializing API keys tab: {e}")
+            messagebox.showerror("Error", f"Error initializing API keys tab: {e}")
+
+    def _save_api_keys_from_tab(self) -> None:
+        """Save API keys from the dedicated API keys tab."""
+        try:
+            # Update config
+            self.config["account_address"] = self.account_address.get()
+            self.config["secret_key"] = self.secret_key.get()
+            
+            # Save config using SettingsManager
+            self.settings_manager.save_settings(self.config)
+            
+            # Reload config in adapter and trading integration
+            self.adapter.reload_config()
+            self.trading.adapter.reload_config() # Ensure trading integration also reloads
+            
+            self.logger.info("API keys saved successfully from API Keys tab")
+            messagebox.showinfo("API Keys Saved", "API keys saved successfully.")
+        except Exception as e:
+            self.logger.error(f"Error saving API keys from tab: {e}")
+            messagebox.showerror("Error", f"Error saving API keys: {e}")
+            
+    def _test_connection_from_tab(self) -> None:
+        """Test connection from the dedicated API keys tab."""
+        try:
+            # Ensure keys are loaded in the adapter before testing
+            # Save current values first to ensure test uses entered values
+            temp_address = self.account_address.get()
+            temp_key = self.secret_key.get()
+            self.adapter.set_api_keys(temp_address, temp_key) # Temporarily set keys for testing
+            
+            # Test connection using the adapter directly
+            result = self.adapter.test_connection()
+            
+            # Restore original config keys after test
+            self.adapter.reload_config()
+            
+            if result.get("success"):
+                self.logger.info("Connection test successful from API Keys tab")
+                messagebox.showinfo("Connection Test", "Connection test successful.")
+            else:
+                error_msg = result.get("error", "Unknown error")
+                self.logger.warning(f"Connection test failed from API Keys tab: {error_msg}")
+                messagebox.showwarning("Connection Test", f"Connection test failed: {error_msg}. Please check your API keys and network connection.")
+        except Exception as e:
+            self.logger.error(f"Error testing connection from API Keys tab: {e}")
+            messagebox.showerror("Error", f"Error testing connection: {e}")
+            # Restore original config keys in case of error
+            self.adapter.reload_config()
+

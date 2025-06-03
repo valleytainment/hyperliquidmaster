@@ -186,6 +186,18 @@ class ConnectionManager:
                 self.logger.error(f"Error resetting connection: {e}")
                 return False
     
+    def set_connected(self, status: bool) -> None:
+        """
+        Set connection status.
+        
+        Args:
+            status: Connection status to set
+        """
+        with self.connection_lock:
+            self.connected = status
+            if status:
+                self.last_connected_time = datetime.now()
+            
     def is_connected(self) -> bool:
         """
         Check if connected to the exchange.

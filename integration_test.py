@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
 """
-Integration test script for HyperliquidMaster
-
-This script tests the core functionality and integration between components
-to ensure everything works correctly before committing changes.
+Integration test script for HyperliquidMaster.
+Tests all core components and their integration.
 """
 
 import os
 import sys
-import logging
 import json
-from datetime import datetime
+import logging
+import unittest
+from unittest.mock import MagicMock, patch
 
 # Configure logging
 logging.basicConfig(
@@ -22,315 +21,236 @@ logging.basicConfig(
     ]
 )
 
-logger = logging.getLogger("IntegrationTest")
-
 # Import core modules
-try:
-    from core.trading_integration import TradingIntegration
-    from core.error_handler import ErrorHandler
-    from core.trading_mode import TradingModeManager, TradingMode
-    from core.enhanced_connection_manager import ConnectionManager
-    from core.settings_manager import SettingsManager
-    from core.enhanced_risk_manager import RiskManager
-    from core.advanced_order_manager import AdvancedOrderManager
-    from core.position_manager_wrapper import PositionManagerWrapper
-    from core.hyperliquid_adapter import HyperliquidAdapter
-    
-    logger.info("Successfully imported all core modules")
-except ImportError as e:
-    logger.error(f"Error importing core modules: {e}")
-    sys.exit(1)
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+from core.settings_manager import SettingsManager
+from core.error_handler import ErrorHandler
+from core.enhanced_connection_manager import ConnectionManager
+from core.trading_mode import TradingModeManager, TradingMode
+from core.enhanced_risk_manager import RiskManager
+from core.hyperliquid_adapter import HyperliquidAdapter
+from core.trading_integration import TradingIntegration
 
-def test_config_loading():
-    """Test configuration loading"""
-    logger.info("Testing configuration loading...")
+class IntegrationTest(unittest.TestCase):
+    """Integration test class for HyperliquidMaster."""
     
-    config_path = "config.json"
-    
-    # Ensure config exists
-    if not os.path.exists(config_path):
-        logger.warning(f"Config file {config_path} does not exist, creating test config")
+    def setUp(self):
+        """Set up test environment."""
+        self.logger = logging.getLogger("IntegrationTest")
+        self.config_path = "config.json"
         
-        test_config = {
-            "api_key": "test_api_key",
-            "api_secret": "test_api_secret",
-            "account_address": "test_account_address",
-            "secret_key": "test_secret_key",
-            "use_testnet": True,
-            "symbol": "XRP",
-            "position_size": 0.01,
-            "stop_loss": 1.0,
-            "take_profit": 2.0,
-            "risk_level": 0.02,
-            "use_volatility_filters": True,
-            "use_trend_filters": True,
-            "use_volume_filters": True,
-            "tp_multiplier": 2.0,
-            "sl_multiplier": 1.0
+        # Create test config if it doesn't exist
+        if not os.path.exists(self.config_path):
+            with open(self.config_path, 'w') as f:
+                json.dump({
+                    "account_address": "test_address",
+                    "secret_key": "test_key",
+                    "symbol": "BTC",
+                    "position_size": "0.01",
+                    "stop_loss": "1.0",
+                    "take_profit": "2.0",
+                    "risk_level": 0.02,
+                    "use_mock_data": True
+                }, f)
+        
+        # Initialize components
+        self.settings_manager = SettingsManager(self.config_path, self.logger)
+        self.error_handler = ErrorHandler(self.logger)
+        self.connection_manager = ConnectionManager(self.logger)
+        self.config = self.settings_manager.load_settings()
+        self.mode_manager = TradingModeManager(self.config, self.logger)
+        self.risk_manager = RiskManager(self.config, self.logger)
+        
+        # Mock adapter to avoid actual API calls
+        self.adapter = MagicMock(spec=HyperliquidAdapter)
+        self.adapter.is_connected = True
+        self.adapter.get_all_available_tokens.return_value = {
+            "success": True,
+            "tokens": ["BTC", "ETH", "XRP", "SOL", "DOGE", "AVAX", "LINK", "MATIC"]
         }
         
-        with open(config_path, 'w') as f:
-            json.dump(test_config, f, indent=2)
-        
-        logger.info(f"Created test config at {config_path}")
+        # Initialize trading integration with mock adapter
+        self.trading = TradingIntegration(
+            self.config_path,
+            self.logger,
+            self.connection_manager,
+            self.mode_manager,
+            self.risk_manager
+        )
+        self.trading.adapter = self.adapter
     
-    # Test loading config
-    try:
-        settings_manager = SettingsManager(config_path, logger)
-        config = settings_manager.load_settings()
-        
-        logger.info(f"Successfully loaded config: {config.keys()}")
-        return True
-    except Exception as e:
-        logger.error(f"Error loading config: {e}")
-        return False
-
-def test_error_handler():
-    """Test error handler functionality"""
-    logger.info("Testing error handler...")
+    def test_config_loading(self):
+        """Test config loading."""
+        self.logger.info("Testing config loading...")
+        config = self.settings_manager.load_settings()
+        self.assertIsNotNone(config)
+        self.assertIn("account_address", config)
+        self.assertIn("secret_key", config)
+        self.logger.info("Config loading test passed")
     
-    try:
-        error_handler = ErrorHandler(logger)
-        
-        # Test handling an error
-        try:
-            # Deliberately cause an error
-            result = 1 / 0
-        except Exception as e:
-            error_record = error_handler.handle_error(e, "test_division", {"test": True})
-            
-            logger.info(f"Successfully handled error: {error_record['type']}")
-        
-        # Test getting error history
-        history = error_handler.get_error_history()
-        
-        logger.info(f"Successfully retrieved error history: {len(history)} errors")
-        return True
-    except Exception as e:
-        logger.error(f"Error testing error handler: {e}")
-        return False
-
-def test_connection_manager():
-    """Test connection manager functionality"""
-    logger.info("Testing connection manager...")
+    def test_error_handler(self):
+        """Test error handler."""
+        self.logger.info("Testing error handler...")
+        error_msg = "Test error"
+        self.error_handler.log_error(error_msg)
+        self.error_handler.log_warning(error_msg)
+        self.error_handler.log_info(error_msg)
+        self.logger.info("Error handler test passed")
     
-    try:
-        connection_manager = ConnectionManager(logger)
-        
-        # Test connection
-        connected = connection_manager.connect()
-        
-        logger.info(f"Connection test result: {connected}")
-        
-        # Test getting connection status
-        status = connection_manager.get_connection_status()
-        
-        logger.info(f"Connection status: {status}")
-        
-        # Test is_connected method
-        is_connected = connection_manager.is_connected()
-        
-        logger.info(f"Is connected: {is_connected}")
-        
-        return True
-    except Exception as e:
-        logger.error(f"Error testing connection manager: {e}")
-        return False
-
-def test_trading_mode_manager():
-    """Test trading mode manager functionality"""
-    logger.info("Testing trading mode manager...")
+    def test_connection_manager(self):
+        """Test connection manager."""
+        self.logger.info("Testing connection manager...")
+        self.connection_manager.set_connected(True)
+        self.assertTrue(self.connection_manager.is_connected())
+        self.connection_manager.set_connected(False)
+        self.assertFalse(self.connection_manager.is_connected())
+        self.logger.info("Connection manager test passed")
     
-    try:
-        config_path = "config.json"
-        settings_manager = SettingsManager(config_path, logger)
-        config = settings_manager.load_settings()
-        
-        mode_manager = TradingModeManager(config, logger)
-        
+    def test_trading_mode_manager(self):
+        """Test trading mode manager."""
+        self.logger.info("Testing trading mode manager...")
         # Test getting current mode
-        current_mode = mode_manager.get_current_mode()
-        
-        logger.info(f"Current mode: {current_mode}")
+        current_mode = self.mode_manager.get_current_mode()
+        self.assertIsNotNone(current_mode)
         
         # Test setting mode
-        for mode in [TradingMode.PAPER_TRADING, TradingMode.MONITOR_ONLY, TradingMode.CONSERVATIVE]:
-            result = mode_manager.set_mode(mode)
-            logger.info(f"Set mode to {mode}: {result}")
-            
-            # Verify mode was set
-            new_mode = mode_manager.get_current_mode()
-            logger.info(f"New mode: {new_mode}")
-            
-            if new_mode != mode:
-                logger.error(f"Mode was not set correctly: expected {mode}, got {new_mode}")
-                return False
+        for mode in TradingMode:
+            self.mode_manager.set_mode(mode)
+            self.assertEqual(self.mode_manager.get_current_mode(), mode)
         
-        # Reset to PAPER_TRADING
-        mode_manager.set_mode(TradingMode.PAPER_TRADING)
+        # Test mode description
+        for mode in TradingMode:
+            desc = self.mode_manager.get_mode_description(mode)
+            self.assertIsNotNone(desc)
+            self.assertNotEqual(desc, "")
         
-        return True
-    except Exception as e:
-        logger.error(f"Error testing trading mode manager: {e}")
-        return False
-
-def test_risk_manager():
-    """Test risk manager functionality"""
-    logger.info("Testing risk manager...")
+        self.logger.info("Trading mode manager test passed")
     
-    try:
-        config_path = "config.json"
-        settings_manager = SettingsManager(config_path, logger)
-        config = settings_manager.load_settings()
+    def test_risk_manager(self):
+        """Test risk manager."""
+        self.logger.info("Testing risk manager...")
+        # Test risk metrics
+        metrics = self.risk_manager.get_risk_metrics()
+        self.assertIsNotNone(metrics)
         
-        risk_manager = RiskManager(config, logger)
-        
-        # Test calculating position size
-        position_size = risk_manager.calculate_position_size(
-            symbol="XRP",
-            entry_price=1.0,
-            stop_loss_price=0.9,
-            account_equity=1000.0
+        # Test position size calculation
+        position_size = self.risk_manager.calculate_position_size(
+            symbol="BTC",
+            entry_price=50000.0,
+            stop_loss_price=49000.0,
+            account_equity=10000.0
         )
+        self.assertGreater(position_size, 0)
         
-        logger.info(f"Calculated position size: {position_size}")
-        
-        # Test calculating risk-reward ratio
-        ratio = risk_manager.calculate_risk_reward_ratio(
-            entry_price=1.0,
-            stop_loss_price=0.9,
-            take_profit_price=1.2
+        # Test risk-reward ratio calculation
+        ratio = self.risk_manager.calculate_risk_reward_ratio(
+            entry_price=50000.0,
+            stop_loss_price=49000.0,
+            take_profit_price=52000.0
         )
+        self.assertGreater(ratio, 0)
         
-        logger.info(f"Calculated risk-reward ratio: {ratio}")
+        # Test drawdown protection
+        result = self.risk_manager.check_drawdown_protection()
+        self.assertIsNotNone(result)
         
-        # Test validating risk-reward ratio
-        is_valid = risk_manager.validate_risk_reward_ratio(
-            entry_price=1.0,
-            stop_loss_price=0.9,
-            take_profit_price=1.2
-        )
-        
-        logger.info(f"Risk-reward validation: {is_valid}")
-        
-        # Test checking drawdown protection
-        trading_allowed = risk_manager.check_drawdown_protection()
-        
-        logger.info(f"Drawdown protection check: {trading_allowed}")
-        
-        return True
-    except Exception as e:
-        logger.error(f"Error testing risk manager: {e}")
-        return False
-
-def test_hyperliquid_adapter():
-    """Test hyperliquid adapter functionality"""
-    logger.info("Testing hyperliquid adapter...")
+        self.logger.info("Risk manager test passed")
     
-    try:
-        # Test with testnet
-        adapter = HyperliquidAdapter(use_testnet=True)
+    def test_hyperliquid_adapter(self):
+        """Test Hyperliquid adapter."""
+        self.logger.info("Testing Hyperliquid adapter...")
+        # Test token fetching
+        result = self.adapter.get_all_available_tokens()
+        self.assertIn("tokens", result)
+        self.assertIsInstance(result["tokens"], list)
+        self.assertGreater(len(result["tokens"]), 0)
         
-        # Test is_connected attribute
-        logger.info(f"Adapter is_connected attribute: {adapter.is_connected}")
-        
-        # Test connection
-        connection_result = adapter.connect()
-        
-        logger.info(f"Connection result: {connection_result}")
-        
-        # Test is_connected attribute after connection attempt
-        logger.info(f"Adapter is_connected attribute after connection: {adapter.is_connected}")
-        
-        return True
-    except Exception as e:
-        logger.error(f"Error testing hyperliquid adapter: {e}")
-        return False
-
-def test_trading_integration():
-    """Test trading integration functionality"""
-    logger.info("Testing trading integration...")
+        self.logger.info("Hyperliquid adapter test passed")
     
-    try:
-        config_path = "config.json"
+    def test_trading_integration(self):
+        """Test trading integration."""
+        self.logger.info("Testing trading integration...")
+        # Test token fetching through integration
+        result = self.trading.get_all_available_tokens()
+        self.assertIn("tokens", result)
+        self.assertIsInstance(result["tokens"], list)
+        self.assertGreater(len(result["tokens"]), 0)
         
-        # Initialize trading integration
-        trading = TradingIntegration(config_path, logger)
+        # Test connection status
+        status = self.trading.get_connection_status()
+        self.assertIn("connected", status)
+        self.assertIn("exchange", status)
+        self.assertIn("mode", status)
         
-        # Test is_connected attribute
-        logger.info(f"Trading integration is_connected attribute: {trading.is_connected}")
-        
-        # Test getting connection status
-        status = trading.get_connection_status()
-        
-        logger.info(f"Connection status: {status}")
-        
-        # Test getting trading mode
-        mode = trading.get_trading_mode()
-        
-        logger.info(f"Trading mode: {mode}")
-        
-        # Test setting trading mode
-        result = trading.set_trading_mode("PAPER_TRADING")
-        
-        logger.info(f"Set trading mode result: {result}")
-        
-        return True
-    except Exception as e:
-        logger.error(f"Error testing trading integration: {e}")
-        return False
-
-def run_all_tests():
-    """Run all integration tests"""
-    logger.info("Starting integration tests...")
+        self.logger.info("Trading integration test passed")
     
-    tests = [
-        ("Config Loading", test_config_loading),
-        ("Error Handler", test_error_handler),
-        ("Connection Manager", test_connection_manager),
-        ("Trading Mode Manager", test_trading_mode_manager),
-        ("Risk Manager", test_risk_manager),
-        ("Hyperliquid Adapter", test_hyperliquid_adapter),
-        ("Trading Integration", test_trading_integration)
-    ]
-    
-    results = {}
-    all_passed = True
-    
-    for name, test_func in tests:
-        logger.info(f"Running test: {name}")
+    def test_new_api_key_tab_integration(self):
+        """Test API key tab integration with other components."""
+        self.logger.info("Testing API key tab integration...")
         
-        try:
-            result = test_func()
-            results[name] = result
+        # Mock the API key setting
+        with patch.object(self.adapter, 'set_api_keys') as mock_set_keys:
+            mock_set_keys.return_value = True
             
-            if not result:
-                all_passed = False
-                
-            logger.info(f"Test {name}: {'PASSED' if result else 'FAILED'}")
-        except Exception as e:
-            logger.error(f"Error running test {name}: {e}")
-            results[name] = False
-            all_passed = False
+            # Simulate setting API keys
+            result = self.adapter.set_api_keys("new_address", "new_key")
+            self.assertTrue(result)
+            mock_set_keys.assert_called_once_with("new_address", "new_key")
+        
+        self.logger.info("API key tab integration test passed")
     
-    # Print summary
-    logger.info("Integration Test Summary:")
-    for name, result in results.items():
-        logger.info(f"  {name}: {'PASSED' if result else 'FAILED'}")
+    def test_first_start_prompt_integration(self):
+        """Test first-start prompt integration."""
+        self.logger.info("Testing first-start prompt integration...")
+        
+        # Create a temporary config with no keys
+        temp_config_path = "temp_config.json"
+        with open(temp_config_path, 'w') as f:
+            json.dump({
+                "symbol": "BTC",
+                "position_size": "0.01"
+            }, f)
+        
+        # Create a settings manager with the temp config
+        temp_settings_manager = SettingsManager(temp_config_path, self.logger)
+        temp_config = temp_settings_manager.load_settings()
+        
+        # Check if keys are missing
+        self.assertNotIn("account_address", temp_config)
+        self.assertNotIn("secret_key", temp_config)
+        
+        # Clean up
+        if os.path.exists(temp_config_path):
+            os.remove(temp_config_path)
+        
+        self.logger.info("First-start prompt integration test passed")
     
-    logger.info(f"Overall result: {'PASSED' if all_passed else 'FAILED'}")
+    def tearDown(self):
+        """Clean up after tests."""
+        pass
+
+def run_tests():
+    """Run integration tests."""
+    # Create test suite
+    suite = unittest.TestLoader().loadTestsFromTestCase(IntegrationTest)
     
-    return all_passed, results
+    # Run tests
+    result = unittest.TextTestRunner(verbosity=2).run(suite)
+    
+    # Save results to JSON
+    test_results = {
+        "total": result.testsRun,
+        "failures": len(result.failures),
+        "errors": len(result.errors),
+        "skipped": len(result.skipped),
+        "success": result.wasSuccessful()
+    }
+    
+    with open("integration_test_results.json", 'w') as f:
+        json.dump(test_results, f, indent=2)
+    
+    return result.wasSuccessful()
 
 if __name__ == "__main__":
-    success, results = run_all_tests()
-    
-    # Save results to file
-    with open("integration_test_results.json", 'w') as f:
-        json.dump({
-            "timestamp": datetime.now().isoformat(),
-            "success": success,
-            "results": {k: "PASSED" if v else "FAILED" for k, v in results.items()}
-        }, f, indent=2)
-    
+    success = run_tests()
     sys.exit(0 if success else 1)

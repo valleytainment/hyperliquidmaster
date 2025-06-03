@@ -78,6 +78,33 @@ class ErrorHandler:
         self.recovery_handlers[error_type] = handler
         self.logger.info(f"Registered recovery handler for {error_type}")
     
+    def log_error(self, message: str) -> None:
+        """
+        Log an error message.
+        
+        Args:
+            message: Error message to log
+        """
+        self.logger.error(message)
+    
+    def log_warning(self, message: str) -> None:
+        """
+        Log a warning message.
+        
+        Args:
+            message: Warning message to log
+        """
+        self.logger.warning(message)
+    
+    def log_info(self, message: str) -> None:
+        """
+        Log an info message.
+        
+        Args:
+            message: Info message to log
+        """
+        self.logger.info(message)
+    
     def handle_error(self, error: Exception, context: str = "", data: Dict[str, Any] = None) -> Dict[str, Any]:
         """
         Handle an error.
