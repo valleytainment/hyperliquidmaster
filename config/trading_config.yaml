@@ -1,0 +1,223 @@
+# Default Trading Configuration for Hyperliquid Trading Bot
+
+trading:
+  # Network Configuration
+  testnet: true                    # Use testnet for safe testing
+  wallet_address: ""               # Your wallet address (set during setup)
+  
+  # Risk Management
+  max_leverage: 10.0               # Maximum leverage allowed
+  max_daily_loss: 5.0              # Maximum daily loss percentage
+  max_drawdown: 10.0               # Maximum drawdown percentage
+  default_order_size: 100          # Default order size in USD
+  
+  # Active Strategies
+  active_strategies:
+    - bb_rsi_adx
+    # - hull_suite                 # Uncomment to enable
+  
+  # Trading Pairs
+  trading_pairs:
+    - BTC
+    - ETH
+    - SOL
+  
+  # Timeframes
+  timeframes:
+    - 15m
+    - 1h
+  
+  # Order Settings
+  order_timeout: 30                # Order timeout in seconds
+  max_slippage: 0.5               # Maximum slippage percentage
+
+# Strategy Configurations
+strategies:
+  bb_rsi_adx:
+    enabled: true
+    name: "BB RSI ADX Strategy"
+    description: "Bollinger Bands + RSI + ADX trend-following strategy"
+    
+    # Indicator Settings
+    indicators:
+      bollinger_bands:
+        period: 20
+        std_dev: 2.0
+      rsi:
+        period: 14
+        overbought: 75
+        oversold: 25
+      adx:
+        period: 14
+        threshold: 25
+    
+    # Position Management
+    position_sizing:
+      method: "fixed_percentage"     # fixed_percentage, kelly, volatility_adjusted
+      percentage: 10.0               # 10% of portfolio per trade
+    
+    # Risk Management
+    risk_management:
+      stop_loss_pct: 2.0            # 2% stop loss
+      take_profit_pct: 4.0          # 4% take profit
+      max_positions: 3              # Maximum concurrent positions
+  
+  hull_suite:
+    enabled: false
+    name: "Hull Suite Strategy"
+    description: "Hull Moving Average trend identification strategy"
+    
+    # Indicator Settings
+    indicators:
+      hull_ma:
+        period: 34
+        source: "close"             # close, high, low, hl2, hlc3, ohlc4
+      atr:
+        period: 14
+        multiplier: 2.0
+    
+    # Position Management
+    position_sizing:
+      method: "fixed_percentage"
+      percentage: 15.0
+    
+    # Risk Management
+    risk_management:
+      stop_loss_atr_multiplier: 2.0
+      take_profit_atr_multiplier: 3.0
+      max_positions: 2
+
+# Risk Management Configuration
+risk_management:
+  # Portfolio Risk Limits
+  max_portfolio_risk: 0.02         # 2% max risk per trade
+  max_daily_loss: 0.05             # 5% max daily loss
+  max_drawdown: 0.10               # 10% max drawdown
+  max_leverage: 10.0               # 10x max leverage
+  max_position_size: 0.20          # 20% max position size per asset
+  max_concentration: 0.30          # 30% max concentration in single asset
+  max_correlation: 0.7             # Max correlation between positions
+  var_limit: 0.03                  # 3% VaR limit
+  
+  # Position Limits
+  max_positions: 10                # Maximum total positions
+  max_positions_per_coin: 1        # Maximum positions per coin
+  
+  # Time-based Limits
+  max_trades_per_hour: 10          # Maximum trades per hour
+  max_trades_per_day: 50           # Maximum trades per day
+  
+  # Market Condition Limits
+  max_volatility: 0.05             # 5% max daily volatility
+  min_liquidity: 100000            # $100k minimum daily volume
+
+# Backtesting Configuration
+backtesting:
+  initial_capital: 10000           # Initial capital for backtesting
+  commission_rate: 0.0005          # 0.05% commission per trade
+  slippage_rate: 0.0001           # 0.01% slippage per trade
+  
+  # Data Settings
+  data_source: "hyperliquid"       # Data source for backtesting
+  default_timeframe: "15m"         # Default timeframe for backtesting
+  
+  # Output Settings
+  save_results: true               # Save backtest results to file
+  results_directory: "data/backtests"
+  generate_plots: true             # Generate performance plots
+
+# Logging Configuration
+logging:
+  level: "INFO"                    # DEBUG, INFO, WARNING, ERROR
+  console_output: true             # Enable console logging
+  file_output: true                # Enable file logging
+  
+  # Log Files
+  files:
+    main: "logs/trading.log"
+    errors: "logs/errors.log"
+    performance: "logs/performance.log"
+    risk: "logs/risk.log"
+  
+  # Log Rotation
+  max_file_size: "10MB"           # Maximum log file size
+  backup_count: 5                 # Number of backup files to keep
+  
+  # Log Formats
+  format: "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+  date_format: "%Y-%m-%d %H:%M:%S"
+
+# GUI Configuration
+gui:
+  theme: "dark"                    # dark, light
+  update_interval: 1000           # GUI update interval in milliseconds
+  
+  # Window Settings
+  window:
+    width: 1400
+    height: 900
+    resizable: true
+  
+  # Chart Settings
+  charts:
+    default_timeframe: "15m"
+    max_candles: 500
+    indicators:
+      - "bollinger_bands"
+      - "rsi"
+      - "volume"
+
+# API Configuration
+api:
+  # Request Settings
+  timeout: 30                     # Request timeout in seconds
+  max_retries: 3                  # Maximum retry attempts
+  retry_delay: 1                  # Delay between retries in seconds
+  
+  # Rate Limiting
+  rate_limit: 10                  # Requests per second
+  burst_limit: 50                 # Burst request limit
+  
+  # WebSocket Settings
+  websocket:
+    enabled: true                 # Enable WebSocket for real-time data
+    reconnect_attempts: 5         # Maximum reconnection attempts
+    ping_interval: 30             # Ping interval in seconds
+
+# Notification Configuration
+notifications:
+  enabled: false                  # Enable notifications
+  
+  # Discord Webhook (optional)
+  discord:
+    enabled: false
+    webhook_url: ""
+  
+  # Email Notifications (optional)
+  email:
+    enabled: false
+    smtp_server: ""
+    smtp_port: 587
+    username: ""
+    password: ""
+    from_address: ""
+    to_address: ""
+  
+  # Notification Events
+  events:
+    - "trade_executed"
+    - "position_opened"
+    - "position_closed"
+    - "risk_alert"
+    - "error_occurred"
+
+# Development Configuration
+development:
+  debug_mode: false               # Enable debug mode
+  mock_trading: false             # Enable mock trading (no real orders)
+  save_market_data: false         # Save market data for analysis
+  
+  # Testing
+  test_mode: false                # Enable test mode
+  test_data_path: "data/test"     # Path to test data
+
