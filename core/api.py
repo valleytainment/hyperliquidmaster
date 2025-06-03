@@ -1,20 +1,28 @@
 """
-Enhanced Hyperliquid API Wrapper
-Extends the official SDK with additional functionality for trading bot operations
+Enhanced Hyperliquid API Wrapper - BEST BRANCH EDITION
+🏆 ULTIMATE VERSION with maximum optimizations and enhancements
+Provides comprehensive trading functionality with enhanced features
 """
 
+import asyncio
 import json
 import logging
 import time
+from datetime import datetime
 from typing import Dict, List, Optional, Any, Union
 from decimal import Decimal
-import asyncio
-from datetime import datetime, timedelta
 
-from hyperliquid.info import Info
-from hyperliquid.exchange import Exchange
-from hyperliquid.utils import constants
-from hyperliquid.websocket_manager import WebSocketManager
+# Updated imports for Hyperliquid SDK v0.15.0+
+try:
+    from hyperliquid.info import Info
+    from hyperliquid.exchange import Exchange
+    from hyperliquid.utils import constants
+    # Fixed: Use WebsocketManager (lowercase 's') instead of WebSocketManager
+    from hyperliquid.websocket_manager import WebsocketManager
+except ImportError as e:
+    print(f"Error importing Hyperliquid SDK: {e}")
+    print("Please install the latest version: pip install hyperliquid-python-sdk")
+    raise
 
 from utils.logger import get_logger, TradingLogger
 from utils.config_manager import ConfigManager

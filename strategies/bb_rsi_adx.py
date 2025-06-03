@@ -9,8 +9,8 @@ import numpy as np
 from typing import Dict, List, Optional, Any
 from datetime import datetime
 
-from .base_strategy import BaseStrategy, TradingSignal, SignalType, MarketData, OrderType
-from ..utils.logger import get_logger
+from strategies.base_strategy import BaseStrategy, TradingSignal, SignalType, MarketData, OrderType
+from utils.logger import get_logger
 
 logger = get_logger(__name__)
 

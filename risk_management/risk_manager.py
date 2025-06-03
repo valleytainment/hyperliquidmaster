@@ -10,8 +10,8 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta
 from enum import Enum
 
-from ..strategies.base_strategy import TradingSignal, SignalType
-from ..utils.logger import get_logger, TradingLogger
+from strategies.base_strategy import TradingSignal, SignalType, MarketData
+from utils.logger import get_logger, TradingLogger
 
 logger = get_logger(__name__)
 trading_logger = TradingLogger(__name__)

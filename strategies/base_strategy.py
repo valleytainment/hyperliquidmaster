@@ -13,8 +13,8 @@ import pandas as pd
 import numpy as np
 from enum import Enum
 
-from ..utils.logger import get_logger, TradingLogger
-from ..utils.config_manager import StrategyConfig
+from utils.logger import get_logger, TradingLogger
+from utils.config_manager import StrategyConfig
 
 logger = get_logger(__name__)
 trading_logger = TradingLogger(__name__)

@@ -11,9 +11,8 @@ from datetime import datetime, timedelta
 import json
 from pathlib import Path
 
-from ..strategies.base_strategy import BaseStrategy, TradingSignal, SignalType, MarketData
-from ..utils.logger import get_logger, TradingLogger
-
+from strategies.base_strategy import BaseStrategy, TradingSignal, SignalType, MarketData
+from utils.logger import get_logger, TradingLogger
 logger = get_logger(__name__)
 
 
@@ -440,7 +439,7 @@ class BacktestEngine:
                 
                 # Generate strategy signal
                 try:
-                    signal = await strategy.generate_signal(coin, historical_data)
+                    signal = strategy.generate_signal(coin, historical_data)
                     
                     if signal.signal_type != SignalType.NONE:
                         self.execute_signal(signal, current_data)
