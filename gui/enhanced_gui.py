@@ -600,100 +600,210 @@ class TradingDashboard:
         self.widgets['backtest_results'].pack(fill="both", expand=True, padx=10, pady=10)
     
     def setup_settings_tab(self):
-        """Setup settings tab with improved private key handling"""
+        """Setup settings tab with direct private key and wallet address input"""
         settings_tab = self.notebook.add("⚙️ Settings")
         
-        # Connection settings
-        conn_frame = ctk.CTkFrame(settings_tab)
+        # Create scrollable frame for settings
+        scrollable_frame = ctk.CTkScrollableFrame(settings_tab)
+        scrollable_frame.pack(fill="both", expand=True, padx=10, pady=10)
+        
+        # Account Configuration Section
+        account_frame = ctk.CTkFrame(scrollable_frame)
+        account_frame.pack(fill="x", padx=10, pady=10)
+        
+        ctk.CTkLabel(account_frame, text="👤 Account Configuration", font=ctk.CTkFont(size=20, weight="bold")).pack(pady=10)
+        
+        # Wallet Address Input
+        wallet_section = ctk.CTkFrame(account_frame)
+        wallet_section.pack(fill="x", padx=15, pady=10)
+        
+        ctk.CTkLabel(wallet_section, text="💳 Wallet Address", font=ctk.CTkFont(size=16, weight="bold")).pack(anchor="w", pady=(5,2))
+        ctk.CTkLabel(wallet_section, text="Enter your Hyperliquid wallet address (0x...)", font=ctk.CTkFont(size=12)).pack(anchor="w")
+        
+        self.widgets['wallet_address'] = ctk.CTkEntry(
+            wallet_section, 
+            placeholder_text="0x1234567890abcdef1234567890abcdef12345678",
+            font=ctk.CTkFont(size=12),
+            height=35
+        )
+        self.widgets['wallet_address'].pack(fill="x", pady=5)
+        
+        # Load existing wallet address if available
+        try:
+            existing_address = self.config_manager.get_config().get('trading', {}).get('wallet_address', '')
+            if existing_address:
+                self.widgets['wallet_address'].insert(0, existing_address)
+        except:
+            pass
+        
+        # Private Key Input Section
+        key_section = ctk.CTkFrame(account_frame)
+        key_section.pack(fill="x", padx=15, pady=10)
+        
+        ctk.CTkLabel(key_section, text="🔐 Private Key", font=ctk.CTkFont(size=16, weight="bold")).pack(anchor="w", pady=(5,2))
+        ctk.CTkLabel(key_section, text="Enter your private key (will be encrypted and stored securely)", font=ctk.CTkFont(size=12)).pack(anchor="w")
+        
+        # Private key input with show/hide toggle
+        key_input_frame = ctk.CTkFrame(key_section)
+        key_input_frame.pack(fill="x", pady=5)
+        
+        self.widgets['private_key'] = ctk.CTkEntry(
+            key_input_frame,
+            placeholder_text="Enter your private key here...",
+            show="*",  # Hide by default
+            font=ctk.CTkFont(size=12),
+            height=35
+        )
+        self.widgets['private_key'].pack(side="left", fill="x", expand=True, padx=(0,5))
+        
+        # Show/Hide private key toggle
+        self.widgets['show_key_var'] = tk.BooleanVar()
+        self.widgets['show_key_btn'] = ctk.CTkButton(
+            key_input_frame,
+            text="👁️",
+            width=40,
+            command=self.toggle_private_key_visibility
+        )
+        self.widgets['show_key_btn'].pack(side="right")
+        
+        # Private key status and actions
+        key_actions_frame = ctk.CTkFrame(key_section)
+        key_actions_frame.pack(fill="x", pady=5)
+        
+        self.widgets['key_status'] = ctk.CTkLabel(
+            key_actions_frame, 
+            text="🔴 Not configured", 
+            font=ctk.CTkFont(size=12)
+        )
+        self.widgets['key_status'].pack(side="left")
+        
+        self.widgets['test_connection_btn'] = ctk.CTkButton(
+            key_actions_frame,
+            text="🔗 Test Connection",
+            command=self.test_connection_async,
+            width=120
+        )
+        self.widgets['test_connection_btn'].pack(side="right", padx=5)
+        
+        self.widgets['save_credentials_btn'] = ctk.CTkButton(
+            key_actions_frame,
+            text="💾 Save Credentials",
+            command=self.save_credentials_async,
+            width=120
+        )
+        self.widgets['save_credentials_btn'].pack(side="right", padx=5)
+        
+        # Connection Settings Section
+        conn_frame = ctk.CTkFrame(scrollable_frame)
         conn_frame.pack(fill="x", padx=10, pady=10)
         
-        ctk.CTkLabel(conn_frame, text="🔗 Connection Settings", font=ctk.CTkFont(size=18, weight="bold")).pack(pady=5)
+        ctk.CTkLabel(conn_frame, text="🔗 Connection Settings", font=ctk.CTkFont(size=18, weight="bold")).pack(pady=10)
         
         # Testnet toggle
         testnet_frame = ctk.CTkFrame(conn_frame)
-        testnet_frame.pack(fill="x", padx=10, pady=5)
+        testnet_frame.pack(fill="x", padx=15, pady=5)
         
         self.widgets['testnet_var'] = tk.BooleanVar(value=True)
         self.widgets['testnet_switch'] = ctk.CTkSwitch(
             testnet_frame, 
             text="🧪 Use Testnet (Recommended for testing)", 
-            variable=self.widgets['testnet_var']
+            variable=self.widgets['testnet_var'],
+            font=ctk.CTkFont(size=14)
         )
-        self.widgets['testnet_switch'].pack(anchor="w")
+        self.widgets['testnet_switch'].pack(anchor="w", pady=5)
         
-        # Wallet address
-        wallet_frame = ctk.CTkFrame(conn_frame)
-        wallet_frame.pack(fill="x", padx=10, pady=5)
+        # Load existing testnet setting
+        try:
+            existing_testnet = self.config_manager.get_config().get('trading', {}).get('testnet', True)
+            self.widgets['testnet_var'].set(existing_testnet)
+        except:
+            pass
         
-        ctk.CTkLabel(wallet_frame, text="Wallet Address:").pack(anchor="w")
-        self.widgets['wallet_address'] = ctk.CTkEntry(wallet_frame, placeholder_text="0x...")
-        self.widgets['wallet_address'].pack(fill="x", pady=2)
-        
-        # Private key management
-        key_frame = ctk.CTkFrame(settings_tab)
-        key_frame.pack(fill="x", padx=10, pady=10)
-        
-        ctk.CTkLabel(key_frame, text="🔐 Private Key Management", font=ctk.CTkFont(size=18, weight="bold")).pack(pady=5)
-        
-        # Private key status
-        key_status_frame = ctk.CTkFrame(key_frame)
-        key_status_frame.pack(fill="x", padx=10, pady=5)
-        
-        self.widgets['key_status'] = ctk.CTkLabel(key_status_frame, text="Status: Not configured")
-        self.widgets['key_status'].pack(side="left")
-        
-        # Private key buttons
-        key_buttons_frame = ctk.CTkFrame(key_frame)
-        key_buttons_frame.pack(fill="x", padx=10, pady=5)
-        
-        self.widgets['setup_key_btn'] = ctk.CTkButton(
-            key_buttons_frame, 
-            text="🔑 Setup Private Key", 
-            command=self.setup_private_key_async
-        )
-        self.widgets['setup_key_btn'].pack(side="left", padx=5)
-        
-        self.widgets['clear_key_btn'] = ctk.CTkButton(
-            key_buttons_frame, 
-            text="🗑️ Clear Key", 
-            fg_color="red",
-            command=self.clear_private_key_async
-        )
-        self.widgets['clear_key_btn'].pack(side="left", padx=5)
-        
-        # Trading settings
-        trading_frame = ctk.CTkFrame(settings_tab)
+        # Trading Settings Section
+        trading_frame = ctk.CTkFrame(scrollable_frame)
         trading_frame.pack(fill="x", padx=10, pady=10)
         
-        ctk.CTkLabel(trading_frame, text="💰 Trading Settings", font=ctk.CTkFont(size=18, weight="bold")).pack(pady=5)
+        ctk.CTkLabel(trading_frame, text="💰 Trading Settings", font=ctk.CTkFont(size=18, weight="bold")).pack(pady=10)
         
-        # Default settings grid
-        defaults_grid = ctk.CTkFrame(trading_frame)
-        defaults_grid.pack(fill="x", padx=10, pady=5)
+        # Trading settings grid
+        settings_grid = ctk.CTkFrame(trading_frame)
+        settings_grid.pack(fill="x", padx=15, pady=5)
+        
+        # Row 1: Order size and slippage
+        row1 = ctk.CTkFrame(settings_grid)
+        row1.pack(fill="x", pady=5)
         
         # Default order size
-        size_frame = ctk.CTkFrame(defaults_grid)
-        size_frame.pack(side="left", fill="x", expand=True, padx=5)
+        size_frame = ctk.CTkFrame(row1)
+        size_frame.pack(side="left", fill="x", expand=True, padx=(0,5))
         
-        ctk.CTkLabel(size_frame, text="Default Order Size ($):").pack()
-        self.widgets['default_size'] = ctk.CTkEntry(size_frame, placeholder_text="100")
+        ctk.CTkLabel(size_frame, text="Default Order Size ($):", font=ctk.CTkFont(size=12, weight="bold")).pack(anchor="w")
+        self.widgets['default_size'] = ctk.CTkEntry(size_frame, placeholder_text="100", height=30)
         self.widgets['default_size'].pack(fill="x", pady=2)
         
-        # Default slippage
-        slippage_frame = ctk.CTkFrame(defaults_grid)
-        slippage_frame.pack(side="left", fill="x", expand=True, padx=5)
+        # Max slippage
+        slippage_frame = ctk.CTkFrame(row1)
+        slippage_frame.pack(side="left", fill="x", expand=True, padx=(5,0))
         
-        ctk.CTkLabel(slippage_frame, text="Max Slippage (%):").pack()
-        self.widgets['max_slippage'] = ctk.CTkEntry(slippage_frame, placeholder_text="0.5")
+        ctk.CTkLabel(slippage_frame, text="Max Slippage (%):", font=ctk.CTkFont(size=12, weight="bold")).pack(anchor="w")
+        self.widgets['max_slippage'] = ctk.CTkEntry(slippage_frame, placeholder_text="0.5", height=30)
         self.widgets['max_slippage'].pack(fill="x", pady=2)
         
-        # Save settings button
-        self.widgets['save_settings_btn'] = ctk.CTkButton(
-            settings_tab, 
-            text="💾 Save Settings", 
-            command=self.save_settings_async
+        # Row 2: Stop loss and take profit
+        row2 = ctk.CTkFrame(settings_grid)
+        row2.pack(fill="x", pady=5)
+        
+        # Default stop loss
+        sl_frame = ctk.CTkFrame(row2)
+        sl_frame.pack(side="left", fill="x", expand=True, padx=(0,5))
+        
+        ctk.CTkLabel(sl_frame, text="Default Stop Loss (%):", font=ctk.CTkFont(size=12, weight="bold")).pack(anchor="w")
+        self.widgets['default_stop_loss'] = ctk.CTkEntry(sl_frame, placeholder_text="2.0", height=30)
+        self.widgets['default_stop_loss'].pack(fill="x", pady=2)
+        
+        # Default take profit
+        tp_frame = ctk.CTkFrame(row2)
+        tp_frame.pack(side="left", fill="x", expand=True, padx=(5,0))
+        
+        ctk.CTkLabel(tp_frame, text="Default Take Profit (%):", font=ctk.CTkFont(size=12, weight="bold")).pack(anchor="w")
+        self.widgets['default_take_profit'] = ctk.CTkEntry(tp_frame, placeholder_text="4.0", height=30)
+        self.widgets['default_take_profit'].pack(fill="x", pady=2)
+        
+        # Load existing trading settings
+        self.load_existing_settings()
+        
+        # Action buttons
+        buttons_frame = ctk.CTkFrame(scrollable_frame)
+        buttons_frame.pack(fill="x", padx=10, pady=20)
+        
+        self.widgets['save_all_settings_btn'] = ctk.CTkButton(
+            buttons_frame, 
+            text="💾 Save All Settings", 
+            command=self.save_all_settings_async,
+            font=ctk.CTkFont(size=14, weight="bold"),
+            height=40
         )
-        self.widgets['save_settings_btn'].pack(pady=20)
+        self.widgets['save_all_settings_btn'].pack(side="left", padx=10)
+        
+        self.widgets['reset_settings_btn'] = ctk.CTkButton(
+            buttons_frame, 
+            text="🔄 Reset to Defaults", 
+            command=self.reset_settings_async,
+            fg_color="orange",
+            font=ctk.CTkFont(size=14, weight="bold"),
+            height=40
+        )
+        self.widgets['reset_settings_btn'].pack(side="left", padx=10)
+        
+        self.widgets['clear_all_btn'] = ctk.CTkButton(
+            buttons_frame, 
+            text="🗑️ Clear All", 
+            command=self.clear_all_settings_async,
+            fg_color="red",
+            font=ctk.CTkFont(size=14, weight="bold"),
+            height=40
+        )
+        self.widgets['clear_all_btn'].pack(side="right", padx=10)
     
     def setup_menu(self):
         """Setup menu bar"""
@@ -756,42 +866,77 @@ class TradingDashboard:
     async def _quick_connect(self):
         """Async quick connect implementation"""
         try:
+            # Update status
+            self.root.after(0, lambda: self.widgets['connection_indicator'].configure(text_color="orange"))
+            self.root.after(0, lambda: self.widgets['status_label'].configure(text="Connecting..."))
+            
             # Check if we have saved credentials
             private_key = self.security_manager.get_private_key()
             if not private_key:
-                self.root.after(0, lambda: messagebox.showerror("Error", "No private key found. Please setup private key first."))
+                self.root.after(0, lambda: self.widgets['connection_indicator'].configure(text_color="red"))
+                self.root.after(0, lambda: self.widgets['status_label'].configure(text="No private key"))
+                self.root.after(0, lambda: messagebox.showerror("Error", "No private key found. Please go to Settings tab to configure your credentials."))
                 return
             
-            # Get wallet address from config
+            # Get configuration
             config = self.config_manager.get_config()
-            wallet_address = config.get('wallet_address', '')
+            trading_config = config.get('trading', {})
+            wallet_address = trading_config.get('wallet_address', '')
+            use_testnet = trading_config.get('testnet', True)
             
             if not wallet_address:
-                self.root.after(0, lambda: messagebox.showerror("Error", "No wallet address configured. Please check settings."))
+                self.root.after(0, lambda: self.widgets['connection_indicator'].configure(text_color="red"))
+                self.root.after(0, lambda: self.widgets['status_label'].configure(text="No wallet address"))
+                self.root.after(0, lambda: messagebox.showerror("Error", "No wallet address configured. Please go to Settings tab to configure your wallet address."))
                 return
             
-            # Update status
-            self.root.after(0, lambda: self.widgets['status_text'].configure(text="Connecting..."))
-            
             # Initialize API
-            testnet = self.widgets['testnet_var'].get()
-            self.api = EnhancedHyperliquidAPI(testnet=testnet)
+            from core.api import EnhancedHyperliquidAPI
+            self.api = EnhancedHyperliquidAPI(
+                private_key=private_key,
+                testnet=use_testnet
+            )
             
-            # Authenticate
-            if await self.api.authenticate_async(private_key, wallet_address):
+            # Test connection
+            account_info = await self.api.get_account_info()
+            
+            if account_info:
+                # Connection successful
                 self.is_connected = True
-                self.root.after(0, self._update_connection_status)
-                self.root.after(0, lambda: self.add_activity("✅ Connected to Hyperliquid API"))
+                self.root.after(0, lambda: self.widgets['connection_indicator'].configure(text_color="green"))
+                self.root.after(0, lambda: self.widgets['status_label'].configure(text=f"Connected ({'Testnet' if use_testnet else 'Mainnet'})"))
                 
-                # Start data refresh
-                await self.refresh_all_data()
+                # Update account data
+                self.account_data = account_info
+                
+                # Update connection status throughout GUI
+                self.update_connection_status()
+                
+                # Refresh data
+                await self.refresh_account_data()
+                await self.refresh_tokens()
+                
+                self.root.after(0, lambda: messagebox.showinfo("Success", f"Connected successfully!\nWallet: {wallet_address}\nNetwork: {'Testnet' if use_testnet else 'Mainnet'}"))
+                
+                logger.info(f"Connected to Hyperliquid ({'testnet' if use_testnet else 'mainnet'})")
                 
             else:
-                self.root.after(0, lambda: messagebox.showerror("Error", "Failed to authenticate with API"))
+                # Connection failed
+                self.is_connected = False
+                self.root.after(0, lambda: self.widgets['connection_indicator'].configure(text_color="red"))
+                self.root.after(0, lambda: self.widgets['status_label'].configure(text="Connection failed"))
+                self.root.after(0, lambda: messagebox.showerror("Error", "Connection failed. Please check your credentials in Settings."))
                 
         except Exception as e:
             logger.error(f"Quick connect failed: {e}")
-            self.root.after(0, lambda: messagebox.showerror("Error", f"Connection failed: {e}"))
+            self.is_connected = False
+            self.root.after(0, lambda: self.widgets['connection_indicator'].configure(text_color="red"))
+            self.root.after(0, lambda: self.widgets['status_label'].configure(text="Connection error"))
+            self.root.after(0, lambda: messagebox.showerror("Error", f"Connection failed: {str(e)}"))
+    
+    def refresh_tokens(self):
+        """Refresh available tokens"""
+        self.run_async(self._refresh_tokens())
     
     def _update_connection_status(self):
         """Update connection status in GUI"""
@@ -1226,4 +1371,348 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+    
+    # New methods for enhanced settings functionality
+    
+    def toggle_private_key_visibility(self):
+        """Toggle private key visibility"""
+        try:
+            current_show = self.widgets['private_key'].cget('show')
+            if current_show == '*':
+                self.widgets['private_key'].configure(show='')
+                self.widgets['show_key_btn'].configure(text='🙈')
+            else:
+                self.widgets['private_key'].configure(show='*')
+                self.widgets['show_key_btn'].configure(text='👁️')
+        except Exception as e:
+            logger.error(f"Error toggling private key visibility: {e}")
+    
+    def test_connection_async(self):
+        """Test connection with current credentials"""
+        self.run_async(self._test_connection())
+    
+    async def _test_connection(self):
+        """Test connection to Hyperliquid API"""
+        try:
+            # Get credentials from GUI
+            wallet_address = self.widgets['wallet_address'].get().strip()
+            private_key = self.widgets['private_key'].get().strip()
+            use_testnet = self.widgets['testnet_var'].get()
+            
+            if not wallet_address:
+                self.root.after(0, lambda: messagebox.showerror("Error", "Please enter a wallet address"))
+                return
+            
+            if not private_key:
+                self.root.after(0, lambda: messagebox.showerror("Error", "Please enter a private key"))
+                return
+            
+            # Update status
+            self.root.after(0, lambda: self.widgets['key_status'].configure(text="🟡 Testing connection..."))
+            
+            # Test connection
+            from core.api import EnhancedHyperliquidAPI
+            test_api = EnhancedHyperliquidAPI(
+                private_key=private_key,
+                testnet=use_testnet
+            )
+            
+            # Try to get account info
+            account_info = await test_api.get_account_info()
+            
+            if account_info:
+                self.root.after(0, lambda: self.widgets['key_status'].configure(text="🟢 Connection successful!"))
+                self.root.after(0, lambda: messagebox.showinfo("Success", f"Connection successful!\nWallet: {wallet_address}\nNetwork: {'Testnet' if use_testnet else 'Mainnet'}"))
+            else:
+                self.root.after(0, lambda: self.widgets['key_status'].configure(text="🔴 Connection failed"))
+                self.root.after(0, lambda: messagebox.showerror("Error", "Connection failed. Please check your credentials."))
+                
+        except Exception as e:
+            logger.error(f"Connection test failed: {e}")
+            self.root.after(0, lambda: self.widgets['key_status'].configure(text="🔴 Connection failed"))
+            self.root.after(0, lambda: messagebox.showerror("Error", f"Connection test failed: {str(e)}"))
+    
+    def save_credentials_async(self):
+        """Save credentials securely"""
+        self.run_async(self._save_credentials())
+    
+    async def _save_credentials(self):
+        """Save wallet address and private key securely"""
+        try:
+            wallet_address = self.widgets['wallet_address'].get().strip()
+            private_key = self.widgets['private_key'].get().strip()
+            use_testnet = self.widgets['testnet_var'].get()
+            
+            if not wallet_address:
+                self.root.after(0, lambda: messagebox.showerror("Error", "Please enter a wallet address"))
+                return
+            
+            if not private_key:
+                self.root.after(0, lambda: messagebox.showerror("Error", "Please enter a private key"))
+                return
+            
+            # Validate wallet address format
+            if not wallet_address.startswith('0x') or len(wallet_address) != 42:
+                self.root.after(0, lambda: messagebox.showerror("Error", "Invalid wallet address format. Must be 42 characters starting with 0x"))
+                return
+            
+            # Save wallet address to config
+            self.config_manager.update_config({
+                'trading': {
+                    'wallet_address': wallet_address,
+                    'testnet': use_testnet
+                }
+            })
+            
+            # Save private key securely
+            success = self.security_manager.store_private_key(private_key, 'encrypted_file')
+            
+            if success:
+                self.root.after(0, lambda: self.widgets['key_status'].configure(text="🟢 Credentials saved securely"))
+                self.root.after(0, lambda: messagebox.showinfo("Success", "Credentials saved securely!\nPrivate key encrypted and stored safely."))
+                
+                # Clear the private key field for security
+                self.widgets['private_key'].delete(0, 'end')
+                
+                # Update connection status
+                self.is_connected = True
+                self.update_connection_status()
+                
+            else:
+                self.root.after(0, lambda: messagebox.showerror("Error", "Failed to save private key securely"))
+                
+        except Exception as e:
+            logger.error(f"Error saving credentials: {e}")
+            self.root.after(0, lambda: messagebox.showerror("Error", f"Failed to save credentials: {str(e)}"))
+    
+    def load_existing_settings(self):
+        """Load existing settings from config"""
+        try:
+            config = self.config_manager.get_config()
+            trading_config = config.get('trading', {})
+            
+            # Load trading settings
+            if 'default_order_size' in trading_config:
+                self.widgets['default_size'].insert(0, str(trading_config['default_order_size']))
+            
+            if 'max_slippage' in trading_config:
+                self.widgets['max_slippage'].insert(0, str(trading_config['max_slippage']))
+            
+            if 'default_stop_loss' in trading_config:
+                self.widgets['default_stop_loss'].insert(0, str(trading_config['default_stop_loss']))
+            
+            if 'default_take_profit' in trading_config:
+                self.widgets['default_take_profit'].insert(0, str(trading_config['default_take_profit']))
+            
+            # Check if private key exists
+            if self.security_manager.has_stored_key():
+                self.widgets['key_status'].configure(text="🟢 Private key configured")
+                self.is_connected = True
+            else:
+                self.widgets['key_status'].configure(text="🔴 Not configured")
+                self.is_connected = False
+                
+        except Exception as e:
+            logger.error(f"Error loading existing settings: {e}")
+    
+    def save_all_settings_async(self):
+        """Save all settings"""
+        self.run_async(self._save_all_settings())
+    
+    async def _save_all_settings(self):
+        """Save all settings to config"""
+        try:
+            # Get all values from GUI
+            wallet_address = self.widgets['wallet_address'].get().strip()
+            private_key = self.widgets['private_key'].get().strip()
+            use_testnet = self.widgets['testnet_var'].get()
+            
+            default_size = self.widgets['default_size'].get().strip()
+            max_slippage = self.widgets['max_slippage'].get().strip()
+            default_stop_loss = self.widgets['default_stop_loss'].get().strip()
+            default_take_profit = self.widgets['default_take_profit'].get().strip()
+            
+            # Prepare config update
+            config_update = {
+                'trading': {
+                    'testnet': use_testnet
+                }
+            }
+            
+            # Add wallet address if provided
+            if wallet_address:
+                if not wallet_address.startswith('0x') or len(wallet_address) != 42:
+                    self.root.after(0, lambda: messagebox.showerror("Error", "Invalid wallet address format"))
+                    return
+                config_update['trading']['wallet_address'] = wallet_address
+            
+            # Add trading settings if provided
+            if default_size:
+                try:
+                    config_update['trading']['default_order_size'] = float(default_size)
+                except ValueError:
+                    self.root.after(0, lambda: messagebox.showerror("Error", "Invalid default order size"))
+                    return
+            
+            if max_slippage:
+                try:
+                    config_update['trading']['max_slippage'] = float(max_slippage)
+                except ValueError:
+                    self.root.after(0, lambda: messagebox.showerror("Error", "Invalid max slippage"))
+                    return
+            
+            if default_stop_loss:
+                try:
+                    config_update['trading']['default_stop_loss'] = float(default_stop_loss)
+                except ValueError:
+                    self.root.after(0, lambda: messagebox.showerror("Error", "Invalid default stop loss"))
+                    return
+            
+            if default_take_profit:
+                try:
+                    config_update['trading']['default_take_profit'] = float(default_take_profit)
+                except ValueError:
+                    self.root.after(0, lambda: messagebox.showerror("Error", "Invalid default take profit"))
+                    return
+            
+            # Save config
+            self.config_manager.update_config(config_update)
+            
+            # Save private key if provided
+            if private_key:
+                success = self.security_manager.store_private_key(private_key, 'encrypted_file')
+                if success:
+                    self.widgets['private_key'].delete(0, 'end')  # Clear for security
+                    self.widgets['key_status'].configure(text="🟢 All settings saved securely")
+                else:
+                    self.root.after(0, lambda: messagebox.showerror("Error", "Failed to save private key"))
+                    return
+            
+            self.root.after(0, lambda: messagebox.showinfo("Success", "All settings saved successfully!"))
+            
+            # Update connection status
+            self.update_connection_status()
+            
+        except Exception as e:
+            logger.error(f"Error saving all settings: {e}")
+            self.root.after(0, lambda: messagebox.showerror("Error", f"Failed to save settings: {str(e)}"))
+    
+    def reset_settings_async(self):
+        """Reset settings to defaults"""
+        self.run_async(self._reset_settings())
+    
+    async def _reset_settings(self):
+        """Reset all settings to defaults"""
+        try:
+            # Confirm reset
+            result = messagebox.askyesno("Confirm Reset", "Are you sure you want to reset all settings to defaults?\nThis will not affect your saved private key.")
+            
+            if result:
+                # Clear GUI fields
+                self.widgets['default_size'].delete(0, 'end')
+                self.widgets['default_size'].insert(0, '100')
+                
+                self.widgets['max_slippage'].delete(0, 'end')
+                self.widgets['max_slippage'].insert(0, '0.5')
+                
+                self.widgets['default_stop_loss'].delete(0, 'end')
+                self.widgets['default_stop_loss'].insert(0, '2.0')
+                
+                self.widgets['default_take_profit'].delete(0, 'end')
+                self.widgets['default_take_profit'].insert(0, '4.0')
+                
+                self.widgets['testnet_var'].set(True)
+                
+                # Save defaults to config
+                config_update = {
+                    'trading': {
+                        'default_order_size': 100.0,
+                        'max_slippage': 0.5,
+                        'default_stop_loss': 2.0,
+                        'default_take_profit': 4.0,
+                        'testnet': True
+                    }
+                }
+                
+                self.config_manager.update_config(config_update)
+                
+                self.root.after(0, lambda: messagebox.showinfo("Success", "Settings reset to defaults!"))
+                
+        except Exception as e:
+            logger.error(f"Error resetting settings: {e}")
+            self.root.after(0, lambda: messagebox.showerror("Error", f"Failed to reset settings: {str(e)}"))
+    
+    def clear_all_settings_async(self):
+        """Clear all settings including private key"""
+        self.run_async(self._clear_all_settings())
+    
+    async def _clear_all_settings(self):
+        """Clear all settings and private key"""
+        try:
+            # Confirm clear
+            result = messagebox.askyesno("Confirm Clear All", "Are you sure you want to clear ALL settings including private key?\nThis action cannot be undone!")
+            
+            if result:
+                # Clear GUI fields
+                self.widgets['wallet_address'].delete(0, 'end')
+                self.widgets['private_key'].delete(0, 'end')
+                self.widgets['default_size'].delete(0, 'end')
+                self.widgets['max_slippage'].delete(0, 'end')
+                self.widgets['default_stop_loss'].delete(0, 'end')
+                self.widgets['default_take_profit'].delete(0, 'end')
+                
+                # Clear private key
+                self.security_manager.clear_private_key()
+                
+                # Reset config to minimal
+                config_update = {
+                    'trading': {
+                        'testnet': True
+                    }
+                }
+                
+                self.config_manager.update_config(config_update)
+                
+                # Update status
+                self.widgets['key_status'].configure(text="🔴 Not configured")
+                self.is_connected = False
+                self.update_connection_status()
+                
+                self.root.after(0, lambda: messagebox.showinfo("Success", "All settings cleared!"))
+                
+        except Exception as e:
+            logger.error(f"Error clearing all settings: {e}")
+            self.root.after(0, lambda: messagebox.showerror("Error", f"Failed to clear settings: {str(e)}"))
+    
+    def update_connection_status(self):
+        """Update connection status throughout the GUI"""
+        try:
+            if self.is_connected:
+                # Update status indicators
+                if 'connection_status' in self.widgets:
+                    self.widgets['connection_status'].configure(text="🟢 Connected", text_color="green")
+                
+                # Enable trading buttons
+                if 'place_order_btn' in self.widgets:
+                    self.widgets['place_order_btn'].configure(state="normal")
+                
+                if 'start_auto_trading_btn' in self.widgets:
+                    self.widgets['start_auto_trading_btn'].configure(state="normal")
+                    
+            else:
+                # Update status indicators
+                if 'connection_status' in self.widgets:
+                    self.widgets['connection_status'].configure(text="🔴 Not Connected", text_color="red")
+                
+                # Disable trading buttons
+                if 'place_order_btn' in self.widgets:
+                    self.widgets['place_order_btn'].configure(state="disabled")
+                
+                if 'start_auto_trading_btn' in self.widgets:
+                    self.widgets['start_auto_trading_btn'].configure(state="disabled")
+                    
+        except Exception as e:
+            logger.error(f"Error updating connection status: {e}")
 
