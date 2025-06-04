@@ -167,7 +167,12 @@ class HyperliquidTradingBot:
             self.gui.backtest_engine = self.backtest_engine
             
             logger.info("Starting GUI interface")
-            self.gui.run()
+            
+            # Handle window closing
+            self.gui.root.protocol("WM_DELETE_WINDOW", self.gui.on_closing)
+            
+            # Start the GUI main loop
+            self.gui.root.mainloop()
             
         except Exception as e:
             logger.error(f"GUI error: {e}")
