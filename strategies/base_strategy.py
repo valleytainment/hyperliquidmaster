@@ -96,17 +96,17 @@ class MarketData:
 class BaseStrategy(ABC):
     """Base class for all trading strategies"""
     
-    def __init__(self, name: str, config: StrategyConfig, api_client=None):
+    def __init__(self, name: str, config: StrategyConfig = None, api_client=None):
         """
         Initialize base strategy
         
         Args:
             name: Strategy name
-            config: Strategy configuration
+            config: Strategy configuration (optional)
             api_client: API client for trading
         """
         self.name = name
-        self.config = config
+        self.config = config or self._create_default_config()
         self.api_client = api_client
         
         # Strategy state
@@ -114,6 +114,21 @@ class BaseStrategy(ABC):
         self.positions = {}  # coin -> position info
         self.signals_history = []
         self.performance_metrics = {}
+        
+        # Default parameters
+        self.max_positions = getattr(self.config, 'max_positions', 5)
+        
+        logger.info(f"Strategy '{name}' initialized with max_positions: {self.max_positions}")
+    
+    def _create_default_config(self):
+        """Create default configuration"""
+        from types import SimpleNamespace
+        config = SimpleNamespace()
+        config.max_positions = 5
+        config.position_size = 0.02
+        config.stop_loss = 0.02
+        config.take_profit = 0.04
+        return config
         
         # Data storage
         self.market_data = {}  # coin -> list of MarketData

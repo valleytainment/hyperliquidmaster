@@ -38,8 +38,19 @@ class BBRSIADXStrategy(BaseStrategy):
         """Initialize BB RSI ADX strategy"""
         super().__init__(name, config, api_client)
         
+        # Default configuration if none provided
+        if config is None:
+            from types import SimpleNamespace
+            config = SimpleNamespace()
+            config.indicators = {
+                'bollinger_bands': {'period': 20, 'std_dev': 2.0},
+                'rsi': {'period': 14, 'oversold': 30, 'overbought': 70},
+                'adx': {'period': 14, 'threshold': 25}
+            }
+            config.max_positions = 5
+        
         # Strategy parameters from config
-        indicators_config = config.indicators if config else {}
+        indicators_config = config.indicators if hasattr(config, 'indicators') else {}
         
         # Bollinger Bands parameters
         bb_config = indicators_config.get('bollinger_bands', {})

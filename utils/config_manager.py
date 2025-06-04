@@ -391,3 +391,19 @@ class ConfigManager:
         """String representation of configuration"""
         return f"ConfigManager(path={self.config_path}, strategies={list(self._strategy_configs.keys())})"
 
+
+    
+    def update_config(self, updates: Dict[str, Any]) -> None:
+        """
+        Update configuration with new values
+        
+        Args:
+            updates: Dictionary of configuration updates
+        """
+        try:
+            self._config_data.update(updates)
+            logger.info(f"Configuration updated with {len(updates)} changes")
+        except Exception as e:
+            logger.error(f"Failed to update configuration: {e}")
+            raise
+

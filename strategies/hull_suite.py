@@ -40,8 +40,18 @@ class HullSuiteStrategy(BaseStrategy):
         """Initialize Hull Suite strategy"""
         super().__init__(name, config, api_client)
         
+        # Default configuration if none provided
+        if config is None:
+            from types import SimpleNamespace
+            config = SimpleNamespace()
+            config.indicators = {
+                'hull_ma': {'period': 21},
+                'atr': {'period': 14, 'multiplier': 1.5}
+            }
+            config.max_positions = 3
+        
         # Strategy parameters from config
-        indicators_config = config.indicators if config else {}
+        indicators_config = config.indicators if hasattr(config, 'indicators') else {}
         
         # Hull MA parameters
         hull_config = indicators_config.get('hull_ma', {})

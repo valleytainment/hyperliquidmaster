@@ -553,3 +553,256 @@ class EnhancedHyperliquidAPI:
         """Context manager exit"""
         self.stop_websocket()
 
+
+    # Async methods for GUI integration
+    async def authenticate_async(self, private_key: str = None, wallet_address: str = None) -> bool:
+        """Async version of authenticate method"""
+        return await asyncio.get_event_loop().run_in_executor(
+            None, self.authenticate, private_key, wallet_address
+        )
+    
+    async def get_available_tokens_async(self) -> List[str]:
+        """Get list of available tokens asynchronously"""
+        try:
+            def get_tokens():
+                meta_info = self.info.meta()
+                if meta_info and 'universe' in meta_info:
+                    return [asset['name'] for asset in meta_info['universe']]
+                return ["BTC", "ETH", "SOL", "AVAX", "MATIC"]  # Fallback
+            
+            return await asyncio.get_event_loop().run_in_executor(None, get_tokens)
+        except Exception as e:
+            logger.error(f"Failed to get available tokens: {e}")
+            return ["BTC", "ETH", "SOL", "AVAX", "MATIC"]  # Fallback
+    
+    async def get_account_info_async(self) -> Optional[Dict[str, Any]]:
+        """Get account information asynchronously"""
+        try:
+            if not self.is_authenticated:
+                return None
+            
+            def get_account():
+                user_state = self.info.user_state(self.account_address)
+                if user_state:
+                    return {
+                        'accountValue': float(user_state.get('marginSummary', {}).get('accountValue', 0)),
+                        'totalPnl': float(user_state.get('marginSummary', {}).get('totalPnl', 0)),
+                        'marginUsed': float(user_state.get('marginSummary', {}).get('marginUsed', 0)),
+                        'withdrawable': float(user_state.get('withdrawable', 0))
+                    }
+                return None
+            
+            return await asyncio.get_event_loop().run_in_executor(None, get_account)
+        except Exception as e:
+            logger.error(f"Failed to get account info: {e}")
+            return None
+    
+    async def get_positions_async(self) -> List[Dict[str, Any]]:
+        """Get positions asynchronously"""
+        try:
+            if not self.is_authenticated:
+                return []
+            
+            def get_positions():
+                user_state = self.info.user_state(self.account_address)
+                if user_state and 'assetPositions' in user_state:
+                    positions = []
+                    for pos in user_state['assetPositions']:
+                        if float(pos['position']['szi']) != 0:  # Only open positions
+                            positions.append({
+                                'coin': pos['position']['coin'],
+                                'size': float(pos['position']['szi']),
+                                'entryPx': float(pos['position']['entryPx']) if pos['position']['entryPx'] else 0,
+                                'pnl': float(pos['position']['unrealizedPnl']),
+                                'marginUsed': float(pos['position']['marginUsed'])
+                            })
+                    return positions
+                return []
+            
+            return await asyncio.get_event_loop().run_in_executor(None, get_positions)
+        except Exception as e:
+            logger.error(f"Failed to get positions: {e}")
+            return []
+    
+    async def place_order_async(self, symbol: str, side: str, size: float, 
+                               order_type: str = "market", price: float = None) -> Dict[str, Any]:
+        """Place order asynchronously"""
+        try:
+            if not self.is_authenticated or not self.exchange:
+                return {"success": False, "error": "Not authenticated"}
+            
+            def place_order():
+                try:
+                    # Prepare order data
+                    order_data = {
+                        "coin": symbol,
+                        "is_buy": side.lower() == "buy",
+                        "sz": size,
+                        "limit_px": price if order_type == "limit" and price else None,
+                        "order_type": {"limit": "Limit", "market": "Market"}.get(order_type.lower(), "Market"),
+                        "reduce_only": False
+                    }
+                    
+                    # Place the order
+                    result = self.exchange.order(order_data)
+                    
+                    if result and result.get('status') == 'ok':
+                        return {"success": True, "result": result}
+                    else:
+                        error_msg = result.get('response', {}).get('data', 'Unknown error') if result else 'No response'
+                        return {"success": False, "error": error_msg}
+                        
+                except Exception as e:
+                    return {"success": False, "error": str(e)}
+            
+            return await asyncio.get_event_loop().run_in_executor(None, place_order)
+        except Exception as e:
+            logger.error(f"Failed to place order: {e}")
+            return {"success": False, "error": str(e)}
+    
+    async def cancel_all_orders_async(self) -> Dict[str, Any]:
+        """Cancel all orders asynchronously"""
+        try:
+            if not self.is_authenticated or not self.exchange:
+                return {"success": False, "error": "Not authenticated"}
+            
+            def cancel_orders():
+                try:
+                    result = self.exchange.cancel_all_orders()
+                    return {"success": True, "result": result}
+                except Exception as e:
+                    return {"success": False, "error": str(e)}
+            
+            return await asyncio.get_event_loop().run_in_executor(None, cancel_orders)
+        except Exception as e:
+            logger.error(f"Failed to cancel orders: {e}")
+            return {"success": False, "error": str(e)}
+    
+    async def get_open_orders_async(self) -> List[Dict[str, Any]]:
+        """Get open orders asynchronously"""
+        try:
+            if not self.is_authenticated:
+                return []
+            
+            def get_orders():
+                user_state = self.info.user_state(self.account_address)
+                if user_state and 'openOrders' in user_state:
+                    return user_state['openOrders']
+                return []
+            
+            return await asyncio.get_event_loop().run_in_executor(None, get_orders)
+        except Exception as e:
+            logger.error(f"Failed to get open orders: {e}")
+            return []
+    
+    async def get_orderbook_async(self, symbol: str) -> Optional[Dict[str, Any]]:
+        """Get orderbook for symbol asynchronously"""
+        try:
+            def get_orderbook():
+                return self.info.l2_book(symbol)
+            
+            return await asyncio.get_event_loop().run_in_executor(None, get_orderbook)
+        except Exception as e:
+            logger.error(f"Failed to get orderbook for {symbol}: {e}")
+            return None
+    
+    async def get_recent_trades_async(self, symbol: str) -> List[Dict[str, Any]]:
+        """Get recent trades for symbol asynchronously"""
+        try:
+            def get_trades():
+                return self.info.recent_trades(symbol)
+            
+            return await asyncio.get_event_loop().run_in_executor(None, get_trades)
+        except Exception as e:
+            logger.error(f"Failed to get recent trades for {symbol}: {e}")
+            return []
+    
+    async def close_position_async(self, symbol: str) -> Dict[str, Any]:
+        """Close position asynchronously"""
+        try:
+            if not self.is_authenticated or not self.exchange:
+                return {"success": False, "error": "Not authenticated"}
+            
+            def close_position():
+                try:
+                    # Get current position
+                    positions = self.get_positions()
+                    position = next((p for p in positions if p['coin'] == symbol), None)
+                    
+                    if not position:
+                        return {"success": False, "error": "No position found"}
+                    
+                    # Close position by placing opposite order
+                    size = abs(float(position['size']))
+                    side = "sell" if float(position['size']) > 0 else "buy"
+                    
+                    order_data = {
+                        "coin": symbol,
+                        "is_buy": side == "buy",
+                        "sz": size,
+                        "limit_px": None,
+                        "order_type": "Market",
+                        "reduce_only": True
+                    }
+                    
+                    result = self.exchange.order(order_data)
+                    
+                    if result and result.get('status') == 'ok':
+                        return {"success": True, "result": result}
+                    else:
+                        error_msg = result.get('response', {}).get('data', 'Unknown error') if result else 'No response'
+                        return {"success": False, "error": error_msg}
+                        
+                except Exception as e:
+                    return {"success": False, "error": str(e)}
+            
+            return await asyncio.get_event_loop().run_in_executor(None, close_position)
+        except Exception as e:
+            logger.error(f"Failed to close position: {e}")
+            return {"success": False, "error": str(e)}
+    
+    def get_available_tokens(self) -> List[str]:
+        """Get list of available tokens (sync version)"""
+        try:
+            meta_info = self.info.meta()
+            if meta_info and 'universe' in meta_info:
+                return [asset['name'] for asset in meta_info['universe']]
+            return ["BTC", "ETH", "SOL", "AVAX", "MATIC"]  # Fallback
+        except Exception as e:
+            logger.error(f"Failed to get available tokens: {e}")
+            return ["BTC", "ETH", "SOL", "AVAX", "MATIC"]  # Fallback
+    
+    def stop_websocket(self):
+        """Stop WebSocket connections"""
+        try:
+            if self.ws_manager:
+                self.ws_manager.close()
+                self.ws_manager = None
+            logger.info("WebSocket connections stopped")
+        except Exception as e:
+            logger.error(f"Failed to stop WebSocket: {e}")
+    
+    def get_positions(self) -> List[Dict[str, Any]]:
+        """Get positions (sync version)"""
+        try:
+            if not self.is_authenticated:
+                return []
+            
+            user_state = self.info.user_state(self.account_address)
+            if user_state and 'assetPositions' in user_state:
+                positions = []
+                for pos in user_state['assetPositions']:
+                    if float(pos['position']['szi']) != 0:  # Only open positions
+                        positions.append({
+                            'coin': pos['position']['coin'],
+                            'size': float(pos['position']['szi']),
+                            'entryPx': float(pos['position']['entryPx']) if pos['position']['entryPx'] else 0,
+                            'pnl': float(pos['position']['unrealizedPnl']),
+                            'marginUsed': float(pos['position']['marginUsed'])
+                        })
+                return positions
+            return []
+        except Exception as e:
+            logger.error(f"Failed to get positions: {e}")
+            return []
+

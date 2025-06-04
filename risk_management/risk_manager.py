@@ -673,3 +673,141 @@ class RiskManager:
             today = datetime.now().date()
             self.daily_pnl[today] = self.daily_pnl.get(today, 0) + trade_info['pnl']
 
+
+    
+    def validate_order(self, signal: TradingSignal, account_info: Dict[str, Any]) -> bool:
+        """
+        Validate if an order should be placed based on risk parameters
+        
+        Args:
+            signal: Trading signal to validate
+            account_info: Current account information
+            
+        Returns:
+            bool: True if order is valid, False otherwise
+        """
+        try:
+            # Check if trading is enabled
+            if not self.trading_enabled:
+                logger.warning("Trading is disabled")
+                return False
+            
+            # Check position limits
+            current_positions = len(account_info.get('positions', []))
+            if current_positions >= self.max_open_positions:
+                logger.warning(f"Maximum positions reached: {current_positions}/{self.max_open_positions}")
+                return False
+            
+            # Check position size
+            max_size = self.get_max_position_size(signal.symbol, account_info)
+            if signal.size > max_size:
+                logger.warning(f"Position size too large: {signal.size} > {max_size}")
+                return False
+            
+            # Check daily limits
+            if not self.check_daily_limits(signal, account_info):
+                return False
+            
+            return True
+            
+        except Exception as e:
+            logger.error(f"Order validation failed: {e}")
+            return False
+    
+    def calculate_position_risk(self, symbol: str, size: float, price: float, 
+                               account_value: float) -> Dict[str, float]:
+        """
+        Calculate risk metrics for a position
+        
+        Args:
+            symbol: Trading symbol
+            size: Position size
+            price: Entry price
+            account_value: Current account value
+            
+        Returns:
+            Dict containing risk metrics
+        """
+        try:
+            position_value = size * price
+            position_risk_pct = (position_value / account_value) * 100
+            
+            # Calculate potential loss with stop loss
+            stop_loss_pct = self.max_position_risk * 100
+            potential_loss = position_value * (stop_loss_pct / 100)
+            potential_loss_pct = (potential_loss / account_value) * 100
+            
+            return {
+                'position_value': position_value,
+                'position_risk_pct': position_risk_pct,
+                'potential_loss': potential_loss,
+                'potential_loss_pct': potential_loss_pct,
+                'risk_reward_ratio': self.min_risk_reward_ratio
+            }
+            
+        except Exception as e:
+            logger.error(f"Risk calculation failed: {e}")
+            return {}
+    
+    def check_daily_limits(self, signal: TradingSignal, account_info: Dict[str, Any]) -> bool:
+        """
+        Check if daily trading limits are exceeded
+        
+        Args:
+            signal: Trading signal
+            account_info: Account information
+            
+        Returns:
+            bool: True if within limits, False otherwise
+        """
+        try:
+            today = datetime.now().date()
+            
+            # Check daily loss limit
+            daily_pnl = account_info.get('daily_pnl', 0)
+            if daily_pnl < -self.max_daily_loss:
+                logger.warning(f"Daily loss limit exceeded: {daily_pnl} < -{self.max_daily_loss}")
+                return False
+            
+            # Check daily trade count
+            daily_trades = len([t for t in self.trade_history 
+                              if t.get('timestamp', datetime.min).date() == today])
+            if daily_trades >= self.max_daily_trades:
+                logger.warning(f"Daily trade limit exceeded: {daily_trades}/{self.max_daily_trades}")
+                return False
+            
+            return True
+            
+        except Exception as e:
+            logger.error(f"Daily limits check failed: {e}")
+            return False
+    
+    def get_max_position_size(self, symbol: str, account_info: Dict[str, Any]) -> float:
+        """
+        Calculate maximum allowed position size
+        
+        Args:
+            symbol: Trading symbol
+            account_info: Account information
+            
+        Returns:
+            float: Maximum position size in USD
+        """
+        try:
+            account_value = account_info.get('account_value', 0)
+            if account_value <= 0:
+                return 0
+            
+            # Base position size from risk percentage
+            base_size = account_value * self.max_position_risk
+            
+            # Apply symbol-specific limits if any
+            symbol_limit = self.position_limits.get(symbol, base_size)
+            
+            # Return the smaller of the two
+            return min(base_size, symbol_limit)
+            
+        except Exception as e:
+            logger.error(f"Max position size calculation failed: {e}")
+            return 0
+
