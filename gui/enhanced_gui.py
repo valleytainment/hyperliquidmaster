@@ -1197,7 +1197,7 @@ class TradingDashboard:
         except Exception as e:
             logger.error(f"Closing error: {e}")
     
-    # Placeholder methods for missing functionality
+    # Implementation of required methods
     
     def toggle_private_key_visibility(self):
         """Toggle private key visibility between shown and hidden"""
@@ -1218,6 +1218,217 @@ class TradingDashboard:
         except Exception as e:
             logger.error(f"Error toggling private key visibility: {e}")
             messagebox.showerror("Error", f"Could not toggle visibility: {e}")
+            
+    def test_connection_async(self):
+        """Test API connection asynchronously"""
+        self.run_async(self._test_connection())
+    
+    async def _test_connection(self):
+        """Async implementation of connection testing"""
+        try:
+            # Disable button during test
+            self.root.after(0, lambda: self.widgets['test_connection_btn'].configure(state="disabled"))
+            self.root.after(0, lambda: self.widgets['test_connection_btn'].configure(text="Testing..."))
+            
+            # Get credentials
+            private_key = self.widgets['private_key'].get()
+            wallet_address = self.widgets['wallet_address'].get()
+            
+            if not private_key or not wallet_address:
+                self.root.after(0, lambda: messagebox.showerror("Error", "Please enter both private key and wallet address"))
+                return
+            
+            # Test connection
+            testnet = self.widgets['testnet_var'].get()
+            
+            # Initialize API if needed
+            if not self.api:
+                self.api = EnhancedHyperliquidAPI(testnet=testnet)
+            
+            # Test authentication
+            success = await self.api.test_connection_async(private_key, wallet_address)
+            
+            if success:
+                self.root.after(0, lambda: self.widgets['key_status'].configure(text="✅ Connection successful"))
+                self.root.after(0, lambda: messagebox.showinfo("Success", "Connection test successful!"))
+                self.is_connected = True
+                self.root.after(0, lambda: self.add_activity("✅ Connection test successful"))
+            else:
+                self.root.after(0, lambda: self.widgets['key_status'].configure(text="❌ Connection failed"))
+                self.root.after(0, lambda: messagebox.showerror("Error", "Connection test failed. Please check your credentials."))
+                self.is_connected = False
+                
+        except Exception as e:
+            logger.error(f"Connection test failed: {e}")
+            self.root.after(0, lambda: self.widgets['key_status'].configure(text="❌ Connection error"))
+            self.root.after(0, lambda: messagebox.showerror("Error", f"Connection test failed: {e}"))
+            self.is_connected = False
+            
+        finally:
+            # Re-enable button
+            self.root.after(0, lambda: self.widgets['test_connection_btn'].configure(state="normal"))
+            self.root.after(0, lambda: self.widgets['test_connection_btn'].configure(text="🔗 Test Connection"))
+            
+    def save_credentials_async(self):
+        """Save credentials asynchronously"""
+        self.run_async(self._save_credentials())
+    
+    async def _save_credentials(self):
+        """Async implementation of saving credentials"""
+        try:
+            # Disable button during save
+            self.root.after(0, lambda: self.widgets['save_credentials_btn'].configure(state="disabled"))
+            self.root.after(0, lambda: self.widgets['save_credentials_btn'].configure(text="Saving..."))
+            
+            # Get credentials
+            private_key = self.widgets['private_key'].get()
+            wallet_address = self.widgets['wallet_address'].get()
+            
+            if not private_key or not wallet_address:
+                self.root.after(0, lambda: messagebox.showerror("Error", "Please enter both private key and wallet address"))
+                return
+            
+            # Save wallet address to config
+            if self.config_manager:
+                config = self.config_manager.get_config()
+                if 'trading' not in config:
+                    config['trading'] = {}
+                config['trading']['wallet_address'] = wallet_address
+                self.config_manager.save_config(config)
+            
+            # Save private key securely
+            if self.security_manager:
+                success = self.security_manager.save_private_key(private_key)
+                if success:
+                    self.root.after(0, lambda: self.widgets['key_status'].configure(text="✅ Credentials saved"))
+                    self.root.after(0, lambda: messagebox.showinfo("Success", "Credentials saved successfully!"))
+                    self.root.after(0, lambda: self.add_activity("✅ Credentials saved"))
+                else:
+                    self.root.after(0, lambda: messagebox.showerror("Error", "Failed to save private key"))
+            else:
+                self.root.after(0, lambda: messagebox.showerror("Error", "Security manager not initialized"))
+                
+        except Exception as e:
+            logger.error(f"Save credentials failed: {e}")
+            self.root.after(0, lambda: messagebox.showerror("Error", f"Save failed: {e}"))
+            
+        finally:
+            # Re-enable button
+            self.root.after(0, lambda: self.widgets['save_credentials_btn'].configure(state="normal"))
+            self.root.after(0, lambda: self.widgets['save_credentials_btn'].configure(text="💾 Save Credentials"))
+    
+    def save_all_settings_async(self):
+        """Save all settings asynchronously"""
+        self.run_async(self._save_all_settings())
+    
+    async def _save_all_settings(self):
+        """Async implementation of saving all settings"""
+        try:
+            # Disable button during save
+            self.root.after(0, lambda: self.widgets['save_all_settings_btn'].configure(state="disabled"))
+            self.root.after(0, lambda: self.widgets['save_all_settings_btn'].configure(text="Saving..."))
+            
+            # Get settings
+            testnet = self.widgets['testnet_var'].get()
+            default_size = float(self.widgets['default_size'].get() or "100")
+            max_slippage = float(self.widgets['max_slippage'].get() or "0.5")
+            default_stop_loss = float(self.widgets['default_stop_loss'].get() or "2.0")
+            default_take_profit = float(self.widgets['default_take_profit'].get() or "4.0")
+            
+            # Save to config
+            if self.config_manager:
+                config = self.config_manager.get_config()
+                if 'trading' not in config:
+                    config['trading'] = {}
+                
+                config['trading']['testnet'] = testnet
+                config['trading']['default_order_size'] = default_size
+                config['trading']['max_slippage'] = max_slippage
+                config['trading']['default_stop_loss'] = default_stop_loss
+                config['trading']['default_take_profit'] = default_take_profit
+                
+                self.config_manager.save_config(config)
+                
+                self.root.after(0, lambda: messagebox.showinfo("Success", "Settings saved successfully!"))
+                self.root.after(0, lambda: self.add_activity("✅ Settings saved"))
+            else:
+                self.root.after(0, lambda: messagebox.showerror("Error", "Config manager not initialized"))
+                
+        except Exception as e:
+            logger.error(f"Save settings failed: {e}")
+            self.root.after(0, lambda: messagebox.showerror("Error", f"Save failed: {e}"))
+            
+        finally:
+            # Re-enable button
+            self.root.after(0, lambda: self.widgets['save_all_settings_btn'].configure(state="normal"))
+            self.root.after(0, lambda: self.widgets['save_all_settings_btn'].configure(text="💾 Save All Settings"))
+    
+    def reset_settings_async(self):
+        """Reset settings to defaults asynchronously"""
+        self.run_async(self._reset_settings())
+    
+    async def _reset_settings(self):
+        """Async implementation of resetting settings"""
+        try:
+            # Confirm reset
+            confirm = messagebox.askyesno("Confirm Reset", "Are you sure you want to reset all settings to defaults?")
+            if not confirm:
+                return
+                
+            # Reset settings to defaults
+            self.widgets['testnet_var'].set(True)
+            self.widgets['default_size'].delete(0, tk.END)
+            self.widgets['default_size'].insert(0, "100")
+            self.widgets['max_slippage'].delete(0, tk.END)
+            self.widgets['max_slippage'].insert(0, "0.5")
+            self.widgets['default_stop_loss'].delete(0, tk.END)
+            self.widgets['default_stop_loss'].insert(0, "2.0")
+            self.widgets['default_take_profit'].delete(0, tk.END)
+            self.widgets['default_take_profit'].insert(0, "4.0")
+            
+            self.root.after(0, lambda: messagebox.showinfo("Success", "Settings reset to defaults"))
+            self.root.after(0, lambda: self.add_activity("🔄 Settings reset to defaults"))
+                
+        except Exception as e:
+            logger.error(f"Reset settings failed: {e}")
+            self.root.after(0, lambda: messagebox.showerror("Error", f"Reset failed: {e}"))
+    
+    def clear_all_settings_async(self):
+        """Clear all settings asynchronously"""
+        self.run_async(self._clear_all_settings())
+    
+    async def _clear_all_settings(self):
+        """Async implementation of clearing all settings"""
+        try:
+            # Confirm clear
+            confirm = messagebox.askyesno("Confirm Clear", "Are you sure you want to clear all settings? This cannot be undone.")
+            if not confirm:
+                return
+                
+            # Clear all settings
+            self.widgets['wallet_address'].delete(0, tk.END)
+            self.widgets['private_key'].delete(0, tk.END)
+            self.widgets['testnet_var'].set(True)
+            self.widgets['default_size'].delete(0, tk.END)
+            self.widgets['max_slippage'].delete(0, tk.END)
+            self.widgets['default_stop_loss'].delete(0, tk.END)
+            self.widgets['default_take_profit'].delete(0, tk.END)
+            
+            # Clear saved credentials
+            if self.security_manager:
+                self.security_manager.clear_private_key()
+            
+            # Clear config
+            if self.config_manager:
+                self.config_manager.reset_config()
+            
+            self.root.after(0, lambda: self.widgets['key_status'].configure(text="🔴 Not configured"))
+            self.root.after(0, lambda: messagebox.showinfo("Success", "All settings cleared"))
+            self.root.after(0, lambda: self.add_activity("🗑️ All settings cleared"))
+                
+        except Exception as e:
+            logger.error(f"Clear settings failed: {e}")
+            self.root.after(0, lambda: messagebox.showerror("Error", f"Clear failed: {e}"))
     def on_token_selected(self, token):
         """Handle token selection"""
         pass

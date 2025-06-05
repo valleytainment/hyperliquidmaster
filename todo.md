@@ -17,9 +17,14 @@
   - Found in gui/enhanced_gui.py: Method is referenced but not implemented
   - Button exists in settings tab for toggling private key visibility
   - Error occurs when user clicks the show/hide button
+- [x] Fix GUI error: 'TradingDashboard' object has no attribute 'test_connection_async'
+  - Found in gui/enhanced_gui.py: Method is referenced by the Test Connection button
+  - Error occurs when user clicks the Test Connection button
 
 ## Improvements
 - [x] Implement missing toggle_private_key_visibility method in TradingDashboard class
+- [x] Implement missing test_connection_async method in TradingDashboard class
+- [x] Implement additional missing async methods for settings management
 - [x] Add proper error handling for GUI operations
 - [x] Ensure consistent method naming and implementation
 - [x] Add docstrings to methods for better code documentation
@@ -29,5 +34,5 @@
 - [x] Run comprehensive tests to validate fixes
   - Note: Full GUI testing not possible in headless environment due to missing tkinter module
   - Code review confirms the implementation is correct and should resolve the error
-- [ ] Update documentation if needed
+- [x] Update documentation if needed
 - [ ] Commit and push changes to GitHub
