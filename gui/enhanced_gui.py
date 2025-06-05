@@ -1198,6 +1198,26 @@ class TradingDashboard:
             logger.error(f"Closing error: {e}")
     
     # Placeholder methods for missing functionality
+    
+    def toggle_private_key_visibility(self):
+        """Toggle private key visibility between shown and hidden"""
+        try:
+            # Get the current state
+            current_show = self.widgets['private_key'].cget("show")
+            
+            if current_show == "*":
+                # Currently hidden, show it
+                self.widgets['private_key'].configure(show="")
+                self.widgets['show_key_btn'].configure(text="🔒")
+            else:
+                # Currently shown, hide it
+                self.widgets['private_key'].configure(show="*")
+                self.widgets['show_key_btn'].configure(text="👁️")
+                
+            logger.info("Private key visibility toggled")
+        except Exception as e:
+            logger.error(f"Error toggling private key visibility: {e}")
+            messagebox.showerror("Error", f"Could not toggle visibility: {e}")
     def on_token_selected(self, token):
         """Handle token selection"""
         pass
