@@ -945,42 +945,94 @@ class TradingDashboard:
             self.widgets['connection_indicator'].configure(text_color="red")
             self.widgets['status_label'].configure(text="Disconnected")
             self.widgets['status_text'].configure(text="Disconnected")
-    
-    def refresh_tokens(self):
-        """Refresh available tokens list"""
-        self.run_async(self._refresh_tokens())
-    
-    async def _refresh_tokens(self):
-        """Async token refresh implementation"""
+     def refresh_tokens(self):
+        """Handle token refresh in a Tkinter-safe way"""
+        self.run_async(self._refresh_tokens_async())    
+    async def _refresh_tokens_async(self):
+        """Asynchronous implementation of token refresh"""
         try:
-            self.root.after(0, lambda: self.widgets['refresh_tokens_btn'].configure(text="🔄", state="disabled"))
+            # Disable refresh button during operation
+            self.root.after(0, lambda: self.widgets['refresh_tokens_btn'].configure(state="disabled"))
+            self.root.after(0, lambda: self.widgets['refresh_tokens_btn'].configure(text="⏳"))
             
+            # Get available tokens
             if not self.api:
-                # Use public API to get token list
-                response = requests.get("https://api.hyperliquid.xyz/info", 
-                                      json={"type": "meta"}, timeout=10)
-                if response.status_code == 200:
-                    data = response.json()
-                    tokens = [asset['name'] for asset in data.get('universe', [])]
-                else:
-                    tokens = ["BTC", "ETH", "SOL", "AVAX", "MATIC"]  # Fallback
+                self.root.after(0, lambda: messagebox.showerror("Error", "API not initialized"))
+                return
+                
+            # Use asyncio to run the token fetch in a thread
+            loop = asyncio.get_event_loop()
+            tokens = await loop.run_in_executor(None, self.api.get_available_tokens)
+            
+            # Update dropdown with tokens
+            if tokens:
+                self.root.after(0, lambda t=tokens: self.update_token_dropdown(t))
+                self.root.after(0, lambda: self.add_activity("🔄 Tokens refreshed"))
+                self.last_token_refresh = time.time()
             else:
-                # Use authenticated API
-                tokens = await self.api.get_available_tokens()
+                self.root.after(0, lambda: messagebox.showwarning("Warning", "No tokens available"))
             
-            self.available_tokens = tokens
+        except Exception as e:
+            logger.error(f"Token refresh failed: {e}", exc_info=True)
+            error_msg = f"Token refresh failed: {e}"
+            self.root.after(0, lambda err=error_msg: messagebox.showerror("Error", err))
             
-            # Update GUI
-            self.root.after(0, lambda: self.widgets['token_combobox'].configure(values=tokens))
-            self.root.after(0, lambda: self.widgets['refresh_tokens_btn'].configure(text="🔄", state="normal"))
-            self.root.after(0, lambda: self.add_activity(f"✅ Refreshed {len(tokens)} tokens"))
+        finally:
+            # Re-enable refresh button
+            self.root.after(0, lambda: self.widgets['refresh_tokens_btn'].configure(state="normal"))
+            self.root.after(0, lambda: self.widgets['refresh_tokens_btn'].configure(text="🔄"))
+
+
+
+
             
             self.last_token_refresh = time.time()
             
+    def update_token_dropdown(self, tokens):
+        """Update token dropdown with fetched tokens"""
+        if tokens:
+            self.available_tokens = tokens
+            self.widgets['token_combobox'].configure(values=tokens)
+            self.add_activity(f"✅ Refreshed {len(tokens)} tokens")
+        else:
+            self.widgets['token_combobox'].configure(values=["No tokens available"])
+            
+    
+    def clear_private_key_async(self):
+        """Clear private key asynchronously"""
+        self.run_async(self._clear_private_key_async())
+        
+    async def _clear_private_key_async(self):
+        """Asynchronous implementation of clear private key"""
+        try:
+            # Disable button during operation
+            self.root.after(0, lambda: self.widgets['clear_key_btn'].configure(state="disabled"))
+            self.root.after(0, lambda: self.widgets['clear_key_btn'].configure(text="Clearing..."))
+            
+            if not self.security_manager:
+                self.root.after(0, lambda: messagebox.showerror("Error", "Security manager not initialized"))
+                return
+                
+            # Clear the private key
+            success = self.security_manager.clear_private_key()
+            
+            if success:
+                self.root.after(0, lambda: self.widgets['key_status'].configure(text="Status: ❌ Not Configured"))
+                self.root.after(0, lambda: messagebox.showinfo("Success", "Private key cleared successfully"))
+                self.root.after(0, lambda: self.add_activity("🔒 Private key cleared"))
+                self.is_connected = False
+            else:
+                self.root.after(0, lambda: messagebox.showerror("Error", "Failed to clear private key"))
+                
         except Exception as e:
-            logger.error(f"Token refresh failed: {e}")
-            self.root.after(0, lambda: self.widgets['refresh_tokens_btn'].configure(text="❌", state="normal"))
-            self.root.after(0, lambda: messagebox.showerror("Error", f"Failed to refresh tokens: {e}"))
+            logger.error(f"Clear private key failed: {e}", exc_info=True)
+            error_msg = f"Clear failed: {e}"
+            self.root.after(0, lambda err=error_msg: messagebox.showerror("Error", err))
+            
+        finally:
+            # Re-enable button
+            self.root.after(0, lambda: self.widgets['clear_key_btn'].configure(state="normal"))
+            self.root.after(0, lambda: self.widgets['clear_key_btn'].configure(text="Clear Key"))
     
     def setup_private_key_async(self):
         """Setup private key asynchronously"""
