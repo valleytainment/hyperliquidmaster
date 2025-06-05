@@ -1258,7 +1258,9 @@ class TradingDashboard:
         except Exception as e:
             logger.error(f"Connection test failed: {e}")
             self.root.after(0, lambda: self.widgets['key_status'].configure(text="❌ Connection error"))
-            self.root.after(0, lambda: messagebox.showerror("Error", f"Connection test failed: {e}"))
+            # Fix lambda with captured variable
+            error_msg = f"Connection test failed: {e}"
+            self.root.after(0, lambda error=error_msg: messagebox.showerror("Error", error))
             self.is_connected = False
             
         finally:
@@ -1307,7 +1309,8 @@ class TradingDashboard:
                 
         except Exception as e:
             logger.error(f"Save credentials failed: {e}")
-            self.root.after(0, lambda: messagebox.showerror("Error", f"Save failed: {e}"))
+            error_msg = f"Save failed: {e}"
+            self.root.after(0, lambda error=error_msg: messagebox.showerror("Error", error))
             
         finally:
             # Re-enable button
@@ -1353,7 +1356,8 @@ class TradingDashboard:
                 
         except Exception as e:
             logger.error(f"Save settings failed: {e}")
-            self.root.after(0, lambda: messagebox.showerror("Error", f"Save failed: {e}"))
+            error_msg = f"Save failed: {e}"
+            self.root.after(0, lambda error=error_msg: messagebox.showerror("Error", error))
             
         finally:
             # Re-enable button
@@ -1457,7 +1461,8 @@ class TradingDashboard:
                 
         except Exception as e:
             logger.error(f"Clear settings failed: {e}")
-            self.root.after(0, lambda: messagebox.showerror("Error", f"Clear failed: {e}"))
+            error_msg = f"Clear failed: {e}"
+            self.root.after(0, lambda error=error_msg: messagebox.showerror("Error", error))
     def on_token_selected(self, token):
         """Handle token selection"""
         pass

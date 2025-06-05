@@ -143,6 +143,15 @@ class ConfigManager:
         self.load_config()
         
         logger.info(f"Configuration manager initialized with {self.config_path}")
+        
+    def get_config(self):
+        """
+        Get the current configuration data
+        
+        Returns:
+            dict: The current configuration data
+        """
+        return self._config_data
     
     def load_config(self) -> None:
         """Load configuration from file"""

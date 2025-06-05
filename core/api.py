@@ -107,6 +107,72 @@ class EnhancedHyperliquidAPI:
         except Exception as e:
             logger.error(f"Authentication failed: {e}")
             return False
+            
+    async def test_connection_async(self, private_key: str = None, wallet_address: str = None) -> bool:
+        """
+        Test connection to Hyperliquid API asynchronously
+        
+        Args:
+            private_key: Private key for authentication
+            wallet_address: Wallet address
+            
+        Returns:
+            bool: True if connection successful
+        """
+        try:
+            if not private_key:
+                private_key = self.security.get_private_key()
+            
+            if not wallet_address:
+                wallet_address = self.config.get('wallet_address')
+                
+            # Use asyncio to run the authentication in a thread
+            loop = asyncio.get_event_loop()
+            result = await loop.run_in_executor(
+                None, 
+                lambda: self._test_connection_sync(private_key, wallet_address)
+            )
+            
+            return result
+            
+        except Exception as e:
+            logger.error(f"Async connection test failed: {e}")
+            return False
+            
+    def _test_connection_sync(self, private_key: str, wallet_address: str) -> bool:
+        """
+        Synchronous implementation of connection testing
+        
+        Args:
+            private_key: Private key for authentication
+            wallet_address: Wallet address
+            
+        Returns:
+            bool: True if connection successful
+        """
+        try:
+            # Initialize temporary exchange for testing
+            temp_exchange = Exchange(
+                account=private_key,
+                base_url=self.api_url,
+                skip_ws=True
+            )
+            
+            # Try to get user state
+            info_client = Info(self.api_url, skip_ws=True)
+            user_state = info_client.user_state(wallet_address)
+            
+            # Check if we got a valid response
+            if user_state and "marginSummary" in user_state:
+                logger.info(f"Connection test successful for address: {wallet_address}")
+                return True
+            else:
+                logger.warning(f"Connection test failed: Invalid response for address: {wallet_address}")
+                return False
+                
+        except Exception as e:
+            logger.error(f"Connection test failed: {e}")
+            return False
     
     def _rate_limit(self):
         """Implement rate limiting to avoid API limits"""

@@ -1,43 +1,45 @@
-# Hyperliquid Trading Bot Audit and Fix Checklist
+# Hyperliquid Trading Bot - Comprehensive Fix Checklist
 
-## Audit Tasks
-- [x] Examine main.py structure and flow
-- [x] Review GUI implementation (focus on reported error)
-- [x] Audit core API functionality
-- [x] Check strategies implementation
-- [x] Review risk management system
-- [x] Examine configuration management
-- [x] Audit security implementation
-- [x] Check backtesting engine
-- [x] Review error handling and logging
-- [x] Examine test coverage
+## Critical Issues
+- [x] Missing `get_config()` method in ConfigManager
+- [x] Missing `test_connection_async()` method in EnhancedHyperliquidAPI
+- [x] Missing `clear_private_key()` method in SecurityManager
+- [x] Incorrect lambda exception handling in GUI components
+- [ ] Issues with async/await implementation in token refresh method
+- [ ] Improper encrypted private key handling
 
-## Specific Issues to Fix
-- [x] Fix GUI error: 'TradingDashboard' object has no attribute 'toggle_private_key_visibility'
-  - Found in gui/enhanced_gui.py: Method is referenced but not implemented
-  - Button exists in settings tab for toggling private key visibility
-  - Error occurs when user clicks the show/hide button
-- [x] Fix GUI error: 'TradingDashboard' object has no attribute 'test_connection_async'
-  - Found in gui/enhanced_gui.py: Method is referenced by the Test Connection button
-  - Error occurs when user clicks the Test Connection button
-- [x] Fix GUI error: 'TradingDashboard' object has no attribute 'load_existing_settings'
-  - Found in gui/enhanced_gui.py: Method is referenced in settings tab setup
-  - Error occurs when loading the settings tab
+## Implementation Plan
 
-## Improvements
-- [x] Implement missing toggle_private_key_visibility method in TradingDashboard class
-- [x] Implement missing test_connection_async method in TradingDashboard class
-- [x] Implement missing load_existing_settings method in TradingDashboard class
-- [x] Implement additional missing async methods for settings management
-- [x] Add proper error handling for GUI operations
-- [x] Ensure consistent method naming and implementation
-- [x] Add docstrings to methods for better code documentation
-- [x] Verify all referenced methods are properly implemented
-- [x] Comment out references to unimplemented methods to prevent further errors
+### 1. ConfigManager Fixes
+- [x] Implement `get_config()` method in utils/config_manager.py
+- [x] Ensure proper error handling for configuration operations
+
+### 2. SecurityManager Fixes
+- [x] Implement `clear_private_key()` method in utils/security.py
+- [ ] Enhance encrypted key handling with proper error messages
+
+### 3. API Fixes
+- [x] Implement `test_connection_async()` method in core/api.py
+- [x] Ensure proper async/await pattern implementation
+
+### 4. GUI Exception Handling Fixes
+- [x] Fix lambda-based exception handlers in gui/enhanced_gui.py
+- [ ] Correct async token refresh method implementation
+- [ ] Implement proper GUI-safe asyncio integration
+
+### 5. Additional Improvements
+- [ ] Update requirements.txt with necessary dependencies
+- [ ] Implement comprehensive error logging
+- [ ] Add validation for user inputs
+
+## Testing Plan
+- [ ] Verify ConfigManager operations
+- [ ] Test SecurityManager credential handling
+- [ ] Validate API connection testing
+- [ ] Test GUI exception handling
+- [ ] Verify async operations in GUI context
 
 ## Final Tasks
-- [x] Run comprehensive tests to validate fixes
-  - Note: Full GUI testing not possible in headless environment due to missing tkinter module
-  - Code review confirms the implementation is correct and should resolve the error
-- [x] Update documentation if needed
+- [ ] Run comprehensive tests
+- [ ] Update documentation
 - [ ] Commit and push changes to GitHub

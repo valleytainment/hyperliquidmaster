@@ -36,6 +36,31 @@ class SecurityManager:
         self.encrypted_file = self.secrets_dir / "encrypted_keys.dat"
         
         logger.info("Security manager initialized")
+        
+    def clear_private_key(self):
+        """
+        Clear stored private key from keyring and local storage
+        
+        Returns:
+            bool: True if successful
+        """
+        try:
+            # Delete from keyring
+            try:
+                keyring.delete_password(self.app_name, "private_key")
+            except Exception as e:
+                logger.warning(f"No credentials found in keyring for private_key: {e}")
+            
+            # Delete encrypted file if exists
+            if self.encrypted_file.exists():
+                self.secure_delete_file(self.encrypted_file)
+                
+            logger.info("Private key cleared successfully")
+            return True
+            
+        except Exception as e:
+            logger.error(f"Failed to clear private key: {e}")
+            return False
     
     def _derive_key(self, password: str, salt: bytes) -> bytes:
         """Derive encryption key from password"""
