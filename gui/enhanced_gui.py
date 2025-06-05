@@ -913,7 +913,8 @@ class TradingDashboard:
                 self.update_connection_status()
                 
                 # Refresh data
-                await self.refresh_account_data()
+                # Implement missing refresh_account_data_async method
+                # await self.refresh_account_data_async()
                 await self.refresh_tokens()
                 
                 self.root.after(0, lambda: messagebox.showinfo("Success", f"Connected successfully!\nWallet: {wallet_address}\nNetwork: {'Testnet' if use_testnet else 'Mainnet'}"))
@@ -934,11 +935,7 @@ class TradingDashboard:
             self.root.after(0, lambda: self.widgets['status_label'].configure(text="Connection error"))
             self.root.after(0, lambda: messagebox.showerror("Error", f"Connection failed: {str(e)}"))
     
-    def refresh_tokens(self):
-        """Refresh available tokens"""
-        self.run_async(self._refresh_tokens())
-    
-    def _update_connection_status(self):
+    def update_connection_status(self):
         """Update connection status in GUI"""
         if self.is_connected:
             self.widgets['connection_indicator'].configure(text_color="green")
@@ -1392,6 +1389,38 @@ class TradingDashboard:
         except Exception as e:
             logger.error(f"Reset settings failed: {e}")
             self.root.after(0, lambda: messagebox.showerror("Error", f"Reset failed: {e}"))
+    
+    def load_existing_settings(self):
+        """Load existing settings from config"""
+        try:
+            if not self.config_manager:
+                logger.warning("Config manager not initialized, cannot load settings")
+                return
+                
+            config = self.config_manager.get_config()
+            trading_config = config.get('trading', {})
+            
+            # Load trading settings if available
+            if 'default_order_size' in trading_config:
+                self.widgets['default_size'].delete(0, tk.END)
+                self.widgets['default_size'].insert(0, str(trading_config['default_order_size']))
+                
+            if 'max_slippage' in trading_config:
+                self.widgets['max_slippage'].delete(0, tk.END)
+                self.widgets['max_slippage'].insert(0, str(trading_config['max_slippage']))
+                
+            if 'default_stop_loss' in trading_config:
+                self.widgets['default_stop_loss'].delete(0, tk.END)
+                self.widgets['default_stop_loss'].insert(0, str(trading_config['default_stop_loss']))
+                
+            if 'default_take_profit' in trading_config:
+                self.widgets['default_take_profit'].delete(0, tk.END)
+                self.widgets['default_take_profit'].insert(0, str(trading_config['default_take_profit']))
+                
+            logger.info("Existing settings loaded from config")
+            
+        except Exception as e:
+            logger.error(f"Failed to load existing settings: {e}")
     
     def clear_all_settings_async(self):
         """Clear all settings asynchronously"""
