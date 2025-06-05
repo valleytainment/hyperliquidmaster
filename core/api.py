@@ -86,8 +86,9 @@ class EnhancedHyperliquidAPI:
                 wallet_address = self.config.get('wallet_address')
             
             # Initialize exchange with authentication
+            # Updated to match Hyperliquid SDK v0.15.0+ API
             self.exchange = Exchange(
-                account=private_key,
+                private_key=private_key,
                 base_url=self.api_url,
                 skip_ws=False
             )
@@ -152,8 +153,9 @@ class EnhancedHyperliquidAPI:
         """
         try:
             # Initialize temporary exchange for testing
+            # Updated to match Hyperliquid SDK v0.15.0+ API
             temp_exchange = Exchange(
-                account=private_key,
+                private_key=private_key,
                 base_url=self.api_url,
                 skip_ws=True
             )
