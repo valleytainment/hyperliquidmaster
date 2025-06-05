@@ -945,9 +945,11 @@ class TradingDashboard:
             self.widgets['connection_indicator'].configure(text_color="red")
             self.widgets['status_label'].configure(text="Disconnected")
             self.widgets['status_text'].configure(text="Disconnected")
-     def refresh_tokens(self):
+            
+    def refresh_tokens(self):
         """Handle token refresh in a Tkinter-safe way"""
-        self.run_async(self._refresh_tokens_async())    
+        self.run_async(self._refresh_tokens_async())
+    
     async def _refresh_tokens_async(self):
         """Asynchronous implementation of token refresh"""
         try:
@@ -976,15 +978,10 @@ class TradingDashboard:
             logger.error(f"Token refresh failed: {e}", exc_info=True)
             error_msg = f"Token refresh failed: {e}"
             self.root.after(0, lambda err=error_msg: messagebox.showerror("Error", err))
-            
         finally:
             # Re-enable refresh button
             self.root.after(0, lambda: self.widgets['refresh_tokens_btn'].configure(state="normal"))
             self.root.after(0, lambda: self.widgets['refresh_tokens_btn'].configure(text="🔄"))
-
-
-
-
             
             self.last_token_refresh = time.time()
             
@@ -996,7 +993,6 @@ class TradingDashboard:
             self.add_activity(f"✅ Refreshed {len(tokens)} tokens")
         else:
             self.widgets['token_combobox'].configure(values=["No tokens available"])
-            
     
     def clear_private_key_async(self):
         """Clear private key asynchronously"""
