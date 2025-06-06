@@ -1,855 +1,869 @@
 #!/usr/bin/env python3
 """
-Ultimate Production GUI - Complete Trading Interface
----------------------------------------------------
-Features:
-• Live wallet balance monitoring
-• Real-time price feeds for selected tokens
-• 24/7 automation controls with start/stop buttons
-• Spot and Perp trading mode selection
-• Neural network strategy integration
-• Advanced risk management controls
-• Real-time P&L tracking and charts
-• Comprehensive settings and configuration
-• Professional dark theme interface
+Ultimate Production GUI with Real-time Wallet Equity and Price Display
+--------------------------------------------------------------------
+Integrates all missing features from master_bot.py including:
+• Real-time wallet balance monitoring
+• Live token price feeds with charts
+• Comprehensive position tracking
+• Advanced automation controls
+• Performance metrics dashboard
 """
 
 import tkinter as tk
-from tkinter import ttk, messagebox, scrolledtext
+from tkinter import ttk, messagebox, filedialog
+import customtkinter as ctk
+from PIL import Image, ImageTk
 import threading
+import asyncio
+import json
 import time
 import queue
-import json
-import logging
-from datetime import datetime
-from typing import Dict, Optional, List
+from datetime import datetime, timedelta
+from typing import Dict, List, Optional, Any
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
+import pandas as pd
 import numpy as np
+import requests
+from concurrent.futures import ThreadPoolExecutor
 
-# Set matplotlib backend for GUI
-import matplotlib
-matplotlib.use('TkAgg')
+# Import our enhanced trading engine
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-logger = logging.getLogger(__name__)
+from core.enhanced_trading_engine import EnhancedProductionTradingBot
+from utils.logger import get_logger, TradingLogger
+from utils.config_manager import ConfigManager
+from utils.security import SecurityManager
+
+# Set appearance mode and color theme
+ctk.set_appearance_mode("dark")
+ctk.set_default_color_theme("blue")
+
+logger = get_logger(__name__)
+trading_logger = TradingLogger(__name__)
+
 
 class UltimateProductionGUI:
-    """Ultimate Production GUI with all advanced features"""
+    """Ultimate Production GUI with comprehensive real-time features"""
     
-    def __init__(self, trading_bot):
-        self.trading_bot = trading_bot
-        self.root = None
-        self.running = False
+    def __init__(self):
+        """Initialize the ultimate production GUI"""
+        self.root = ctk.CTk()
+        self.root.title("🚀 ULTIMATE HYPERLIQUID MASTER - Real-time Trading Dashboard")
+        self.root.geometry("1400x900")
+        
+        # Initialize components
+        self.config_manager = ConfigManager()
+        self.security_manager = SecurityManager()
+        
+        # Initialize trading bot with enhanced features
+        self.trading_bot = EnhancedProductionTradingBot()
+        
+        # GUI state variables
+        self.connected = False
         self.automation_running = False
+        self.real_time_data = {}
         
-        # GUI state
-        self.current_symbol = "BTC-USD-PERP"
-        self.current_mode = "perp"
-        self.starting_capital = 100.0
-        self.current_price = 0.0
-        self.wallet_balance = 0.0
-        self.unrealized_pnl = 0.0
-        self.realized_pnl = 0.0
+        # Real-time update queues
+        self.price_queue = queue.Queue()
+        self.equity_queue = queue.Queue()
+        self.log_queue = queue.Queue()
         
-        # Data storage
+        # Chart data storage
         self.price_history = []
+        self.equity_history = []
         self.pnl_history = []
-        self.trade_history = []
         
         # Threading
         self.update_thread = None
-        self.log_queue = queue.Queue()
+        self.chart_update_thread = None
         
-        # GUI components
-        self.widgets = {}
-        self.charts = {}
+        # Create GUI
+        self.create_gui()
         
-        # Style configuration
-        self.colors = {
-            'bg_primary': '#1e1e1e',
-            'bg_secondary': '#2d2d2d',
-            'bg_tertiary': '#3d3d3d',
-            'text_primary': '#ffffff',
-            'text_secondary': '#cccccc',
-            'accent_green': '#00ff88',
-            'accent_red': '#ff4444',
-            'accent_blue': '#4488ff',
-            'accent_yellow': '#ffaa00'
-        }
+        # Start real-time updates
+        self.start_real_time_updates()
+        
+        logger.info("Ultimate Production GUI initialized")
     
     def create_gui(self):
-        """Create the main GUI interface"""
-        self.root = tk.Tk()
-        self.root.title("🚀 HYPERLIQUID MASTER - Ultimate Trading Bot")
-        self.root.geometry("1400x900")
-        self.root.configure(bg=self.colors['bg_primary'])
+        """Create the comprehensive GUI interface"""
+        # Create main container with tabs
+        self.tabview = ctk.CTkTabview(self.root)
+        self.tabview.pack(fill="both", expand=True, padx=10, pady=10)
         
-        # Configure styles
-        self._configure_styles()
-        
-        # Create main layout
-        self._create_main_layout()
-        
-        # Start update thread
-        self._start_update_thread()
-        
-        logger.info("Ultimate Production GUI created successfully")
+        # Create tabs
+        self.create_dashboard_tab()
+        self.create_trading_tab()
+        self.create_automation_tab()
+        self.create_positions_tab()
+        self.create_performance_tab()
+        self.create_settings_tab()
+        self.create_logs_tab()
     
-    def _configure_styles(self):
-        """Configure ttk styles for dark theme"""
-        style = ttk.Style()
-        style.theme_use('clam')
+    def create_dashboard_tab(self):
+        """Create real-time dashboard tab"""
+        dashboard_tab = self.tabview.add("📊 Dashboard")
         
-        # Configure styles
-        style.configure('Dark.TFrame', background=self.colors['bg_primary'])
-        style.configure('Dark.TLabel', background=self.colors['bg_primary'], foreground=self.colors['text_primary'])
-        style.configure('Dark.TButton', background=self.colors['bg_secondary'], foreground=self.colors['text_primary'])
-        style.configure('Dark.TEntry', background=self.colors['bg_secondary'], foreground=self.colors['text_primary'])
-        style.configure('Dark.TCombobox', background=self.colors['bg_secondary'], foreground=self.colors['text_primary'])
+        # Top row - Key metrics
+        metrics_frame = ctk.CTkFrame(dashboard_tab)
+        metrics_frame.pack(fill="x", padx=10, pady=5)
         
-        # Special button styles
-        style.configure('Green.TButton', background=self.colors['accent_green'], foreground='black')
-        style.configure('Red.TButton', background=self.colors['accent_red'], foreground='white')
-        style.configure('Blue.TButton', background=self.colors['accent_blue'], foreground='white')
+        # Wallet Equity Display
+        equity_frame = ctk.CTkFrame(metrics_frame)
+        equity_frame.pack(side="left", fill="both", expand=True, padx=5, pady=5)
+        
+        ctk.CTkLabel(equity_frame, text="💰 WALLET EQUITY", 
+                    font=ctk.CTkFont(size=16, weight="bold")).pack(pady=5)
+        
+        self.equity_label = ctk.CTkLabel(equity_frame, text="$0.00", 
+                                        font=ctk.CTkFont(size=24, weight="bold"),
+                                        text_color="green")
+        self.equity_label.pack(pady=5)
+        
+        self.equity_change_label = ctk.CTkLabel(equity_frame, text="(+$0.00 / +0.00%)", 
+                                               font=ctk.CTkFont(size=12),
+                                               text_color="gray")
+        self.equity_change_label.pack()
+        
+        # Current Price Display
+        price_frame = ctk.CTkFrame(metrics_frame)
+        price_frame.pack(side="left", fill="both", expand=True, padx=5, pady=5)
+        
+        ctk.CTkLabel(price_frame, text="📈 LIVE PRICE", 
+                    font=ctk.CTkFont(size=16, weight="bold")).pack(pady=5)
+        
+        self.symbol_label = ctk.CTkLabel(price_frame, text="BTC-USD-PERP", 
+                                        font=ctk.CTkFont(size=14, weight="bold"))
+        self.symbol_label.pack()
+        
+        self.price_label = ctk.CTkLabel(price_frame, text="$0.00", 
+                                       font=ctk.CTkFont(size=24, weight="bold"),
+                                       text_color="blue")
+        self.price_label.pack(pady=5)
+        
+        self.price_change_label = ctk.CTkLabel(price_frame, text="(+0.00%)", 
+                                              font=ctk.CTkFont(size=12),
+                                              text_color="gray")
+        self.price_change_label.pack()
+        
+        # Performance Metrics
+        performance_frame = ctk.CTkFrame(metrics_frame)
+        performance_frame.pack(side="left", fill="both", expand=True, padx=5, pady=5)
+        
+        ctk.CTkLabel(performance_frame, text="📊 PERFORMANCE", 
+                    font=ctk.CTkFont(size=16, weight="bold")).pack(pady=5)
+        
+        self.total_pnl_label = ctk.CTkLabel(performance_frame, text="Total P&L: $0.00", 
+                                           font=ctk.CTkFont(size=14))
+        self.total_pnl_label.pack()
+        
+        self.win_rate_label = ctk.CTkLabel(performance_frame, text="Win Rate: 0%", 
+                                          font=ctk.CTkFont(size=14))
+        self.win_rate_label.pack()
+        
+        self.total_trades_label = ctk.CTkLabel(performance_frame, text="Total Trades: 0", 
+                                              font=ctk.CTkFont(size=14))
+        self.total_trades_label.pack()
+        
+        # Status and Connection
+        status_frame = ctk.CTkFrame(metrics_frame)
+        status_frame.pack(side="left", fill="both", expand=True, padx=5, pady=5)
+        
+        ctk.CTkLabel(status_frame, text="🔗 STATUS", 
+                    font=ctk.CTkFont(size=16, weight="bold")).pack(pady=5)
+        
+        self.connection_status = ctk.CTkLabel(status_frame, text="❌ Disconnected", 
+                                             font=ctk.CTkFont(size=14),
+                                             text_color="red")
+        self.connection_status.pack()
+        
+        self.automation_status = ctk.CTkLabel(status_frame, text="⏸️ Automation Off", 
+                                             font=ctk.CTkFont(size=14),
+                                             text_color="gray")
+        self.automation_status.pack()
+        
+        self.circuit_breaker_status = ctk.CTkLabel(status_frame, text="🛡️ Circuit Breaker OK", 
+                                                  font=ctk.CTkFont(size=14),
+                                                  text_color="green")
+        self.circuit_breaker_status.pack()
+        
+        # Charts section
+        charts_frame = ctk.CTkFrame(dashboard_tab)
+        charts_frame.pack(fill="both", expand=True, padx=10, pady=5)
+        
+        # Price Chart
+        price_chart_frame = ctk.CTkFrame(charts_frame)
+        price_chart_frame.pack(side="left", fill="both", expand=True, padx=5, pady=5)
+        
+        ctk.CTkLabel(price_chart_frame, text="📈 LIVE PRICE CHART", 
+                    font=ctk.CTkFont(size=14, weight="bold")).pack(pady=5)
+        
+        self.price_fig, self.price_ax = plt.subplots(figsize=(6, 4), facecolor='#2b2b2b')
+        self.price_ax.set_facecolor('#2b2b2b')
+        self.price_canvas = FigureCanvasTkAgg(self.price_fig, price_chart_frame)
+        self.price_canvas.get_tk_widget().pack(fill="both", expand=True)
+        
+        # Equity Chart
+        equity_chart_frame = ctk.CTkFrame(charts_frame)
+        equity_chart_frame.pack(side="right", fill="both", expand=True, padx=5, pady=5)
+        
+        ctk.CTkLabel(equity_chart_frame, text="💰 EQUITY CHART", 
+                    font=ctk.CTkFont(size=14, weight="bold")).pack(pady=5)
+        
+        self.equity_fig, self.equity_ax = plt.subplots(figsize=(6, 4), facecolor='#2b2b2b')
+        self.equity_ax.set_facecolor('#2b2b2b')
+        self.equity_canvas = FigureCanvasTkAgg(self.equity_fig, equity_chart_frame)
+        self.equity_canvas.get_tk_widget().pack(fill="both", expand=True)
     
-    def _create_main_layout(self):
-        """Create the main layout with all components"""
-        # Main container
-        main_frame = ttk.Frame(self.root, style='Dark.TFrame')
-        main_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
-        
-        # Top status bar
-        self._create_status_bar(main_frame)
-        
-        # Main content area with tabs
-        self._create_tabbed_interface(main_frame)
-        
-        # Bottom control panel
-        self._create_control_panel(main_frame)
-    
-    def _create_status_bar(self, parent):
-        """Create top status bar with key information"""
-        status_frame = ttk.Frame(parent, style='Dark.TFrame')
-        status_frame.pack(fill=tk.X, pady=(0, 10))
-        
-        # Connection status
-        self.widgets['connection_status'] = ttk.Label(
-            status_frame, text="🔴 Disconnected", style='Dark.TLabel', font=('Arial', 12, 'bold')
-        )
-        self.widgets['connection_status'].pack(side=tk.LEFT)
-        
-        # Wallet balance
-        self.widgets['wallet_balance'] = ttk.Label(
-            status_frame, text=f"💰 Balance: ${self.wallet_balance:.2f}", 
-            style='Dark.TLabel', font=('Arial', 12, 'bold')
-        )
-        self.widgets['wallet_balance'].pack(side=tk.LEFT, padx=(20, 0))
-        
-        # Current price
-        self.widgets['current_price'] = ttk.Label(
-            status_frame, text=f"📈 {self.current_symbol}: ${self.current_price:.2f}", 
-            style='Dark.TLabel', font=('Arial', 12, 'bold')
-        )
-        self.widgets['current_price'].pack(side=tk.LEFT, padx=(20, 0))
-        
-        # P&L
-        self.widgets['pnl_display'] = ttk.Label(
-            status_frame, text=f"💹 P&L: ${self.unrealized_pnl:.2f}", 
-            style='Dark.TLabel', font=('Arial', 12, 'bold')
-        )
-        self.widgets['pnl_display'].pack(side=tk.LEFT, padx=(20, 0))
-        
-        # Automation status
-        self.widgets['automation_status'] = ttk.Label(
-            status_frame, text="🤖 Manual Mode", style='Dark.TLabel', font=('Arial', 12, 'bold')
-        )
-        self.widgets['automation_status'].pack(side=tk.RIGHT)
-    
-    def _create_tabbed_interface(self, parent):
-        """Create tabbed interface with all features"""
-        notebook = ttk.Notebook(parent)
-        notebook.pack(fill=tk.BOTH, expand=True, pady=(0, 10))
-        
-        # Trading tab
-        trading_frame = ttk.Frame(notebook, style='Dark.TFrame')
-        notebook.add(trading_frame, text="🚀 Trading")
-        self._create_trading_tab(trading_frame)
-        
-        # Automation tab
-        automation_frame = ttk.Frame(notebook, style='Dark.TFrame')
-        notebook.add(automation_frame, text="🤖 Automation")
-        self._create_automation_tab(automation_frame)
-        
-        # Positions tab
-        positions_frame = ttk.Frame(notebook, style='Dark.TFrame')
-        notebook.add(positions_frame, text="📊 Positions")
-        self._create_positions_tab(positions_frame)
-        
-        # Settings tab
-        settings_frame = ttk.Frame(notebook, style='Dark.TFrame')
-        notebook.add(settings_frame, text="⚙️ Settings")
-        self._create_settings_tab(settings_frame)
-        
-        # Logs tab
-        logs_frame = ttk.Frame(notebook, style='Dark.TFrame')
-        notebook.add(logs_frame, text="📝 Logs")
-        self._create_logs_tab(logs_frame)
-    
-    def _create_trading_tab(self, parent):
-        """Create manual trading controls"""
-        # Symbol selection
-        symbol_frame = ttk.LabelFrame(parent, text="Symbol & Mode", style='Dark.TFrame')
-        symbol_frame.pack(fill=tk.X, padx=10, pady=10)
-        
-        ttk.Label(symbol_frame, text="Symbol:", style='Dark.TLabel').grid(row=0, column=0, padx=5, pady=5)
-        self.widgets['symbol_entry'] = ttk.Entry(symbol_frame, style='Dark.TEntry', width=20)
-        self.widgets['symbol_entry'].insert(0, self.current_symbol)
-        self.widgets['symbol_entry'].grid(row=0, column=1, padx=5, pady=5)
-        
-        ttk.Label(symbol_frame, text="Mode:", style='Dark.TLabel').grid(row=0, column=2, padx=5, pady=5)
-        self.widgets['mode_combo'] = ttk.Combobox(symbol_frame, values=["spot", "perp"], style='Dark.TCombobox', width=10)
-        self.widgets['mode_combo'].set(self.current_mode)
-        self.widgets['mode_combo'].grid(row=0, column=3, padx=5, pady=5)
-        
-        ttk.Button(symbol_frame, text="Update", command=self._update_symbol, style='Blue.TButton').grid(row=0, column=4, padx=5, pady=5)
-        
-        # Live price display
-        price_frame = ttk.LabelFrame(parent, text="Live Price Feed", style='Dark.TFrame')
-        price_frame.pack(fill=tk.X, padx=10, pady=10)
-        
-        self.widgets['live_price'] = ttk.Label(
-            price_frame, text=f"${self.current_price:.4f}", 
-            style='Dark.TLabel', font=('Arial', 24, 'bold')
-        )
-        self.widgets['live_price'].pack(pady=10)
-        
-        # Manual trading controls
-        manual_frame = ttk.LabelFrame(parent, text="Manual Trading", style='Dark.TFrame')
-        manual_frame.pack(fill=tk.X, padx=10, pady=10)
-        
-        # Order size
-        ttk.Label(manual_frame, text="Order Size ($):", style='Dark.TLabel').grid(row=0, column=0, padx=5, pady=5)
-        self.widgets['order_size'] = ttk.Entry(manual_frame, style='Dark.TEntry', width=15)
-        self.widgets['order_size'].insert(0, "20.00")
-        self.widgets['order_size'].grid(row=0, column=1, padx=5, pady=5)
-        
-        # Buy/Sell buttons
-        ttk.Button(manual_frame, text="🟢 BUY", command=lambda: self._manual_trade("BUY"), 
-                  style='Green.TButton', width=15).grid(row=0, column=2, padx=5, pady=5)
-        ttk.Button(manual_frame, text="🔴 SELL", command=lambda: self._manual_trade("SELL"), 
-                  style='Red.TButton', width=15).grid(row=0, column=3, padx=5, pady=5)
-        
-        # Close position button
-        ttk.Button(manual_frame, text="❌ Close Position", command=self._close_position, 
-                  style='Red.TButton', width=20).grid(row=1, column=1, columnspan=2, padx=5, pady=5)
-    
-    def _create_automation_tab(self, parent):
-        """Create 24/7 automation controls"""
-        # Main automation controls
-        auto_frame = ttk.LabelFrame(parent, text="24/7 Automation Controls", style='Dark.TFrame')
-        auto_frame.pack(fill=tk.X, padx=10, pady=10)
-        
-        # Start/Stop buttons
-        button_frame = ttk.Frame(auto_frame, style='Dark.TFrame')
-        button_frame.pack(pady=20)
-        
-        self.widgets['start_button'] = ttk.Button(
-            button_frame, text="🚀 START 24/7 TRADING", 
-            command=self._start_automation, style='Green.TButton',
-            width=25
-        )
-        self.widgets['start_button'].pack(side=tk.LEFT, padx=10)
-        
-        self.widgets['stop_button'] = ttk.Button(
-            button_frame, text="⏹️ STOP TRADING", 
-            command=self._stop_automation, style='Red.TButton',
-            width=25, state=tk.DISABLED
-        )
-        self.widgets['stop_button'].pack(side=tk.LEFT, padx=10)
-        
-        # Mode selection for automation
-        mode_frame = ttk.LabelFrame(parent, text="Automation Mode", style='Dark.TFrame')
-        mode_frame.pack(fill=tk.X, padx=10, pady=10)
-        
-        self.widgets['auto_mode'] = tk.StringVar(value="perp")
-        ttk.Radiobutton(mode_frame, text="🔄 Auto Spot Trading", variable=self.widgets['auto_mode'], 
-                       value="spot", style='Dark.TLabel').pack(anchor=tk.W, padx=10, pady=5)
-        ttk.Radiobutton(mode_frame, text="📈 Auto Perp Trading", variable=self.widgets['auto_mode'], 
-                       value="perp", style='Dark.TLabel').pack(anchor=tk.W, padx=10, pady=5)
-        
-        # Strategy selection
-        strategy_frame = ttk.LabelFrame(parent, text="Trading Strategy", style='Dark.TFrame')
-        strategy_frame.pack(fill=tk.X, padx=10, pady=10)
-        
-        self.widgets['strategy_combo'] = ttk.Combobox(
-            strategy_frame, 
-            values=["Enhanced Neural Network", "BB RSI ADX", "Hull Suite"], 
-            style='Dark.TCombobox', width=30
-        )
-        self.widgets['strategy_combo'].set("Enhanced Neural Network")
-        self.widgets['strategy_combo'].pack(pady=10)
-        
-        # Performance metrics
-        perf_frame = ttk.LabelFrame(parent, text="Performance Metrics", style='Dark.TFrame')
-        perf_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
-        
-        metrics_text = tk.Text(perf_frame, height=8, bg=self.colors['bg_secondary'], 
-                              fg=self.colors['text_primary'], font=('Courier', 10))
-        metrics_text.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
-        self.widgets['metrics_text'] = metrics_text
-    
-    def _create_positions_tab(self, parent):
-        """Create positions monitoring and P&L tracking"""
-        # Current positions
-        pos_frame = ttk.LabelFrame(parent, text="Current Positions", style='Dark.TFrame')
-        pos_frame.pack(fill=tk.X, padx=10, pady=10)
-        
-        # Position table
-        columns = ("Symbol", "Side", "Size", "Entry Price", "Current Price", "Unrealized P&L", "%")
-        self.widgets['position_tree'] = ttk.Treeview(pos_frame, columns=columns, show='headings', height=6)
-        
-        for col in columns:
-            self.widgets['position_tree'].heading(col, text=col)
-            self.widgets['position_tree'].column(col, width=120)
-        
-        self.widgets['position_tree'].pack(fill=tk.X, padx=5, pady=5)
-        
-        # P&L Chart
-        chart_frame = ttk.LabelFrame(parent, text="P&L Chart", style='Dark.TFrame')
-        chart_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
-        
-        # Create matplotlib figure
-        self.charts['pnl_fig'] = Figure(figsize=(12, 6), facecolor=self.colors['bg_secondary'])
-        self.charts['pnl_ax'] = self.charts['pnl_fig'].add_subplot(111)
-        self.charts['pnl_ax'].set_facecolor(self.colors['bg_tertiary'])
-        self.charts['pnl_ax'].tick_params(colors=self.colors['text_primary'])
-        
-        self.charts['pnl_canvas'] = FigureCanvasTkAgg(self.charts['pnl_fig'], chart_frame)
-        self.charts['pnl_canvas'].get_tk_widget().pack(fill=tk.BOTH, expand=True)
-        
-        # Trade history
-        history_frame = ttk.LabelFrame(parent, text="Trade History", style='Dark.TFrame')
-        history_frame.pack(fill=tk.X, padx=10, pady=10)
-        
-        hist_columns = ("Time", "Symbol", "Side", "Size", "Price", "P&L", "Status")
-        self.widgets['history_tree'] = ttk.Treeview(history_frame, columns=hist_columns, show='headings', height=6)
-        
-        for col in hist_columns:
-            self.widgets['history_tree'].heading(col, text=col)
-            self.widgets['history_tree'].column(col, width=100)
-        
-        self.widgets['history_tree'].pack(fill=tk.X, padx=5, pady=5)
-    
-    def _create_settings_tab(self, parent):
-        """Create comprehensive settings"""
-        # Capital settings
-        capital_frame = ttk.LabelFrame(parent, text="Capital Management", style='Dark.TFrame')
-        capital_frame.pack(fill=tk.X, padx=10, pady=10)
-        
-        ttk.Label(capital_frame, text="Starting Capital ($):", style='Dark.TLabel').grid(row=0, column=0, padx=5, pady=5)
-        self.widgets['starting_capital'] = ttk.Entry(capital_frame, style='Dark.TEntry', width=15)
-        self.widgets['starting_capital'].insert(0, str(self.starting_capital))
-        self.widgets['starting_capital'].grid(row=0, column=1, padx=5, pady=5)
-        
-        ttk.Button(capital_frame, text="Update Capital", command=self._update_capital, 
-                  style='Blue.TButton').grid(row=0, column=2, padx=5, pady=5)
-        
-        # Risk management
-        risk_frame = ttk.LabelFrame(parent, text="Risk Management", style='Dark.TFrame')
-        risk_frame.pack(fill=tk.X, padx=10, pady=10)
-        
-        # Stop loss
-        ttk.Label(risk_frame, text="Stop Loss (%):", style='Dark.TLabel').grid(row=0, column=0, padx=5, pady=5)
-        self.widgets['stop_loss'] = ttk.Entry(risk_frame, style='Dark.TEntry', width=10)
-        self.widgets['stop_loss'].insert(0, "2.0")
-        self.widgets['stop_loss'].grid(row=0, column=1, padx=5, pady=5)
-        
-        # Take profit
-        ttk.Label(risk_frame, text="Take Profit (%):", style='Dark.TLabel').grid(row=0, column=2, padx=5, pady=5)
-        self.widgets['take_profit'] = ttk.Entry(risk_frame, style='Dark.TEntry', width=10)
-        self.widgets['take_profit'].insert(0, "4.0")
-        self.widgets['take_profit'].grid(row=0, column=3, padx=5, pady=5)
-        
-        # Position size
-        ttk.Label(risk_frame, text="Position Size ($):", style='Dark.TLabel').grid(row=1, column=0, padx=5, pady=5)
-        self.widgets['position_size'] = ttk.Entry(risk_frame, style='Dark.TEntry', width=10)
-        self.widgets['position_size'].insert(0, "20.0")
-        self.widgets['position_size'].grid(row=1, column=1, padx=5, pady=5)
-        
-        # Max positions
-        ttk.Label(risk_frame, text="Max Positions:", style='Dark.TLabel').grid(row=1, column=2, padx=5, pady=5)
-        self.widgets['max_positions'] = ttk.Entry(risk_frame, style='Dark.TEntry', width=10)
-        self.widgets['max_positions'].insert(0, "3")
-        self.widgets['max_positions'].grid(row=1, column=3, padx=5, pady=5)
-        
-        # API settings
-        api_frame = ttk.LabelFrame(parent, text="API Configuration", style='Dark.TFrame')
-        api_frame.pack(fill=tk.X, padx=10, pady=10)
-        
-        ttk.Label(api_frame, text="Wallet Address:", style='Dark.TLabel').grid(row=0, column=0, padx=5, pady=5)
-        self.widgets['wallet_address'] = ttk.Entry(api_frame, style='Dark.TEntry', width=50)
-        self.widgets['wallet_address'].insert(0, "0x306D29F56EA1345c7E6F1ff27657ba05cEE15D4F")
-        self.widgets['wallet_address'].grid(row=0, column=1, padx=5, pady=5)
-        
-        ttk.Label(api_frame, text="Private Key:", style='Dark.TLabel').grid(row=1, column=0, padx=5, pady=5)
-        self.widgets['private_key'] = ttk.Entry(api_frame, style='Dark.TEntry', width=50, show="*")
-        self.widgets['private_key'].insert(0, "43ba46de58067dd1ef3794c653bf3b11fa78866623cc515a5aff5f4be31fd3b8")
-        self.widgets['private_key'].grid(row=1, column=1, padx=5, pady=5)
-        
-        # Save settings button
-        ttk.Button(api_frame, text="💾 Save Settings", command=self._save_settings, 
-                  style='Blue.TButton').grid(row=2, column=1, padx=5, pady=10)
-        
-        # Neural network settings
-        nn_frame = ttk.LabelFrame(parent, text="Neural Network Settings", style='Dark.TFrame')
-        nn_frame.pack(fill=tk.X, padx=10, pady=10)
-        
-        ttk.Label(nn_frame, text="Confidence Threshold:", style='Dark.TLabel').grid(row=0, column=0, padx=5, pady=5)
-        self.widgets['confidence_threshold'] = ttk.Entry(nn_frame, style='Dark.TEntry', width=10)
-        self.widgets['confidence_threshold'].insert(0, "0.8")
-        self.widgets['confidence_threshold'].grid(row=0, column=1, padx=5, pady=5)
-        
-        ttk.Label(nn_frame, text="Lookback Bars:", style='Dark.TLabel').grid(row=0, column=2, padx=5, pady=5)
-        self.widgets['lookback_bars'] = ttk.Entry(nn_frame, style='Dark.TEntry', width=10)
-        self.widgets['lookback_bars'].insert(0, "30")
-        self.widgets['lookback_bars'].grid(row=0, column=3, padx=5, pady=5)
-    
-    def _create_logs_tab(self, parent):
-        """Create logs display"""
-        log_frame = ttk.LabelFrame(parent, text="System Logs", style='Dark.TFrame')
-        log_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
-        
-        # Log text area
-        self.widgets['log_text'] = scrolledtext.ScrolledText(
-            log_frame, 
-            bg=self.colors['bg_secondary'], 
-            fg=self.colors['text_primary'],
-            font=('Courier', 9),
-            wrap=tk.WORD
-        )
-        self.widgets['log_text'].pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
-        
-        # Log controls
-        log_controls = ttk.Frame(log_frame, style='Dark.TFrame')
-        log_controls.pack(fill=tk.X, padx=5, pady=5)
-        
-        ttk.Button(log_controls, text="Clear Logs", command=self._clear_logs, 
-                  style='Dark.TButton').pack(side=tk.LEFT)
-        ttk.Button(log_controls, text="Save Logs", command=self._save_logs, 
-                  style='Dark.TButton').pack(side=tk.LEFT, padx=5)
-    
-    def _create_control_panel(self, parent):
-        """Create bottom control panel"""
-        control_frame = ttk.Frame(parent, style='Dark.TFrame')
-        control_frame.pack(fill=tk.X, pady=(10, 0))
-        
-        # Emergency stop
-        ttk.Button(control_frame, text="🚨 EMERGENCY STOP", command=self._emergency_stop, 
-                  style='Red.TButton', width=20).pack(side=tk.LEFT)
+    def create_trading_tab(self):
+        """Create manual trading tab"""
+        trading_tab = self.tabview.add("💹 Trading")
         
         # Connection controls
-        ttk.Button(control_frame, text="🔌 Connect", command=self._connect, 
-                  style='Green.TButton', width=15).pack(side=tk.LEFT, padx=5)
-        ttk.Button(control_frame, text="🔌 Disconnect", command=self._disconnect, 
-                  style='Red.TButton', width=15).pack(side=tk.LEFT)
+        connection_frame = ctk.CTkFrame(trading_tab)
+        connection_frame.pack(fill="x", padx=10, pady=5)
         
-        # Status indicator
-        self.widgets['status_indicator'] = ttk.Label(
-            control_frame, text="● Ready", style='Dark.TLabel', font=('Arial', 12, 'bold')
-        )
-        self.widgets['status_indicator'].pack(side=tk.RIGHT)
+        ctk.CTkLabel(connection_frame, text="🔗 API CONNECTION", 
+                    font=ctk.CTkFont(size=16, weight="bold")).pack(pady=5)
+        
+        conn_buttons_frame = ctk.CTkFrame(connection_frame)
+        conn_buttons_frame.pack(pady=5)
+        
+        self.connect_btn = ctk.CTkButton(conn_buttons_frame, text="🔗 Connect", 
+                                        command=self.connect_api, fg_color="green")
+        self.connect_btn.pack(side="left", padx=5)
+        
+        self.disconnect_btn = ctk.CTkButton(conn_buttons_frame, text="❌ Disconnect", 
+                                           command=self.disconnect_api, fg_color="red")
+        self.disconnect_btn.pack(side="left", padx=5)
+        
+        # Symbol selection
+        symbol_frame = ctk.CTkFrame(trading_tab)
+        symbol_frame.pack(fill="x", padx=10, pady=5)
+        
+        ctk.CTkLabel(symbol_frame, text="📊 TRADING SYMBOL", 
+                    font=ctk.CTkFont(size=16, weight="bold")).pack(pady=5)
+        
+        symbol_controls_frame = ctk.CTkFrame(symbol_frame)
+        symbol_controls_frame.pack(pady=5)
+        
+        ctk.CTkLabel(symbol_controls_frame, text="Symbol:").pack(side="left", padx=5)
+        
+        self.symbol_var = ctk.StringVar(value="BTC-USD-PERP")
+        self.symbol_entry = ctk.CTkEntry(symbol_controls_frame, textvariable=self.symbol_var, width=150)
+        self.symbol_entry.pack(side="left", padx=5)
+        
+        ctk.CTkLabel(symbol_controls_frame, text="Mode:").pack(side="left", padx=5)
+        
+        self.mode_var = ctk.StringVar(value="perp")
+        self.mode_dropdown = ctk.CTkOptionMenu(symbol_controls_frame, variable=self.mode_var,
+                                              values=["perp", "spot"])
+        self.mode_dropdown.pack(side="left", padx=5)
+        
+        ctk.CTkButton(symbol_controls_frame, text="Set Symbol", 
+                     command=self.set_symbol).pack(side="left", padx=5)
+        
+        # Manual trading controls
+        manual_frame = ctk.CTkFrame(trading_tab)
+        manual_frame.pack(fill="x", padx=10, pady=5)
+        
+        ctk.CTkLabel(manual_frame, text="🎯 MANUAL TRADING", 
+                    font=ctk.CTkFont(size=16, weight="bold")).pack(pady=5)
+        
+        manual_controls_frame = ctk.CTkFrame(manual_frame)
+        manual_controls_frame.pack(pady=5)
+        
+        ctk.CTkLabel(manual_controls_frame, text="Size ($):").pack(side="left", padx=5)
+        
+        self.trade_size_var = ctk.StringVar(value="20.0")
+        self.trade_size_entry = ctk.CTkEntry(manual_controls_frame, textvariable=self.trade_size_var, width=100)
+        self.trade_size_entry.pack(side="left", padx=5)
+        
+        self.buy_btn = ctk.CTkButton(manual_controls_frame, text="🟢 BUY", 
+                                    command=lambda: self.execute_manual_trade("BUY"), 
+                                    fg_color="green", width=100)
+        self.buy_btn.pack(side="left", padx=5)
+        
+        self.sell_btn = ctk.CTkButton(manual_controls_frame, text="🔴 SELL", 
+                                     command=lambda: self.execute_manual_trade("SELL"), 
+                                     fg_color="red", width=100)
+        self.sell_btn.pack(side="left", padx=5)
+        
+        self.close_all_btn = ctk.CTkButton(manual_controls_frame, text="❌ Close All", 
+                                          command=self.close_all_positions, 
+                                          fg_color="orange", width=100)
+        self.close_all_btn.pack(side="left", padx=5)
     
-    def _start_update_thread(self):
-        """Start the GUI update thread"""
-        self.running = True
+    def create_automation_tab(self):
+        """Create 24/7 automation tab"""
+        automation_tab = self.tabview.add("🤖 Automation")
+        
+        # Automation controls
+        auto_frame = ctk.CTkFrame(automation_tab)
+        auto_frame.pack(fill="x", padx=10, pady=5)
+        
+        ctk.CTkLabel(auto_frame, text="🤖 24/7 AUTOMATED TRADING", 
+                    font=ctk.CTkFont(size=16, weight="bold")).pack(pady=5)
+        
+        auto_controls_frame = ctk.CTkFrame(auto_frame)
+        auto_controls_frame.pack(pady=5)
+        
+        ctk.CTkLabel(auto_controls_frame, text="Trading Mode:").pack(side="left", padx=5)
+        
+        self.auto_mode_var = ctk.StringVar(value="perp")
+        self.auto_mode_dropdown = ctk.CTkOptionMenu(auto_controls_frame, variable=self.auto_mode_var,
+                                                   values=["perp", "spot"])
+        self.auto_mode_dropdown.pack(side="left", padx=5)
+        
+        ctk.CTkLabel(auto_controls_frame, text="Strategy:").pack(side="left", padx=5)
+        
+        self.strategy_var = ctk.StringVar(value="Enhanced Neural")
+        self.strategy_dropdown = ctk.CTkOptionMenu(auto_controls_frame, variable=self.strategy_var,
+                                                  values=["Enhanced Neural", "BB RSI ADX", "Hull Suite"])
+        self.strategy_dropdown.pack(side="left", padx=5)
+        
+        self.start_auto_btn = ctk.CTkButton(auto_controls_frame, text="🚀 START AUTOMATION", 
+                                           command=self.start_automation, 
+                                           fg_color="green", width=150)
+        self.start_auto_btn.pack(side="left", padx=10)
+        
+        self.stop_auto_btn = ctk.CTkButton(auto_controls_frame, text="⏹️ STOP AUTOMATION", 
+                                          command=self.stop_automation, 
+                                          fg_color="red", width=150)
+        self.stop_auto_btn.pack(side="left", padx=5)
+        
+        # Automation settings
+        settings_frame = ctk.CTkFrame(automation_tab)
+        settings_frame.pack(fill="x", padx=10, pady=5)
+        
+        ctk.CTkLabel(settings_frame, text="⚙️ AUTOMATION SETTINGS", 
+                    font=ctk.CTkFont(size=16, weight="bold")).pack(pady=5)
+        
+        settings_grid = ctk.CTkFrame(settings_frame)
+        settings_grid.pack(pady=5)
+        
+        # Starting capital
+        ctk.CTkLabel(settings_grid, text="Starting Capital ($):").grid(row=0, column=0, padx=5, pady=5, sticky="w")
+        self.starting_capital_var = ctk.StringVar(value="100.0")
+        ctk.CTkEntry(settings_grid, textvariable=self.starting_capital_var, width=100).grid(row=0, column=1, padx=5, pady=5)
+        
+        # Position size
+        ctk.CTkLabel(settings_grid, text="Position Size ($):").grid(row=0, column=2, padx=5, pady=5, sticky="w")
+        self.position_size_var = ctk.StringVar(value="20.0")
+        ctk.CTkEntry(settings_grid, textvariable=self.position_size_var, width=100).grid(row=0, column=3, padx=5, pady=5)
+        
+        # Stop loss
+        ctk.CTkLabel(settings_grid, text="Stop Loss (%):").grid(row=1, column=0, padx=5, pady=5, sticky="w")
+        self.stop_loss_var = ctk.StringVar(value="2.0")
+        ctk.CTkEntry(settings_grid, textvariable=self.stop_loss_var, width=100).grid(row=1, column=1, padx=5, pady=5)
+        
+        # Take profit
+        ctk.CTkLabel(settings_grid, text="Take Profit (%):").grid(row=1, column=2, padx=5, pady=5, sticky="w")
+        self.take_profit_var = ctk.StringVar(value="4.0")
+        ctk.CTkEntry(settings_grid, textvariable=self.take_profit_var, width=100).grid(row=1, column=3, padx=5, pady=5)
+        
+        # Circuit breaker
+        ctk.CTkLabel(settings_grid, text="Circuit Breaker (%):").grid(row=2, column=0, padx=5, pady=5, sticky="w")
+        self.circuit_breaker_var = ctk.StringVar(value="10.0")
+        ctk.CTkEntry(settings_grid, textvariable=self.circuit_breaker_var, width=100).grid(row=2, column=1, padx=5, pady=5)
+        
+        # Trailing stop
+        self.trailing_stop_var = ctk.BooleanVar(value=True)
+        ctk.CTkCheckBox(settings_grid, text="Enable Trailing Stop", 
+                       variable=self.trailing_stop_var).grid(row=2, column=2, columnspan=2, padx=5, pady=5, sticky="w")
+        
+        ctk.CTkButton(settings_grid, text="💾 Save Settings", 
+                     command=self.save_automation_settings).grid(row=3, column=0, columnspan=4, pady=10)
+    
+    def create_positions_tab(self):
+        """Create positions monitoring tab"""
+        positions_tab = self.tabview.add("📋 Positions")
+        
+        # Positions header
+        header_frame = ctk.CTkFrame(positions_tab)
+        header_frame.pack(fill="x", padx=10, pady=5)
+        
+        ctk.CTkLabel(header_frame, text="📋 OPEN POSITIONS", 
+                    font=ctk.CTkFont(size=16, weight="bold")).pack(pady=5)
+        
+        # Positions table
+        self.positions_frame = ctk.CTkScrollableFrame(positions_tab)
+        self.positions_frame.pack(fill="both", expand=True, padx=10, pady=5)
+        
+        # Create positions table headers
+        headers = ["Symbol", "Side", "Size", "Entry Price", "Current Price", "P&L", "P&L %", "Actions"]
+        for i, header in enumerate(headers):
+            ctk.CTkLabel(self.positions_frame, text=header, 
+                        font=ctk.CTkFont(weight="bold")).grid(row=0, column=i, padx=5, pady=5, sticky="w")
+    
+    def create_performance_tab(self):
+        """Create performance analytics tab"""
+        performance_tab = self.tabview.add("📈 Performance")
+        
+        # Performance metrics
+        metrics_frame = ctk.CTkFrame(performance_tab)
+        metrics_frame.pack(fill="x", padx=10, pady=5)
+        
+        ctk.CTkLabel(metrics_frame, text="📈 PERFORMANCE ANALYTICS", 
+                    font=ctk.CTkFont(size=16, weight="bold")).pack(pady=5)
+        
+        # Metrics grid
+        metrics_grid = ctk.CTkFrame(metrics_frame)
+        metrics_grid.pack(pady=5)
+        
+        # Performance labels
+        self.perf_total_return = ctk.CTkLabel(metrics_grid, text="Total Return: 0.00%")
+        self.perf_total_return.grid(row=0, column=0, padx=10, pady=5)
+        
+        self.perf_max_drawdown = ctk.CTkLabel(metrics_grid, text="Max Drawdown: 0.00%")
+        self.perf_max_drawdown.grid(row=0, column=1, padx=10, pady=5)
+        
+        self.perf_sharpe_ratio = ctk.CTkLabel(metrics_grid, text="Sharpe Ratio: 0.00")
+        self.perf_sharpe_ratio.grid(row=0, column=2, padx=10, pady=5)
+        
+        self.perf_profit_factor = ctk.CTkLabel(metrics_grid, text="Profit Factor: 0.00")
+        self.perf_profit_factor.grid(row=1, column=0, padx=10, pady=5)
+        
+        self.perf_avg_win = ctk.CTkLabel(metrics_grid, text="Avg Win: $0.00")
+        self.perf_avg_win.grid(row=1, column=1, padx=10, pady=5)
+        
+        self.perf_avg_loss = ctk.CTkLabel(metrics_grid, text="Avg Loss: $0.00")
+        self.perf_avg_loss.grid(row=1, column=2, padx=10, pady=5)
+        
+        # Performance chart
+        chart_frame = ctk.CTkFrame(performance_tab)
+        chart_frame.pack(fill="both", expand=True, padx=10, pady=5)
+        
+        ctk.CTkLabel(chart_frame, text="📊 P&L CHART", 
+                    font=ctk.CTkFont(size=14, weight="bold")).pack(pady=5)
+        
+        self.pnl_fig, self.pnl_ax = plt.subplots(figsize=(10, 6), facecolor='#2b2b2b')
+        self.pnl_ax.set_facecolor('#2b2b2b')
+        self.pnl_canvas = FigureCanvasTkAgg(self.pnl_fig, chart_frame)
+        self.pnl_canvas.get_tk_widget().pack(fill="both", expand=True)
+    
+    def create_settings_tab(self):
+        """Create settings tab"""
+        settings_tab = self.tabview.add("⚙️ Settings")
+        
+        # API settings
+        api_frame = ctk.CTkFrame(settings_tab)
+        api_frame.pack(fill="x", padx=10, pady=5)
+        
+        ctk.CTkLabel(api_frame, text="🔑 API SETTINGS", 
+                    font=ctk.CTkFont(size=16, weight="bold")).pack(pady=5)
+        
+        api_grid = ctk.CTkFrame(api_frame)
+        api_grid.pack(pady=5)
+        
+        ctk.CTkLabel(api_grid, text="Account Address:").grid(row=0, column=0, padx=5, pady=5, sticky="w")
+        self.account_address_var = ctk.StringVar(value="0x306D29F56EA1345c7E6F1ff27657ba05cEE15D4F")
+        ctk.CTkEntry(api_grid, textvariable=self.account_address_var, width=400).grid(row=0, column=1, padx=5, pady=5)
+        
+        ctk.CTkLabel(api_grid, text="Private Key:").grid(row=1, column=0, padx=5, pady=5, sticky="w")
+        self.private_key_var = ctk.StringVar(value="43ba46de58067dd1ef3794c653bf3b11fa78866623cc515a5aff5f4be31fd3b8")
+        private_key_entry = ctk.CTkEntry(api_grid, textvariable=self.private_key_var, width=400, show="*")
+        private_key_entry.grid(row=1, column=1, padx=5, pady=5)
+        
+        ctk.CTkButton(api_grid, text="💾 Save API Settings", 
+                     command=self.save_api_settings).grid(row=2, column=0, columnspan=2, pady=10)
+    
+    def create_logs_tab(self):
+        """Create logs tab"""
+        logs_tab = self.tabview.add("📝 Logs")
+        
+        # Logs header
+        header_frame = ctk.CTkFrame(logs_tab)
+        header_frame.pack(fill="x", padx=10, pady=5)
+        
+        ctk.CTkLabel(header_frame, text="📝 TRADING LOGS", 
+                    font=ctk.CTkFont(size=16, weight="bold")).pack(pady=5)
+        
+        # Logs text area
+        self.logs_text = ctk.CTkTextbox(logs_tab, height=400)
+        self.logs_text.pack(fill="both", expand=True, padx=10, pady=5)
+    
+    def start_real_time_updates(self):
+        """Start real-time data updates"""
         self.update_thread = threading.Thread(target=self._update_loop, daemon=True)
         self.update_thread.start()
+        
+        self.chart_update_thread = threading.Thread(target=self._chart_update_loop, daemon=True)
+        self.chart_update_thread.start()
+        
+        # Start GUI update timer
+        self.root.after(1000, self.update_gui)
     
     def _update_loop(self):
-        """Main update loop for GUI"""
-        while self.running:
+        """Real-time data update loop"""
+        while True:
             try:
-                # Update wallet balance
-                self._update_wallet_balance()
-                
-                # Update current price
-                self._update_current_price()
-                
-                # Update positions
-                self._update_positions()
-                
-                # Update P&L chart
-                self._update_pnl_chart()
-                
-                # Update logs
-                self._update_logs()
-                
-                # Update status
-                self._update_status()
+                if self.connected:
+                    # Get real-time data from trading bot
+                    self.real_time_data = self.trading_bot.get_real_time_data()
+                    
+                    # Update price history
+                    if self.real_time_data.get("price", 0) > 0:
+                        self.price_history.append({
+                            "timestamp": datetime.now(),
+                            "price": self.real_time_data["price"]
+                        })
+                        
+                        # Limit history
+                        if len(self.price_history) > 100:
+                            self.price_history = self.price_history[-50:]
+                    
+                    # Update equity history
+                    if self.real_time_data.get("equity", 0) > 0:
+                        self.equity_history.append({
+                            "timestamp": datetime.now(),
+                            "equity": self.real_time_data["equity"]
+                        })
+                        
+                        # Limit history
+                        if len(self.equity_history) > 100:
+                            self.equity_history = self.equity_history[-50:]
                 
                 time.sleep(1)  # Update every second
                 
             except Exception as e:
-                logger.error(f"Error in GUI update loop: {e}")
+                logger.error(f"Error in update loop: {e}")
                 time.sleep(5)
     
-    def _update_wallet_balance(self):
-        """Update wallet balance display"""
-        try:
-            if hasattr(self.trading_bot, 'api') and self.trading_bot.api:
-                balance = self.trading_bot.api.get_equity()
-                self.wallet_balance = balance
+    def _chart_update_loop(self):
+        """Chart update loop"""
+        while True:
+            try:
+                if self.connected and len(self.price_history) > 1:
+                    self.update_charts()
                 
-                if self.widgets.get('wallet_balance'):
-                    self.root.after(0, lambda: self.widgets['wallet_balance'].config(
-                        text=f"💰 Balance: ${balance:.2f}"
-                    ))
-        except Exception as e:
-            logger.error(f"Error updating wallet balance: {e}")
-    
-    def _update_current_price(self):
-        """Update current price display"""
-        try:
-            if hasattr(self.trading_bot, 'api') and self.trading_bot.api:
-                # Get current price for selected symbol
-                price_data = self.trading_bot.api.fetch_price_volume(self.current_symbol)
-                if price_data:
-                    self.current_price = price_data.get('price', 0.0)
-                    
-                    if self.widgets.get('current_price'):
-                        self.root.after(0, lambda: self.widgets['current_price'].config(
-                            text=f"📈 {self.current_symbol}: ${self.current_price:.4f}"
-                        ))
-                    
-                    if self.widgets.get('live_price'):
-                        self.root.after(0, lambda: self.widgets['live_price'].config(
-                            text=f"${self.current_price:.4f}"
-                        ))
-                    
-                    # Store price history
-                    self.price_history.append({
-                        'time': datetime.now(),
-                        'price': self.current_price
-                    })
-                    
-                    # Limit history size
-                    if len(self.price_history) > 1000:
-                        self.price_history = self.price_history[-1000:]
-        except Exception as e:
-            logger.error(f"Error updating current price: {e}")
-    
-    def _update_positions(self):
-        """Update positions display"""
-        try:
-            if hasattr(self.trading_bot, 'api') and self.trading_bot.api:
-                positions = self.trading_bot.api.get_user_positions()
+                time.sleep(5)  # Update charts every 5 seconds
                 
-                if self.widgets.get('position_tree'):
-                    # Clear existing items
-                    for item in self.widgets['position_tree'].get_children():
-                        self.widgets['position_tree'].delete(item)
-                    
-                    # Add current positions
-                    total_unrealized = 0.0
-                    for pos in positions:
-                        symbol = pos.get('symbol', 'Unknown')
-                        side = 'LONG' if pos.get('side') == 1 else 'SHORT'
-                        size = pos.get('size', 0.0)
-                        entry_price = pos.get('entryPrice', 0.0)
-                        current_price = self.current_price
-                        
-                        # Calculate unrealized P&L
-                        if side == 'LONG':
-                            unrealized = size * (current_price - entry_price)
-                        else:
-                            unrealized = size * (entry_price - current_price)
-                        
-                        unrealized_pct = (unrealized / (size * entry_price)) * 100 if entry_price > 0 else 0
-                        total_unrealized += unrealized
-                        
-                        self.widgets['position_tree'].insert('', 'end', values=(
-                            symbol, side, f"{size:.4f}", f"${entry_price:.4f}", 
-                            f"${current_price:.4f}", f"${unrealized:.2f}", f"{unrealized_pct:.2f}%"
-                        ))
-                    
-                    self.unrealized_pnl = total_unrealized
-                    
-                    # Update P&L display
-                    if self.widgets.get('pnl_display'):
-                        self.root.after(0, lambda: self.widgets['pnl_display'].config(
-                            text=f"💹 P&L: ${total_unrealized:.2f}"
-                        ))
-        except Exception as e:
-            logger.error(f"Error updating positions: {e}")
+            except Exception as e:
+                logger.error(f"Error in chart update loop: {e}")
+                time.sleep(10)
     
-    def _update_pnl_chart(self):
-        """Update P&L chart"""
+    def update_gui(self):
+        """Update GUI elements with real-time data"""
         try:
-            if len(self.pnl_history) > 1:
-                times = [entry['time'] for entry in self.pnl_history[-100:]]
-                pnls = [entry['pnl'] for entry in self.pnl_history[-100:]]
+            if self.real_time_data:
+                # Update equity display
+                equity = self.real_time_data.get("equity", 0)
+                self.equity_label.configure(text=f"${equity:.2f}")
                 
-                self.charts['pnl_ax'].clear()
-                self.charts['pnl_ax'].plot(times, pnls, color=self.colors['accent_green'], linewidth=2)
-                self.charts['pnl_ax'].axhline(y=0, color=self.colors['accent_red'], linestyle='--', alpha=0.7)
-                self.charts['pnl_ax'].set_title('P&L Over Time', color=self.colors['text_primary'])
-                self.charts['pnl_ax'].set_facecolor(self.colors['bg_tertiary'])
-                self.charts['pnl_ax'].tick_params(colors=self.colors['text_primary'])
+                # Update price display
+                price = self.real_time_data.get("price", 0)
+                self.price_label.configure(text=f"${price:.2f}")
                 
-                self.charts['pnl_canvas'].draw()
-        except Exception as e:
-            logger.error(f"Error updating P&L chart: {e}")
-    
-    def _update_logs(self):
-        """Update logs display"""
-        try:
-            while not self.log_queue.empty():
-                log_message = self.log_queue.get_nowait()
-                if self.widgets.get('log_text'):
-                    self.root.after(0, lambda msg=log_message: self._append_log(msg))
-        except Exception as e:
-            logger.error(f"Error updating logs: {e}")
-    
-    def _append_log(self, message):
-        """Append log message to display"""
-        if self.widgets.get('log_text'):
-            self.widgets['log_text'].insert(tk.END, f"{datetime.now().strftime('%H:%M:%S')} - {message}\n")
-            self.widgets['log_text'].see(tk.END)
-    
-    def _update_status(self):
-        """Update connection and automation status"""
-        try:
-            # Update connection status
-            if hasattr(self.trading_bot, 'api') and self.trading_bot.api:
-                if self.widgets.get('connection_status'):
-                    self.root.after(0, lambda: self.widgets['connection_status'].config(
-                        text="🟢 Connected (Mainnet)", foreground=self.colors['accent_green']
-                    ))
-            else:
-                if self.widgets.get('connection_status'):
-                    self.root.after(0, lambda: self.widgets['connection_status'].config(
-                        text="🔴 Disconnected", foreground=self.colors['accent_red']
-                    ))
+                # Update symbol
+                symbol = self.symbol_var.get()
+                self.symbol_label.configure(text=symbol)
+                
+                # Update performance metrics
+                performance = self.real_time_data.get("performance", {})
+                if performance:
+                    self.total_pnl_label.configure(text=f"Total P&L: ${performance.get('total_pnl', 0):.2f}")
+                    self.win_rate_label.configure(text=f"Win Rate: {performance.get('win_rate', 0):.1f}%")
+                    self.total_trades_label.configure(text=f"Total Trades: {performance.get('total_trades', 0)}")
+                
+                # Update status indicators
+                automation_status = self.real_time_data.get("automation_status", False)
+                if automation_status:
+                    self.automation_status.configure(text="▶️ Automation ON", text_color="green")
+                else:
+                    self.automation_status.configure(text="⏸️ Automation OFF", text_color="gray")
+                
+                circuit_breaker = self.real_time_data.get("circuit_breaker", False)
+                if circuit_breaker:
+                    self.circuit_breaker_status.configure(text="🚨 Circuit Breaker ACTIVE", text_color="red")
+                else:
+                    self.circuit_breaker_status.configure(text="🛡️ Circuit Breaker OK", text_color="green")
+                
+                # Update positions table
+                self.update_positions_table()
             
-            # Update automation status
-            if self.automation_running:
-                if self.widgets.get('automation_status'):
-                    self.root.after(0, lambda: self.widgets['automation_status'].config(
-                        text="🤖 Auto Trading", foreground=self.colors['accent_green']
-                    ))
-            else:
-                if self.widgets.get('automation_status'):
-                    self.root.after(0, lambda: self.widgets['automation_status'].config(
-                        text="🤖 Manual Mode", foreground=self.colors['text_secondary']
-                    ))
+            # Schedule next update
+            self.root.after(1000, self.update_gui)
+            
         except Exception as e:
-            logger.error(f"Error updating status: {e}")
+            logger.error(f"Error updating GUI: {e}")
+            self.root.after(1000, self.update_gui)
+    
+    def update_charts(self):
+        """Update real-time charts"""
+        try:
+            # Update price chart
+            if len(self.price_history) > 1:
+                times = [p["timestamp"] for p in self.price_history]
+                prices = [p["price"] for p in self.price_history]
+                
+                self.price_ax.clear()
+                self.price_ax.plot(times, prices, color='#00ff00', linewidth=2)
+                self.price_ax.set_title('Live Price', color='white')
+                self.price_ax.tick_params(colors='white')
+                self.price_ax.grid(True, alpha=0.3)
+                self.price_canvas.draw()
+            
+            # Update equity chart
+            if len(self.equity_history) > 1:
+                times = [e["timestamp"] for e in self.equity_history]
+                equities = [e["equity"] for e in self.equity_history]
+                
+                self.equity_ax.clear()
+                self.equity_ax.plot(times, equities, color='#0080ff', linewidth=2)
+                self.equity_ax.set_title('Wallet Equity', color='white')
+                self.equity_ax.tick_params(colors='white')
+                self.equity_ax.grid(True, alpha=0.3)
+                self.equity_canvas.draw()
+                
+        except Exception as e:
+            logger.error(f"Error updating charts: {e}")
+    
+    def update_positions_table(self):
+        """Update positions table"""
+        try:
+            # Clear existing position widgets
+            for widget in self.positions_frame.winfo_children():
+                if int(widget.grid_info()["row"]) > 0:  # Keep headers
+                    widget.destroy()
+            
+            # Get current positions
+            positions = self.real_time_data.get("positions", [])
+            
+            for i, position in enumerate(positions, 1):
+                # Symbol
+                ctk.CTkLabel(self.positions_frame, text=position.get("symbol", "")).grid(row=i, column=0, padx=5, pady=2, sticky="w")
+                
+                # Side
+                side_text = "LONG" if position.get("side") == 1 else "SHORT"
+                side_color = "green" if position.get("side") == 1 else "red"
+                ctk.CTkLabel(self.positions_frame, text=side_text, text_color=side_color).grid(row=i, column=1, padx=5, pady=2, sticky="w")
+                
+                # Size
+                ctk.CTkLabel(self.positions_frame, text=f"{position.get('size', 0):.4f}").grid(row=i, column=2, padx=5, pady=2, sticky="w")
+                
+                # Entry Price
+                ctk.CTkLabel(self.positions_frame, text=f"${position.get('entryPrice', 0):.2f}").grid(row=i, column=3, padx=5, pady=2, sticky="w")
+                
+                # Current Price
+                ctk.CTkLabel(self.positions_frame, text=f"${position.get('currentPrice', 0):.2f}").grid(row=i, column=4, padx=5, pady=2, sticky="w")
+                
+                # P&L
+                pnl = position.get("unrealizedPnl", 0)
+                pnl_color = "green" if pnl >= 0 else "red"
+                ctk.CTkLabel(self.positions_frame, text=f"${pnl:.2f}", text_color=pnl_color).grid(row=i, column=5, padx=5, pady=2, sticky="w")
+                
+                # P&L %
+                pnl_pct = position.get("pnlPercent", 0)
+                ctk.CTkLabel(self.positions_frame, text=f"{pnl_pct:.2f}%", text_color=pnl_color).grid(row=i, column=6, padx=5, pady=2, sticky="w")
+                
+                # Actions
+                close_btn = ctk.CTkButton(self.positions_frame, text="Close", width=60, height=25,
+                                         command=lambda p=position: self.close_position(p))
+                close_btn.grid(row=i, column=7, padx=5, pady=2)
+                
+        except Exception as e:
+            logger.error(f"Error updating positions table: {e}")
     
     # Event handlers
-    def _update_symbol(self):
-        """Update trading symbol and mode"""
-        self.current_symbol = self.widgets['symbol_entry'].get().strip()
-        self.current_mode = self.widgets['mode_combo'].get().strip()
-        self._append_log(f"Updated symbol to {self.current_symbol} ({self.current_mode})")
-    
-    def _manual_trade(self, side):
-        """Execute manual trade"""
-        try:
-            order_size = float(self.widgets['order_size'].get())
-            self._append_log(f"Executing manual {side} order: ${order_size}")
-            
-            # Execute trade through trading bot
-            if hasattr(self.trading_bot, 'execute_manual_trade'):
-                result = self.trading_bot.execute_manual_trade(side, order_size, self.current_symbol)
-                self._append_log(f"Trade result: {result}")
-            else:
-                self._append_log("Manual trading not implemented in trading bot")
-                
-        except ValueError:
-            messagebox.showerror("Error", "Invalid order size")
-        except Exception as e:
-            messagebox.showerror("Error", f"Trade execution failed: {e}")
-    
-    def _close_position(self):
-        """Close current position"""
-        try:
-            self._append_log("Closing all positions...")
-            if hasattr(self.trading_bot, 'close_all_positions'):
-                result = self.trading_bot.close_all_positions()
-                self._append_log(f"Close positions result: {result}")
-            else:
-                self._append_log("Close position not implemented in trading bot")
-        except Exception as e:
-            messagebox.showerror("Error", f"Failed to close position: {e}")
-    
-    def _start_automation(self):
-        """Start 24/7 automation"""
-        try:
-            self.automation_running = True
-            mode = self.widgets['auto_mode'].get()
-            strategy = self.widgets['strategy_combo'].get()
-            
-            self._append_log(f"Starting 24/7 automation - Mode: {mode}, Strategy: {strategy}")
-            
-            # Update button states
-            self.widgets['start_button'].config(state=tk.DISABLED)
-            self.widgets['stop_button'].config(state=tk.NORMAL)
-            
-            # Start automation in trading bot
-            if hasattr(self.trading_bot, 'start_automation'):
-                self.trading_bot.start_automation(mode, strategy)
-            else:
-                self._append_log("Automation not implemented in trading bot")
-                
-        except Exception as e:
-            messagebox.showerror("Error", f"Failed to start automation: {e}")
-            self.automation_running = False
-    
-    def _stop_automation(self):
-        """Stop automation"""
-        try:
-            self.automation_running = False
-            self._append_log("Stopping automation...")
-            
-            # Update button states
-            self.widgets['start_button'].config(state=tk.NORMAL)
-            self.widgets['stop_button'].config(state=tk.DISABLED)
-            
-            # Stop automation in trading bot
-            if hasattr(self.trading_bot, 'stop_automation'):
-                self.trading_bot.stop_automation()
-            else:
-                self._append_log("Stop automation not implemented in trading bot")
-                
-        except Exception as e:
-            messagebox.showerror("Error", f"Failed to stop automation: {e}")
-    
-    def _update_capital(self):
-        """Update starting capital"""
-        try:
-            self.starting_capital = float(self.widgets['starting_capital'].get())
-            self._append_log(f"Updated starting capital to ${self.starting_capital:.2f}")
-        except ValueError:
-            messagebox.showerror("Error", "Invalid capital amount")
-    
-    def _save_settings(self):
-        """Save all settings"""
-        try:
-            settings = {
-                'starting_capital': float(self.widgets['starting_capital'].get()),
-                'stop_loss': float(self.widgets['stop_loss'].get()),
-                'take_profit': float(self.widgets['take_profit'].get()),
-                'position_size': float(self.widgets['position_size'].get()),
-                'max_positions': int(self.widgets['max_positions'].get()),
-                'wallet_address': self.widgets['wallet_address'].get(),
-                'private_key': self.widgets['private_key'].get(),
-                'confidence_threshold': float(self.widgets['confidence_threshold'].get()),
-                'lookback_bars': int(self.widgets['lookback_bars'].get())
-            }
-            
-            # Save to file
-            with open('gui_settings.json', 'w') as f:
-                json.dump(settings, f, indent=2)
-            
-            self._append_log("Settings saved successfully")
-            messagebox.showinfo("Success", "Settings saved successfully")
-            
-        except Exception as e:
-            messagebox.showerror("Error", f"Failed to save settings: {e}")
-    
-    def _clear_logs(self):
-        """Clear log display"""
-        if self.widgets.get('log_text'):
-            self.widgets['log_text'].delete(1.0, tk.END)
-    
-    def _save_logs(self):
-        """Save logs to file"""
-        try:
-            if self.widgets.get('log_text'):
-                logs = self.widgets['log_text'].get(1.0, tk.END)
-                filename = f"trading_logs_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
-                with open(filename, 'w') as f:
-                    f.write(logs)
-                self._append_log(f"Logs saved to {filename}")
-                messagebox.showinfo("Success", f"Logs saved to {filename}")
-        except Exception as e:
-            messagebox.showerror("Error", f"Failed to save logs: {e}")
-    
-    def _emergency_stop(self):
-        """Emergency stop all operations"""
-        try:
-            self._append_log("🚨 EMERGENCY STOP ACTIVATED 🚨")
-            
-            # Stop automation
-            self.automation_running = False
-            
-            # Close all positions
-            self._close_position()
-            
-            # Update button states
-            if self.widgets.get('start_button'):
-                self.widgets['start_button'].config(state=tk.NORMAL)
-            if self.widgets.get('stop_button'):
-                self.widgets['stop_button'].config(state=tk.DISABLED)
-            
-            messagebox.showwarning("Emergency Stop", "All trading operations have been stopped!")
-            
-        except Exception as e:
-            messagebox.showerror("Error", f"Emergency stop failed: {e}")
-    
-    def _connect(self):
+    def connect_api(self):
         """Connect to trading API"""
         try:
-            self._append_log("Connecting to Hyperliquid API...")
-            if hasattr(self.trading_bot, 'connect'):
-                result = self.trading_bot.connect()
-                self._append_log(f"Connection result: {result}")
+            if self.trading_bot.connect():
+                self.connected = True
+                self.connection_status.configure(text="✅ Connected", text_color="green")
+                self.log_message("✅ Successfully connected to Hyperliquid API")
             else:
-                self._append_log("Connect method not implemented in trading bot")
+                self.log_message("❌ Failed to connect to API")
         except Exception as e:
-            messagebox.showerror("Error", f"Connection failed: {e}")
+            self.log_message(f"❌ Connection error: {e}")
     
-    def _disconnect(self):
+    def disconnect_api(self):
         """Disconnect from trading API"""
         try:
-            self._append_log("Disconnecting from API...")
-            if hasattr(self.trading_bot, 'disconnect'):
-                result = self.trading_bot.disconnect()
-                self._append_log(f"Disconnect result: {result}")
-            else:
-                self._append_log("Disconnect method not implemented in trading bot")
+            self.trading_bot.disconnect()
+            self.connected = False
+            self.connection_status.configure(text="❌ Disconnected", text_color="red")
+            self.log_message("❌ Disconnected from API")
         except Exception as e:
-            messagebox.showerror("Error", f"Disconnect failed: {e}")
+            self.log_message(f"❌ Disconnect error: {e}")
+    
+    def set_symbol(self):
+        """Set trading symbol"""
+        try:
+            symbol = self.symbol_var.get().strip().upper()
+            mode = self.mode_var.get()
+            
+            # Update trading bot configuration
+            self.trading_bot.config["trade_symbol"] = symbol
+            self.trading_bot.config["trade_mode"] = mode
+            
+            self.log_message(f"📊 Symbol set to {symbol} ({mode.upper()} mode)")
+        except Exception as e:
+            self.log_message(f"❌ Error setting symbol: {e}")
+    
+    def execute_manual_trade(self, side: str):
+        """Execute manual trade"""
+        try:
+            if not self.connected:
+                messagebox.showerror("Error", "Not connected to API")
+                return
+            
+            size_usd = float(self.trade_size_var.get())
+            symbol = self.symbol_var.get()
+            
+            result = self.trading_bot.execute_manual_trade(side, size_usd, symbol)
+            
+            if result["success"]:
+                self.log_message(f"✅ {side} order executed: ${size_usd}")
+            else:
+                self.log_message(f"❌ {side} order failed: {result.get('error', 'Unknown error')}")
+                
+        except Exception as e:
+            self.log_message(f"❌ Trade execution error: {e}")
+    
+    def close_all_positions(self):
+        """Close all open positions"""
+        try:
+            if not self.connected:
+                messagebox.showerror("Error", "Not connected to API")
+                return
+            
+            result = self.trading_bot.close_all_positions()
+            
+            if result["success"]:
+                self.log_message(f"✅ Closed {result['positions_closed']} positions - Total P&L: ${result['total_pnl']:.2f}")
+            else:
+                self.log_message(f"❌ Failed to close positions: {result.get('error', 'Unknown error')}")
+                
+        except Exception as e:
+            self.log_message(f"❌ Error closing positions: {e}")
+    
+    def close_position(self, position):
+        """Close specific position"""
+        try:
+            # Implementation for closing specific position
+            self.log_message(f"🔄 Closing position: {position.get('symbol', 'Unknown')}")
+        except Exception as e:
+            self.log_message(f"❌ Error closing position: {e}")
+    
+    def start_automation(self):
+        """Start 24/7 automation"""
+        try:
+            if not self.connected:
+                messagebox.showerror("Error", "Not connected to API")
+                return
+            
+            mode = self.auto_mode_var.get()
+            strategy = self.strategy_var.get()
+            
+            # Update settings
+            self.update_automation_config()
+            
+            # Start automation
+            self.trading_bot.start_automation(mode, strategy)
+            self.automation_running = True
+            
+            self.log_message(f"🚀 Started 24/7 automation - Mode: {mode.upper()}, Strategy: {strategy}")
+            
+        except Exception as e:
+            self.log_message(f"❌ Failed to start automation: {e}")
+    
+    def stop_automation(self):
+        """Stop automation"""
+        try:
+            self.trading_bot.stop_automation()
+            self.automation_running = False
+            
+            self.log_message("⏹️ Automation stopped")
+            
+        except Exception as e:
+            self.log_message(f"❌ Failed to stop automation: {e}")
+    
+    def update_automation_config(self):
+        """Update automation configuration"""
+        try:
+            self.trading_bot.config.update({
+                "starting_capital": float(self.starting_capital_var.get()),
+                "manual_entry_size": float(self.position_size_var.get()),
+                "stop_loss_pct": float(self.stop_loss_var.get()) / 100,
+                "take_profit_pct": float(self.take_profit_var.get()) / 100,
+                "circuit_breaker_threshold": float(self.circuit_breaker_var.get()) / 100,
+                "use_trailing_stop": self.trailing_stop_var.get()
+            })
+        except Exception as e:
+            self.log_message(f"❌ Error updating config: {e}")
+    
+    def save_automation_settings(self):
+        """Save automation settings"""
+        try:
+            self.update_automation_config()
+            self.log_message("💾 Automation settings saved")
+        except Exception as e:
+            self.log_message(f"❌ Error saving settings: {e}")
+    
+    def save_api_settings(self):
+        """Save API settings"""
+        try:
+            self.trading_bot.config.update({
+                "account_address": self.account_address_var.get(),
+                "secret_key": self.private_key_var.get()
+            })
+            self.log_message("💾 API settings saved")
+        except Exception as e:
+            self.log_message(f"❌ Error saving API settings: {e}")
+    
+    def log_message(self, message: str):
+        """Add message to logs"""
+        try:
+            timestamp = datetime.now().strftime("%H:%M:%S")
+            log_entry = f"[{timestamp}] {message}\n"
+            
+            self.logs_text.insert("end", log_entry)
+            self.logs_text.see("end")
+            
+            logger.info(message)
+            
+        except Exception as e:
+            logger.error(f"Error logging message: {e}")
     
     def run(self):
-        """Run the GUI"""
-        if self.root is None:
-            self.create_gui()
-        
-        # Auto-connect on startup
-        self._connect()
-        
-        # Start the main loop
-        self.root.mainloop()
-    
-    def on_closing(self):
-        """Handle GUI closing"""
-        self.running = False
-        if self.automation_running:
-            self._stop_automation()
-        
-        if self.update_thread and self.update_thread.is_alive():
-            self.update_thread.join(timeout=2)
-        
-        if self.root:
-            self.root.destroy()
-    
-    def add_log_message(self, message):
-        """Add log message to queue"""
-        self.log_queue.put(message)
+        """Run the GUI application"""
+        try:
+            # Initialize trading bot
+            if self.trading_bot.initialize():
+                self.log_message("🚀 Ultimate Production GUI started successfully")
+                self.log_message("💡 Connect to API and start trading!")
+            else:
+                self.log_message("❌ Failed to initialize trading bot")
+            
+            # Start GUI main loop
+            self.root.mainloop()
+            
+        except Exception as e:
+            logger.error(f"Error running GUI: {e}")
+        finally:
+            # Cleanup
+            try:
+                self.trading_bot.shutdown()
+            except:
+                pass
 
 
-# Alias for backward compatibility
-AutoConnectTradingDashboardV2 = UltimateProductionGUI
+def main():
+    """Main entry point"""
+    try:
+        app = UltimateProductionGUI()
+        app.run()
+    except Exception as e:
+        logger.error(f"Failed to start application: {e}")
+
+
+if __name__ == "__main__":
+    main()
 
