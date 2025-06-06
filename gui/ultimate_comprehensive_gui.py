@@ -41,7 +41,7 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from core.enhanced_trading_engine import EnhancedProductionTradingBot
+from core.ultimate_comprehensive_trading_engine import UltimateComprehensiveTradingEngine, EnhancedProductionTradingBot
 from core.enhanced_api import EnhancedHyperliquidAPI
 from utils.logger import get_logger, TradingLogger
 from utils.config_manager import ConfigManager

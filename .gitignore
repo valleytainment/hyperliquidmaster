@@ -1,107 +1,37 @@
-# Hyperliquid Trading Bot .gitignore
-
-# Python
+# Python cache files
 __pycache__/
 *.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+*.class
 
-# Virtual environments
-venv/
-env/
-ENV/
-.venv/
-.env/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# Logs
-logs/*.log
+# Log files
 *.log
-
-# Data files
-data/
-*.csv
-*.json
-*.db
-*.sqlite
-
-# Configuration (sensitive)
-config/private_key.enc
-config/secrets.yaml
-.env
-*.key
-*.pem
+logs/*.log
 
 # Temporary files
-tmp/
-temp/
-.tmp/
+*.tmp
+*.bak
+*.swp
+*~
 
-# OS
+# IDE files
+.vscode/
+.idea/
+*.sublime-*
+
+# OS files
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
 
-# Jupyter Notebooks
-.ipynb_checkpoints
+# Environment files
+.env
+.env.local
 
-# pytest
-.pytest_cache/
-.coverage
-htmlcov/
+# Data files
+data/*.csv
+data/*.json
+data/*.pkl
 
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Backtest results
-backtests/
-results/
-
-# Market data cache
-*.cache
-cache/
-
-# Screenshots
-screenshots/
-*.png
-*.jpg
-*.gif
-
-# Documentation builds
-docs/_build/
-docs/build/
-
-# Local development
-local/
-sandbox/
-test_data/
-
+# Model files
+models/*.pkl
+models/*.h5
+models/*.pt
