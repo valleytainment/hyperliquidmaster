@@ -63,6 +63,7 @@ class HyperliquidTradingBot:
         self.security_manager = SecurityManager()
         self.api_client = None
         self.risk_manager = None
+        self.connection_manager = None
         self.strategies = {}
         self.backtest_engine = None
         
@@ -84,6 +85,10 @@ class HyperliquidTradingBot:
                 config_path=self.config_path,
                 testnet=testnet
             )
+            
+            # Initialize connection manager
+            from core.connection_manager_enhanced import EnhancedConnectionManager
+            self.connection_manager = EnhancedConnectionManager()
             
             # Initialize risk manager
             risk_limits = RiskLimits(
