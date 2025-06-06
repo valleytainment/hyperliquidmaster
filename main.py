@@ -194,11 +194,8 @@ class HyperliquidTradingBot:
             
             logger.info("Starting GUI interface")
             
-            # Handle window closing
-            self.gui.root.protocol("WM_DELETE_WINDOW", self.gui.on_closing)
-            
-            # Start the GUI main loop
-            self.gui.root.mainloop()
+            # Create and run the GUI
+            self.gui.run()
             
         except Exception as e:
             logger.error(f"GUI error: {e}")
