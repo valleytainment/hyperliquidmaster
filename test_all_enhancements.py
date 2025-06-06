@@ -18,7 +18,7 @@ from utils.config_manager_fixed import ConfigManager
 from utils.security_fixed_v2 import SecurityManager
 from core.connection_manager_enhanced import EnhancedConnectionManager
 from strategies.strategy_manager import StrategyManager
-from strategies.base_strategy import BaseStrategy
+from strategies.base_strategy_fixed import BaseStrategy
 
 # Disable logging during tests
 logging.disable(logging.CRITICAL)
@@ -143,15 +143,15 @@ class TestEnhancements(unittest.TestCase):
         """Test strategy manager methods"""
         # Test get_available_strategies
         available_strategies = self.strategy_manager.get_available_strategies()
-        self.assertIn("BB_RSI_ADX", available_strategies)
+        self.assertIn("BBRSIADXStrategy", available_strategies)
         self.assertIn("Hull_Suite", available_strategies)
         
         # Test add_strategy
-        self.assertTrue(self.strategy_manager.add_strategy("BB_RSI_ADX"))
+        self.assertTrue(self.strategy_manager.add_strategy("BBRSIADXStrategy"))
         
         # Test get_active_strategies
         active_strategies = self.strategy_manager.get_active_strategies()
-        self.assertIn("BB_RSI_ADX", active_strategies)
+        self.assertIn("BBRSIADXStrategy", active_strategies)
         
         # Test start
         self.assertTrue(self.strategy_manager.start())
@@ -162,9 +162,9 @@ class TestEnhancements(unittest.TestCase):
         self.assertFalse(self.strategy_manager.running)
         
         # Test remove_strategy
-        self.assertTrue(self.strategy_manager.remove_strategy("BB_RSI_ADX"))
+        self.assertTrue(self.strategy_manager.remove_strategy("BBRSIADXStrategy"))
         active_strategies = self.strategy_manager.get_active_strategies()
-        self.assertNotIn("BB_RSI_ADX", active_strategies)
+        self.assertNotIn("BBRSIADXStrategy", active_strategies)
     
     def test_base_strategy_methods(self):
         """Test base strategy methods"""

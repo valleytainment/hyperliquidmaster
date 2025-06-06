@@ -21,8 +21,8 @@ from utils.config_manager import ConfigManager
 from utils.security_fixed import SecurityManager
 from risk_management.risk_manager import RiskManager
 from strategies.base_strategy import Strategy
-from strategies.bb_rsi_adx import BBRSIADXStrategy
-from strategies.hull_suite import HullSuiteStrategy
+from strategies.bb_rsi_adx_fixed import BBRSIADXStrategy
+from strategies.hull_suite_fixed import HullSuiteStrategy
 from backtesting.backtest_engine import BacktestEngine
 from eth_account import Account  # For wallet generation in CLI mode
 
@@ -84,7 +84,7 @@ class HyperliquidTradingBot:
         if "bb_rsi_adx" in active_strategies:
             bb_rsi_config = self.config_manager.get_strategy_config("bb_rsi_adx")
             if bb_rsi_config:
-                self.strategies["BB_RSI_ADX"] = BBRSIADXStrategy(
+                self.strategies["BBRSIADXStrategy"] = BBRSIADXStrategy(
                     api_client=self.api_client,
                     risk_manager=self.risk_manager,
                     config=bb_rsi_config

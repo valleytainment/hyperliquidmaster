@@ -11,7 +11,8 @@ from datetime import datetime, timedelta
 import json
 from pathlib import Path
 
-from strategies.base_strategy import BaseStrategy, TradingSignal, SignalType, MarketData
+from strategies.base_strategy_fixed import BaseStrategy
+from strategies.trading_types_fixed import TradingSignal, SignalType, MarketData
 from utils.logger import get_logger, TradingLogger
 logger = get_logger(__name__)
 

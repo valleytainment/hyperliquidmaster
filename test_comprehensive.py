@@ -32,9 +32,9 @@ def test_imports():
         print("  ✅ Enhanced API")
         
         # Strategy imports
-        from strategies.base_strategy import BaseStrategy
-        from strategies.bb_rsi_adx import BBRSIADXStrategy
-        from strategies.hull_suite import HullSuiteStrategy
+        from strategies.base_strategy_fixed import BaseStrategy
+        from strategies.bb_rsi_adx_fixed import BBRSIADXStrategy
+        from strategies.hull_suite_fixed import HullSuiteStrategy
         print("  ✅ Trading strategies")
         
         # Backtesting imports
@@ -140,8 +140,8 @@ def test_strategy_functionality():
     print("\n🧪 Testing Strategy Functionality...")
     
     try:
-        from strategies.bb_rsi_adx import BBRSIADXStrategy
-        from strategies.hull_suite import HullSuiteStrategy
+        from strategies.bb_rsi_adx_fixed import BBRSIADXStrategy
+        from strategies.hull_suite_fixed import HullSuiteStrategy
         from strategies.base_strategy import MarketData, SignalType
         
         # Test strategy initialization
@@ -173,7 +173,7 @@ def test_backtesting_functionality():
     
     try:
         from backtesting.backtest_engine import BacktestEngine
-        from strategies.bb_rsi_adx import BBRSIADXStrategy
+        from strategies.bb_rsi_adx_fixed import BBRSIADXStrategy
         
         # Test backtest engine initialization
         engine = BacktestEngine()

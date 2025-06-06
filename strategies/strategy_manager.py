@@ -13,9 +13,9 @@ from typing import Dict, Any, Optional, List, Type
 from utils.logger import get_logger
 from utils.config_manager_fixed import ConfigManager
 from core.connection_manager_enhanced import EnhancedConnectionManager
-from strategies.base_strategy import BaseStrategy
-from strategies.bb_rsi_adx import BB_RSI_ADX
-from strategies.hull_suite import HullSuite
+from strategies.base_strategy_fixed import BaseStrategy
+from strategies.bb_rsi_adx_fixed import BBRSIADXStrategy
+from strategies.hull_suite_fixed import HullSuiteStrategy
 from risk_management.risk_manager import RiskManager
 
 logger = get_logger(__name__)
@@ -58,11 +58,11 @@ class StrategyManager:
     def _register_strategies(self):
         """Register available strategies"""
         try:
-            # Register BB_RSI_ADX strategy
-            self.strategies["BB_RSI_ADX"] = BB_RSI_ADX
+            # Register BBRSIADXStrategy strategy
+            self.strategies["BBRSIADXStrategy"] = BBRSIADXStrategy
             
             # Register Hull Suite strategy
-            self.strategies["Hull_Suite"] = HullSuite
+            self.strategies["Hull_Suite"] = HullSuiteStrategy
             
             logger.info(f"Registered {len(self.strategies)} strategies")
         except Exception as e:
@@ -72,7 +72,7 @@ class StrategyManager:
         """Load configuration"""
         try:
             # Get active strategies
-            active_strategies = self.config_manager.get('trading.active_strategies', ["BB_RSI_ADX"])
+            active_strategies = self.config_manager.get('trading.active_strategies', ["BBRSIADXStrategy"])
             
             # Initialize active strategies
             for strategy_name in active_strategies:
