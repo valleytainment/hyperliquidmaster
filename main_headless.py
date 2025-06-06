@@ -20,14 +20,14 @@ matplotlib.use('Agg')
 project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root))
 
-from core.api_fixed_v2 import EnhancedHyperliquidAPI
-from strategies.bb_rsi_adx_fixed import BBRSIADXStrategy
-from strategies.hull_suite_fixed import HullSuiteStrategy
+from core.api import EnhancedHyperliquidAPI
+from strategies.bb_rsi_adx import BBRSIADXStrategy
+from strategies.hull_suite import HullSuiteStrategy
 from backtesting.backtest_engine import BacktestEngine
-from risk_management.risk_manager_fixed import RiskManager
+from risk_management.risk_manager import RiskManager
 from utils.logger import get_logger, setup_logging, TradingLogger
-from utils.config_manager_fixed import ConfigManager, TradingConfig
-from utils.security_fixed_v2 import SecurityManager
+from utils.config_manager import ConfigManager, TradingConfig
+from utils.security import SecurityManager
 from core.connection_manager_enhanced import EnhancedConnectionManager as ConnectionManager
 
 logger = get_logger(__name__)

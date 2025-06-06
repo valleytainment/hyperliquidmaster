@@ -21,20 +21,20 @@ def test_all_imports():
     
     try:
         # Test trading types
-        from strategies.trading_types_fixed import TradingSignal, SignalType, MarketData, OrderType
+        from strategies.trading_types import TradingSignal, SignalType, MarketData, OrderType
         print("✅ Trading types imported successfully")
         
         # Test base strategy
-        from strategies.base_strategy_fixed import BaseStrategy
+        from strategies.base_strategy import BaseStrategy
         print("✅ Base strategy imported successfully")
         
         # Test strategies
-        from strategies.bb_rsi_adx_fixed import BBRSIADXStrategy
-        from strategies.hull_suite_fixed import HullSuiteStrategy
+        from strategies.bb_rsi_adx import BBRSIADXStrategy
+        from strategies.hull_suite import HullSuiteStrategy
         print("✅ All strategies imported successfully")
         
         # Test API components
-        from core.api_fixed_v2 import EnhancedHyperliquidAPI
+        from core.api import EnhancedHyperliquidAPI
         print("✅ Enhanced API imported successfully")
         
         # Test backtesting
@@ -42,13 +42,13 @@ def test_all_imports():
         print("✅ Backtest engine imported successfully")
         
         # Test utilities
-        from utils.config_manager_fixed import ConfigManager
-        from utils.security_fixed_v2 import SecurityManager
+        from utils.config_manager import ConfigManager
+        from utils.security import SecurityManager
         from core.connection_manager_enhanced import EnhancedConnectionManager
         print("✅ All utilities imported successfully")
         
         # Test risk management
-        from risk_management.risk_manager_fixed import RiskManager
+        from risk_management.risk_manager import RiskManager
         print("✅ Risk manager imported successfully")
         
         return True
@@ -64,7 +64,7 @@ def test_signal_creation():
     print("\n🎯 Testing signal creation...")
     
     try:
-        from strategies.trading_types_fixed import TradingSignal, SignalType
+        from strategies.trading_types import TradingSignal, SignalType
         
         # Create different types of signals
         buy_signal = TradingSignal("BTC", SignalType.BUY, 0.8, 50000.0, 0.1, "Strong buy signal")
@@ -91,9 +91,9 @@ def test_strategy_initialization():
     print("\n🚀 Testing strategy initialization...")
     
     try:
-        from strategies.bb_rsi_adx_fixed import BBRSIADXStrategy
-        from strategies.hull_suite_fixed import HullSuiteStrategy
-        from risk_management.risk_manager_fixed import RiskManager
+        from strategies.bb_rsi_adx import BBRSIADXStrategy
+        from strategies.hull_suite import HullSuiteStrategy
+        from risk_management.risk_manager import RiskManager
         
         # Initialize risk manager
         risk_manager = RiskManager()
@@ -123,7 +123,7 @@ def test_api_initialization():
     print("\n🔗 Testing API initialization...")
     
     try:
-        from core.api_fixed_v2 import EnhancedHyperliquidAPI
+        from core.api import EnhancedHyperliquidAPI
         
         # Initialize API
         api = EnhancedHyperliquidAPI()
@@ -156,7 +156,7 @@ def test_backtest_engine():
     
     try:
         from backtesting.backtest_engine import BacktestEngine
-        from core.api_fixed_v2 import EnhancedHyperliquidAPI
+        from core.api import EnhancedHyperliquidAPI
         
         # Initialize API and backtest engine
         api = EnhancedHyperliquidAPI()
@@ -198,8 +198,8 @@ def test_original_main_compatibility():
     
     try:
         # Test the imports that were originally failing
-        from strategies.bb_rsi_adx_fixed import BBRSIADXStrategy
-        from strategies.hull_suite_fixed import HullSuiteStrategy
+        from strategies.bb_rsi_adx import BBRSIADXStrategy
+        from strategies.hull_suite import HullSuiteStrategy
         from backtesting.backtest_engine import BacktestEngine
         
         print("✅ Original main.py imports should now work")
@@ -216,7 +216,7 @@ def test_connection_functionality():
     
     try:
         from core.connection_manager_enhanced import EnhancedConnectionManager
-        from utils.security_fixed_v2 import SecurityManager
+        from utils.security import SecurityManager
         
         # Initialize components
         security_manager = SecurityManager()

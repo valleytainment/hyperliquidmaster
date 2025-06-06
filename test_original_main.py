@@ -23,14 +23,14 @@ def test_original_main_imports():
         from core.api import EnhancedHyperliquidAPI
         print("✅ Core API imported successfully")
         
-        from strategies.bb_rsi_adx_fixed import BBRSIADXStrategy
-        from strategies.hull_suite_fixed import HullSuiteStrategy
+        from strategies.bb_rsi_adx import BBRSIADXStrategy
+        from strategies.hull_suite import HullSuiteStrategy
         print("✅ Strategies imported successfully")
         
         from backtesting.backtest_engine import BacktestEngine
         print("✅ Backtest engine imported successfully")
         
-        from risk_management.risk_manager_fixed import RiskManager, RiskLimits
+        from risk_management.risk_manager import RiskManager, RiskLimits
         print("✅ Risk manager and RiskLimits imported successfully")
         
         from utils.logger import get_logger, setup_logging, TradingLogger
@@ -51,7 +51,7 @@ def test_risk_limits_functionality():
     print("\n🎯 Testing RiskLimits functionality...")
     
     try:
-        from risk_management.risk_manager_fixed import RiskManager, RiskLimits
+        from risk_management.risk_manager import RiskManager, RiskLimits
         
         # Create RiskLimits instance
         risk_limits = RiskLimits(
@@ -88,7 +88,7 @@ def test_main_initialization():
         # Test that we can create the main components
         from utils.config_manager import ConfigManager
         from utils.security import SecurityManager
-        from risk_management.risk_manager_fixed import RiskManager, RiskLimits
+        from risk_management.risk_manager import RiskManager, RiskLimits
         
         # Initialize components
         config_manager = ConfigManager()

@@ -6,6 +6,7 @@ import os
 import sys
 import logging
 from typing import Dict, Any, Optional, List
+from dataclasses import dataclass
 
 from utils.logger import get_logger
 from strategies.trading_types import TradingSignal, SignalType, MarketData
@@ -13,92 +14,79 @@ from strategies.trading_types import TradingSignal, SignalType, MarketData
 logger = get_logger(__name__)
 
 
+@dataclass
+class RiskLimits:
+    """
+    Risk limits configuration
+    """
+    max_portfolio_risk: float = 0.02  # 2% max portfolio risk
+    max_daily_loss: float = 0.05      # 5% max daily loss
+    max_drawdown: float = 0.10        # 10% max drawdown
+    max_leverage: float = 3.0         # 3x max leverage
+    max_position_size: float = 0.10   # 10% max position size
+
+
 class RiskManager:
     """
     Risk Management for Hyperliquid Trading Bot
     """
     
-    def __init__(self, max_position_size=1.0, max_leverage=5.0, max_drawdown=0.1):
+    def __init__(self, risk_limits=None, api=None):
         """
         Initialize the risk manager
         
         Args:
-            max_position_size: Maximum position size as a fraction of account value
-            max_leverage: Maximum leverage
-            max_drawdown: Maximum drawdown as a fraction of account value
+            risk_limits: Risk limits configuration
+            api: API instance
         """
-        self.max_position_size = max_position_size
-        self.max_leverage = max_leverage
-        self.max_drawdown = max_drawdown
+        self.risk_limits = risk_limits or RiskLimits()
+        self.api = api
         
         # Initialize state
-        self.account_value = 0.0
+        self.daily_pnl = 0.0
+        self.total_pnl = 0.0
+        self.max_drawdown_reached = 0.0
         self.positions = {}
-        self.drawdown = 0.0
-        self.peak_account_value = 0.0
+        self.orders = {}
         
         logger.info("Risk management system initialized")
-    
-    def update_account_state(self, account_value, positions):
-        """
-        Update account state
-        
-        Args:
-            account_value: Current account value
-            positions: Current positions
-        """
-        self.account_value = account_value
-        self.positions = positions
-        
-        # Update peak account value
-        if account_value > self.peak_account_value:
-            self.peak_account_value = account_value
-        
-        # Update drawdown
-        if self.peak_account_value > 0:
-            self.drawdown = 1.0 - (account_value / self.peak_account_value)
-        
-        logger.debug(f"Account state updated: value={account_value}, drawdown={self.drawdown:.2f}")
     
     def check_signal(self, signal):
         """
         Check if a trading signal is within risk limits
         
         Args:
-            signal: Trading signal
+            signal: Trading signal to check
         
         Returns:
-            bool: True if signal is within risk limits, False otherwise
+            bool: True if signal is acceptable, False otherwise
         """
         try:
-            # Check if we have account value
-            if self.account_value <= 0:
-                logger.warning("No account value available")
+            if not signal:
                 return False
             
-            # Check drawdown
-            if self.drawdown >= self.max_drawdown:
-                logger.warning(f"Maximum drawdown reached: {self.drawdown:.2f} >= {self.max_drawdown:.2f}")
+            # Check daily loss limit
+            if self.daily_pnl <= -self.risk_limits.max_daily_loss:
+                logger.warning(f"Daily loss limit reached: {self.daily_pnl:.2%}")
+                return False
+            
+            # Check max drawdown
+            if self.max_drawdown_reached >= self.risk_limits.max_drawdown:
+                logger.warning(f"Max drawdown reached: {self.max_drawdown_reached:.2%}")
                 return False
             
             # Check position size
-            if signal.size is not None:
-                position_value = signal.size * signal.price if signal.price is not None else 0.0
-                position_fraction = position_value / self.account_value
-                
-                if position_fraction > self.max_position_size:
-                    logger.warning(f"Position size too large: {position_fraction:.2f} > {self.max_position_size:.2f}")
+            if hasattr(signal, 'size') and signal.size:
+                if signal.size > self.risk_limits.max_position_size:
+                    logger.warning(f"Position size too large: {signal.size:.2%} > {self.risk_limits.max_position_size:.2%}")
                     return False
-            
-            # Check leverage (placeholder)
-            # This would require more sophisticated calculation
             
             return True
         except Exception as e:
             logger.error(f"Failed to check signal: {e}")
             return False
     
-    def check_order(self, coin, side, size, price=None):
+    def check_order(self, coin, side, size, price):
         """
         Check if an order is within risk limits
         
@@ -106,71 +94,125 @@ class RiskManager:
             coin: Coin to trade
             side: Order side (buy or sell)
             size: Order size
-            price: Order price (optional)
+            price: Order price
         
         Returns:
-            bool: True if order is within risk limits, False otherwise
+            bool: True if order is acceptable, False otherwise
         """
         try:
-            # Create signal from order
-            signal_type = SignalType.BUY if side.lower() == "buy" else SignalType.SELL
-            signal = TradingSignal(coin, signal_type, 1.0, price, size)
+            # Check daily loss limit
+            if self.daily_pnl <= -self.risk_limits.max_daily_loss:
+                logger.warning(f"Daily loss limit reached: {self.daily_pnl:.2%}")
+                return False
             
-            # Check signal
-            return self.check_signal(signal)
+            # Check position size
+            position_value = size * price if price else size
+            if position_value > self.risk_limits.max_position_size:
+                logger.warning(f"Position size too large: {position_value:.2%}")
+                return False
+            
+            return True
         except Exception as e:
             logger.error(f"Failed to check order: {e}")
             return False
     
-    def adjust_position_size(self, coin, side, size, price=None):
+    def adjust_position_size(self, coin, side, size, price):
         """
-        Adjust position size to be within risk limits
+        Adjust position size based on risk limits
         
         Args:
             coin: Coin to trade
             side: Order side (buy or sell)
             size: Requested position size
-            price: Order price (optional)
+            price: Order price
         
         Returns:
             float: Adjusted position size
         """
         try:
-            # Check if we have account value
-            if self.account_value <= 0:
-                logger.warning("No account value available")
-                return 0.0
+            # Calculate maximum allowed position size
+            max_size = self.risk_limits.max_position_size
             
-            # Calculate position value
-            position_value = size * price if price is not None else 0.0
-            
-            # Calculate maximum position value
-            max_position_value = self.account_value * self.max_position_size
-            
-            # Adjust position size if necessary
-            if position_value > max_position_value:
-                adjusted_size = max_position_value / price if price is not None and price > 0 else 0.0
-                logger.info(f"Adjusted position size from {size} to {adjusted_size}")
-                return adjusted_size
+            # Adjust size if necessary
+            if size > max_size:
+                logger.info(f"Adjusting position size from {size:.4f} to {max_size:.4f}")
+                return max_size
             
             return size
         except Exception as e:
             logger.error(f"Failed to adjust position size: {e}")
-            return 0.0
+            return size
     
-    def get_risk_metrics(self):
+    def update_pnl(self, pnl):
         """
-        Get risk metrics
+        Update PnL tracking
+        
+        Args:
+            pnl: Profit/loss amount
+        """
+        try:
+            self.daily_pnl += pnl
+            self.total_pnl += pnl
+            
+            # Update max drawdown
+            if pnl < 0:
+                drawdown = abs(pnl)
+                if drawdown > self.max_drawdown_reached:
+                    self.max_drawdown_reached = drawdown
+            
+            logger.debug(f"Updated PnL: daily={self.daily_pnl:.2f}, total={self.total_pnl:.2f}")
+        except Exception as e:
+            logger.error(f"Failed to update PnL: {e}")
+    
+    def reset_daily_pnl(self):
+        """
+        Reset daily PnL (call at start of each trading day)
+        """
+        try:
+            self.daily_pnl = 0.0
+            logger.info("Daily PnL reset")
+        except Exception as e:
+            logger.error(f"Failed to reset daily PnL: {e}")
+    
+    def get_risk_status(self):
+        """
+        Get current risk status
         
         Returns:
-            dict: Risk metrics
+            dict: Risk status information
         """
-        return {
-            "account_value": self.account_value,
-            "peak_account_value": self.peak_account_value,
-            "drawdown": self.drawdown,
-            "max_drawdown": self.max_drawdown,
-            "max_position_size": self.max_position_size,
-            "max_leverage": self.max_leverage
-        }
+        try:
+            return {
+                "daily_pnl": self.daily_pnl,
+                "total_pnl": self.total_pnl,
+                "max_drawdown_reached": self.max_drawdown_reached,
+                "daily_loss_limit": self.risk_limits.max_daily_loss,
+                "max_drawdown_limit": self.risk_limits.max_drawdown,
+                "max_position_size": self.risk_limits.max_position_size,
+                "max_leverage": self.risk_limits.max_leverage
+            }
+        except Exception as e:
+            logger.error(f"Failed to get risk status: {e}")
+            return {}
+    
+    def is_trading_allowed(self):
+        """
+        Check if trading is allowed based on current risk status
+        
+        Returns:
+            bool: True if trading is allowed, False otherwise
+        """
+        try:
+            # Check daily loss limit
+            if self.daily_pnl <= -self.risk_limits.max_daily_loss:
+                return False
+            
+            # Check max drawdown
+            if self.max_drawdown_reached >= self.risk_limits.max_drawdown:
+                return False
+            
+            return True
+        except Exception as e:
+            logger.error(f"Failed to check if trading is allowed: {e}")
+            return False
 

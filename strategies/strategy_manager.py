@@ -11,12 +11,12 @@ import logging
 from typing import Dict, Any, Optional, List, Type
 
 from utils.logger import get_logger
-from utils.config_manager_fixed import ConfigManager
+from utils.config_manager import ConfigManager
 from core.connection_manager_enhanced import EnhancedConnectionManager
-from strategies.base_strategy_fixed import BaseStrategy
-from strategies.bb_rsi_adx_fixed import BBRSIADXStrategy
-from strategies.hull_suite_fixed import HullSuiteStrategy
-from risk_management.risk_manager_fixed import RiskManager
+from strategies.base_strategy import BaseStrategy
+from strategies.bb_rsi_adx import BBRSIADXStrategy
+from strategies.hull_suite import HullSuiteStrategy
+from risk_management.risk_manager import RiskManager
 
 logger = get_logger(__name__)
 

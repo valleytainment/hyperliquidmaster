@@ -9,9 +9,9 @@ import time
 from typing import Dict, Any, Optional, Tuple, Union
 
 from utils.logger import get_logger
-from utils.config_manager_fixed import ConfigManager
-from utils.security_fixed_v2 import SecurityManager
-from core.api_fixed_v2 import EnhancedHyperliquidAPI
+from utils.config_manager import ConfigManager
+from utils.security import SecurityManager
+from core.api import EnhancedHyperliquidAPI
 
 logger = get_logger(__name__)
 

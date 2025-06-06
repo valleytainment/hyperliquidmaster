@@ -13,6 +13,12 @@ class SignalType(Enum):
     NEUTRAL = "neutral"
 
 
+class OrderType(Enum):
+    """Order type enum"""
+    LIMIT = "limit"
+    MARKET = "market"
+
+
 class TradingSignal:
     """Trading signal class"""
     

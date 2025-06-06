@@ -10,7 +10,18 @@ from typing import Dict, Any, Optional, List
 import json
 
 from utils.logger import get_logger
-from risk_management.risk_manager_fixed import RiskManager
+from risk_management.risk_manager import RiskManager
+
+# Re-export classes from trading_types.py
+from strategies.trading_types import TradingSignal, SignalType, MarketData
+
+# Add OrderType enum that was missing
+from enum import Enum
+
+class OrderType(Enum):
+    """Order type enum"""
+    LIMIT = "limit"
+    MARKET = "market"
 
 logger = get_logger(__name__)
 

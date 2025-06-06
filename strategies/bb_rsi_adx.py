@@ -11,12 +11,12 @@ from typing import Dict, Any, Optional, List
 
 from utils.logger import get_logger
 from strategies.base_strategy import BaseStrategy
-from strategies.trading_types_fixed import TradingSignal, SignalType, MarketData
+from strategies.trading_types import TradingSignal, SignalType, MarketData, OrderType
 
 logger = get_logger(__name__)
 
 
-class BB_RSI_ADX(BaseStrategy):
+class BBRSIADXStrategy(BaseStrategy):
     """
     Bollinger Bands, RSI, and ADX Strategy for Hyperliquid Trading Bot
     """

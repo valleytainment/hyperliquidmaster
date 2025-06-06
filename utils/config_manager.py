@@ -1,5 +1,6 @@
 """
 Configuration management for the trading bot
+Fixed version that properly handles save_config() method
 """
 
 import json
@@ -178,7 +179,11 @@ class ConfigManager:
             self.create_default_config()
     
     def save_config(self) -> None:
-        """Save current configuration to file"""
+        """
+        Save current configuration to file
+        
+        IMPORTANT: This method should not take any arguments
+        """
         try:
             # Update config data with current objects
             self._update_config_data()
@@ -399,20 +404,4 @@ class ConfigManager:
     def __str__(self) -> str:
         """String representation of configuration"""
         return f"ConfigManager(path={self.config_path}, strategies={list(self._strategy_configs.keys())})"
-
-
-    
-    def update_config(self, updates: Dict[str, Any]) -> None:
-        """
-        Update configuration with new values
-        
-        Args:
-            updates: Dictionary of configuration updates
-        """
-        try:
-            self._config_data.update(updates)
-            logger.info(f"Configuration updated with {len(updates)} changes")
-        except Exception as e:
-            logger.error(f"Failed to update configuration: {e}")
-            raise
 
