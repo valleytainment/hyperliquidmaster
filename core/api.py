@@ -89,14 +89,15 @@ class EnhancedHyperliquidAPI:
                 wallet_address = '0x' + wallet_address
             
             # Initialize temporary exchange for testing
-            # IMPORTANT: Do NOT pass private_key to the constructor
+            # Create wallet from private key
             try:
+                from eth_account import Account
+                wallet = Account.from_key(private_key)
+                
                 temp_exchange = Exchange(
+                    wallet=wallet,
                     base_url=self.api_url
                 )
-                
-                # Set the private key separately
-                temp_exchange.set_private_key(private_key)
             except Exception as e:
                 logger.error(f"Failed to initialize Exchange: {e}")
                 return False
@@ -163,14 +164,15 @@ class EnhancedHyperliquidAPI:
                 wallet_address = '0x' + wallet_address
             
             # Initialize exchange client
-            # IMPORTANT: Do NOT pass private_key to the constructor
+            # Create wallet from private key
             try:
+                from eth_account import Account
+                wallet = Account.from_key(private_key)
+                
                 self.exchange = Exchange(
+                    wallet=wallet,
                     base_url=self.api_url
                 )
-                
-                # Set the private key separately
-                self.exchange.set_private_key(private_key)
             except Exception as e:
                 logger.error(f"Failed to initialize Exchange: {e}")
                 return False
@@ -337,4 +339,61 @@ class EnhancedHyperliquidAPI:
         except Exception as e:
             logger.error(f"Failed to get market data: {e}")
             return {}
+    
+    def get_markets(self) -> List[Dict[str, Any]]:
+        """
+        Get list of available markets
+        
+        Returns:
+            List of market information dictionaries
+        """
+        try:
+            if not self.info:
+                logger.warning("Info client not initialized")
+                return []
+            
+            # Get universe (all available markets)
+            universe = self.info.universe()
+            if not universe:
+                logger.warning("No universe data available")
+                return []
+            
+            markets = []
+            for market in universe:
+                market_info = {
+                    'symbol': market.get('name', ''),
+                    'coin': market.get('name', ''),
+                    'price': 0.0,
+                    'change_24h': 0.0,
+                    'volume_24h': 0.0,
+                    'market_cap': 0.0
+                }
+                
+                # Try to get additional market data
+                try:
+                    if self.info:
+                        # Get price data
+                        all_mids = self.info.all_mids()
+                        if all_mids and market.get('name') in all_mids:
+                            market_info['price'] = float(all_mids[market.get('name')])
+                        
+                        # Get 24h stats
+                        meta = self.info.meta()
+                        if meta and 'universe' in meta:
+                            for universe_item in meta['universe']:
+                                if universe_item.get('name') == market.get('name'):
+                                    market_info['volume_24h'] = float(universe_item.get('dayNtlVlm', 0))
+                                    break
+                                    
+                except Exception as e:
+                    logger.debug(f"Failed to get additional data for {market.get('name')}: {e}")
+                
+                markets.append(market_info)
+            
+            logger.info(f"Retrieved {len(markets)} markets")
+            return markets
+            
+        except Exception as e:
+            logger.error(f"Failed to get markets: {e}")
+            return []
 

@@ -1,22 +1,42 @@
-hyperliquid-python-sdk>=0.15.0,<0.16.0
+# Requirements for Hyperliquid Master Trading Bot
+
+# Core Dependencies
+torch>=1.9.0
+torchvision>=0.10.0
+torchaudio>=0.9.0
+
+# Data Science & Analysis
+numpy>=1.21.0
 pandas>=1.3.0
-numpy>=1.20.0
-requests>=2.25.0
-web3>=6.11.0,<7.0.0
-eth-account>=0.13.1,<0.14.0
-eth-utils>=2.1.0,<3.0.0
-eth-abi>=5.0.1,<6.0.0
-hexbytes>=1.3.0,<2.0.0
-cryptography>=3.4.8
-aiohttp>=3.7.4
-python-dotenv>=0.19.0
 scikit-learn>=1.0.0
-ta>=0.7.0
-matplotlib>=3.4.0
+
+# Technical Analysis
+ta>=0.10.0
+matplotlib>=3.5.0
 seaborn>=0.11.0
-pyyaml>=6.0
-tqdm>=4.62.0
-schedule>=1.1.0
-colorlog>=6.6.0
+
+# Hyperliquid SDK
+hyperliquid-python-sdk>=0.1.0
+
+# Blockchain & Crypto
+eth-account>=0.8.0
+web3>=6.0.0
+
+# Configuration & Storage
+PyYAML>=6.0
 keyring>=23.0.0
-customtkinter
+
+# GUI (Optional - for desktop use)
+# tkinter is usually included with Python
+
+# Development & Testing (Optional)
+pytest>=7.0.0
+pytest-asyncio>=0.21.0
+black>=22.0.0
+flake8>=4.0.0
+
+# Additional Utilities
+requests>=2.28.0
+python-dotenv>=0.19.0
+schedule>=1.1.0
+

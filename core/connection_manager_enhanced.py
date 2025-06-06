@@ -51,7 +51,10 @@ class EnhancedConnectionManager:
         self._initialize_api()
         
         # Auto-connect with default credentials at startup
-        self._connect_with_default_credentials()
+        if self._connect_with_default_credentials():
+            logger.info("Auto-connected with default credentials at startup")
+        else:
+            logger.warning("Failed to auto-connect at startup, will retry later")
         
         logger.info("Enhanced Connection Manager initialized")
     
@@ -79,19 +82,21 @@ class EnhancedConnectionManager:
         if self.is_connected and self.api:
             return True
         
-        # Reset connection attempts if it's been a while
+        # Check connection attempts and rate limiting
         current_time = time.time()
+        
+        # Reset connection attempts if it's been a while
         if current_time - self.last_reconnect_attempt > 300:  # 5 minutes
             self.connection_attempts = 0
+            logger.info("Resetting connection attempts after 5 minutes")
         
-        # Check if we've exceeded max connection attempts
         if self.connection_attempts >= self.max_connection_attempts:
-            logger.warning(f"Exceeded maximum connection attempts ({self.max_connection_attempts}). Waiting before trying again.")
-            if current_time - self.last_reconnect_attempt < 300:  # 5 minutes
+            if current_time - self.last_reconnect_attempt < 60:  # 1 minute instead of 5
                 return False
             else:
                 # Reset counter after waiting period
                 self.connection_attempts = 0
+                logger.info("Resetting connection attempts after waiting period")
         
         self.last_reconnect_attempt = current_time
         self.connection_attempts += 1

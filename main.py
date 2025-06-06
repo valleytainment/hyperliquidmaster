@@ -24,7 +24,7 @@ try:
     import matplotlib
     matplotlib.use('Agg')  # Use non-interactive backend for headless
     
-    from gui.enhanced_gui import AutoConnectTradingDashboardV2 as TradingDashboard
+    from gui.professional_gui import ProfessionalTradingGUI as TradingDashboard
     GUI_AVAILABLE = True
 except ImportError as e:
     print(f"⚠️ GUI not available: {e}")
