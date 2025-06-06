@@ -18,7 +18,19 @@ project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root))
 
 from core.api import EnhancedHyperliquidAPI
-from gui.enhanced_gui import TradingDashboard
+# Conditional GUI import for headless compatibility
+try:
+    # Set matplotlib backend before importing GUI
+    import matplotlib
+    matplotlib.use('Agg')  # Use non-interactive backend for headless
+    
+    from gui.enhanced_gui import AutoConnectTradingDashboardV2 as TradingDashboard
+    GUI_AVAILABLE = True
+except ImportError as e:
+    print(f"⚠️ GUI not available: {e}")
+    print("💡 Running in headless mode - GUI features disabled")
+    TradingDashboard = None
+    GUI_AVAILABLE = False
 from strategies.bb_rsi_adx import BBRSIADXStrategy
 from strategies.hull_suite import HullSuiteStrategy
 from backtesting.backtest_engine import BacktestEngine
@@ -156,6 +168,11 @@ class HyperliquidTradingBot:
     def start_gui(self):
         """Start the GUI interface"""
         try:
+            if not GUI_AVAILABLE:
+                print("❌ GUI mode not available in headless environment")
+                print("💡 Use --mode cli instead")
+                return False
+                
             self.gui = TradingDashboard()
             
             # Pass components to GUI
@@ -414,6 +431,13 @@ class HyperliquidTradingBot:
                 # Run GUI mode
                 self.start_gui()
                 
+            elif mode == 'cli':
+                # Run CLI mode
+                print("🚀 Hyperliquid Trading Bot - CLI Mode")
+                print("✅ All components initialized successfully")
+                print("💡 CLI mode is ready - you can extend this with interactive commands")
+                return True
+                
             elif mode == 'trading':
                 # Run automated trading mode
                 if not self.validate_configuration():
@@ -488,8 +512,8 @@ class HyperliquidTradingBot:
 def main():
     """Main entry point"""
     parser = argparse.ArgumentParser(description='Hyperliquid Trading Bot')
-    parser.add_argument('--mode', choices=['gui', 'trading', 'backtest', 'setup'], 
-                       default='gui', help='Run mode')
+    parser.add_argument('--mode', choices=['gui', 'cli', 'trading', 'backtest', 'setup'], 
+                       default='cli', help='Run mode')
     parser.add_argument('--config', type=str, help='Configuration file path')
     parser.add_argument('--log-level', choices=['DEBUG', 'INFO', 'WARNING', 'ERROR'], 
                        default='INFO', help='Logging level')

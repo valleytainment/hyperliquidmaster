@@ -11,10 +11,10 @@ from tkinter import ttk, messagebox, scrolledtext
 import logging
 from typing import Dict, Any, Optional, Callable
 import json
+import matplotlib
+matplotlib.use('Agg')  # Set non-interactive backend first
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-import matplotlib
-matplotlib.use('TkAgg')
 
 from utils.logger import get_logger
 from utils.config_manager import ConfigManager
