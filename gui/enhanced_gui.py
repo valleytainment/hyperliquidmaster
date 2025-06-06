@@ -1082,6 +1082,20 @@ class AutoConnectTradingDashboardV2:
             self.root.mainloop()
         except Exception as e:
             logger.error(f"Run failed: {e}")
+    
+    def on_closing(self):
+        """Handle window closing"""
+        try:
+            logger.info("Closing application...")
+            self.root.quit()
+            self.root.destroy()
+        except Exception as e:
+            logger.error(f"Error during closing: {e}")
+            # Force close if there's an error
+            try:
+                self.root.destroy()
+            except:
+                pass
 
 
 class LogHandler(logging.Handler):

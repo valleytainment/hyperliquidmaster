@@ -234,4 +234,45 @@ class SecurityManager:
         except Exception as e:
             logger.error(f"Failed to clear private key: {e}")
             return False
+    
+    def setup_private_key(self) -> bool:
+        """
+        Interactive setup of private key
+        
+        Returns:
+            bool: True if setup successful
+        """
+        try:
+            print("\n=== Private Key Setup ===")
+            print("Please enter your Hyperliquid private key.")
+            print("This will be encrypted and stored securely.")
+            
+            # Get private key from user
+            private_key = input("Enter private key (without 0x prefix): ").strip()
+            
+            if not private_key:
+                print("❌ No private key provided")
+                return False
+            
+            # Validate private key format
+            if len(private_key) != 64:
+                print("❌ Invalid private key length. Should be 64 characters.")
+                return False
+            
+            # Add 0x prefix if not present
+            if not private_key.startswith('0x'):
+                private_key = '0x' + private_key
+            
+            # Store the private key
+            if self.store_private_key(private_key):
+                print("✅ Private key stored successfully!")
+                return True
+            else:
+                print("❌ Failed to store private key")
+                return False
+                
+        except Exception as e:
+            logger.error(f"Private key setup failed: {e}")
+            print(f"❌ Setup failed: {e}")
+            return False
 

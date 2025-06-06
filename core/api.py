@@ -92,8 +92,7 @@ class EnhancedHyperliquidAPI:
             # IMPORTANT: Do NOT pass private_key to the constructor
             try:
                 temp_exchange = Exchange(
-                    base_url=self.api_url,
-                    skip_ws=True  # Skip WebSocket for testing
+                    base_url=self.api_url
                 )
                 
                 # Set the private key separately
@@ -167,8 +166,7 @@ class EnhancedHyperliquidAPI:
             # IMPORTANT: Do NOT pass private_key to the constructor
             try:
                 self.exchange = Exchange(
-                    base_url=self.api_url,
-                    skip_ws=False  # Use WebSocket for real trading
+                    base_url=self.api_url
                 )
                 
                 # Set the private key separately

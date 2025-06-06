@@ -119,8 +119,8 @@ class HyperliquidTradingBot:
             bb_rsi_config = self.config_manager.get_strategy_config('bb_rsi_adx')
             if bb_rsi_config and bb_rsi_config.enabled:
                 self.strategies['bb_rsi_adx'] = BBRSIADXStrategy(
-                    config=bb_rsi_config,
-                    api_client=self.api_client
+                    api=self.api_client,
+                    risk_manager=self.risk_manager
                 )
                 logger.info("BB RSI ADX strategy initialized")
             
@@ -128,8 +128,8 @@ class HyperliquidTradingBot:
             hull_config = self.config_manager.get_strategy_config('hull_suite')
             if hull_config and hull_config.enabled:
                 self.strategies['hull_suite'] = HullSuiteStrategy(
-                    config=hull_config,
-                    api_client=self.api_client
+                    api=self.api_client,
+                    risk_manager=self.risk_manager
                 )
                 logger.info("Hull Suite strategy initialized")
             
