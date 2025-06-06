@@ -1,505 +1,520 @@
 """
-Base Strategy Framework for Hyperliquid Trading Bot
-Provides the foundation for all trading strategies
+Base Strategy for Hyperliquid Trading Bot
 """
 
-import asyncio
+import os
+import sys
 import time
-from abc import ABC, abstractmethod
-from typing import Dict, List, Optional, Any, Tuple
-from dataclasses import dataclass
-from datetime import datetime, timedelta
-import pandas as pd
-import numpy as np
-from enum import Enum
+import logging
+from typing import Dict, Any, Optional, List
+import json
 
-from utils.logger import get_logger, TradingLogger
-from utils.config_manager import StrategyConfig
+from utils.logger import get_logger
+from risk_management.risk_manager import RiskManager
 
 logger = get_logger(__name__)
-trading_logger = TradingLogger(__name__)
 
 
-class SignalType(Enum):
-    """Trading signal types"""
-    NONE = "NONE"
-    LONG = "LONG"
-    SHORT = "SHORT"
-    CLOSE_LONG = "CLOSE_LONG"
-    CLOSE_SHORT = "CLOSE_SHORT"
-    HOLD = "HOLD"
-
-
-class OrderType(Enum):
-    """Order types"""
-    MARKET = "MARKET"
-    LIMIT = "LIMIT"
-    STOP = "STOP"
-    STOP_LIMIT = "STOP_LIMIT"
-
-
-@dataclass
-class TradingSignal:
-    """Trading signal data structure"""
-    signal_type: SignalType
-    coin: str
-    confidence: float  # 0.0 to 1.0
-    entry_price: Optional[float] = None
-    stop_loss: Optional[float] = None
-    take_profit: Optional[float] = None
-    size: Optional[float] = None
-    order_type: OrderType = OrderType.MARKET
-    timestamp: datetime = None
-    metadata: Dict[str, Any] = None
+class BaseStrategy:
+    """
+    Base Strategy for Hyperliquid Trading Bot
+    """
     
-    def __post_init__(self):
-        if self.timestamp is None:
-            self.timestamp = datetime.now()
-        if self.metadata is None:
-            self.metadata = {}
-
-
-@dataclass
-class MarketData:
-    """Market data structure"""
-    coin: str
-    timestamp: datetime
-    open: float
-    high: float
-    low: float
-    close: float
-    volume: float
-    
-    # Additional market data
-    bid: Optional[float] = None
-    ask: Optional[float] = None
-    funding_rate: Optional[float] = None
-    open_interest: Optional[float] = None
-    
-    def to_dict(self) -> Dict[str, Any]:
-        """Convert to dictionary"""
-        return {
-            'coin': self.coin,
-            'timestamp': self.timestamp,
-            'open': self.open,
-            'high': self.high,
-            'low': self.low,
-            'close': self.close,
-            'volume': self.volume,
-            'bid': self.bid,
-            'ask': self.ask,
-            'funding_rate': self.funding_rate,
-            'open_interest': self.open_interest
-        }
-
-
-class BaseStrategy(ABC):
-    """Base class for all trading strategies"""
-    
-    def __init__(self, name: str, config: StrategyConfig = None, api_client=None):
+    def __init__(self, api=None, risk_manager=None, max_positions=3):
         """
-        Initialize base strategy
+        Initialize the base strategy
         
         Args:
-            name: Strategy name
-            config: Strategy configuration (optional)
-            api_client: API client for trading
+            api: API instance
+            risk_manager: Risk manager instance
+            max_positions: Maximum number of positions
         """
-        self.name = name
-        self.config = config or self._create_default_config()
-        self.api_client = api_client
+        self.name = self.__class__.__name__
+        self.api = api
+        self.risk_manager = risk_manager or RiskManager()
+        self.max_positions = max_positions
         
-        # Strategy state
-        self.is_running = False
-        self.positions = {}  # coin -> position info
-        self.signals_history = []
-        self.performance_metrics = {}
-        
-        # Default parameters
-        self.max_positions = getattr(self.config, 'max_positions', 5)
-        
-        logger.info(f"Strategy '{name}' initialized with max_positions: {self.max_positions}")
-    
-    def _create_default_config(self):
-        """Create default configuration"""
-        from types import SimpleNamespace
-        config = SimpleNamespace()
-        config.max_positions = 5
-        config.position_size = 0.02
-        config.stop_loss = 0.02
-        config.take_profit = 0.04
-        return config
-        
-        # Data storage
-        self.market_data = {}  # coin -> list of MarketData
-        self.indicators = {}  # coin -> dict of indicators
-        
-        # Risk management
-        self.max_positions = config.max_positions
-        self.position_size = config.position_size
-        self.stop_loss_pct = config.stop_loss
-        self.take_profit_pct = config.take_profit
-        
-        logger.info(f"Strategy {name} initialized with config: {config}")
-    
-    @abstractmethod
-    async def generate_signal(self, coin: str, market_data: List[MarketData]) -> TradingSignal:
-        """
-        Generate trading signal based on market data
-        
-        Args:
-            coin: Trading pair
-            market_data: Historical market data
-            
-        Returns:
-            TradingSignal object
-        """
-        pass
-    
-    @abstractmethod
-    def calculate_indicators(self, coin: str, data: pd.DataFrame) -> Dict[str, Any]:
-        """
-        Calculate technical indicators for the strategy
-        
-        Args:
-            coin: Trading pair
-            data: OHLCV data as DataFrame
-            
-        Returns:
-            Dictionary of calculated indicators
-        """
-        pass
-    
-    def update_market_data(self, coin: str, data: MarketData) -> None:
-        """Update market data for a coin"""
-        if coin not in self.market_data:
-            self.market_data[coin] = []
-        
-        self.market_data[coin].append(data)
-        
-        # Keep only last N candles (configurable)
-        max_candles = getattr(self.config, 'max_candles', 1000)
-        if len(self.market_data[coin]) > max_candles:
-            self.market_data[coin] = self.market_data[coin][-max_candles:]
-    
-    def get_market_dataframe(self, coin: str, periods: int = None) -> pd.DataFrame:
-        """
-        Get market data as pandas DataFrame
-        
-        Args:
-            coin: Trading pair
-            periods: Number of periods to return (None for all)
-            
-        Returns:
-            DataFrame with OHLCV data
-        """
-        if coin not in self.market_data or not self.market_data[coin]:
-            return pd.DataFrame()
-        
-        data = self.market_data[coin]
-        if periods:
-            data = data[-periods:]
-        
-        df = pd.DataFrame([d.to_dict() for d in data])
-        df.set_index('timestamp', inplace=True)
-        return df
-    
-    def calculate_position_size(self, coin: str, signal: TradingSignal) -> float:
-        """
-        Calculate position size based on risk management rules
-        
-        Args:
-            coin: Trading pair
-            signal: Trading signal
-            
-        Returns:
-            Position size in USD
-        """
-        base_size = self.position_size
-        
-        # Adjust size based on confidence
-        confidence_multiplier = signal.confidence
-        adjusted_size = base_size * confidence_multiplier
-        
-        # Apply maximum position size limit
-        max_size = getattr(self.config, 'max_position_size', base_size * 2)
-        adjusted_size = min(adjusted_size, max_size)
-        
-        # Check available capital (if API client available)
-        if self.api_client:
-            try:
-                account_state = self.api_client.get_account_state()
-                available_capital = account_state.get('account_value', 0) * 0.1  # Use 10% max
-                adjusted_size = min(adjusted_size, available_capital)
-            except Exception as e:
-                logger.warning(f"Could not check available capital: {e}")
-        
-        return max(adjusted_size, 10.0)  # Minimum $10 position
-    
-    def calculate_stop_loss(self, entry_price: float, signal_type: SignalType) -> float:
-        """Calculate stop loss price"""
-        if signal_type == SignalType.LONG:
-            return entry_price * (1 - self.stop_loss_pct / 100)
-        elif signal_type == SignalType.SHORT:
-            return entry_price * (1 + self.stop_loss_pct / 100)
-        return entry_price
-    
-    def calculate_take_profit(self, entry_price: float, signal_type: SignalType) -> float:
-        """Calculate take profit price"""
-        if signal_type == SignalType.LONG:
-            return entry_price * (1 + self.take_profit_pct / 100)
-        elif signal_type == SignalType.SHORT:
-            return entry_price * (1 - self.take_profit_pct / 100)
-        return entry_price
-    
-    def should_enter_position(self, coin: str, signal: TradingSignal) -> bool:
-        """
-        Check if we should enter a new position
-        
-        Args:
-            coin: Trading pair
-            signal: Trading signal
-            
-        Returns:
-            True if should enter position
-        """
-        # Check if already have position in this coin
-        if coin in self.positions:
-            current_position = self.positions[coin]
-            if current_position.get('size', 0) != 0:
-                logger.debug(f"Already have position in {coin}")
-                return False
-        
-        # Check maximum number of positions
-        active_positions = sum(1 for pos in self.positions.values() if pos.get('size', 0) != 0)
-        if active_positions >= self.max_positions:
-            logger.debug(f"Maximum positions ({self.max_positions}) reached")
-            return False
-        
-        # Check signal confidence threshold
-        min_confidence = getattr(self.config, 'min_confidence', 0.6)
-        if signal.confidence < min_confidence:
-            logger.debug(f"Signal confidence {signal.confidence} below threshold {min_confidence}")
-            return False
-        
-        return True
-    
-    def should_exit_position(self, coin: str, signal: TradingSignal) -> bool:
-        """
-        Check if we should exit an existing position
-        
-        Args:
-            coin: Trading pair
-            signal: Trading signal
-            
-        Returns:
-            True if should exit position
-        """
-        if coin not in self.positions:
-            return False
-        
-        position = self.positions[coin]
-        if position.get('size', 0) == 0:
-            return False
-        
-        # Check for exit signals
-        if signal.signal_type in [SignalType.CLOSE_LONG, SignalType.CLOSE_SHORT]:
-            return True
-        
-        # Check for opposite signals
-        current_side = 'long' if position.get('size', 0) > 0 else 'short'
-        if current_side == 'long' and signal.signal_type == SignalType.SHORT:
-            return True
-        elif current_side == 'short' and signal.signal_type == SignalType.LONG:
-            return True
-        
-        return False
-    
-    async def execute_signal(self, signal: TradingSignal) -> bool:
-        """
-        Execute a trading signal
-        
-        Args:
-            signal: Trading signal to execute
-            
-        Returns:
-            True if execution successful
-        """
-        if not self.api_client:
-            logger.warning("No API client available for signal execution")
-            return False
-        
-        try:
-            coin = signal.coin
-            
-            # Check if should enter new position
-            if signal.signal_type in [SignalType.LONG, SignalType.SHORT]:
-                if not self.should_enter_position(coin, signal):
-                    return False
-                
-                # Calculate position size
-                size = signal.size or self.calculate_position_size(coin, signal)
-                
-                # Place order
-                is_buy = signal.signal_type == SignalType.LONG
-                
-                if signal.order_type == OrderType.MARKET:
-                    result = self.api_client.place_market_order(
-                        coin=coin,
-                        is_buy=is_buy,
-                        sz=size
-                    )
-                else:
-                    price = signal.entry_price or self.get_current_price(coin)
-                    result = self.api_client.place_limit_order(
-                        coin=coin,
-                        is_buy=is_buy,
-                        sz=size,
-                        limit_px=price
-                    )
-                
-                if result.get('status') == 'ok':
-                    # Update position tracking
-                    self.positions[coin] = {
-                        'size': size if is_buy else -size,
-                        'entry_price': signal.entry_price or self.get_current_price(coin),
-                        'entry_time': datetime.now(),
-                        'stop_loss': signal.stop_loss,
-                        'take_profit': signal.take_profit,
-                        'signal': signal
-                    }
-                    
-                    trading_logger.log_signal(self.name, coin, signal.signal_type.value, signal.confidence)
-                    logger.info(f"Position opened: {coin} {signal.signal_type.value} size={size}")
-                    return True
-                else:
-                    logger.error(f"Failed to execute signal: {result}")
-                    return False
-            
-            # Check if should exit position
-            elif signal.signal_type in [SignalType.CLOSE_LONG, SignalType.CLOSE_SHORT]:
-                if not self.should_exit_position(coin, signal):
-                    return False
-                
-                # Close position
-                result = self.api_client.close_position(coin, percentage=100.0)
-                
-                if result.get('status') == 'ok':
-                    # Calculate PnL
-                    position = self.positions.get(coin, {})
-                    entry_price = position.get('entry_price', 0)
-                    current_price = self.get_current_price(coin)
-                    size = position.get('size', 0)
-                    
-                    if size > 0:  # Long position
-                        pnl = (current_price - entry_price) * abs(size) / entry_price
-                    else:  # Short position
-                        pnl = (entry_price - current_price) * abs(size) / entry_price
-                    
-                    trading_logger.log_trade(
-                        action="CLOSE",
-                        coin=coin,
-                        side="SELL" if size > 0 else "BUY",
-                        size=abs(size),
-                        price=current_price,
-                        pnl=pnl
-                    )
-                    
-                    # Clear position
-                    self.positions[coin] = {'size': 0}
-                    
-                    logger.info(f"Position closed: {coin} PnL=${pnl:.2f}")
-                    return True
-                else:
-                    logger.error(f"Failed to close position: {result}")
-                    return False
-            
-            return False
-            
-        except Exception as e:
-            logger.error(f"Error executing signal: {e}")
-            return False
-    
-    def get_current_price(self, coin: str) -> float:
-        """Get current price for a coin"""
-        if coin in self.market_data and self.market_data[coin]:
-            return self.market_data[coin][-1].close
-        
-        # Fallback to API if available
-        if self.api_client:
-            try:
-                market_data = self.api_client.get_market_data(coin)
-                return market_data.get('price', 0.0)
-            except Exception as e:
-                logger.warning(f"Could not get current price for {coin}: {e}")
-        
-        return 0.0
-    
-    def add_signal_to_history(self, signal: TradingSignal) -> None:
-        """Add signal to history"""
-        self.signals_history.append(signal)
-        
-        # Keep only last N signals
-        max_signals = 1000
-        if len(self.signals_history) > max_signals:
-            self.signals_history = self.signals_history[-max_signals:]
-    
-    def get_performance_metrics(self) -> Dict[str, Any]:
-        """Calculate and return performance metrics"""
-        if not self.signals_history:
-            return {}
-        
-        # Calculate basic metrics
-        total_signals = len(self.signals_history)
-        long_signals = sum(1 for s in self.signals_history if s.signal_type == SignalType.LONG)
-        short_signals = sum(1 for s in self.signals_history if s.signal_type == SignalType.SHORT)
-        
-        # Calculate average confidence
-        avg_confidence = np.mean([s.confidence for s in self.signals_history])
-        
-        metrics = {
-            'total_signals': total_signals,
-            'long_signals': long_signals,
-            'short_signals': short_signals,
-            'long_ratio': long_signals / total_signals if total_signals > 0 else 0,
-            'short_ratio': short_signals / total_signals if total_signals > 0 else 0,
-            'avg_confidence': avg_confidence,
-            'active_positions': len([p for p in self.positions.values() if p.get('size', 0) != 0])
-        }
-        
-        self.performance_metrics = metrics
-        return metrics
-    
-    async def start(self) -> None:
-        """Start the strategy"""
-        self.is_running = True
-        logger.info(f"Strategy {self.name} started")
-    
-    async def stop(self) -> None:
-        """Stop the strategy"""
-        self.is_running = False
-        logger.info(f"Strategy {self.name} stopped")
-    
-    def reset(self) -> None:
-        """Reset strategy state"""
+        # Initialize state
         self.positions = {}
-        self.signals_history = []
-        self.performance_metrics = {}
-        self.market_data = {}
-        self.indicators = {}
-        logger.info(f"Strategy {self.name} reset")
+        self.orders = {}
+        self.performance = {
+            "total_trades": 0,
+            "winning_trades": 0,
+            "losing_trades": 0,
+            "total_pnl": 0.0,
+            "max_drawdown": 0.0,
+            "win_rate": 0.0
+        }
+        
+        # Initialize parameters
+        self.parameters = self.get_default_parameters()
+        
+        logger.info(f"Strategy '{self.name}' initialized with max_positions: {max_positions}")
     
-    def get_status(self) -> Dict[str, Any]:
-        """Get strategy status"""
+    @classmethod
+    def get_default_parameters(cls):
+        """
+        Get default parameters
+        
+        Returns:
+            dict: Default parameters
+        """
         return {
-            'name': self.name,
-            'is_running': self.is_running,
-            'positions': len([p for p in self.positions.values() if p.get('size', 0) != 0]),
-            'signals_generated': len(self.signals_history),
-            'performance': self.get_performance_metrics()
+            "max_positions": 3
         }
     
-    def __str__(self) -> str:
-        """String representation"""
-        return f"Strategy({self.name}, running={self.is_running}, positions={len(self.positions)})"
+    def update_parameters(self, parameters):
+        """
+        Update parameters
+        
+        Args:
+            parameters: Dictionary of parameters to update
+        """
+        for key, value in parameters.items():
+            if key in self.parameters:
+                self.parameters[key] = value
+        
+        # Update max positions
+        if "max_positions" in parameters:
+            self.max_positions = parameters["max_positions"]
+        
+        logger.info(f"Updated parameters for strategy '{self.name}'")
+    
+    def get_parameters(self):
+        """
+        Get parameters
+        
+        Returns:
+            dict: Parameters
+        """
+        return self.parameters
+    
+    def execute(self):
+        """
+        Execute the strategy
+        
+        This method should be overridden by subclasses
+        """
+        raise NotImplementedError("Subclasses must implement execute()")
+    
+    def get_positions(self):
+        """
+        Get positions
+        
+        Returns:
+            dict: Positions
+        """
+        return self.positions
+    
+    def get_orders(self):
+        """
+        Get orders
+        
+        Returns:
+            dict: Orders
+        """
+        return self.orders
+    
+    def get_performance(self):
+        """
+        Get performance
+        
+        Returns:
+            dict: Performance
+        """
+        return self.performance
+    
+    def reset(self):
+        """
+        Reset the strategy
+        """
+        # Reset positions
+        self.positions = {}
+        
+        # Reset orders
+        self.orders = {}
+        
+        # Reset performance
+        self.performance = {
+            "total_trades": 0,
+            "winning_trades": 0,
+            "losing_trades": 0,
+            "total_pnl": 0.0,
+            "max_drawdown": 0.0,
+            "win_rate": 0.0
+        }
+        
+        logger.info(f"Reset strategy '{self.name}'")
+    
+    def update_positions(self):
+        """
+        Update positions
+        """
+        try:
+            if not self.api:
+                logger.warning("No API instance available")
+                return
+            
+            # Get account state
+            account_state = self.api.get_account_state()
+            
+            if not account_state:
+                logger.warning("No account state available")
+                return
+            
+            # Update positions
+            if "assetPositions" in account_state:
+                positions = account_state["assetPositions"]
+                
+                # Clear existing positions
+                self.positions = {}
+                
+                # Update positions
+                for pos in positions:
+                    if "coin" in pos and "position" in pos:
+                        coin = pos["coin"]
+                        position = float(pos["position"])
+                        
+                        self.positions[coin] = {
+                            "size": position,
+                            "entry_price": 0.0,  # Placeholder
+                            "mark_price": 0.0,  # Placeholder
+                            "pnl": 0.0  # Placeholder
+                        }
+        except Exception as e:
+            logger.error(f"Failed to update positions: {e}")
+    
+    def update_orders(self):
+        """
+        Update orders
+        """
+        try:
+            if not self.api:
+                logger.warning("No API instance available")
+                return
+            
+            # Get open orders
+            orders = self.api.get_open_orders()
+            
+            if not orders:
+                # Clear existing orders
+                self.orders = {}
+                return
+            
+            # Clear existing orders
+            self.orders = {}
+            
+            # Update orders
+            for order in orders:
+                if "coin" in order and "side" in order and "size" in order and "price" in order:
+                    coin = order["coin"]
+                    side = order["side"]
+                    size = float(order["size"])
+                    price = float(order["price"])
+                    
+                    if coin not in self.orders:
+                        self.orders[coin] = []
+                    
+                    self.orders[coin].append({
+                        "side": side,
+                        "size": size,
+                        "price": price,
+                        "status": "open"
+                    })
+        except Exception as e:
+            logger.error(f"Failed to update orders: {e}")
+    
+    def update_performance(self, trade_result):
+        """
+        Update performance
+        
+        Args:
+            trade_result: Dictionary with trade result
+                - pnl: Profit/loss
+                - win: True if winning trade, False otherwise
+        """
+        try:
+            # Update total trades
+            self.performance["total_trades"] += 1
+            
+            # Update winning/losing trades
+            if trade_result["win"]:
+                self.performance["winning_trades"] += 1
+            else:
+                self.performance["losing_trades"] += 1
+            
+            # Update total PnL
+            self.performance["total_pnl"] += trade_result["pnl"]
+            
+            # Update win rate
+            if self.performance["total_trades"] > 0:
+                self.performance["win_rate"] = self.performance["winning_trades"] / self.performance["total_trades"]
+            
+            # Update max drawdown (placeholder)
+            # This would require more sophisticated tracking
+        except Exception as e:
+            logger.error(f"Failed to update performance: {e}")
+    
+    def place_order(self, coin, side, size, price=None, order_type="limit"):
+        """
+        Place an order
+        
+        Args:
+            coin: Coin to trade
+            side: Order side (buy or sell)
+            size: Order size
+            price: Order price (optional for market orders)
+            order_type: Order type (limit or market)
+        
+        Returns:
+            dict: Order result
+        """
+        try:
+            if not self.api:
+                logger.warning("No API instance available")
+                return None
+            
+            # Check risk limits
+            if not self.risk_manager.check_order(coin, side, size, price):
+                logger.warning(f"Order rejected by risk manager: {coin} {side} {size} @ {price}")
+                return None
+            
+            # Place order
+            if order_type == "limit" and price is not None:
+                result = self.api.place_limit_order(coin, side, size, price)
+            else:
+                result = self.api.place_market_order(coin, side, size)
+            
+            # Update orders
+            self.update_orders()
+            
+            return result
+        except Exception as e:
+            logger.error(f"Failed to place order: {e}")
+            return None
+    
+    def cancel_order(self, order_id):
+        """
+        Cancel an order
+        
+        Args:
+            order_id: Order ID
+        
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        try:
+            if not self.api:
+                logger.warning("No API instance available")
+                return False
+            
+            # Cancel order
+            result = self.api.cancel_order(order_id)
+            
+            # Update orders
+            self.update_orders()
+            
+            return result
+        except Exception as e:
+            logger.error(f"Failed to cancel order: {e}")
+            return False
+    
+    def cancel_all_orders(self, coin=None):
+        """
+        Cancel all orders
+        
+        Args:
+            coin: Coin to cancel orders for (optional)
+        
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        try:
+            if not self.api:
+                logger.warning("No API instance available")
+                return False
+            
+            # Cancel orders
+            result = self.api.cancel_all_orders(coin)
+            
+            # Update orders
+            self.update_orders()
+            
+            return result
+        except Exception as e:
+            logger.error(f"Failed to cancel all orders: {e}")
+            return False
+    
+    def close_position(self, coin):
+        """
+        Close position
+        
+        Args:
+            coin: Coin to close position for
+        
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        try:
+            if not self.api:
+                logger.warning("No API instance available")
+                return False
+            
+            # Check if position exists
+            if coin not in self.positions:
+                logger.warning(f"No position found for {coin}")
+                return False
+            
+            # Get position size
+            position = self.positions[coin]
+            size = position["size"]
+            
+            # Determine side
+            side = "sell" if size > 0 else "buy"
+            
+            # Close position
+            result = self.api.place_market_order(coin, side, abs(size))
+            
+            # Update positions
+            self.update_positions()
+            
+            return result is not None
+        except Exception as e:
+            logger.error(f"Failed to close position: {e}")
+            return False
+    
+    def close_all_positions(self):
+        """
+        Close all positions
+        
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        try:
+            if not self.api:
+                logger.warning("No API instance available")
+                return False
+            
+            # Close each position
+            success = True
+            for coin in list(self.positions.keys()):
+                if not self.close_position(coin):
+                    success = False
+            
+            return success
+        except Exception as e:
+            logger.error(f"Failed to close all positions: {e}")
+            return False
+    
+    def get_market_data(self, coin, timeframe="1h", limit=100):
+        """
+        Get market data
+        
+        Args:
+            coin: Coin to get data for
+            timeframe: Timeframe (e.g., 1m, 5m, 15m, 1h, 4h, 1d)
+            limit: Number of candles to get
+        
+        Returns:
+            list: List of candles
+        """
+        try:
+            if not self.api:
+                logger.warning("No API instance available")
+                return []
+            
+            # Get market data
+            return self.api.get_candles(coin, timeframe, limit)
+        except Exception as e:
+            logger.error(f"Failed to get market data: {e}")
+            return []
+    
+    def get_ticker(self, coin):
+        """
+        Get ticker
+        
+        Args:
+            coin: Coin to get ticker for
+        
+        Returns:
+            dict: Ticker data
+        """
+        try:
+            if not self.api:
+                logger.warning("No API instance available")
+                return None
+            
+            # Get ticker
+            return self.api.get_ticker(coin)
+        except Exception as e:
+            logger.error(f"Failed to get ticker: {e}")
+            return None
+    
+    def get_orderbook(self, coin, depth=10):
+        """
+        Get orderbook
+        
+        Args:
+            coin: Coin to get orderbook for
+            depth: Orderbook depth
+        
+        Returns:
+            dict: Orderbook data
+        """
+        try:
+            if not self.api:
+                logger.warning("No API instance available")
+                return None
+            
+            # Get orderbook
+            return self.api.get_orderbook(coin, depth)
+        except Exception as e:
+            logger.error(f"Failed to get orderbook: {e}")
+            return None
+    
+    def get_account_state(self):
+        """
+        Get account state
+        
+        Returns:
+            dict: Account state
+        """
+        try:
+            if not self.api:
+                logger.warning("No API instance available")
+                return None
+            
+            # Get account state
+            return self.api.get_account_state()
+        except Exception as e:
+            logger.error(f"Failed to get account state: {e}")
+            return None
+    
+    def get_account_value(self):
+        """
+        Get account value
+        
+        Returns:
+            float: Account value
+        """
+        try:
+            if not self.api:
+                logger.warning("No API instance available")
+                return 0.0
+            
+            # Get account state
+            account_state = self.api.get_account_state()
+            
+            if not account_state:
+                logger.warning("No account state available")
+                return 0.0
+            
+            # Get account value
+            if "marginSummary" in account_state and "accountValue" in account_state["marginSummary"]:
+                return float(account_state["marginSummary"]["accountValue"])
+            
+            return 0.0
+        except Exception as e:
+            logger.error(f"Failed to get account value: {e}")
+            return 0.0
 
