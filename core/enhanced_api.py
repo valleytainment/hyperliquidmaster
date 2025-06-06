@@ -113,20 +113,15 @@ class EnhancedHyperliquidAPI:
                 wallet_address = self.config.get('wallet_address')
             
             # Initialize exchange with authentication
-            self.exchange = Exchange(
-                account=private_key,
-                base_url=self.api_url,
-                skip_ws=False
-            )
+            self.exchange = Exchange(private_key)
             
             self.account_address = wallet_address
             self.is_authenticated = True
             
-            # Initialize WebSocket manager for real-time data
-            self.ws_manager = WebsocketManager(
-                base_url=self.api_url.replace('https', 'wss'),
-                skip_ws=False
-            )
+            # Initialize WebSocket manager for real-time data (simplified)
+            # self.ws_manager = WebsocketManager(
+            #     base_url=self.api_url.replace('https', 'wss')
+            # )
             
             # Start real-time data feeds
             self.start_real_time_feeds()
