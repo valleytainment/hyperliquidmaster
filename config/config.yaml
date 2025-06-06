@@ -55,5 +55,5 @@ trading:
     hull_suite: 0.4
   take_profit_percentage: 4.0
   testnet: true
-  wallet_address: 0xtest_address
+  wallet_address: '0x306D29F56EA1345c7E6F1ff27657ba05cEE15D4F'
   websocket_reconnect_attempts: 5

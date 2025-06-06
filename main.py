@@ -24,7 +24,7 @@ try:
     import matplotlib
     matplotlib.use('Agg')  # Use non-interactive backend for headless
     
-    from gui.professional_gui import ProfessionalTradingGUI as TradingDashboard
+    from gui.production_gui import ProductionTradingGUI as TradingDashboard
     GUI_AVAILABLE = True
 except ImportError as e:
     print(f"⚠️ GUI not available: {e}")
@@ -173,7 +173,11 @@ class HyperliquidTradingBot:
                 print("💡 Use --mode cli instead")
                 return False
                 
-            self.gui = TradingDashboard()
+            self.gui = TradingDashboard(
+                api=self.api_client,
+                risk_manager=self.risk_manager,
+                connection_manager=self.connection_manager
+            )
             
             # Pass components to GUI
             self.gui.api = self.api_client
