@@ -48,7 +48,7 @@ def test_all_imports():
         print("✅ All utilities imported successfully")
         
         # Test risk management
-        from risk_management.risk_manager import RiskManager
+        from risk_management.risk_manager_fixed import RiskManager
         print("✅ Risk manager imported successfully")
         
         return True
@@ -93,7 +93,7 @@ def test_strategy_initialization():
     try:
         from strategies.bb_rsi_adx_fixed import BBRSIADXStrategy
         from strategies.hull_suite_fixed import HullSuiteStrategy
-        from risk_management.risk_manager import RiskManager
+        from risk_management.risk_manager_fixed import RiskManager
         
         # Initialize risk manager
         risk_manager = RiskManager()

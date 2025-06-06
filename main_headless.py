@@ -24,7 +24,7 @@ from core.api_fixed_v2 import EnhancedHyperliquidAPI
 from strategies.bb_rsi_adx_fixed import BBRSIADXStrategy
 from strategies.hull_suite_fixed import HullSuiteStrategy
 from backtesting.backtest_engine import BacktestEngine
-from risk_management.risk_manager import RiskManager
+from risk_management.risk_manager_fixed import RiskManager
 from utils.logger import get_logger, setup_logging, TradingLogger
 from utils.config_manager_fixed import ConfigManager, TradingConfig
 from utils.security_fixed_v2 import SecurityManager

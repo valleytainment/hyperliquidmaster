@@ -16,7 +16,7 @@ from core.connection_manager_enhanced import EnhancedConnectionManager
 from strategies.base_strategy_fixed import BaseStrategy
 from strategies.bb_rsi_adx_fixed import BBRSIADXStrategy
 from strategies.hull_suite_fixed import HullSuiteStrategy
-from risk_management.risk_manager import RiskManager
+from risk_management.risk_manager_fixed import RiskManager
 
 logger = get_logger(__name__)
 

@@ -22,7 +22,7 @@ from gui.enhanced_gui_auto_connect_v2 import TradingDashboard
 from strategies.bb_rsi_adx_fixed import BBRSIADXStrategy
 from strategies.hull_suite_fixed import HullSuiteStrategy
 from backtesting.backtest_engine import BacktestEngine
-from risk_management.risk_manager import RiskManager, RiskLimits
+from risk_management.risk_manager_fixed import RiskManager, RiskLimits
 from utils.logger import get_logger, setup_logging, TradingLogger
 from utils.config_manager_fixed import ConfigManager, TradingConfig
 from utils.security_fixed_v2 import SecurityManager

@@ -42,7 +42,7 @@ def test_imports():
         print("  ✅ Backtesting engine")
         
         # Risk management imports
-        from risk_management.risk_manager import RiskManager
+        from risk_management.risk_manager_fixed import RiskManager
         print("  ✅ Risk management")
         
         # GUI imports
@@ -205,7 +205,7 @@ def test_risk_management():
     print("\n🧪 Testing Risk Management...")
     
     try:
-        from risk_management.risk_manager import RiskManager
+        from risk_management.risk_manager_fixed import RiskManager
         
         # Test risk manager initialization
         risk_manager = RiskManager()

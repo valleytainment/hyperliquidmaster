@@ -22,7 +22,7 @@ from gui.enhanced_gui_fixed import TradingDashboard  # Use the fixed GUI impleme
 from strategies.bb_rsi_adx import BBRSIADXStrategy
 from strategies.hull_suite import HullSuiteStrategy
 from backtesting.backtest_engine import BacktestEngine
-from risk_management.risk_manager import RiskManager, RiskLimits
+from risk_management.risk_manager_fixed import RiskManager, RiskLimits
 from utils.logger import get_logger, setup_logging, TradingLogger
 from utils.config_manager import ConfigManager, TradingConfig
 from utils.security import SecurityManager

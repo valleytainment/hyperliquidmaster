@@ -19,7 +19,7 @@ from gui.enhanced_gui_fixed_v3 import TradingDashboard  # Use the enhanced GUI w
 from utils.logger import setup_logging, get_logger
 from utils.config_manager import ConfigManager
 from utils.security_fixed import SecurityManager
-from risk_management.risk_manager import RiskManager
+from risk_management.risk_manager_fixed import RiskManager
 from strategies.base_strategy import Strategy
 from strategies.bb_rsi_adx_fixed import BBRSIADXStrategy
 from strategies.hull_suite_fixed import HullSuiteStrategy

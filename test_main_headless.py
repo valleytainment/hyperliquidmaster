@@ -35,7 +35,7 @@ def test_main_application_headless():
         from strategies.bb_rsi_adx_fixed import BBRSIADXStrategy
         from strategies.hull_suite_fixed import HullSuiteStrategy
         from backtesting.backtest_engine import BacktestEngine
-        from risk_management.risk_manager import RiskManager
+        from risk_management.risk_manager_fixed import RiskManager
         
         print("✅ All core components imported successfully")
         
