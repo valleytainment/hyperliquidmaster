@@ -33,11 +33,11 @@ strategies:
     stop_loss: 2.0
     take_profit: 4.0
     timeframe: 15m
+test:
+  key: test_value
 test_key: test_value
 trading:
-  active_strategies:
-  - bb_rsi_adx
-  - hull_suite
+  active_strategies: []
   default_order_size: 100.0
   log_level: INFO
   log_performance: true
@@ -54,6 +54,6 @@ trading:
     bb_rsi_adx: 0.6
     hull_suite: 0.4
   take_profit_percentage: 4.0
-  testnet: false
-  wallet_address: ''
+  testnet: true
+  wallet_address: 0xtest_address
   websocket_reconnect_attempts: 5

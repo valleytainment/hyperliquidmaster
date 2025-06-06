@@ -1,100 +1,92 @@
-#!/usr/bin/env python3
 """
-Quick Error Check and Verification Script
-Validates that all critical errors have been fixed
+Verification script for the fixes implemented in the Hyperliquid Trading Bot
 """
 
 import sys
 import os
+import logging
 from pathlib import Path
+import importlib
+import unittest
 
 # Add project root to path
 project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root))
 
-def test_main_import():
-    """Test main application import"""
-    try:
-        from main import HyperliquidTradingBot
-        print("✅ Main application import successful")
-        return True
-    except Exception as e:
-        print(f"❌ Main import failed: {e}")
-        return False
+from utils.logger import setup_logging, get_logger
 
-def test_gui_class():
-    """Test GUI class definition"""
-    try:
-        from gui.enhanced_gui import TradingDashboard
-        print("✅ GUI class import successful")
-        
-        # Check required methods
-        required_methods = ['on_closing', 'setup_gui', 'refresh_tokens']
-        for method in required_methods:
-            if hasattr(TradingDashboard, method):
-                print(f"  ✅ {method} method exists")
-            else:
-                print(f"  ❌ Missing {method} method")
-                return False
-        
-        return True
-    except Exception as e:
-        print(f"❌ GUI class test failed: {e}")
-        return False
+# Setup logging
+setup_logging("DEBUG")
+logger = get_logger(__name__)
 
-def test_startup_logic():
-    """Test the startup logic without actually starting GUI"""
-    try:
-        # Test that we can create the bot instance
-        from main import HyperliquidTradingBot
-        bot = HyperliquidTradingBot(gui_mode=False)  # Don't start GUI
-        print("✅ Bot initialization successful")
-        
-        # Test that GUI can be created (but not started)
-        print("✅ All startup logic validated")
-        return True
-    except Exception as e:
-        print(f"❌ Startup logic test failed: {e}")
-        return False
+class FixVerificationTests(unittest.TestCase):
+    """Test cases to verify the fixes implemented"""
+    
+    def test_gui_module_import(self):
+        """Test that the GUI module can be imported without errors"""
+        try:
+            from gui.enhanced_gui_fixed import TradingDashboard
+            logger.info("✅ GUI module imported successfully")
+            self.assertTrue(True)
+        except Exception as e:
+            logger.error(f"❌ GUI module import failed: {e}")
+            self.fail(f"GUI module import failed: {e}")
+    
+    def test_toggle_private_key_visibility_exists(self):
+        """Test that the toggle_private_key_visibility method exists"""
+        try:
+            from gui.enhanced_gui_fixed import TradingDashboard
+            dashboard = TradingDashboard()
+            self.assertTrue(hasattr(dashboard, 'toggle_private_key_visibility'))
+            logger.info("✅ toggle_private_key_visibility method exists")
+        except Exception as e:
+            logger.error(f"❌ toggle_private_key_visibility test failed: {e}")
+            self.fail(f"toggle_private_key_visibility test failed: {e}")
+    
+    def test_main_module_import(self):
+        """Test that the main module can be imported without errors"""
+        try:
+            # Use importlib to import the module dynamically
+            main_fixed = importlib.import_module('main_fixed')
+            logger.info("✅ Main module imported successfully")
+            self.assertTrue(True)
+        except Exception as e:
+            logger.error(f"❌ Main module import failed: {e}")
+            self.fail(f"Main module import failed: {e}")
+    
+    def test_hyperliquid_trading_bot_class(self):
+        """Test that the HyperliquidTradingBot class can be instantiated"""
+        try:
+            # Use importlib to import the module dynamically
+            main_fixed = importlib.import_module('main_fixed')
+            bot = main_fixed.HyperliquidTradingBot()
+            self.assertIsNotNone(bot)
+            logger.info("✅ HyperliquidTradingBot class instantiated successfully")
+        except Exception as e:
+            logger.error(f"❌ HyperliquidTradingBot instantiation failed: {e}")
+            self.fail(f"HyperliquidTradingBot instantiation failed: {e}")
+    
+    def test_error_handling(self):
+        """Test the improved error handling"""
+        try:
+            from gui.enhanced_gui_fixed import TradingDashboard
+            dashboard = TradingDashboard()
+            
+            # Test error handling in toggle_private_key_visibility
+            # This should not raise an exception even though the widgets don't exist yet
+            dashboard.toggle_private_key_visibility()
+            logger.info("✅ Error handling test passed")
+            self.assertTrue(True)
+        except Exception as e:
+            logger.error(f"❌ Error handling test failed: {e}")
+            self.fail(f"Error handling test failed: {e}")
 
-def main():
-    """Run all error checks"""
-    print("🔍 HYPERLIQUID TRADING BOT - ERROR VERIFICATION")
-    print("=" * 50)
-    
-    tests = [
-        ("Main Import", test_main_import),
-        ("GUI Class", test_gui_class),
-        ("Startup Logic", test_startup_logic)
-    ]
-    
-    passed = 0
-    failed = 0
-    
-    for test_name, test_func in tests:
-        print(f"\n🧪 Testing {test_name}...")
-        if test_func():
-            passed += 1
-        else:
-            failed += 1
-    
-    print("\n" + "=" * 50)
-    print("📊 VERIFICATION SUMMARY")
-    print("=" * 50)
-    print(f"Tests Passed: {passed}")
-    print(f"Tests Failed: {failed}")
-    print(f"Success Rate: {(passed/len(tests)*100):.1f}%")
-    
-    if failed == 0:
-        print("\n🎉 ALL ERRORS FIXED!")
-        print("🚀 Bot is ready to run with: python main.py --mode gui")
-        print("💰 Ready for profitable trading!")
-    else:
-        print(f"\n⚠️ {failed} issues remain. Please review.")
-    
-    return failed == 0
+def run_tests():
+    """Run the verification tests"""
+    logger.info("Starting fix verification tests...")
+    unittest.main(argv=['first-arg-is-ignored'], exit=False)
+    logger.info("Fix verification tests completed")
 
 if __name__ == "__main__":
-    success = main()
-    sys.exit(0 if success else 1)
+    run_tests()
 

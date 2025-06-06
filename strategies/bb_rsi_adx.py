@@ -1,422 +1,415 @@
 """
-Bollinger Bands + RSI + ADX Strategy
-Advanced trend-following strategy combining multiple technical indicators
-Ported and enhanced from the analyzed repositories
+Bollinger Bands, RSI, and ADX Strategy for Hyperliquid Trading Bot
 """
 
-import pandas as pd
+import os
+import sys
+import logging
 import numpy as np
-from typing import Dict, List, Optional, Any
-from datetime import datetime
+import pandas as pd
+from typing import Dict, Any, Optional, List
 
-from strategies.base_strategy import BaseStrategy, TradingSignal, SignalType, MarketData, OrderType
 from utils.logger import get_logger
+from strategies.base_strategy import BaseStrategy
+from strategies.trading_types_fixed import TradingSignal, SignalType, MarketData
 
 logger = get_logger(__name__)
 
 
-class BBRSIADXStrategy(BaseStrategy):
+class BB_RSI_ADX(BaseStrategy):
     """
-    Bollinger Bands + RSI + ADX Strategy
-    
-    This strategy combines:
-    - Bollinger Bands for volatility and mean reversion
-    - RSI for momentum and overbought/oversold conditions
-    - ADX for trend strength confirmation
-    
-    Entry Conditions:
-    LONG: Price touches lower BB, RSI < oversold, ADX > threshold (strong trend)
-    SHORT: Price touches upper BB, RSI > overbought, ADX > threshold (strong trend)
-    
-    Exit Conditions:
-    - Price crosses middle BB (opposite direction)
-    - RSI reaches opposite extreme
-    - Stop loss or take profit hit
+    Bollinger Bands, RSI, and ADX Strategy for Hyperliquid Trading Bot
     """
     
-    def __init__(self, name: str = "BB_RSI_ADX", config=None, api_client=None):
-        """Initialize BB RSI ADX strategy"""
-        super().__init__(name, config, api_client)
-        
-        # Default configuration if none provided
-        if config is None:
-            from types import SimpleNamespace
-            config = SimpleNamespace()
-            config.indicators = {
-                'bollinger_bands': {'period': 20, 'std_dev': 2.0},
-                'rsi': {'period': 14, 'oversold': 30, 'overbought': 70},
-                'adx': {'period': 14, 'threshold': 25}
-            }
-            config.max_positions = 5
-        
-        # Strategy parameters from config
-        indicators_config = config.indicators if hasattr(config, 'indicators') else {}
-        
-        # Bollinger Bands parameters
-        bb_config = indicators_config.get('bollinger_bands', {})
-        self.bb_period = bb_config.get('period', 20)
-        self.bb_std_dev = bb_config.get('std_dev', 2.0)
-        
-        # RSI parameters
-        rsi_config = indicators_config.get('rsi', {})
-        self.rsi_period = rsi_config.get('period', 14)
-        self.rsi_overbought = rsi_config.get('overbought', 75)
-        self.rsi_oversold = rsi_config.get('oversold', 25)
-        
-        # ADX parameters
-        adx_config = indicators_config.get('adx', {})
-        self.adx_period = adx_config.get('period', 14)
-        self.adx_threshold = adx_config.get('threshold', 25)
-        
-        # Additional parameters
-        self.min_candles = max(self.bb_period, self.rsi_period, self.adx_period) + 10
-        
-        logger.info(f"BB RSI ADX Strategy initialized with BB({self.bb_period}, {self.bb_std_dev}), "
-                   f"RSI({self.rsi_period}, {self.rsi_oversold}, {self.rsi_overbought}), "
-                   f"ADX({self.adx_period}, {self.adx_threshold})")
-    
-    def calculate_bollinger_bands(self, data: pd.Series) -> Dict[str, pd.Series]:
-        """Calculate Bollinger Bands"""
-        sma = data.rolling(window=self.bb_period).mean()
-        std = data.rolling(window=self.bb_period).std()
-        
-        upper_band = sma + (std * self.bb_std_dev)
-        lower_band = sma - (std * self.bb_std_dev)
-        
-        return {
-            'bb_upper': upper_band,
-            'bb_middle': sma,
-            'bb_lower': lower_band,
-            'bb_width': (upper_band - lower_band) / sma,
-            'bb_position': (data - lower_band) / (upper_band - lower_band)
-        }
-    
-    def calculate_rsi(self, data: pd.Series) -> pd.Series:
-        """Calculate RSI (Relative Strength Index)"""
-        delta = data.diff()
-        gain = (delta.where(delta > 0, 0)).rolling(window=self.rsi_period).mean()
-        loss = (-delta.where(delta < 0, 0)).rolling(window=self.rsi_period).mean()
-        
-        rs = gain / loss
-        rsi = 100 - (100 / (1 + rs))
-        
-        return rsi
-    
-    def calculate_adx(self, high: pd.Series, low: pd.Series, close: pd.Series) -> Dict[str, pd.Series]:
-        """Calculate ADX (Average Directional Index)"""
-        # True Range
-        tr1 = high - low
-        tr2 = abs(high - close.shift(1))
-        tr3 = abs(low - close.shift(1))
-        tr = pd.concat([tr1, tr2, tr3], axis=1).max(axis=1)
-        
-        # Directional Movement
-        dm_plus = high.diff()
-        dm_minus = low.diff() * -1
-        
-        dm_plus[dm_plus < 0] = 0
-        dm_minus[dm_minus < 0] = 0
-        
-        # When both DM+ and DM- are positive, only the larger one is kept
-        dm_plus[(dm_plus < dm_minus)] = 0
-        dm_minus[(dm_minus < dm_plus)] = 0
-        
-        # Smoothed True Range and Directional Movement
-        atr = tr.rolling(window=self.adx_period).mean()
-        di_plus = (dm_plus.rolling(window=self.adx_period).mean() / atr) * 100
-        di_minus = (dm_minus.rolling(window=self.adx_period).mean() / atr) * 100
-        
-        # Directional Index
-        dx = (abs(di_plus - di_minus) / (di_plus + di_minus)) * 100
-        adx = dx.rolling(window=self.adx_period).mean()
-        
-        return {
-            'adx': adx,
-            'di_plus': di_plus,
-            'di_minus': di_minus,
-            'atr': atr
-        }
-    
-    def calculate_indicators(self, coin: str, data: pd.DataFrame) -> Dict[str, Any]:
-        """Calculate all technical indicators"""
-        if len(data) < self.min_candles:
-            return {}
-        
-        close = data['close']
-        high = data['high']
-        low = data['low']
-        
-        # Calculate Bollinger Bands
-        bb_indicators = self.calculate_bollinger_bands(close)
-        
-        # Calculate RSI
-        rsi = self.calculate_rsi(close)
-        
-        # Calculate ADX
-        adx_indicators = self.calculate_adx(high, low, close)
-        
-        # Combine all indicators
-        indicators = {
-            **bb_indicators,
-            'rsi': rsi,
-            **adx_indicators
-        }
-        
-        # Store indicators for this coin
-        self.indicators[coin] = indicators
-        
-        return indicators
-    
-    def detect_bb_touch(self, price: float, bb_upper: float, bb_lower: float, 
-                       bb_middle: float, tolerance: float = 0.001) -> str:
+    def __init__(self, api=None, risk_manager=None, max_positions=3):
         """
-        Detect if price is touching Bollinger Bands
+        Initialize the strategy
         
         Args:
-            price: Current price
-            bb_upper: Upper Bollinger Band
-            bb_lower: Lower Bollinger Band
-            bb_middle: Middle Bollinger Band (SMA)
-            tolerance: Touch tolerance (0.1% by default)
-            
-        Returns:
-            'upper', 'lower', 'middle', or 'none'
+            api: API instance
+            risk_manager: Risk manager instance
+            max_positions: Maximum number of positions
         """
-        upper_touch = abs(price - bb_upper) / bb_upper <= tolerance
-        lower_touch = abs(price - bb_lower) / bb_lower <= tolerance
-        middle_touch = abs(price - bb_middle) / bb_middle <= tolerance
+        super().__init__(api, risk_manager, max_positions)
         
-        if upper_touch:
-            return 'upper'
-        elif lower_touch:
-            return 'lower'
-        elif middle_touch:
-            return 'middle'
-        else:
-            return 'none'
+        # Initialize parameters
+        self.parameters = self.get_default_parameters()
+        
+        logger.info(f"BB RSI ADX Strategy initialized with BB({self.parameters['bb_period']}, {self.parameters['bb_std']}), RSI({self.parameters['rsi_period']}, {self.parameters['rsi_oversold']}, {self.parameters['rsi_overbought']}), ADX({self.parameters['adx_period']}, {self.parameters['adx_threshold']})")
     
-    def calculate_signal_confidence(self, indicators: Dict[str, Any], 
-                                  signal_type: SignalType) -> float:
+    @classmethod
+    def get_default_parameters(cls):
         """
-        Calculate signal confidence based on indicator alignment
+        Get default parameters
+        
+        Returns:
+            dict: Default parameters
+        """
+        return {
+            "max_positions": 3,
+            "bb_period": 20,
+            "bb_std": 2.0,
+            "rsi_period": 14,
+            "rsi_oversold": 25,
+            "rsi_overbought": 75,
+            "adx_period": 14,
+            "adx_threshold": 25
+        }
+    
+    def execute(self):
+        """
+        Execute the strategy
+        """
+        try:
+            # Update positions and orders
+            self.update_positions()
+            self.update_orders()
+            
+            # Get available coins
+            coins = self._get_available_coins()
+            
+            # Check each coin
+            for coin in coins:
+                # Skip if we already have a position
+                if coin in self.positions:
+                    continue
+                
+                # Skip if we have reached max positions
+                if len(self.positions) >= self.max_positions:
+                    break
+                
+                # Get market data
+                market_data = self._get_market_data(coin)
+                
+                # Generate signal
+                signal = self._generate_signal(market_data)
+                
+                # Execute signal
+                if signal and signal.signal_type != SignalType.NEUTRAL:
+                    self._execute_signal(signal)
+            
+            # Check existing positions
+            for coin in list(self.positions.keys()):
+                # Get market data
+                market_data = self._get_market_data(coin)
+                
+                # Generate signal
+                signal = self._generate_signal(market_data)
+                
+                # Execute signal
+                if signal and signal.signal_type != SignalType.NEUTRAL:
+                    self._execute_signal(signal)
+        except Exception as e:
+            logger.error(f"Failed to execute strategy: {e}")
+    
+    def _get_available_coins(self):
+        """
+        Get available coins
+        
+        Returns:
+            list: Available coins
+        """
+        try:
+            if not self.api:
+                logger.warning("No API instance available")
+                return []
+            
+            # Get markets
+            markets = self.api.get_markets()
+            
+            if not markets:
+                logger.warning("No markets available")
+                return []
+            
+            # Extract coin names
+            coins = []
+            for market in markets:
+                if "name" in market:
+                    coins.append(market["name"])
+            
+            return coins
+        except Exception as e:
+            logger.error(f"Failed to get available coins: {e}")
+            return []
+    
+    def _get_market_data(self, coin):
+        """
+        Get market data
         
         Args:
-            indicators: Dictionary of calculated indicators
-            signal_type: Type of signal being generated
-            
+            coin: Coin to get data for
+        
         Returns:
-            Confidence score between 0.0 and 1.0
+            MarketData: Market data
         """
-        confidence = 0.0
-        
-        # Get latest values
-        rsi_current = indicators['rsi'].iloc[-1]
-        adx_current = indicators['adx'].iloc[-1]
-        bb_position = indicators['bb_position'].iloc[-1]
-        bb_width = indicators['bb_width'].iloc[-1]
-        
-        if signal_type == SignalType.LONG:
-            # RSI oversold condition
-            if rsi_current <= self.rsi_oversold:
-                confidence += 0.3
-            elif rsi_current <= self.rsi_oversold + 10:
-                confidence += 0.2
+        try:
+            if not self.api:
+                logger.warning("No API instance available")
+                return None
             
-            # Bollinger Band position (lower is better for long)
-            if bb_position <= 0.1:  # Very close to lower band
-                confidence += 0.3
-            elif bb_position <= 0.2:
-                confidence += 0.2
+            # Get candles
+            candles = self.api.get_candles(coin, "1h", 100)
             
-            # ADX trend strength
-            if adx_current >= self.adx_threshold + 10:
-                confidence += 0.2
-            elif adx_current >= self.adx_threshold:
-                confidence += 0.1
+            if not candles:
+                logger.warning(f"No candles available for {coin}")
+                return None
             
-            # Bollinger Band width (higher volatility)
-            if bb_width >= 0.05:  # 5% width
-                confidence += 0.1
+            # Create market data
+            market_data = MarketData(coin, "1h", candles)
             
-            # DI+ vs DI- for trend direction
-            if 'di_plus' in indicators and 'di_minus' in indicators:
-                di_plus = indicators['di_plus'].iloc[-1]
-                di_minus = indicators['di_minus'].iloc[-1]
-                if di_plus > di_minus:
-                    confidence += 0.1
-        
-        elif signal_type == SignalType.SHORT:
-            # RSI overbought condition
-            if rsi_current >= self.rsi_overbought:
-                confidence += 0.3
-            elif rsi_current >= self.rsi_overbought - 10:
-                confidence += 0.2
-            
-            # Bollinger Band position (upper is better for short)
-            if bb_position >= 0.9:  # Very close to upper band
-                confidence += 0.3
-            elif bb_position >= 0.8:
-                confidence += 0.2
-            
-            # ADX trend strength
-            if adx_current >= self.adx_threshold + 10:
-                confidence += 0.2
-            elif adx_current >= self.adx_threshold:
-                confidence += 0.1
-            
-            # Bollinger Band width (higher volatility)
-            if bb_width >= 0.05:  # 5% width
-                confidence += 0.1
-            
-            # DI+ vs DI- for trend direction
-            if 'di_plus' in indicators and 'di_minus' in indicators:
-                di_plus = indicators['di_plus'].iloc[-1]
-                di_minus = indicators['di_minus'].iloc[-1]
-                if di_minus > di_plus:
-                    confidence += 0.1
-        
-        return min(confidence, 1.0)  # Cap at 1.0
+            return market_data
+        except Exception as e:
+            logger.error(f"Failed to get market data for {coin}: {e}")
+            return None
     
-    async def generate_signal(self, coin: str, market_data: List[MarketData]) -> TradingSignal:
-        """Generate trading signal based on BB + RSI + ADX analysis"""
+    def _generate_signal(self, market_data):
+        """
+        Generate trading signal
         
-        # Convert market data to DataFrame
-        if len(market_data) < self.min_candles:
-            return TradingSignal(
-                signal_type=SignalType.NONE,
-                coin=coin,
-                confidence=0.0,
-                metadata={'reason': 'insufficient_data'}
-            )
+        Args:
+            market_data: Market data
         
-        df = pd.DataFrame([d.to_dict() for d in market_data])
-        df.set_index('timestamp', inplace=True)
-        
-        # Calculate indicators
-        indicators = self.calculate_indicators(coin, df)
-        if not indicators:
-            return TradingSignal(
-                signal_type=SignalType.NONE,
-                coin=coin,
-                confidence=0.0,
-                metadata={'reason': 'indicator_calculation_failed'}
-            )
-        
-        # Get current values
-        current_price = df['close'].iloc[-1]
-        current_rsi = indicators['rsi'].iloc[-1]
-        current_adx = indicators['adx'].iloc[-1]
-        current_bb_upper = indicators['bb_upper'].iloc[-1]
-        current_bb_lower = indicators['bb_lower'].iloc[-1]
-        current_bb_middle = indicators['bb_middle'].iloc[-1]
-        
-        # Check for NaN values
-        if pd.isna(current_rsi) or pd.isna(current_adx):
-            return TradingSignal(
-                signal_type=SignalType.NONE,
-                coin=coin,
-                confidence=0.0,
-                metadata={'reason': 'nan_indicators'}
-            )
-        
-        # Detect Bollinger Band touches
-        bb_touch = self.detect_bb_touch(current_price, current_bb_upper, 
-                                       current_bb_lower, current_bb_middle)
-        
-        signal_type = SignalType.NONE
-        metadata = {
-            'rsi': current_rsi,
-            'adx': current_adx,
-            'bb_touch': bb_touch,
-            'bb_position': indicators['bb_position'].iloc[-1],
-            'price': current_price
-        }
-        
-        # Check for existing position to determine exit signals
-        existing_position = self.positions.get(coin, {})
-        position_size = existing_position.get('size', 0)
-        
-        # Exit signal logic
-        if position_size != 0:
-            if position_size > 0:  # Long position
-                # Exit long if price crosses middle BB upward or RSI overbought
-                if (bb_touch == 'middle' and current_price > current_bb_middle) or \
-                   current_rsi >= self.rsi_overbought:
-                    signal_type = SignalType.CLOSE_LONG
-                    metadata['exit_reason'] = 'bb_middle_cross' if bb_touch == 'middle' else 'rsi_overbought'
+        Returns:
+            TradingSignal: Trading signal
+        """
+        try:
+            if not market_data or not market_data.candles:
+                return None
             
-            elif position_size < 0:  # Short position
-                # Exit short if price crosses middle BB downward or RSI oversold
-                if (bb_touch == 'middle' and current_price < current_bb_middle) or \
-                   current_rsi <= self.rsi_oversold:
-                    signal_type = SignalType.CLOSE_SHORT
-                    metadata['exit_reason'] = 'bb_middle_cross' if bb_touch == 'middle' else 'rsi_oversold'
-        
-        # Entry signal logic (only if no existing position)
-        else:
-            # Long signal conditions
-            if (bb_touch == 'lower' and 
-                current_rsi <= self.rsi_oversold and 
-                current_adx >= self.adx_threshold):
-                signal_type = SignalType.LONG
-                metadata['entry_reason'] = 'bb_lower_rsi_oversold_adx_strong'
+            # Extract parameters
+            bb_period = self.parameters["bb_period"]
+            bb_std = self.parameters["bb_std"]
+            rsi_period = self.parameters["rsi_period"]
+            rsi_oversold = self.parameters["rsi_oversold"]
+            rsi_overbought = self.parameters["rsi_overbought"]
+            adx_period = self.parameters["adx_period"]
+            adx_threshold = self.parameters["adx_threshold"]
             
-            # Short signal conditions
-            elif (bb_touch == 'upper' and 
-                  current_rsi >= self.rsi_overbought and 
-                  current_adx >= self.adx_threshold):
-                signal_type = SignalType.SHORT
-                metadata['entry_reason'] = 'bb_upper_rsi_overbought_adx_strong'
-        
-        # Calculate confidence
-        confidence = 0.0
-        if signal_type != SignalType.NONE:
-            if signal_type in [SignalType.LONG, SignalType.SHORT]:
-                confidence = self.calculate_signal_confidence(indicators, signal_type)
-            else:  # Exit signals
-                confidence = 0.8  # High confidence for exit signals
-        
-        # Create signal
-        signal = TradingSignal(
-            signal_type=signal_type,
-            coin=coin,
-            confidence=confidence,
-            metadata=metadata
-        )
-        
-        # Add stop loss and take profit for entry signals
-        if signal_type in [SignalType.LONG, SignalType.SHORT]:
-            signal.entry_price = current_price
-            signal.stop_loss = self.calculate_stop_loss(current_price, signal_type)
-            signal.take_profit = self.calculate_take_profit(current_price, signal_type)
-            signal.size = self.calculate_position_size(coin, signal)
-        
-        # Add to signal history
-        self.add_signal_to_history(signal)
-        
-        # Log signal if not NONE
-        if signal_type != SignalType.NONE:
-            logger.info(f"BB RSI ADX Signal: {coin} {signal_type.value} "
-                       f"(confidence: {confidence:.2f}, RSI: {current_rsi:.1f}, "
-                       f"ADX: {current_adx:.1f}, BB: {bb_touch})")
-        
-        return signal
+            # Convert candles to DataFrame
+            df = pd.DataFrame(market_data.candles)
+            
+            # Calculate indicators
+            df = self._calculate_bollinger_bands(df, bb_period, bb_std)
+            df = self._calculate_rsi(df, rsi_period)
+            df = self._calculate_adx(df, adx_period)
+            
+            # Get latest values
+            latest = df.iloc[-1]
+            
+            # Generate signal
+            signal_type = SignalType.NEUTRAL
+            confidence = 0.0
+            reason = ""
+            
+            # Check if price is below lower band and RSI is oversold
+            if latest["close"] < latest["bb_lower"] and latest["rsi"] < rsi_oversold and latest["adx"] > adx_threshold:
+                signal_type = SignalType.BUY
+                confidence = min(1.0, (rsi_oversold - latest["rsi"]) / rsi_oversold)
+                reason = f"Price below lower band, RSI oversold ({latest['rsi']:.2f}), ADX strong ({latest['adx']:.2f})"
+            
+            # Check if price is above upper band and RSI is overbought
+            elif latest["close"] > latest["bb_upper"] and latest["rsi"] > rsi_overbought and latest["adx"] > adx_threshold:
+                signal_type = SignalType.SELL
+                confidence = min(1.0, (latest["rsi"] - rsi_overbought) / (100 - rsi_overbought))
+                reason = f"Price above upper band, RSI overbought ({latest['rsi']:.2f}), ADX strong ({latest['adx']:.2f})"
+            
+            # Create signal
+            if signal_type != SignalType.NEUTRAL:
+                return TradingSignal(
+                    market_data.coin,
+                    signal_type,
+                    confidence,
+                    latest["close"],
+                    None,
+                    reason
+                )
+            
+            return None
+        except Exception as e:
+            logger.error(f"Failed to generate signal: {e}")
+            return None
     
-    def get_strategy_info(self) -> Dict[str, Any]:
-        """Get strategy information and current state"""
-        return {
-            'name': self.name,
-            'type': 'BB_RSI_ADX',
-            'parameters': {
-                'bb_period': self.bb_period,
-                'bb_std_dev': self.bb_std_dev,
-                'rsi_period': self.rsi_period,
-                'rsi_overbought': self.rsi_overbought,
-                'rsi_oversold': self.rsi_oversold,
-                'adx_period': self.adx_period,
-                'adx_threshold': self.adx_threshold
-            },
-            'status': self.get_status(),
-            'description': 'Bollinger Bands + RSI + ADX trend-following strategy'
-        }
+    def _execute_signal(self, signal):
+        """
+        Execute trading signal
+        
+        Args:
+            signal: Trading signal
+        
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        try:
+            if not signal:
+                return False
+            
+            # Check if signal is within risk limits
+            if not self.risk_manager.check_signal(signal):
+                logger.warning(f"Signal rejected by risk manager: {signal}")
+                return False
+            
+            # Calculate position size
+            account_value = self.get_account_value()
+            position_size = account_value * 0.1  # 10% of account value
+            
+            # Adjust position size
+            position_size = self.risk_manager.adjust_position_size(
+                signal.coin,
+                signal.signal_type.value,
+                position_size,
+                signal.price
+            )
+            
+            # Execute signal
+            if signal.signal_type == SignalType.BUY:
+                # Place buy order
+                result = self.place_order(
+                    signal.coin,
+                    "buy",
+                    position_size,
+                    signal.price
+                )
+                
+                if result:
+                    logger.info(f"Executed buy signal for {signal.coin} at {signal.price}")
+                    return True
+            
+            elif signal.signal_type == SignalType.SELL:
+                # Check if we have a position
+                if signal.coin in self.positions:
+                    # Close position
+                    result = self.close_position(signal.coin)
+                    
+                    if result:
+                        logger.info(f"Executed sell signal for {signal.coin} at {signal.price}")
+                        return True
+                else:
+                    # Place sell order
+                    result = self.place_order(
+                        signal.coin,
+                        "sell",
+                        position_size,
+                        signal.price
+                    )
+                    
+                    if result:
+                        logger.info(f"Executed sell signal for {signal.coin} at {signal.price}")
+                        return True
+            
+            return False
+        except Exception as e:
+            logger.error(f"Failed to execute signal: {e}")
+            return False
+    
+    def _calculate_bollinger_bands(self, df, period=20, std=2.0):
+        """
+        Calculate Bollinger Bands
+        
+        Args:
+            df: DataFrame with candles
+            period: Period for moving average
+            std: Standard deviation multiplier
+        
+        Returns:
+            DataFrame: DataFrame with Bollinger Bands
+        """
+        try:
+            # Calculate moving average
+            df["bb_middle"] = df["close"].rolling(window=period).mean()
+            
+            # Calculate standard deviation
+            df["bb_std"] = df["close"].rolling(window=period).std()
+            
+            # Calculate upper and lower bands
+            df["bb_upper"] = df["bb_middle"] + (df["bb_std"] * std)
+            df["bb_lower"] = df["bb_middle"] - (df["bb_std"] * std)
+            
+            return df
+        except Exception as e:
+            logger.error(f"Failed to calculate Bollinger Bands: {e}")
+            return df
+    
+    def _calculate_rsi(self, df, period=14):
+        """
+        Calculate RSI
+        
+        Args:
+            df: DataFrame with candles
+            period: Period for RSI
+        
+        Returns:
+            DataFrame: DataFrame with RSI
+        """
+        try:
+            # Calculate price change
+            df["price_change"] = df["close"].diff()
+            
+            # Calculate gains and losses
+            df["gain"] = df["price_change"].apply(lambda x: x if x > 0 else 0)
+            df["loss"] = df["price_change"].apply(lambda x: -x if x < 0 else 0)
+            
+            # Calculate average gains and losses
+            df["avg_gain"] = df["gain"].rolling(window=period).mean()
+            df["avg_loss"] = df["loss"].rolling(window=period).mean()
+            
+            # Calculate RS
+            df["rs"] = df["avg_gain"] / df["avg_loss"]
+            
+            # Calculate RSI
+            df["rsi"] = 100 - (100 / (1 + df["rs"]))
+            
+            return df
+        except Exception as e:
+            logger.error(f"Failed to calculate RSI: {e}")
+            return df
+    
+    def _calculate_adx(self, df, period=14):
+        """
+        Calculate ADX
+        
+        Args:
+            df: DataFrame with candles
+            period: Period for ADX
+        
+        Returns:
+            DataFrame: DataFrame with ADX
+        """
+        try:
+            # Calculate True Range
+            df["tr1"] = abs(df["high"] - df["low"])
+            df["tr2"] = abs(df["high"] - df["close"].shift())
+            df["tr3"] = abs(df["low"] - df["close"].shift())
+            df["tr"] = df[["tr1", "tr2", "tr3"]].max(axis=1)
+            
+            # Calculate Directional Movement
+            df["up_move"] = df["high"] - df["high"].shift()
+            df["down_move"] = df["low"].shift() - df["low"]
+            
+            df["plus_dm"] = np.where(
+                (df["up_move"] > df["down_move"]) & (df["up_move"] > 0),
+                df["up_move"],
+                0
+            )
+            
+            df["minus_dm"] = np.where(
+                (df["down_move"] > df["up_move"]) & (df["down_move"] > 0),
+                df["down_move"],
+                0
+            )
+            
+            # Calculate Smoothed Averages
+            df["atr"] = df["tr"].rolling(window=period).mean()
+            df["plus_di"] = 100 * (df["plus_dm"].rolling(window=period).mean() / df["atr"])
+            df["minus_di"] = 100 * (df["minus_dm"].rolling(window=period).mean() / df["atr"])
+            
+            # Calculate Directional Index
+            df["dx"] = 100 * (abs(df["plus_di"] - df["minus_di"]) / (df["plus_di"] + df["minus_di"]))
+            
+            # Calculate ADX
+            df["adx"] = df["dx"].rolling(window=period).mean()
+            
+            return df
+        except Exception as e:
+            logger.error(f"Failed to calculate ADX: {e}")
+            return df
 

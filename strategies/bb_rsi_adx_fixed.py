@@ -1,5 +1,5 @@
 """
-Hull Moving Average Suite Strategy for Hyperliquid Trading Bot
+Bollinger Bands, RSI, and ADX Strategy for Hyperliquid Trading Bot
 """
 
 import os
@@ -10,15 +10,15 @@ import pandas as pd
 from typing import Dict, Any, Optional, List
 
 from utils.logger import get_logger
-from strategies.base_strategy import BaseStrategy
-from strategies.trading_types_fixed import TradingSignal, SignalType, MarketData
+from strategies.base_strategy_fixed import BaseStrategy
+from strategies.trading_types_fixed import TradingSignal, SignalType, MarketData, OrderType
 
 logger = get_logger(__name__)
 
 
-class HullSuite(BaseStrategy):
+class BBRSIADXStrategy(BaseStrategy):
     """
-    Hull Moving Average Suite Strategy for Hyperliquid Trading Bot
+    Bollinger Bands, RSI, and ADX Strategy for Hyperliquid Trading Bot
     """
     
     def __init__(self, api=None, risk_manager=None, max_positions=3):
@@ -35,7 +35,7 @@ class HullSuite(BaseStrategy):
         # Initialize parameters
         self.parameters = self.get_default_parameters()
         
-        logger.info(f"Hull Suite Strategy initialized with Hull MA({self.parameters['hull_period']}), ATR({self.parameters['atr_period']}, {self.parameters['atr_multiplier']})")
+        logger.info(f"BB RSI ADX Strategy initialized with BB({self.parameters['bb_period']}, {self.parameters['bb_std']}), RSI({self.parameters['rsi_period']}, {self.parameters['rsi_oversold']}, {self.parameters['rsi_overbought']}), ADX({self.parameters['adx_period']}, {self.parameters['adx_threshold']})")
     
     @classmethod
     def get_default_parameters(cls):
@@ -47,9 +47,13 @@ class HullSuite(BaseStrategy):
         """
         return {
             "max_positions": 3,
-            "hull_period": 34,
-            "atr_period": 14,
-            "atr_multiplier": 2.0
+            "bb_period": 20,
+            "bb_std": 2.0,
+            "rsi_period": 14,
+            "rsi_oversold": 25,
+            "rsi_overbought": 75,
+            "adx_period": 14,
+            "adx_threshold": 25
         }
     
     def execute(self):
@@ -173,57 +177,41 @@ class HullSuite(BaseStrategy):
                 return None
             
             # Extract parameters
-            hull_period = self.parameters["hull_period"]
-            atr_period = self.parameters["atr_period"]
-            atr_multiplier = self.parameters["atr_multiplier"]
+            bb_period = self.parameters["bb_period"]
+            bb_std = self.parameters["bb_std"]
+            rsi_period = self.parameters["rsi_period"]
+            rsi_oversold = self.parameters["rsi_oversold"]
+            rsi_overbought = self.parameters["rsi_overbought"]
+            adx_period = self.parameters["adx_period"]
+            adx_threshold = self.parameters["adx_threshold"]
             
             # Convert candles to DataFrame
             df = pd.DataFrame(market_data.candles)
             
             # Calculate indicators
-            df = self._calculate_hull_ma(df, hull_period)
-            df = self._calculate_atr(df, atr_period)
+            df = self._calculate_bollinger_bands(df, bb_period, bb_std)
+            df = self._calculate_rsi(df, rsi_period)
+            df = self._calculate_adx(df, adx_period)
             
             # Get latest values
             latest = df.iloc[-1]
-            previous = df.iloc[-2]
             
             # Generate signal
             signal_type = SignalType.NEUTRAL
             confidence = 0.0
             reason = ""
             
-            # Check for buy signal
-            if previous["close"] < previous["hull_ma"] and latest["close"] > latest["hull_ma"]:
+            # Check if price is below lower band and RSI is oversold
+            if latest["close"] < latest["bb_lower"] and latest["rsi"] < rsi_oversold and latest["adx"] > adx_threshold:
                 signal_type = SignalType.BUY
-                confidence = 0.8
-                reason = f"Price crossed above Hull MA ({latest['hull_ma']:.2f})"
+                confidence = min(1.0, (rsi_oversold - latest["rsi"]) / rsi_oversold)
+                reason = f"Price below lower band, RSI oversold ({latest['rsi']:.2f}), ADX strong ({latest['adx']:.2f})"
             
-            # Check for sell signal
-            elif previous["close"] > previous["hull_ma"] and latest["close"] < latest["hull_ma"]:
+            # Check if price is above upper band and RSI is overbought
+            elif latest["close"] > latest["bb_upper"] and latest["rsi"] > rsi_overbought and latest["adx"] > adx_threshold:
                 signal_type = SignalType.SELL
-                confidence = 0.8
-                reason = f"Price crossed below Hull MA ({latest['hull_ma']:.2f})"
-            
-            # Check for stop loss
-            elif market_data.coin in self.positions:
-                position = self.positions[market_data.coin]
-                
-                if position["size"] > 0:  # Long position
-                    stop_price = latest["hull_ma"] - (latest["atr"] * atr_multiplier)
-                    
-                    if latest["close"] < stop_price:
-                        signal_type = SignalType.SELL
-                        confidence = 0.9
-                        reason = f"Stop loss triggered at {stop_price:.2f}"
-                
-                elif position["size"] < 0:  # Short position
-                    stop_price = latest["hull_ma"] + (latest["atr"] * atr_multiplier)
-                    
-                    if latest["close"] > stop_price:
-                        signal_type = SignalType.BUY
-                        confidence = 0.9
-                        reason = f"Stop loss triggered at {stop_price:.2f}"
+                confidence = min(1.0, (latest["rsi"] - rsi_overbought) / (100 - rsi_overbought))
+                reason = f"Price above upper band, RSI overbought ({latest['rsi']:.2f}), ADX strong ({latest['adx']:.2f})"
             
             # Create signal
             if signal_type != SignalType.NEUTRAL:
@@ -313,65 +301,78 @@ class HullSuite(BaseStrategy):
             logger.error(f"Failed to execute signal: {e}")
             return False
     
-    def _calculate_hull_ma(self, df, period=34):
+    def _calculate_bollinger_bands(self, df, period=20, std=2.0):
         """
-        Calculate Hull Moving Average
+        Calculate Bollinger Bands
         
         Args:
             df: DataFrame with candles
-            period: Period for Hull MA
+            period: Period for moving average
+            std: Standard deviation multiplier
         
         Returns:
-            DataFrame: DataFrame with Hull MA
+            DataFrame: DataFrame with Bollinger Bands
         """
         try:
-            # Calculate WMA with period/2
-            half_period = int(period / 2)
-            df["wma_half"] = self._calculate_wma(df["close"], half_period)
+            # Calculate moving average
+            df["bb_middle"] = df["close"].rolling(window=period).mean()
             
-            # Calculate WMA with period
-            df["wma_full"] = self._calculate_wma(df["close"], period)
+            # Calculate standard deviation
+            df["bb_std"] = df["close"].rolling(window=period).std()
             
-            # Calculate raw Hull MA
-            df["hull_raw"] = 2 * df["wma_half"] - df["wma_full"]
-            
-            # Calculate Hull MA
-            sqrt_period = int(np.sqrt(period))
-            df["hull_ma"] = self._calculate_wma(df["hull_raw"], sqrt_period)
+            # Calculate upper and lower bands
+            df["bb_upper"] = df["bb_middle"] + (df["bb_std"] * std)
+            df["bb_lower"] = df["bb_middle"] - (df["bb_std"] * std)
             
             return df
         except Exception as e:
-            logger.error(f"Failed to calculate Hull MA: {e}")
+            logger.error(f"Failed to calculate Bollinger Bands: {e}")
             return df
     
-    def _calculate_wma(self, series, period):
+    def _calculate_rsi(self, df, period=14):
         """
-        Calculate Weighted Moving Average
-        
-        Args:
-            series: Series to calculate WMA for
-            period: Period for WMA
-        
-        Returns:
-            Series: WMA series
-        """
-        try:
-            weights = np.arange(1, period + 1)
-            return series.rolling(period).apply(lambda x: np.sum(weights * x) / weights.sum(), raw=True)
-        except Exception as e:
-            logger.error(f"Failed to calculate WMA: {e}")
-            return series
-    
-    def _calculate_atr(self, df, period=14):
-        """
-        Calculate Average True Range
+        Calculate RSI
         
         Args:
             df: DataFrame with candles
-            period: Period for ATR
+            period: Period for RSI
         
         Returns:
-            DataFrame: DataFrame with ATR
+            DataFrame: DataFrame with RSI
+        """
+        try:
+            # Calculate price change
+            df["price_change"] = df["close"].diff()
+            
+            # Calculate gains and losses
+            df["gain"] = df["price_change"].apply(lambda x: x if x > 0 else 0)
+            df["loss"] = df["price_change"].apply(lambda x: -x if x < 0 else 0)
+            
+            # Calculate average gains and losses
+            df["avg_gain"] = df["gain"].rolling(window=period).mean()
+            df["avg_loss"] = df["loss"].rolling(window=period).mean()
+            
+            # Calculate RS
+            df["rs"] = df["avg_gain"] / df["avg_loss"]
+            
+            # Calculate RSI
+            df["rsi"] = 100 - (100 / (1 + df["rs"]))
+            
+            return df
+        except Exception as e:
+            logger.error(f"Failed to calculate RSI: {e}")
+            return df
+    
+    def _calculate_adx(self, df, period=14):
+        """
+        Calculate ADX
+        
+        Args:
+            df: DataFrame with candles
+            period: Period for ADX
+        
+        Returns:
+            DataFrame: DataFrame with ADX
         """
         try:
             # Calculate True Range
@@ -380,11 +381,35 @@ class HullSuite(BaseStrategy):
             df["tr3"] = abs(df["low"] - df["close"].shift())
             df["tr"] = df[["tr1", "tr2", "tr3"]].max(axis=1)
             
-            # Calculate ATR
+            # Calculate Directional Movement
+            df["up_move"] = df["high"] - df["high"].shift()
+            df["down_move"] = df["low"].shift() - df["low"]
+            
+            df["plus_dm"] = np.where(
+                (df["up_move"] > df["down_move"]) & (df["up_move"] > 0),
+                df["up_move"],
+                0
+            )
+            
+            df["minus_dm"] = np.where(
+                (df["down_move"] > df["up_move"]) & (df["down_move"] > 0),
+                df["down_move"],
+                0
+            )
+            
+            # Calculate Smoothed Averages
             df["atr"] = df["tr"].rolling(window=period).mean()
+            df["plus_di"] = 100 * (df["plus_dm"].rolling(window=period).mean() / df["atr"])
+            df["minus_di"] = 100 * (df["minus_dm"].rolling(window=period).mean() / df["atr"])
+            
+            # Calculate Directional Index
+            df["dx"] = 100 * (abs(df["plus_di"] - df["minus_di"]) / (df["plus_di"] + df["minus_di"]))
+            
+            # Calculate ADX
+            df["adx"] = df["dx"].rolling(window=period).mean()
             
             return df
         except Exception as e:
-            logger.error(f"Failed to calculate ATR: {e}")
+            logger.error(f"Failed to calculate ADX: {e}")
             return df
 
